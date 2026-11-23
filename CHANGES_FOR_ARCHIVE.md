@@ -1,7 +1,7 @@
 # Files changed for the archive
 
 Almost every archived file is a byte-for-byte copy of its file in the project. This file lists every archived file
-whose bytes differ from its source: 163 files, as listed on 2026-11-23 at 03:14 UTC. For each it gives the change,
+whose bytes differ from its source: 163 files, as listed on 2026-11-23 at 04:17 UTC. For each it gives the change,
 the number of replacements, and the SHA-256 of the source and of the archived copy. Two changes are made, and only in
 files whose bytes no recorded hash covers; the files whose SHA-256 a table, lock, manifest or record gives (those of
 Supplement S4 among them), the dataset packages, the hashed folders of the code versions and the run records are
@@ -23,8 +23,8 @@ records still say that the record quotes the author's words (for example rulings
 
 A few hash-locked records (the signed pre-registrations, sign-off records, protocol snapshots and dataset-package
 comments, and a few comments and notes in hash-locked code, tool versions and run records) keep their text as
-written, including short approvals by the author, so that their fingerprints can be checked. [OWNER: confirm that
-these files keep their text]
+written, including short approvals by the author, so that their fingerprints can be checked; the author confirmed on
+2026-11-23 that these files keep their text.
 
 Some de-quoted tool outputs and scripts therefore no longer match text written elsewhere: the coral signing outputs
 and the approval string of the product fetcher differ from the text that the same tools wrote into hash-locked files,
@@ -32,12 +32,13 @@ which keep the original wording, and the quote check of one table-build script w
 again.
 
 The frozen fact sheet, `records/fact_sheet/PAPER_FACTS.md`, is one of the de-quoted files: the SHA-256 of its source
-is `344c581d518a851615b8a8dcfa64753ed0b957499ba1e91268feb8dc2063002a`, and that of the archived copy is
-`d3f6cc53c73728eeeed3df919eadba7c07f2d0b4b56a26aa38a5ccf8d52f15a7`.
+is `18e83b3873e604a69e0b734b9e602c43c9ce4b26d8316cbd042555cb5728661c`, and that of the archived copy is
+`9b8d28e8301989fc73174f5a24c6822875f2b9553096f55a42073c152e8c98ab`.
 
-Files written for the archive have no source file and are not listed here: the root files, `engine/README_ARCHIVE.md`
-and `engine/tests/STALE_TESTS.md`, the dated notes beside the four gridded protocol copies, `VERIFY_HASHES.py` and
-the written-out code versions of `VERSIONS.md`. `SHA256SUMS.txt` gives the SHA-256 of every file.
+Files written for the archive have no source file and are not listed here: the root files, `engine/LICENSE`,
+`engine/README_ARCHIVE.md` and `engine/tests/STALE_TESTS.md`, the dated notes beside the four gridded protocol
+copies, `VERIFY_HASHES.py` and the written-out code versions of `VERSIONS.md`. `SHA256SUMS.txt` gives the SHA-256 of
+every file.
 
 | Archive path | Change | Name replacements | De-quote replacements | SHA-256 of the source | SHA-256 of the archived copy |
 |---|---|---:|---:|---|---|
@@ -145,7 +146,7 @@ the written-out code versions of `VERSIONS.md`. `SHA256SUMS.txt` gives the SHA-2
 | `rebuild/fire_select_cells.py` | name cleaning | 1 |  | `2b89bf4d607daba8a76447210cc1b0924843cde7bc1b0d7ae0ead567d3ccaed4` | `91f4e337ec03ffd38a702ab9ac881f2423adf5713319f0c11eaa0c25f9cd4b3e` |
 | `rebuild/presplit_cc/config.yaml` | name cleaning | 5 |  | `c043ae5489971f9479d38c3a20e64c0afa784804c56a7d86db03c51e20fba8b2` | `45cdc34968225d532145c719f9e2249776180bf5d45ef4a3c3131c7314f0564d` |
 | `rebuild/presplit_cc/fetch_livestock_extract.py` | name cleaning | 1 |  | `d56b0bce755d1b76b41ae344087b036ba58657673b4eede9321c80f702297ae2` | `ec2bf0ca0bea363fbd90b3af8aef2e0944b60fc4aec5a91bce3c7be933694748` |
-| `records/fact_sheet/PAPER_FACTS.md` | de-quote |  | 6 | `344c581d518a851615b8a8dcfa64753ed0b957499ba1e91268feb8dc2063002a` | `d3f6cc53c73728eeeed3df919eadba7c07f2d0b4b56a26aa38a5ccf8d52f15a7` |
+| `records/fact_sheet/PAPER_FACTS.md` | de-quote |  | 6 | `18e83b3873e604a69e0b734b9e602c43c9ce4b26d8316cbd042555cb5728661c` | `9b8d28e8301989fc73174f5a24c6822875f2b9553096f55a42073c152e8c98ab` |
 | `records/paper_checks/models_scan.txt` | name cleaning | 4 |  | `3720450824e80d2909c8fb1c4538b8ea4164ff1adead6acb5149d25f3746cbff` | `7848f0f88c9172a372931984ccdcc8aaccf0bca1c8d7d9fba35c58c3c57535fa` |
 | `records/paper_checks/py_writes.csv` | name cleaning | 4448 |  | `74b3b9f69ab8333dc0ad5fe8d4bbbeb52581c7d31574e1ed4d8d5f2f5afd2053` | `a38c0282293a6ec1502184fdec98fa97fc35ef6a143cdce25aecda6cdf7f1c73` |
 | `records/project_docs/APP_PLAN.md` | de-quote |  | 3 | `ebe331ba1745d75808bb978fdaa7cb040e96bf4958262c018a6bad54503fafa9` | `32a52c9bf7a5201e5f10ccb92454073cacbe41a2a513d96ec1b770fa2ce967fe` |

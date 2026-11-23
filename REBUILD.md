@@ -35,7 +35,7 @@ reach found no other local module):
   `coral_fetch_sst_full.py`, `coral_fullscale.py`, `coral_fetch_drivers.py`, `coral_forecast.py`,
   `coral_fetch_sst.py`, `coral_mhw_features.py`, `coral_dhw_model.py`, `coral_extra_drivers.py`, `coral_safe.py`,
   `coral_smoke_rf.py`, `coral_smoke_regress.py`, `coral_glorys2_ab.py` and `coral_architecture.py`;
-- `rebuild/presplit_cc/` (35 files): `assemble_monthly_panel.py`, `assemble_human_drivers.py`,
+- `rebuild/presplit_cc/` (36 files: the 35 scripts below and `config.yaml`, see Libraries): `assemble_monthly_panel.py`, `assemble_human_drivers.py`,
   `add_drought_wbal_all_regions.py`, `save_regime_to_panel.py` (with the modules it imports,
   `experiment_regime_stream.py`, `train_small_bundle_regime_thar.py`, `experiment_thar_regime_full.py` and
   `train_small_bundle_wm_thar.py`), `monthly_loader.py`, `download_drivers.py`, `download_drivers_extra.py`,
@@ -53,8 +53,10 @@ and `features/`), the coral table builders (`coral_build/coral_tables/`) and the
 `analysis/coral_sens_2017_2020/`, the product fetcher `rivals_code/human_tools/fetch_products.py` and the
 published-rival tool's product adapters (`rivals_code/human_rivals_build/human/adapters/`).
 
-Some fetch scripts need an account with the data provider: eight of them read credentials from `~/.netrc` or from
-the CDS and EWDS key files, which are not archived; a reader uses their own. Only `ingest_worldpop_annual.py` starts
+Some fetch scripts need an account with the data provider. In `rebuild/`, ten scripts read credentials: six through
+the CDS key file that `cdsapi` reads, and four from `~/.netrc`; the product fetcher
+`rivals_code/human_tools/fetch_products.py` reads the ADS and EWDS key files (`~/.adsapirc`, `~/.ewdsapirc`). No
+credential is archived; a reader uses their own. Only `ingest_worldpop_annual.py` starts
 another program (`curl`, to download). No script runs another local script, except stage 1 of `coral_fullscale.py`,
 which calls `coral_fetch_sst_full.py` in the same process.
 

@@ -97,9 +97,11 @@ and GSHHG data. The archive includes no third-party code, and the libraries are 
 
 ## Known documentation issues
 
-The engine's version label '0.0.1-skeleton', which every run manifest records, its out-of-date `engine/README.md`
-and its 33 out-of-date tests stay unchanged: the label sits inside the hash-checked engine code, and the paper
-cites facts from the README and from the test suite. Two notes added for the archive describe them: `engine/README_ARCHIVE.md` (the
+The engine's version label '0.0.1-skeleton', which every run manifest records, and its out-of-date
+`engine/README.md` stay unchanged: the label sits inside the hash-checked engine code, and the paper cites facts
+from the README. The engine's tests are the project's own: 33 of them failed in the recorded full run on 930d961c,
+one test file was brought up to date after that run, and the archive's text changes to the tests touch only
+docstrings and one comment. Two notes added for the archive describe all this: `engine/README_ARCHIVE.md` (the
 engine as it is) and `engine/tests/STALE_TESTS.md` (the 33 tests). No hash-checked engine file is changed.
 
 ## Paths
