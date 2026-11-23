@@ -13,9 +13,9 @@ byte-identical outputs across the versions. This release is version 1.0.0; the e
 label still reads '0.0.1-skeleton' (see "Known documentation issues").
 
 **Two linked records.** The archive is published as two Zenodo records, linked to each other: the code's record,
-made from a release of the GitHub repository ([OWNER: GitHub URL]; DOI [OWNER: DOI of the code record]), and the
+made from a release of the GitHub repository (https://github.com/bundle-labs/treeroute-v1; DOI 10.5281/zenodo.24452866), and the
 data record "treeroute v1: run records and row-level predictions for five environmental forecasting problems" (DOI
-[OWNER: DOI of the data record]), which holds the run records and the row-level predictions. The GitHub repository
+10.5281/zenodo.24452794), which holds the run records and the row-level predictions. The GitHub repository
 holds the code and the key text records: no file of 25 MiB or more, and no Parquet, image or PDF file except the
 three static location tables of the dataset packages. The data record holds the whole archive, the code included,
 as 15 zip files beside the root files, so that it can be checked on its own: unzipped into one folder, the zips give
@@ -59,6 +59,9 @@ py -3.9 VERIFY_HASHES.py
 
 It writes nothing. To form the five engine constants hashes it imports `treeroute.engine_constants` from each
 locked engine version's folder, each time in a separate Python process that writes no bytecode (`-I -B`).
+Run it on the unzipped data record, which holds every file. In a clone of the GitHub repository, which holds only
+the code and the key text records, the code checks pass, but the file checks of the run records that only the data
+record holds report FAIL with "missing" (77 checks); `SHA256SUMS.txt` also lists those files.
 
 ## Running the code
 
@@ -166,4 +169,4 @@ they would have had. A rebuild script reads its inputs at fixed paths such as `D
 ## How to cite
 
 Please cite the paper and this archive: `CITATION.cff` gives the code record, the data record and the paper
-[OWNER: the DOIs, once reserved].
+(code record: https://doi.org/10.5281/zenodo.24452866; data record: https://doi.org/10.5281/zenodo.24452794).

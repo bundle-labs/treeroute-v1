@@ -32,7 +32,7 @@ and figures made with those inputs are produced works under section 4.3 of the O
 
 > The predictions and figures of this archive that were made with SPEIbase-derived inputs contain information from
 > SPEIbase, which is made available under the Open Database License (ODbL) 1.0:
-> https://opendatacommons.org/licenses/odbl/1-0/ [verify at packaging]
+> https://opendatacommons.org/licenses/odbl/1-0/
 
 ### ERA5-Land, AgERA5 and FireCCI (Copernicus Climate Change Service)
 
@@ -77,10 +77,10 @@ provided with no support and without obligation on the part of UH or
 NOAA, to assist in its use, correction, modification, or enhancement.
 ```
 
-The distribution carries no separate copyright line [verify at packaging]: the "above copyright notice" of
+The distribution carries no separate copyright line: the "above copyright notice" of
 `LICENSE.TXT` has none above it, and the only copyright line in the distribution is the Free Software Foundation's,
 in its copy of the GNU Lesser General Public License, version 3 (`COPYING.LESSERv3`). The text of that licence is
-`COPYING.LESSERv3` in the GSHHG distribution, and https://www.gnu.org/licenses/lgpl-3.0.html [verify at packaging].
+`COPYING.LESSERv3` in the GSHHG distribution, and https://www.gnu.org/licenses/lgpl-3.0.html.
 This archive names GSHHG only in this notice, the figure's credit and the paper's reference.
 
 ## 3. No third-party code

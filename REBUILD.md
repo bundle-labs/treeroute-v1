@@ -192,7 +192,7 @@ The figure scripts read their inputs at project paths. To re-draw from a copy of
   `yearclock_screen.py`, cited as a scratch script in `engine/datasets/fire/ban.yaml` (lines 1222 and 1264) and its
   draft, are not in the archive and were not found in the project folders.
 - The package catalogs and ban lists also cite 14 earlier scripts of the project folder as evidence for ban-list
-  calls and legacy rules. They are outside the scripts that the rebuild imports and are not in the archive
-  [verify at packaging]: `adaptation.py`, `defo_ablate.py`, `defo_ban.py`, `defo_matrix.py`, `fire_architecture.py`,
+  calls and legacy rules. They are outside the scripts that the rebuild imports and are not in the archive:
+  `adaptation.py`, `defo_ablate.py`, `defo_ban.py`, `defo_matrix.py`, `fire_architecture.py`,
   `fire_ban.py`, `fire_evt_arch.py`, `pm25_adaptation.py`, `pm25_architecture.py`, `pm25_ban.py`, `pm25_split.py`,
   and, in `presplit_cc/`, `bundle_lag_compare.py`, `cross_region_run89.py` and `run89_outputs.py`.
