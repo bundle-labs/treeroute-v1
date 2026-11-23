@@ -1,0 +1,94 @@
+# fire_danger -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: fire_danger
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/fire/drivers/danger/{group}.parquet
+keys:
+- lat
+- lon
+- year
+- month
+provenance: fire_build_danger.py:61
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  mdc:
+    window_text: 'the named month; recursive accumulator: backward memory unbounded, only the forward edge is written'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 953.8822472908911
+  kbdi:
+    window_text: 'the named month; recursive accumulator: backward memory unbounded, only the forward edge is written'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 800.0
+  nesterov:
+    window_text: 'the named month; recursive accumulator: backward memory unbounded, only the forward edge is written'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 3066155.0885011386
+  angstrom_neg:
+    window_text: the named month
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -12.55999984741211
+      max: 0.9737445935610678
+  ffwi:
+    window_text: the named month
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 97.08431442207792
+  rh_pct:
+    window_text: the named month
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: built from monthly panel columns (fire_build_danger.py)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: 1.0
+      max: 100.0
+schema_catalog: _stores/fire_danger_schema_catalog.yaml
+schema_catalog_sha256: 22110cda235ad21591e8238575b2d0f3f80b9d3094dd60a1ff7ac640f4138d11
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

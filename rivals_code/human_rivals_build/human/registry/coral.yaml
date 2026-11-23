@@ -1,0 +1,110 @@
+# Coral human-rival registry (SPEC_HUMAN.txt 1.7 and section 2; Builder B). DATA, not code: the tool reads it,
+# validates it against registry/_schema.yaml (Builder A) at `init`, and never names the problem in its code.
+# Sources: RIVALS_PLAN_HUMAN.md :73-74 (section 2 table), rulings AB Q1, Q11, Q12 b, Q13, Q23; research_coral.md
+# sections 2-3; run D:/treeroute/runs/coral/headline/20261020_f3b8e3da.
+# Checked on that run (2026-10-21): R22 links [identity, log_c, arcsine]; R28 legal [0, 100]; R17 columns [] and
+# start_offset_steps 0; R8 {} (no driver column: T1 for this table package is issue + max_feature_end_minus_issue_day
+# = issue - 1 at every lead, plan.json); R11 cuts lead 0 fit 735963 (2015-12-31) guard 734868 (2012-12-31), lead 183
+# fit 735781 guard 734686, lead 365 fit 735599 guard 734504. Units are visits "<site>|<target date>".
+# `decides` is derived by the tool from the tier (P, L decide; A, X never).
+format: human-registry/1
+package: coral
+run: 20261020_f3b8e3da
+leads_without_rival:
+  183: "no forecast with a public 2016-19 archive covering our sites reaches 183 d or 365 d (BoM ACCESS-S: Australia only, no archive found; verify before Part A, PLAN R15)"
+  365: "no forecast with a public 2016-19 archive covering our sites reaches 183 d or 365 d (BoM ACCESS-S: Australia only, no archive found; verify before Part A, PLAN R15)"
+reference_note: "reference rows: last visit at the site (Q23, read at the T2 step), donor median, predict-zero"
+wording_rules:
+  - "a BEATS verdict against crw_dhw at 183 or 365 d is worded 'beats NOAA's nowcast rule fed old heat', never 'beats NOAA' (PLAN 3.4)"
+rivals:
+  - id: crw_dhw
+    label: "NOAA CRW 5 km v3.1 heat stress (DHW; 7-day-max alert level) read at d* = C - g - 1, NOAA's official MMM"
+    kind: I
+    adapter: "adapters.coral_crw:build"
+    products: [coral_sst_npz, crw_climatology, coral_store_20261020, noaa_crw_dhw_sitedays]
+    stats: [x__dhw, x__baa7d]
+    families: [F2, F3, F4, F5]
+    t1_kind_columns: []
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      183: {tier: L, label: "NOAA's nowcast rule fed old heat"}
+      365: {tier: L, label: "NOAA's nowcast rule fed old heat"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: [x__dhw_84, x__hs_max_84, c__ctx_mmm]
+    optional: false
+    resolution_matched: false
+    coverage: x_finite
+    disclosures:
+      - "the rival is a subset of our own inputs (same CoralTemp SST; NOAA's MMM in place of the package MMM): it measures what the model adds over NOAA's rule (research_coral.md C-A1)"
+      - "MMM content runs to 2012-12-31: before every test issue date, after early train rows (calibration only; ruling N2)"
+      - "CoralTemp 2002-2016 is a reanalysis, NRT after Oct 2016 (parity: our model reads the same SST)"
+      - "the v3.1 suite was released 2018: later than the 2016-2017 issue dates (content info-legal, algorithm version later)"
+      - "alert scale: the 5 levels of 2016-2019; NOAA's later levels 5-7 merged into 4 (Q13)"
+      - "d* = C - g - 1 (the last SST day of our own windows), not the store's feature_end (which also covers index months)"
+      - "units are visits: F5 per-unit MOS has < 3 rows per unit and falls back to the pooled F3 map (counted, PLAN R12)"
+    r10_note: "none: DHW / BAA7d are NOAA's published indices; the old Parts 456-457 used another split and NOAA bands on our dhw_84 (history only)"
+    options:
+      store_product: coral_store_20261020
+      label_column: pct_bleached
+      sst_product: coral_sst_npz
+      sst_file: sst_compact_all.npz
+      climatology_product: crw_climatology
+      climatology_file: ct5km_climatology_v3.1.nc
+      mmm_ring_max: 3
+      baa_alert_needs_hotspot: true
+      d6_product: noaa_crw_dhw_sitedays
+      d6_max_not_comparable: 0
+      d6_min_dhw_equal_share: 0.97   # ruling AH (owner, 2026-10-23): BAA7d and the d* HotSpot must equal NOAA on EVERY
+                                     # site-day; DHW on >= 97% (292/300 equal; the 8 others are listed, most likely NOAA's
+                                     # archive was computed from an earlier SST record). Default 1.0 = every site-day.
+      replay_dhw_column: x__dhw_84
+      replay_hs_max_column: x__hs_max_84
+      replay_mmm_column: c__ctx_mmm
+
+  - id: crw_outlook
+    label: "NOAA CRW Four-Month Coral Bleaching Outlook v5 (CFSv2), Week_20 alert level: advantaged horizon"
+    kind: I
+    adapter: "adapters.coral_outlook:build"
+    products: [crw_outlook, coral_store_20261020]
+    stats: [x__baa060_w20, x__baa4p_w20]
+    families: [F2, F3, F4]
+    t1_kind_columns: []
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "the observed product (crw_dhw) is strictly better at the nowcast and info-legal (research_coral.md:143)"}
+      183: {tier: A, label: "advantaged horizon: available 49-56 days after our issue date (file time = icwk + 7)"}
+      365: {tier: A, label: "advantaged horizon: issued ~225 days after our issue date"}
+    score_without_net: [365]
+    pick: lowest_covered_lead_guard
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    disclosures:
+      - "experimental NOAA product; the files on disk are a 2019 v5 reissue (date_issued 2019-07/08) of CFSv2 runs initialised at icwk"
+      - "0.5 degree cells; a land cell takes the MAXIMUM alert of the nearest ocean ring within 3 rings (favours the Outlook)"
+      - "train coverage starts 2011-11-14 (archive from icwk 2011-07-03): 239 fit rows / 22 groups before the 183 guard cut; 38 / 11 before the 365 guard cut, so 365 has no safety net (Q12 b)"
+      - "units are visits: per-unit MOS (F5) degenerates to pooled and is not listed"
+    r10_note: "non-blind: stats x__baa060_w20 and x__baa4p_w20 were chosen after the CRW Parts 456-457 (same test years 2016-2019; PLAN R10)"
+    options:
+      store_product: coral_store_20261020
+      label_column: pct_bleached
+      outlook_product: crw_outlook
+      week: 20
+      percentiles: ["010", "030", "060", "090"]
+      main_percentile: "060"
+      stat_main: x__baa060_w20
+      stat_mean: x__baa4p_w20
+      ring_max: 3
+
+# Product ids used above (the product registry of SPEC_HUMAN 1.8 is Builder A's registry/_products.yaml; request
+# in BUILD_NOTES_B_coral_defo.txt). Folders and files:
+#   coral_sst_npz          D:/coral/drivers                     file sst_compact_all.npz (manifest by the tool)
+#   crw_climatology        D:/coral/drivers/static              file ct5km_climatology_v3.1.nc (manifest by the tool)
+#   crw_outlook            D:/coral/crw/nc                      1,984 files cfsv2_outlook-<ppp>perc_..._icwk<date>_...nc
+#   coral_store_20261020   D:/treeroute/coral_build/coral_store/20261020_014201   lead_0/183/365.parquet,
+#                          build_manifest.json (protected root; read-only; the adapter never reads pct_bleached)
+#   noaa_crw_dhw_sitedays  D:/treeroute/human_products/noaa_crw_dhw_sitedays/v3.1_sitedays_v2_train200_test100_pifsc
+#                          (download D6; its product_manifest.json `requests` block is the site-day list)

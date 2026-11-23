@@ -1,0 +1,304 @@
+L75 S3.19/ row=pm25 col=frame_rows part=value printed='91,428' stored=[91428] sel=frame_rows src=SHAP\sample\pm25\sample_manifest.json
+L75 S3.19/ row=pm25 col=sample_rows part=value printed='1,000' stored=[1000] sel=line 3: n src=SHAP\SAMPLE_REGISTER.txt
+L75 S3.19/ row=pm25 col=regions part=value printed='127' stored=[127] sel=regions_in_sample src=SHAP\sample\pm25\sample_manifest.json
+L75 S3.19/ row=pm25 col=locations part=value printed='254' stored=[254] sel=units_in_sample src=SHAP\sample\pm25\sample_manifest.json
+L75 S3.19/ row=pm25 col=background_rows part=min printed='17' stored=[17] sel=background_rows["0"].min src=SHAP\sample\pm25\sample_manifest.json
+L75 S3.19/ row=pm25 col=background_pairs part=value printed='17,000' stored=[17000] sel=pairs src=SHAP\out\pm25\lead_0\treeroute\meta.json
+L75 S3.19/ row=pm25 col=feature part=players printed='125' stored=[125] sel=feature.players src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L75 S3.19/ row=pm25 col=feature part=J printed='103' stored=[103] sel=feature.active src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L75 S3.19/ row=pm25 col=feature part=structural_zeros printed='22' stored=[22] sel=len(feature.structural_zero) src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L75 S3.19/ row=pm25 col=variable part=players printed='111' stored=[111] sel=variable.players src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L75 S3.19/ row=pm25 col=variable part=J printed='89' stored=[89] sel=variable.active src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L75 S3.19/ row=pm25 col=variable part=structural_zeros printed='22' stored=[22] sel=len(variable.structural_zero) src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=frame_rows part=value printed='94,527' stored=[94527] sel=frame_rows src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=sample_rows part=value printed='1,000' stored=[1000] sel=line 5: n src=SHAP\SAMPLE_REGISTER.txt
+L76 S3.19/ row=ndvi col=regions part=value printed='133' stored=[133] sel=regions_in_sample src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=locations part=value printed='266' stored=[266] sel=units_in_sample src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=background_rows part=min printed='16' stored=[16] sel=background_rows["0"].min src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=background_rows part=max printed='17' stored=[17] sel=background_rows["0"].max src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=background_rows part=median printed='17' stored=[17.0] sel=background_rows["0"].median src=SHAP\sample\ndvi\sample_manifest.json
+L76 S3.19/ row=ndvi col=background_pairs part=value printed='16,914' stored=[16914] sel=pairs src=SHAP\out\ndvi\lead_0\treeroute\meta.json
+L76 S3.19/ row=ndvi col=feature part=players printed='503' stored=[503] sel=feature.players src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=feature part=J printed='479' stored=[479] sel=feature.active src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=feature part=structural_zeros printed='24' stored=[24] sel=len(feature.structural_zero) src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=variable part=players printed='117' stored=[117] sel=variable.players src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=variable part=J printed='96' stored=[96] sel=variable.active src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L76 S3.19/ row=ndvi col=variable part=structural_zeros printed='21' stored=[21] sel=len(variable.structural_zero) src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=frame_rows part=value printed='94,702' stored=[94702] sel=frame_rows src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=sample_rows part=value printed='1,000' stored=[1000] sel=line 2: n src=SHAP\SAMPLE_REGISTER.txt
+L77 S3.19/ row=fire col=regions part=value printed='40' stored=[40] sel=regions_in_sample src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=locations part=value printed='280' stored=[280] sel=units_in_sample src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=background_rows part=min printed='2' stored=[2] sel=background_rows["0"].min src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=background_rows part=max printed='16' stored=[16] sel=background_rows["0"].max src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=background_rows part=median printed='16' stored=[16.0] sel=background_rows["0"].median src=SHAP\sample\fire\sample_manifest.json
+L77 S3.19/ row=fire col=background_pairs part=value printed='15,759' stored=[15759] sel=pairs src=SHAP\out\fire\lead_0\treeroute\meta.json
+L77 S3.19/ row=fire col=feature part=players printed='134' stored=[134] sel=feature.players src=SHAP\out\fire\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=feature part=J printed='111' stored=[111] sel=feature.active src=SHAP\out\fire\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=feature part=structural_zeros printed='23' stored=[23] sel=len(feature.structural_zero) src=SHAP\out\fire\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=variable part=players printed='117' stored=[117] sel=variable.players src=SHAP\out\fire\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=variable part=J printed='94' stored=[94] sel=variable.active src=SHAP\out\fire\lead_0\compare\per_lead.json
+L77 S3.19/ row=fire col=variable part=structural_zeros printed='23' stored=[23] sel=len(variable.structural_zero) src=SHAP\out\fire\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=frame_rows part=value printed='369,096' stored=[369096] sel=frame_rows src=SHAP\sample\defo\sample_manifest.json
+L78 S3.19/ row=defo col=sample_rows part=value printed='1,000' stored=[1000] sel=line 4: n src=SHAP\SAMPLE_REGISTER.txt
+L78 S3.19/ row=defo col=regions part=value printed='42' stored=[42] sel=regions_in_sample src=SHAP\sample\defo\sample_manifest.json
+L78 S3.19/ row=defo col=locations part=value printed='252' stored=[252] sel=units_in_sample src=SHAP\sample\defo\sample_manifest.json
+L78 S3.19/ row=defo col=background_rows part=min printed='16' stored=[16] sel=background_rows["0"].min src=SHAP\sample\defo\sample_manifest.json
+L78 S3.19/ row=defo col=background_pairs part=value printed='16,000' stored=[16000] sel=pairs src=SHAP\out\defo\lead_0\treeroute\meta.json
+L78 S3.19/ row=defo col=feature part=players printed='309' stored=[309] sel=feature.players src=SHAP\out\defo\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=feature part=J printed='280' stored=[280] sel=feature.active src=SHAP\out\defo\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=feature part=structural_zeros printed='29' stored=[29] sel=len(feature.structural_zero) src=SHAP\out\defo\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=variable part=players printed='121' stored=[121] sel=variable.players src=SHAP\out\defo\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=variable part=J printed='99' stored=[99] sel=variable.active src=SHAP\out\defo\lead_0\compare\per_lead.json
+L78 S3.19/ row=defo col=variable part=structural_zeros printed='22' stored=[22] sel=len(variable.structural_zero) src=SHAP\out\defo\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=frame_rows part=value printed='2,312' stored=[2312] sel=frame_rows src=SHAP\sample\coral\sample_manifest.json
+L79 S3.19/ row=coral col=sample_rows part=value printed='1,000' stored=[1000] sel=line 1: n src=SHAP\SAMPLE_REGISTER.txt
+L79 S3.19/ row=coral col=regions part=value printed='37' stored=[37] sel=regions_in_sample src=SHAP\sample\coral\sample_manifest.json
+L79 S3.19/ row=coral col=locations part=value printed='1,000' stored=[1000] sel=units_in_sample src=SHAP\sample\coral\sample_manifest.json
+L79 S3.19/ row=coral col=background_rows part=min printed='50' stored=[50] sel=background_rows["0"].min src=SHAP\sample\coral\sample_manifest.json
+L79 S3.19/ row=coral col=background_pairs part=value printed='50,000' stored=[50000] sel=pairs src=SHAP\out\coral\lead_0\treeroute\meta.json
+L79 S3.19/ row=coral col=feature part=players printed='69' stored=[69] sel=feature.players src=SHAP\out\coral\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=feature part=J printed='68' stored=[68] sel=feature.active src=SHAP\out\coral\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=feature part=structural_zeros printed='1' stored=[1] sel=len(feature.structural_zero) src=SHAP\out\coral\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=variable part=players printed='26' stored=[26] sel=variable.players src=SHAP\out\coral\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=variable part=J printed='25' stored=[25] sel=variable.active src=SHAP\out\coral\lead_0\compare\per_lead.json
+L79 S3.19/ row=coral col=variable part=structural_zeros printed='1' stored=[1] sel=len(variable.structural_zero) src=SHAP\out\coral\lead_0\compare\per_lead.json
+L85 S3.19/ row=note col=structural_zeros:pm25:variable part=count printed='22' stored=[22] sel=len(variable.structural_zero) src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L85 S3.19/ row=note col=structural_zeros:pm25:feature part=count printed='22' stored=[22] sel=len(feature.structural_zero) src=SHAP\out\pm25\lead_0\compare\per_lead.json
+L86 S3.19/ row=note col=structural_zeros:ndvi:variable part=count printed='21' stored=[21] sel=len(variable.structural_zero) src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L86 S3.19/ row=note col=structural_zeros:ndvi:feature part=count printed='24' stored=[24] sel=len(feature.structural_zero) src=SHAP\out\ndvi\lead_0\compare\per_lead.json
+L87 S3.19/ row=note col=structural_zeros:fire:variable part=count printed='23' stored=[23] sel=len(variable.structural_zero) src=SHAP\out\fire\lead_0\compare\per_lead.json
+L87 S3.19/ row=note col=structural_zeros:fire:feature part=count printed='23' stored=[23] sel=len(feature.structural_zero) src=SHAP\out\fire\lead_0\compare\per_lead.json
+L88 S3.19/ row=note col=structural_zeros:defo:variable part=count printed='22' stored=[22] sel=len(variable.structural_zero) src=SHAP\out\defo\lead_0\compare\per_lead.json
+L88 S3.19/ row=note col=structural_zeros:defo:feature part=count printed='29' stored=[29] sel=len(feature.structural_zero) src=SHAP\out\defo\lead_0\compare\per_lead.json
+L89 S3.19/ row=note col=structural_zeros:coral:variable part=count printed='1' stored=[1] sel=len(variable.structural_zero) src=SHAP\out\coral\lead_0\compare\per_lead.json
+L89 S3.19/ row=note col=structural_zeros:coral:feature part=count printed='1' stored=[1] sel=len(feature.structural_zero) src=SHAP\out\coral\lead_0\compare\per_lead.json
+L95 S3.20/ row=pm25:treeroute col=rows_checked part=value printed='12,192' stored=[12192] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\pm25\lead_0\gates.json
+L95 S3.20/ row=pm25:treeroute col=bit_identical part=pre printed='12,192' stored=[12192] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\pm25\lead_0\gates.json
+L95 S3.20/ row=pm25:treeroute col=bit_identical part=clipped printed='12,192' stored=[12192] sel=gates.E8_predictions.values.arm_bit_equal src=SHAP\rebuild\pm25\lead_0\gates.json
+L95 S3.20/ row=pm25:treeroute col=max_abs_diff part=value printed='0' stored=[0.0] sel=gates.E8_predictions.values.max_abs_pre src=SHAP\rebuild\pm25\lead_0\gates.json
+L95 S3.20/ row=pm25:treeroute col=additivity part=feature printed='6.2 × 10⁻¹⁵' stored=[6.217248937900877e-15] sel=max_abs_additivity_error src=SHAP\out\pm25\lead_0\treeroute\meta.json
+L95 S3.20/ row=pm25:treeroute col=additivity part=variable printed='6.2 × 10⁻¹⁵' stored=[6.217248937900877e-15] sel=max_abs_additivity_error_variable src=SHAP\out\pm25\lead_0\treeroute\meta.json
+L95 S3.20/ row=pm25:treeroute col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\pm25\lead_0\treeroute\meta.json
+L96 S3.20/ row=pm25:rival_ridge col=rows_checked part=value printed='91,440' stored=[91440] sel=rows src=SHAP\out\pm25\lead_0\rival_ridge\ridge_shap_exactness.json
+L96 S3.20/ row=pm25:rival_ridge col=bit_identical part=pre printed='91,440' stored=[91440] sel=bit_equal_rows src=SHAP\out\pm25\lead_0\rival_ridge\ridge_shap_exactness.json
+L96 S3.20/ row=pm25:rival_ridge col=bit_identical part=clipped printed='91,440' stored=[91440] sel=raw.bit_equal_rows src=SHAP\out\pm25\lead_0\rival_ridge\ridge_shap_exactness.json
+L96 S3.20/ row=pm25:rival_ridge col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\pm25\lead_0\rival_ridge\ridge_shap_exactness.json
+L96 S3.20/ row=pm25:rival_ridge col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\pm25\lead_0\rival_ridge\meta.json
+L96 S3.20/ row=pm25:rival_ridge col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\pm25\lead_0\rival_ridge\meta.json
+L96 S3.20/ row=pm25:rival_ridge col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\pm25\lead_0\rival_ridge\meta.json
+L97 S3.20/ row=pm25:rival_rf col=rows_checked part=value printed='91,440' stored=[91440] sel=rows src=SHAP\out\pm25\lead_0\rival_rf\exactness.json
+L97 S3.20/ row=pm25:rival_rf col=bit_identical part=pre printed='91,440' stored=[91440] sel=bit_equal_rows src=SHAP\out\pm25\lead_0\rival_rf\exactness.json
+L97 S3.20/ row=pm25:rival_rf col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\pm25\lead_0\rival_rf\exactness.json
+L97 S3.20/ row=pm25:rival_rf col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\pm25\lead_0\rival_rf\meta.json
+L97 S3.20/ row=pm25:rival_rf col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\pm25\lead_0\rival_rf\meta.json
+L97 S3.20/ row=pm25:rival_rf col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\pm25\lead_0\rival_rf\meta.json
+L98 S3.20/ row=pm25:rival_lgbm col=rows_checked part=value printed='91,440' stored=[91440] sel=rows src=SHAP\out\pm25\lead_0\rival_lgbm\exactness.json
+L98 S3.20/ row=pm25:rival_lgbm col=bit_identical part=pre printed='91,440' stored=[91440] sel=bit_equal_rows src=SHAP\out\pm25\lead_0\rival_lgbm\exactness.json
+L98 S3.20/ row=pm25:rival_lgbm col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\pm25\lead_0\rival_lgbm\exactness.json
+L98 S3.20/ row=pm25:rival_lgbm col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\pm25\lead_0\rival_lgbm\meta.json
+L98 S3.20/ row=pm25:rival_lgbm col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\pm25\lead_0\rival_lgbm\meta.json
+L98 S3.20/ row=pm25:rival_lgbm col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\pm25\lead_0\rival_lgbm\meta.json
+L99 S3.20/ row=ndvi:treeroute col=rows_checked part=value printed='12,768' stored=[12768] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\ndvi\lead_0\gates.json
+L99 S3.20/ row=ndvi:treeroute col=bit_identical part=pre printed='12,768' stored=[12768] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\ndvi\lead_0\gates.json
+L99 S3.20/ row=ndvi:treeroute col=bit_identical part=clipped printed='12,768' stored=[12768] sel=gates.E8_predictions.values.arm_bit_equal src=SHAP\rebuild\ndvi\lead_0\gates.json
+L99 S3.20/ row=ndvi:treeroute col=max_abs_diff part=value printed='0' stored=[0.0] sel=gates.E8_predictions.values.max_abs_pre src=SHAP\rebuild\ndvi\lead_0\gates.json
+L99 S3.20/ row=ndvi:treeroute col=additivity part=feature printed='5.4 × 10⁻¹⁵' stored=[5.440092820663267e-15] sel=max_abs_additivity_error src=SHAP\out\ndvi\lead_0\treeroute\meta.json
+L99 S3.20/ row=ndvi:treeroute col=additivity part=variable printed='5.6 × 10⁻¹⁵' stored=[5.551115123125783e-15] sel=max_abs_additivity_error_variable src=SHAP\out\ndvi\lead_0\treeroute\meta.json
+L99 S3.20/ row=ndvi:treeroute col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\ndvi\lead_0\treeroute\meta.json
+L100 S3.20/ row=ndvi:rival_ridge col=rows_checked part=value printed='95,184' stored=[95184] sel=rows src=SHAP\out\ndvi\lead_0\rival_ridge\ridge_shap_exactness.json
+L100 S3.20/ row=ndvi:rival_ridge col=bit_identical part=pre printed='95,184' stored=[95184] sel=bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_ridge\ridge_shap_exactness.json
+L100 S3.20/ row=ndvi:rival_ridge col=bit_identical part=clipped printed='95,184' stored=[95184] sel=raw.bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_ridge\ridge_shap_exactness.json
+L100 S3.20/ row=ndvi:rival_ridge col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\ndvi\lead_0\rival_ridge\ridge_shap_exactness.json
+L100 S3.20/ row=ndvi:rival_ridge col=additivity part=feature printed='4.4 × 10⁻¹⁶' stored=[4.440892098500626e-16] sel=max_abs_additivity_error src=SHAP\out\ndvi\lead_0\rival_ridge\meta.json
+L100 S3.20/ row=ndvi:rival_ridge col=additivity part=variable printed='4.4 × 10⁻¹⁶' stored=[4.440892098500626e-16] sel=max_abs_additivity_error_variable src=SHAP\out\ndvi\lead_0\rival_ridge\meta.json
+L100 S3.20/ row=ndvi:rival_ridge col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\ndvi\lead_0\rival_ridge\meta.json
+L101 S3.20/ row=ndvi:rival_rf col=rows_checked part=value printed='95,184' stored=[95184] sel=rows src=SHAP\out\ndvi\lead_0\rival_rf\exactness.json
+L101 S3.20/ row=ndvi:rival_rf col=bit_identical part=pre printed='95,184' stored=[95184] sel=bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_rf\exactness.json
+L101 S3.20/ row=ndvi:rival_rf col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\ndvi\lead_0\rival_rf\exactness.json
+L101 S3.20/ row=ndvi:rival_rf col=additivity part=feature printed='3.3 × 10⁻¹⁶' stored=[3.3306690738754696e-16] sel=max_abs_additivity_error src=SHAP\out\ndvi\lead_0\rival_rf\meta.json
+L101 S3.20/ row=ndvi:rival_rf col=additivity part=variable printed='3.3 × 10⁻¹⁶' stored=[3.3306690738754696e-16] sel=max_abs_additivity_error_variable src=SHAP\out\ndvi\lead_0\rival_rf\meta.json
+L101 S3.20/ row=ndvi:rival_rf col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\ndvi\lead_0\rival_rf\meta.json
+L102 S3.20/ row=ndvi:rival_lgbm col=rows_checked part=value printed='95,184' stored=[95184] sel=rows src=SHAP\out\ndvi\lead_0\rival_lgbm\exactness.json
+L102 S3.20/ row=ndvi:rival_lgbm col=bit_identical part=pre printed='95,184' stored=[95184] sel=bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_lgbm\exactness.json
+L102 S3.20/ row=ndvi:rival_lgbm col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\ndvi\lead_0\rival_lgbm\exactness.json
+L102 S3.20/ row=ndvi:rival_lgbm col=additivity part=feature printed='3.6 × 10⁻¹⁶' stored=[3.608224830031759e-16] sel=max_abs_additivity_error src=SHAP\out\ndvi\lead_0\rival_lgbm\meta.json
+L102 S3.20/ row=ndvi:rival_lgbm col=additivity part=variable printed='3.6 × 10⁻¹⁶' stored=[3.608224830031759e-16] sel=max_abs_additivity_error_variable src=SHAP\out\ndvi\lead_0\rival_lgbm\meta.json
+L102 S3.20/ row=ndvi:rival_lgbm col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\ndvi\lead_0\rival_lgbm\meta.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=rows_checked part=value printed='95,184' stored=[95184] sel=rows src=SHAP\out\ndvi\lead_0\rival_bardl_h1\exactness.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=bit_identical part=pre printed='95,184' stored=[95184] sel=bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_bardl_h1\exactness.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=bit_identical part=clipped printed='95,184' stored=[95184] sel=raw.bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_bardl_h1\exactness.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\ndvi\lead_0\rival_bardl_h1\exactness.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=additivity part=feature printed='3.3 × 10⁻¹⁶' stored=[3.3306690738754696e-16] sel=max_abs_additivity_error src=SHAP\out\ndvi\lead_0\rival_bardl_h1\meta.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=additivity part=variable printed='3.3 × 10⁻¹⁶' stored=[3.3306690738754696e-16] sel=max_abs_additivity_error_variable src=SHAP\out\ndvi\lead_0\rival_bardl_h1\meta.json
+L103 S3.20/ row=ndvi:rival_bardl_h1 col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\ndvi\lead_0\rival_bardl_h1\meta.json
+L104 S3.20/ row=fire:treeroute col=rows_checked part=value printed='13,440' stored=[13440] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\fire\lead_0\gates.json
+L104 S3.20/ row=fire:treeroute col=bit_identical part=pre printed='13,056' stored=[13056] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\fire\lead_0\gates.json
+L104 S3.20/ row=fire:treeroute col=bit_identical part=clipped printed='13,056' stored=[13056] sel=gates.E8_predictions.values.arm_bit_equal src=SHAP\rebuild\fire\lead_0\gates.json
+L104 S3.20/ row=fire:treeroute col=max_abs_diff part=value printed='5.0 × 10⁻¹⁶' stored=[4.996003610813204e-16] sel=gates.E8_predictions.values.max_abs_pre src=SHAP\rebuild\fire\lead_0\gates.json
+L104 S3.20/ row=fire:treeroute col=s_exact part=max_rel printed='2.4 × 10⁻¹³' stored=[2.3560131176637307e-13] sel=gates.E8_predictions.values.max_rel_pre src=SHAP\rebuild\fire\lead_0\gates.json
+L104 S3.20/ row=fire:treeroute col=additivity part=feature printed='2.2 × 10⁻¹⁶' stored=[2.220446049250313e-16] sel=max_abs_additivity_error src=SHAP\out\fire\lead_0\treeroute\meta.json
+L104 S3.20/ row=fire:treeroute col=additivity part=variable printed='2.2 × 10⁻¹⁶' stored=[2.220446049250313e-16] sel=max_abs_additivity_error_variable src=SHAP\out\fire\lead_0\treeroute\meta.json
+L104 S3.20/ row=fire:treeroute col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\fire\lead_0\treeroute\meta.json
+L105 S3.20/ row=fire:rival_ridge col=rows_checked part=value printed='96,000' stored=[96000] sel=rows src=SHAP\out\fire\lead_0\rival_ridge\ridge_shap_exactness.json
+L105 S3.20/ row=fire:rival_ridge col=bit_identical part=pre printed='96,000' stored=[96000] sel=bit_equal_rows src=SHAP\out\fire\lead_0\rival_ridge\ridge_shap_exactness.json
+L105 S3.20/ row=fire:rival_ridge col=bit_identical part=clipped printed='96,000' stored=[96000] sel=raw.bit_equal_rows src=SHAP\out\fire\lead_0\rival_ridge\ridge_shap_exactness.json
+L105 S3.20/ row=fire:rival_ridge col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\fire\lead_0\rival_ridge\ridge_shap_exactness.json
+L105 S3.20/ row=fire:rival_ridge col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\fire\lead_0\rival_ridge\meta.json
+L105 S3.20/ row=fire:rival_ridge col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\fire\lead_0\rival_ridge\meta.json
+L105 S3.20/ row=fire:rival_ridge col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\fire\lead_0\rival_ridge\meta.json
+L106 S3.20/ row=fire:rival_rf col=rows_checked part=value printed='96,000' stored=[96000] sel=rows src=SHAP\out\fire\lead_0\rival_rf\exactness.json
+L106 S3.20/ row=fire:rival_rf col=bit_identical part=pre printed='96,000' stored=[96000] sel=bit_equal_rows src=SHAP\out\fire\lead_0\rival_rf\exactness.json
+L106 S3.20/ row=fire:rival_rf col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\fire\lead_0\rival_rf\exactness.json
+L106 S3.20/ row=fire:rival_rf col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\fire\lead_0\rival_rf\meta.json
+L106 S3.20/ row=fire:rival_rf col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\fire\lead_0\rival_rf\meta.json
+L106 S3.20/ row=fire:rival_rf col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\fire\lead_0\rival_rf\meta.json
+L107 S3.20/ row=fire:rival_lgbm col=rows_checked part=value printed='96,000' stored=[96000] sel=rows src=SHAP\out\fire\lead_0\rival_lgbm\exactness.json
+L107 S3.20/ row=fire:rival_lgbm col=bit_identical part=pre printed='96,000' stored=[96000] sel=bit_equal_rows src=SHAP\out\fire\lead_0\rival_lgbm\exactness.json
+L107 S3.20/ row=fire:rival_lgbm col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\fire\lead_0\rival_lgbm\exactness.json
+L107 S3.20/ row=fire:rival_lgbm col=additivity part=feature printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error src=SHAP\out\fire\lead_0\rival_lgbm\meta.json
+L107 S3.20/ row=fire:rival_lgbm col=additivity part=variable printed='1.8 × 10⁻¹⁵' stored=[1.7763568394002505e-15] sel=max_abs_additivity_error_variable src=SHAP\out\fire\lead_0\rival_lgbm\meta.json
+L107 S3.20/ row=fire:rival_lgbm col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\fire\lead_0\rival_lgbm\meta.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=rows_checked part=value printed='96,000' stored=[96000] sel=rows src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\exactness.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=bit_identical part=pre printed='96,000' stored=[96000] sel=bit_equal_rows src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\exactness.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\exactness.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=additivity part=feature printed='9.2 × 10⁻¹⁴' stored=[9.237055564881302e-14] sel=max_abs_additivity_error src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\meta.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=additivity part=variable printed='8.5 × 10⁻¹⁴' stored=[8.526512829121202e-14] sel=max_abs_additivity_error_variable src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\meta.json
+L108 S3.20/ row=fire:rival_lgbm_tweedie col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\fire\lead_0\rival_lgbm_tweedie\meta.json
+L109 S3.20/ row=defo:treeroute col=rows_checked part=value printed='1,008' stored=[1008] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\defo\lead_0\gates.json
+L109 S3.20/ row=defo:treeroute col=bit_identical part=pre printed='1,008' stored=[1008] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\defo\lead_0\gates.json
+L109 S3.20/ row=defo:treeroute col=bit_identical part=clipped printed='1,008' stored=[1008] sel=gates.E8_predictions.values.arm_bit_equal src=SHAP\rebuild\defo\lead_0\gates.json
+L109 S3.20/ row=defo:treeroute col=max_abs_diff part=value printed='0' stored=[0.0] sel=gates.E8_predictions.values.max_abs_pre src=SHAP\rebuild\defo\lead_0\gates.json
+L109 S3.20/ row=defo:treeroute col=additivity part=feature printed='8.9 × 10⁻¹⁵' stored=[8.881784197001252e-15] sel=max_abs_additivity_error src=SHAP\out\defo\lead_0\treeroute\meta.json
+L109 S3.20/ row=defo:treeroute col=additivity part=variable printed='8.9 × 10⁻¹⁵' stored=[8.881784197001252e-15] sel=max_abs_additivity_error_variable src=SHAP\out\defo\lead_0\treeroute\meta.json
+L109 S3.20/ row=defo:treeroute col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\defo\lead_0\treeroute\meta.json
+L110 S3.20/ row=defo:rival_ridge col=rows_checked part=value printed='369,096' stored=[369096] sel=rows src=SHAP\out\defo\lead_0\rival_ridge\ridge_shap_exactness.json
+L110 S3.20/ row=defo:rival_ridge col=bit_identical part=pre printed='369,096' stored=[369096] sel=bit_equal_rows src=SHAP\out\defo\lead_0\rival_ridge\ridge_shap_exactness.json
+L110 S3.20/ row=defo:rival_ridge col=bit_identical part=clipped printed='369,096' stored=[369096] sel=raw.bit_equal_rows src=SHAP\out\defo\lead_0\rival_ridge\ridge_shap_exactness.json
+L110 S3.20/ row=defo:rival_ridge col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\defo\lead_0\rival_ridge\ridge_shap_exactness.json
+L110 S3.20/ row=defo:rival_ridge col=additivity part=feature printed='3.6 × 10⁻¹⁵' stored=[3.552713678800501e-15] sel=max_abs_additivity_error src=SHAP\out\defo\lead_0\rival_ridge\meta.json
+L110 S3.20/ row=defo:rival_ridge col=additivity part=variable printed='3.6 × 10⁻¹⁵' stored=[3.552713678800501e-15] sel=max_abs_additivity_error_variable src=SHAP\out\defo\lead_0\rival_ridge\meta.json
+L110 S3.20/ row=defo:rival_ridge col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\defo\lead_0\rival_ridge\meta.json
+L111 S3.20/ row=defo:rival_rf col=rows_checked part=value printed='369,096' stored=[369096] sel=rows src=SHAP\out\defo\lead_0\rival_rf\exactness.json
+L111 S3.20/ row=defo:rival_rf col=bit_identical part=pre printed='369,096' stored=[369096] sel=bit_equal_rows src=SHAP\out\defo\lead_0\rival_rf\exactness.json
+L111 S3.20/ row=defo:rival_rf col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\defo\lead_0\rival_rf\exactness.json
+L111 S3.20/ row=defo:rival_rf col=additivity part=feature printed='5.3 × 10⁻¹⁵' stored=[5.329070518200751e-15] sel=max_abs_additivity_error src=SHAP\out\defo\lead_0\rival_rf\meta.json
+L111 S3.20/ row=defo:rival_rf col=additivity part=variable printed='5.3 × 10⁻¹⁵' stored=[5.329070518200751e-15] sel=max_abs_additivity_error_variable src=SHAP\out\defo\lead_0\rival_rf\meta.json
+L111 S3.20/ row=defo:rival_rf col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\defo\lead_0\rival_rf\meta.json
+L112 S3.20/ row=defo:rival_lgbm col=rows_checked part=value printed='369,096' stored=[369096] sel=rows src=SHAP\out\defo\lead_0\rival_lgbm\exactness.json
+L112 S3.20/ row=defo:rival_lgbm col=bit_identical part=pre printed='369,096' stored=[369096] sel=bit_equal_rows src=SHAP\out\defo\lead_0\rival_lgbm\exactness.json
+L112 S3.20/ row=defo:rival_lgbm col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\defo\lead_0\rival_lgbm\exactness.json
+L112 S3.20/ row=defo:rival_lgbm col=additivity part=feature printed='3.6 × 10⁻¹⁵' stored=[3.552713678800501e-15] sel=max_abs_additivity_error src=SHAP\out\defo\lead_0\rival_lgbm\meta.json
+L112 S3.20/ row=defo:rival_lgbm col=additivity part=variable printed='3.6 × 10⁻¹⁵' stored=[3.552713678800501e-15] sel=max_abs_additivity_error_variable src=SHAP\out\defo\lead_0\rival_lgbm\meta.json
+L112 S3.20/ row=defo:rival_lgbm col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\defo\lead_0\rival_lgbm\meta.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=rows_checked part=value printed='369,096' stored=[369096] sel=rows src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\exactness.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=bit_identical part=pre printed='369,096' stored=[369096] sel=bit_equal_rows src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\exactness.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\exactness.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=additivity part=feature printed='6.0 × 10⁻¹⁴' stored=[6.039613253960852e-14] sel=max_abs_additivity_error src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\meta.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=additivity part=variable printed='6.0 × 10⁻¹⁴' stored=[6.039613253960852e-14] sel=max_abs_additivity_error_variable src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\meta.json
+L113 S3.20/ row=defo:rival_lgbm_tweedie col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\defo\lead_0\rival_lgbm_tweedie\meta.json
+L114 S3.20/ row=coral:treeroute col=rows_checked part=value printed='2,312' stored=[2312] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\coral\lead_0\gates.json
+L114 S3.20/ row=coral:treeroute col=bit_identical part=pre printed='2,228' stored=[2228] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\coral\lead_0\gates.json
+L114 S3.20/ row=coral:treeroute col=bit_identical part=clipped printed='2,228' stored=[2228] sel=gates.E8_predictions.values.arm_bit_equal src=SHAP\rebuild\coral\lead_0\gates.json
+L114 S3.20/ row=coral:treeroute col=max_abs_diff part=value printed='2.1 × 10⁻¹⁴' stored=[2.1316282072803006e-14] sel=gates.E8_predictions.values.max_abs_pre src=SHAP\rebuild\coral\lead_0\gates.json
+L114 S3.20/ row=coral:treeroute col=s_exact part=max_rel printed='1.1 × 10⁻¹⁵' stored=[1.055062494413031e-15] sel=gates.E8_predictions.values.max_rel_pre src=SHAP\rebuild\coral\lead_0\gates.json
+L114 S3.20/ row=coral:treeroute col=additivity part=feature printed='3.7 × 10⁻¹⁵' stored=[3.6637359812630166e-15] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\treeroute\meta.json
+L114 S3.20/ row=coral:treeroute col=additivity part=variable printed='4.1 × 10⁻¹⁵' stored=[4.107825191113079e-15] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\treeroute\meta.json
+L114 S3.20/ row=coral:treeroute col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\treeroute\meta.json
+L115 S3.20/ row=coral:rival_ridge col=rows_checked part=value printed='2,312' stored=[2312] sel=rows src=SHAP\out\coral\lead_0\rival_ridge\exactness.json
+L115 S3.20/ row=coral:rival_ridge col=bit_identical part=pre printed='2,312' stored=[2312] sel=bit_equal_rows src=SHAP\out\coral\lead_0\rival_ridge\exactness.json
+L115 S3.20/ row=coral:rival_ridge col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\coral\lead_0\rival_ridge\exactness.json
+L115 S3.20/ row=coral:rival_ridge col=additivity part=feature printed='1.0 × 10⁻¹⁴' stored=[9.992007221626409e-15] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\rival_ridge\meta.json
+L115 S3.20/ row=coral:rival_ridge col=additivity part=variable printed='9.0 × 10⁻¹⁵' stored=[9.006684287271582e-15] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\rival_ridge\meta.json
+L115 S3.20/ row=coral:rival_ridge col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\rival_ridge\meta.json
+L116 S3.20/ row=coral:rival_rf col=rows_checked part=value printed='2,312' stored=[2312] sel=rows src=SHAP\out\coral\lead_0\rival_rf\exactness.json
+L116 S3.20/ row=coral:rival_rf col=bit_identical part=pre printed='2,312' stored=[2312] sel=bit_equal_rows src=SHAP\out\coral\lead_0\rival_rf\exactness.json
+L116 S3.20/ row=coral:rival_rf col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\coral\lead_0\rival_rf\exactness.json
+L116 S3.20/ row=coral:rival_rf col=additivity part=feature printed='2.2 × 10⁻¹⁶' stored=[2.220446049250313e-16] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\rival_rf\meta.json
+L116 S3.20/ row=coral:rival_rf col=additivity part=variable printed='3.3 × 10⁻¹⁶' stored=[3.3306690738754696e-16] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\rival_rf\meta.json
+L116 S3.20/ row=coral:rival_rf col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\rival_rf\meta.json
+L117 S3.20/ row=coral:rival_lgbm col=rows_checked part=value printed='2,312' stored=[2312] sel=rows src=SHAP\out\coral\lead_0\rival_lgbm\exactness.json
+L117 S3.20/ row=coral:rival_lgbm col=bit_identical part=pre printed='2,312' stored=[2312] sel=bit_equal_rows src=SHAP\out\coral\lead_0\rival_lgbm\exactness.json
+L117 S3.20/ row=coral:rival_lgbm col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\coral\lead_0\rival_lgbm\exactness.json
+L117 S3.20/ row=coral:rival_lgbm col=additivity part=feature printed='5.6 × 10⁻¹⁶' stored=[5.551115123125783e-16] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\rival_lgbm\meta.json
+L117 S3.20/ row=coral:rival_lgbm col=additivity part=variable printed='4.4 × 10⁻¹⁶' stored=[4.440892098500626e-16] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\rival_lgbm\meta.json
+L117 S3.20/ row=coral:rival_lgbm col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\rival_lgbm\meta.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=rows_checked part=value printed='2,312' stored=[2312] sel=rows src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\exactness.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=bit_identical part=pre printed='2,312' stored=[2312] sel=bit_equal_rows src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\exactness.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\exactness.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=additivity part=feature printed='8.9 × 10⁻¹⁵' stored=[8.881784197001252e-15] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\meta.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=additivity part=variable printed='9.8 × 10⁻¹⁵' stored=[9.769962616701378e-15] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\meta.json
+L118 S3.20/ row=coral:rival_lgbm_tweedie col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\rival_lgbm_tweedie\meta.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=rows_checked part=value printed='2,312' stored=[2312] sel=rows src=SHAP\out\coral\lead_0\rival_hgb_l1\exactness.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=bit_identical part=pre printed='2,312' stored=[2312] sel=bit_equal_rows src=SHAP\out\coral\lead_0\rival_hgb_l1\exactness.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=max_abs_diff part=value printed='0' stored=[0.0] sel=max_abs_diff src=SHAP\out\coral\lead_0\rival_hgb_l1\exactness.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=additivity part=feature printed='2.2 × 10⁻¹⁵' stored=[2.220446049250313e-15] sel=max_abs_additivity_error src=SHAP\out\coral\lead_0\rival_hgb_l1\meta.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=additivity part=variable printed='2.0 × 10⁻¹⁵' stored=[1.9984014443252818e-15] sel=max_abs_additivity_error_variable src=SHAP\out\coral\lead_0\rival_hgb_l1\meta.json
+L119 S3.20/ row=coral:rival_hgb_l1 col=s_zero_violations part=value printed='0' stored=[0] sel=structural_zero_violations src=SHAP\out\coral\lead_0\rival_hgb_l1\meta.json
+L122 S3.20/ row=note col=ridge_copy:pm25 part=bit_equal_rows printed='70,795' stored=[70795] sel=bit_equal_rows src=SHAP\out\pm25\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:pm25 part=rows printed='91,440' stored=[91440] sel=rows src=SHAP\out\pm25\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:ndvi part=bit_equal_rows printed='17,451' stored=[17451] sel=bit_equal_rows src=SHAP\out\ndvi\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:ndvi part=rows printed='95,184' stored=[95184] sel=rows src=SHAP\out\ndvi\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:fire part=bit_equal_rows printed='95,711' stored=[95711] sel=bit_equal_rows src=SHAP\out\fire\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:fire part=rows printed='96,000' stored=[96000] sel=rows src=SHAP\out\fire\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:defo part=bit_equal_rows printed='303,967' stored=[303967] sel=bit_equal_rows src=SHAP\out\defo\lead_0\rival_ridge\exactness.json
+L122 S3.20/ row=note col=ridge_copy:defo part=rows printed='369,096' stored=[369096] sel=rows src=SHAP\out\defo\lead_0\rival_ridge\exactness.json
+L135 S3.21/ row=E3m col=pm25 part=files printed='1' stored=[1] sel=len(gates.E3m_recorded_path_map.values.files) src=SHAP\rebuild\pm25\lead_0\gates.json
+L135 S3.21/ row=E3m col=ndvi part=files printed='1' stored=[1] sel=len(gates.E3m_recorded_path_map.values.files) src=SHAP\rebuild\ndvi\lead_0\gates.json
+L135 S3.21/ row=E3m col=fire part=files printed='1' stored=[1] sel=len(gates.E3m_recorded_path_map.values.files) src=SHAP\rebuild\fire\lead_0\gates.json
+L137 S3.21/ row=E4 col=pm25 part=rows printed='2,590,280' stored=[2590280] sel=gates.E4_donor_rows.values.rows[0] src=SHAP\rebuild\pm25\lead_0\gates.json
+L137 S3.21/ row=E4 col=ndvi part=rows printed='2,680,841' stored=[2680841] sel=gates.E4_donor_rows.values.rows[0] src=SHAP\rebuild\ndvi\lead_0\gates.json
+L137 S3.21/ row=E4 col=fire part=rows printed='751,508' stored=[751508] sel=gates.E4_donor_rows.values.rows[0] src=SHAP\rebuild\fire\lead_0\gates.json
+L137 S3.21/ row=E4 col=defo part=rows printed='3,011,184' stored=[3011184] sel=gates.E4_donor_rows.values.rows[0] src=SHAP\rebuild\defo\lead_0\gates.json
+L137 S3.21/ row=E4 col=coral part=rows printed='11,338' stored=[11338] sel=gates.E4_donor_rows.values.rows[0] src=SHAP\rebuild\coral\lead_0\gates.json
+L139 S3.21/ row=E5a col=fire part=bit_equal printed='13,440' stored=[13440] sel=gates.E5a_identity_twin.values.pre_bit_equal src=SHAP\rebuild\fire\lead_0\gates.json
+L139 S3.21/ row=E5a col=fire part=rows printed='13,440' stored=[13440] sel=gates.E5a_identity_twin.values.rows_checked src=SHAP\rebuild\fire\lead_0\gates.json
+L139 S3.21/ row=E5a col=coral part=bit_equal printed='2,312' stored=[2312] sel=gates.E5a_identity_twin.values.pre_bit_equal src=SHAP\rebuild\coral\lead_0\gates.json
+L139 S3.21/ row=E5a col=coral part=rows printed='2,312' stored=[2312] sel=gates.E5a_identity_twin.values.rows_checked src=SHAP\rebuild\coral\lead_0\gates.json
+L142 S3.21/ row=E9 col=pm25 part=fits printed='254' stored=[254] sel=gates.E9_coefficients_reproduce_the_kernel.values.fits_captured src=SHAP\rebuild\pm25\lead_0\gates.json
+L142 S3.21/ row=E9 col=ndvi part=fits printed='266' stored=[266] sel=gates.E9_coefficients_reproduce_the_kernel.values.fits_captured src=SHAP\rebuild\ndvi\lead_0\gates.json
+L142 S3.21/ row=E9 col=fire part=fits printed='280' stored=[280] sel=gates.E9_coefficients_reproduce_the_kernel.values.fits_captured src=SHAP\rebuild\fire\lead_0\gates.json
+L142 S3.21/ row=E9 col=defo part=fits printed='42' stored=[42] sel=gates.E9_coefficients_reproduce_the_kernel.values.fits_captured src=SHAP\rebuild\defo\lead_0\gates.json
+L142 S3.21/ row=E9 col=defo part=score_rows printed='1,008' stored=[1008] sel=gates.E9_coefficients_reproduce_the_kernel.values.region_proof.score_rows src=SHAP\rebuild\defo\lead_0\gates.json
+L142 S3.21/ row=E9 col=defo part=background_rows printed='4,032' stored=[4032] sel=gates.E9_coefficients_reproduce_the_kernel.values.region_proof.background_rows src=SHAP\rebuild\defo\lead_0\gates.json
+L142 S3.21/ row=E9 col=coral part=fits printed='2,312' stored=[2312] sel=gates.E9_coefficients_reproduce_the_kernel.values.fits_captured src=SHAP\rebuild\coral\lead_0\gates.json
+L143 S3.21/ row=E8 col=pm25 part=bit_equal printed='12,192' stored=[12192] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\pm25\lead_0\gates.json
+L143 S3.21/ row=E8 col=pm25 part=rows printed='12,192' stored=[12192] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\pm25\lead_0\gates.json
+L143 S3.21/ row=E8 col=ndvi part=bit_equal printed='12,768' stored=[12768] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\ndvi\lead_0\gates.json
+L143 S3.21/ row=E8 col=ndvi part=rows printed='12,768' stored=[12768] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\ndvi\lead_0\gates.json
+L143 S3.21/ row=E8 col=fire part=bit_equal printed='13,056' stored=[13056] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\fire\lead_0\gates.json
+L143 S3.21/ row=E8 col=fire part=rows printed='13,440' stored=[13440] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\fire\lead_0\gates.json
+L143 S3.21/ row=E8 col=fire part=max_rel printed='2.4 × 10⁻¹³' stored=[2.3560131176637307e-13] sel=gates.E8_predictions.values.max_rel_pre src=SHAP\rebuild\fire\lead_0\gates.json
+L143 S3.21/ row=E8 col=defo part=bit_equal printed='1,008' stored=[1008] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\defo\lead_0\gates.json
+L143 S3.21/ row=E8 col=defo part=rows printed='1,008' stored=[1008] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\defo\lead_0\gates.json
+L143 S3.21/ row=E8 col=coral part=bit_equal printed='2,228' stored=[2228] sel=gates.E8_predictions.values.pre_bit_equal src=SHAP\rebuild\coral\lead_0\gates.json
+L143 S3.21/ row=E8 col=coral part=rows printed='2,312' stored=[2312] sel=gates.E8_predictions.values.rows_checked src=SHAP\rebuild\coral\lead_0\gates.json
+L143 S3.21/ row=E8 col=coral part=max_rel printed='1.1 × 10⁻¹⁵' stored=[1.055062494413031e-15] sel=gates.E8_predictions.values.max_rel_pre src=SHAP\rebuild\coral\lead_0\gates.json
+L144 S3.21/ row=E10 col=pm25 part=rows printed='252' stored=[252] sel=gates.E10_exported_trees.values.rows_x_trees[0] src=SHAP\rebuild\pm25\lead_0\gates.json
+L144 S3.21/ row=E10 col=pm25 part=trees printed='12,600' stored=[12600] sel=gates.E10_exported_trees.values.rows_x_trees[1] src=SHAP\rebuild\pm25\lead_0\gates.json
+L144 S3.21/ row=E10 col=ndvi part=rows printed='251' stored=[251] sel=gates.E10_exported_trees.values.rows_x_trees[0] src=SHAP\rebuild\ndvi\lead_0\gates.json
+L144 S3.21/ row=E10 col=ndvi part=trees printed='13,200' stored=[13200] sel=gates.E10_exported_trees.values.rows_x_trees[1] src=SHAP\rebuild\ndvi\lead_0\gates.json
+L144 S3.21/ row=E10 col=fire part=rows printed='215' stored=[215] sel=gates.E10_exported_trees.values.rows_x_trees[0] src=SHAP\rebuild\fire\lead_0\gates.json
+L144 S3.21/ row=E10 col=fire part=trees printed='3,900' stored=[3900] sel=gates.E10_exported_trees.values.rows_x_trees[1] src=SHAP\rebuild\fire\lead_0\gates.json
+L144 S3.21/ row=E10 col=defo part=regions printed='42' stored=[42] sel=gates.E10_exported_trees.values.regions src=SHAP\rebuild\defo\lead_0\gates.json
+L144 S3.21/ row=E10 col=coral part=rows printed='51' stored=[51] sel=gates.E10_exported_trees.values.rows_x_trees[0] src=SHAP\rebuild\coral\lead_0\gates.json
+L144 S3.21/ row=E10 col=coral part=trees printed='7,700' stored=[7700] sel=gates.E10_exported_trees.values.rows_x_trees[1] src=SHAP\rebuild\coral\lead_0\gates.json
+L768 S3.30/a row=pm25 col=pairs part=value printed='203,963' stored=[203963] sel=line 25: background pairs src=SHAP\logs\tr_shap_pm25_lead0.log
+L768 S3.30/a row=pm25 col=total_seconds part=value printed='17,890.4' stored=[17890.4] sel=line 39: total seconds src=SHAP\logs\tr_shap_pm25_lead0.log
+L768 S3.30/a row=pm25 col=tree_shap_seconds part=value printed='17,883.2' stored=[17883.2] sel=line 39: tree SHAP seconds src=SHAP\logs\tr_shap_pm25_lead0.log
+L769 S3.30/a row=ndvi col=pairs part=value printed='201,768' stored=[201768] sel=line 17: background pairs src=SHAP\logs\tr_shap_ndvi_lead0.log
+L769 S3.30/a row=ndvi col=total_seconds part=value printed='11,883.1' stored=[11883.1] sel=line 32: total seconds src=SHAP\logs\tr_shap_ndvi_lead0.log
+L769 S3.30/a row=ndvi col=tree_shap_seconds part=value printed='11,871.8' stored=[11871.8] sel=line 32: tree SHAP seconds src=SHAP\logs\tr_shap_ndvi_lead0.log
+L770 S3.30/a row=fire col=pairs part=value printed='187,186' stored=[187186] sel=line 20: background pairs src=SHAP\logs\tr_shap_fire_lead0.log
+L770 S3.30/a row=fire col=total_seconds part=value printed='2,636.6' stored=[2636.6] sel=line 26: total seconds src=SHAP\logs\tr_shap_fire_lead0.log
+L770 S3.30/a row=fire col=tree_shap_seconds part=value printed='2,631.6' stored=[2631.6] sel=line 26: tree SHAP seconds src=SHAP\logs\tr_shap_fire_lead0.log
+L771 S3.30/a row=defo col=pairs part=value printed='16,000' stored=[16000] sel=line 24: background pairs src=SHAP\logs\tr_shap_defo_lead0.log
+L771 S3.30/a row=defo col=total_seconds part=value printed='465.9' stored=[465.9] sel=line 30: total seconds src=SHAP\logs\tr_shap_defo_lead0.log
+L771 S3.30/a row=defo col=tree_shap_seconds part=value printed='464.3' stored=[464.3] sel=line 30: tree SHAP seconds src=SHAP\logs\tr_shap_defo_lead0.log
+L777 S3.30/b row=max_abs_diff_phi col=result part=value printed='0' stored=[0.0] sel=b1.defo.identity.max_abs_diff_phi src=V\A\results.json
+L778 S3.30/b row=max_abs_diff_phiv col=result part=value printed='0' stored=[0.0] sel=b1.defo.identity.max_abs_diff_phiv src=V\A\results.json
+L779 S3.30/b row=rows col=result part=main printed='1,000' stored=[1000] sel=b1.defo.identity.n_rows_main src=V\A\results.json
+L779 S3.30/b row=rows col=result part=b1 printed='1,000' stored=[1000] sel=b1.defo.identity.n_rows_b1 src=V\A\results.json
+L780 S3.30/b row=players col=result part=main printed='309' stored=[309] sel=b1.defo.identity.n_players_main src=V\A\results.json
+L780 S3.30/b row=players col=result part=b1 printed='309' stored=[309] sel=b1.defo.identity.n_players_b1 src=V\A\results.json
+L781 S3.30/b row=variables col=result part=main printed='121' stored=[121] sel=b1.defo.identity.n_variables_main src=V\A\results.json
+L781 S3.30/b row=variables col=result part=b1 printed='121' stored=[121] sel=b1.defo.identity.n_variables_b1 src=V\A\results.json

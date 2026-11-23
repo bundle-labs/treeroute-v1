@@ -1,0 +1,305 @@
+====================================================================================================
+make_signed_coral: APPLY
+ruling X (OWNER_RULINGS_2026-10-06.md, 2026-10-20); signer the project owner (in chat, 2026-10-20: the author's answer, not quoted (ruling X))
+source C:\Users\<user>\Desktop\data set for reserch paper\engine\datasets\coral_draft  fingerprint cda2b2b664016b4627303046759d726c86a9dc2cbdb30012dd70c66896b83a69 (= the GREEN deep check)
+target C:\Users\<user>\Desktop\data set for reserch paper\engine\datasets\coral  predicted fingerprint 5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9
+----------------------------------------------------------------------------------------------------
+CHANGES: 90 in 7 files
+[AUDIT_CHECKLIST.md] 16 change(s)
+  - text edit A1
+      old: # AUDIT_CHECKLIST -- coral_draft (table package)
+      new: # AUDIT_CHECKLIST -- coral (table package)
+  - text edit A2
+      old: **UNSIGNED.** Drafted by the agent / on 2026-10-19. Every box is open until the owner ticks it and signs at the bottom.
+      new: **SIGNED** by the owner 2026-10-20 (ruling / X). Drafted by the agent on 2026-10-19; the boxes were ticked and the signature written from the / own...
+  - text edit A3
+      old: (V6 b DRAFT option: they train trees and lend rows; nothing is scored for them)
+      new: (V6 b, owner ruling W1, 2026-10-20: they train trees and lend rows; nothing is scored for them)
+  - text edit A4
+      old: Open timing facts the owner must accept or change before signing:
+      new: Open timing facts the owner accepted by signing (2026-10-20):
+  - row A1 (line 12)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A2 (line 13)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A3 (line 14)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A4 (line 15)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A5 (line 16)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A6 (line 17)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A7 (line 18)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A8 (line 19)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A9 (line 20)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - row A10 (line 21)
+      old: ...| [ ] |
+      new: ...| [x] |
+  - section B evidence
+      old: Tiny build 2026-10-19: all passed (coral_data/tiny/build_manifest.json, check_report.json).
+      new: Tiny build 2026-10-19: all passed (coral_data/tiny/build_manifest.json, check_report.json). / Full build 2026-10-20 (the tables this package reads,...
+  - signature
+      old: Signed: ____________________   Date: ____________
+      new: Signed: the project owner (in chat, 2026-10-20: the author's answer, not quoted (ruling X)) (owner; U2 statement and sections A and B, ruling X)   Date: 20...
+[ban.yaml] 32 change(s)
+  - text edit B1
+      old: # ban.yaml -- coral_draft verdicts (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:446-474). GENERATED / # 2026-10-19 by D:/treeroute/c...
+      new: # ban.yaml -- coral verdicts (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:446-474). GENERATED / # 2026-10-19 by D:/treeroute/coral_b...
+  - dhw_30.evidence (line 45)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_30.evidence (line 49)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_30.evidence (line 53)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_30.evidence (line 57)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_30.evidence (line 61)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - dhw_56.evidence (line 65)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_56.evidence (line 69)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_56.evidence (line 73)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_56.evidence (line 77)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_56.evidence (line 81)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - dhw_84.evidence (line 85)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_84.evidence (line 89)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_84.evidence (line 93)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_84.evidence (line 97)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_84.evidence (line 101)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - dhw_90.evidence (line 105)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_90.evidence (line 109)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_90.evidence (line 113)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_90.evidence (line 117)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_90.evidence (line 121)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - dhw_180.evidence (line 125)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_180.evidence (line 129)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_180.evidence (line 133)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_180.evidence (line 137)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_180.evidence (line 141)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - dhw_365.evidence (line 145)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - hs_max_365.evidence (line 149)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm_365.evidence (line 153)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - n_above_mmm1_365.evidence (line 157)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - cool_365.evidence (line 161)
+      old:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+      new:     evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); Q22 signed by the owner 2026-10-20 (ruling...
+  - ctx_mmm.reason (line 40)
+      old:     reason: router context only; an absolute temperature, banned from the trees; in context it is a DISCLOSED departure from the absolute-temperatu...
+      new:     reason: 'router context only; an absolute temperature, banned from the trees; in context it is a DISCLOSED departure from the absolute-temperat...
+[catalog.yaml] 3 change(s)
+  - text edit C1
+      old: # catalog.yaml -- coral_draft package facts (SPEC_TABLE_MODE.md 1.3-1.5). GENERATED 2026-10-19 by / # D:/treeroute/coral_build/coral_tables/make_dr...
+      new: # catalog.yaml -- coral package facts (SPEC_TABLE_MODE.md 1.3-1.5). GENERATED 2026-10-19 by / # D:/treeroute/coral_build/coral_tables/make_draft.py...
+  - text edit C2
+      old: fact_status is 'unverified' everywhere (the schema default): nothing here is signed.
+      new: fact_status is 'unverified' (the schema default) on every column except the / # target pct_bleached, whose facts the owner signed 2026-10-20 (verif...
+  - pct_bleached (line 55)
+      old:     provenance: 'percent of coral bleached per visit: Reef_Check Population rows (level 1) -> mean of S1..S4; AGRRA, FRRP, McClanahan, Donner -> Pe...
+      new:     fact_status: verified /     reviewed_by: owner /     date: '2026-10-20' /     provenance: 'percent of coral bleached per visit: Reef_Check Popu...
+[dataset.yaml] 6 change(s)
+  - text edit D1
+      old: # dataset.yaml -- coral_draft: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95). / # DRAFT, written 2026-10-19...
+      new: # dataset.yaml -- coral: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95). / # SIGNED by the owner 2026-10-20 ...
+  - text edit D2
+      old: The owner adds the store root to D:/treeroute/registry/protected_roots.txt before / # the freeze (SPEC_TABLE_MODE.md 1.2).
+      new: The store root D:/treeroute/coral_build/coral_store is listed in / # D:/treeroute/registry/protected_roots.txt (added 2026-10-20 by the session, co...
+  - line 19 (name)
+      old: name: coral_draft
+      new: name: coral
+  - line 20 (version)
+      old: version: '0.1.0-draft'
+      new: version: '0.1.0'
+  - line 21 (owner)
+      old: owner: 'UNSIGNED -- DRAFT development package; not the owner''s'
+      new: owner: 'the project owner -- signed 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md)'
+  - line 22 (description)
+      old: description: 'DRAFT -- percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, g...
+      new: description: 'percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by...
+[exceptions.yaml] 19 change(s)
+  - text edit X1
+      old: # exceptions.yaml -- coral_draft (SPEC
+      new: # exceptions.yaml -- coral (SPEC
+  - text edit X2
+      old: Drafted 2026-10-19 by the agent. Every 'owner' field reads 'UNSIGNED -- basis: ...': / # the entry is NOT signed; it names the evidence behind it. ...
+      new: Drafted 2026-10-19 by the agent. Signed 2026-10-20: an 'owner' field that reads / # 'owner -- signed by the owner ...; basis: ...' was signed throu...
+  - text edit X3
+      old: V6 (b) DRAFT OPTION (D:/treeroute/coral_build_v6b/PLAN_V6B.md; not signed): the 46 groups
+      new: V6 (b), owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121; D:/treeroute/coral_build_v6b/PLAN_V6B.md): the 46 groups
+  - text edit X4
+      old: ; V6 (b) is a DRAFT option awaiting the owner (the signed V6 text, :108, says left out)
+      new: ; V6 (b) by owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6 (:108)
+  - text edit X5
+      old: (engine: derived.json R18:donor_only; listed in the plan, run record, verdict.json and the report disclosures)
+      new: (counted and disclosed as ruling W1 lists: derived.json R18:donor_only, the run records, the check report and one report disclosure row)
+  - entry 0 owner (line 14)
+      old:     owner: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:265 (Q20 a)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E0); basis: CORAL_ENGINE_PLAN.md:265 (Q2...
+  - entry 1 owner (line 20)
+      old:     owner: 'UNSIGNED -- basis: CORAL_STATE.md:148-151'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E1); basis: CORAL_STATE.md:148-151'
+  - entry 2 owner (line 26)
+      old:     owner: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:252 (Q7 a)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E2); basis: CORAL_ENGINE_PLAN.md:252 (Q7...
+  - entry 3 owner (line 32)
+      old:     owner: 'UNSIGNED -- basis: CORAL_DATA_AUDIT.md:236-240'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E3); basis: CORAL_DATA_AUDIT.md:236-240'
+  - entry 4 owner (line 38)
+      old:     owner: 'UNSIGNED -- basis: coral_forecast.py:106-116'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E4); basis: coral_forecast.py:106-116'
+  - entry 5 owner (line 45)
+      old:     owner: 'UNSIGNED -- basis: CORAL_STATE.md:30-34; CORAL_ENGINE_PLAN.md:259 (Q14 a)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E5); basis: CORAL_STATE.md:30-34; CORAL_...
+  - entry 6 owner (line 51)
+      old:     owner: 'UNSIGNED -- basis: coral_extra_drivers.py:8-10, 70-122'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E6); basis: coral_extra_drivers.py:8-10,...
+  - entry 9 owner (line 69)
+      old:     owner: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:283 (risks), :267 (Q22 a: CoralTemp reach_after_max)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E9); basis: CORAL_ENGINE_PLAN.md:283 (ri...
+  - entry 10 owner (line 75)
+      old:     owner: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:172 (C3), :267 (Q22 a)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E10); basis: CORAL_ENGINE_PLAN.md:172 (C...
+  - entry 11 owner (line 82)
+      old:     owner: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:193, :295'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E11); basis: CORAL_ENGINE_PLAN.md:193, :...
+  - entry 12 owner (line 89)
+      old:     owner: 'UNSIGNED -- basis: coral_forecast.py:31-35; SPEC_CORAL_TABLES.md REVIEW LOG LK11'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E12); basis: coral_forecast.py:31-35; SP...
+  - entry 13 owner (line 95)
+      old:     owner: 'UNSIGNED -- basis: SPEC_CORAL_TABLES.md 1.3 (LK9)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E13); basis: SPEC_CORAL_TABLES.md 1.3 (L...
+  - entry 15 owner (line 107)
+      old:     owner: 'UNSIGNED -- basis: OWNER_RULINGS_2026-10-06.md:90 (U1); SPEC_CORAL_TABLES.md 2.1 (FS10)'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E15); basis: OWNER_RULINGS_2026-10-06.md...
+  - entry 16 owner (line 113)
+      old:     owner: 'UNSIGNED -- basis: SPEC_TABLE_MODE.md 2.2 (O27); timing/cuts.py:62-87, 91-100'
+      new:     owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E16); basis: SPEC_TABLE_MODE.md 2.2 (O27...
+[ingest/README.md] 11 change(s)
+  - text edit R1
+      old: # coral_draft: the coral bleaching table package (DRAFT)
+      new: # coral: the coral bleaching table package (signed 2026-10-20)
+  - text edit R2
+      old: Written 2026-10-19 under owner ruling U (OWNER_RULINGS_2026-10-06.md:84-95). Unsigned. Development and smoke only.
+      new: Written 2026-10-19 under owner ruling U (OWNER_RULINGS_2026-10-06.md:84-95). Signed by the owner 2026-10-20 (ruling / X, OWNER_RULINGS_2026-10-06.m...
+  - text edit R3
+      old: LIVE / (hash 65a177bc...) refuses it. The build copy's table reader (in progress, 2026-10-19) loads the tiny copy.
+      new: LIVE has / it since 2026-10-20 (engine_code_sha256 930d961c..., the V6 (b) engine; INSTALL_MANIFEST.json in / engine/_moved_coral_20261020_064437).
+  - text edit R4
+      old: (V6 b DRAFT option: no test row; they train and lend rows, nothing is scored for them)
+      new: (V6 b, owner ruling W1: no test row; they train and lend rows, nothing is scored for them)
+  - text edit R5
+      old: (V3, V5 and V9 entries signed by ruling V; the V6 (b) donor-only entry is a DRAFT option, not signed)
+      new: (V3, V5 and V9 entries signed by ruling V, the donor-only entry by rulings V5 and W1, the others by the owner 2026-10-20)
+  - text edit R6
+      old: | AUDIT_CHECKLIST.md | human checks and the owner's U2 timing statement (to sign) |
+      new: | AUDIT_CHECKLIST.md | human checks and the owner's U2 timing statement (signed 2026-10-20) |
+  - text edit R7
+      old: - **V6 (b) donor-only groups (DRAFT option, not signed; D:/treeroute/coral_build_v6b/PLAN_V6B.md).**
+      new: - **V6 (b) donor-only groups (owner ruling W1, 2026-10-20, which replaces V6; D:/treeroute/coral_build_v6b/PLAN_V6B.md).**
+  - text edit R8
+      old: py -3.9 make_draft.py                            # rewrite catalog.yaml and ban.yaml from columns.py / py -3.9 -u make_split.py --check            ...
+      new: # make_draft.py (it rewrites catalog.yaml and ban.yaml from columns.py) is NEVER run on the signed package: it / # would lose the signatures writte...
+  - text edit R9
+      old: ## Signed answers, ruling V (2026-10-19)
+      new: ## Signed answers, ruling V (2026-10-19; V6 replaced by ruling W, 2026-10-20)
+  - text edit R10
+      old: The table departures (TABLE_DEPARTURES, pipeline/table_run.py:52-70) are accepted at the /   coral freeze, as S21 did for the grid departures.
+      new: The table departures are accepted at the coral freeze, as S21 did for the grid departures. /   Built: they are listed in TABLE_ACCEPTED_DEPARTURES ...
+  - text edit R11
+      old: 6. From LIVE after the install: check, smoke, run.
+      new: 6. From LIVE (the table option is installed: engine 930d961c..., 2026-10-20): check, smoke, run, at the same engine /    hash as the headline run.
+[split.yaml] 3 change(s)
+  - text edit S1
+      old: # split.yaml -- coral_draft (SPEC
+      new: # split.yaml -- coral (SPEC
+  - text edit S2
+      old: # V6 (b) OPTION, DRAFT (D:/treeroute/coral_build_v6b/PLAN_V6B.md): not signed; the owner chooses V6 (a) or V6 (b).
+      new: # V6 (b): owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6; built as / # D:/treeroute/coral_build_v6b (PLAN_V6B...
+  - text edit S3
+      old: GENERATED by / # coral_tables/make_split.py --write (2026-10-19) from D:/treeroute/coral_build/coral_data/visits.parquet.
+      new: GENERATED by / # the V6 (b) copy D:/treeroute/coral_build_v6b/coral_tables/make_split.py --write (2026-10-19) from / # D:/treeroute/coral_build/cor...
+unchanged files (byte for byte): 
+----------------------------------------------------------------------------------------------------
+CHECK: engine draft_status of the signed package: is_draft=False
+CHECK: F-BAN-OPEN scan (treeroute_report/freeze.py OPEN_DECISION) on the signed ban.yaml: 0 lines
+CHECK: exceptions.yaml: all 19 entries signed (guards.exception_signed)
+CHECK: target pct_bleached fact_status verified (table G-FACTS passes only on 'verified')
+CHECK: stale-text scan over 7 files: clean
+coral questions: Q1 confirm; Q2 confirm; Q3 confirm; Q4 confirm; Q5 confirm; Q6 confirm; Q7 confirm; Q8 confirm; Q9 confirm; Q10 confirm; Q11 confirm; Q12 confirm; Q13 confirm; Q14 confirm; Q15 confirm; Q16 confirm; Q17 confirm; Q18 confirm; Q19 confirm; Q20 confirm; Q21 confirm; Q22 confirm
+----------------------------------------------------------------------------------------------------
+FOLLOW-UPS (not done by this tool):
+  * matrix_dir APPROVED: engine-test task: add 'matrix_dir' to weight_model_for_cut's approved parameters in tests/test_layer_shapes.py:57 (the old failing test; prereg section 10, section 12 item 2). Not written by this tool.
+  * continuity: add to treeroute_report/continuity_groups.yaml (outside the package; adds report-tooling drift to the four grid locks, disclosed):
+      coral:
+        label: continuity, not a replication
+        source: "none: no legacy coral number is comparable (Part 458 pool leak); owner 2026-10-20 (ruling X)"
+        n_groups: 0
+        continuity_groups: []
+  * pre-registration (D:/treeroute/coral_build/PREREGISTRATION_DRAFT_coral.md): remove the markers of section 12 items 2, 3, 5 and 7 by hand, and item 8 once the report-script SHA-256 lines are filled in section 6.2; record the coral question answers in item 7; the section 13 signatures are the owner's, by hand.
+  * then, in this order, from the engine folder: py -3.9 -m treeroute check datasets/coral ; py -3.9 -m treeroute check datasets/coral --deep ; py -3.9 -m treeroute plan datasets/coral (alone, heavy). Any later package edit invalidates F-CHECK-MATCH and F-PLAN.
+  * report-only scripts (prereg section 12 item 8): D:/treeroute/coral_build/report_scripts/coral_report.py; its SHA-256 must equal the one in prereg section 6.2 (re-hash after any change, e.g. the flattening-guard edge).
+WRITTEN: C:\Users\<user>\Desktop\data set for reserch paper\engine\datasets\coral (engine fingerprint 5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9); record D:\treeroute\coral_build\tools\signoff_records\coral_signoff_record_20261020_130714.json

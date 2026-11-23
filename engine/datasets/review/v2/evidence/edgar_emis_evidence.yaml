@@ -1,0 +1,96 @@
+# edgar_emis -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: edgar_emis
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/edgar_emis/{group}_edgar.parquet
+keys:
+- cell_id
+- year
+provenance: edgar_emis_ingest.py:193
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  edgar_carried:
+    window_text: 'flag: 1 on the carried year'
+    units_source: a 0/1 flag (edgar_emis_ingest.py:193)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: 0.0
+      max: 1.0
+  edgar_so2:
+    window_text: annual total of the twelve monthly layers of the named year
+    units_source: tonnes per km2 per year (edgar_emis_ingest.py:31)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 2023 carries 2022's value, flagged by edgar_carried (edgar_emis_ingest.py:34-36); the OC species misses
+      a sector (pm25_architecture.py:52-53)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 3611.324462890625
+  edgar_nox:
+    window_text: annual total of the twelve monthly layers of the named year
+    units_source: tonnes per km2 per year (edgar_emis_ingest.py:31)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 2023 carries 2022's value, flagged by edgar_carried (edgar_emis_ingest.py:34-36); the OC species misses
+      a sector (pm25_architecture.py:52-53)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 2185.11083984375
+  edgar_nh3:
+    window_text: annual total of the twelve monthly layers of the named year
+    units_source: tonnes per km2 per year (edgar_emis_ingest.py:31)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 2023 carries 2022's value, flagged by edgar_carried (edgar_emis_ingest.py:34-36); the OC species misses
+      a sector (pm25_architecture.py:52-53)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 8040.7861328125
+  edgar_bc:
+    window_text: annual total of the twelve monthly layers of the named year
+    units_source: tonnes per km2 per year (edgar_emis_ingest.py:31)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 2023 carries 2022's value, flagged by edgar_carried (edgar_emis_ingest.py:34-36); the OC species misses
+      a sector (pm25_architecture.py:52-53)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 66.26509857177734
+  edgar_oc:
+    window_text: annual total of the twelve monthly layers of the named year
+    units_source: tonnes per km2 per year (edgar_emis_ingest.py:31)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 2023 carries 2022's value, flagged by edgar_carried (edgar_emis_ingest.py:34-36); the OC species misses
+      a sector (pm25_architecture.py:52-53)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 97.00056457519531
+schema_catalog: _stores/edgar_emis_schema_catalog.yaml
+schema_catalog_sha256: 2dd78e175cb77e1258a83cc3bf258743b8f1b7440bce04c77349f04e6a723e16
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

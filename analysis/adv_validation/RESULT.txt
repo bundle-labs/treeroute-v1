@@ -1,0 +1,115 @@
+ADVERSARIAL-VALIDATION TOOL CHOICE - COMBINED RESULT (post-hoc research; the headline is unchanged)
+=====================================================================================================
+Date 2026-10-21. Protocol: D:\treeroute\analysis\adv_validation\PROTOCOL.txt, SHA-256
+a5f4c76de432de8112974b9e1a4edb72a9cfe0a3a310422090d943b02e98e7f5 (I re-hashed it today and it matches
+PROTOCOL.sha256.txt, so it was not changed after it was frozen).
+Sources: pm25\results.json, ndvi\results.json, fire\results_fire.json, defo\results_defo.json,
+coral\results_coral.json. I re-read the coral numbers from results_coral.json today. They match the summary below.
+Nothing in any run, package, store or engine was written to.
+
+GATES: G1-G4 passed on all five problems. Unit weights give back the original pick, and the candidate MAEs match
+inner_candidates.csv to <=2.3e-14 relative. The original test MAE equals pooled_mae_adopted. Feature joins are 100%.
+picks.json was hashed before the test y column was opened.
+
+1. TABLE: problem x variant -> pick, test MAE, change vs original, ESS
+---------------------------------------------------------------------
+delta = pick test MAE - original test MAE (negative = better). /band = delta / that run's band (verdict.json).
+ESS gate = 10% of surface rows (PROTOCOL.txt:86-88).
+
+problem  variant          pick (level, ratio)                                  test MAE     delta (/band)        ESS (share)                       tally
+-------  ---------------  ---------------------------------------------------  -----------  -------------------  --------------------------------  -----
+pm25     original         log_c_corrector_unweighted (30, 1.0)                 3.58809      -                    -                                 -
+pm25     V1 transductive  original, FALLBACK:ESS                               3.58809      0 (0)                6,685 (0.0975) < gate 6,856       SAME
+pm25     V2 rolling       original every year (20:NO-TARGET, 21/22:ESS)        3.58809      0 (0)                5,680 / 6,793 / 7,029             SAME
+pm25     V3 recency       original                                             3.58809      0 (0)                22,844 (0.33)                     SAME
+ndvi     original         identity_plain_unweighted (1.0, 0.0625)              0.0314606    -                    -                                 -
+ndvi     V1               original                                             0.0314606    0 (0)                63,702 (0.923)                    SAME
+ndvi     V2               original every year                                  0.0314606    0 (0)                68,519 / 68,543 / 68,176          SAME
+ndvi     V3               original                                             0.0314606    0 (0)                68,673 (0.995)                    SAME
+fire     original         arcsine_corrector_gls (100, 1.0)                     0.00438506   -                    -                                 -
+fire     V1               same arm (100, 0.0625) POINT-MOVED                   0.00438506*  0* (0)               7,034 (0.102)                     SAME
+fire     V2               same arm 2020-22 (100, 0.0625) POINT-MOVED           0.00438506*  0* (0)               13,802 / 9,850 / 7,417            SAME
+fire     V3               same arm (100, 0.0625) POINT-MOVED                   0.00438506*  0* (0)               23,649 (0.343)                    SAME
+defo     original         log_c_corrector_unweighted (0.1)                     0.0054158    -                    -                                 -
+defo     V1               original                                             0.0054158    0 (0)                171,316 (0.62)                    SAME
+defo     V2               original every year                                  0.0054158    0 (0)                243,976 / 271,583 / 269,882       SAME
+defo     V3               original                                             0.0054158    0 (0)                91,542 (0.33)                     SAME
+coral    original         arcsine_corrector_gls (100, 1.0)                     6.69799      -                    -                                 -
+coral    V1               log_c_corrector_unweighted (100, 0.0625) POINT-MOVED 6.35948*     -0.3385 (-0.369)     310.2 (0.152)                     HELPS
+coral    V2               2016 orig | 2017 log_c_plain_unweighted (100,1.0) |  6.51963*     -0.1784 (-0.194)     228.9 / 180.8 (FALLBACK) / 278.7  HELPS
+                          2018 orig (FALLBACK:ESS) | 2019 log_c_corrector_unw
+                          (100, 0.0625) POINT-MOVED
+coral    V3               arcsine_plain_gls (100, 1.0)                         6.73594      +0.0379 (+0.041)     670.5 (0.328)                     HURTS
+
+V2 ESS columns list the three refit years in order (pm25/ndvi/defo 2021/22/23; fire 2020/21/22; coral 2017/18/19).
+In the first test year V2 has no earlier test rows, so it keeps the original pick (FALLBACK:NO-TARGET).
+* = approximate. test_preds.parquet holds each arm only at the run's adopted penalty point (pm25 run.log:1339, the
+same line in every run), so a POINT-MOVED pick is scored as its arm at that saved point. On fire this means "same
+arm", and it does not tell us what the moved point would have scored. On coral V2, the 2019 part of the gain
+(-0.087 of the -0.178) is approximate. The 2017 part (-0.091) is exact.
+Placebo (the same weights shuffled by a hash order): it kept the original pick on every problem, every variant and
+every year. The one exception is fire V3, where the placebo picked arcsine_plain_gls (+6.1e-07, 0.045 band).
+Placebo delta on coral = 0 for V1, V2 and V3.
+
+2. TALLY PER VARIANT (PROTOCOL.txt:134-135)
+-------------------------------------------
+V1 transductive (upper bound only): HELPS 1 (coral) | SAME 4 | HURTS 0 (0 beyond band)
+V2 rolling:                         HELPS 1 (coral) | SAME 4 | HURTS 0 (0 beyond band)
+V3 recency:                         HELPS 0         | SAME 4 | HURTS 1 (coral, +0.041 band, not beyond band)
+
+3. SUCCESS RULE APPLIED (PROTOCOL.txt:137-150; V1 is never recommended)
+------------------------------------------------------------------------
+V2 rolling:
+  S1 coral improves:   PASS. 6.51963 < 6.69799 (delta -0.178). "Fixes" = NO: rank 5 of 13; the test-best is
+                       arcsine_corrector_unweighted at 6.14749.
+  S2 no harm:          PASS. delta is 0 on pm25, ndvi, fire* and defo, all <= band.
+  S3 ESS on coral:     PASS. 2 of 3 refit years pass (2017, 2019); 2018 fell back (ESS 180.8 < 205).
+  S4 beats placebo:    PASS. placebo delta 0 > variant delta -0.178.
+  => V2 is RECOMMENDED, but only for a pre-registered test in the next engine version. It is a lead, not proof
+     (PROTOCOL.txt:148-150).
+V3 recency:
+  S1 FAIL (+0.038). S2 PASS. S3 PASS (670.5). S4 FAIL (placebo 0 is not worse than the variant's +0.038).
+  => V3 is NOT RECOMMENDED (S1 and S4 fail).
+V1 reading: V1 improves coral (-0.339), so the idea is not closed at its upper bound (PROTOCOL.txt:147).
+
+4. CAVEATS THAT LIMIT THE V2 PASS
+---------------------------------
+a) The gain is small against the run's own noise yardstick: -0.178 is 0.19 of coral's band (0.918). Only the 2017
+   part (-0.091, 0.10 band) is exact; the 2019 part is POINT-MOVED.
+b) The gain comes from ONE problem (coral), which has about 33 survey groups. The other four never moved.
+c) The classifiers mostly separate periods by calendar-like signals, not by "conditions that look like the
+   target". Global climate indices (pdo, tna, tsa, amo, nino, ao, nao) take one value per month or year for every
+   cell, so AUC is 1.000 on pm25 V1 and V2, on fire V1 and V2, and on defo V1 and V2. On coral V2 2017, AUC is 1.000
+   on ENSO lags (nino34a_lag9, nino34a_lag6) around the 2016 El Nino. That AUC is why the pm25 V1 and V2 2021/22
+   ESS gates failed.
+d) Feature-set deviations, logged per problem. pm25, fire, defo and coral used the engine's rule (the
+   'conditional' columns are left out, treeroute/io/apply.py:57-58), which reproduces the plan.json counts
+   116/125/303/63. The protocol's literal "verdict is not ban" wording would have given 140/132/304/66. ndvi used
+   the protocol's fixed fallback subset (9 context + 20 tree features = 29), because 385 of its 492 tree features
+   only exist inside an engine derive (datasets/ndvi/dataset.yaml:19-23). Its classifier was weak
+   (AUC 0.52-0.58). defo kept the h_* columns (built from earlier labels), because the protocol's exclusion list
+   names only hist_*. None of them is in any top-10.
+e) The cap-then-renormalise step leaves some maximum weights above 20 (fire 20.74, coral up to 36.1). This follows
+   the protocol (PROTOCOL.txt:84-85).
+
+5. PLAIN ANSWER FOR THE OWNER
+-----------------------------
+Making the tuning period look like the test period changed the tool choice on only one of five problems, coral.
+On pm25, ndvi, fire and defo every version kept the original tool, so it neither helped nor hurt there (fire's
+penalty setting moved, but we can only score it at the saved setting). On coral, the cheating upper bound
+(weighting toward the real test inputs) cut MAE from 6.698 to 6.359, so the idea has some real room. The honest,
+deployable rolling version (V2), which only uses inputs from test years that have already happened, cut coral
+MAE to 6.520, hurt nothing elsewhere, beat its shuffled-weights placebo, and passed all four pre-registered
+success items. The other honest version (recency, V3) made coral slightly worse (6.736) and failed. So yes, there
+is an honest version that helped without hurting, but the gain is small: about a fifth of coral's noise band,
+half of it approximate, from one problem with about 33 survey groups. The classifier mostly tells the years
+apart by the ENSO and climate-index "calendar" rather than by real look-alike conditions. Treat V2 as a lead to
+pre-register and test in the next engine version, not as a proven improvement.
+
+==== SKEPTIC ADDENDUM (2026-10-21; supersedes the "V2 passes" verdict above) ====
+- Coral cross-fitting was by row, not by reef site; 419 sites appear in both sets. Re-run with site folds: V2 6.616 (-0.08, 0.09 of the band). The 2017 gain vanishes; all of what remains comes from 2019. (skeptic_check/coral_sitefold)
+- With the protocol's literal feature list (66 columns), V2 fails the ESS gate in 2 of 3 years and even V1 falls back. (skeptic_check/coral_literal66)
+- The weights mostly favour low-bleaching rows (weighted surface mean y 2.6-6.4 vs 9.5 unweighted), which suits the log-link tools and happened to fit the quiet years 2017-2019. They do not find look-alike conditions. The classifiers mostly separate periods by the climate-index calendar.
+- On the other problems the honest version "did nothing" rather than "did no harm": it fell back or kept the pick. Fire's point moves also appear in the placebo, so they are noise.
+- Defo's h_* columns are built from labels, so defo V1/V2 are not label-free (no pick changed).
+- BOTTOM LINE: no robust, honest improvement. V2 is at most a weak lead. If tested in the next engine version, pre-register it with site-level folds, a frozen feature list and a low-bleaching-tilt check.

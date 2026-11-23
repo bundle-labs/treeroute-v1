@@ -1,0 +1,1332 @@
+SPEC_HUMAN_PARTB.txt - the human-rival tool, Part B: FIRE (monthly burned fraction; leads 0, 6, 12 months)
+==========================================================================================================
+
+Written 2026-10-25. Status: SPEC ONLY. Nothing is built, run, downloaded or scored by this file. No fire test label
+was read to write it. No key file was opened (the fetcher's dry run only checks that ~/.ewdsapirc exists: MISSING).
+Revised 2026-10-25 after a review (18 issues; each verified against the files; section 12 REVIEW RESPONSES lists what
+changed, where, and the parts not adopted with the reason). The review measurements re-run for this revision read
+TRAINING labels only (export train files, refit / tune / guardfit rows); no test label was read.
+Build folder: D:\treeroute\human_rivals_build (the ONLY place builders write; never delete; a retired file goes to
+D:\treeroute\human_rivals_build\_moved\<utc stamp>_<reason>\). Same style and rules as SPEC_HUMAN.txt (Part A).
+
+Short names used for sources (all read-only):
+  PLAN  = C:\Users\<user>\Desktop\data set for reserch paper\engine\RIVALS_PLAN_HUMAN.md
+          (fire rows :69-71; protocol :99-131; D2/D3 :158-159; Q16-Q24 :278-285; R10 :300; R11 :301)
+  RUL   = ...\engine\OWNER_RULINGS_2026-10-06.md (AB :172-179; AG :215-223; AH :225-231; AI :233-237; AE4 :203)
+  PEND  = ...\engine\PENDING_PARTS.md (Part 590 :264; Part 606 :557-580; Part 617 :926-935; Part 618 :937-953;
+          Part 619 :955-980; Part 620 :982-1014)
+  RF    = D:\treeroute\rivals_plan_human\research_fire.md
+  SPECA = D:\treeroute\human_rivals_build\SPEC_HUMAN.txt (Part A spec; 1.4 :165-178, 1.5 :180-194, 1.6 :196-225,
+          1.7 :227-235, 1.9 :245-273, 1.10 :275-294, 6 :548-578, 7 :581-640)
+  DRAFTA= D:\treeroute\human_rivals_build\PREREGISTRATION_DRAFT_human_partA.txt (template of the Part B draft)
+  T     = D:\treeroute\human_rivals_build\human (BUILD_ROOT; tool code T\rivals_human\*.py, adapters T\adapters\*.py,
+          registries T\registry\*.yaml)
+  FP    = D:\treeroute\human_tools\fetch_products.py (FROZEN; read-only); DLC = D:\treeroute\human_tools\DOWNLOAD_COMMANDS.md
+  RUN   = D:\treeroute\runs\fire\headline\20261017_869d1f38 (derived.json, plan.json, test_preds.parquet, ladder\)
+  EXP   = D:\treeroute\rival_export\fire\20261017_869d1f38\lead_{0,6,12} (DO NOT DELETE before the fire slim)
+  CB    = D:\treeroute\rivals\fire\20261017_869d1f38 (fire common board, harness 71457aa9, accepted by AG5)
+  PKG   = ...\engine\datasets\fire (dataset.yaml; data\static\part-0.parquet; ingest\target_reader.py)
+  RAW   = D:\fire\cems\raw (old netCDFs, read-only; test fixtures only, copied in small subsets into pytest tmp)
+
+Facts checked for this spec (2026-10-25, read-only; numbers are measured, not estimated):
+- Tool code hash today = cd956f1dbd0f9b0f2ada37c1a27f8212768d94fc6242cab0686bf7c71608a273 (recomputed with the recipe
+  of T\rivals_human\common.py:115-126 over config.code_files(), config.py:467-472); equals the NDVI human board's
+  tool_code_sha256 (D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board.json). Coral/defo/pm25 boards: 32ec5df0.
+  Registry shas today: _products.yaml 4e4797597c0a7c76815159d7ce5fa3cf723d2b996d1e3b67a05968136bcb5d1f;
+  _schema.yaml 0d4dbcb7d81e32b901c35395df3fc4f78619493a9d18bb52711f3c6daf7b8ced; coral.yaml 7e356d61...;
+  defo.yaml fe11acf4...; pm25.yaml 5fe8e221...; ndvi.yaml b69537fc7e360da16b5dc60ae827e9a25f509678527695224fa193c20ce5424d.
+- RUN: fingerprint 869d1f38524d4b4c776538c54fe71f22b6d3d30058a81618d574643a6fdf95dd; leads 0, 6, 12; R22 links
+  identity, log_c, arcsine (plan.json "links"); R28 legal [0, 1]; R2 month_of_year, 12 steps per year; R17
+  start_offset_steps 1; R11 cuts lead 0 fit 24228 / guard 24192, lead 6 24223 / 24187, lead 12 24217 / 24181
+  (R9 cut days: 2018-12-31 / 2015-12-31, 2018-07-31 / 2015-07-31, 2018-01-31 / 2015-01-31).
+  Step = year x 12 + month (24037 = 2003-01; test 24229..24276 = 2019-01..2022-12).
+- derived.json R8.value[<col>].steps (the field the tool reads, index.py:60-74): V01_mean_temp_C 0,
+  V02_total_precip_mm 0, V05_mean_vpd_kPa 0, V09_mean_wind_ms 0, rmin_pct 0, era5l_d2m 0, spi_01m..spi_24m 0,
+  oni 3, tni 3, nino12/3/34/4 2 (108 entries: steps 0 x61, 1 x31, 2 x13, 3 x3).
+- EXP roles (greece_mainland file; every group alike): lead 0 refit time <= 24227, tune <= 24191, inner
+  24193..24227; lead 6 refit <= 24222, guardfit <= 24186, guard 24193..24222; lead 12 refit <= 24216, guardfit
+  <= 24180, guard 24193..24216; test 24229..24276 at every lead (50 scored units x 48 months per group, 96,000 rows).
+  time - issue = lead on every row. No train or test row holds time 24228 (Dec 2018): see 1.4.
+- EXP x__ columns at lead L are the lead-0 values at time = issue (x__oni, x__spi_03m, x__V02, x__nino34 byte-equal
+  on greece_mainland_584_1167). Against D:/monthly_panel: x__oni = panel oni of issue - 3, x__tni of issue - 3,
+  x__nino34 of issue - 2, x__spi_03m and x__V02_total_precip_mm of the issue month (lag 0). So x__oni is ALREADY the
+  lagged ONI of the catalogue rule (catalog.yaml:66-71; owner 2026-09-27 "oni/tni lagged, not dropped").
+- EXP train files 147 columns, test files 142 (x__oni, x__tni, x__nino*, x__spi_01m..24m, x__V02_total_precip_mm
+  present in both); guardside files 14 columns (h__ + ngd__ only). export_manifest: zero_share_refit_y 0.9803; P1
+  refit max_label_time 24227 (= fit cut - 1, the R17 offset).
+- Normals: nfit__identity of the test rows has no NaN at any lead and is <= 0 on 86,304 / 86,388 / 86,464 of 96,000
+  rows (lead 0 / 6 / 12); ngd__identity on guard-side rows has no NaN.
+- Normals on FIT rows are IN-SAMPLE means (training labels only): nfit__identity on lead-0 refit rows equals the mean
+  of y per (unit, calendar month) over the refit rows (max |difference| 1.1e-16, all 40 groups); ngd__identity on
+  lead-0 tune rows and on lead-6/12 guardfit rows, and nfit__ on lead-6/12 refit rows, likewise (greece_mainland,
+  sahel, cerrado; max 6e-17). On inner / guard / test rows the normal is out of sample (inner/guard use the GUARD-cut
+  normal ngd__, rivals_build/rivals/harness.py:62, layout.py:182; slim.py:418-470). Lead-0 refit rows, all groups:
+  target-scale level sum(N y) / sum(N^2) = 1.0 with the in-sample N, 0.846 with the leave-year-out normal
+  N_loo = (S - y) / (n - 1) (S, n = sum and count of y in the row's unit-month cell); 2,192 of 14,834 burned rows are
+  the only burn of their cell (N_loo = 0); cells hold 1..16 rows; the unweighted mean of y / N_loo (N_loo > 0) is 1.58
+  (max 1,080, p99 27.9). Computing N_loo as (n N - y) / (n - 1) instead leaves float residues of ~1e-17 (ratios up to
+  ~1e17 measured): N_loo must come from the cell SUM (section 4.4).
+- SPI and ONI: train rows x__spi_* in [-3.09, 3.09], no NaN; x__oni in [-1.64, 2.75]. Test rows at leads 6 and 12
+  (issue months 2018-01..2022-06): no NaN and no |SPI| > 3.5 in x__spi_* or x__oni. (Part 620's NaN spi_03m cases are
+  lead-0 issue months in the test years; no fire runner reads lead 0.)
+- PKG static table: 925,737 units, columns cell_id, region, lat, lon (float64), grid_ix, grid_iy; all 4,000 bank units
+  of EXP units.parquet (unit, group, is_scored, seen_during_design; 100 per group, 50 scored) match one cell_id.
+- RAW formats (xarray 2024.7.0): ERA5 files (hist_yakutia_larch_2020-2020.nc, SMOKE_hist_multiyear.nc greece
+  2018-2022, SMOKE_greece_2020.nc): dims (valid_time daily 00:00, latitude descending, longitude), variable fwinx
+  float32, fill NaN, 0.25 deg; greece holds 20 all-NaN (sea) points of 285. SEAS5 files (seas_<region>_<year>.nc):
+  dims (number 0..50, time = start 1st of month 00:00, step = k days + 12 h, latitude, longitude), valid_time 2-D
+  (time, step); a single-start file (SMOKE_greece_seas_2020-06.nc) has a scalar time and 1-D valid_time; western
+  longitudes stored 0-360 (great_plains 256.25..263.25, cerrado 304.5..313.5, canadian_taiga 249.25..260.25); the
+  1-deg grid starts at the request box's south-west corner (great_plains: box W -103.75 -> 256.25, S 36.5).
+  northern_australia_monsoon SEAS5: 13 of 35 points all-NaN. FWI range ~1.7e-9 .. 220. Every RAW file also carries a
+  scalar coordinate `surface`; hist_yakutia_larch_2020-2020.nc holds the extra data variables fdimrk, ercnfdr, kbdi
+  and drtcode beside fwinx (3.2 ignores both; checked on all 26 files).
+- Nearest-point dry check on RAW (bank units, haversine, 5 x 5 window): 0 units outside a box, 0 uncovered; only
+  northern_australia_monsoon (SEAS5) had 2 units whose nearest point is sea (substituted).
+- FP dry run (--dry-run D2 D3 --no-network): D2 region 160 requests 0.47 GB; D2 merged 40 requests 2.29 GB (inside
+  2.2 x 1.10); D3 region 840 requests 1.94 GB; D3 merged 210 requests 8.22 GB ("OVER", needs --approved-gb 8.3).
+  Merged box10 (greece, iberia, andalusia, algeria, sahel) spans W -9.75 .. E 25.50, and the per-region sahel box
+  spans W -8.50 .. E 4.75: both CROSS 0 deg longitude (a 0-360 file is then non-monotonic in longitude).
+- CB: harness_code_sha256 71457aa9..., run.legal [0, 1], engine.live_file_sha 930d961c...; accepted through
+  common_harness_accepted_boards (T\human_rivals_production.yaml; common.py:95-112; RUL AG5).
+
+**ATTENTION (must-reads before building)**
+B1. DO NOT DELETE the fire export EXP before the fire `slim` (PEND Part 620 :1006; HUMAN_OWNER_COMMANDS.txt:16 says
+    "delete the scored fire export": that line is STALE). Without registry/fire.yaml `slim` refuses (config.py:340-343).
+B2. Every fire fact lives in registry/fire.yaml (data) and adapters/fire_*.py. _schema.yaml is NOT edited (every field
+    used below exists, _schema.yaml rival_fields / package_fields). Shared files edited: registry/_products.yaml
+    (append the fire block; Part A entries untouched) and ONE shared code file, rivals_human/maps.py (section 4.4: F6
+    implemented as the approved research C-A states it - leave-year-out normal on fit rows - and with target-scale
+    squared error, i.e. an N_loo^2-weighted isotonic ratio, PLAN rule 5; Iso.fit gains an optional `weights`
+    argument whose default keeps today's call). No Part A registry lists F6 (checked: coral/defo/pm25 families), so
+    no Part A pick, board or score changes. Justified in BUILD_NOTES_fire.txt (hard rule) and logged as a Part
+    (section 6, PART_LOG_DRAFT_partB.txt).
+B3. Adding adapters/fire_*.py and editing rivals_human/maps.py change the tool code hash (config.code_files()
+    includes rivals_human/*.py and adapters/*.py, config.py:467-472). Every Part A board then refuses load_board
+    (board.py:418-421) - they are finished and need no
+    further command; the joiner never calls load_board and never compares tool hashes (join.py:99-284; it checks
+    fingerprint, band, harness, test_preds sha and ours MAE only). Part 619 already joined boards made under two tool
+    hashes (32ec5df0 and cd956f1d). Fire code stays inside the hash on purpose (it must be pinned by Part B).
+    Part A section 12 (DRAFTA :324-329) requires a change to a section-1 file (tool hash, _products.yaml) to be logged
+    as a new Part with old and new hashes, reason and diff (Part 618 precedent): B4 drafts it in the build folder
+    (PART_LOG_DRAFT_partB.txt, section 6); the main session appends it to PENDING_PARTS.md (the engine folder is
+    outside the builders' write root).
+B4. Persistence needs the label of Dec 2018 (step 24228), which no slim set holds (R17 offset 1; same failure as
+    NDVI, PEND Part 618). Without the refs label store of 1.4 the fire `refs` parity proof refuses at leads 6 and 12.
+    `score 0` does NOT refuse then: refs writes lead_0/refs.json with result "REFUSED: parity proof failed" before it
+    refuses (refs.py:329-331, :360-363), and score only checks that refs.json exists (board.py:1197-1201), so it would
+    score a board without the nowcast persistence rows, silently. Owner command F9 therefore stops unless refs.json
+    "result" starts with "parity proof passed" (the NDVI board's reads "parity proof passed at leads [6, 12]").
+B5. Normal-anchored forms (F6, the ENSO and SPI runners) predict exactly 0 wherever the row's normal is 0: 86-90% of
+    the test rows (facts above). Disclosed; F2-F5 candidates have no such restriction.
+B6. The LIVE engine must still be 930d961c at fire `init` (board.py:307-310): engine v2 is installed only after every
+    rival board finishes (RUL AE4 :203). The fire human board is the last one.
+B7. Time to the lead-6 cut-off: 18 Nov 2026 (Q24, PLAN :285). D3 has not started (no ~/.ewdsapirc).
+B8. The fetcher rewrites product_manifest.json on EVERY run, even when every file is skipped: it appends to `runs` and
+    saves at the start (FP:733-735) and rewrites total_bytes / complete at the end (FP:798-802). init pins that file's
+    sha (board.py:168-185, :322-327) and every later command re-checks it (board.py:450-451). So: never re-run
+    fetch_products.py for D2 or D3 after the first init that saw the product (the F7 DRY init or the F9 init); check
+    with `manifest --product <id> --verify` (it never touches the product folder) and the manifest's own "complete"
+    value. A first or killed fetcher run leaves a manifest with NO `complete` key (written before the first download,
+    FP:726-735; set only when a run ends, FP:801) and the tool refuses only complete == false (index.py:150), so
+    availability() itself requires complete == true (3.1). A D3 still downloading at F9 under OD-4 is harmless only
+    because geff_seas5 is then waiting and load_board re-checks pins of ready rivals only (board.py:446-451).
+B9. Every OWNER DECISION whose answer lives in registry/fire.yaml, registry/_products.yaml or code (OD-1 .. OD-10,
+    OD-12 .. OD-14; i.e. all but OD-11) is ruled and written BEFORE the F7 DRY pass (before F8 when there is no DRY
+    pass), and F7 runs once, after the D3 outcome is final (D3 adapted, or the OD-4 cut-off edits written). The DRY
+    board records the registry shas (human_board.json "registry", board.py:376); the real init must reproduce them
+    and the real lock the DRY picks (owner-command stops, section 8). Reason: the DRY pass prints each runner's guard
+    MAE; a form or constant switched after seeing it would be a choice on guard rows outside the pre-registered
+    single-candidate pick (not covered by PLAN rule 7 or R10).
+
+-----------------------------------------------------------------------------------------------------------------
+0. WHAT PART B ADDS, IN ONE PICTURE
+-----------------------------------------------------------------------------------------------------------------
+
+  D2 (GEFF-ERA5 daily FWI, 0.25 deg) --fire_geff (kind era5_daily)---------> index geff_era5 lead 0 (x__fwi_mean, x__fwi_pct)
+  D3 (GEFF-SEAS5 daily FWI, 1 deg)   --fire_geff (kind seas5_daily_leads)--> index geff_seas5 lead 6 (same stats)
+  slim x__oni                         --fire_enso runner (fit/predict)------> enso_lag  leads 6, 12
+  slim x__spi_01m..24m                --fire_turco runner (fit/predict)-----> turco_spi leads 6, 12
+  D:/fire/target 2018 (PKG reader)    --fire_refs_prep (owner prep)---------> refs label store (Dec 2018 labels for refs)
+  rivals_human/maps.py F6             --the ONE shared code edit (4.4)------> F6 fitted as C-A states (leave-year-out
+                                                                             normal, N^2-weighted ratio)
+  then the tool's commands: slim, adapt, check, init, tune, lock, refit, refs, score, board, join (SPECA 1.13).
+
+-----------------------------------------------------------------------------------------------------------------
+1. HOW FIRE PLUGS INTO THE TOOL (interfaces relied on, with file:line; the one shared code edit is section 4.4)
+-----------------------------------------------------------------------------------------------------------------
+
+1.1 Registry and products (data)
+  - registry/fire.yaml is read by config.load_registry (config.py:337-366), validated against _schema.yaml
+    (validate_against :314-334) and check_rival (:392-431): an index rival needs adapter + stats + families in the
+    order F0..F6 (:420-421); a runner rival has no families, stats or adapter (:401-406); a rival without a lead-0 row
+    must use pick lowest_covered_lead_guard (:428-431); "none" needs a reason (:384-386).
+  - board.check_registry_against_run (board.py:58-97): every run lead named; links are R22 links; t1_kind_columns
+    are R8 keys; runners need a label-free coverage (all_rows or a rule mapping, :93-97); slim extras are x__/c__ only
+    (slim.check_extra_columns :108).
+  - registry/_products.yaml via config.load_products (config.py:434-447); `{index_root}` expands (:450-464).
+  - A download product names the fetcher's own manifest: index.product_manifest (index.py:140-152) needs a "files"
+    mapping with sha256 per file and refuses "complete": false; product_root = the manifest's folder when no `path`
+    (index.py:155-162); init pins the manifest sha (board.py:168-185, 322-327); `manifest --product <id> --verify`
+    re-checks every listed sha (manifest.py:44-57). The fetcher writes exactly that format: files {name: {request_id,
+    bytes, sha256, started, finished, seconds, served_by}}, requests {id: {id, file, request, expected_bytes,
+    regions, starts?}}, complete (FP:724-809; :760, :789-791, :801).
+
+1.2 Adapters (I kind, one-go index, stage "all")
+  - build(ctx, rival, lead, stage) -> DataFrame with exactly config.INDEX_FIXED_COLUMNS (config.py:97) + stats;
+    checked by index.check_frame (index.py:410-479: one row per slim key, float64 stats, int64 info_end, text src and
+    product_cell, src names opened through ctx.open_product with the manifest sha, tier timing on covered rows;
+    I kind out-of-range values only counted).
+  - AdapterCtx (index.py:188-347): keys("stage") (:207-212; test keys need no lock, slim.py:391-412), units()
+    (:214), open_product(pid, name) (:315-327), product_files (:307), product_root (:311), product_available (:296),
+    t1_boundary (:285), log (:345), work_dir / write_bytes (:330-343), run (H.Run: .cuts[L]["fit_cut"|"guard_cut"],
+    .derived, .plan), lead, stage, rival, cfg, products, timing, season, steps_per_year.
+  - Only these ctx names may appear in adapters (test_h20 "every ctx call of an adapter exists", T\rivals_human\
+    tests\test_h20_nonames.py:41-66).
+  - Tier timing: index.Timing (index.py:43-94): grids T1 info_end <= issue - S, S = max R8 steps of the rival's
+    t1_kind_columns; T2 target_obs_end <= time - (1 if lead 0 else lead) - R17 offset; check_tier_timing
+    (:106-126): P/L/X rows pass both on every covered row, A rows break one.
+  - availability(ctx, rival) -> (ok, line) is called by init (board.py:328-332); a waiting non-optional P rival
+    blocks init unless --allow-waiting (board.py:348-356); lock --without <id> --decision <text> (board.py:702-716).
+
+1.3 Runners (M kind)
+  - Module with fit(ctx, rival, lead, fit_set) -> JSON-able params and predict(ctx, rival, lead, params, score_set)
+    -> DataFrame(unit, group, time, issue, lead, pre, info_end, target_obs_end) (methods.py:1-11, 40-91;
+    config.RUNNER_COLUMNS :107). Labels only through ctx.fit_labels(fit_set) inside fit (index.py:222-249); features
+    through ctx.features(set) (index.py:251-256: keys, normal {link: array}, history, extras; test needs the lock).
+  - Tune at the pick lead: pick_sets -> (6, "guardfit", "guard") for pick lowest_covered_lead_guard (board.py:192-204,
+    611-648); refit at the pick lead reuses the tuning guard predictions, other leads fit guardfit -> guard
+    (board.py:912-933); refit then fit "refit" -> predict "test"; a NaN pre on a covered test row refuses
+    (board.py:940-943). Comparator: identity trees-off of the run (SPECA 1.9).
+
+1.4 Reference rows (refs) and the Dec-2018 label (ATTENTION B4)
+  - refs.grid_refs reads the label at time - gap, gap = (1 if lead 0 else lead) + offset (refs.py:124-130); its
+    labels come from all_labels: slim train sets + lead-0 test labels + the registry's refs_label_store
+    (refs.py:214-242, 344). store_labels (refs.py:245-298) reads files `file_pattern.format(group, year)` with
+    unit/year/month/label columns, adds only steps in (newest held training step, lead-0 fit cut] (here 24228 only),
+    and refuses unless every overlapping held label is byte-equal (float64).
+  - The fire target store D:/fire/target/{group}_{year}.parquet is keyed on lat/lon (float32) with n_valid, NOT on
+    cell_id (PKG dataset.yaml header; PKG ingest/target_reader.py:1-50). The engine reads it through
+    target_reader.read_target_file(path, {"group", "year"}) (target_reader.py:151-200: key map at 5 decimals :74-78,
+    n_valid > 0 rule :134-148, complete census). So refs_label_store cannot read D:/fire/target directly.
+  - Solution (no shared code change): an owner prep step (adapters/fire_refs_prep.py, section 3.9) writes a
+    cell_id-keyed copy of the 2018 labels made by the PACKAGE'S OWN reader into the geff_era5 work folder; that copy
+    is a product (fire_refs_label_store) and fire.yaml refs_label_store points at it. Same approach as Part 618
+    (NDVI read V11 from the panel), reading training-period labels only (year 2018 <= train_end).
+
+1.5 What the tool already does for fire without any change
+  - L1 print: data rule legal_min 0 and lead-0 refit zero share 0.98 >= TWEEDIE_ZERO_SHARE (board.py:379-381).
+  - Accepted older common board (AG5) through the production config (common.py:95-112).
+  - Join of fire as a full problem once its board is scored, or `--pending` before (join.py:107-210).
+  - Resolution-matched tables when resolution_matched: true (board.py:1293-1296, 1349-1374).
+
+-----------------------------------------------------------------------------------------------------------------
+2. registry/fire.yaml AND THE FIRE ENTRIES OF registry/_products.yaml (builder B1; data, not code)
+-----------------------------------------------------------------------------------------------------------------
+
+2.1 Package fields (registry/fire.yaml top)
+
+  package: fire
+  run: "D:/treeroute/runs/fire/headline/20261017_869d1f38"
+  leads_without_rival:
+    12: "no human fire forecast reaches 12 months: GEFF-SEAS5 stops at 216 days; the ENSO-lag and SPI-lag rows are
+         printed only as labelled statistical extensions"      # wording if OWNER DECISION OD-3 = X (recommended);
+                                                               # if OD-3 = P: "...; the ENSO-lag and SPI-lag rows are
+                                                               # our implementations of published methods"
+    # 6: ONLY if D3 misses the 18 Nov cut-off AND OD-4.2 = (a) (literal Q24; RECOMMENDED); written at the cut-off,
+    #    BEFORE F7 (B9). The tool prints it as "no published forecast at this lead: <text>" (board.py:1397-1403,
+    #    join.py:217-227), so the text names the published product that is missing:
+    #    "the published lead-6 fire forecast, F-SEAS5 (CEMS GEFF-SEAS5 FWI), is pending: D3 was not complete by the
+    #     18 Nov cut-off (Q24); the ENSO-lag and SPI-lag rows at lead 6 are printed as labelled extensions, never decide"
+    #    Under OD-4.2 = (b) NO lead-6 line is added (that prefix would be false while the runners decide); see OD-4.
+  refs_label_store:                      # ATTENTION B4; refs.py:245-298; the product is written by section 3.9
+    product: fire_refs_label_store
+    file_pattern: "{group}_labels_{year}.parquet"
+    unit_column: cell_id
+    year_column: year
+    month_column: month
+    label_column: burned_frac
+    dtype: float64
+  notes:
+    r10: <the R10 text of 2.6>
+    reference: "own history = persistence and damped persistence at the nowcast (Q4; label at t-2, offset 1),
+                guess-normal, last-5 normal; reference = predict-zero"
+  (no nowcast_baseline_note: ruling Q4 names "the human baseline to beat" for PM2.5 only)
+
+2.2 Rival geff_era5 (F-ERA5; PLAN :69; Q3, Q19 a, Q13)
+
+  - id: geff_era5
+    label: "F-ERA5: CEMS GEFF-ERA5 Fire Weather Index of the target month (Copernicus EMS fire danger reanalysis)"
+    kind: I
+    adapter: "adapters.fire_geff:build"
+    availability: "adapters.fire_geff:availability"
+    prep: "adapters.fire_refs_prep:run_prep"        # hosts the refs label store prep (3.9); the adapter never opens
+                                                    # fire_target_2018 or fire_refs_label_store (tested, T-F17)
+    products: [cems_geff_era5_fwi, fire_static_cells, fire_target_2018, fire_refs_label_store]
+    stats: [x__fwi_mean, x__fwi_pct]
+    families: [F2, F3, F4, F5, F6]
+    links: all
+    t1_kind_columns: [V01_mean_temp_C, V02_total_precip_mm, V09_mean_wind_ms, rmin_pct, era5l_d2m]
+                     # the FWI inputs (noon temperature, 24 h precipitation, wind, humidity); R8 steps 0 for all ->
+                     # T1 boundary = issue; target-month FWI is parity (PLAN ATTENTION 1, Q3)
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      6: {tier: none, reason: "the target month's reanalysis FWI is future weather at a 6-month issue; the forecast
+          form is F-SEAS5 (geff_seas5)"}                                       # OWNER DECISION OD-7
+      12: {tier: none, reason: "no fire-danger product reaches 12 months (GEFF-SEAS5 stops at 216 days)"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose unit maps to a valid 0.25-deg land point and whose target month has >= 80% finite daily
+                    FWI (x_finite of the picked stat; x__fwi_pct also needs >= 10 reference values, 3.6)"
+    disclosures: (2.5 F-ERA5 list)
+    r10_note: (2.6, + "x__fwi_mean was chosen after Parts 496-498; the normal-anchored C-A / F6 form and x__fwi_pct
+               (RF section 2, written 2026-10-21) were chosen with knowledge of Parts 496-498, whose FWI-only maps lost
+               to predict-zero (MAE 0.0254 vs 0.0192) and gave a negative box-matched anomaly R2 (-0.089) on 2021-22
+               rows inside today's 2019-22 test window (RF section 3, directly below C-A); no score of F6 or of
+               x__fwi_pct itself exists")
+    options:
+      kind: era5_daily
+      product: cems_geff_era5_fwi
+      dataset: cems-fire-historical-v1
+      request_check: {product_type: [reanalysis], dataset_type: consolidated_dataset, system_version: ["4_1"],
+                      grid: "0.25/0.25", variable: [fire_weather_index]}
+      variable: fwinx
+      target_months_offset: 0            # the month read = the row's target month t (info_end = t)
+      unit_centres: {product: fire_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+      min_day_share: 0.8                 # MINDAYS rule (3.5)
+      sea_window_steps: 2                # 3.4
+      max_uncovered_unit_share: 0.01     # 3.4, RF:26 "fail loud above 1%"
+      pct_reference_end: lead_guard_cut  # 3.6: target months <= run.cuts[L]["guard_cut"] (lead 0: 24192, 2003-2015),
+                                         # the row's own month left out
+      pct_min_reference: 10
+      refs_store: {target_product: fire_target_2018, static_product: fire_static_cells, years: [2018],
+                   out_dir: refs_store, file_pattern: "{group}_labels_{year}.parquet",
+                   target_file_pattern: "{group}_{year}.parquet",
+                   target_reader: "C:/Users/<user>/Desktop/data set for reserch paper/engine/datasets/fire/ingest/target_reader.py"}
+
+2.3 Rival geff_seas5 (F-SEAS5; PLAN :70; Q16 M-5, HQ10, HQ11, L9 "a separate rival")
+
+  - id: geff_seas5
+    label: "F-SEAS5: CEMS GEFF-SEAS5 seasonal FWI, start 1st of month M-5, daily leads 150-184, mean of members 0-24"
+    kind: I
+    adapter: "adapters.fire_geff:build"
+    availability: "adapters.fire_geff:availability"
+    products: [cems_geff_seas5_fwi, fire_static_cells]
+    stats: [x__fwi_mean, x__fwi_pct]
+    families: [F2, F3, F4, F5, F6]
+    links: all
+    t1_kind_columns: [V01_mean_temp_C, V02_total_precip_mm, V09_mean_wind_ms, rmin_pct, era5l_d2m]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a forecast-only product: at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: none, reason: "GEFF-SEAS5 runs 216 days: no start legal at a 12-month issue reaches the target month"}
+    score_without_net: []
+    pick: lowest_covered_lead_guard      # picked on lead-6 guard rows; nothing carries over from geff_era5 (PLAN :70, :121-123)
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose unit maps to a valid 1-deg land point of its box and whose target month has >= 80%
+                    finite member-days (25 members x days of the month)"
+    disclosures: (2.5 F-SEAS5 list)
+    r10_note: (2.6, + "Parts 496-498 scored GEFF-SEAS5 itself at lead 0-1 month in one region (2021-22); the C-A / F6
+               / x__fwi_pct sentence of geff_era5 applies here too")
+    options:
+      kind: seas5_daily_leads
+      product: cems_geff_seas5_fwi
+      dataset: cems-fire-seasonal
+      request_check: {variable: [fire_weather_index], release_version: ["5"], day: ["01"]}
+      variable: fwinx
+      start_months_before_target: 5      # start = 00 UTC on the 1st of month t-5 = the end of the issue month (Q16)
+      lead_days: [150, 184]              # leadtime_hour 12 + 24 k, k = 150..184 (FP:81, :218-222)
+      members: [0, 24]                   # members 0-24 in every year (RF:39; FP:225-228)
+      unit_centres: {product: fire_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+      min_day_share: 0.8
+      sea_window_steps: 2
+      max_uncovered_unit_share: 0.01
+      pct_reference_end: lead_guard_cut  # lead 6: target months <= 24187 (2003-01..2015-07), own month left out
+      pct_min_reference: 10
+
+2.4 Runner rivals (written by B1 from this text; code by B2)
+
+  - id: enso_lag
+    label: "ENSO-lag regression (Chen et al. 2011, 2016; our implementation): the region's fire anomaly on the lagged ONI"
+    kind: M
+    runner: adapters.fire_enso
+    products: []
+    t1_kind_columns: [oni]               # R8 steps 3 -> T1 boundary issue - 3; x__oni IS ONI(issue - 3) (facts above)
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a seasonal method; at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: X, label: "labelled statistical extension: beyond the published lead of ENSO fire-season forecasts"}
+                                                                               # OWNER DECISION OD-3 (X recommended)
+    score_without_net: []
+    pick: lowest_covered_lead_guard      # one configuration; "pick" only names the guard lead (6)
+    slim_extra_columns: [x__oni]
+    optional: true                       # Q17 (PLAN :279)
+    resolution_matched: false
+    coverage: all_rows                   # label-free: every test row is predicted (a missing ONI -> the normal, counted)
+    coverage_note: "label-free: every row (a missing or out-of-range ONI predicts the normal, counted)"
+    disclosures: (2.5 ENSO list)
+    r10_note: (2.6, + "the form (RF:49) was written before any score of it, normal-anchored like C-A in the same note
+               (see geff_era5); ONI was a feature of every old fire model")
+    options:
+      form: E1                           # E1 | E2 | E3 (OWNER DECISION OD-2; section 4.1)
+      index_column: x__oni
+      index_abs_max: 5.0                 # |ONI| > 5 -> missing (counted)
+      min_fit_rows: 100                  # per group (Q2.HQ9 row floor)
+      fire_season_months: 3              # E2 only
+      min_month_rows: 100                # E3 only
+
+  - id: turco_spi
+    label: "SPI-lag climate-fire model (Turco et al. 2018; our implementation): fire anomaly on observed SPI at the issue month"
+    kind: M
+    runner: adapters.fire_turco
+    products: []
+    t1_kind_columns: [spi_01m, spi_03m, spi_06m, spi_12m, spi_24m]           # R8 steps 0 -> boundary = issue
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a seasonal method; at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: X, label: "labelled statistical extension: beyond the published lead of the SPI fire forecasts"}
+    score_without_net: []
+    pick: lowest_covered_lead_guard
+    slim_extra_columns: [x__spi_01m, x__spi_03m, x__spi_06m, x__spi_12m, x__spi_24m]
+    optional: true                       # Q20 (a) "a second optional beside ENSO-lag" (PLAN :281)
+    resolution_matched: false
+    coverage: all_rows
+    coverage_note: "label-free: every row (a missing or out-of-range SPI predicts the normal, counted)"
+    disclosures: (2.5 SPI list)
+    r10_note: (2.6, + "never run before; normal-anchored like C-A (see geff_era5); the SPI columns were features of
+               the old fire models")
+    options:
+      form: T1                           # T1 | T2 | T3 (OWNER DECISION OD-1; section 4.2)
+      scales: [x__spi_01m, x__spi_03m, x__spi_06m, x__spi_12m, x__spi_24m]   # T1 candidates; order = tie-break
+      fixed_scale: x__spi_03m            # T2
+      two_scales: [x__spi_03m, x__spi_12m]                                   # T3
+      fire_season_months: 3              # T1, T3
+      spi_abs_max: 3.5                   # SPI is capped at +-3.09 in the panel; beyond 3.5 = corrupt (precip sentinel, Part 620) -> missing
+      min_fit_rows: 100
+
+  Cut-off rule (OD-4.2): the runners' lead-6 rows are {tier: P} as above. Only if D3 misses 18 Nov AND OD-4.2 = (a),
+  both runners' lead-6 rows become {tier: X, label: "labelled extension: the primary lead-6 rival F-SEAS5 is pending
+  (D3 not complete by 18 Nov, Q24)"} together with the leads_without_rival[6] line of 2.1, written before F7 (B9).
+  Under OD-4.2 = (b) the tiers stay P and each runner's disclosures gain "lead 6: optional rivals only; the primary
+  F-SEAS5 is pending (D3 not complete by 18 Nov, Q24)". Whether the runners stay P is otherwise OD-13.
+
+2.5 Disclosures (registry `disclosures`; copied into Part B section 10)
+  F-ERA5:
+   - "GEFF-ERA5 v4.1 consolidated FWI (0.25 deg) is a reanalysis made after the fact; in real time only the intermediate
+      (ERA5T-based) stream existed: generous to the rival, as our own target-month ERA5 inputs are"
+   - "the run reads target-month weather (R8 steps 0 for temperature, precipitation, wind, humidity), so target-month
+      FWI is parity (Q3); ERA5 does not assimilate burned area"
+   - "0.25 deg FWI on 4 km units: a unit takes its nearest 0.25-deg land point (haversine); a unit whose nearest point
+      is sea takes the nearest land point within 2 grid steps (counted); a resolution-matched table is printed"
+   - "monthly mean of daily FWI; a unit-month with < 80% finite days is not covered (counted)"
+   - "x__fwi_pct = the unit's mid-rank percentile among its own same-calendar-month FWI of target months up to the
+      lead's guard cut (lead 0: 2003-2015; lead 6: 2003-01..2015-07; training years), the row's own month left out,
+      so every row (pick, refit and test rows alike) is ranked out of sample against FWI known before the guard cut"
+   - "F6 = normal x per-group isotonic ratio on the stat (identity link only), fitted as research C-A states: on fit
+      rows the normal is the same per unit-month mean with the row's own year left out, and the isotonic ratio is
+      fitted with weights N^2 (= squared error on the burned fraction, PLAN rule 5); predictions use the run's own
+      normal of the scored rows"
+   - "the L1 line of an F6 pick is the L1 isotonic anomaly map of the same stat (maps.fit_l1 has no F6 form,
+      maps.py:433-443); printed only"
+   - "normal-anchored F6 predicts 0 where the unit's training normal is 0 (86% of test rows)"
+  F-SEAS5:
+   - "re-forecasts (25 members) for starts to 2016-12, real-time forecasts (51 members, members 0-24 kept) from 2017-01:
+      part of train, all of test (HQ11); re-forecasts start from a different analysis"
+   - "start = 00 UTC on the 1st of month t-5 = the end of the issue month (Q16); released about the 5th, as our ERA5
+      inputs appear about 5 days after the month: data-time parity"
+   - "daily leads 150-184 always contain the whole target month (its first day is lead 150-153, its last 180-183; computed for every start month 2015-2020, leap Feb included);
+      days of the window outside the target month are dropped"
+   - "1-deg grid; every request's grid starts at its box's south-west corner, so values depend on the box choice
+      (region or merged; recorded in section 1 of the Part); a 1-deg value cannot rank units inside its box
+      (FIRE_CEMS_REPORT.md:86-101); a resolution-matched table is printed"
+   - "no lead 12: GEFF-SEAS5 runs 216 days"
+   - same pct / F6 / L1 / zero-normal lines as F-ERA5
+  ENSO-lag:
+   - "our implementation of a published method class (Chen et al. 2011 Science 334:787; 2016 Nat. Clim. Change 6:906);
+      not an operational product"
+   - "ONI is the engine's own lagged column x__oni = ONI of issue - 3 (catalogue rule; owner 2026-09-27: lagged, not
+      dropped); a subset of our model's inputs"
+   - "one slope per region, fitted on the region's training rows to the lead's cut; a missing ONI predicts the normal"
+   - "lead 12 is beyond the published lead (labelled extension, never decides)" (if OD-3 = X)
+  SPI-lag:
+   - "our implementation of Turco et al. 2018 (Nat. Commun. 9:2718): only OBSERVED SPI at the issue month; the paper's
+      seasonal-forecast SPI of the fire season is not used (no SEAS5 precipitation: D5 not approved, Q10)"
+   - "SPI scale and slope chosen per region on its training rows only (form OWNER DECISION OD-1)"
+   - "a missing or out-of-range SPI predicts the normal (counted; rule of Part A AG3 for H1)"
+   - lead-12 extension line as ENSO
+  Reference rows: "nowcast persistence reads the label at t-2 (R17 offset 1); the Dec-2018 labels it needs come from the
+   fire target store through the package's own reader, byte-checked against the held labels (Part 618 precedent)"
+
+2.6 R10 text (package notes.r10 and the start of every fire rival's r10_note; PLAN R10 :300; PEND Part 620 :986-991)
+   "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS GEFF-SEAS5
+    FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on 2019+ rows inside
+    today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254 vs 0.0192, and the
+    box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group isotonic form were chosen after
+    them, and the normal-anchored C-A / F6 form and the per-unit percentile x__fwi_pct were designed on 2026-10-21
+    with them in view - no score of F6 or x__fwi_pct itself exists);
+    Part 501 (XGB-Tweedie ML rival, old split); fire_danger and fire_danger_local (rivals.py, 15-24 Sep 2026,
+    D:/adaptation/_rivals/fire_L*.npz: our own Fosberg/FFDI-style index, L0 MAE 0.006715, R2 +0.0408, old split).
+    Also known when Part B was planned (2026-10-21) and specified (2026-10-25): our fire headline test scores (Part 590)
+    and the fire common board (Part 606: timid Tweedie and predict-zero win on MAE)."   (last sentence: OWNER DECISION OD-5)
+
+2.7 registry/_products.yaml: the fire block (B1 appends; first copies the current file, sha 4e479759..., to
+    D:/treeroute/human_rivals_build/_moved/<utc>_partB_baseline/registry/_products.yaml; Part A entries untouched)
+
+  # ---------------------------------------------------------------------------------------------- fire (Part B, builder B1)
+  cems_geff_era5_fwi:
+    manifest: 'D:/treeroute/human_products/cems_fire_historical_fwi/geff_era5_v4_1_consolidated_fwi_2003-2022_UNSET_OD6/product_manifest.json'
+    waiting_line: 'D2 (CEMS GEFF-ERA5 FWI) is not on disk, not complete (manifest "complete" must be true), or its folder in registry/_products.yaml is still the UNSET_OD6 placeholder: run DOWNLOAD_COMMANDS.md 2.3 (owner EWDS key + licence), then set the folder suffix (_merged or _region) BEFORE adapt (F5), never after the first init'
+    label: 'D2 CEMS GEFF-ERA5 fire danger reanalysis: FWI (fwinx), consolidated, system 4_1, 0.25 deg, daily 2003-2022'
+    licence: 'CC BY 4.0 (Copernicus Emergency Management Service); EWDS licence accepted by the owner'
+    source: 'EWDS cems-fire-historical-v1 (fetch_products.py spec_D2; owner ruling AB1)'
+    notes: 'PLACEHOLDER folder ..._UNSET_OD6: replace UNSET_OD6 by the folder DLC 2.3 actually wrote (merged = the DLC default, or region = --boxes region; OD-6), a one-line data edit BEFORE F5 adapt and never after the first init (the product registry sha is pinned, board.py:439-440)'
+  cems_geff_seas5_fwi:
+    manifest: 'D:/treeroute/human_products/cems_fire_seasonal_fwi/geff_seas5_r5_fwi_starts200208-202207_L150-184_UNSET_OD6/product_manifest.json'
+    waiting_line: 'D3 (CEMS GEFF-SEAS5 FWI) is not on disk, not complete (manifest "complete" must be true), or its folder in registry/_products.yaml is still the UNSET_OD6 placeholder: run DOWNLOAD_COMMANDS.md 2.4 (after D0'' and the box decision), then set the folder suffix BEFORE adapt (F6), never after the first init'
+    label: 'D3 CEMS GEFF-SEAS5 seasonal fire danger: FWI, release 5, 240 starts 2002-08..2022-07, daily leads 150-184, 1 deg'
+    licence: 'CC BY 4.0 (Copernicus Emergency Management Service); EWDS licence accepted by the owner'
+    source: 'EWDS cems-fire-seasonal (fetch_products.py spec_D3; owner ruling AB1)'
+    notes: 'PLACEHOLDER folder ..._UNSET_OD6: replace UNSET_OD6 by the folder DLC 2.4 actually wrote (region_y1 = approved 1.94 GB; merged_y1 = 8.22 GB, re-approval; _y4 if --seas-years-per-request 4 was used) = OD-6, BEFORE F6 adapt and never after the first init'
+  fire_static_cells:
+    path: 'C:/Users/<user>/Desktop/data set for reserch paper/engine/datasets/fire/data/static'
+    patterns: ['part-0.parquet']
+    label: 'fire unit centres (cell_id, region, lat, lon float64; 925,737 units)'
+    licence: 'project data'
+    source: 'engine package static table (read-only; ingest/build_static.py, ruling L5)'
+  fire_target_2018:
+    path: 'D:/fire/target'
+    patterns: ['*_2018.parquet']
+    label: 'fire target store, year 2018 only (40 files, lat/lon keyed): source of the refs label store (training labels)'
+    licence: 'project data (MODIS MCD64A1.061)'
+    source: 'fire package target store (read-only)'
+  fire_refs_label_store:
+    path: '{index_root}/fire/20261017_869d1f38/_work/geff_era5/refs_store'
+    patterns: ['*_labels_2018.parquet']
+    label: 'cell_id-keyed 2018 labels written by adapters/fire_refs_prep.py through the package reader (refs only)'
+    licence: 'project data'
+    source: 'prep --rival geff_era5 (owner command F3); production path <index_root>/fire/<run>/_work/geff_era5/refs_store'
+
+  _schema.yaml: NOT edited. Every field above exists (package_fields: package, run, leads_without_rival,
+  refs_label_store, notes; rival_fields: id ... options, prep, availability, coverage_note; product_fields: path,
+  patterns, manifest, waiting_line, label, licence, source, notes).
+  The UNSET_OD6 placeholders are deliberate: the box choice (OD-6) is not made, and a folder that does not exist makes
+  availability() wait and adapt / check refuse with the waiting_line (T-F01), instead of a default that silently
+  points at the wrong download.
+
+-----------------------------------------------------------------------------------------------------------------
+3. THE PRODUCT ADAPTER adapters/fire_geff.py (+ adapters/fire_refs_prep.py) (builder B1)
+-----------------------------------------------------------------------------------------------------------------
+
+3.1 Module surface (fixed names; B3 tests call them)
+  ADAPTER_FORMAT = "human-adapter-fire-geff/1"; KINDS = ("era5_daily", "seas5_daily_leads"); EARTH_RADIUS_KM = 6371.0
+  class FireGeffRefusal(RuntimeError)   (fail loud; never caught inside the module)
+  availability(ctx, rival) -> (bool, str)    reads the fetcher's product_manifest.json itself (path =
+      ctx.products[options.product]["manifest"]; json) and returns (True, "<n> files, complete") only when the file
+      exists, lists files and manifest.get("complete") is True. A missing file (incl. the UNSET_OD6 placeholder of
+      2.7), a manifest without a `complete` key (first or killed fetcher run, FP:726-735, :801) or complete false ->
+      (False, the product's waiting_line). Do NOT use ctx.product_available, index.product_status, or copy
+      pm25_reanalysis.availability (adapters/pm25_reanalysis.py:99-118): those refuse only complete == false
+      (index.py:150, :296-299), so a half-downloaded D2/D3 would count as on disk and init would pin it.
+  build(ctx, rival, lead, stage) -> DataFrame (the 1.4 columns of SPECA; stage must be "all": refuse train/test)
+  wrap_lon(lon) -> float64 ndarray in [-180, 180): ((lon + 180) mod 360) - 180
+  haversine_km(lat1, lon1, lat2, lon2) -> float64 ndarray (sphere, EARTH_RADIUS_KM; inputs cast to float64 FIRST, RF:26)
+  map_units(grid_lat, grid_lon, valid, unit_lat, unit_lon, window_steps) -> dict of arrays per unit:
+      i, j (int64 grid indices), substituted (bool), dist_km (float64), uncovered (bool)
+  month_days_in_window(start_date, target_year, target_month, lead_days) -> list of k (daily leads whose valid date
+      start + k days lies in the target month); refuses if the month is not wholly inside lead_days
+  fwi_percentile(unit, time, x, t_ref, steps_per_year, min_ref) -> float64 ndarray (section 3.6: reference = the
+      unit's values with t' <= t_ref, same calendar month, t' != t)
+  product_cell_id(box, lat, lon) -> str  "<box>|<lat %.3f>|<lon %.3f>" (lon wrapped)
+
+3.2 Reading the fetcher's exact layout (FP; no other layout is accepted)
+  - Folder: ctx.product_root(pid) = the folder of the fetcher's product_manifest.json (index.py:155-162):
+    D2 D:/treeroute/human_products/cems_fire_historical_fwi/geff_era5_v4_1_consolidated_fwi_2003-2022_<merged|region>/
+       files hist_<box|region>_<y0>-<y1>.nc, 5-year blocks 2003-07, 2008-12, 2013-17, 2018-22 (FP:295-320);
+    D3 D:/treeroute/human_products/cems_fire_seasonal_fwi/geff_seas5_r5_fwi_starts200208-202207_L150-184_<region|merged>_y<n>/
+       files seas_<box|region>_<year or y0-y1>.nc, one request per start year (240 starts; 2002 months 8-12,
+       2022 months 1-7) (FP:235-242, 323-359).
+  - Read product_manifest.json from that folder (json), and refuse unless: complete is True (a missing key refuses
+    too); dataset == options.dataset;
+    every name of ctx.product_files(pid) is in manifest["files"] and vice versa; each file entry's request_id is in
+    manifest["requests"] and that request's "file" is the same name; each request's "request" holds options.request_check
+    values exactly; D3 leadtime_hour == [str(12 + 24k) for k in lead_days range] (FP:221); area = [N, W, S, E] with
+    W <= E (no antimeridian box); "regions" a non-empty list.
+  - Layout table: one entry per file: {file, box (= the part of the file name between the prefix and the year tag),
+    regions, area, years (ints of request "year"), months (D3: ints of request "month" = start months)}.
+    Refuse if a region is named by two boxes, or a group of the slim units is named by none.
+  - Every file is opened ONLY through ctx.open_product(pid, name) (sha256 against the manifest, index.py:315-327),
+    one file at a time, read with xarray (decode_times true) and closed.
+  - Variable: options.variable ("fwinx") must exist. The layout check is on fwinx's DIMS and on the NAMED coordinates
+    only: ERA5 fwinx dims exactly (valid_time | time, latitude, longitude) with that time coordinate 1-D daily; SEAS5
+    fwinx dims exactly (number, time, step, latitude, longitude), or (number, step, latitude, longitude) with a scalar
+    time; coordinates number, step (timedelta), latitude, longitude 1-D, time scalar or 1-D, valid_time 2-D (time,
+    step) or 1-D (step) for a scalar time. Extra SCALAR coordinates (every RAW file has `surface`) and extra data
+    variables (hist_yakutia_larch_2020-2020.nc also holds fdimrk, ercnfdr, kbdi, drtcode) are ignored and never read.
+    Other fwinx dims, a non-scalar extra coordinate on fwinx, or a missing named coordinate refuses, listing the file's
+    variables and coordinates (fail loud; the format of RAW is the reference).
+  - Per box: every file's latitude and longitude arrays must be equal (float64 compare) to the first file's, else refuse.
+  - ERA5 checks: the valid dates of a file are exactly every calendar day of its request years (no gap, no duplicate,
+    no date outside), else refuse. SEAS5 checks: each file's starts are exactly the request's (year x month) at day 1
+    00:00; step values are exactly 12 h + k days for k in lead_days (35 values); number holds every member 0..24
+    (25 in re-forecast years, 51 from 2017: FP:225-228); valid_time == time + step on every cell, else refuse.
+
+3.3 Units -> grid points (the explicit longitude wrap; NOT fire_cems.py's matcher, PEND :998)
+  - Unit centres: ctx.open_product("fire_static_cells", "part-0.parquet") read with a pyarrow filter on cell_id
+    (as pm25_reanalysis.unit_centres, adapters/pm25_reanalysis.py:132-149); every slim unit (ctx.units()) must match
+    exactly one cell_id, else refuse; lat/lon float64 finite. The unit's region = units.parquet "group".
+  - For each box: grid points (lat_p, wrap_lon(lon_p)) of the file's own arrays (no lattice assumed: a 0-360 file
+    whose box crosses 0 deg, e.g. merged box10 or per-region sahel, is non-monotonic and still exact).
+  - Box membership: the unit must lie inside its box area: S <= lat <= N and W <= wrap_lon(lon) <= E (area in
+    -180..180 as the fetcher writes it, FP:162-174), else refuse listing the units (never silently dropped).
+  - Nearest point: argmin of haversine_km over ALL points of the box (first minimum in latitude-major file order:
+    deterministic).
+  - Valid (land) point: finite in at least one value (day / member-step) of EVERY file of the box (AND over files of
+    ANY over time); points finite in some files only are counted ("mixed mask points", printed).
+  - Sea substitution: if the nearest point is not valid, the nearest VALID point (haversine) inside the index window
+    |di| <= sea_window_steps and |dj| <= sea_window_steps around it (5 x 5 for 2); counted with its distance;
+    none -> the unit is uncovered (all its rows NaN), counted.
+  - Refuse if uncovered bank units > max_uncovered_unit_share x number of bank units (40 of 4,000) (RF:26).
+  - The unit's grid point is fixed for every month of the product (same box grid every year).
+  - Audit file: ctx.write_bytes(ctx.work_dir() / "map_units_lead_<L>.json", ...) with per unit: box, i, j, lat, lon,
+    substituted, dist_km, uncovered; and the counts.
+
+3.4 (see 3.3 for the rule; constants min_day_share 0.8, sea_window_steps 2, max_uncovered_unit_share 0.01)
+
+3.5 Daily -> unit-month aggregation and the target month of a start
+  ERA5 (kind era5_daily; lead 0):
+    x__fwi_mean(u, t) = mean of the finite daily FWI values at u's point over the calendar days of month t
+    (t = the row's target month + target_months_offset = t). MINDAYS rule: covered only if finite days / days in the
+    month >= min_day_share (0.8, i.e. >= 23 of 28-31 days); else NaN (counted). (The RAW reanalysis has no NaN day at
+    a land point; the rule is a guard, expected count 0.)
+    info_end = t (the last day of month t; period_end stamp). target_obs_end = NaN (FWI observes no burned area).
+    The adapter asserts time == issue on every lead-0 key (refuse otherwise). src = the file holding month t.
+  SEAS5 (kind seas5_daily_leads; lead 6):
+    For a key (t, issue, lead): the start s = 00 UTC on the 1st of the month of step t - start_months_before_target
+    (t - 5). The adapter asserts t - start_months_before_target == issue + 1, i.e. the start is the first instant after
+    the issue month (lead-6 keys have time - issue = 6, facts above; Q16 "1st of M-5"; RF:38).
+    Daily lead k (k = 150..184) has valid time s + k days + 12 h (leadtime_hour 12 + 24 k, FP:221). The target month
+    takes exactly the leads whose valid DATE lies in month t: k from d0 = (date(t) - s).days to d0 + days(t) - 1,
+    d0 in {150, 151, 152, 153}; the last lead is <= 183 for every month (computed for all 12 start months, leap
+    February included), so the 35-day window always holds the whole target month; the other window days are dropped.
+    month_days_in_window refuses a month not wholly inside lead_days (never expected).
+    x__fwi_mean(u, t) = mean of the finite values over members 0..24 (by `number` value, not position) x the days of
+    month t at u's point; covered only if finite cells / (25 x days(t)) >= min_day_share; else NaN (counted).
+    info_end = issue = t - 6 (the forecast's initial state is the end of the issue month; T1 boundary issue - 0
+    passes). target_obs_end = NaN. The R17 offset 1 concerns labels only (T2): FWI reads none.
+    src = the file holding start s. Starts 2002-08..2022-07 give targets 2003-01..2022-12.
+  Per-unit table: one row per (unit, t) for every month the product holds (ERA5 2003-01..2022-12; SEAS5 targets
+  2003-01..2022-12), columns unit, time, x__fwi_mean, n_finite, n_cells, product_cell, src, info_end.
+
+3.6 x__fwi_pct (per-unit percentile, out of sample for EVERY row, as of the lead's guard cut; RF:64 C-A; PLAN :69,
+    :97-98 rule 2, :112-113, :121-123 rule 7)
+  - T_ref = ctx.run.cuts[ctx.lead]["guard_cut"] (option pct_reference_end lead_guard_cut): lead 0 24192 (Dec 2015),
+    lead 6 24187 (Jul 2015). Why the guard cut and not the fit cut: the pick rows (lead-0 inner 24193..24227; lead-6
+    guard 24193..24222, issues 24187..24216) simulate the state as of the guard cut, and the engine runs them on the
+    guard-cut normal ngd__ and guard-cut history h__ (rivals_build/rivals/harness.py:62, layout.py:182; slim.py:418-470),
+    which are out of sample there. A fit-cut reference (the first draft) put each pick row's own FWI and the FWI of up
+    to 2-3 later years into its reference, and ranked refit rows in sample (own value in R: range 1/32..31/32) but test
+    rows out of sample (0..1), so maps were fitted on one percentile distribution and applied to another. One index
+    value per key serves every set (a lead-0 tune row is also a refit row; slim keys are unique per (unit, time,
+    issue)), so the one reference legal for all sets is the guard-cut one.
+  - Reference set of a row (u, t): R(u, t) = { x__fwi_mean(u, t') : t' <= T_ref, calendar month of t' = month of t,
+    t' != t, finite } (the unit's own grid point, after substitution). The row's own month is left out whenever
+    t <= T_ref (lead-0 tune rows and refit rows to 2015; lead-6 guardfit rows and refit rows to 2015-07), so training
+    rows are ranked out of sample exactly like inner / guard / test rows. Sizes: lead 0 13 values (12 for rows inside
+    the reference); lead 6 13 for Jan-Jul and 12 for Aug-Dec (one fewer inside). So >= pct_min_reference (10) always
+    holds unless reference values are NaN.
+  - p(u, t) = ( #{r in R(u, t) : r < x(u, t)} + 0.5 #{r in R(u, t) : r == x(u, t)} ) / |R(u, t)|   (mid-rank empirical
+    CDF, float64 compares; a value above every reference value gives 1.0, below every one 0.0).
+  - |R(u, t)| < pct_min_reference (10) -> NaN for that row (counted). x(u, t) NaN -> NaN.
+  - info_end of the row stays the row's own data time (3.5); the reference only adds OLDER information (asserts).
+  - Asserts (refuse otherwise): (i) T_ref < the smallest test time of the lead (ctx.keys("test"); 24229); (ii) the
+    newest information in any reference value - its info_end by the 3.5 rule: T_ref for ERA5, T_ref - 6 = 24181 for
+    SEAS5 - is < the smallest issue of the lead's pick score set (ctx.keys("inner") at lead 0: 24193; ctx.keys("guard")
+    at a lead >= 1: 24187) and < the smallest test issue. So no pick row and no test row is ranked against FWI from
+    after its own issue (its own month is its parity input, 3.5).
+  - No label is read (FWI only). Stated in the index manifest log and in Part B sections 4 and 8.
+
+3.7 Join to the slim rows, the frame and its checks
+  - keys = ctx.keys("stage") at stage "all" (every train-file row + test keys; slim.py:391-412), refuse duplicate
+    (unit, time, issue) or a key of another lead.
+  - Merge keys on (unit, time) with the per-unit table (validate many_to_one); a key without a table row is NaN
+    (counted: month outside the product).
+  - Columns: keys, x__fwi_mean, x__fwi_pct (float64), info_end (int64; an uncovered row still gets its rule value),
+    target_obs_end NaN (float64), product_cell (str; "" when uncovered), src (str; "" when uncovered).
+  - The tool's check_frame then refuses a missing / extra / duplicate key, inf, a src whose sha is not the manifest's,
+    and a P row breaking T1/T2 (index.py:410-479).
+  - ctx.log lines: rows, covered per stat, substituted and uncovered units, MINDAYS failures, pct NaN cells, mixed mask
+    points, per group.
+
+3.8 RAM and time (x = estimate): one file at a time; two passes per box (valid mask, then the selected points by
+    vectorised isel). D2 merged files up to ~240 MB decoded, D3 merged ~180 MB. RAM < 2 GB. adapt geff_era5 ~10-30 min
+    (D2 read twice from HDD); adapt geff_seas5 ~30-90 min.
+
+3.9 adapters/fire_refs_prep.py (owner prep; ATTENTION B4; 1.4)
+  run_prep(ctx, rival) -> dict   (called by `cli prep --run $FIRE --rival geff_era5 --stage train`, index.py:669-695)
+  - years = options.refs_store.years ([2018]); refuse any year > (run.cuts[0]["fit_cut"] - 1) // 12 (= 2018): never a
+    test-year label.
+  - Import the PACKAGE'S OWN reader from options.refs_store.target_reader by file path (importlib.util, with
+    sys.dont_write_bytecode = True; no __pycache__ in the engine); assert its static_table_path() resolves to the same
+    file as ctx.open_product("fire_static_cells", "part-0.parquet") (sha-checked).
+  - For each group of ctx.units() and each year: path = ctx.open_product("fire_target_2018", "<group>_<year>.parquet");
+    frame = read_target_file(path, {"group": group, "year": year}) (target_reader.py:151-200); keep the bank units of
+    ctx.units(); write cell_id (str), year (int64), month (int64), burned_frac (float64, NaN kept) to
+    ctx.work_dir()/refs_store/<group>_labels_<year>.parquet via ctx.write_bytes (sorted by cell_id, month).
+  - NO label self-check inside the adapter, and no slim access at all. Adapters never touch .slim, .read_set,
+    ._hctx or ._token (any object, module paths such as rivals_human.slim.open_slim included): the review test R02
+    (review_tests/test_r02_runner_label_scope.py:71-88) AST-scans every adapters/*.py and fails the ONE suite on any
+    such attribute, and existing tests may not be edited. (No Part A adapter reads slim labels either.)
+    Return and log: rows written per group, finite labels per group, rows of Dec 2018.
+  - Then the owner hashes it (`manifest --product fire_refs_label_store`) and runs the EARLY byte check T-F18 (section
+    5; a realdata test outside adapters/, owner command F3, before any init): it calls
+    rivals_human.refs.store_labels(cfg, run, registry["refs_label_store"], held) with held = the lead-0 slim refit
+    labels - the same check `refs` makes after the lock, made early so a mismatch shows before the signature.
+
+-----------------------------------------------------------------------------------------------------------------
+4. THE M-KIND RUNNERS adapters/fire_enso.py AND adapters/fire_turco.py, AND THE F6 EDIT OF maps.py (4.4) (builder B2)
+-----------------------------------------------------------------------------------------------------------------
+
+Common rules (both runners; methods.py contract; the ndvi_bardl.py runner as a style template, adapters/ndvi_bardl.py:
+141-178, 254-362):
+  - Fit sets "guardfit" and "refit" only (no lead-0 row); score sets "guard" (from guardfit) and "test" (from refit);
+    any other pairing refuses (params record fit_set, lead, form).
+  - Inputs: ctx.features(set) -> keys, normal["identity"] (ngd__ on guard-side sets, nfit__ on refit/test; the slim
+    substitutes, slim.py:418-470), extras (the registry slim_extra_columns); labels only by ctx.fit_labels(fit_set)
+    inside fit, aligned row for row with the features' keys (refuse otherwise, as ndvi_bardl._labels :157-167).
+  - Label-access syntax (review test R02, review_tests/test_r02_runner_label_scope.py:71-88, may not be edited): every
+    label call is written literally `ctx.fit_labels(fit_set)` - positional, the bare name fit_set - inside fit() or
+    inside a helper whose parameter is named fit_set. A keyword call (fit_set=...), another name (fs, set_name,
+    rival_fit_set) or a string literal fails the ONE suite. No runner, helper or adapter touches .slim, ._hctx, ._token
+    or .read_set (any object, module paths included). T-F19 mirrors the check on adapters/fire_*.py early.
+  - The fit uses the fit set's normal as the slim gives it (in sample on fit rows, facts). The published regressions
+    (Chen 2011/2016, Turco 2018) regress anomalies on an in-sample climatology, the runners see their whole fit set,
+    and the no-intercept least squares gives tiny-N rows little weight; so no leave-year-out here (unlike F6, whose
+    approved form C-A asks for it, 4.4; review response 1).
+  - Rows used in a fit: finite y, finite normal N > 0 (a zero normal gives no ratio), valid predictor(s). Fits use
+    the group's bank units (all units of the fit set; the region's own training history, legal, PLAN 3.2).
+  - N = NaN on a score row refuses (never seen on EXP); every score row gets a finite pre (coverage all_rows;
+    refit refuses a NaN pre on a covered row, board.py:940-943). pre is on the target scale, pre-clip; the tool clips
+    to [0, 1] (clip_to_legal) and keeps pre.
+  - Invalid predictor at prediction (NaN, or beyond index_abs_max / spi_abs_max): predictor = 0 -> pre = N (counted,
+    disclosed; the AG3 rule for H1). Group unseen in params: pre = N (counted).
+  - info_end = issue - (max R8 steps of the rival's t1_kind_columns, read from ctx.run.derived["R8"]["value"]):
+    enso_lag issue - 3 (x__oni is ONI of issue - 3), turco_spi issue - 0.
+  - target_obs_end = the newest label step behind the row's normal: guard rows run.cuts[L]["guard_cut"] - offset,
+    test rows run.cuts[L]["fit_cut"] - offset (offset = R17 start_offset_steps = 1). Checked by the tool's T2:
+    lead 6 guard 24186 <= 24193 - 7, test 24222 <= 24229 - 7; lead 12 guard 24180 <= 24193 - 13, test 24216 <=
+    24229 - 13 (equalities: the engine's own convention). The runners read no other label at prediction.
+  - Least squares through the origin: for a ratio model y = N (1 + b s), b = sum(N s (y - N)) / sum((N s)^2); if the
+    group has < min_fit_rows usable rows or sum((N s)^2) == 0: b = 0 (the normal), flagged fallback, counted.
+  - Deterministic (no randomness, sorted group order); params JSON-able (methods.run_fit round trip :48-52).
+  - Fire season of a group (forms that use it): the fire_season_months (3) consecutive calendar months (cyclic,
+    Dec-Jan-Feb allowed) with the largest sum of N over the group's fit rows; ties -> the earliest start month.
+    Outside the season: pre = N.
+  - Module surface (fixed names for B3): BOTH adapters/fire_enso.py and adapters/fire_turco.py expose at module level
+    PARAMS_FORMAT, fit, predict, fire_season, fit_ratio, fit_groups and predict_values. If fire_season / fit_ratio
+    live in the optional adapters/fire_lag_common.py, each runner re-exports them (`from adapters.fire_lag_common
+    import fire_season, fit_ratio`). B3 imports only `from adapters import fire_enso, fire_turco` (never
+    fire_lag_common), so B2 may place the helpers as it likes.
+      fire_season(groups, months, normal, width) -> {group: [m1, m2, m3]}
+      fit_ratio(N, s, y, min_rows) -> (b, n, fallback)
+      enso: fit_groups(groups, months, y, N, oni, form, opt) -> dict;  predict_values(groups, months, N, oni, params, opt)
+            -> (pre, counts)
+      turco: fit_groups(groups, months, y, N, spi: DataFrame, form, opt) -> dict; predict_values(groups, months, N,
+            spi, params, opt) -> (pre, counts)
+    (months = calendar month of the TARGET time t, ((t - 1) mod 12) + 1.)
+
+4.1 adapters/fire_enso.py: ENSO-lag regression (Chen et al. 2011, 2016). OWNER DECISION OD-2.
+  E1 (RECOMMENDED; the form written in RF:49 before any score): per group g,
+      y_hat = N x (1 + b_g x ONI),  ONI = x__oni (ONI of issue - 3, the engine's own lagged value), all months,
+      b_g by least squares through the origin on the fit set (guardfit for the guard, refit for the test).
+    Why faithful: Chen et al. predict a region's FIRE-SEASON total from an SST index months ahead, a regional linear
+    regression. Summed over a region's unit-months, E1 gives total = N_total (1 + b_g ONI): exactly a regional linear
+    regression anchored at climatology, spread over units and months in proportion to their normal, so the effect
+    falls in the fire season (where N is large; the regressor N x ONI weights those rows). Per group, not per unit:
+    ONI is one global series, so a unit slope would rest on ~16 independent years per unit-month; Chen et al. fit
+    regions. ONI only (the plan names ONI; Chen 2011 also used Atlantic indices for the Amazon: not added).
+  E2 (alternative): E1 restricted to the group's 3-month fire season (outside: the normal) - closer to "fire-season
+    severity", and the same season rule as T1.
+  E3 (alternative): one slope per group x calendar month b_{g,m} (all months; a month with < min_month_rows rows uses
+    the group slope): lets the teleconnection change sign through the year; 12x the parameters on ~16 years each.
+
+4.2 adapters/fire_turco.py: SPI-lag climate-fire model (Turco et al. 2018). OWNER DECISION OD-1.
+  No functional form is written in any plan file (PEND :1004). Not verified against the paper text this session (no
+  network): the forms below are faithful to its STRUCTURE as the plan states it (PLAN :281: "observed SPI at the issue
+  month from panel precipitation"): fire-season burned area explained by SPI, the accumulation scale chosen on
+  training data, used with observed (antecedent) SPI only. The owner (or the agent with network) should check the
+  paper before signing.
+  T1 (RECOMMENDED): per group g,
+      fire season F_g (3 consecutive months, rule above, from the fit set's normals);
+      on the fit rows in F_g with every scale valid: for each k in options.scales (SPI-1, 3, 6, 12, 24 at the issue
+      month), b_k by least squares through the origin of y - N on N x SPI_k; SSE_k = sum (y - N (1 + b_k SPI_k))^2;
+      k* = argmin SSE_k (ties -> the order of options.scales); then b_g = least squares on the fit rows in F_g with a
+      valid SPI_k* (fallback rule above);
+      y_hat = N x (1 + b_g x SPI_k*(issue)) inside F_g, N outside.
+    The scale choice is part of the method's fit on training rows only (Turco selects the SPI accumulation from the
+    data); it is not a pick on inner or guard rows. Sign free (dry antecedent -> more fire in fuel-rich regions,
+    wet antecedent -> more fuel in fuel-limited ones).
+  T2 (alternative, simplest): per group, all months, one fixed scale (x__spi_03m): y_hat = N (1 + b_g SPI_3).
+  T3 (alternative, two antecedent terms, closest to the paper's two-predictor shape): inside F_g,
+      y - N = b1 N SPI_3 + b2 N SPI_12 by least squares through the origin (2 x 2 normal equations; singular -> fallback),
+      N outside F_g.
+  Recommendation: T1 (keeps the paper's fire-season focus and its data-driven scale; one slope per region).
+
+4.3 Params formats: "human-fire-enso-params/1" {format, rival, lead, fit_set, form, index_column, groups: {g: {b | b_m,
+    n, fallback, season}}, counts}; "human-fire-turco-params/1" {format, rival, lead, fit_set, form, groups: {g: {scale |
+    scales, b | b1 b2, n, sse_by_scale, season, fallback}}, counts}. The tool saves them (map_<rival>.json,
+    board.py:946-947) and the row-level predictions (preds_<rival>.parquet, board.py:1057-1074; trial preds at tune).
+
+4.4 The ONE shared code edit: rivals_human/maps.py, F6PctRatio as approved (research C-A; PLAN rule 5) (builder B2)
+  First B2 COPIES the current file (sha256 f38d7ce78ede1b101b5fba89fb4aa89559171e63e1532e60d58bd030acb91a59) to
+  D:\treeroute\human_rivals_build\_moved\<utc>_partB_baseline\rivals_human\maps.py (T-F10 and T-F15 read it).
+  Why (facts list; review issues 1 and 2): today F6 fits the ratio y / z0 on the slim normal as given (maps.py:382-405).
+  On fit rows that normal is the in-sample unit-month mean, so the fitted level is 1.0 by construction against 0.846
+  out of sample (+18%), and 2,192 of 14,834 burned lead-0 refit rows enter with ratio n (up to 16) while their
+  out-of-sample normal is 0. Its unweighted isotonic loss is squared error of the RATIO, not of the target, so tiny-N
+  rows rule the curve (with the leave-year-out normal the unweighted mean ratio is 1.58 against the target-optimal
+  0.846). F6 would then likely lose the inner / guard pick for an implementation reason - the straw-man risk Q19 and
+  PLAN ATTENTION 6 were meant to remove. Research C-A (RF:64; PLAN :69 "research C-A") says "For train rows, N is the
+  same normal formula computed leaving that year out"; PLAN rule 5 (:114-115) says maps use squared error on the target.
+  The edit (identity link only; F0-F5, fit_l1, candidates and every other function unchanged):
+  (1) Iso.fit(cls, x, t, increasing, rho, weights=None): passes sample_weight=weights to IsotonicRegression.fit; with
+      weights None the call is today's (F2, F4 and F6's old path give byte-equal knots: T-F10, T-F15 e).
+  (2) F6PctRatio.fit(x, y, z0, link, c, ub, units, keys), after the link check and check_calibratable as today:
+      - cells c = (unit, keys[C.SEASON_KEY]) of the PASSED rows (the covered labelled fit rows; board.fit_candidate,
+        board.py:500-509, drops rows with a non-finite stat or y before any map sees them); n_c, S_c = count and sum
+        of y per cell (pandas groupby sum).
+      - normal check: a cell is "complete" when |S_c / n_c - z0_i| <= F6_NORMAL_TOL (1e-12) on every row of it
+        (measured max 1.1e-16). If the rows in incomplete cells exceed F6_MAX_INCOMPLETE_SHARE (0.05) of the passed
+        rows, refuse (fail loud: rivals_human.common.refuse, imported inside the function as _links() does; NOT
+        NotCalibratable): the normal is then not the in-sample mean that C-A's leave-year-out assumes. Below that
+        share, the rows of incomplete cells (a cell partly uncovered, e.g. one MINDAYS month, or a percentile NaN on
+        one side of T_ref) are dropped and counted.
+      - N_loo_i = (S_c - y_i) / (n_c - 1), from the cell SUM (never from n_c z0_i - y_i: float residues, facts). Rows
+        with n_c < 2 or N_loo_i <= 0 are dropped and counted (and how many of them are burned, y > 0).
+      - r_i = y_i / N_loo_i; the pooled map and each group's map = Iso.fit(x, r, inc, rho, weights=N_loo^2), which is
+        argmin sum (y - N_loo r(x))^2: squared error on the burned fraction. Direction: the Spearman sign of (x, y) on
+        the passed rows, as today. A group needs >= C.MIN_FIT_ROWS KEPT rows for its own map (else the pooled one);
+        check_calibratable on the kept rows (else NotCalibratable, recorded by tune as not_calibratable).
+      - info adds (fixed keys, B3 tests them): rows_passed, rows_kept, rows_incomplete_cell, rows_single_row_cell,
+        rows_zero_loo_normal, rows_zero_loo_normal_burned, normal_check_max_abs_diff, weighted_level
+        (= sum(N_loo y) / sum(N_loo^2) over kept rows).
+  (3) F6PctRatio.predict unchanged: z0 (the scored set's slim normal: ngd__ on inner / guard rows, nfit__ on test rows,
+      both out of sample there) x ratio(x). to_json unchanged apart from the info.
+  (4) The module docstring's F6 line and its "No weights." sentence say the above (F6 only); the two constants
+      F6_NORMAL_TOL and F6_MAX_INCOMPLETE_SHARE live in maps.py (no config.py edit; Part B section 8 lists them); the
+      new code names no problem, year, drive and does no month arithmetic (test_h20 scans rivals_human/).
+  The printed L1 line of an F6 pick stays the L1 F4 map (fit_l1, maps.py:433-443; Q13: printed, never decides).
+  Part A effect: none (no Part A registry lists F6; the default Iso.fit path is byte-identical). B2 writes the diff
+  and the reasons into BUILD_NOTES_fire_B2.txt; BUILD_NOTES_fire.txt (B4) carries the shared-edit row the hard rules
+  require. OD-14 records the owner's confirmation; if the owner declines, the edited maps.py is moved to _moved and the
+  baseline bytes are restored before F7 (T-F15 a then holds with the file itself), and the measured effect above is
+  disclosed in Part B section 10.
+
+-----------------------------------------------------------------------------------------------------------------
+5. TESTS (builder B3; NEW files only, folder T\tests_fire\; toy data or small RAW subsets copied into the pytest
+   basetemp; no fire test label is read; realdata tests read run JSON / parquet SCHEMAS / finished boards only and run
+   only with HUMAN_REAL=1)
+-----------------------------------------------------------------------------------------------------------------
+
+Layout: T\tests_fire\__init__.py, conftest.py (copy the rules of T\rivals_human\tests\conftest.py:43-56: basetemp under
+D:\treeroute\human_rivals_build, parent exists, name fresh; sys.dont_write_bytecode = True; sys.path HUMAN_ROOT,
+D:\treeroute\rivals_build, the engine; realdata skip without HUMAN_REAL=1), fixtures_fire.py (builders below), and
+test_f01_*.py .. test_f19_*.py. Adapters are imported directly (`from adapters import fire_geff`; runners only as
+`from adapters import fire_enso, fire_turco`, 4); the existing rivals_human.tests.hooks may be imported read-only (its
+ADAPTERS list is not edited). Realdata tests carry @pytest.mark.realdata (registered in T\pytest.ini).
+Run:  cd D:\treeroute\human_rivals_build\human ; set PYTHONDONTWRITEBYTECODE=1
+      py -3.9 -B -m pytest tests_fire -q -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH>
+Final stage (after the ONE full suite, which SKIPS every realdata test): the light fire realdata tests, alone, so the
+proof that the re-join still accepts the Part A boards (T-F15 d) is actually run:
+      $env:HUMAN_REAL = '1'
+      py -3.9 -B -m pytest tests_fire -m realdata -q -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH>
+      Remove-Item Env:HUMAN_REAL
+  (T-F11 schemas and T-F15 d join: run JSON, parquet schemas and finished board JSON / CSV only, no test_preds;
+  T-F18 skips itself until the F3 store exists.) Never HUMAN_REAL=1 over the whole suite: it would start Part A's
+  heavy realdata tests. The result line goes into BUILD_NOTES_fire.txt.
+
+Fixture builders (fixtures_fire.py):
+  - fake fetcher folder: write subset netCDFs + a product_manifest.json in the FETCHER's format (files {name: {request_id,
+    bytes, sha256, ...}}, requests {id: {id, file, request {area, year, month, leadtime_hour, ...}, regions}}, complete).
+  - ERA5 subset: SMOKE_hist_multiyear.nc (greece 2018-2022) isel 2 years x 6 x 6 points incl. sea points; a "western
+    copy" (same values, longitudes rewritten to 0-360 western values, e.g. 256.00..257.25) for the wrap; a
+    prime-meridian copy (longitudes 358.75, 359.0, 359.25, 359.5, 359.75, 0.0, 0.25, 0.5: non-monotonic). Every subset
+    KEEPS the scalar `surface` coordinate; one ERA5 subset also keeps an extra data variable (kbdi, taken with the same
+    isel from hist_yakutia_larch_2020-2020.nc onto the subset grid, or a renamed copy of fwinx), which must be ignored.
+  - SEAS5 subset: seas_great_plains_2019.nc (western, 0-360) and seas_cerrado_2019.nc (south-west) isel 2 starts x 26
+    members (0..25, to prove the 0-24 filter) x steps 0..34 x 3 x 3 points, with the step coordinate RELABELLED to
+    150..184 days + 12 h and valid_time recomputed (= time + step); everything else (dims order, attrs, 0-360 longitudes,
+    float32, NaN fill, the scalar `surface`) kept. A leap-year variant (start 2015-09 -> target Feb 2016, 29 days at
+    leads 153..181).
+  - FakeCtx with the AdapterCtx names used (keys incl. keys("inner") / keys("guard"), units, products (the manifest path
+    availability reads), open_product with a sha check, product_files, product_root, run (cuts with guard_cut,
+    derived R8/R17/R2, plan), lead, stage, rival, log, work_dir, write_bytes, features, fit_labels with the fit scope,
+    t1_boundary), as T\tests_builder_b\conftest.py:21-60 and tests_builder_c.
+  - Units: real coordinates of 3 great_plains, 2 cerrado, 3 greece (incl. one coastal) bank units from the static table
+    (a few rows read once and written into the fixture), plus synthetic units.
+
+Tests:
+  T-F01 manifest and sha: a file not in the manifest, a tampered byte, complete=false, a request with another
+        dataset / system_version / leadtime_hour, a region in two boxes, a group in no box -> each refuses. A manifest
+        WITHOUT a `complete` key (the fetcher's first / killed run) and a manifest path in the UNSET_OD6 placeholder
+        folder -> availability returns (False, waiting_line) and build refuses; complete true -> (True, ...).
+  T-F02 ERA5 reader: unit-month means equal a hand numpy computation; sea points found; a coastal unit substituted to
+        the nearest land point within 2 steps (distance recorded); 8 NaN days in a month -> NaN (MINDAYS 0.8); a
+        missing calendar day in valid_time -> refuse; two files of one box on different grids -> refuse; the subset
+        with `surface` and an extra data variable reads byte-equal to the same subset without them; fwinx with an
+        extra (non-scalar) dim -> refuse.
+  T-F03 longitude wrap (the fire_cems.py bug): with the great_plains and cerrado 0-360 subsets, each real western unit
+        maps to the brute-force haversine nearest point; units at different longitudes use >= 2 distinct grid columns
+        and NOT the single column a raw (unwrapped) -100 vs 256..263 comparison gives; the ERA5 western copy maps the
+        same units to the same values as the eastern original; prime-meridian grid: units at lon -0.1 and +0.1 map to
+        359.75/0.0 and 0.0/0.25 correctly; a unit outside its box area -> refuse.
+  T-F04 SEAS5 lead mapping: month_days_in_window gives exactly the days of month t for all 12 start months and the leap
+        February; members 0..24 kept and 25 dropped (by number value); a start missing member 7 -> refuse;
+        valid_time != time + step -> refuse; x__fwi_mean equals a hand mean over 25 members x days; the adapter
+        asserts start = issue + 1 (a key with time - issue = 5 -> refuse); the scalar `surface` coordinate is ignored.
+  T-F05 timing: a geff_era5 lead-0 frame (info_end = time) passes index.check_tier_timing with a fake run whose R8 gives
+        the t1 columns steps 0 and refuses on a copy whose R8 gives V01_mean_temp_C steps 1 (PLAN 3.3 toy); geff_seas5
+        lead 6 (info_end = issue) passes; a "start M-4" variant (info_end = issue + 1) refuses as tier P.
+  T-F06 x__fwi_pct, out of sample as of the guard cut (3.6): the mid-rank formula on a hand example; T_ref is
+        run.cuts[L]["guard_cut"] (fake runs with the facts' lead-0 and lead-6 cuts), never the fit cut; a row with
+        t <= T_ref is ranked WITHOUT its own month (equal to a hand rank among the other years; changing its own value
+        moves only its own percentile through x, never through R); for every pick row (inner at lead 0, guard at
+        lead 6), perturbing every FWI value with t' > T_ref OTHER than the row's own leaves its percentile unchanged,
+        and the same holds for every row with t <= T_ref and every test row; |R| < 10 -> NaN for that row only;
+        refuse when T_ref >= the smallest test time, and when the newest reference info_end >= the smallest
+        pick-set issue (a fake guard cut one step later than the first inner issue; SEAS5: reference info_end =
+        t - 6).
+  T-F07 join and frame: one row per slim key (train + test), NaN where uncovered, src/product_cell text, dtypes; the
+        frame passes index.check_frame (index.py:410-479) with opened shas; a key with time outside the product -> NaN.
+  T-F08 units: a slim unit absent from the static table -> refuse; uncovered units > 1% -> refuse; the audit json
+        lists every unit.
+  T-F09 refs prep and the store's use by the tool: on a synthetic lat/lon-keyed target store (float32 lat/lon, n_valid)
+        and a synthetic static table, the prep (through the package reader's contract; a stand-in reader with the same
+        signature in the toy) writes cell_id-keyed labels (str / int64 / int64 / float64, NaN kept, sorted); year
+        2019 -> refuse; the prep never imports or touches the slim (read spy). Then refs.store_labels on the written
+        files. It can NOT run on a FakeCtx: it calls C.load_products(cfg) (a full HumanConfig, registry_dir /
+        _schema.yaml, on_disk_products), IX.product_manifest / product_root (a manifest file) and S.open_slim(cfg,
+        run, 0) with .units() and .season (refs.py:251-264). Fixture (preferred): pytest monkeypatch of
+        rivals_human.refs.C.load_products -> {"fire_refs_label_store": {"manifest": "<tmp>/product_manifest.json"}}
+        (the tool's own manifest format: files {name: {bytes, sha256}}) and of rivals_human.refs.S.open_slim -> a stub
+        whose units() gives (unit, group, is_scored) and whose season is {"steps_per_year": 12}; run =
+        SimpleNamespace(cuts={0: {"fit_cut": 24228}}); cfg = None (unused once patched; check product_manifest_path
+        uses cfg only in its refusal text). Alternative: a toy slim lead folder with a valid human-slim/1
+        slim_manifest.json (matching fingerprint, cuts, links) and a sha-matched units.parquet, a toy _products.yaml,
+        a copy of the real _schema.yaml and a toy config; or the session grid toy of rivals_human/tests/conftest.py
+        (read-only). Cases: held labels to 24227 -> only time-24228 rows are added; a 1-ulp difference on an
+        overlapping label -> refuse; a store file missing from the manifest -> refuse.
+  T-F10 F6PctRatio after the 4.4 edit (maps.py:382-420; no test before Part B):
+        link != identity -> NotCalibratable; MP.fit("F6", ..., link "log_c") raises NotCalibratable (recorded by tune
+        as not_calibratable, board.py:584-593);
+        normal check: z0 = the in-sample cell mean -> fits; z0 = cell mean + 0.01 on every row -> refuses; one row
+        removed from one 16-row cell (a partial cell, < 5% of rows) -> that cell's rows dropped and counted
+        (rows_incomplete_cell), the fit goes on;
+        leave-year-out: hand cell y = [0, 0, 0.3] -> N_loo = [0.15, 0.15, 0.0]: the burned row is dropped
+        (rows_zero_loo_normal 1, burned 1); a 1-row cell is dropped (rows_single_row_cell); N_loo comes from the cell
+        sum (a cell whose only burn is 0.1 gives N_loo exactly 0.0 for it, not ~1e-17);
+        weights: many rows of ratio 1 plus one row with N_loo 0.001 and ratio 16 at the same x -> the fitted ratio
+        there equals the N_loo^2-weighted mean (hand computed, rel 1e-12) and stays below 1.001, while the unweighted
+        mean would be far above; a one-block toy -> fitted ratio == sum(N_loo y) / sum(N_loo^2) (rel 1e-12), the
+        argmin of sum (y - N_loo r)^2;
+        groups: >= 100 KEPT rows -> own map, fewer -> the pooled one; the direction follows the Spearman sign of
+        (x, y) (a decreasing toy); a synthetic y = N_loo x r(p) recovers r on a grid of p (tolerance of isotonic
+        steps); predict = z0 x ratio with z0 the PASSED (slim) normal, not N_loo; to_json holds pooled, groups and the
+        4.4 info keys; fit twice -> byte-equal;
+        unchanged paths: Iso.fit(x, t, inc, rho) and Iso.fit(x, t, inc, rho, weights=None) give knots byte-equal to the
+        baseline module's Iso.fit (the _moved baseline maps.py loaded with importlib under another module name); F2
+        and F4 fits on a toy give byte-equal to_json from the baseline and the new module;
+        candidates() for the geff rivals gives 2 stats x (F2..F5 x 3 links + F6 x 3 links) = 30.
+  T-F11 registry: registry/fire.yaml validates (config.load_registry with a config mapping as test_h20 _real_cfg,
+        T\rivals_human\tests\test_h20_nonames.py:76-83); every product id is in _products.yaml; runners hold no
+        stats/families/adapter; families in order. Realdata (run JSON / parquet schema only): board.check_registry_
+        against_run(registry, H.Run(RUN)); slim.check_extra_columns; every column of slim.extra_columns(registry) (the
+        union over ALL rivals, which slim copies at EVERY lead and refuses when missing, slim.py:169-175, :278-281) and
+        every plan history column (slim.history_columns(run)) is in the EXP lead_0, lead_6 AND lead_12 train AND test
+        parquet schemas; geff t1 columns and oni/spi are R8 keys with the steps of the facts.
+  T-F12 ENSO runner (synthetic, 3 groups): E1 recovers b_g; < 100 rows -> fallback b = 0; NaN / |ONI| > 5 dropped at
+        fit and -> normal at predict (counted); E2 season and E3 monthly slopes; fit_labels only inside fit (stand-in
+        ctx refuses outside); fit on "tune" refuses; params JSON round trip; deterministic twice; methods.run_predict
+        with tier P passes on a fake run with R8 oni steps 3 and refuses with steps 4 (info_end issue - 3 > issue - 4);
+        target_obs_end = cut - offset passes T2, cut - offset + 1 refuses; tier X at lead 12 passes the same checks.
+        Imports only `from adapters import fire_enso` (fire_season, fit_ratio, fit_groups, predict_values at module
+        level, 4).
+  T-F13 Turco runner (synthetic): T1 picks the generating scale and recovers b; the fire season of a toy normal is the
+        right 3 months (incl. a Dec-Jan-Feb wrap); outside the season pre = N; |SPI| > 3.5 -> missing; T2 and T3;
+        timing pass/refuse as T-F12 with spi steps 0 / 1. Imports only `from adapters import fire_turco`.
+  T-F14 runner contract through the tool: methods.run_fit / run_predict (methods.py:40-91) on a stand-in ctx: one row
+        per key, no inf, every pre finite (coverage all_rows), N <= 0 rows predict 0.
+  T-F15 Part A non-regression:
+        (a) the recipe of common.tool_code_sha (common.py:115-126) over config.code_files() minus adapters/fire_*.py,
+            with the bytes of rivals_human/maps.py REPLACED by the baseline copy _moved/<utc>_partB_baseline/
+            rivals_human/maps.py (whose sha must be f38d7ce78ede1b101b5fba89fb4aa89559171e63e1532e60d58bd030acb91a59),
+            == cd956f1dbd0f9b0f2ada37c1a27f8212768d94fc6242cab0686bf7c71608a273 (no other tool file changed);
+        (b) coral/defo/pm25/ndvi.yaml and _schema.yaml bytes keep the shas of the facts list;
+        (c) every Part A product entry of the new _products.yaml equals (parsed) the baseline copy in _moved/
+            <utc>_partB_baseline/registry/_products.yaml, whose sha is 4e4797597c0a...;
+        (d) realdata: `join --runs CORAL DEFO PM NDVI --pending FIRE` with a config whose table_root is under the basetemp
+            (production keys otherwise, incl. common_harness_accepted_boards) writes a RIVALS_TABLE.csv byte-equal to
+            D:/treeroute/rivals_table/20261025T162302876402Z/RIVALS_TABLE.csv (Part 619; the same --part value, read
+            from that csv's part column). The pending branch loads no fire registry (join.py:110-210), so fire.yaml
+            cannot change the pending rows. The ONE full suite SKIPS this test (realdata): it runs in the separate
+            final-stage command above, and its result is recorded in BUILD_NOTES_fire.txt and Part B section 14.
+        (e) the new maps.py differs from the baseline only in the module docstring, Iso.fit, the F6PctRatio class and
+            new module constants named F6_*: every other top-level node and every other Iso method is ast.dump-equal;
+            no Part A registry (coral, defo, pm25, ndvi .yaml) lists F6 in any families list.
+  T-F16 plug and predict: the existing test_h20 scans (no problem name in rivals_human/, incl. the edited maps.py;
+        every ctx.<name> in adapters/fire_*.py exists on AdapterCtx) and the review test R02 static scan pass with the
+        fire files present (run them; no new code needed).
+  T-F17 no label in the index path: a read spy (patch builtins.open / pyarrow / xarray open) shows fire_geff.build never
+        opens fire_target_2018, fire_refs_label_store, a slim train/test parquet or test_preds; fire_refs_prep.run_prep
+        never opens a slim parquet or test_preds; runner predict never calls fit_labels.
+  T-F18 realdata, EARLY refs byte check (owner command F3, after prep and `manifest --product fire_refs_label_store`;
+        skips itself, with the reason, while the fire slim or that product manifest is missing): production config
+        (read-only), H.Run(RUN), registry fire.yaml; held = (unit, time, y) of the lead-0 slim refit set
+        (rivals_human.slim.open_slim(cfg, run, 0).read_set("refit", extras=False): training labels only; this is a
+        test file, not an adapter, so R02 does not apply); refs.store_labels(cfg, run, registry["refs_label_store"],
+        held) must not refuse (every overlapping 2018 label byte-equal) and must return rows at time 24228 only, one
+        per scored unit with a finite Dec-2018 label; the counts are printed for Part B section 1.
+  T-F19 R02 mirror for the fire files (B3's own early check of review_tests/test_r02_runner_label_scope.py:71-88): an
+        AST scan of adapters/fire_*.py finds no attribute named slim, _hctx, read_set or _token, and every
+        `.fit_labels(...)` call has exactly one positional argument, the bare Name fit_set, and no keyword.
+
+-----------------------------------------------------------------------------------------------------------------
+6. THE PART B PRE-REGISTRATION DRAFT (builder B4): D:\treeroute\human_rivals_build\PREREGISTRATION_DRAFT_human_partB.txt
+-----------------------------------------------------------------------------------------------------------------
+Mirror DRAFTA section by section (plain text, same headers), fire only; fill everything fixed now; TO FILL where a
+hash or a result does not exist yet. Where the draft and a ruling differ, the ruling wins.
+  Header: STATUS DRAFT, UNSIGNED; sources (PLAN, RUL AB/AG/AH/AI, RF, this spec, fire.yaml, PEND Part 620); "signed when
+    D2/D3 are hashed (Q22 a), or - only if the owner rules OD-4.1, an AMENDMENT of Q22 a - on D2 alone; before any fire
+    human test score (PROT H16)"; no fire human command has run on real data.
+  1 FROZEN STATE: common harness pin b6ea97b7 (accepted older 71457aa9 for CB, AG5); human tool code hash TO FILL (cli
+    shas after the build) + per-file shas TO FILL, with rivals_human/maps.py marked "shared edit of section 4.4 of the
+    spec, baseline f38d7ce7..., logged in Part <TO FILL> (PART_LOG_DRAFT_partB.txt)"; registries: fire.yaml, _products.yaml TO FILL, _schema.yaml
+    0d4dbcb7 (unchanged); Part A registries unchanged (list their shas); LIVE engine 930d961c; production config
+    unchanged; product manifests: cems_geff_era5_fwi TO FILL (D2, box choice), cems_geff_seas5_fwi TO FILL (D3, box
+    choice) or "NOT OBTAINED by 18 Nov (OD-4)", fire_static_cells TO FILL, fire_target_2018 TO FILL,
+    fire_refs_label_store TO FILL (+ the T-F18 early byte-check counts); slims of leads 0/6/12 TO FILL; the D0' probe
+    result (seconds, bytes) TO FILL. Every registry and product sha here must equal the F7 DRY board's (section 7).
+  2 RIVALS PER LEAD: lead 0 geff_era5 P; lead 6 geff_seas5 P, enso_lag P (optional), turco_spi P (optional) - or, if D3
+    misses 18 Nov, per OD-4.2 (a: runners X, lead-6 verdict "pending"; b: runners decide, "optional rivals only;
+    primary F-SEAS5 pending"); lead 12 "no human fire forecast reaches 12 months" + enso_lag / turco_spi tier per OD-3;
+    reference rows (persistence and damped persistence at the nowcast, guess-normal, last-5, predict-zero); persistence
+    is NOT "the baseline to beat".
+  3 MAPS AND PICK: F2-F6 x identity, log_c, arcsine x stats x__fwi_mean, x__fwi_pct (30 candidates per index rival; F6
+    identity only); F6 fitted by the 4.4 rule (leave-year-out normal on fit rows, N_loo^2-weighted isotonic ratio =
+    squared error on the target; prediction on the scored rows' own normal); geff_era5 fit on tune rows, picked on
+    lead-0 inner rows; geff_seas5 fit on lead-6 guard-fit rows, picked on lead-6 guard rows (a separate rival, no
+    carry-over); runners: one configuration (form OD-1, OD-2, ruled before F7); L1 print by the data rule (zero share
+    0.98); F6 L1 line wording.
+  4 TIMING: the per-rival values of sections 3.5, 4 (T1 boundaries issue - 0 / issue - 3; T2 empty for the FWI rivals,
+    cut - offset for the runners); the x__fwi_pct reference rule of 3.6 (reference to the lead's guard cut, the row's
+    own month left out, so every row incl. the pick rows is ranked out of sample as of the guard cut) and its asserts.
+  5 COVERAGE, NET, VERDICTS, ORDER: x_finite (geff), all_rows (runners); MINDAYS 0.8; sea window; groups need 10 covered
+    test rows; guard comparator identity trees-off; resolution-matched tables for both FWI rivals; print order.
+  6 LOCK, LEDGER, LABEL ACCESS: as DRAFTA 6, plus the refs label store (training labels of 2018 only, byte-checked
+    twice) and "a board is write-once: a rival dropped at the lock never joins this board later (shared ledger)".
+  7 FIRE DRY PASS: if OD-11 = yes, filled after the run: the DRY human_board.json "registry" shas (fire.yaml,
+    _schema.yaml, _products.yaml), the tool code hash, the picks content sha, each pick and its inner/guard MAE; and the
+    statement that every OWNER DECISION (B9) was ruled and written before it, and that it ran after the D3 outcome
+    was final. The real board must reproduce the registry shas and the picks (owner-command stops, section 8 F8/F9).
+  8 CONSTANTS: tool constants of DRAFTA 8 + fire: min_day_share 0.8, sea_window_steps 2, max_uncovered_unit_share 0.01,
+    pct_min_reference 10, T_ref = the lead's guard cut (lead 0 24192, lead 6 24187; own month left out), members 0-24,
+    lead_days 150-184, start M-5, index_abs_max 5.0, spi_abs_max 3.5, runner min_fit_rows 100, fire season 3 months;
+    F6 (maps.py 4.4): F6_NORMAL_TOL 1e-12, F6_MAX_INCOMPLETE_SHARE 0.05, weights N_loo^2.
+  9 NOT BLIND: the R10 text of 2.6, with the C-A / F6 / x__fwi_pct sentence of the geff r10_notes (chosen with
+    knowledge of Parts 496-498, whose FWI-only maps lost to predict-zero on 2021-22 rows inside the test window; no
+    score of F6 or x__fwi_pct itself exists).
+  10 DISCLOSURES: 2.5 (and, if OD-14 = b, the measured effect of the unfixed F6, 4.4).
+  11 OPEN BEFORE SIGNING: every OWNER DECISION of section 9 below, with options and the recommendation, and the rule
+     of B9: all of them except OD-11 are ruled and written into fire.yaml / _products.yaml / code BEFORE the F7 DRY
+     pass (before F8 without a DRY pass); the owner commands of section 8 below (or HUMAN_OWNER_COMMANDS_partB.txt)
+     with what each records here.
+  12 BUG FIX RULE: as DRAFTA 12 (a fix changes no pick, or the owner rules first; a new Part logs old/new hashes).
+  13 SIGNATURE: owner, date, tool hash, harness pin, file sha; a "signed on D2 alone (OD-4.1, amendment of Q22 a)"
+     tick box with the lock --without decision text and the OD-4.2 choice (amendment of Q24 if b).
+  CHANGE NOTES; 14 TESTS ON THIS CODE (TO FILL from the final suite AND the separate realdata command of section 5).
+B4 also writes:
+  - BUILD_NOTES_fire.txt (skeleton: purpose; "shared rivals_human/*.py edits: ONE, rivals_human/maps.py" with its row
+    filled from section 4.4 (file; lines: module docstring, Iso.fit, F6PctRatio, F6_* constants; reason: research C-A
+    leave-year-out + PLAN rule 5 squared error, review issues 1-2 with the measured numbers; Part A effect: none, no Part A
+    registry lists F6, Iso.fit default path byte-equal; tests: T-F10, T-F15 a/e, T-F16) and a table for any further
+    unavoidable edit; merge points for BUILD_NOTES_fire_B1/B2/B3.txt; the final-stage results (full suite, realdata
+    command); open items);
+  - HUMAN_OWNER_COMMANDS_partB.txt (section 8 below, in the PowerShell style of HUMAN_OWNER_COMMANDS.txt; Verb-Noun
+    names, no single-letter aliases; with the B8 fetcher rule and the F8/F9 stops written as functions that stop the
+    sequence);
+  - PART_LOG_DRAFT_partB.txt: the Part A section-12 log entry (DRAFTA :324-329; Part 618 precedent) for PENDING_PARTS.md,
+    which the main session appends (the engine folder is outside the build's write root). Text: "Part <next> - HUMAN
+    TOOL CHANGE FOR PART B (fire), Part A section 12: tool code cd956f1d -> <TO FILL> (adapters/fire_geff.py,
+    fire_refs_prep.py, fire_enso.py, fire_turco.py[, fire_lag_common.py] added; rivals_human/maps.py F6 edit, spec 4.4,
+    diff attached; proofs T-F15 a and e, T-F10); registry/_products.yaml 4e479759 -> <TO FILL> (append-only, Part A
+    entries byte-identical: T-F15 c); _schema.yaml and the Part A registries unchanged (T-F15 b); no Part A pick, board
+    or score is re-run (the coral/defo/pm25 boards stay as made under 32ec5df0, NDVI under cd956f1d; they refuse
+    load_board under the new hash and need no further command); join non-regression: T-F15 d <TO FILL result>."
+
+-----------------------------------------------------------------------------------------------------------------
+7. FILE OWNERSHIP (four parallel builders; no file is edited by two; everything under D:\treeroute\human_rivals_build)
+-----------------------------------------------------------------------------------------------------------------
+B1_product: human\registry\fire.yaml (new; ALL four rivals, runner rows from 2.4 verbatim);
+            human\registry\_products.yaml (append the fire block of 2.7 only; baseline copy first);
+            human\adapters\fire_geff.py (new); human\adapters\fire_refs_prep.py (new);
+            BUILD_NOTES_fire_B1.txt (new). Writes no test file.
+B2_runners: human\adapters\fire_enso.py (new); human\adapters\fire_turco.py (new); optional human\adapters\
+            fire_lag_common.py (new; shared helpers of the two runners); human\rivals_human\maps.py (the 4.4 edit ONLY;
+            first a COPY of the current file to _moved\<utc>_partB_baseline\rivals_human\maps.py); BUILD_NOTES_fire_B2.txt
+            (new). Does not touch registry/fire.yaml (B1 writes the runner rows; a needed option change goes to
+            BUILD_NOTES_fire_B2.txt and is applied by the final integration stage). Why B2 owns maps.py: the F6 fit and
+            the runners are the two normal-anchored ratio fits, so one builder holds the leave-year-out / weighting
+            rules; B1 (two adapters, registry, product block) is the largest share already.
+B3_tests:   human\tests_fire\ (new folder: __init__.py, conftest.py, fixtures_fire.py, test_f01..test_f19 *.py);
+            BUILD_NOTES_fire_B3.txt (new). No existing test or hooks file is edited.
+B4_prereg:  PREREGISTRATION_DRAFT_human_partB.txt (new); BUILD_NOTES_fire.txt (new skeleton);
+            HUMAN_OWNER_COMMANDS_partB.txt (new); PART_LOG_DRAFT_partB.txt (new).
+Nobody else edits: rivals_human\*.py (only B2's maps.py edit of 4.4), _schema.yaml, Part A registries, Part A
+adapters, existing tests, configs (human_rivals*.yaml), SPEC_HUMAN.txt, the Part A draft, anything outside the build
+folder.
+FINAL INTEGRATION STAGE (after B1-B4 finish; the orchestrator's last stage, not a parallel builder; it owns no file
+before then): (1) applies any fire.yaml option change B2 requested in BUILD_NOTES_fire_B2.txt and logs it in
+BUILD_NOTES_fire.txt; (2) merges BUILD_NOTES_fire_B1/B2/B3.txt into BUILD_NOTES_fire.txt; (3) runs the ONE full suite;
+(4) runs the separate light realdata command of section 5 (T-F11, T-F15 d) and records both results in
+BUILD_NOTES_fire.txt and Part B section 14; (5) fills the hashes of PART_LOG_DRAFT_partB.txt and Part B section 1 that
+exist after the build (tool code, per-file, fire.yaml, _products.yaml).
+Contract between builders = sections 2 (registry text, option names, the UNSET_OD6 placeholders), 3.1 (adapter names),
+3.6 (percentile rule), 4 (runner names, the module-level exports, the literal `ctx.fit_labels(fit_set)` rule, params),
+4.4 (F6 constants, info keys, Iso.fit weights argument), 5 (fixtures). Pytest basetemps:
+D:\treeroute\human_rivals_build\pt\tests\<fresh unique name> (parent exists); only the builder's own relevant tests
+while building (B2 also runs rivals_human\tests\test_h08_maps.py, review_tests\test_r05_maps.py and test_r02 after the
+maps.py edit; B1/B2 run test_h20 and test_r02 on their adapters); the ONE full suite (rivals_human\tests,
+tests_builder_b, tests_builder_c, review_tests, tests_fire) only in the final stage, plus the realdata command.
+
+-----------------------------------------------------------------------------------------------------------------
+8. OWNER COMMANDS AFTER THE BUILD (outline for HUMAN_OWNER_COMMANDS_partB.txt; production config; one heavy job at a
+   time; x = estimate)
+-----------------------------------------------------------------------------------------------------------------
+| # | Command | When | Time (x) | RAM (x) |
+|---|---|---|---|---|
+| F1 | slim --run $FIRE --export EXP\lead_0, lead_6, lead_12 | FIRST (before anything deletes EXP) | 2-5 min per lead | < 1 GB |
+| F2 | manifest --product fire_static_cells; manifest --product fire_target_2018 | any free slot | 1-3 min | < 0.2 GB |
+| F3 | prep --run $FIRE --rival geff_era5 (refs store 2018, no self-check inside the adapter); manifest --product fire_refs_label_store; then the EARLY byte check: $env:HUMAN_REAL='1'; py -3.9 -B -m pytest tests_fire/test_f18_*.py -q -p no:cacheprovider --basetemp <fresh>; STOP if it fails or skips | after F1, F2 | 3-8 min | < 2 GB |
+| F4 | owner: ~/.ewdsapirc + EWDS licence clicks (DLC 1); D0' probe (DLC 2.1); box decision OD-6; D2 (DLC 2.3) and D3 (DLC 2.4) in two windows. A stopped run is resumed with the same command, but only BEFORE the first init (B8) | now (network only) | D2 5-16 h, D3 7-210 h (D0' decides) | small |
+| F4b | data edit: in registry/_products.yaml replace UNSET_OD6 in the cems_geff_era5_fwi (and cems_geff_seas5_fwi) manifest folder by the folder the fetcher wrote (2.7) | after the box decision, BEFORE F5 / F6 | minutes | - |
+| F5 | when D2's product_manifest.json says "complete": true (read it; never re-run the fetcher to check): manifest --product cems_geff_era5_fwi --verify; adapt --rival geff_era5 --lead 0; check | D2 done | 10-30 min | < 2 GB |
+| F6 | when D3's manifest says "complete": true: manifest --product cems_geff_seas5_fwi --verify; adapt --rival geff_seas5 --lead 6; check | D3 done | 30-90 min | < 2 GB |
+| F6b | only if D3 is not complete on 18 Nov: stop the D3 fetcher window (Ctrl+C) and never restart it for this board; write the OD-4.2 edits into fire.yaml (2.1, 2.4) | 18 Nov | minutes | - |
+| F7 | DRY pass (OD-11): init --dry [--allow-waiting], tune, lock [--without geff_seas5 ...] with the DRY config; record in Part B section 7 the DRY human_board.json "registry" shas, the tool code hash and the picks content sha | after EVERY owner decision is ruled and written (B9) AND the D3 outcome is final (F6 done, or F6b) | 0.5-1 h | < 3 GB |
+| F8 | cli shas --run $FIRE -> Part B section 1; STOP unless its fire.yaml, _products.yaml, _schema.yaml and tool code shas equal F7's; owner signs Part B | after F7 | minutes | - |
+| F9 | init [--allow-waiting]; STOP unless human_board.json "registry" equals F7's; tune; lock [--without geff_seas5 --decision "<OD-4.1 / OD-4.2 text>"]; STOP unless the picks equal F7's (as coral, Part 617); refit 0, 6, 12; refs 0; STOP unless lead_0/refs.json "result" starts with "parity proof passed" (B4); score 0, 6, 12; board | after signing | 1-3 h | < 3 GB |
+| F10 | join --runs CORAL DEFO PM NDVI FIRE --part "<A>, <B>" | after F9 | minutes | < 1 GB |
+Rules for HUMAN_OWNER_COMMANDS_partB.txt: (1) never re-run fetch_products.py for D2 or D3 after the F7 init (or the F9
+init without a DRY pass): the rewritten manifest breaks the product pin of every later command (B8); check with
+`manifest --product <id> --verify`, which never touches the product folder, and the manifest's "complete" value.
+(2) No edit of fire.yaml, _products.yaml or tool code after F7: a needed change means a new DRY pass (before signing)
+or a Part under section 12 (after). (3) While D3 is still downloading, F7 waits for D3 or 18 Nov, whichever comes
+first; F1-F6 fill the wait. Without a DRY pass (OD-11 = no) the F8/F9 sha stops compare against the shas listed in
+Part B section 1 instead.
+Total fire human machine time (x): ~3-6 h (PLAN section 5: 4-7.5 h), plus the EWDS queue. Engine v2 install waits for
+F9 (B6).
+
+-----------------------------------------------------------------------------------------------------------------
+9. OWNER DECISIONS (nothing below is decided by the build; each goes into Part B section 11)
+-----------------------------------------------------------------------------------------------------------------
+TIMING RULE (B9): every decision below except OD-11 is ruled and WRITTEN (fire.yaml, _products.yaml or code) BEFORE
+the F7 DRY pass (before F8 without one). The build writes the RECOMMENDED value now; a different ruling is a data
+edit (or, for OD-14, restoring the baseline maps.py) made before F7. Nothing is switched after the DRY pass has printed
+a guard MAE. Alternative not adopted: making E1-E3 / T1-T3 candidates of one pick on guard rows (the plan names one
+configuration per runner, and guard rows would then choose the published method's form).
+OD-1  Turco SPI-lag form: T1 (RECOMMENDED: per region, 3-month fire season, SPI scale 1/3/6/12/24 chosen on training
+      rows by SSE, ratio on the normal) | T2 (all months, fixed SPI-3) | T3 (fire season, SPI-3 + SPI-12 two terms).
+      Check the paper text before signing (not verified offline).
+OD-2  ENSO-lag form: E1 (RECOMMENDED: per region y = N (1 + b ONI), all months, RF:49) | E2 (E1 inside the fire season
+      only) | E3 (per region x calendar-month slopes).
+OD-3  Tiers at lead 12 for enso_lag and turco_spi: X labelled extension, never decides (RECOMMENDED; as NDVI Q8 a; the
+      methods are published for a few months ahead) | P (decides, labelled "our implementation").
+OD-4  D3 late. Both parts AMEND approved rulings (RUL AB :174: "Q22 (a) two human Parts ... B: fire, signed when
+      D2/D3 are hashed"; "Q24 fire lead-6 cut-off 18 Nov"; PLAN :283, :285: "after 18 Nov fire lead 6 is reported as
+      pending"), so the owner rules them as amendments, in writing:
+  OD-4.1 (amends Q22 a) May Part B be signed on D2 alone if D3 is not complete by 18 Nov? RECOMMENDED yes: wait for D3
+      until 18 Nov; if it is not complete then, stop the D3 fetcher, write the OD-4.2 edits into fire.yaml (F6b), then
+      F7, F8 (sign), F9 with init --allow-waiting and lock --without geff_seas5 --decision "<OD-4.1 and OD-4.2 text>".
+      Consequence: F-SEAS5 can never join this board later (human_board is write-once, board.py:389-397; the shared
+      ledger refuses other picks after a test label, lockfile.py:163-172). Alternatives: (b) literal Q22 a: hold all of
+      Part B until D3 is hashed (lead 0 waits too); (c) sign on D2 now with a pre-registered addendum adding D3's hash
+      before init (not recommended: a product hash added after the signature).
+  OD-4.2 What lead 6 shows when F-SEAS5 is pending (only under OD-4.1 = yes):
+      (a) RECOMMENDED, literal Q24 (and Part 620's wording "lead 6 then 'pending'"): enso_lag and turco_spi become tier
+          X at lead 6 (2.4 cut-off rule): printed, labelled, never decide; leads_without_rival[6] gets the 2.1 line
+          (the tool prints "no published forecast at this lead: the published lead-6 fire forecast, F-SEAS5 ..., is
+          pending ..."); the lead-6 human verdict is "pending". Lead 12 follows OD-3.
+      (b) amends Q24: the runners stay P and decide at lead 6, labelled "optional rivals only; primary F-SEAS5 pending"
+          (each runner's disclosures, Part B section 2); NO leads_without_rival[6] line (that prefix would be false
+          while the runners decide). The lead-6 human verdict then rests on the two optional rivals alone.
+      Either choice is written into fire.yaml at the cut-off (F6b), before F7 (B9).
+OD-5  R10: add fire_danger and fire_danger_local (Part 620; RECOMMENDED yes) and the sentence "our fire headline (Part
+      590) and the fire common board (Part 606) were known when Part B was designed" (RECOMMENDED yes).
+OD-6  D3 boxes, decided after the D0' probe: per-region (840 requests, 1.94 GB, inside AB1) or merged (210 requests,
+      8.22 GB, needs a re-approval and --approved-gb 8.3). RECOMMENDED: per-region if the measured time per request x
+      840 (scaled for size) ends well before 18 Nov (e.g. <= 300 h of queue), else merged. Note: the 1-deg grid of a
+      request starts at its box's south-west corner, so the two choices give slightly different FWI values; the
+      adapter reads either; the choice is recorded. D2 boxes (merged 2.29 GB = DLC default, or region 0.47 GB): either;
+      RECOMMENDED region if the queue allows (smaller, each region on its own box). The _products.yaml manifest
+      folders ship as UNSET_OD6 placeholders (2.7): each is set to the folder the fetcher actually wrote BEFORE its
+      adapt (F4b, before F5 / F6), and never after the first init.
+OD-7  F-ERA5 rows at leads 6/12: none (RECOMMENDED; the approved plan lists none) | tier A "perfect-knowledge FWI
+      ceiling" rows (same values as lead 0, break T1, never decide; shows what a perfect FWI forecast would be worth).
+OD-8  F6 candidate set: the tool crosses every stat with every family, so F6 also runs on x__fwi_mean and F2-F5 also on
+      x__fwi_pct (30 candidates per FWI rival, 4 of them not calibratable by definition). RECOMMENDED accept (no code
+      change; every candidate train-only). Alternative: a shared-code change for per-family stats (maps.candidates,
+      _schema) - not recommended (Part A risk).
+OD-9  Fire constants (confirm): MINDAYS share 0.8; sea window 2 grid steps; refuse above 1% uncovered bank units;
+      percentile = mid-rank vs the unit's same-calendar-month values up to the lead's guard cut (lead 0 2003-2015,
+      lead 6 2003-01..2015-07), the row's own month left out, >= 10 values (3.6; the first draft's fit-cut reference
+      2003-2018 put each pick row's own and later FWI into its reference and ranked refit rows in sample: not
+      recommended); |ONI| <= 5, |SPI| <= 3.5; runner min 100 rows per region; fire season = 3 consecutive months of
+      largest summed normal; F6 F6_NORMAL_TOL 1e-12 and F6_MAX_INCOMPLETE_SHARE 0.05 (4.4).
+OD-10 Refs label store: read the 2018 TRAINING labels from D:/fire/target through the package's own reader to keep the
+      nowcast persistence rows and the parity proof (Part 618 precedent), byte-checked early (T-F18, F3) and again by
+      refs. RECOMMENDED yes (without it the refs parity proof refuses at leads 6/12 and the lead-0 board would lack
+      the persistence rows; B4).
+OD-11 Fire DRY pass before signing (tune + lock on training rows only, DRY board; the real init must reproduce its
+      registry shas and the real lock its picks): RECOMMENDED yes (coral precedent, DRAFTA 7; catches real-data
+      failures before the signature). It runs once, after every other decision is written and the D3 outcome is
+      final (B9).
+OD-12 Normal-anchored forms predict 0 where the normal is 0 (86-90% of test rows): accept and disclose (RECOMMENDED;
+      it is what "anomaly on the climatology" means) | add an additive term (not in any paper; not recommended).
+OD-13 enso_lag and turco_spi stay optional (Q17, Q20 a) and decide at lead 6 as P rows beside F-SEAS5 (RECOMMENDED,
+      as the approved plan). If D3 misses the cut-off, OD-4.2 decides their lead-6 tier.
+OD-14 F6 implementation (spec 4.4; review issues 1-2): (a) RECOMMENDED: research C-A as approved and written ("for
+      train rows, N is the same normal formula computed leaving that year out") plus PLAN rule 5 (squared error on the
+      target = N_loo^2-weighted isotonic ratio), through the one shared edit of rivals_human/maps.py (no Part A pick
+      changes; logged as a Part) | (b) no shared code edit: F6 as the tool has it (in-sample normal, unweighted ratio).
+      Measured effect of (b) on lead-0 refit rows: fitted level 1.0 by construction vs 0.846 out of sample (+18%);
+      2,192 of 14,834 burned rows enter with ratio up to 16 although their out-of-sample normal is 0; an unweighted
+      ratio loss would put the level near 1.58 even with the leave-year-out normal. Under (b) F6 likely loses the
+      inner / guard pick for an implementation reason (the straw-man risk Q19 removes), and Part B section 10 says so.
+
+-----------------------------------------------------------------------------------------------------------------
+10. RISKS AND HAZARDS FOUND
+-----------------------------------------------------------------------------------------------------------------
+- HUMAN_OWNER_COMMANDS.txt:16 "delete the scored fire export" is stale (ATTENTION B1).
+- ~/.ewdsapirc is missing (fetcher dry run): D0', D2, D3 cannot start; 24 days to the cut-off (B7).
+- Box-crossing 0 deg longitude (merged box10, per-region sahel): a 0-360 file is non-monotonic; the haversine
+  all-points rule handles it (T-F03); any searchsorted / "regular grid" assumption would break it.
+- The SEAS5 1-deg values depend on the request box (anchoring at the SW corner): a re-download in the other box mode
+  is a different product (new manifest, new Part line).
+- A new EWDS netCDF layout (variable or coordinate names unlike RAW) refuses in adapt (F5/F6) BEFORE signing; a reader
+  update is then an ordinary build fix (no test score exists yet).
+- Refs: if the 2018 store copy and the slim labels ever differed, the early byte check T-F18 (owner command F3)
+  fails before any init (3.9), not after the lock; `refs` repeats the check after the lock.
+- Refs: a failed parity proof still writes lead_0/refs.json and `score 0` does not refuse on it (B4): F9 stops on it.
+- Part A boards refuse load_board after the fire files exist (B3); only join reads them (proved by T-F15 d, which the
+  ONE suite skips: it runs in the separate final-stage realdata command, section 5).
+- F6 as the tool had it (in-sample normal, unweighted ratio loss) would fit a ratio curve that cannot hold out of
+  sample (level 1.0 vs 0.846; 2,192 single-burn cells; tiny-N ratios, up to 1,080 with the leave-year-out normal,
+  ruling an unweighted curve) and would likely lose the inner / guard pick for an implementation reason: fixed by the
+  4.4 edit (C-A as written + N^2 weights), confirmed by OD-14. Large ratios that remain are clipped to [0, 1] after
+  N x ratio; the inner-MAE pick decides whether F6 is chosen.
+- A half-downloaded D2/D3 manifest has no `complete` key and passes the tool's own check (index.py:150): availability()
+  and build require complete == true (3.1, 3.2, T-F01).
+- Re-running the fetcher after an init rewrites the product manifest and breaks every later command (B8).
+- R02 (review_tests) fails the final suite on any .slim / .read_set / ._hctx / ._token attribute or a non-literal
+  fit_labels call in adapters/*.py (3.9, 4); T-F19 catches it in B3's own run.
+- The x__fwi_pct reference: a fit-cut reference (first draft) would give pick rows post-issue FWI and an in-sample /
+  out-of-sample percentile asymmetry between refit and test rows; the guard-cut, own-month-out rule (3.6) removes both.
+- Old results (Parts 491, 496-498, 501, fire_danger*) are history only, never paired with this run (PLAN :85-88).
+
+-----------------------------------------------------------------------------------------------------------------
+11. SOURCES (read for this spec)
+-----------------------------------------------------------------------------------------------------------------
+PLAN :56-77, :90-146, :147-181, :249-285, :287-305; RUL AB, AG, AH, AI, AE4; RF sections 0-6; PEND Parts 590, 606, 607,
+617-620; SPECA (whole); DRAFTA (whole); BUILD_NOTES_shared.txt (contracts); HUMAN_BUILD_REPORT.txt; T\rivals_human\
+config.py, common.py, index.py, methods.py, maps.py, board.py, refs.py, slim.py, join.py, manifest.py, cli.py; T\adapters\
+pm25_reanalysis.py, ndvi_bardl.py; T\registry\_schema.yaml, _products.yaml, ndvi.yaml, pm25.yaml; T\pytest.ini;
+T\rivals_human\tests\conftest.py, hooks.py, test_h20_nonames.py; T\tests_builder_b\conftest.py; FP (whole) and its
+dry run; DLC; RUN plan.json, derived.json (R2, R8, R9, R11, R17, R22, R28); EXP lead_0/6/12 manifests and parquet
+schemas (keys, roles, normals, x__oni/x__spi values; no label column read); CB board.json; PKG dataset.yaml,
+catalog.yaml :50-75, :106-181, data\static\part-0.parquet, ingest\target_reader.py; RAW netCDF headers and values;
+D:/fire/region_bbox.csv; D:/monthly_panel greece_mainland 2002-2005 (oni, tni, nino34, spi_03m, V02 lag check).
+Added for the revision: review_tests/test_r02_runner_label_scope.py (whole); rivals_build/rivals/harness.py:50-75,
+layout.py:170-195; T\rivals_human\maps.py (whole), board.py:160-215, :300-460, :490-530, :1185-1210, :1388-1405,
+refs.py:240-370, index.py:126-186, :186-290, :290-330, :669-695, slim.py:100-180, :270-285, :400-475, join.py:99-300,
+manifest.py:1-80, common.py:110-126, config.py:29-36, :434-472; T\pytest.ini; T\human_rivals_production.yaml; FP:715-810;
+DLC 2.3-2.4; DRAFTA :20-55, :315-335; PEND Parts 617-620 (whole); RUL AB-AI (whole); RF (whole); PLAN :56-135,
+:218-232, :270-305; RAW: all 26 files' variables and coordinates; EXP lead_0 train files of all 40 groups and lead_6 /
+lead_12 train + guardside files of 3 groups (TRAINING labels only: refit / tune / guardfit rows, to measure the
+normals of the facts list).
+
+-----------------------------------------------------------------------------------------------------------------
+12. REVIEW RESPONSES (2026-10-25; 18 issues; each verified against the files before the change)
+-----------------------------------------------------------------------------------------------------------------
+Status: ACCEPTED = fixed as proposed; ADAPTED = fixed, with a stated change to the proposed fix; NOT ADOPTED = the
+optional or alternative part was declined, with the reason. No issue was rejected outright.
+
+R-1  (major) F6 fitted on the in-sample normal. VERIFIED: RF:64 C-A says "For train rows, N is the same normal formula
+     computed leaving that year out"; maps.py:382-405 uses z0 as given; re-measured on all 40 lead-0 groups (training
+     labels): nfit__ = in-sample unit-month mean (max 1.1e-16), level 1.0 vs 0.846, 2,192 of 14,834 burned rows are
+     single-burn cells; also true at leads 6/12 (refit, guardfit). ADAPTED -> section 4.4, B2, facts, OD-14, T-F10,
+     T-F15 a/e. Changes to the proposed fix: (i) the fit gets only COVERED rows (board.fit_candidate, board.py:500-509
+     drops non-finite stat / y), so a strict "refuse unless z0 equals the in-sample mean" would refuse on any partly
+     uncovered unit-month; instead rows of incomplete cells are dropped and counted, and the fit refuses only when
+     they exceed 5% of the passed rows (then the normal is not the in-sample mean). (ii) N_loo comes from the cell sum:
+     the proposed (n N - y) / (n - 1) leaves float residues (measured: ratios up to ~1e17). (iii) n_c < 2 dropped.
+     NOT ADOPTED (optional part): leave-year-out in the runners' fits. The published regressions regress anomalies on
+     an in-sample climatology, the runners see their whole fit set, and the reviewer measured the effect as small
+     (section 4 says so).
+R-2  (major) F6's isotonic ratio unweighted. VERIFIED: maps.py:96-110 and :397-402 (no sample_weight; docstring "No
+     weights"); unweighted leave-year-out mean ratio 1.58 vs target-optimal 0.846 (max 1,080). ACCEPTED -> 4.4
+     (weights N_loo^2, Iso.fit(weights=None) default unchanged), T-F10 (tiny-N toy; hand argmin), 2.5, 10. The L1
+     print is unchanged.
+R-3  (major) x__fwi_pct referenced to the lead-0 fit cut. VERIFIED: harness.py:62 and layout.py:182 (guard-side sets use
+     the guard-cut normal ngd__), slim.py:418-470; lead-0 inner rows 24193-24227 > guard cut 24192; refit rows ranked
+     in sample. ACCEPTED (preferred fix) -> 3.6 rewritten (reference to run.cuts[L]["guard_cut"], own month left out,
+     generalised asserts on the pick set and test issues), 2.2/2.3 option pct_reference_end: lead_guard_cut, 2.5, OD-9,
+     Part B sections 4 and 8, T-F06. Adapter-only; no label read; >= 11 values remain.
+R-4  (minor) Forms / constants could be switched after DRY guard MAEs. ACCEPTED -> B9, section 9 TIMING RULE, F7/F8/F9
+     stops, Part B sections 7 and 11. ADAPTED: "the real lock refuses a different sha" is an owner-command STOP (the
+     DRY and the real human_board.json both record the registry shas, board.py:376), as coral's DRY-picks check
+     (Part 617), not a tool code change. F7 also waits until the D3 outcome is final, because the OD-4.2 cut-off edit
+     changes fire.yaml. NOT ADOPTED: forms as pick candidates on guard rows (the plan names one configuration).
+R-5  (minor) OD-4 departed from Q22 a and Q24 without saying so. VERIFIED: RUL AB :174, PLAN :283, :285; Part 620
+     open ruling 2 reads "lead 6 then 'pending'". ACCEPTED -> OD-4.1 (amends Q22 a) and OD-4.2 (a literal Q24,
+     RECOMMENDED / b amends Q24), 2.1 leads_without_rival[6] text per choice, 2.4 cut-off rule, Part B header, 2, 13.
+R-6  (minor) R10 note "designed before any score" misleading. VERIFIED: RF:62-71 (C-A written directly above the Parts
+     496-498 summary). ACCEPTED -> 2.2/2.3 r10_notes, 2.4 runner notes (normal-anchored like C-A), 2.6, Part B section 9.
+R-7  (BLOCKER) prep self-check through rivals_human.slim...read_set fails R02. VERIFIED:
+     review_tests/test_r02_runner_label_scope.py:71-88 (attribute names slim, _hctx, read_set, _token in any
+     adapters/*.py -> pytest.fail). ACCEPTED (option 1) -> 3.9 (no self-check, no slim access), T-F18 (realdata early
+     byte check through refs.store_labels, owner command F3), T-F19 (R02 mirror), T-F17.
+R-8  (major) fit_labels literal argument. VERIFIED: :83-87 compares node.args to [Name(id='fit_set')]. ACCEPTED ->
+     section 4 label-access rule, T-F19, contract list in 7.
+R-9  (minor) availability passes a manifest without `complete`. VERIFIED: FP:726-735, :801; index.py:150, :296-299;
+     pm25_reanalysis.py:99-118. ACCEPTED -> 3.1 (reads the manifest; complete is True), 3.2, T-F01, B8.
+R-10 (minor) fetcher re-run breaks the product pin. VERIFIED: FP:733-735, :798-802; board.py:168-185, :450-451;
+     manifest.py --verify only re-hashes. ACCEPTED -> B8, section 8 rules and F4/F5/F6b.
+R-11 (minor) manifest folder default vs OD-6. VERIFIED: DLC 2.3 (merged default), 2.4 (no default; _y1 / _y4);
+     board.py:439-440. ACCEPTED (placeholder option) -> 2.7 UNSET_OD6 placeholders + waiting lines, F4b, OD-6, T-F01.
+R-12 (minor) B4 claimed `score 0` refuses. VERIFIED: refs.py:329-331, :360-363 write refs.json before refusing;
+     board.py:1197-1201 checks existence only. ACCEPTED -> B4, F9 stop, section 10. No shared code change.
+R-13 (minor) Part A section-12 log missing. VERIFIED: DRAFTA :25-51, :324-329; Part 618 logged its own change.
+     ACCEPTED -> B3, B2, PART_LOG_DRAFT_partB.txt (B4; appended by the main session: the engine folder is outside the
+     write root), Part B section 1.
+R-14 (minor) T-F15 d skipped by the ONE suite. VERIFIED: rivals_human/tests/conftest.py:62-68 realdata skip.
+     ACCEPTED -> section 5 final-stage command (tests_fire -m realdata, HUMAN_REAL=1 for that command only), final
+     integration stage (7), Part B section 14.
+R-15 (minor) RAW `surface` / extra variables vs "any other layout refuses". VERIFIED on all 26 RAW files. ACCEPTED ->
+     facts, 3.2 (check fwinx dims + named coordinates; extra scalar coords and data variables ignored), fixtures,
+     T-F02, T-F04.
+R-16 (minor) T-F11 checked leads 6/12 only. VERIFIED: slim.py:169-175, :278-281. ACCEPTED -> T-F11 (lead_0, 6, 12;
+     train and test; extras + history columns).
+R-17 (minor) builder contract gaps. ACCEPTED -> section 4 (module-level exports in both runners; B3 imports only
+     fire_enso / fire_turco), section 7 (FINAL INTEGRATION STAGE applies B2's fire.yaml option requests).
+R-18 (minor) T-F09 store_labels fixture. VERIFIED: refs.py:251-264. ACCEPTED -> T-F09 (monkeypatch fixture preferred;
+     full toy or session grid toy as alternatives; why a FakeCtx fails).

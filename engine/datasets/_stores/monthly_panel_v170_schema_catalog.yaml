@@ -1,0 +1,4343 @@
+# monthly_panel_v170 -- shared STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog), SEEDED 2026-09-28T13:18:10
+# by engine/datasets/_tools/export_review_csv_v2.py. Every fact is 'unverified'. Review aids (footer statistics, samples,
+# sources, notes): engine/datasets/review/v2/evidence/monthly_panel_v170_evidence.yaml.
+# Conventions (APP_PLAN 1.3): the row key names a calendar month (or a calendar year for annual values).
+#   plain window    -> stamp period_end   + window {length, unit, align: backward}
+#   centred window  -> stamp period_centre + window {length, unit, align: centred}
+#   unknown window  -> stamp period_centre + window {unit, align: unknown} (no length until a max_length is signed)
+#   reach past the period edge (no schema field for it) -> a WIDER window that ends at or after the content's
+#   end; R8 reads only the forward edge, so the wider start never changes a lag.
+#   static column   -> cadence {kind: static}, no window; stamp period_end is a placeholder the schema requires.
+# index_facts.yaml (the F10/V11 audit) writes EVERY window as period_centre + centred; both describe the same
+# content. Its proposals are not merged here: M1 merges them by hand once signed.
+# MERGED 2026-09-28 (catalogs task; nothing signed, the owner signs timing facts by Sat 10 Oct): the ruled timing
+# facts of OWNER_RULINGS_2026-09-28.md part B (R-A a, R-B, R-C a, item 8 a) and part F item F4, taken from
+# index_facts.yaml / INDEX_WINDOW_AUDIT.md, in the audit's spelling (stamp period_centre + centred window):
+#   nino12, nino3, nino4, nino34 and the 8 sst_anom_*: {1, month, centred} + reach_after_max {2, month}   (R-A a; F4)
+#   oni: {3, month, centred} + reach_after_max {2, month}                                          (R-A a)
+#   tni: {7, month, centred}, fact_status assumed                                                   (R-B)
+#   co2: {3, month, centred}, fact_status assumed                                                   (R-C a; F4)
+#   V11_mean_ndvi, V12_mean_evi: {1, month, centred} + reach_after_max / reach_before_max {15, day}  (item 8 a)
+# The schema now HAS reach_after_max / reach_before_max (ruling B item 8 a), so the 'WIDER window' convention above
+# applies only to the columns seeded before the ruling (albedo, GPP, MOD44B, ...), which are unchanged. A re-run of
+# engine/datasets/_tools/export_review_csv_v2.py would revert these 15 + 2 columns: re-merge after any re-seed.
+# MERGED 2026-10-05 (PM2.5 ban-list task, OWNER_RULINGS_2026-10-05.md section J; nothing signed). Each changed column
+# is fact_status 'assumed', and that covers ONLY the facts named here: the store schema's window has no fact_status of
+# its own, so the column carries it, and each column's provenance names its assumed facts (the rest stay as seeded):
+#   nitrogen_gkg: units cg kg-1, legal_range [0, 5000]                                               (J4)
+#   V30_soil_moisture_pct: legal_range [-1e-12, 100] (float rounding of 0)                           (J4)
+#   deeprec_twsa: reach_after_max {3, month} -> lag 3 on a monthly target                            (J2 b)
+#   phenology_sos_doy: {1, year, centred} + reach_after_max {1, year} -> lag 2 years monthly, 1 annual (J2 b)
+#   aglw_* (6): the seed's facts (fact_status unverified, no content_epoch); only the provenance text is new: it
+#     states the 2022-23 extension defect. A content_epoch '2002/2021' written for the FIRST J3 text (freeze) was
+#     removed in the fix round: the AMENDED J3 (same file) makes aglw_* a lagged annual driver on all four packages,
+#     R8 lags the seeded window {1, year, backward} to year-1 on a monthly target, and the epoch was beyond this
+#     task's J4 / J2 b store scope.
+#   NOT written, so G-LAG refuses each one LOUDLY until the owner signs a window: noi's J1 bound ({3, month,
+#     centred}, assumed; review/proposed/BAN_REVIEW_SUMMARY.md 5 B and Q2), epo (kept by J2 d, but no ruling sets
+#     its window; proposed {1, month, centred} like its CPC siblings nao/pna/wp) and the 10 other unknown index
+#     windows (soi, tna, tsa, iod, ao, nao, pna, wp, sam, pdo). They go in one merge after the owner signs: noi alone
+#     unblocks no package's R8, and the fire, NDVI, defo and draft tests pin it as refused with the others.
+#     gfed_burn_schema_catalog.yaml burn_frac DOES carry J1's assumed reach_after_max {1, month}: the difference is
+#     on purpose. An unwritten index window is a loud refusal; an unwritten burn_frac reach would let the column in
+#     at lag 0, a SILENT one-month look-ahead (MCD64A1 labels month m from month m+1 observations; ruling R-D b).
+# A re-seed would revert these too: re-merge them after any re-seed.
+# SIGNED 2026-10-06 (ruling L1, OWNER_RULINGS_2026-10-05.md section L, "Yes to all"). The ruling says "fact_status signed,
+# reviewed_by owner, 2026-10-06"; the schema (treeroute/package/schema.py FactStatus) has no 'signed' value, so a signed
+# fact is written in plan 1.3's spelling: fact_status 'assumed' + reviewed_by: owner + date: '2026-10-06' (G-FACTS accepts
+# verified or signed 'assumed'). Nothing was 'verified' against a source by this change.
+#   L1 (b) the 13 index windows soi, tna, tsa, iod, ao, nao, pna, wp, sam, noi, pdo, epo, grace_lwe: the cautious window
+#          {3, month, centred} at their seeded period-centre stamp (was align unknown, no bound: G-LAG refused each at
+#          lag 0). R8 gives lag 1 month on a monthly target. This SUPERSEDES the 'NOT written' paragraph above.
+#   L1 (a) the facts the install marked 'assumed' are signed as written: deeprec_twsa (reach 3 months), phenology_sos_doy
+#          (window), nitrogen_gkg (units cg/kg, range [0, 5000]), V30_soil_moisture_pct (minimum -1e-12), tni
+#          ({7, month, centred}); burn_frac's reach in gfed_burn_schema_catalog.yaml. co2 (R-C a, assumed) is not in
+#          the ruling's list and stays unsigned.
+#   L1 (c) the aglw_* (6) yearly facts (cadence {1, year}, window {1, year, backward}, observed_through 2021): unverified
+#          -> signed. Ruling L3 (the 2022-23 layers are not used) lives in the packages: each monthly package bans the raw
+#          aglw_* and keeps an engineered column holding the real 2021 layer for 2022-2023 (features/build.py).
+# Every dataset.yaml that includes this file was re-pinned in the same change (defo/dataset.yaml: PENDING_DEFO_L.md).
+# MERGED 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md section N, shared follow-ups task):
+#   N1 pdo: nino34's form {1, month, centred} + reach_after_max {2, month} (ERSSTv5 reach): R8 lag 2 monthly.
+#      L1 b's cautious 3-month width is dropped: with the reach it would give lag 3, not the ruled lag 2.
+#      Signed (N1 is the owner's answer). This SUPERSEDES L1 b's 'lag 1 month' for pdo.
+#   N2 the static-map dating rule: content_epoch 'timeless' on the 19 physical static maps (grid, terrain, soil,
+#      MERIT rivers, coast); a content date on the human-built ones: GMIA 2005 (signed column; the date is
+#      SIGNOFF_REVIEW disclosure 15), GPPD 2020 (read from the file), GDW 2024 and OGIM 2023 (release years as
+#      upper bounds, unsigned). travel_time 2015, road_density 2018, dist_coal_mine 2026-05, dist_pa 2026-06 were
+#      already dated. treeroute/check/guards.py G-EPOCH refuses an entering static column with neither.
+store: monthly_panel_v170
+description: 'Shared monthly panel (170 columns): one parquet per group-year, D:/monthly_panel/{group}_monthly_{year}.parquet,
+  read in place. Keys cell_id (unit), region (group), year + month (time) are left out: key roles live in each package
+  catalog. Seeded 2026-09-28T13:18:10 by engine/datasets/_tools/export_review_csv_v2.py; every fact unverified.
+  Review aids: engine/datasets/review/v2/evidence/monthly_panel_v170_evidence.yaml.'
+columns:
+  lon:
+    dtype: float32
+    units: degrees_east
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -180.0
+    - 180.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: grid
+    content_epoch: 'timeless'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  lat:
+    dtype: float32
+    units: degrees_north
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 90.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: grid
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V25_elevation_m:
+    dtype: float32
+    units: m
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -500.0
+    - 9000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: terrain
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V26_slope_deg:
+    dtype: float32
+    units: degree
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 90.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: terrain
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V27_southness:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -1.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: terrain
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V28_CTI:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 50.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: terrain
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:71; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  clay_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  sand_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  silt_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  soil_organic_carbon_gkg:
+    dtype: float32
+    units: g kg-1
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  nitrogen_gkg:
+    dtype: float32
+    units: cg kg-1
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; units and legal range: ruling J4 (OWNER_RULINGS_2026-10-05.md: "nitrogen_gkg is stored in cg/kg"), was g kg-1 [0, 50]; SoilGrids 2.0 maps nitrogen in cg/kg; measured 13.2% of the 2019+2022 panel values above 50 (max 267.2, review/proposed/pm25_columns_proposed.csv), re-measured 2026-10-05 on 10 regions x 2019: 14.3% above 50, max 111.0, median 31.3; the column name keeps its old gkg suffix (panel schema) fact_status ''assumed'' covers units and legal_range only (ruling J4); every other fact is the seed''s (unverified).; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the facts this provenance names as assumed; content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  soil_ph:
+    dtype: float32
+    units: pH
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 14.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:72; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  awc_cm3cm3:
+    dtype: float32
+    units: cm3 cm-3
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:73; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  bulk_density_gcm3:
+    dtype: float32
+    units: g cm-3
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2.7
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:73; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  cec_cmolkg:
+    dtype: float32
+    units: cmol kg-1
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 300.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:73; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  coarse_fragments_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: soil
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:73; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V15_bare_ground_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_start
+    window:
+      length: 430
+      unit: day
+      align: forward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD44B
+    sum_group: MOD44B_V15_V17_tree_cover
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'defo_ban.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  V17_herb_cover_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_start
+    window:
+      length: 430
+      unit: day
+      align: forward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD44B
+    sum_group: MOD44B_V15_V17_tree_cover
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'defo_ban.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  tree_cover_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_start
+    window:
+      length: 430
+      unit: day
+      align: forward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD44B
+    sum_group: MOD44B_V15_V17_tree_cover
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'defo_ban.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  modis_landcover_class:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 255.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD12Q1
+    fact_status: unverified
+    provenance: presplit_cc/assemble_monthly_panel.py:74
+  shrub_cover_pct_global:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD12Q1
+    fact_status: unverified
+    provenance: presplit_cc/assemble_monthly_panel.py:75
+  phenology_sos_doy:
+    dtype: float32
+    units: day of year
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_centre
+    window:
+      length: 1
+      unit: year
+      align: centred
+      reach_after_max:
+        value: 1
+        unit: year
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD12Q2
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:75; timing: ruling J2 (b) (OWNER_RULINGS_2026-10-05.md: phenology_sos_doy gets one extra year where it is not a target co-product): the calendar year {1, year, centred} plus reach_after_max {1, year}, ASSUMED (the MCD12Q2 detection may pass the calendar year; no provider bound is in the repo). Was align unknown (refused at lag 0, G-LAG). timing.lag_trace, 2026-10-05: lag 2 years on a monthly target, 1 year on an annual target. The verdict is per problem (NDVI bans it as a co-product) fact_status ''assumed'' covers the window only (align centred, length 1 year, reach_after_max 1 year; ruling J2 b; the store schema''s window carries no fact_status of its own); every other fact is the seed''s (unverified).; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the facts this provenance names as assumed'
+  population_density:
+    dtype: float32
+    units: persons per 1-km pixel
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: WorldPop
+    observed_through: '2020'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_worldpop_annual.py:30; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  built_surface_fraction:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GHSL
+    observed_through: '2018'
+    fact_status: unverified
+    provenance: defo_ban.py:91
+  cropland_fraction:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD12Q1
+    fact_status: unverified
+    provenance: presplit_cc/assemble_monthly_panel.py:76
+  hand_m:
+    dtype: float32
+    units: m
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MERIT
+    lineage:
+      assimilates:
+      - Hansen GFC treecover2000
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:78; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  upstream_area_km2:
+    dtype: float32
+    units: km2
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 10000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MERIT
+    lineage:
+      assimilates:
+      - Hansen GFC treecover2000
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:78; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  irrigation_pct_gmia:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GMIA
+    content_epoch: '2005'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:78; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch 2005 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a map of a human-built thing carries a content date, checked against every cut; GMIA v5 (Siebert et al. 2013) shows irrigated area around 2005 (SIGNOFF_REVIEW.md disclosure 15)'
+  dist_to_coast_km:
+    dtype: float32
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: coast
+    content_epoch: 'timeless'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:78; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch ''timeless'' under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): a physical map (terrain, soil, rivers, coast, grid) is timeless; no release date is recorded (SIGNOFF_REVIEW.md N2)'
+  V01_mean_temp_C:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:36; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  diurnal_temp_range_C:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 50.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:36; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V02_total_precip_mm:
+    dtype: float32
+    units: mm month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 12000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:36; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V07_total_ref_ET_mm:
+    dtype: float32
+    units: mm month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:37; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  aet_total_mm:
+    dtype: float32
+    units: mm month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:37; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  climate_water_deficit_mm:
+    dtype: float32
+    units: mm month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:37; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  soil_water_tc_mm:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: day
+      align: backward
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:38; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V05_mean_vpd_kPa:
+    dtype: float32
+    units: kPa
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:38; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V09_mean_wind_ms:
+    dtype: float32
+    units: m s-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 60.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:38; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  solar_radiation_Wm2:
+    dtype: float32
+    units: W m-2
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 600.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:39; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  swe_mean_mm:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: day
+      align: backward
+    legal_range:
+    - 0.0
+    - 40000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:39; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  aridity_index_p_pet:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: unverified
+    provenance: presplit_cc/assemble_monthly_panel.py:39
+  tc_vapor_pressure:
+    dtype: float32
+    units: kPa
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: TerraClimate
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:40; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V11_mean_ndvi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_centre
+    window:  # ruling B item 8 (a): the month plus up to 15 days on each side (16-day composites overlapping the month, [S38, S42, T9]; December reaches 2-3 days into January); implied R8 lag 1, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 15
+        unit: day
+      reach_before_max:
+        value: 15
+        unit: day
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD13C2
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:59; timing: ruling B item 8 (a) (reach_after_max / reach_before_max), OWNER_RULINGS_2026-09-28.md; MOD13 User Guide V6.1 7.1, 9.1 [S38], CMR granule time ranges [S42], composite calendar [T9], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  V13_mean_lst_C:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -90.0
+    - 80.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD11C3
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:52; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  nighttime_lst_C:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD11C3
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:53; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  snow_cover_fraction:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD10
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:90; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  cloud_frequency_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD08 (atmosphere)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:96; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  V14_mean_albedo:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_centre
+    window:
+      length: 47
+      unit: day
+      align: centred
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD43
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:102; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  gpp_kgC_m2:
+    dtype: float32
+    units: kg C m-2 month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_centre
+    window:
+      length: 47
+      unit: day
+      align: centred
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FluxSat
+    lineage:
+      assimilates:
+      - MODIS MCD43 NBAR reflectance
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_fluxsat_gpp.py:25; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  snow_onset_doy:
+    dtype: float32
+    units: day of year
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: unverified
+    provenance: presplit_cc/ingest_era5land_snowphen.py:158
+  snow_disappearance_doy:
+    dtype: float32
+    units: day of year
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: unverified
+    provenance: presplit_cc/ingest_era5land_snowphen.py:158
+  snow_duration_days:
+    dtype: float32
+    units: day
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_snowphen.py:159; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  snow_max_doy:
+    dtype: float32
+    units: day of year
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: unverified
+    provenance: presplit_cc/ingest_era5land_snowphen.py:159
+  V06_spei_12m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 12
+      unit: month
+      align: backward
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: SPEIbase
+    observed_through: 2022-12
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spei_01m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: SPEIbase
+    observed_through: 2022-12
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spei_03m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 3
+      unit: month
+      align: backward
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: SPEIbase
+    observed_through: 2022-12
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spei_06m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 6
+      unit: month
+      align: backward
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: SPEIbase
+    observed_through: 2022-12
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:43; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spei_24m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 24
+      unit: month
+      align: backward
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: SPEIbase
+    observed_through: 2022-12
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:43; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  frost_days:
+    dtype: float32
+    units: day
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:41; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  heatwave_days_gt35C:
+    dtype: float32
+    units: day
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:41; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  gdd5_degC_days:
+    dtype: float32
+    units: degC day
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1200.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:41; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  wet_day_count:
+    dtype: float32
+    units: day
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:41; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V03_max_daily_precip_mm:
+    dtype: float32
+    units: mm day-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:41; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  precip_intensity_mm:
+    dtype: float32
+    units: mm day-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  vpd_max_daily:
+    dtype: float32
+    units: kPa
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 25.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  vpd_days_gt_2kpa:
+    dtype: float32
+    units: day
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  vpd_warm_season_mean:
+    dtype: float32
+    units: kPa
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  rmin_pct:
+    dtype: float32
+    units: percent
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  sph_kgkg:
+    dtype: float32
+    units: kg kg-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 0.05
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: AgERA5
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_agera5_daycounts.py:42; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  V30_soil_moisture_pct:
+    dtype: float32
+    units: percent (volumetric)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -1.0e-12
+    - 100.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_soilmoisture.py:157; legal minimum -1e-12: ruling J4 (OWNER_RULINGS_2026-10-05.md: the tiny negatives, about -1e-18, are float rounding of 0, so the legal minimum carries that tolerance), was 0.0; measured 2.30% of 2019+2022 values below 0 down to -1.07e-18 (review/proposed/pm25_columns_proposed.csv), re-measured 2026-10-05 on 10 regions x 2019: 0.11% below 0, minimum -1.06e-18, none below -1e-12 fact_status ''assumed'' covers the legal_range minimum only (ruling J4); every other fact is the seed''s (unverified).; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the facts this provenance names as assumed'
+  V20_burned_binary:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FireCCI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_firecci_fire.py:152; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  burn_month_count:
+    dtype: float32
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 12.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FireCCI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_firecci_fire.py:153; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  burn_doy_mean:
+    dtype: float32
+    units: day of year
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 366.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FireCCI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_firecci_fire.py:154; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  sst_anom_atl3:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:88; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_iod_west:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:88; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_iod_east:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:88; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_subpolar_north_atlantic:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:89; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_coral_sea:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:89; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_mediterranean:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:89; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_global_tropical_mean:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:90; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  sst_anom_nino34:
+    dtype: float32
+    units: degC
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERSSTv5
+    baseline_period:
+    - '1971'
+    - '2000'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_ersst_boxes.py:143; timing: ruling R-A (a) and F4 (period_centre stamp merged with the ruled window), OWNER_RULINGS_2026-09-28.md; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  nino12:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:32; timing: ruling R-A (a), OWNER_RULINGS_2026-09-28.md B; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  nino3:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:33; timing: ruling R-A (a), OWNER_RULINGS_2026-09-28.md B; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  nino4:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:34; timing: ruling R-A (a), OWNER_RULINGS_2026-09-28.md B; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  nino34:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): the month plus the ERSSTv5 filter reach of +2 months (CPC [S39, S6]); implied R8 lag 2, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:35; timing: ruling R-A (a), OWNER_RULINGS_2026-09-28.md B; CPC ERSSTv5 filter note [S39, S6], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  oni:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-A (a): 3-month centred mean [S6, T3] plus the ERSSTv5 filter reach of +2 months; implied R8 lag 3, 1 year as an annual aggregate
+      length: 3
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:36; timing: 3-month centred mean [S6, T3, T5] + ruling R-A (a), OWNER_RULINGS_2026-09-28.md B; datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  soi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:37; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  tni:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-B: the signed bound {7, month, centred} ('centred or one month later', [S4, T4, T4b]); implied R8 lag 3, 1 year as an annual aggregate
+      length: 7
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:38; timing: ruling R-B (signed bound {7, month, centred}), OWNER_RULINGS_2026-09-28.md B; provider length 5 months [S4], alignment from data [T4, T4b], datasets/_stores/INDEX_WINDOW_AUDIT.md; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the facts this provenance names as assumed'
+  pdo:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling N1 (OWNER_RULINGS_2026-10-06.md N): nino34's form, the month plus the ERSSTv5 filter reach of +2 months; implied R8 lag 2 on a monthly target (L1 b's cautious 3-month width plus the reach would give lag 3)
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 2
+        unit: month
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:39; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s; N1 (OWNER_RULINGS_2026-10-06.md section N, signed by the owner 2026-10-06): pdo takes nino34''s timing form, window {1, month, centred} + ERSSTv5 filter reach_after_max {2, month} (R-A a), replacing L1 b''s cautious {3, month, centred} window (its 3-month width plus the reach would give lag 3, not the ruled lag 2): psl.noaa.gov pdo.data links the ERDDAP cciea_OC_PDO series, projections of ERSST V5 monthly SSTA (SIGNOFF_REVIEW.md N1); R8 lag 2 months on a monthly target, 1 year on an annual one'
+  amo:
+    dtype: float32
+    units: K (anomaly)
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    observed_through: 2023-01
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:40; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S2)'
+  tna:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:41; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  tsa:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:42; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  iod:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:43; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  noi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:44; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  ao:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:45; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  nao:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:46; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  pna:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:47; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  wp:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:48; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  epo:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:49; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  sam:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA indices
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_noaa_indices.py:50; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  V04_precip_seasonality:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - V02_total_precip_mm
+    reads_target: false
+    operation: coefficient of variation of the calendar year's 12 monthly values
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_monthly_panel.py:92; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  clf_dry:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: regime classifier
+    lineage:
+      trained_on:
+      - V11_mean_ndvi
+    fact_status: unverified
+    provenance: presplit_cc/save_regime_to_panel.py:61
+  clf_wet:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: regime classifier
+    lineage:
+      trained_on:
+      - V11_mean_ndvi
+    fact_status: unverified
+    provenance: presplit_cc/save_regime_to_panel.py:61
+  road_density:
+    dtype: float64
+    units: log1p(m km-2)
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GRIP4
+    fact_status: unverified
+    content_epoch: '2018'
+    provenance: 'presplit_cc/assemble_human_drivers.py:182; content_epoch 2018 recorded by owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S29): GRIP4 (Meijer et al. 2018, ERL 13 064006) merges about 60 national and OSM sources; over half the road length comes from sources published 2010 or later; latest source dates not recorded; 2018 (release) is recorded as an upper bound; after every guard cut, before every test year'
+  travel_time:
+    dtype: float64
+    units: log1p(minutes)
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: accessibility
+    content_epoch: '2015'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:189; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4); content_epoch 2015 is the map''s content date under ruling N2 (OWNER_RULINGS_2026-10-06.md section N) (checked against every cut)'
+  dist_powerplant:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: '2020'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_human_drivers.py:202; content_epoch 2020 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): newest commissioning_year in the GPPD file read (D:/ndvi_drivers/energy/global_power_plant_database.csv, max commissioning_year 2020, year_of_capacity_data 2019; read 2026-10-06); not signed'
+  dist_thermal:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: '2020'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_human_drivers.py:203; content_epoch 2020 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): the GPPD subset (Coal, Gas, Oil) of dist_powerplant; newest commissioning_year in the file read is 2020 (read 2026-10-06); not signed'
+  dist_coal_mine:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: 2026-05
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:214
+  dist_dam:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: '2024'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_human_drivers.py:229; content_epoch 2024 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): Global Dam Watch GDW v1.0 (Lehner et al. 2024); the latest source dates were not read, so the release year is recorded as an upper bound (the S29 method); not signed'
+  dist_reservoir:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: '2024'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_human_drivers.py:230; content_epoch 2024 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): Global Dam Watch GDW v1.0 reservoirs (Lehner et al. 2024); release year recorded as an upper bound (the S29 method); not signed'
+  dist_oilgas_well:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: '2023'
+    fact_status: unverified
+    provenance: 'presplit_cc/assemble_human_drivers.py:240; content_epoch 2023 under ruling N2 (OWNER_RULINGS_2026-10-06.md section N): OGIM v1 (Omara et al. 2023); the latest source dates were not read, so the release year is recorded as an upper bound (the S29 method); not signed'
+  dist_pa:
+    dtype: float64
+    units: km
+    cadence:
+      kind: static
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: infrastructure snapshots
+    content_epoch: 2026-06
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:251
+  gdp_pc:
+    dtype: float64
+    units: log1p(GDP per capita)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GDP
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:93; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  ntl:
+    dtype: float64
+    units: log1p(DN)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: night lights
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:103; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  hdi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: HDI
+    observed_through: '2015'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:114; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_cropland:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:123; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_pasture:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:123; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_range:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:124; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_urban:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:124; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_forest:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:124; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  luh2_secondary:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: LUH2
+    lineage:
+      assimilates:
+      - Hansen GFC loss
+      - MapBiomas (Brazil, Indonesia)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:125; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  fert_n:
+    dtype: float64
+    units: g N m-2 (as in Lu & Tian; audit spec says kg/ha)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: fertiliser
+    observed_through: '2013'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:148; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  fert_p:
+    dtype: float64
+    units: g P m-2 (as in Lu & Tian; audit spec says kg/ha)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: fertiliser
+    observed_through: '2013'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:148; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  aglw_cattle:
+    dtype: float64
+    units: log1p(head km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:160 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT cattle head-count ratio (x1.0039 for 2022, x1.0057 for 2023) and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  aglw_buffalo:
+    dtype: float64
+    units: log1p(head km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:160 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT buffalo head-count ratio (x1.0027 for 2022, x1.0055 for 2023) and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  aglw_horse:
+    dtype: float64
+    units: log1p(head km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:160 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT horse head-count ratio (x0.7657 for 2022, x0.6376 for 2023) and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  aglw_sheep:
+    dtype: float64
+    units: log1p(head km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:161 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT sheep head-count ratio (x1.0596 for 2022, x1.1597 for 2023) and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  aglw_goats:
+    dtype: float64
+    units: log1p(head km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:161 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT goats head-count ratio (x1.1081 for 2022, x1.2141 for 2023) and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  aglw_total_lsu:
+    dtype: float64
+    units: log1p(LSU km-2)
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GLW
+    observed_through: '2021'
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:174 (the year-Y row holds log1p of the year-Y layer {sp}_{Y}.tif, :164-175). Real annual layers 2002-2021, extracted from the provider archive (fetch_livestock_extract.py:1-16; files of D:/ndvi_drivers/livestock_aglw dated 2026-07-01 17:07). The 2022 and 2023 rows are NOT observations: fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratios per species (2022: cattle x1.0039, buffalo x1.0027, horse x0.7657, sheep x1.0596, goats x1.1081), so this LSU-weighted total (:160-161, :173-174; weights cattle and buffalo 1.0, horse 0.8, sheep and goats 0.1) moves by their mix and wrote the result for EVERY region (india_faostat_ratios.csv; files dated 17:33), so observed_through stays 2021. A monthly row of year Y read at a one-year lag sees the year Y-1 layer, so rows of 2023 (and lead-6 issue months of 2023) read the rescaled 2022 layer. Every fact is the seed''s (unverified); only this provenance text was extended (2026-10-05). No content_epoch: the one written for the first J3 text (freeze) was removed under the amended ruling J3 (OWNER_RULINGS_2026-10-05.md: a lagged annual driver on all four packages). Verdicts are per package (ban.yaml), never store facts; SIGNED by the owner 2026-10-06 (ruling L1 c, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value) (''the aglw_* yearly facts''): cadence {1, year}, window {1, year, backward}, stamp period_end, observed_through 2021. Ruling L3: the 2022 and 2023 rows are not used; each monthly package bans this raw column and keeps an engineered copy that holds the real 2021 layer for 2022-2023 (features/build.py)'
+  conflict_events:
+    dtype: float64
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: UCDP
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:275; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  conflict_deaths:
+    dtype: float64
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: UCDP
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/assemble_human_drivers.py:275; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S4)'
+  co2:
+    dtype: float64
+    units: ppm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_centre
+    window:  # ruling R-C (a): {3, month, centred}, assumed (GML ~40-day smoothing [S18, S19]); F4: stamped at the month centre; implied R8 lag 1, 1 year as an annual aggregate
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: NOAA GML
+    fact_status: assumed
+    provenance: 'presplit_cc/assemble_human_drivers.py:280; timing: ruling R-C (a) (window {3, month, centred}, assumed) and F4, OWNER_RULINGS_2026-09-28.md; GML smoothing [S18, S19], datasets/_stores/INDEX_WINDOW_AUDIT.md'
+  food_price_index:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  food_meat:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  food_dairy:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  food_cereals:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  food_oils:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  food_sugar:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: global
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: FAO FFPI
+    baseline_period:
+    - '2014'
+    - '2016'
+    fact_status: unverified
+    provenance: presplit_cc/assemble_human_drivers.py:289
+  grace_lwe:
+    dtype: float32
+    units: cm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_centre
+    window:  # ruling L1 (b), signed by the owner 2026-10-06: a cautious {3, month, centred} window; R8 lag 1 month on a monthly target
+      length: 3
+      unit: month
+      align: centred
+    legal_range:
+    - -200.0
+    - 200.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GRACE
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_grace_monthly.py:61; timing: ruling L1 (b) (OWNER_RULINGS_2026-10-05.md L): the owner signs a cautious window {3, month, centred} at the period-centre stamp (was align unknown with no bound, refused at lag 0 by G-LAG); timing.lag_trace: lag 1 month on a monthly target. SIGNED by the owner 2026-10-06 (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the window; every other fact is the seed''s'
+  modis_landcover_annual:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    legal_range:
+    - 0.0
+    - 255.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MCD12C1
+    fact_status: unverified
+    provenance: presplit_cc/ingest_modis_cmg_local.py:84
+  V12_mean_evi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_centre
+    window:  # ruling B item 8 (a): the month plus up to 15 days on each side (16-day composites overlapping the month, [S38, S42, T9]; December reaches 2-3 days into January); implied R8 lag 1, 1 year as an annual aggregate
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max:
+        value: 15
+        unit: day
+      reach_before_max:
+        value: 15
+        unit: day
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: MODIS MOD13C2
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_modis_cmg_local.py:78; timing: ruling B item 8 (a) (reach_after_max / reach_before_max), OWNER_RULINGS_2026-09-28.md; MOD13 User Guide V6.1 7.1, 9.1 [S38], CMR granule time ranges [S42], composite calendar [T9], datasets/_stores/INDEX_WINDOW_AUDIT.md; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S3)'
+  deeprec_twsa:
+    dtype: float32
+    units: cm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+      reach_after_max:
+        value: 3
+        unit: month
+    legal_range:
+    - -300.0
+    - 300.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: DeepRec
+    lineage:
+      assimilates:
+      - ONI
+      - ISIMIP land use (LUH2)
+      trained_on:
+      - GRACE/GRACE-FO
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_deeprec_tws.py:22; timing: ruling J2 (b) (OWNER_RULINGS_2026-10-05.md: an undocumented window gets a cautious signed bound so R8 lags it; deeprec_twsa lag 3 months): reach_after_max {3, month}, ASSUMED, gives lag 3 on a monthly target (timing.lag_trace, 2026-10-05). The CNN+LSTM input sequence is not documented (D:/deeprec/DeepRec_mixture_CSR_ERA5-ONI-HI.nc attributes; doi 10.1029/2025JH000889 unread, HTTP 403), so the bound is the owner''s, not the provider''s; the 3 months also cover the ONI input''s ERSSTv5 reach (ruling R-A a) fact_status ''assumed'' covers window.reach_after_max only (ruling J2 b; the store schema''s window carries no fact_status of its own); every other fact is the seed''s (unverified).; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers the facts this provenance names as assumed'
+  era5l_pev:
+    dtype: float32
+    units: m_water_equiv
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -2.0
+    - 0.5
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:33; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_sro:
+    dtype: float32
+    units: m
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:33; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_ssro:
+    dtype: float32
+    units: m
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 2.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:33; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_smlt:
+    dtype: float32
+    units: m
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_slhf:
+    dtype: float32
+    units: J m-2
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -50000000.0
+    - 6000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_sshf:
+    dtype: float32
+    units: J m-2
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -50000000.0
+    - 50000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:34; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_ssr:
+    dtype: float32
+    units: J m-2
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 60000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:35; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_str:
+    dtype: float32
+    units: J m-2
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - -50000000.0
+    - 5000000.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:35; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_d2m:
+    dtype: float32
+    units: K
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 180.0
+    - 340.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:36; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  era5l_stl1:
+    dtype: float32
+    units: K
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 180.0
+    - 350.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ERA5-Land
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_era5land_extra.py:36; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  esacci_sm:
+    dtype: float32
+    units: m3 m-3
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: ESA CCI SM
+    fact_status: unverified
+    provenance: presplit_cc/ingest_esacci_sm.py:31
+  scpdsi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: CRU scPDSI
+    fact_status: unverified
+    provenance: presplit_cc/ingest_drought_indices.py:5
+  spi_01m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GPCC SPI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_drought_indices.py:7; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spi_03m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 3
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GPCC SPI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma), 1.0 deg); signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spi_06m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 6
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GPCC SPI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma), 1.0 deg); signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spi_12m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 12
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GPCC SPI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma), 1.0 deg); signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  spi_24m:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 24
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: GPCC SPI
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/ingest_drought_indices.py:7; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  eddi:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: EDDI
+    fact_status: unverified
+    provenance: presplit_cc/ingest_drought_indices.py:9
+  wbal_mm:
+    dtype: float32
+    units: mm month-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - V02_total_precip_mm
+    - V07_total_ref_ET_mm
+    reads_target: false
+    operation: difference V02_total_precip_mm - V07_total_ref_ET_mm (sentinels masked first)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/add_drought_wbal_all_regions.py:51; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  wbal_roll3:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 3
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - wbal_mm
+    reads_target: false
+    operation: trailing sum over the column's window (min_periods = window)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/add_drought_wbal_all_regions.py:51; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  wbal_roll6:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 6
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - wbal_mm
+    reads_target: false
+    operation: trailing sum over the column's window (min_periods = window)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/add_drought_wbal_all_regions.py:51; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  wbal_roll12:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 12
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - wbal_mm
+    reads_target: false
+    operation: trailing sum over the column's window (min_periods = window)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/add_drought_wbal_all_regions.py:51; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  wbal_roll24:
+    dtype: float32
+    units: mm
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 24
+      unit: month
+      align: backward
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: derived
+    derived_from:
+    - wbal_mm
+    reads_target: false
+    operation: trailing sum over the column's window (min_periods = window)
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+    provenance: 'presplit_cc/add_drought_wbal_all_regions.py:51; signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S1)'
+  eddi_observed:
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    scope: unit
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values:
+    - -32768
+    - -32767
+    - -2147483648
+    - -2147483647
+    product_family: EDDI
+    derived_from:
+    - eddi
+    reads_target: false
+    operation: isfinite(eddi) indicator
+    fact_status: unverified
+    provenance: presplit_cc/add_drought_wbal_all_regions.py:53

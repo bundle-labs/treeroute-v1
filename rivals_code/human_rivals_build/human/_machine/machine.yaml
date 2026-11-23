@@ -1,0 +1,7 @@
+# Test machine of the human-rival tool (SPEC_HUMAN.txt 1.1; the pattern of D:/treeroute/rivals_build/_machine/machine.yaml).
+# Paths only, every path absolute. temp_dir sits under the human build, so the tests and build commands take a
+# heavy-job lock of their own (never D:/treeroute/tmp/treeroute_heavy_job.lock); registry_dir is the shared engine
+# registry, read-only.
+run_root: D:/treeroute/human_rivals_build/human/_machine/runs
+temp_dir: D:/treeroute/human_rivals_build/human/_machine/tmp
+registry_dir: D:/treeroute/registry

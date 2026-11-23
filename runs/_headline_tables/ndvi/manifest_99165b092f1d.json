@@ -1,0 +1,101 @@
+{
+ "continuity_groups_sha256": "1b1ccef388d21f800510967ff06c1626182690e03884b3fd9ca95f98a8114073",
+ "history_bands_sha256": "93f474341798f389c91f89ab2ed0949f96ff0ab7a659a10364246dfa9e54c0f6",
+ "inputs": [
+  {
+   "file": "derived",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\derived.json",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "8ecc92b58cbd5f65867d477472001085646553c891773ab382fd542c470bb950"
+  },
+  {
+   "file": "ladder",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\ladder\\ladder.json",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "c0edf9ce937a02248173172f1685a2bd12ae4ab9fa87c91d140e79c59d951e2f"
+  },
+  {
+   "file": "run_record",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\run_record.json",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "9672c371e441f35695b62b9d590924556c6c6539ff7fcbc29900d3518f5322b9"
+  },
+  {
+   "file": "test_preds_lead_0",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "87c0b1414af7e37027905ff55b2caa39adadd7cee01591ea8b17de1172dfb00c"
+  },
+  {
+   "file": "test_preds_lead_12",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\ladder\\lead_12\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "2c712f9497433380c8ec414dd6d3ef20d74c1e544675cd29e0781127f3a6096c"
+  },
+  {
+   "file": "test_preds_lead_6",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\ladder\\lead_6\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "baee5cf2fc97264e9dbd7faeebd1d8f252aa38c95f03d107783b9f0c6f448759"
+  },
+  {
+   "file": "verdict",
+   "package": "ndvi",
+   "path": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158\\verdict.json",
+   "run": "D:\\treeroute\\runs\\ndvi\\headline\\20261016_d1de3158",
+   "sha256": "535ef992b5057ed76023d027072c9c9bc99b5aedbc516b96b60c4eb186f44ba5"
+  }
+ ],
+ "notes": [],
+ "outputs": {
+  "continuity": {
+   "file": "continuity_a96f8e83dc35.csv",
+   "sha256": "a96f8e83dc35a8574d58a87298b4ef5f25c4d5d35f52e77f46cf504f0bf53f4b"
+  },
+  "disclosures": {
+   "file": "disclosures_d8d01fbcba11.csv",
+   "sha256": "d8d01fbcba111f74a79628e551471dc88bacac6d245120995db29505287a1530"
+  },
+  "headline": {
+   "file": "headline_9e5590eab94b.csv",
+   "sha256": "9e5590eab94b7373c68a3d993e9885cdc2f7b9626f45ed278798b9508d3cec68"
+  },
+  "markdown": {
+   "file": "headline_2362ddff52b3.md",
+   "sha256": "2362ddff52b38eba7fa4e013fba429d95aa0194b38ec2dc30128d27984b24c6f"
+  },
+  "per_group": {
+   "file": "per_group_6385d3cbe10e.csv",
+   "sha256": "6385d3cbe10e42be28d9719ce377c16ccf4187efdd26fa7b6c1899a0c1ff6a11"
+  },
+  "per_stratum": {
+   "file": "per_stratum_582739ed9698.csv",
+   "sha256": "582739ed96984b7c6d24caae444401e25c42f4505522033f912b170c55cd0184"
+  },
+  "per_year": {
+   "file": "per_year_b537985b2ac7.csv",
+   "sha256": "b537985b2ac7677f31d54a7002708afeb73175a98a99f69b427ac44f282186aa"
+  },
+  "scores_long": {
+   "file": "scores_long_be44fcb279ae.csv",
+   "sha256": "be44fcb279aea7a12cdd64dee5c290a2e6d9222ac79dd463118cdee323958bb5"
+  },
+  "subsets": {
+   "file": "subsets_a88a8d9c284b.csv",
+   "sha256": "a88a8d9c284b72e314121df7417c1d50b0c4aad569b342ac49b2607f452895f6"
+  },
+  "verdicts": {
+   "file": "verdicts_c4cd7e7c2610.csv",
+   "sha256": "c4cd7e7c2610e218d13872f9d3258be125cc55d9099c5ac39791e228f75ec603"
+  }
+ },
+ "report_rows_sha256": "8185cd4b5eb9cbf33876bd4053f7530f7e38a25f752190cc181360719e2a7d7d",
+ "tool": "treeroute_report.table",
+ "watermark": null
+}

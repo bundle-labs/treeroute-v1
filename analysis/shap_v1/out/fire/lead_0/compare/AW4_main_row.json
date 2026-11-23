@@ -1,0 +1,27 @@
+{
+ "ci_format": "[low, high, finite replicates]",
+ "cross_link_models": [
+  "rival_lgbm",
+  "rival_lgbm_tweedie",
+  "rival_rf"
+ ],
+ "declined_models": [
+  "rival_ridge"
+ ],
+ "kendall_w": {
+  "ci": [
+   NaN,
+   NaN,
+   0
+  ],
+  "value": NaN
+ },
+ "lead": 0,
+ "level": "variable",
+ "link_note": "no guard-passing rival explains in treeroute's link space (arcsine|c=0.012987012987|ub=1): treeroute-against-rival agreement cannot separate the link from the model; cross-link pairs are in S3.13 only",
+ "models_in_main_set": [
+  "treeroute"
+ ],
+ "problem": "fire",
+ "reference_link": "arcsine|c=0.012987012987|ub=1"
+}

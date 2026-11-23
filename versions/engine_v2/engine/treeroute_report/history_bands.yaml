@@ -1,0 +1,13 @@
+# treeroute_report/history_bands.yaml -- old equivalence bands printed BESIDE a package's derived band, as history.
+#
+# R35 / Q22 b (APP_PLAN.md 2.5, 3.3 flag 11, Rulings table): every package derives its band from its FIRST headline
+# engine run; "treeroute_report prints PM2.5's 0.0395 (Part 556, old recipe, 20 groups x 100 cells) beside it as
+# history ... the engine cannot name it (G-NONAMES)". Reporting only: the table builder never uses these values for
+# a verdict, a tag or any other decision. Keyed by the package name in dataset.yaml.
+#
+# The value is printed as recorded in Part 556; the table builder does not recompute it from the shipped rows.
+
+pm25:
+  band: 0.0395
+  label: history, not the verdict's band
+  source: "Part 556 (old recipe: hard split, 20 test groups x 100 cells; APP_PLAN.md R35)"

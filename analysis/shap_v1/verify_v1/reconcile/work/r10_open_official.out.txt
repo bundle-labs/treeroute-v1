@@ -1,0 +1,1015 @@
+﻿======================================== coral
+per_lead keys: ['declined_by_guard', 'draws', 'draws_sha256', 'families', 'feature', 'global_columns', 'j_rule', 'lead', 'links', 'main_set', 'models', 'nonzero_forecast_rows', 'problem', 'reference_link', 'regions', 'rows', 'salt', 'sample_sha256', 'variable']
+  declined_by_guard : []
+  draws : 2000
+  draws_sha256 : "4b08b1c9b89b2aee5136d8fae317c238222a4ac29c72e34c8bfa7e1f24d1e1fa"
+  families: 26 variables; values ['context and calendar', 'global indices', 'local drivers', 'seasonal normal']
+  feature {'active': 68, 'kendall_w_main_set': {'ci': [0.6262310569912586, 0.6851033753864946], 'finite_replicates': 2000, 'value': 0.6547553154941406}, 'mean_pairwise_spearman_main_set': {'ci': [0.501641409321678, 0.5801378338486595], 'finite_replicates': 2000, 'value': 0.5396737539921874}, 'nonzero_players': {'rival_hgb_l1': 68, 'rival_lgbm': 67, 'rival_lgbm_tweedie': 68, 'rival_rf': 68, 'rival_ridge': 68, 'treeroute': 68}, 'players': 69, 'stability_under_region_resampling': {'rival_hgb_l1': 0.9799512921326871, 'rival_lgbm': 0.9860887315341451, 'rival_lgbm_tweedie': 0.9892869603389701, 'rival_rf': 0.9886930182845364, 'rival_ridge': 0.9922622437683704, 'treeroute': 0.9729318433408406}, 'structural_zero': 'list[1]'}
+  global_columns[3]: ['x__nino34a_lag3', 'x__nino34a_lag6', 'x__nino34a_lag9']
+  j_rule : "player active when some model gives it > 1e-12 of its total"
+  lead : 0
+  links : {"rival_hgb_l1": "arcsine|c=0.1084375|ub=100", "rival_lgbm": "arcsine|c=0.1084375|ub=100", "rival_lgbm_tweedie": "log_mu|c=0.1084375|ub=100", "rival_rf": "arcsine|c=0.1084375|ub=100", "rival_ridge": "log_c|c=0.1084375|ub=100", "treeroute": "arcsine|c=0.1084375|ub=100"}
+  main_set : ["rival_hgb_l1", "rival_lgbm", "rival_rf", "treeroute"]
+  models : ["rival_hgb_l1", "rival_lgbm", "rival_lgbm_tweedie", "rival_rf", "rival_ridge", "treeroute"]
+  nonzero_forecast_rows: {"rival_hgb_l1": {"rows": 983, "top10": [["hs", 0.14169933950641164], ["nino34a", 0.13391890913916782], ["dhw", 0.09155458521339886], ["days_since_max_hs", 0.06388223802068667], ["mhw_icum", 0.06385861460183649], ["mhw_days", 0.06362213099311631], ["cool", 0.04933658801068755], ["calendar", 0.04732300739780786], ["ctx:mmm", 0.03979325631927142], ["ctx:abslat", 0.03700852769526316]]}, "rival_lgbm": {"rows": 995, "top10": [["n_above_mmm1", 0.2104209510355904], ["dhw", 0.11196969130970041], ["nino34a", 0.08956707966801637], ["mhw_days", 0.08954035682249296], ["calendar", 0.08354741721185202], ["n_above_mmm", 0.04642056699703236], ["hs", 0.03926632203787944], ["days_since_max_hs", 0.03502552277083511], ["cyc_mindist", 0.03123431680117494], ["mhw_nev", 0.031029503907779303]]}, "rival_rf": {"rows": 1000, "top10": [["n_above_mmm1", 0.21737437565455364], ["dhw", 0.14872563075465586], ["mhw_days", 0.11230621508894596], ["nino34a", 0.10142119013522279], ["hs", 0.08953442391567082], ["n_above_mmm", 0.04361635814076689], ["cool", 0.035868168959010974], ["calendar", 0.03141082983154042], ["cyc_maxw", 0.027048663772388626], ["ctx:mmm", 0.022378499379683836]]}, "treeroute": {"rows": 973, "top10": [["nino34a", 0.1526805512219557], ["hs", 0.12905411891601376], ["dhw", 0.11541795727568314], ["n_above_mmm1", 0.10075757621801827], ["mhw_days", 0.0670303060021687], ["n_above_mmm", 0.060327442862204005], ["cool", 0.05915842943407875], ["mhw_icum", 0.04424479356020074], ["mhw_durmax", 0.02983068417
+  problem : "coral"
+  reference_link : "arcsine|c=0.1084375|ub=100"
+  regions : 37
+  rows : 1000
+  salt : "shap_v1|AW4|coral|0"
+  sample_sha256 : "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023"
+  variable {'active': 25, 'kendall_w_main_set': {'ci': [0.6943269230769231, 0.7636538461538461], 'finite_replicates': 2000, 'value': 0.7346153846153847}, 'mean_pairwise_spearman_main_set': {'ci': [0.5924358974358974, 0.6848717948717948], 'finite_replicates': 2000, 'value': 0.6461538461538461}, 'nonzero_players': {'rival_hgb_l1': 25, 'rival_lgbm': 25, 'rival_lgbm_tweedie': 25, 'rival_rf': 25, 'rival_ridge': 25, 'treeroute': 25}, 'players': 26, 'stability_under_region_resampling': {'rival_hgb_l1': 0.9786096153846153, 'rival_lgbm': 0.9745261538461538, 'rival_lgbm_tweedie': 0.9823426923076922, 'rival_rf': 0.9786830769230769, 'rival_ridge': 0.9717953846153846, 'treeroute': 0.9826076923076923}, 'structural_zero': 'list[1]'}
+draws (2000, 37) int64 sha matches per_lead: True
+importance.parquet (570, 8) {'level': 'object', 'model': 'object', 'player': 'object', 'active': 'bool', 'mean_abs': 'float64', 'share': 'float64', 'signed_mean': 'float64', 'sign_determined': 'bool'}
+                              n  active  det
+level    model                              
+feature  rival_hgb_l1        69      68   29
+         rival_lgbm          69      68   28
+         rival_lgbm_tweedie  69      68   35
+         rival_rf            69      68   39
+         rival_ridge         69      68   38
+         treeroute           69      68   28
+variable rival_hgb_l1        26      25   16
+         rival_lgbm          26      25   12
+         rival_lgbm_tweedie  26      25   15
+         rival_rf            26      25   16
+         rival_ridge         26      25   16
+         treeroute           26      25   12
+      level         model      player  active  mean_abs     share  signed_mean  sign_determined
+0  variable  rival_hgb_l1    calendar    True  0.013970  0.047288    -0.004920             True
+1  variable  rival_hgb_l1        cool    True  0.014564  0.049299     0.003545            False
+2  variable  rival_hgb_l1  ctx:abslat    True  0.010939  0.037029     0.003869            False
+families.parquet (30, 4) {'model': 'object', 'family': 'object', 'mean_abs': 'float64', 'share': 'float64'}
+                 model                family  mean_abs     share
+0         rival_hgb_l1           own history  0.000000  0.000000
+1         rival_hgb_l1        global indices  0.039590  0.193923
+2         rival_hgb_l1         local drivers  0.139191  0.681797
+3         rival_hgb_l1  context and calendar  0.025372  0.124281
+4         rival_hgb_l1       seasonal normal  0.000000  0.000000
+5           rival_lgbm           own history  0.000000  0.000000
+6           rival_lgbm        global indices  0.022796  0.126122
+7           rival_lgbm         local drivers  0.134846  0.746065
+8           rival_lgbm  context and calendar  0.023101  0.127813
+9           rival_lgbm       seasonal normal  0.000000  0.000000
+10  rival_lgbm_tweedie           own history  0.000000  0.000000
+11  rival_lgbm_tweedie        global indices  0.386664  0.214554
+12  rival_lgbm_tweedie         local drivers  1.074081  0.595992
+13  rival_lgbm_tweedie  context and calendar  0.341429  0.189454
+14  rival_lgbm_tweedie       seasonal normal  0.000000  0.000000
+15            rival_rf           own history  0.000000  0.000000
+16            rival_rf        global indices  0.020540  0.121648
+17            rival_rf         local drivers  0.137530  0.814532
+18            rival_rf  context and calendar  0.010776  0.063821
+19            rival_rf       seasonal normal  0.000000  0.000000
+20         rival_ridge           own history  0.000000  0.000000
+21         rival_ridge        global indices  0.209259  0.131894
+22         rival_ridge         local drivers  1.120656  0.706339
+23         rival_ridge  context and calendar  0.256654  0.161767
+24         rival_ridge       seasonal normal  0.000000  0.000000
+25           treeroute           own history  0.000000  0.000000
+26           treeroute        global indices  0.027487  0.221903
+27           treeroute         local drivers  0.096137  0.776121
+28           treeroute  context and calendar  0.000245  0.001977
+29           treeroute       seasonal normal  0.000000  0.000000
+pairs.parquet (285, 10) {'level': 'object', 'model_a': 'object', 'model_b': 'object', 'pair_label': 'object', 'statistic': 'object', 'value': 'float64', 'ci_low': 'float64', 'ci_high': 'float64', 'finite_replicates': 'int64', 'signs_compared': 'float64'}
+statistics: {('feature', 'jaccard_top10'): 15, ('feature', 'jaccard_top5'): 15, ('feature', 'kendall_tau_b'): 15, ('feature', 'rbo_p0.9'): 15, ('feature', 'rbo_p0.95'): 15, ('feature', 'sign_agreement_top10'): 15, ('feature', 'spearman'): 15, ('feature', 'spearman_top20_union'): 15, ('feature', 'tvd'): 15, ('variable', 'jaccard_top10'): 15, ('variable', 'jaccard_top5'): 15, ('variable', 'kendall_tau_b'): 15, ('variable', 'rbo_p0.9'): 15, ('variable', 'rbo_p0.95'): 15, ('variable', 'sign_agreement_top10'): 15, ('variable', 'spearman'): 15, ('variable', 'spearman_top20_union'): 15, ('variable', 'tvd'): 15, ('variable', 'tvd_family'): 15}
+labels: ['cross-link (not comparable in scale or rank)', 'same-link']
+       level       model_a             model_b                                    pair_label             statistic     value    ci_low   ci_high  finite_replicates  signs_compared
+0   variable  rival_hgb_l1          rival_lgbm                                     same-link              spearman  0.703077  0.633077  0.760769               2000             NaN
+1   variable  rival_hgb_l1          rival_lgbm                                     same-link         kendall_tau_b  0.560000  0.473333  0.586667               2000             NaN
+2   variable  rival_hgb_l1          rival_lgbm                                     same-link                   tvd  0.314074  0.259404  0.368777               2000             NaN
+3   variable  rival_hgb_l1          rival_lgbm                                     same-link  spearman_top20_union  0.616036  0.492198  0.699629               2000             NaN
+4   variable  rival_hgb_l1          rival_lgbm                                     same-link          jaccard_top5  0.250000  0.250000  0.428571               2000             NaN
+5   variable  rival_hgb_l1          rival_lgbm                                     same-link         jaccard_top10  0.428571  0.428571  0.666667               2000             NaN
+6   variable  rival_hgb_l1          rival_lgbm                                     same-link              rbo_p0.9  0.579362  0.523247  0.646278               2000             NaN
+7   variable  rival_hgb_l1          rival_lgbm                                     same-link             rbo_p0.95  0.738892  0.702995  0.775583               2000             NaN
+8   variable  rival_hgb_l1          rival_lgbm                                     same-link  sign_agreement_top10  1.000000       NaN       NaN                  0            10.0
+9   variable  rival_hgb_l1  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)              spearman  0.696923  0.641538  0.750000               2000             NaN
+10  variable  rival_hgb_l1  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)         kendall_tau_b  0.526667  0.473333  0.586667               2000             NaN
+11  variable  rival_hgb_l1  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)                   tvd  0.241217  0.212198  0.284545               2000             NaN
+bootstrap_stats.parquet (60000, 7) {'level': 'object', 'draw': 'int64', 'pair': 'object', 'spearman': 'float64', 'spearman_top20_union': 'float64', 'rbo_p0.9': 'float64', 'tvd': 'float64'}
+      level  draw                     pair  spearman  spearman_top20_union  rbo_p0.9       tvd
+0  variable     0  rival_hgb_l1|rival_lgbm  0.704615              0.647233  0.577433  0.322452
+1  variable     1  rival_hgb_l1|rival_lgbm  0.703077              0.609260  0.546250  0.327618
+2  variable     2  rival_hgb_l1|rival_lgbm  0.663077              0.553924  0.597305  0.347678
+draw range 0 1999 pairs 15 levels ['feature', 'variable']
+AW4_main_row.json: {
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "n_above_mmm1",
+  "dhw",
+  "nino34a"
+ ],
+ "cross_link_models": [
+  "rival_lgbm_tweedie",
+  "rival_ridge"
+ ],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.6943269230769231,
+   0.7636538461538461,
+   2000
+  ],
+  "value": 0.7346153846153847
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_hgb_l1",
+  "rival_lgbm",
+  "rival_rf",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.0,
+   0.0,
+   2000
+  ],
+  "value": 0.0
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.0,
+   0.0,
+   2000
+  ],
+  "value": 0.0
+ },
+ "problem": "coral",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.609091450553813,
+   0.7754054214478013,
+   2000
+  ],
+  "value": 0.6674485606374702
+ },
+ "reference_link": "arcsine|c=0.1084375|ub=100",
+ "treeroute_top3": [
+  "nino34a",
+  "hs",
+  "dhw"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   0.3852023411371238,
+   0.551304347826087,
+   2000
+  ],
+  "range": [
+   0.4147826086956522,
+   0.4930434782608696
+  ],
+  "value": 0.48434782608695653
+ }
+}
+AW3_table.md: 84 lines
+# AW3: disagreement of SHAP importances, coral lead 0 (post hoc, ruling AK)
+
+1000 rows in 37 regions; link space; percentile 95% intervals from 2000 paired region draws. Same-link pairs are comparable; cross-link pairs are shown for completeness and are not comparable in scale or rank. A rival declined by its own guard is labelled and kept out of W, the consensus and the main row (D6).
+
+Models and links: rival_hgb_l1 (arcsine|c=0.1084375|ub=100); rival_lgbm (arcsine|c=0.1084375|ub=100); rival_lgbm_tweedie (log_mu|c=0.1084375|ub=100); rival_rf (arcsine|c=0.1084375|ub=100); rival_ridge (log_c|c=0.1084375|ub=100); treeroute (arcsine|c=0.1084375|ub=100)
+
+Main set: rival_hgb_l1, rival_lgbm, rival_rf, treeroute
+
+## variable level (26 players, 25 active; structural zeros: normal)
+
+| Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | tvd_family | sign_agreement_top10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| rival_hgb_l1 vs rival_lgbm | same-link | 0.70 [0.63, 0.76] | 0.62 [0.49, 0.70] | 0.56 [0.47, 0.59] | 0.25 [0.25, 0.43] | 0.43 [0.43, 0.67] | 0.58 [0.52, 0.65] | 0.74 [0.70, 0.78] | 0.31 [0.26, 0.37] | 0.07 [0.04, 0.10] | 1.00 (10 signs) |
+| rival_hgb_l1 vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.70 [0.64, 0.75] | 0.49 [0.42, 0.63] | 0.53 [0.47, 0.59] | 0.25 [0.11, 0.43] | 0.43 [0.43, 0.67] | 0.57 [0.54, 0.71] | 0.73 [0.71, 0.81] | 0.24 [0.21, 0.28] | 0.09 [0.04, 0.13] | 1.00 (10 signs) |
+| rival_hgb_l1 vs rival_rf | same-link | 0.75 [0.72, 0.82] | 0.68 [0.61, 0.78] | 0.58 [0.53, 0.65] | 0.43 [0.43, 0.67] | 0.54 [0.43, 0.82] | 0.59 [0.57, 0.67] | 0.75 [0.73, 0.79] | 0.32 [0.26, 0.38] | 0.13 [0.10, 0.16] | 1.00 (10 signs) |
+| rival_hgb_l1 vs rival_ridge | cross-link (not comparable in scale or rank) | 0.34 [0.24, 0.42] | 0.19 [0.05, 0.32] | 0.23 [0.16, 0.30] | 0.25 [0.25, 0.43] | 0.33 [0.25, 0.54] | 0.47 [0.42, 0.50] | 0.65 [0.62, 0.67] | 0.41 [0.39, 0.44] | 0.06 [0.04, 0.12] | 0.78 (9 signs) |
+| rival_hgb_l1 vs treeroute | same-link | 0.50 [0.40, 0.57] | 0.48 [0.38, 0.56] | 0.39 [0.28, 0.43] | 0.43 [0.43, 0.67] | 0.43 [0.43, 0.67] | 0.71 [0.64, 0.82] | 0.79 [0.76, 0.85] | 0.23 [0.21, 0.28] | 0.12 [0.10, 0.17] | 0.88 (8 signs) |
+| rival_lgbm vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.83 [0.75, 0.86] | 0.76 [0.64, 0.81] | 0.66 [0.58, 0.69] | 0.67 [0.67, 1.00] | 0.67 [0.54, 0.82] | 0.65 [0.60, 0.71] | 0.79 [0.75, 0.82] | 0.24 [0.20, 0.28] | 0.15 [0.11, 0.18] | 1.00 (9 signs) |
+| rival_lgbm vs rival_rf | same-link | 0.96 [0.91, 0.96] | 0.91 [0.82, 0.94] | 0.85 [0.77, 0.87] | 0.67 [0.67, 0.67] | 0.54 [0.54, 0.82] | 0.90 [0.82, 0.93] | 0.93 [0.88, 0.95] | 0.15 [0.13, 0.17] | 0.07 [0.04, 0.10] | 1.00 (9 signs) |
+| rival_lgbm vs rival_ridge | cross-link (not comparable in scale or rank) | 0.49 [0.40, 0.58] | 0.27 [0.16, 0.43] | 0.35 [0.28, 0.43] | 0.25 [0.25, 0.25] | 0.43 [0.25, 0.54] | 0.57 [0.49, 0.70] | 0.72 [0.67, 0.78] | 0.32 [0.30, 0.37] | 0.04 [0.01, 0.11] | 0.78 (9 signs) |
+| rival_lgbm vs treeroute | same-link | 0.45 [0.29, 0.52] | 0.41 [0.24, 0.49] | 0.31 [0.18, 0.39] | 0.67 [0.43, 0.67] | 0.54 [0.43, 0.67] | 0.62 [0.53, 0.67] | 0.74 [0.68, 0.77] | 0.33 [0.28, 0.39] | 0.13 [0.10, 0.18] | 0.89 (9 signs) |
+| rival_lgbm_tweedie vs rival_rf | cross-link (not comparable in scale or rank) | 0.81 [0.73, 0.85] | 0.73 [0.61, 0.80] | 0.63 [0.55, 0.68] | 0.67 [0.43, 0.67] | 0.67 [0.54, 0.82] | 0.63 [0.58, 0.71] | 0.77 [0.74, 0.81] | 0.32 [0.28, 0.36] | 0.22 [0.18, 0.26] | 1.00 (8 signs) |
+| rival_lgbm_tweedie vs rival_ridge | cross-link (not comparable in scale or rank) | 0.41 [0.36, 0.54] | 0.25 [0.17, 0.41] | 0.29 [0.25, 0.39] | 0.25 [0.11, 0.25] | 0.43 [0.33, 0.54] | 0.49 [0.42, 0.55] | 0.67 [0.63, 0.70] | 0.36 [0.35, 0.38] | 0.11 [0.07, 0.17] | 0.67 (9 signs) |
+| rival_lgbm_tweedie vs treeroute | cross-link (not comparable in scale or rank) | 0.49 [0.36, 0.57] | 0.46 [0.32, 0.55] | 0.37 [0.25, 0.45] | 0.67 [0.25, 0.67] | 0.67 [0.43, 0.82] | 0.72 [0.56, 0.75] | 0.80 [0.71, 0.82] | 0.27 [0.25, 0.31] | 0.19 [0.16, 0.26] | 0.88 (8 signs) |
+| rival_rf vs rival_ridge | cross-link (not comparable in scale or rank) | 0.57 [0.50, 0.65] | 0.39 [0.32, 0.54] | 0.42 [0.36, 0.50] | 0.43 [0.43, 0.43] | 0.43 [0.33, 0.67] | 0.62 [0.53, 0.75] | 0.74 [0.70, 0.82] | 0.35 [0.32, 0.38] | 0.11 [0.05, 0.18] | 0.67 (9 signs) |
+| rival_rf vs treeroute | same-link | 0.52 [0.46, 0.62] | 0.49 [0.43, 0.61] | 0.37 [0.29, 0.47] | 1.00 [0.67, 1.00] | 0.54 [0.54, 0.67] | 0.63 [0.60, 0.72] | 0.75 [0.73, 0.81] | 0.29 [0.22, 0.37] | 0.10 [0.06, 0.17] | 0.88 (8 signs) |
+| rival_ridge vs treeroute | cross-link (not comparable in scale or rank) | 0.57 [0.40, 0.65] | 0.51 [0.32, 0.62] | 0.39 [0.25, 0.46] | 0.43 [0.43, 0.67] | 0.67 [0.43, 0.82] | 0.57 [0.49, 0.61] | 0.72 [0.67, 0.75] | 0.35 [0.32, 0.39] | 0.16 [0.10, 0.24] | 0.86 (7 signs) |
+
+Kendall's W (main set) = 0.73 [0.69, 0.76]; mean pairwise Spearman (main set) = 0.65 [0.59, 0.68].
+Stability under region resampling (mean Spearman of a model's full-sample importances with its own bootstrap replicates; descriptive, not a ceiling on between-model agreement): rival_hgb_l1 0.98, rival_lgbm 0.97, rival_lgbm_tweedie 0.98, rival_rf 0.98, rival_ridge 0.97, treeroute 0.98
+
+- rival_hgb_l1 top-10 (25 nonzero): hs 14.2%; nino34a 13.4%; dhw 9.2%; mhw_icum 6.4%; days_since_max_hs 6.4%; mhw_days 6.4%; cool 4.9%; calendar 4.7%; ctx:mmm 4.0%; ctx:abslat 3.7%
+- rival_lgbm top-10 (25 nonzero): n_above_mmm1 21.0%; dhw 11.2%; nino34a 9.0%; mhw_days 9.0%; calendar 8.4%; n_above_mmm 4.6%; hs 3.9%; days_since_max_hs 3.5%; cyc_mindist 3.1%; mhw_nev 3.1%
+- rival_lgbm_tweedie top-10 (25 nonzero): nino34a 13.1%; calendar 10.0%; n_above_mmm1 8.1%; mhw_days 8.1%; hs 5.5%; cyc_mindist 5.2%; cool 5.2%; dhw 4.8%; n_above_mmm 4.3%; mhw_thr_gap 3.9%
+- rival_rf top-10 (25 nonzero): n_above_mmm1 21.7%; dhw 14.9%; mhw_days 11.2%; nino34a 10.1%; hs 9.0%; n_above_mmm 4.4%; cool 3.6%; calendar 3.1%; cyc_maxw 2.7%; ctx:mmm 2.2%
+- rival_ridge top-10 (25 nonzero): slope 15.1%; n_above_mmm1 14.6%; dhw 10.3%; cool 10.0%; hs 5.8%; mhw_days 4.2%; mhw_durmax 3.8%; mhw_icum 3.4%; n_above_mmm 3.3%; mhw_nev 3.1%
+- treeroute top-10 (25 nonzero): nino34a 15.3%; hs 12.9%; dhw 11.6%; n_above_mmm1 10.1%; mhw_days 6.7%; n_above_mmm 6.0%; cool 5.9%; mhw_icum 4.4%; mhw_durmax 3.0%; cyc_mindist 2.8%
+
+## feature level (69 players, 68 active; structural zeros: normal)
+
+| Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | sign_agreement_top10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| rival_hgb_l1 vs rival_lgbm | same-link | 0.50 [0.44, 0.55] | -0.28 [-0.44, -0.14] | 0.39 [0.34, 0.43] | 0.11 [0.11, 0.25] | 0.33 [0.11, 0.33] | 0.33 [0.26, 0.41] | 0.48 [0.42, 0.53] | 0.37 [0.32, 0.43] | 1.00 (7 signs) |
+| rival_hgb_l1 vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.66 [0.58, 0.71] | -0.06 [-0.19, 0.05] | 0.51 [0.44, 0.56] | 0.11 [0.11, 0.25] | 0.33 [0.18, 0.43] | 0.40 [0.32, 0.49] | 0.54 [0.48, 0.58] | 0.31 [0.28, 0.35] | 1.00 (9 signs) |
+| rival_hgb_l1 vs rival_rf | same-link | 0.57 [0.53, 0.62] | -0.13 [-0.29, -0.01] | 0.47 [0.43, 0.50] | 0.00 [0.00, 0.11] | 0.18 [0.05, 0.25] | 0.25 [0.21, 0.28] | 0.43 [0.40, 0.46] | 0.41 [0.37, 0.46] | 1.00 (11 signs) |
+| rival_hgb_l1 vs rival_ridge | cross-link (not comparable in scale or rank) | 0.21 [0.15, 0.28] | -0.60 [-0.66, -0.53] | 0.13 [0.09, 0.18] | 0.11 [0.00, 0.11] | 0.05 [0.05, 0.11] | 0.13 [0.10, 0.18] | 0.28 [0.26, 0.31] | 0.55 [0.53, 0.58] | 0.67 (6 signs) |
+| rival_hgb_l1 vs treeroute | same-link | 0.33 [0.28, 0.39] | 0.10 [-0.11, 0.18] | 0.24 [0.20, 0.29] | 0.25 [0.11, 0.43] | 0.43 [0.18, 0.54] | 0.44 [0.35, 0.54] | 0.52 [0.45, 0.58] | 0.35 [0.32, 0.39] | 1.00 (6 signs) |
+| rival_lgbm vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.70 [0.66, 0.73] | 0.24 [0.03, 0.34] | 0.54 [0.50, 0.56] | 0.25 [0.11, 0.43] | 0.43 [0.25, 0.54] | 0.51 [0.38, 0.53] | 0.60 [0.52, 0.63] | 0.27 [0.25, 0.31] | 1.00 (10 signs) |
+| rival_lgbm vs rival_rf | same-link | 0.88 [0.85, 0.89] | 0.36 [0.18, 0.51] | 0.73 [0.69, 0.74] | 0.43 [0.11, 0.43] | 0.43 [0.25, 0.54] | 0.62 [0.53, 0.68] | 0.71 [0.64, 0.74] | 0.21 [0.19, 0.23] | 1.00 (11 signs) |
+| rival_lgbm vs rival_ridge | cross-link (not comparable in scale or rank) | 0.32 [0.28, 0.40] | -0.50 [-0.57, -0.37] | 0.21 [0.18, 0.27] | 0.11 [0.00, 0.25] | 0.11 [0.11, 0.18] | 0.19 [0.16, 0.27] | 0.34 [0.32, 0.40] | 0.49 [0.46, 0.54] | 0.70 (10 signs) |
+| rival_lgbm vs treeroute | same-link | 0.41 [0.31, 0.51] | -0.25 [-0.42, 0.09] | 0.31 [0.23, 0.39] | 0.11 [0.11, 0.25] | 0.18 [0.05, 0.33] | 0.27 [0.21, 0.39] | 0.41 [0.36, 0.50] | 0.35 [0.32, 0.39] | 0.90 (10 signs) |
+| rival_lgbm_tweedie vs rival_rf | cross-link (not comparable in scale or rank) | 0.57 [0.54, 0.63] | -0.01 [-0.19, 0.11] | 0.42 [0.40, 0.47] | 0.11 [0.00, 0.25] | 0.25 [0.11, 0.33] | 0.31 [0.24, 0.37] | 0.45 [0.40, 0.50] | 0.39 [0.36, 0.41] | 1.00 (11 signs) |
+| rival_lgbm_tweedie vs rival_ridge | cross-link (not comparable in scale or rank) | 0.21 [0.14, 0.30] | -0.48 [-0.59, -0.37] | 0.14 [0.08, 0.19] | 0.00 [0.00, 0.11] | 0.11 [0.00, 0.18] | 0.12 [0.10, 0.18] | 0.28 [0.26, 0.33] | 0.51 [0.48, 0.54] | 0.60 (10 signs) |
+| rival_lgbm_tweedie vs treeroute | cross-link (not comparable in scale or rank) | 0.31 [0.28, 0.40] | -0.28 [-0.39, -0.09] | 0.25 [0.22, 0.31] | 0.25 [0.25, 0.43] | 0.18 [0.11, 0.25] | 0.49 [0.30, 0.56] | 0.52 [0.41, 0.57] | 0.30 [0.29, 0.33] | 0.89 (9 signs) |
+| rival_rf vs rival_ridge | cross-link (not comparable in scale or rank) | 0.40 [0.34, 0.45] | -0.33 [-0.43, -0.28] | 0.26 [0.23, 0.31] | 0.11 [0.00, 0.25] | 0.18 [0.11, 0.25] | 0.22 [0.18, 0.28] | 0.37 [0.34, 0.41] | 0.50 [0.48, 0.54] | 0.80 (10 signs) |
+| rival_rf vs treeroute | same-link | 0.56 [0.45, 0.66] | 0.04 [-0.18, 0.41] | 0.41 [0.33, 0.50] | 0.25 [0.11, 0.43] | 0.33 [0.18, 0.54] | 0.34 [0.28, 0.46] | 0.49 [0.43, 0.58] | 0.36 [0.33, 0.40] | 1.00 (12 signs) |
+| rival_ridge vs treeroute | cross-link (not comparable in scale or rank) | 0.41 [0.28, 0.50] | -0.48 [-0.60, -0.19] | 0.27 [0.19, 0.34] | 0.00 [0.00, 0.11] | 0.05 [0.00, 0.25] | 0.15 [0.10, 0.24] | 0.33 [0.27, 0.40] | 0.45 [0.41, 0.50] | 0.62 (8 signs) |
+
+Kendall's W (main set) = 0.65 [0.63, 0.69]; mean pairwise Spearman (main set) = 0.54 [0.50, 0.58].
+Stability under region resampling (mean Spearman of a model's full-sample importances with its own bootstrap replicates; descriptive, not a ceiling on between-model agreement): rival_hgb_l1 0.98, rival_lgbm 0.99, rival_lgbm_tweedie 0.99, rival_rf 0.99, rival_ridge 0.99, treeroute 0.97
+
+- rival_hgb_l1 top-10 (68 nonzero): x__hs_max_56 9.1%; x__nino34a_lag6 7.7%; x__mhw_icum_90 5.4%; x__days_since_max_hs 5.4%; x__dhw_84 4.8%; x__mhw_days_90 4.1%; c__ctx_mmm 3.4%; c__ctx_abslat 3.2%; x__nino34a_lag3 2.9%; c__ctx_doy_cos 2.9%
+- rival_lgbm top-10 (67 nonzero): x__n_above_mmm1_90 10.6%; c__ctx_doy_sin 5.1%; x__nino34a_lag6 5.0%; x__n_above_mmm1_84 4.6%; x__dhw_90 3.7%; c__ctx_doy_cos 3.1%; x__mhw_days_90 3.1%; x__days_since_max_hs 3.0%; x__nino34a_lag3 2.9%; x__mhw_days_30 2.9%
+- rival_lgbm_tweedie top-10 (68 nonzero): x__nino34a_lag6 5.3%; c__ctx_doy_sin 5.1%; x__nino34a_lag3 4.9%; c__ctx_doy_cos 4.3%; x__mhw_days_90 3.2%; x__mhw_thr_gap 3.2%; x__mhw_days_365 3.0%; c__ctx_mmm 3.0%; x__slope_90 2.9%; x__n_above_mmm1_90 2.8%
+- rival_rf top-10 (68 nonzero): x__n_above_mmm1_90 11.4%; x__hs_max_30 6.2%; x__dhw_90 6.1%; x__nino34a_lag3 5.2%; x__n_above_mmm1_84 4.5%; x__mhw_days_90 4.5%; x__mhw_days_365 3.8%; x__mhw_days_30 3.3%; x__dhw_84 3.2%; x__nino34a_lag9 3.1%
+- rival_ridge top-10 (68 nonzero): x__cool_90 12.0%; x__dhw_84 7.0%; x__slope_90 6.6%; x__cool_84 6.5%; x__n_above_mmm1_90 5.2%; x__cool_56 4.4%; x__n_above_mmm1_84 4.1%; x__hs_max_84 3.4%; x__n_above_mmm_84 2.6%; x__hs_max_90 2.5%
+- treeroute top-10 (68 nonzero): x__nino34a_lag6 6.3%; x__nino34a_lag3 4.2%; x__nino34a_lag9 3.9%; x__mhw_icum_90 3.7%; x__hs_max_30 3.4%; x__mhw_days_90 2.7%; x__mhw_durmax_365 2.5%; x__hs_max_56 2.5%; x__dhw_56 2.4%; x__dhw_84 2.4%
+
+## Families (sums of the variable-level attributions per row)
+
+| Family | rival_hgb_l1 | rival_lgbm | rival_lgbm_tweedie | rival_rf | rival_ridge | treeroute |
+|---|---|---|---|---|---|---|
+| own history | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| global indices | 19.4% | 12.6% | 21.5% | 12.2% | 13.2% | 22.2% |
+| local drivers | 68.2% | 74.6% | 59.6% | 81.5% | 70.6% | 77.6% |
+| context and calendar | 12.4% | 12.8% | 18.9% | 6.4% | 16.2% | 0.2% |
+| seasonal normal | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+
+## Nonzero forecasts of arcsine-link models (rows with pre > 0)
+
+- rival_hgb_l1, 983 rows: hs 14.2%; nino34a 13.4%; dhw 9.2%; days_since_max_hs 6.4%; mhw_icum 6.4%; mhw_days 6.4%; cool 4.9%; calendar 4.7%; ctx:mmm 4.0%; ctx:abslat 3.7%
+- rival_lgbm, 995 rows: n_above_mmm1 21.0%; dhw 11.2%; nino34a 9.0%; mhw_days 9.0%; calendar 8.4%; n_above_mmm 4.6%; hs 3.9%; days_since_max_hs 3.5%; cyc_mindist 3.1%; mhw_nev 3.1%
+- rival_rf, 1000 rows: n_above_mmm1 21.7%; dhw 14.9%; mhw_days 11.2%; nino34a 10.1%; hs 9.0%; n_above_mmm 4.4%; cool 3.6%; calendar 3.1%; cyc_maxw 2.7%; ctx:mmm 2.2%
+- treeroute, 973 rows: nino34a 15.3%; hs 12.9%; dhw 11.5%; n_above_mmm1 10.1%; mhw_days 6.7%; n_above_mmm 6.0%; cool 5.9%; mhw_icum 4.4%; mhw_durmax 3.0%; cyc_mindist 2.8%
+
+AW4_table.md:
+| Problem, lead | Main set | W [95% CI] | treeroute vs same-link rivals: median rho, top-20 union [CI] (range) | RBO vs consensus [CI] | treeroute top 3 | consensus top 3 | own history: treeroute [CI] / median rival [CI] |
+|---|---|---|---|---|---|---|---|
+| coral 0 | rival_hgb_l1, rival_lgbm, rival_rf, treeroute | 0.73 [0.69, 0.76] | 0.48 [0.39, 0.55] (0.41 to 0.49) | 0.67 [0.61, 0.78] | nino34a, hs, dhw | n_above_mmm1, dhw, nino34a | 0.00 [0.00, 0.00] / 0.00 [0.00, 0.00] |
+
+Variable level; post hoc (ruling AK). 
+
+pairs.parquet.done.json: {
+ "bytes": 12471,
+ "file": "pairs.parquet",
+ "finished": "2026-11-13T00:06:12",
+ "inputs": "2b3667c2537fcd735016abc7d670417bd0354d9db724471ab0aa8d48df5a559b",
+ "sha256": "5053eaaa662d7ac7c5101b1e03dc99198a45cec037344c3a037ae462f35a83c4"
+}
+======================================== defo
+per_lead keys: ['declined_by_guard', 'draws', 'draws_sha256', 'families', 'feature', 'global_columns', 'j_rule', 'lead', 'links', 'main_set', 'models', 'nonzero_forecast_rows', 'problem', 'reference_link', 'regions', 'rows', 'salt', 'sample_sha256', 'variable']
+  declined_by_guard : []
+  draws : 2000
+  draws_sha256 : "21fee5b9fe1270203b478f02c3cd3c2bdb86c8f6518c831fecd3fa68dba66b96"
+  families: 121 variables; values ['global indices', 'local drivers', 'own history', 'seasonal normal']
+  feature {'active': 280, 'kendall_w_main_set': {'ci': [0.6914353031840702, 0.7255316844135782], 'finite_replicates': 2000, 'value': 0.7106856439547272}, 'mean_pairwise_spearman_main_set': {'ci': [0.5885804209996043, 0.634042274939712], 'finite_replicates': 2000, 'value': 0.6142475406279726}, 'nonzero_players': {'rival_lgbm': 277, 'rival_lgbm_tweedie': 280, 'rival_rf': 279, 'rival_ridge': 280, 'treeroute': 279}, 'players': 309, 'stability_under_region_resampling': {'rival_lgbm': 0.987951484295114, 'rival_lgbm_tweedie': 0.9855711316016228, 'rival_rf': 0.9917423243638839, 'rival_ridge': 0.9955547660707843, 'treeroute': 0.981300602521736}, 'structural_zero': 'list[29]'}
+  global_columns[81]: ['x__amo_max_lag1', 'x__amo_mean_lag1', 'x__amo_min_lag1', 'x__ao_max', 'x__ao_mean', 'x__ao_min', 'x__epo_max', 'x__epo_mean', 'x__epo_min', 'x__iod_max', 'x__iod_mean', 'x__iod_min', 'x__nao_max', 'x__nao_mean', 'x__nao_min', 'x__nino12_max', 'x__nino12_mean', 'x__nino12_min', 'x__nino34_max', 'x__nino34_mean', 'x__nino34_min', 'x__nino3_max', 'x__nino3_mean', 'x__nino3_min', 'x__nino4_max', 'x__nino4_mean', 'x__nino4_min', 'x__noi_max', 'x__noi_mean', 'x__noi_min', 'x__oni_max', 'x__oni_mean', 'x__oni_min', 'x__pdo_max', 'x__pdo_mean', 'x__pdo_min', 'x__pna_max', 'x__pna_mean', 'x__pna_min', 'x__sam_max', 'x__sam_mean', 'x__sam_min', 'x__soi_max', 'x__soi_mean', 'x__soi_min', 'x__sst_anom_atl3_max', 'x__sst_anom_atl3_mean', 'x__sst_anom_atl3_min', 'x__sst_anom_coral_sea_max', 'x__sst_anom_coral_sea_mean', 'x__sst_anom_coral_sea_min', 'x__sst_anom_global_tropical_mean_max', 'x__sst_anom_global_tropical_mean_mean', 'x__sst_anom_global_tropical_mean_min', 'x__sst_anom_iod_east_max', 'x__sst_anom_iod_east_mean', 'x__sst_anom_iod_east_min', 'x__sst_anom_iod_west_max', 'x__sst_anom_iod_west_mean', 'x__sst_anom_iod_west_min', 'x__sst_anom_mediterranean_max', 'x__sst_anom_mediterranean_mean', 'x__sst_anom_mediterranean_min', 'x__sst_anom_nino34_max', 'x__sst_anom_nino34_mean', 'x__sst_anom_nino34_min', 'x__sst_anom_subpolar_north_atlantic_max', 'x__sst_anom_subpolar_north_atlantic_mean', 'x__sst_anom_subpolar_north_atlantic_min', 'x__tna_max', 'x__tna_mean', 'x__tna_min', 'x__tni_max', 'x__tni_mean', 'x__tni_min', 'x__tsa_max', 'x__tsa_mean', 'x__tsa_min', 'x__wp_max', 'x__wp_mean', 'x__wp_min']
+  j_rule : "player active when some model gives it > 1e-12 of its total"
+  lead : 0
+  links : {"rival_lgbm": "log_c|c=4.95638378197e-05|ub=1", "rival_lgbm_tweedie": "log_mu|c=4.95638378197e-05|ub=1", "rival_rf": "log_c|c=4.95638378197e-05|ub=1", "rival_ridge": "log_c|c=4.95638378197e-05|ub=1", "treeroute": "log_c|c=4.95638378197e-05|ub=1"}
+  main_set : ["rival_lgbm", "rival_rf", "rival_ridge", "treeroute"]
+  models : ["rival_lgbm", "rival_lgbm_tweedie", "rival_rf", "rival_ridge", "treeroute"]
+  nonzero_forecast_rows: {}
+  problem : "defo"
+  reference_link : "log_c|c=4.95638378197e-05|ub=1"
+  regions : 42
+  rows : 1000
+  salt : "shap_v1|AW4|defo|0"
+  sample_sha256 : "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615"
+  variable {'active': 99, 'kendall_w_main_set': {'ci': [0.7789346397649969, 0.8080225726654298], 'finite_replicates': 2000, 'value': 0.7958070500927644}, 'mean_pairwise_spearman_main_set': {'ci': [0.7052461863533294, 0.7440300968872396], 'finite_replicates': 2000, 'value': 0.7277427334570191}, 'nonzero_players': {'rival_lgbm': 99, 'rival_lgbm_tweedie': 99, 'rival_rf': 99, 'rival_ridge': 99, 'treeroute': 99}, 'players': 121, 'stability_under_region_resampling': {'rival_lgbm': 0.990404081632653, 'rival_lgbm_tweedie': 0.9881698577612863, 'rival_rf': 0.9898305565862708, 'rival_ridge': 0.9969248484848485, 'treeroute': 0.9861416388373531}, 'structural_zero': 'list[22]'}
+draws (2000, 42) int64 sha matches per_lead: True
+importance.parquet (2150, 8) {'level': 'object', 'model': 'object', 'player': 'object', 'active': 'bool', 'mean_abs': 'float64', 'share': 'float64', 'signed_mean': 'float64', 'sign_determined': 'bool'}
+                               n  active  det
+level    model                               
+feature  rival_lgbm          309     280  103
+         rival_lgbm_tweedie  309     280   80
+         rival_rf            309     280  143
+         rival_ridge         309     280  171
+         treeroute           309     280   54
+variable rival_lgbm          121      99   35
+         rival_lgbm_tweedie  121      99   37
+         rival_rf            121      99   52
+         rival_ridge         121      99   66
+         treeroute           121      99   25
+      level       model                 player  active  mean_abs     share  signed_mean  sign_determined
+0  variable  rival_lgbm                    CTI   False  0.000000  0.000000     0.000000            False
+1  variable  rival_lgbm           aet_total_mm    True  0.006109  0.005434     0.001687            False
+2  variable  rival_lgbm  aglw_buffalo_hold2021    True  0.000290  0.000258     0.000081            False
+families.parquet (25, 4) {'model': 'object', 'family': 'object', 'mean_abs': 'float64', 'share': 'float64'}
+                 model                family  mean_abs     share
+0           rival_lgbm           own history  0.183291  0.354715
+1           rival_lgbm        global indices  0.173730  0.336212
+2           rival_lgbm         local drivers  0.159706  0.309073
+3           rival_lgbm  context and calendar  0.000000  0.000000
+4           rival_lgbm       seasonal normal  0.000000  0.000000
+5   rival_lgbm_tweedie           own history  0.667907  0.460555
+6   rival_lgbm_tweedie        global indices  0.315895  0.217825
+7   rival_lgbm_tweedie         local drivers  0.466421  0.321620
+8   rival_lgbm_tweedie  context and calendar  0.000000  0.000000
+9   rival_lgbm_tweedie       seasonal normal  0.000000  0.000000
+10            rival_rf           own history  0.164207  0.369045
+11            rival_rf        global indices  0.151626  0.340770
+12            rival_rf         local drivers  0.129118  0.290185
+13            rival_rf  context and calendar  0.000000  0.000000
+14            rival_rf       seasonal normal  0.000000  0.000000
+15         rival_ridge           own history  0.038349  0.122225
+16         rival_ridge        global indices  0.168671  0.537579
+17         rival_ridge         local drivers  0.106740  0.340197
+18         rival_ridge  context and calendar  0.000000  0.000000
+19         rival_ridge       seasonal normal  0.000000  0.000000
+20           treeroute           own history  0.121200  0.292605
+21           treeroute        global indices  0.093280  0.225200
+22           treeroute         local drivers  0.199730  0.482194
+23           treeroute  context and calendar  0.000000  0.000000
+24           treeroute       seasonal normal  0.000000  0.000000
+pairs.parquet (200, 10) {'level': 'object', 'model_a': 'object', 'model_b': 'object', 'pair_label': 'object', 'statistic': 'object', 'value': 'float64', 'ci_low': 'float64', 'ci_high': 'float64', 'finite_replicates': 'int64', 'signs_compared': 'float64'}
+statistics: {('feature', 'jaccard_top10'): 10, ('feature', 'jaccard_top20'): 10, ('feature', 'jaccard_top5'): 10, ('feature', 'kendall_tau_b'): 10, ('feature', 'rbo_p0.9'): 10, ('feature', 'rbo_p0.95'): 10, ('feature', 'sign_agreement_top10'): 10, ('feature', 'spearman'): 10, ('feature', 'spearman_top20_union'): 10, ('feature', 'tvd'): 10, ('variable', 'jaccard_top10'): 10, ('variable', 'jaccard_top5'): 10, ('variable', 'kendall_tau_b'): 10, ('variable', 'rbo_p0.9'): 10, ('variable', 'rbo_p0.95'): 10, ('variable', 'sign_agreement_top10'): 10, ('variable', 'spearman'): 10, ('variable', 'spearman_top20_union'): 10, ('variable', 'tvd'): 10, ('variable', 'tvd_family'): 10}
+labels: ['cross-link (not comparable in scale or rank)', 'same-link']
+       level     model_a             model_b                                    pair_label             statistic     value    ci_low   ci_high  finite_replicates  signs_compared
+0   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)              spearman  0.790538  0.752319  0.807780               2000             NaN
+1   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)         kendall_tau_b  0.606267  0.566265  0.623593               2000             NaN
+2   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)                   tvd  0.298498  0.283618  0.320106               2000             NaN
+3   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)  spearman_top20_union  0.598291  0.539143  0.639667               2000             NaN
+4   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)          jaccard_top5  0.250000  0.250000  0.428571               2000             NaN
+5   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)         jaccard_top10  0.818182  0.666667  0.818182               2000             NaN
+6   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)              rbo_p0.9  0.611637  0.572589  0.699761               2000             NaN
+7   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)             rbo_p0.95  0.685232  0.653988  0.722661               2000             NaN
+8   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)  sign_agreement_top10  0.333333       NaN       NaN                  0             3.0
+9   variable  rival_lgbm            rival_rf                                     same-link              spearman  0.830575  0.801780  0.843309               2000             NaN
+10  variable  rival_lgbm            rival_rf                                     same-link         kendall_tau_b  0.648320  0.619048  0.666461               2000             NaN
+11  variable  rival_lgbm            rival_rf                                     same-link                   tvd  0.167379  0.158615  0.184721               2000             NaN
+bootstrap_stats.parquet (40000, 7) {'level': 'object', 'draw': 'int64', 'pair': 'object', 'spearman': 'float64', 'spearman_top20_union': 'float64', 'rbo_p0.9': 'float64', 'tvd': 'float64'}
+      level  draw                           pair  spearman  spearman_top20_union  rbo_p0.9       tvd
+0  variable     0  rival_lgbm|rival_lgbm_tweedie  0.796747              0.606227  0.601642  0.306763
+1  variable     1  rival_lgbm|rival_lgbm_tweedie  0.747866              0.573871  0.591296  0.313275
+2  variable     2  rival_lgbm|rival_lgbm_tweedie  0.795547              0.634872  0.610241  0.284570
+draw range 0 1999 pairs 10 levels ['feature', 'variable']
+AW4_main_row.json: {
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "hist_last",
+  "hist_mean",
+  "spi"
+ ],
+ "cross_link_models": [
+  "rival_lgbm_tweedie"
+ ],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.7789346397649969,
+   0.8080225726654298,
+   2000
+  ],
+  "value": 0.7958070500927644
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_lgbm",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.31618135019239296,
+   0.3953861318458287,
+   2000
+  ],
+  "value": 0.35471513509185565
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.24790914111016624,
+   0.33264948270729777,
+   2000
+  ],
+  "value": 0.2926054071153381
+ },
+ "problem": "defo",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.6127462104526351,
+   0.750202137555319,
+   2000
+  ],
+  "value": 0.6341042636670126
+ },
+ "reference_link": "log_c|c=4.95638378197e-05|ub=1",
+ "treeroute_top3": [
+  "hist_last",
+  "h_nbr1",
+  "spei"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   0.14474981671554252,
+   0.2926231527093595,
+   2000
+  ],
+  "range": [
+   0.0064516129032258064,
+   0.46852764094143406
+  ],
+  "value": 0.19516129032258064
+ }
+}
+AW3_table.md: 65 lines
+   | # AW3: disagreement of SHAP importances, defo lead 0 (post hoc, ruling AK)
+   | 
+   | 1000 rows in 42 regions; link space; percentile 95% intervals from 2000 paired region draws. Same-link pairs are comparable; cross-link pairs are shown for completeness and are not comparable in scale or rank. A rival declined by its own guard is labelled and kept out of W, the consensus and the mai
+   | 
+   | Models and links: rival_lgbm (log_c|c=4.95638378197e-05|ub=1); rival_lgbm_tweedie (log_mu|c=4.95638378197e-05|ub=1); rival_rf (log_c|c=4.95638378197e-05|ub=1); rival_ridge (log_c|c=4.95638378197e-05|ub=1); treeroute (log_c|c=4.95638378197e-05|ub=1)
+   | 
+   | Main set: rival_lgbm, rival_rf, rival_ridge, treeroute
+   | 
+   | ## variable level (121 players, 99 active; structural zeros: CTI, awc_cm3cm3, bulk_density_gcm3, cec_cmolkg, clay_pct, coarse_fragments_pct, conflict_deaths, conflict_events, dist_to_coast_km, elevation_m, hand_m, irrigation_pct_gmia, nitrogen_gkg, normal, sand_pct, silt_pct, slope_deg, soil_organic
+   | 
+   | | Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | tvd_family | sign_agreement_top10 |
+   | |---|---|---|---|---|---|---|---|---|---|---|---|
+AW4_table.md:
+| Problem, lead | Main set | W [95% CI] | treeroute vs same-link rivals: median rho, top-20 union [CI] (range) | RBO vs consensus [CI] | treeroute top 3 | consensus top 3 | own history: treeroute [CI] / median rival [CI] |
+|---|---|---|---|---|---|---|---|
+| defo 0 | rival_lgbm, rival_rf, rival_ridge, treeroute | 0.80 [0.78, 0.81] | 0.20 [0.14, 0.29] (0.01 to 0.47) | 0.63 [0.61, 0.75] | hist_last, h_nbr1, spei | hist_last, hist_mean, spi | 0.29 [0.25, 0.33] / 0.35 [0.32, 0.40] |
+
+Variable level; post hoc (ruling AK). 
+
+pairs.parquet.done.json: {
+ "bytes": 10818,
+ "file": "pairs.parquet",
+ "finished": "2026-11-14T14:35:05",
+ "inputs": "1423b045e8d086f4bce55cde3b100111bc81b678a9d83e9a4917b1e136241b8c",
+ "sha256": "08da98d40e326fca4edb10050e4253a939b15de481db871c9aa6c96150c9ceb2"
+}
+======================================== fire
+per_lead keys: ['declined_by_guard', 'draws', 'draws_sha256', 'families', 'feature', 'global_columns', 'j_rule', 'lead', 'links', 'main_set', 'models', 'nonzero_forecast_rows', 'problem', 'reference_link', 'regions', 'rows', 'salt', 'sample_sha256', 'variable']
+  declined_by_guard : ["rival_ridge"]
+  draws : 2000
+  draws_sha256 : "7a6d40f33aae611be5f76efb8b77e49d324ea95b277dd815fe7c15c1808a4b6a"
+  families: 117 variables; values ['context and calendar', 'global indices', 'local drivers', 'own history', 'seasonal normal']
+  feature {'active': 111, 'kendall_w_main_set': {'ci': [nan, nan], 'finite_replicates': 0, 'value': nan}, 'mean_pairwise_spearman_main_set': {'ci': [nan, nan], 'finite_replicates': 0, 'value': nan}, 'nonzero_players': {'rival_lgbm': 103, 'rival_lgbm_tweedie': 111, 'rival_rf': 111, 'rival_ridge': 111, 'treeroute': 111}, 'players': 134, 'stability_under_region_resampling': {'rival_lgbm': 0.969531541956072, 'rival_lgbm_tweedie': 0.9902746095121094, 'rival_rf': 0.9853100693225693, 'rival_ridge': 0.9948624034749034, 'treeroute': 0.9482594375219375}, 'structural_zero': 'list[23]'}
+  global_columns[27]: ['x__amo_lag12', 'x__ao', 'x__epo', 'x__iod', 'x__nao', 'x__nino12', 'x__nino3', 'x__nino34', 'x__nino4', 'x__noi', 'x__oni', 'x__pdo', 'x__pna', 'x__sam', 'x__soi', 'x__sst_anom_atl3', 'x__sst_anom_coral_sea', 'x__sst_anom_global_tropical_mean', 'x__sst_anom_iod_east', 'x__sst_anom_iod_west', 'x__sst_anom_mediterranean', 'x__sst_anom_nino34', 'x__sst_anom_subpolar_north_atlantic', 'x__tna', 'x__tni', 'x__tsa', 'x__wp']
+  j_rule : "player active when some model gives it > 1e-12 of its total"
+  lead : 0
+  links : {"rival_lgbm": "log_c|c=0.012987012987|ub=1", "rival_lgbm_tweedie": "log_mu|c=0.012987012987|ub=1", "rival_rf": "log_c|c=0.012987012987|ub=1", "rival_ridge": "log_c|c=0.012987012987|ub=1", "treeroute": "arcsine|c=0.012987012987|ub=1"}
+  main_set : ["treeroute"]
+  models : ["rival_lgbm", "rival_lgbm_tweedie", "rival_rf", "rival_ridge", "treeroute"]
+  nonzero_forecast_rows: {"treeroute": {"rows": 226, "top10": [["hist_mean", 0.04052918721205889], ["spei", 0.03362831849949745], ["spi", 0.033004018499220904], ["deeprec_twsa", 0.03218361829592968], ["era5l_str", 0.030619982377590914], ["tslf_months", 0.029441214159219985], ["wbal", 0.025037882178186525], ["rmin_pct", 0.022145376246476202], ["ao", 0.021523016636642474], ["grace_lwe", 0.017379353388722478]]}}
+  problem : "fire"
+  reference_link : "arcsine|c=0.012987012987|ub=1"
+  regions : 40
+  rows : 1000
+  salt : "shap_v1|AW4|fire|0"
+  sample_sha256 : "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2"
+  variable {'active': 94, 'kendall_w_main_set': {'ci': [nan, nan], 'finite_replicates': 0, 'value': nan}, 'mean_pairwise_spearman_main_set': {'ci': [nan, nan], 'finite_replicates': 0, 'value': nan}, 'nonzero_players': {'rival_lgbm': 87, 'rival_lgbm_tweedie': 94, 'rival_rf': 94, 'rival_ridge': 94, 'treeroute': 94}, 'players': 117, 'stability_under_region_resampling': {'rival_lgbm': 0.9751756936590743, 'rival_lgbm_tweedie': 0.9899733049163747, 'rival_rf': 0.9839971318137485, 'rival_ridge': 0.9949556550951847, 'treeroute': 0.9650678900408192}, 'structural_zero': 'list[23]'}
+draws (2000, 40) int64 sha matches per_lead: True
+importance.parquet (1255, 8) {'level': 'object', 'model': 'object', 'player': 'object', 'active': 'bool', 'mean_abs': 'float64', 'share': 'float64', 'signed_mean': 'float64', 'sign_determined': 'bool'}
+                               n  active  det
+level    model                               
+feature  rival_lgbm          134     111   23
+         rival_lgbm_tweedie  134     111   46
+         rival_rf            134     111   28
+         rival_ridge         134     111   65
+         treeroute           134     111    8
+variable rival_lgbm          117      94   20
+         rival_lgbm_tweedie  117      94   42
+         rival_rf            117      94   27
+         rival_ridge         117      94   62
+         treeroute           117      94    9
+      level       model                 player  active  mean_abs     share  signed_mean  sign_determined
+0  variable  rival_lgbm                    CTI   False  0.000000  0.000000     0.000000            False
+1  variable  rival_lgbm           aet_total_mm    True  0.000151  0.004671    -0.000044            False
+2  variable  rival_lgbm  aglw_buffalo_hold2021    True  0.000002  0.000049    -0.000002            False
+families.parquet (25, 4) {'model': 'object', 'family': 'object', 'mean_abs': 'float64', 'share': 'float64'}
+                 model                family  mean_abs     share
+0           rival_lgbm           own history  0.002543  0.172690
+1           rival_lgbm        global indices  0.004137  0.281020
+2           rival_lgbm         local drivers  0.008043  0.546290
+3           rival_lgbm  context and calendar  0.000000  0.000000
+4           rival_lgbm       seasonal normal  0.000000  0.000000
+5   rival_lgbm_tweedie           own history  0.134633  0.060841
+6   rival_lgbm_tweedie        global indices  0.765641  0.345992
+7   rival_lgbm_tweedie         local drivers  1.312613  0.593168
+8   rival_lgbm_tweedie  context and calendar  0.000000  0.000000
+9   rival_lgbm_tweedie       seasonal normal  0.000000  0.000000
+10            rival_rf           own history  0.002014  0.237997
+11            rival_rf        global indices  0.001579  0.186573
+12            rival_rf         local drivers  0.004870  0.575430
+13            rival_rf  context and calendar  0.000000  0.000000
+14            rival_rf       seasonal normal  0.000000  0.000000
+15         rival_ridge           own history  0.001415  0.179926
+16         rival_ridge        global indices  0.002330  0.296321
+17         rival_ridge         local drivers  0.004119  0.523753
+18         rival_ridge  context and calendar  0.000000  0.000000
+19         rival_ridge       seasonal normal  0.000000  0.000000
+20           treeroute           own history  0.000350  0.135757
+21           treeroute        global indices  0.000670  0.259757
+22           treeroute         local drivers  0.001559  0.604486
+23           treeroute  context and calendar  0.000000  0.000000
+24           treeroute       seasonal normal  0.000000  0.000000
+pairs.parquet (190, 10) {'level': 'object', 'model_a': 'object', 'model_b': 'object', 'pair_label': 'object', 'statistic': 'object', 'value': 'float64', 'ci_low': 'float64', 'ci_high': 'float64', 'finite_replicates': 'int64', 'signs_compared': 'float64'}
+statistics: {('feature', 'jaccard_top10'): 10, ('feature', 'jaccard_top5'): 10, ('feature', 'kendall_tau_b'): 10, ('feature', 'rbo_p0.9'): 10, ('feature', 'rbo_p0.95'): 10, ('feature', 'sign_agreement_top10'): 10, ('feature', 'spearman'): 10, ('feature', 'spearman_top20_union'): 10, ('feature', 'tvd'): 10, ('variable', 'jaccard_top10'): 10, ('variable', 'jaccard_top5'): 10, ('variable', 'kendall_tau_b'): 10, ('variable', 'rbo_p0.9'): 10, ('variable', 'rbo_p0.95'): 10, ('variable', 'sign_agreement_top10'): 10, ('variable', 'spearman'): 10, ('variable', 'spearman_top20_union'): 10, ('variable', 'tvd'): 10, ('variable', 'tvd_family'): 10}
+labels: ['cross-link (not comparable in scale or rank)', 'cross-link (not comparable in scale or rank); raw model, declined by its guard: rival_ridge', 'same-link', 'same-link; raw model, declined by its guard: rival_ridge']
+       level     model_a             model_b                                    pair_label             statistic     value    ci_low   ci_high  finite_replicates  signs_compared
+0   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)              spearman  0.746624  0.675630  0.789518               2000             NaN
+1   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)         kendall_tau_b  0.565992  0.505617  0.609573               2000             NaN
+2   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)                   tvd  0.288808  0.268056  0.337933               2000             NaN
+3   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)  spearman_top20_union  0.106325 -0.020818  0.253968               2000             NaN
+4   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)          jaccard_top5  0.428571  0.250000  0.428571               2000             NaN
+5   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)         jaccard_top10  0.250000  0.176471  0.428571               2000             NaN
+6   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)              rbo_p0.9  0.557247  0.515723  0.599314               2000             NaN
+7   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)             rbo_p0.95  0.601373  0.559151  0.632755               2000             NaN
+8   variable  rival_lgbm  rival_lgbm_tweedie  cross-link (not comparable in scale or rank)  sign_agreement_top10  0.750000       NaN       NaN                  0             4.0
+9   variable  rival_lgbm            rival_rf                                     same-link              spearman  0.871043  0.824516  0.893747               2000             NaN
+10  variable  rival_lgbm            rival_rf                                     same-link         kendall_tau_b  0.714140  0.662145  0.741202               2000             NaN
+11  variable  rival_lgbm            rival_rf                                     same-link                   tvd  0.135298  0.122640  0.179375               2000             NaN
+bootstrap_stats.parquet (40000, 7) {'level': 'object', 'draw': 'int64', 'pair': 'object', 'spearman': 'float64', 'spearman_top20_union': 'float64', 'rbo_p0.9': 'float64', 'tvd': 'float64'}
+      level  draw                           pair  spearman  spearman_top20_union  rbo_p0.9       tvd
+0  variable     0  rival_lgbm|rival_lgbm_tweedie  0.739480              0.088523  0.558714  0.276713
+1  variable     1  rival_lgbm|rival_lgbm_tweedie  0.742309              0.107882  0.556778  0.318122
+2  variable     2  rival_lgbm|rival_lgbm_tweedie  0.738892              0.133700  0.553083  0.274944
+draw range 0 1999 pairs 10 levels ['feature', 'variable']
+AW4_main_row.json: {
+ "ci_format": "[low, high, finite replicates]",
+ "cross_link_models": [
+  "rival_lgbm",
+  "rival_lgbm_tweedie",
+  "rival_rf"
+ ],
+ "declined_models": [
+  "rival_ridge"
+ ],
+ "kendall_w": {
+  "ci": [
+   NaN,
+   NaN,
+   0
+  ],
+  "value": NaN
+ },
+ "lead": 0,
+ "level": "variable",
+ "link_note": "no guard-passing rival explains in treeroute's link space (arcsine|c=0.012987012987|ub=1): treeroute-against-rival agreement cannot separate the link from the model; cross-link pairs are in S3.13 only",
+ "models_in_main_set": [
+  "treeroute"
+ ],
+ "problem": "fire",
+ "reference_link": "arcsine|c=0.012987012987|ub=1"
+}
+AW3_table.md: 69 lines
+# AW3: disagreement of SHAP importances, fire lead 0 (post hoc, ruling AK)
+
+1000 rows in 40 regions; link space; percentile 95% intervals from 2000 paired region draws. Same-link pairs are comparable; cross-link pairs are shown for completeness and are not comparable in scale or rank. A rival declined by its own guard is labelled and kept out of W, the consensus and the main row (D6).
+
+Models and links: rival_lgbm (log_c|c=0.012987012987|ub=1); rival_lgbm_tweedie (log_mu|c=0.012987012987|ub=1); rival_rf (log_c|c=0.012987012987|ub=1); rival_ridge (log_c|c=0.012987012987|ub=1, declined by its guard); treeroute (arcsine|c=0.012987012987|ub=1)
+
+Main set: treeroute
+
+## variable level (117 players, 94 active; structural zeros: CTI, awc_cm3cm3, bulk_density_gcm3, calendar, cec_cmolkg, clay_pct, coarse_fragments_pct, conflict_deaths, conflict_events, ctx:lat, dist_to_coast_km, elevation_m, hand_m, irrigation_pct_gmia, nitrogen_gkg, normal, sand_pct, silt_pct, slope_deg, soil_organic_carbon_gkg, soil_ph, southness, upstream_area_km2)
+
+| Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | tvd_family | sign_agreement_top10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| rival_lgbm vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.75 [0.68, 0.79] | 0.11 [-0.02, 0.25] | 0.57 [0.51, 0.61] | 0.43 [0.25, 0.43] | 0.25 [0.18, 0.43] | 0.56 [0.52, 0.60] | 0.60 [0.56, 0.63] | 0.29 [0.27, 0.34] | 0.11 [0.09, 0.15] | 0.75 (4 signs) |
+| rival_lgbm vs rival_rf | same-link | 0.87 [0.82, 0.89] | 0.73 [0.50, 0.79] | 0.71 [0.66, 0.74] | 0.67 [0.67, 1.00] | 0.67 [0.43, 0.82] | 0.85 [0.77, 0.87] | 0.82 [0.77, 0.84] | 0.14 [0.12, 0.18] | 0.09 [0.06, 0.14] | 1.00 (4 signs) |
+| rival_lgbm vs rival_ridge | same-link; raw model, declined by its guard: rival_ridge | 0.59 [0.53, 0.64] | 0.18 [0.04, 0.24] | 0.44 [0.39, 0.47] | 0.43 [0.43, 0.67] | 0.33 [0.25, 0.43] | 0.67 [0.57, 0.68] | 0.64 [0.58, 0.66] | 0.34 [0.32, 0.36] | 0.02 [0.01, 0.09] | 0.60 (5 signs) |
+| rival_lgbm vs treeroute | cross-link (not comparable in scale or rank) | 0.68 [0.62, 0.71] | 0.05 [-0.09, 0.17] | 0.52 [0.46, 0.54] | 0.67 [0.43, 0.67] | 0.33 [0.25, 0.43] | 0.54 [0.44, 0.57] | 0.58 [0.51, 0.60] | 0.34 [0.32, 0.38] | 0.06 [0.01, 0.12] | 1.00 (1 signs) |
+| rival_lgbm_tweedie vs rival_rf | cross-link (not comparable in scale or rank) | 0.71 [0.65, 0.77] | -0.01 [-0.16, 0.15] | 0.53 [0.47, 0.58] | 0.25 [0.25, 0.25] | 0.33 [0.18, 0.43] | 0.52 [0.48, 0.57] | 0.56 [0.52, 0.60] | 0.31 [0.28, 0.35] | 0.18 [0.15, 0.23] | 1.00 (4 signs) |
+| rival_lgbm_tweedie vs rival_ridge | cross-link (not comparable in scale or rank); raw model, declined by its guard: rival_ridge | 0.68 [0.65, 0.71] | 0.16 [0.06, 0.25] | 0.50 [0.48, 0.53] | 0.25 [0.25, 0.43] | 0.43 [0.33, 0.43] | 0.59 [0.55, 0.67] | 0.62 [0.59, 0.66] | 0.37 [0.36, 0.40] | 0.12 [0.07, 0.16] | 0.83 (6 signs) |
+| rival_lgbm_tweedie vs treeroute | cross-link (not comparable in scale or rank) | 0.61 [0.52, 0.67] | -0.14 [-0.26, -0.01] | 0.44 [0.37, 0.49] | 0.25 [0.11, 0.25] | 0.25 [0.11, 0.33] | 0.37 [0.26, 0.43] | 0.45 [0.39, 0.49] | 0.27 [0.26, 0.30] | 0.09 [0.06, 0.12] | 0.00 (1 signs) |
+| rival_rf vs rival_ridge | same-link; raw model, declined by its guard: rival_ridge | 0.70 [0.66, 0.72] | 0.22 [-0.04, 0.26] | 0.53 [0.49, 0.55] | 0.43 [0.43, 0.43] | 0.54 [0.18, 0.54] | 0.71 [0.55, 0.72] | 0.69 [0.58, 0.70] | 0.31 [0.29, 0.34] | 0.11 [0.07, 0.16] | 1.00 (3 signs) |
+| rival_rf vs treeroute | cross-link (not comparable in scale or rank) | 0.69 [0.61, 0.72] | 0.03 [-0.12, 0.17] | 0.52 [0.46, 0.55] | 0.67 [0.43, 0.67] | 0.25 [0.25, 0.43] | 0.53 [0.44, 0.57] | 0.57 [0.50, 0.60] | 0.33 [0.31, 0.36] | 0.10 [0.07, 0.17] | 1.00 (1 signs) |
+| rival_ridge vs treeroute | cross-link (not comparable in scale or rank); raw model, declined by its guard: rival_ridge | 0.47 [0.41, 0.52] | -0.15 [-0.31, -0.15] | 0.32 [0.28, 0.37] | 0.43 [0.25, 0.43] | 0.18 [0.18, 0.25] | 0.42 [0.29, 0.46] | 0.45 [0.37, 0.48] | 0.50 [0.48, 0.52] | 0.08 [0.02, 0.14] | nan (0 signs) |
+
+Kendall's W (main set) = nan [nan, nan]; mean pairwise Spearman (main set) = nan [nan, nan].
+Stability under region resampling (mean Spearman of a model's full-sample importances with its own bootstrap replicates; descriptive, not a ceiling on between-model agreement): rival_lgbm 0.98, rival_lgbm_tweedie 0.99, rival_rf 0.98, rival_ridge 0.99, treeroute 0.97
+
+- rival_lgbm top-10 (87 nonzero): spi 14.8%; hist_mean 7.9%; tslf_months 7.4%; spei 4.4%; sst_anom_atl3 3.6%; epo 3.2%; tni 2.5%; wbal_mm 2.4%; wbal 2.0%; hist_last 1.8%
+- rival_lgbm_tweedie top-10 (94 nonzero): spi 8.9%; spei 7.2%; sst_anom_atl3 3.6%; nbr75km 2.8%; precip_seasonality 2.5%; nbr25km 2.3%; nao 2.2%; wbal 2.2%; sst_anom_coral_sea 2.1%; sst_anom_mediterranean 2.0%
+- rival_rf top-10 (94 nonzero): spi 16.7%; hist_mean 10.2%; tslf_months 7.3%; spei 4.6%; wbal_mm 3.2%; hist_last 2.0%; sst_anom_coral_sea 1.8%; sst_anom_atl3 1.7%; sst_anom_mediterranean 1.6%; tni 1.5%
+- rival_ridge top-10 (94 nonzero): spi 24.2%; hist_mean 7.1%; spei 7.1%; sst_anom_coral_sea 6.4%; n_burns 3.8%; sst_anom_atl3 3.8%; hist_last 3.7%; nao 2.9%; sst_anom_iod_east 2.5%; sst_anom_mediterranean 2.3%
+- treeroute top-10 (94 nonzero): hist_mean 4.0%; spei 3.3%; tslf_months 3.2%; spi 3.0%; era5l_str 2.8%; deeprec_twsa 2.7%; ao 2.3%; wbal 2.3%; grace_lwe 1.9%; nbr25km 1.8%
+
+## feature level (134 players, 111 active; structural zeros: c__ctx:lat, c__ctx:month, normal, x__V25_elevation_m, x__V26_slope_deg, x__V27_southness, x__V28_CTI, x__awc_cm3cm3, x__bulk_density_gcm3, x__cec_cmolkg, x__clay_pct, x__coarse_fragments_pct, x__conflict_deaths, x__conflict_events, x__dist_to_coast_km, x__hand_m, x__irrigation_pct_gmia, x__nitrogen_gkg, x__sand_pct, x__silt_pct, x__soil_organic_carbon_gkg, x__soil_ph, x__upstream_area_km2)
+
+| Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | sign_agreement_top10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| rival_lgbm vs rival_lgbm_tweedie | cross-link (not comparable in scale or rank) | 0.67 [0.62, 0.72] | -0.13 [-0.21, -0.03] | 0.51 [0.46, 0.55] | 0.25 [0.11, 0.25] | 0.33 [0.18, 0.33] | 0.49 [0.33, 0.52] | 0.52 [0.44, 0.55] | 0.32 [0.30, 0.37] | 1.00 (2 signs) |
+| rival_lgbm vs rival_rf | same-link | 0.86 [0.82, 0.88] | 0.68 [0.54, 0.77] | 0.70 [0.66, 0.73] | 0.67 [0.67, 1.00] | 0.54 [0.43, 0.82] | 0.78 [0.71, 0.87] | 0.78 [0.73, 0.83] | 0.15 [0.14, 0.19] | 1.00 (4 signs) |
+| rival_lgbm vs rival_ridge | same-link; raw model, declined by its guard: rival_ridge | 0.55 [0.50, 0.61] | 0.16 [0.04, 0.25] | 0.40 [0.36, 0.45] | 0.43 [0.25, 0.67] | 0.43 [0.33, 0.54] | 0.57 [0.51, 0.65] | 0.58 [0.54, 0.62] | 0.36 [0.35, 0.39] | 0.75 (4 signs) |
+| rival_lgbm vs treeroute | cross-link (not comparable in scale or rank) | 0.58 [0.51, 0.63] | -0.37 [-0.48, -0.29] | 0.42 [0.37, 0.47] | 0.11 [0.00, 0.11] | 0.11 [0.05, 0.18] | 0.25 [0.13, 0.36] | 0.34 [0.25, 0.39] | 0.36 [0.35, 0.41] | nan (0 signs) |
+| rival_lgbm_tweedie vs rival_rf | cross-link (not comparable in scale or rank) | 0.67 [0.62, 0.72] | -0.06 [-0.21, 0.05] | 0.50 [0.46, 0.54] | 0.11 [0.11, 0.25] | 0.25 [0.18, 0.43] | 0.49 [0.32, 0.51] | 0.53 [0.44, 0.55] | 0.34 [0.31, 0.37] | 0.75 (4 signs) |
+| rival_lgbm_tweedie vs rival_ridge | cross-link (not comparable in scale or rank); raw model, declined by its guard: rival_ridge | 0.64 [0.62, 0.67] | 0.31 [0.18, 0.41] | 0.48 [0.47, 0.51] | 0.25 [0.25, 0.43] | 0.43 [0.33, 0.54] | 0.58 [0.43, 0.63] | 0.62 [0.53, 0.65] | 0.42 [0.40, 0.43] | 1.00 (3 signs) |
+| rival_lgbm_tweedie vs treeroute | cross-link (not comparable in scale or rank) | 0.52 [0.42, 0.59] | -0.69 [-0.78, -0.56] | 0.35 [0.28, 0.41] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.05] | 0.06 [0.03, 0.09] | 0.19 [0.14, 0.22] | 0.28 [0.27, 0.31] | nan (0 signs) |
+| rival_rf vs rival_ridge | same-link; raw model, declined by its guard: rival_ridge | 0.67 [0.63, 0.69] | 0.34 [0.12, 0.38] | 0.50 [0.47, 0.52] | 0.43 [0.25, 0.67] | 0.43 [0.33, 0.54] | 0.63 [0.55, 0.70] | 0.65 [0.60, 0.69] | 0.32 [0.31, 0.35] | 1.00 (2 signs) |
+| rival_rf vs treeroute | cross-link (not comparable in scale or rank) | 0.59 [0.52, 0.65] | -0.50 [-0.56, -0.34] | 0.44 [0.38, 0.49] | 0.11 [0.00, 0.11] | 0.11 [0.05, 0.18] | 0.19 [0.13, 0.33] | 0.30 [0.25, 0.36] | 0.36 [0.34, 0.39] | nan (0 signs) |
+| rival_ridge vs treeroute | cross-link (not comparable in scale or rank); raw model, declined by its guard: rival_ridge | 0.27 [0.20, 0.37] | -0.73 [-0.76, -0.60] | 0.18 [0.13, 0.26] | 0.00 [0.00, 0.00] | 0.00 [0.00, 0.00] | 0.04 [0.02, 0.06] | 0.14 [0.11, 0.18] | 0.55 [0.54, 0.57] | nan (0 signs) |
+
+Kendall's W (main set) = nan [nan, nan]; mean pairwise Spearman (main set) = nan [nan, nan].
+Stability under region resampling (mean Spearman of a model's full-sample importances with its own bootstrap replicates; descriptive, not a ceiling on between-model agreement): rival_lgbm 0.97, rival_lgbm_tweedie 0.99, rival_rf 0.99, rival_ridge 0.99, treeroute 0.95
+
+- rival_lgbm top-10 (103 nonzero): x__spi_03m 8.8%; x__tslf_months 6.5%; x__hist_mean_12 5.7%; x__spi_01m 4.6%; x__sst_anom_atl3 3.2%; x__epo 2.8%; x__spi_24m 2.7%; x__hist_mean_all 2.6%; x__spi_06m 2.6%; x__V06_spei_12m_lag12 2.3%
+- rival_lgbm_tweedie top-10 (111 nonzero): x__spi_03m 3.4%; x__spi_24m 3.3%; x__sst_anom_atl3 3.1%; x__spei_01m_lag12 3.0%; x__spei_24m_lag12 2.6%; x__spi_06m 2.4%; x__V04_precip_seasonality 2.2%; x__spei_06m_lag12 2.2%; x__spi_01m 2.0%; x__spi_12m 2.0%
+- rival_rf top-10 (111 nonzero): x__spi_03m 9.7%; x__hist_mean_12 7.0%; x__tslf_months 6.3%; x__spi_01m 5.7%; x__hist_mean_all 3.7%; x__spi_06m 3.5%; x__wbal_mm 2.7%; x__spi_24m 2.0%; x__hist_last_1 1.7%; x__sst_anom_coral_sea 1.5%
+- rival_ridge top-10 (111 nonzero): x__spi_03m 11.4%; x__spi_01m 9.2%; x__spi_06m 6.3%; x__spi_24m 6.1%; x__hist_mean_12 5.5%; x__sst_anom_coral_sea 5.1%; x__spi_12m 4.2%; x__n_burns_12mo 3.0%; x__sst_anom_atl3 3.0%; x__nao 2.3%
+- treeroute top-10 (111 nonzero): x__tslf_months 2.9%; x__era5l_str 2.6%; x__deeprec_twsa 2.5%; x__hist_mean_60 2.4%; x__ao 2.1%; x__grace_lwe 1.7%; x__era5l_sshf 1.6%; x__rmin_pct 1.6%; x__V05_mean_vpd_kPa 1.5%; x__hist_mean_all 1.5%
+
+## Families (sums of the variable-level attributions per row)
+
+| Family | rival_lgbm | rival_lgbm_tweedie | rival_rf | rival_ridge | treeroute |
+|---|---|---|---|---|---|
+| own history | 17.3% | 6.1% | 23.8% | 18.0% | 13.6% |
+| global indices | 28.1% | 34.6% | 18.7% | 29.6% | 26.0% |
+| local drivers | 54.6% | 59.3% | 57.5% | 52.4% | 60.4% |
+| context and calendar | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| seasonal normal | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+
+## Nonzero forecasts of arcsine-link models (rows with pre > 0)
+
+- treeroute, 226 rows: hist_mean 4.1%; spei 3.4%; spi 3.3%; deeprec_twsa 3.2%; era5l_str 3.1%; tslf_months 2.9%; wbal 2.5%; rmin_pct 2.2%; ao 2.2%; grace_lwe 1.7%
+
+AW4_table.md:
+| Problem, lead | Main set | W [95% CI] | treeroute vs same-link rivals: median rho, top-20 union [CI] (range) | RBO vs consensus [CI] | treeroute top 3 | consensus top 3 | own history: treeroute [CI] / median rival [CI] |
+|---|---|---|---|---|---|---|---|
+| fire 0 | treeroute | nan [nan, nan] | no guard-passing rival explains in treeroute's link space (arcsine|c=0.012987012987|ub=1): treeroute-against-rival agreement cannot separate the link from the model; cross-link pairs are in S3.13 only |  |  |  |  |
+
+Variable level; post hoc (ruling AK). no guard-passing rival explains in treeroute's link space (arcsine|c=0.012987012987|ub=1): treeroute-against-rival agreement cannot separate the link from the model; cross-link pairs are in S3.13 only
+
+pairs.parquet.done.json: {
+ "bytes": 10859,
+ "file": "pairs.parquet",
+ "finished": "2026-11-14T04:47:14",
+ "inputs": "845197b9a7ca7a8882edc5e8f0cb098a047c7feff019aed67af2c68e512e9677",
+ "sha256": "f45e9712598827649e26952792c266dc438fac318ed24682fc09e881fa794c3d"
+}
+======================================== pm25
+per_lead keys: ['declined_by_guard', 'draws', 'draws_sha256', 'families', 'feature', 'global_columns', 'j_rule', 'lead', 'links', 'main_set', 'models', 'nonzero_forecast_rows', 'problem', 'reference_link', 'regions', 'rows', 'salt', 'sample_sha256', 'variable']
+  declined_by_guard : []
+  draws : 2000
+  draws_sha256 : "e47d38b7e7321c05ee93cbad40dfc75ab6934dd620d26c89a689188be5fa5223"
+  families: 111 variables; values ['context and calendar', 'global indices', 'local drivers', 'own history', 'seasonal normal']
+  feature {'active': 103, 'kendall_w_main_set': {'ci': [0.8103692405692368, 0.8278001246543861], 'finite_replicates': 2000, 'value': 0.8194145087820937}, 'mean_pairwise_spearman_main_set': {'ci': [0.7471591520770404, 0.7704003220901967], 'finite_replicates': 2000, 'value': 0.7592195052038645}, 'nonzero_players': {'rival_lgbm': 101, 'rival_rf': 101, 'rival_ridge': 103, 'treeroute': 102}, 'players': 125, 'stability_under_region_resampling': {'rival_lgbm': 0.997777252434062, 'rival_rf': 0.9976749092546525, 'rival_ridge': 0.9986439013154131, 'treeroute': 0.9931984525640896}, 'structural_zero': 'list[22]'}
+  global_columns[27]: ['x__amo_lag12', 'x__ao', 'x__epo', 'x__iod', 'x__nao', 'x__nino12', 'x__nino3', 'x__nino34', 'x__nino4', 'x__noi', 'x__oni', 'x__pdo', 'x__pna', 'x__sam', 'x__soi', 'x__sst_anom_atl3', 'x__sst_anom_coral_sea', 'x__sst_anom_global_tropical_mean', 'x__sst_anom_iod_east', 'x__sst_anom_iod_west', 'x__sst_anom_mediterranean', 'x__sst_anom_nino34', 'x__sst_anom_subpolar_north_atlantic', 'x__tna', 'x__tni', 'x__tsa', 'x__wp']
+  j_rule : "player active when some model gives it > 1e-12 of its total"
+  lead : 0
+  links : {"rival_lgbm": "log_c|c=1.5|ub=-", "rival_rf": "log_c|c=1.5|ub=-", "rival_ridge": "log_c|c=1.5|ub=-", "treeroute": "log_c|c=1.5|ub=-"}
+  main_set : ["rival_lgbm", "rival_rf", "rival_ridge", "treeroute"]
+  models : ["rival_lgbm", "rival_rf", "rival_ridge", "treeroute"]
+  nonzero_forecast_rows: {}
+  problem : "pm25"
+  reference_link : "log_c|c=1.5|ub=-"
+  regions : 127
+  rows : 1000
+  salt : "shap_v1|AW4|pm25|0"
+  sample_sha256 : "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca"
+  variable {'active': 89, 'kendall_w_main_set': {'ci': [0.8462979021782617, 0.8624363572439137], 'finite_replicates': 2000, 'value': 0.8538894019807711}, 'mean_pairwise_spearman_main_set': {'ci': [0.7950638695710155, 0.8165819910429842], 'finite_replicates': 2000, 'value': 0.805186070884741}, 'nonzero_players': {'rival_lgbm': 87, 'rival_rf': 87, 'rival_ridge': 89, 'treeroute': 88}, 'players': 111, 'stability_under_region_resampling': {'rival_lgbm': 0.997742473122856, 'rival_rf': 0.997987836123903, 'rival_ridge': 0.9982140528235741, 'treeroute': 0.9946634770405821}, 'structural_zero': 'list[22]'}
+draws (2000, 127) int64 sha matches per_lead: True
+importance.parquet (944, 8) {'level': 'object', 'model': 'object', 'player': 'object', 'active': 'bool', 'mean_abs': 'float64', 'share': 'float64', 'signed_mean': 'float64', 'sign_determined': 'bool'}
+                        n  active  det
+level    model                        
+feature  rival_lgbm   125     103   38
+         rival_rf     125     103   34
+         rival_ridge  125     103   70
+         treeroute    125     103   30
+variable rival_lgbm   111      89   31
+         rival_rf     111      89   30
+         rival_ridge  111      89   64
+         treeroute    111      89   25
+      level       model                 player  active  mean_abs     share  signed_mean  sign_determined
+0  variable  rival_lgbm                    CTI   False  0.000000  0.000000     0.000000            False
+1  variable  rival_lgbm           aet_total_mm    True  0.001049  0.003865     0.000009            False
+2  variable  rival_lgbm  aglw_buffalo_hold2021    True  0.000093  0.000342    -0.000042             True
+families.parquet (20, 4) {'model': 'object', 'family': 'object', 'mean_abs': 'float64', 'share': 'float64'}
+          model                family  mean_abs     share
+0    rival_lgbm           own history  0.030336  0.297693
+1    rival_lgbm        global indices  0.039661  0.389205
+2    rival_lgbm         local drivers  0.031906  0.313102
+3    rival_lgbm  context and calendar  0.000000  0.000000
+4    rival_lgbm       seasonal normal  0.000000  0.000000
+5      rival_rf           own history  0.014737  0.252380
+6      rival_rf        global indices  0.023813  0.407821
+7      rival_rf         local drivers  0.019841  0.339799
+8      rival_rf  context and calendar  0.000000  0.000000
+9      rival_rf       seasonal normal  0.000000  0.000000
+10  rival_ridge           own history  0.038312  0.382131
+11  rival_ridge        global indices  0.041437  0.413301
+12  rival_ridge         local drivers  0.020510  0.204568
+13  rival_ridge  context and calendar  0.000000  0.000000
+14  rival_ridge       seasonal normal  0.000000  0.000000
+15    treeroute           own history  0.013963  0.185253
+16    treeroute        global indices  0.024306  0.322473
+17    treeroute         local drivers  0.037104  0.492274
+18    treeroute  context and calendar  0.000000  0.000000
+19    treeroute       seasonal normal  0.000000  0.000000
+pairs.parquet (114, 10) {'level': 'object', 'model_a': 'object', 'model_b': 'object', 'pair_label': 'object', 'statistic': 'object', 'value': 'float64', 'ci_low': 'float64', 'ci_high': 'float64', 'finite_replicates': 'int64', 'signs_compared': 'float64'}
+statistics: {('feature', 'jaccard_top10'): 6, ('feature', 'jaccard_top5'): 6, ('feature', 'kendall_tau_b'): 6, ('feature', 'rbo_p0.9'): 6, ('feature', 'rbo_p0.95'): 6, ('feature', 'sign_agreement_top10'): 6, ('feature', 'spearman'): 6, ('feature', 'spearman_top20_union'): 6, ('feature', 'tvd'): 6, ('variable', 'jaccard_top10'): 6, ('variable', 'jaccard_top5'): 6, ('variable', 'kendall_tau_b'): 6, ('variable', 'rbo_p0.9'): 6, ('variable', 'rbo_p0.95'): 6, ('variable', 'sign_agreement_top10'): 6, ('variable', 'spearman'): 6, ('variable', 'spearman_top20_union'): 6, ('variable', 'tvd'): 6, ('variable', 'tvd_family'): 6}
+labels: ['same-link']
+       level     model_a      model_b pair_label             statistic     value    ci_low   ci_high  finite_replicates  signs_compared
+0   variable  rival_lgbm     rival_rf  same-link              spearman  0.976421  0.971212  0.978192               2000             NaN
+1   variable  rival_lgbm     rival_rf  same-link         kendall_tau_b  0.869221  0.853384  0.874840               2000             NaN
+2   variable  rival_lgbm     rival_rf  same-link                   tvd  0.222828  0.214830  0.233365               2000             NaN
+3   variable  rival_lgbm     rival_rf  same-link  spearman_top20_union  0.689441  0.587012  0.742120               2000             NaN
+4   variable  rival_lgbm     rival_rf  same-link          jaccard_top5  0.250000  0.250000  0.428571               2000             NaN
+5   variable  rival_lgbm     rival_rf  same-link         jaccard_top10  0.666667  0.538462  0.666667               2000             NaN
+6   variable  rival_lgbm     rival_rf  same-link              rbo_p0.9  0.659413  0.602933  0.752126               2000             NaN
+7   variable  rival_lgbm     rival_rf  same-link             rbo_p0.95  0.762141  0.728631  0.806868               2000             NaN
+8   variable  rival_lgbm     rival_rf  same-link  sign_agreement_top10  1.000000       NaN       NaN                  0             8.0
+9   variable  rival_lgbm  rival_ridge  same-link              spearman  0.733175  0.721665  0.751354               2000             NaN
+10  variable  rival_lgbm  rival_ridge  same-link         kendall_tau_b  0.538629  0.524837  0.553512               2000             NaN
+11  variable  rival_lgbm  rival_ridge  same-link                   tvd  0.413171  0.405996  0.423070               2000             NaN
+bootstrap_stats.parquet (24000, 7) {'level': 'object', 'draw': 'int64', 'pair': 'object', 'spearman': 'float64', 'spearman_top20_union': 'float64', 'rbo_p0.9': 'float64', 'tvd': 'float64'}
+      level  draw                 pair  spearman  spearman_top20_union  rbo_p0.9       tvd
+0  variable     0  rival_lgbm|rival_rf  0.974242              0.683794  0.654462  0.222916
+1  variable     1  rival_lgbm|rival_rf  0.971655              0.648786  0.753533  0.225413
+2  variable     2  rival_lgbm|rival_rf  0.976166              0.708639  0.668839  0.227839
+draw range 0 1999 pairs 6 levels ['feature', 'variable']
+AW4_main_row.json: {
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "spi",
+  "sst_anom_global_tropical",
+  "hist_last"
+ ],
+ "cross_link_models": [],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.8462979021782617,
+   0.8624363572439137,
+   2000
+  ],
+  "value": 0.8538894019807711
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_lgbm",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.2755374544620543,
+   0.3200435215354177,
+   2000
+  ],
+  "value": 0.2976934608647791
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.1621726634252737,
+   0.20803552560774272,
+   2000
+  ],
+  "value": 0.18525300420176635
+ },
+ "problem": "pm25",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.36454028257000826,
+   0.570712408927803,
+   2000
+  ],
+  "value": 0.37198695696450246
+ },
+ "reference_link": "log_c|c=1.5|ub=-",
+ "treeroute_top3": [
+  "hist_last",
+  "spei",
+  "wbal"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   -0.07853170189098999,
+   0.07226327312534202,
+   2000
+  ],
+  "range": [
+   -0.12137096774193548,
+   0.07931034482758621
+  ],
+  "value": -0.018909899888765295
+ }
+}
+AW3_table.md: 55 lines
+   | # AW3: disagreement of SHAP importances, pm25 lead 0 (post hoc, ruling AK)
+   | 
+   | 1000 rows in 127 regions; link space; percentile 95% intervals from 2000 paired region draws. Same-link pairs are comparable; cross-link pairs are shown for completeness and are not comparable in scale or rank. A rival declined by its own guard is labelled and kept out of W, the consensus and the ma
+   | 
+   | Models and links: rival_lgbm (log_c|c=1.5|ub=-); rival_rf (log_c|c=1.5|ub=-); rival_ridge (log_c|c=1.5|ub=-); treeroute (log_c|c=1.5|ub=-)
+   | 
+   | Main set: rival_lgbm, rival_rf, rival_ridge, treeroute
+   | 
+   | ## variable level (111 players, 89 active; structural zeros: CTI, awc_cm3cm3, bulk_density_gcm3, calendar, cec_cmolkg, clay_pct, coarse_fragments_pct, ctx:lat, dist_to_coast_km, elevation_m, hand_m, irrigation_pct_gmia, nitrogen_gkg, normal, sand_pct, silt_pct, slope_deg, soil_organic_carbon_gkg, so
+   | 
+   | | Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | tvd_family | sign_agreement_top10 |
+   | |---|---|---|---|---|---|---|---|---|---|---|---|
+AW4_table.md:
+| Problem, lead | Main set | W [95% CI] | treeroute vs same-link rivals: median rho, top-20 union [CI] (range) | RBO vs consensus [CI] | treeroute top 3 | consensus top 3 | own history: treeroute [CI] / median rival [CI] |
+|---|---|---|---|---|---|---|---|
+| pm25 0 | rival_lgbm, rival_rf, rival_ridge, treeroute | 0.85 [0.85, 0.86] | -0.02 [-0.08, 0.07] (-0.12 to 0.08) | 0.37 [0.36, 0.57] | hist_last, spei, wbal | spi, sst_anom_global_tropical, hist_last | 0.19 [0.16, 0.21] / 0.30 [0.28, 0.32] |
+
+Variable level; post hoc (ruling AK). 
+
+pairs.parquet.done.json: {
+ "bytes": 8856,
+ "file": "pairs.parquet",
+ "finished": "2026-11-14T04:47:52",
+ "inputs": "50d16341444a865470b889cddebb5d87d4f02dcbf03f0a822a9a3a7893b9c516",
+ "sha256": "fefa8fccf6aabbe82bf18e894f5e85191011aa15f0a75e6fcdd9c789e9d3e1a8"
+}
+======================================== ndvi
+per_lead keys: ['declined_by_guard', 'draws', 'draws_sha256', 'families', 'feature', 'global_columns', 'j_rule', 'lead', 'links', 'main_set', 'models', 'nonzero_forecast_rows', 'problem', 'reference_link', 'regions', 'rows', 'salt', 'sample_sha256', 'variable']
+  declined_by_guard : []
+  draws : 2000
+  draws_sha256 : "511e5f466f7820179e49222e61e350f7af9ce8708a4fb9fb88a4ce0fbe58c5bc"
+  families: 117 variables; values ['context and calendar', 'global indices', 'local drivers', 'own history', 'seasonal normal']
+  feature {'active': 479, 'kendall_w_main_set': {'ci': [0.40951150281386733, 0.4258873993163343], 'finite_replicates': 2000, 'value': 0.41817498467509384}, 'mean_pairwise_spearman_main_set': {'ci': [0.23736988382725252, 0.25368432744560987], 'finite_replicates': 2000, 'value': 0.24607798223597524}, 'nonzero_players': {'rival_bardl_h1': 9, 'rival_lgbm': 477, 'rival_rf': 477, 'rival_ridge': 479, 'treeroute': 477}, 'players': 503, 'stability_under_region_resampling': {'rival_bardl_h1': 0.9999957905853208, 'rival_lgbm': 0.9939238924430633, 'rival_rf': 0.9947270253211791, 'rival_ridge': 0.9991303729216297, 'treeroute': 0.9907829246656064}, 'structural_zero': 'list[24]'}
+  global_columns[151]: ['x__amo_lag12', 'x__ao', 'x__ao_lag1', 'x__ao_lag12', 'x__ao_lag2', 'x__ao_lag3', 'x__ao_lag6', 'x__epo', 'x__epo_lag1', 'x__epo_lag12', 'x__epo_lag2', 'x__epo_lag3', 'x__epo_lag6', 'x__iod', 'x__iod_lag1', 'x__iod_lag12', 'x__iod_lag2', 'x__iod_lag3', 'x__iod_lag6', 'x__nao', 'x__nao_lag1', 'x__nao_lag12', 'x__nao_lag2', 'x__nao_lag3', 'x__nao_lag6', 'x__nino12', 'x__nino12_lag1', 'x__nino12_lag12', 'x__nino12_lag2', 'x__nino12_lag3', 'x__nino12_lag6', 'x__nino3', 'x__nino34', 'x__nino34_lag1', 'x__nino34_lag12', 'x__nino34_lag2', 'x__nino34_lag3', 'x__nino34_lag6', 'x__nino3_lag1', 'x__nino3_lag12', 'x__nino3_lag2', 'x__nino3_lag3', 'x__nino3_lag6', 'x__nino4', 'x__nino4_lag1', 'x__nino4_lag12', 'x__nino4_lag2', 'x__nino4_lag3', 'x__nino4_lag6', 'x__noi', 'x__noi_lag1', 'x__noi_lag12', 'x__noi_lag2', 'x__noi_lag3', 'x__noi_lag6', 'x__oni', 'x__oni_lag1', 'x__oni_lag12', 'x__oni_lag2', 'x__oni_lag3', 'x__oni_lag6', 'x__pdo', 'x__pdo_lag1', 'x__pdo_lag12', 'x__pdo_lag2', 'x__pdo_lag3', 'x__pdo_lag6', 'x__pna', 'x__pna_lag1', 'x__pna_lag12', 'x__pna_lag2', 'x__pna_lag3', 'x__pna_lag6', 'x__sam', 'x__sam_lag1', 'x__sam_lag12', 'x__sam_lag2', 'x__sam_lag3', 'x__sam_lag6', 'x__soi', 'x__soi_lag1', 'x__soi_lag12', 'x__soi_lag2', 'x__soi_lag3', 'x__soi_lag6', 'x__sst_anom_atl3', 'x__sst_anom_atl3_lag1', 'x__sst_anom_atl3_lag12', 'x__sst_anom_atl3_lag2', 'x__sst_anom_atl3_lag3', 'x__sst_anom_atl3_lag6', 'x__sst_anom_coral_sea', 'x__sst_anom_coral_sea_lag1', 'x__sst_anom_coral_sea_lag12', 'x__sst_anom_coral_sea_lag2', 'x__sst_anom_coral_sea_lag3', 'x__sst_anom_coral_sea_lag6', 'x__sst_anom_global_tropical_mean', 'x__sst_anom_global_tropical_mean_lag1', 'x__sst_anom_global_tropical_mean_lag12', 'x__sst_anom_global_tropical_mean_lag2', 'x__sst_anom_global_tropical_mean_lag3', 'x__sst_anom_global_tropical_mean_lag6', 'x__sst_anom_iod_east', 'x__sst_anom_iod_east_lag1', 'x__sst_anom_iod_east_lag12', 'x__sst_anom_iod_east_lag2', 'x__sst_anom_iod_east_lag3', 'x__sst_anom_iod_east_lag6', 'x__sst_anom_iod_west', 'x__sst_anom_iod_west_lag1', 'x__sst_anom_iod_west_lag12', 'x__sst_anom_iod_west_lag2', 'x__sst_anom_iod_west_lag3', 'x__sst_anom_iod_west_lag6', 'x__sst_anom_nino34', 'x__sst_anom_nino34_lag1', 'x__sst_anom_nino34_lag12', 'x__sst_anom_nino34_lag2', 'x__sst_anom_nino34_lag3', 'x__sst_anom_nino34_lag6', 'x__sst_anom_subpolar_north_atlantic', 'x__sst_anom_subpolar_north_atlantic_lag1', 'x__sst_anom_subpolar_north_atlantic_lag12', 'x__sst_anom_subpolar_north_atlantic_lag2', 'x__sst_anom_subpolar_north_atlantic_lag3', 'x__sst_anom_subpolar_north_atlantic_lag6', 'x__tna', 'x__tna_lag1', 'x__tna_lag12', 'x__tna_lag2', 'x__tna_lag3', 'x__tna_lag6', 'x__tni', 'x__tni_lag1', 'x__tni_lag12', 'x__tni_lag2', 'x__tni_lag3', 'x__tni_lag6', 'x__tsa', 'x__tsa_lag1', 'x__tsa_lag12', 'x__tsa_lag2', 'x__tsa_lag3', 'x__tsa_lag6', 'x__wp', 'x__wp_lag1', 'x__wp_lag12', 'x__wp_lag2', 'x__wp_lag3', 'x__wp_lag6']
+  j_rule : "player active when some model gives it > 1e-12 of its total"
+  lead : 0
+  links : {"rival_bardl_h1": "identity|c=-|ub=1", "rival_lgbm": "identity|c=-|ub=1", "rival_rf": "identity|c=-|ub=1", "rival_ridge": "identity|c=-|ub=1", "treeroute": "identity|c=-|ub=1"}
+  main_set : ["rival_bardl_h1", "rival_lgbm", "rival_rf", "rival_ridge", "treeroute"]
+  models : ["rival_bardl_h1", "rival_lgbm", "rival_rf", "rival_ridge", "treeroute"]
+  nonzero_forecast_rows: {}
+  problem : "ndvi"
+  reference_link : "identity|c=-|ub=1"
+  regions : 133
+  rows : 1000
+  salt : "shap_v1|AW4|ndvi|0"
+  sample_sha256 : "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db"
+  variable {'active': 96, 'kendall_w_main_set': {'ci': [0.6051897942976326, 0.6238685872407167], 'finite_replicates': 2000, 'value': 0.6173103673528939}, 'mean_pairwise_spearman_main_set': {'ci': [0.4652742433454316, 0.48628106105238955], 'finite_replicates': 2000, 'value': 0.47935611322266924}, 'nonzero_players': {'rival_bardl_h1': 3, 'rival_lgbm': 94, 'rival_rf': 94, 'rival_ridge': 96, 'treeroute': 94}, 'players': 117, 'stability_under_region_resampling': {'rival_bardl_h1': 0.999992759032547, 'rival_lgbm': 0.9918204681258012, 'rival_rf': 0.995546795623953, 'rival_ridge': 0.9990577358205275, 'treeroute': 0.9939484193463058}, 'structural_zero': 'list[21]'}
+draws (2000, 133) int64 sha matches per_lead: True
+importance.parquet (3100, 8) {'level': 'object', 'model': 'object', 'player': 'object', 'active': 'bool', 'mean_abs': 'float64', 'share': 'float64', 'signed_mean': 'float64', 'sign_determined': 'bool'}
+                           n  active  det
+level    model                           
+feature  rival_bardl_h1  503     479    2
+         rival_lgbm      503     479  132
+         rival_rf        503     479  182
+         rival_ridge     503     479  353
+         treeroute       503     479   61
+variable rival_bardl_h1  117      96    1
+         rival_lgbm      117      96   32
+         rival_rf        117      96   36
+         rival_ridge     117      96   58
+         treeroute       117      96   28
+      level           model                 player  active  mean_abs  share  signed_mean  sign_determined
+0  variable  rival_bardl_h1                    CTI   False       0.0    0.0          0.0            False
+1  variable  rival_bardl_h1           aet_total_mm    True       0.0    0.0          0.0            False
+2  variable  rival_bardl_h1  aglw_buffalo_hold2021    True       0.0    0.0          0.0            False
+families.parquet (25, 4) {'model': 'object', 'family': 'object', 'mean_abs': 'float64', 'share': 'float64'}
+             model                family  mean_abs     share
+0   rival_bardl_h1           own history  0.007149  0.351898
+1   rival_bardl_h1        global indices  0.000000  0.000000
+2   rival_bardl_h1         local drivers  0.013166  0.648102
+3   rival_bardl_h1  context and calendar  0.000000  0.000000
+4   rival_bardl_h1       seasonal normal  0.000000  0.000000
+5       rival_lgbm           own history  0.006267  0.254809
+6       rival_lgbm        global indices  0.003827  0.155622
+7       rival_lgbm         local drivers  0.014500  0.589569
+8       rival_lgbm  context and calendar  0.000000  0.000000
+9       rival_lgbm       seasonal normal  0.000000  0.000000
+10        rival_rf           own history  0.000593  0.042236
+11        rival_rf        global indices  0.001591  0.113316
+12        rival_rf         local drivers  0.011859  0.844448
+13        rival_rf  context and calendar  0.000000  0.000000
+14        rival_rf       seasonal normal  0.000000  0.000000
+15     rival_ridge           own history  0.009052  0.257119
+16     rival_ridge        global indices  0.004021  0.114215
+17     rival_ridge         local drivers  0.022134  0.628667
+18     rival_ridge  context and calendar  0.000000  0.000000
+19     rival_ridge       seasonal normal  0.000000  0.000000
+20       treeroute           own history  0.006278  0.244535
+21       treeroute        global indices  0.002057  0.080122
+22       treeroute         local drivers  0.017339  0.675343
+23       treeroute  context and calendar  0.000000  0.000000
+24       treeroute       seasonal normal  0.000000  0.000000
+pairs.parquet (200, 10) {'level': 'object', 'model_a': 'object', 'model_b': 'object', 'pair_label': 'object', 'statistic': 'object', 'value': 'float64', 'ci_low': 'float64', 'ci_high': 'float64', 'finite_replicates': 'int64', 'signs_compared': 'float64'}
+statistics: {('feature', 'jaccard_top10'): 10, ('feature', 'jaccard_top20'): 10, ('feature', 'jaccard_top5'): 10, ('feature', 'kendall_tau_b'): 10, ('feature', 'rbo_p0.9'): 10, ('feature', 'rbo_p0.95'): 10, ('feature', 'sign_agreement_top10'): 10, ('feature', 'spearman'): 10, ('feature', 'spearman_top20_union'): 10, ('feature', 'tvd'): 10, ('variable', 'jaccard_top10'): 10, ('variable', 'jaccard_top5'): 10, ('variable', 'kendall_tau_b'): 10, ('variable', 'rbo_p0.9'): 10, ('variable', 'rbo_p0.95'): 10, ('variable', 'sign_agreement_top10'): 10, ('variable', 'spearman'): 10, ('variable', 'spearman_top20_union'): 10, ('variable', 'tvd'): 10, ('variable', 'tvd_family'): 10}
+labels: ['same-link']
+       level         model_a     model_b pair_label             statistic     value    ci_low   ci_high  finite_replicates  signs_compared
+0   variable  rival_bardl_h1  rival_lgbm  same-link              spearman  0.162999  0.117410  0.187257               2000             NaN
+1   variable  rival_bardl_h1  rival_lgbm  same-link         kendall_tau_b  0.132291  0.095250  0.153458               2000             NaN
+2   variable  rival_bardl_h1  rival_lgbm  same-link                   tvd  0.911557  0.901594  0.921478               2000             NaN
+3   variable  rival_bardl_h1  rival_lgbm  same-link  spearman_top20_union  0.110671  0.073614  0.111673               2000             NaN
+4   variable  rival_bardl_h1  rival_lgbm  same-link          jaccard_top5  0.111111  0.111111  0.111111               2000             NaN
+5   variable  rival_bardl_h1  rival_lgbm  same-link         jaccard_top10  0.052632  0.052632  0.111111               2000             NaN
+6   variable  rival_bardl_h1  rival_lgbm  same-link              rbo_p0.9  0.202659  0.155242  0.215747               2000             NaN
+7   variable  rival_bardl_h1  rival_lgbm  same-link             rbo_p0.95  0.253334  0.227266  0.265631               2000             NaN
+8   variable  rival_bardl_h1  rival_lgbm  same-link  sign_agreement_top10       NaN       NaN       NaN                  0             0.0
+9   variable  rival_bardl_h1    rival_rf  same-link              spearman  0.156654  0.145808  0.165384               2000             NaN
+10  variable  rival_bardl_h1    rival_rf  same-link         kendall_tau_b  0.128764  0.119944  0.135819               2000             NaN
+11  variable  rival_bardl_h1    rival_rf  same-link                   tvd  0.956281  0.950210  0.962023               2000             NaN
+bootstrap_stats.parquet (40000, 7) {'level': 'object', 'draw': 'int64', 'pair': 'object', 'spearman': 'float64', 'spearman_top20_union': 'float64', 'rbo_p0.9': 'float64', 'tvd': 'float64'}
+      level  draw                       pair  spearman  spearman_top20_union  rbo_p0.9       tvd
+0  variable     0  rival_bardl_h1|rival_lgbm  0.115926              0.084380  0.191388  0.922700
+1  variable     1  rival_bardl_h1|rival_lgbm  0.137348              0.067151  0.190391  0.914680
+2  variable     2  rival_bardl_h1|rival_lgbm  0.158589              0.110671  0.206368  0.911566
+draw range 0 1999 pairs 10 levels ['feature', 'variable']
+AW4_main_row.json: {
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "soil_moisture_pct",
+  "spi",
+  "hist_last"
+ ],
+ "cross_link_models": [],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.6051897942976326,
+   0.6238685872407167,
+   2000
+  ],
+  "value": 0.6173103673528939
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_bardl_h1",
+  "rival_lgbm",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.2356921029006882,
+   0.2756640239832616,
+   2000
+  ],
+  "value": 0.25596368495020017
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.21683039942196186,
+   0.2718862955442099,
+   2000
+  ],
+  "value": 0.24453521523334967
+ },
+ "problem": "ndvi",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.37560424657083225,
+   0.4258749349649679,
+   2000
+  ],
+  "value": 0.4028741299371444
+ },
+ "reference_link": "identity|c=-|ub=1",
+ "treeroute_top3": [
+  "hist_mean",
+  "hist_last",
+  "era5l_slhf"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   -0.01025514460511679,
+   0.12307511818687426,
+   2000
+  ],
+  "range": [
+   -0.4050802139037433,
+   0.38409037216474107
+  ],
+  "value": 0.06990406006674083
+ }
+}
+AW3_table.md: 65 lines
+   | # AW3: disagreement of SHAP importances, ndvi lead 0 (post hoc, ruling AK)
+   | 
+   | 1000 rows in 133 regions; link space; percentile 95% intervals from 2000 paired region draws. Same-link pairs are comparable; cross-link pairs are shown for completeness and are not comparable in scale or rank. A rival declined by its own guard is labelled and kept out of W, the consensus and the ma
+   | 
+   | Models and links: rival_bardl_h1 (identity|c=-|ub=1); rival_lgbm (identity|c=-|ub=1); rival_rf (identity|c=-|ub=1); rival_ridge (identity|c=-|ub=1); treeroute (identity|c=-|ub=1)
+   | 
+   | Main set: rival_bardl_h1, rival_lgbm, rival_rf, rival_ridge, treeroute
+   | 
+   | ## variable level (117 players, 96 active; structural zeros: CTI, awc_cm3cm3, bulk_density_gcm3, calendar, cec_cmolkg, clay_pct, coarse_fragments_pct, dist_to_coast_km, elevation_m, hand_m, irrigation_pct_gmia, nitrogen_gkg, normal, sand_pct, silt_pct, slope_deg, soil_organic_carbon_gkg, soil_ph, so
+   | 
+   | | Pair | label | spearman | spearman_top20_union | kendall_tau_b | jaccard_top5 | jaccard_top10 | rbo_p0.9 | rbo_p0.95 | tvd | tvd_family | sign_agreement_top10 |
+   | |---|---|---|---|---|---|---|---|---|---|---|---|
+AW4_table.md:
+| Problem, lead | Main set | W [95% CI] | treeroute vs same-link rivals: median rho, top-20 union [CI] (range) | RBO vs consensus [CI] | treeroute top 3 | consensus top 3 | own history: treeroute [CI] / median rival [CI] |
+|---|---|---|---|---|---|---|---|
+| ndvi 0 | rival_bardl_h1, rival_lgbm, rival_rf, rival_ridge, treeroute | 0.62 [0.61, 0.62] | 0.07 [-0.01, 0.12] (-0.41 to 0.38) | 0.40 [0.38, 0.43] | hist_mean, hist_last, era5l_slhf | soil_moisture_pct, spi, hist_last | 0.24 [0.22, 0.27] / 0.26 [0.24, 0.28] |
+
+Variable level; post hoc (ruling AK). 
+
+pairs.parquet.done.json: {
+ "bytes": 10630,
+ "file": "pairs.parquet",
+ "finished": "2026-11-15T19:11:39",
+ "inputs": "8a01408f88d73375f97e48cc31adfbfe017d1fbd01be128c26ded6d043f8457a",
+ "sha256": "91137894954b14ce26c3374d73b60ef4a47c79a664d7354630f812ca65d58f21"
+}

@@ -1,0 +1,15 @@
+    - The write-up's other writer and its checks, by the lists of files each returned (added by the agent that led the
+      write-up, when it applied this entry). The S1 and S4 writer searched this file's headings and read lines 1-62,
+      577-766 and 775-1225, read `RUN_COMMANDS.md` and `SAMPLE_REGISTER.txt`, hashed the 17 files of `scripts/` and
+      `scripts/tests/`, and read only the file times of the logs, of coral's and NDVI's `per_lead.json`, of coral's
+      rebuild `gates.json` and sample manifest and of the two implementations' `results.json`. The numbers checker read
+      this file in parts, `SAMPLE_REGISTER.txt`, the five `per_lead.json`, `AW4_main_row.json`, `families.parquet`,
+      sample manifests and rebuild `gates.json`, every piece's `meta.json`, `verify_v1/A/results.json` (the BB1
+      entries and `b1`) and the folder's file metadata. The claims checker read this file in full, the five rebuild
+      `gates.json`, NDVI's `meta.json` files, the key structure of `verify_v1/A/results.json` and `SAMPLE_REGISTER.txt`.
+      The build checker opened no file of this folder but this one. The fixer opened this file and fire's
+      `AW4_main_row.json` (its Kendall's W entry only). The recheck re-ran the three checkers' scripts on the same
+      files.
+      Each of them hashed the 17 scripts or listed file metadata only, and none opened a comparison printout,
+      `verify_v1/reconcile/report.md` or a row file. The agent that led the write-up read no file of this folder beyond
+      those listed above for the table rounds.

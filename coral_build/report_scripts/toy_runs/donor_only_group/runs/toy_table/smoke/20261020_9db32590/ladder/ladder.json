@@ -1,0 +1,102 @@
+{
+ "band": 0.30174933825557826,
+ "band_source": "the nowcast's band (F57: the nowcast band decides at every lead)",
+ "common_rows": 39,
+ "hit_tolerance": 12.435677943089429,
+ "issue_rows_left_out": {
+  "by_lead": {
+   "183": {
+    "rows_file": null,
+    "rows_left_out": 0
+   },
+   "365": {
+    "rows_file": "ladder/lead_365/issue_missing_rows.parquet",
+    "rows_left_out": 3
+   }
+  },
+  "rule": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features"
+ },
+ "lead_unit": "days",
+ "leads": [
+  183,
+  365
+ ],
+ "longest_lead": 365,
+ "measurement_error_floor": null,
+ "penalty": {
+  "level": 3.0,
+  "ratio": 0.0625
+ },
+ "pinned": "identity_plain_gls",
+ "reference": "base__donor_median",
+ "reference_rule": "donor_row_median",
+ "rulings": {
+  "H2": "owner ruling H2 (L6 b at every lead): each lead refits its bank, correctors and placebo correctors at the lead's GUARD cut and builds its guard history block there (F1's fallbacks at the guard cut), as the nowcast's inner decision does at the inner cut, so no guard row sits inside a bank trained on its labels (asserted: guard_rows_in_bank_label_window is 0); one more bank per lead. The guard reads the lead's FIT-cut c and R36 tolerances, exactly as the nowcast's inner decision does: c by ruling D63 a (one c per lead, from its FIT cut, serves that lead's guard surface and its test pass; layer.c_for_cut refuses guard-cut donor rows); R36's tolerances are the identity-check tolerances, which move no prediction. A weighted pin's GLS weight model (R25 / D57: its donor rows at the lead's guard cut) reads its error target's tree answers from the lead's fit-cut bank, as the nowcast's does (fit.weights.L6_ANSWERS_DISCLOSURE; READINGS guard_gls_answers)",
+  "H3": "owner ruling H3: at a lead the router context moves to the issue step with the whole feature row (plan 1.5, io.apply.features_at_issue_step)",
+  "H4": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+  "H5": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels",
+  "I1": "owner ruling I1: the leads are 6 and 12 months (C6.lead_months), generic for every package, plus lead 0 (the contract); on annual data both round to 1 year and merge; the pinned placebo is built at the longest lead"
+ },
+ "verdicts": {
+  "0": {
+   "adopted": "arm__identity_plain_gls",
+   "band": 0.30174933825557826,
+   "common_rows": 39,
+   "contrast": {
+    "high": 1.1139231561877498,
+    "low": -3.339124617026364,
+    "mean": -1.112600730419307,
+    "n_groups": 3,
+    "se": 1.1359815747995188
+   },
+   "groups_better": 1,
+   "guard_passed": null,
+   "pooled_contrast": -1.2133644623517483,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "g_b"
+   ],
+   "tag": "cannot_tell"
+  },
+  "183": {
+   "adopted": "arm__identity_plain_gls",
+   "band": 0.30174933825557826,
+   "common_rows": 39,
+   "contrast": {
+    "high": 1.0604781330018802,
+    "low": -2.677955251508302,
+    "mean": -0.8087385592532108,
+    "n_groups": 3,
+    "se": 0.9536819858444342
+   },
+   "groups_better": 1,
+   "guard_passed": true,
+   "pooled_contrast": -0.8934105951645073,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "g_b"
+   ],
+   "tag": "cannot_tell"
+  },
+  "365": {
+   "adopted": "arm__identity_plain_gls",
+   "band": 0.30174933825557826,
+   "common_rows": 39,
+   "contrast": {
+    "high": 0.6729861676826724,
+    "low": -2.0718967463254825,
+    "mean": -0.6994552893214051,
+    "n_groups": 3,
+    "se": 0.7002252331653457
+   },
+   "groups_better": 1,
+   "guard_passed": true,
+   "pooled_contrast": -0.7616110358415504,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "g_b"
+   ],
+   "tag": "cannot_tell"
+  }
+ }
+}

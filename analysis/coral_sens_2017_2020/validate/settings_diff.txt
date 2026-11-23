@@ -1,0 +1,256 @@
+SETTINGS DIFF: coral 2017-2020 sensitivity copy vs the headline originals (generated 2026-10-28 by diff -u; read only)
+
+=== builder/build_visits.py vs D:/treeroute/coral_build/coral_tables/build_visits.py
+--- D:/treeroute/coral_build/coral_tables/build_visits.py	2026-10-19 17:56:35.422100100 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/builder/build_visits.py	2026-10-28 14:44:36.654125900 +0300
+@@ -1,6 +1,12 @@
+ """Stage 1 of the coral table builder: the VISIT table, the split marks and the census (package-side, not engine).
+ 
+-    py -3.9 -u build_visits.py [--test-years 2016-2019] [--out D:/treeroute/coral_build/coral_data]
++SENSITIVITY COPY (2026-10-28, owner ruling AN3; declared coral 2017-2020 sensitivity row, ruling V3,
++engine/PREREGISTRATION_DRAFT_coral.md 4.2). Copied from D:/treeroute/coral_build/coral_tables/build_visits.py
++(SHA-256 fede282d...). The ONLY change: the --out guard and default name the sensitivity folder
++D:/treeroute/analysis/coral_sens_2017_2020 instead of D:/treeroute/coral_build (the declared folder
++coral_build/coral_data/sens_2017_2020 is not used: nothing new is written under coral_build). Nothing else differs.
++
++    py -3.9 -u build_visits.py --test-years 2017-2020 --out D:/treeroute/analysis/coral_sens_2017_2020/coral_data
+ 
+ Written 2026-10-19 for D:/treeroute/coral_build/SPEC_CORAL_TABLES.md (sections 1, 2 and 4). Reads only:
+   - the GCBD SQLite (read-only URI), the authoritative label and key source;
+@@ -269,11 +275,11 @@
+ def main():
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--test-years", default="2016-2019")
+-    ap.add_argument("--out", default=r"D:\treeroute\coral_build\coral_data")
++    ap.add_argument("--out", default=r"D:\treeroute\analysis\coral_sens_2017_2020\coral_data")
+     A = ap.parse_args()
+     ty = tuple(int(x) for x in A.test_years.split("-"))
+-    if not os.path.abspath(A.out).lower().startswith(r"d:\treeroute\coral_build".lower()):
+-        raise SystemExit("refused: --out must be under D:\\treeroute\\coral_build")
++    if not os.path.abspath(A.out).lower().startswith(r"d:\treeroute\analysis\coral_sens_2017_2020".lower()):
++        raise SystemExit("refused: --out must be under D:\\treeroute\\analysis\\coral_sens_2017_2020")
+     os.makedirs(A.out, exist_ok=True)
+     log("GCBD read | %s" % mem_str())
+     t, names = read_gcbd()
+
+=== builder/build_tables.py vs D:/treeroute/coral_build/coral_tables/build_tables.py
+--- D:/treeroute/coral_build/coral_tables/build_tables.py	2026-10-19 18:55:43.109996100 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/builder/build_tables.py	2026-10-28 14:44:47.407144100 +0300
+@@ -1,5 +1,15 @@
+ """Stage 2 of the coral table builder: one feature table per lead (package-side, not engine code).
+ 
++SENSITIVITY COPY (2026-10-28, owner ruling AN3; declared coral 2017-2020 sensitivity row, ruling V3,
++engine/PREREGISTRATION_DRAFT_coral.md 4.2 step 2). Copied from D:/treeroute/coral_build/coral_tables/build_tables.py
++(SHA-256 b1f22ee7...). The ONLY changes are the declared option `--visits-dir DIR` (REQUIRED here, and it must lie under
++D:/treeroute/analysis/coral_sens_2017_2020): it sets the visit table (DIR/visits.parquet), the output folder
++(DIR/<build>/) and the _moved folder (DIR/_moved/); and --publish is refused (the declaration publishes nothing; the
++store under coral_build is a protected root). Feature code, constants, proofs and canary are unchanged.
++
++    py -3.9 -u build_tables.py --build full --visits-dir D:/treeroute/analysis/coral_sens_2017_2020/coral_data
++
++Original usage (headline copy):
+     py -3.9 -u build_tables.py --build tiny [--groups "<a>;<b>;..."]     # 4 default groups, every row canaried
+     py -3.9 -u build_tables.py --build full                              # owner command (about 25-35 min)
+     py -3.9 -u build_tables.py --publish full                            # copy a finished full build to coral_store
+@@ -800,11 +810,23 @@
+     ap.add_argument("--groups", default=None, help='tiny only: "<a>;<b>;..." (names may hold commas)')
+     ap.add_argument("--sst-gap-days", default=1, type=int, help="g: SST and cyclone windows end before C - g (P17)")
+     ap.add_argument("--publish", choices=("full",))
++    ap.add_argument("--visits-dir", required=True,
++                    help="sensitivity copy: the folder holding visits.parquet (stage 1); output goes to DIR/<build>/")
+     A = ap.parse_args()
+     if bool(A.build) == bool(A.publish):
+         raise SystemExit("give exactly one of --build or --publish")
+     if A.publish:
+-        return publish(A.publish)
++        raise SystemExit("refused: the sensitivity copy publishes nothing (the declaration has no publish step; "
++                         "coral_store is a protected root)")
++    global DATA, VISITS
++    vd = os.path.abspath(A.visits_dir)
++    if not vd.lower().startswith(r"d:\treeroute\analysis\coral_sens_2017_2020".lower()):
++        raise SystemExit("refused: --visits-dir must be under D:\\treeroute\\analysis\\coral_sens_2017_2020")
++    DATA = vd
++    VISITS = os.path.join(DATA, "visits.parquet")
++    if not os.path.isfile(VISITS):
++        raise SystemExit("refused: %s does not exist (run stage 1 first)" % VISITS)
++    log("sensitivity copy: visit table %s; output %s" % (VISITS, os.path.join(DATA, A.build)))
+     return build(A)
+ 
+ 
+
+=== builder/check_tables.py vs D:/treeroute/coral_build/coral_tables/check_tables.py
+--- D:/treeroute/coral_build/coral_tables/check_tables.py	2026-10-19 21:21:04.612935200 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/builder/check_tables.py	2026-10-28 14:44:56.478575800 +0300
+@@ -1,5 +1,13 @@
+ """Check a built set of coral lead tables against the table contract (package-side checker, not engine code).
+ 
++SENSITIVITY COPY (2026-10-28, owner ruling AN3; declared coral 2017-2020 sensitivity row, ruling V3,
++engine/PREREGISTRATION_DRAFT_coral.md 4.2 step 3). Copied from D:/treeroute/coral_build/coral_tables/check_tables.py
++(SHA-256 13756d9b...). The ONLY change is the declared option `--visits-dir DIR` (REQUIRED here, under
++D:/treeroute/analysis/coral_sens_2017_2020): it sets the folder that holds visits_census.json and <build>/.
++
++    py -3.9 -u check_tables.py --build full --visits-dir D:/treeroute/analysis/coral_sens_2017_2020/coral_data
++
++Original usage (headline copy):
+     py -3.9 -u check_tables.py [--build tiny]
+     py -3.9 -u check_tables.py --build tiny --negative-control    # the checker must see a one-day look-ahead
+ 
+@@ -326,7 +334,14 @@
+     ap.add_argument("--build", default="tiny")
+     ap.add_argument("--negative-control", action="store_true",
+                     help="recompute with the cut one day LATER (g - 1); the check passes only if part B then fails")
++    ap.add_argument("--visits-dir", required=True,
++                    help="sensitivity copy: the folder holding visits_census.json and the <build>/ folder")
+     A = ap.parse_args()
++    global DATA
++    vd = os.path.abspath(A.visits_dir)
++    if not vd.lower().startswith(r"d:\treeroute\analysis\coral_sens_2017_2020".lower()):
++        raise SystemExit("refused: --visits-dir must be under D:\\treeroute\\analysis\\coral_sens_2017_2020")
++    DATA = vd
+     folder = os.path.join(DATA, A.build)
+     man = json.load(open(os.path.join(folder, "build_manifest.json")))
+     census = json.load(open(os.path.join(DATA, "visits_census.json")))
+
+=== builder/make_split.py vs D:/treeroute/coral_build_v6b/coral_tables/make_split.py
+--- D:/treeroute/coral_build_v6b/coral_tables/make_split.py	2026-10-20 00:27:41.115321200 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/builder/make_split.py	2026-10-28 14:45:15.637853700 +0300
+@@ -2,6 +2,13 @@
+ engine). The default package is the V6 (b) build copy's coral_draft; --split names another (for example the 2017-2020
+ sensitivity copy).
+ 
++SENSITIVITY COPY (2026-10-28, owner ruling AN3; declared coral 2017-2020 sensitivity row, ruling V3,
++engine/PREREGISTRATION_DRAFT_coral.md 4.2 step 4). Copied from D:/treeroute/coral_build_v6b/coral_tables/make_split.py
++(SHA-256 a69e1c8c..., the (b) file the declaration names). The rules (compute, V5, V6 (b), H4) are unchanged. Changed:
++the write guard and the defaults name D:/treeroute/analysis/coral_sens_2017_2020 (SOURCE_ROOT, BUILD_ROOT,
++DRAFT_SPLIT, --visits); the generated header's V6 line cites the signed ruling W1 (the (b) copy's text "DRAFT ... not
++signed" predates W1) and adds the line "declared sensitivity row (V3); never the headline" (declaration step 5).
++
+ V6 (b) COPY (2026-10-19, D:/treeroute/coral_build_v6b/PLAN_V6B.md 5): a copy of coral_build/coral_tables/make_split.py
+ with the V6 exclusion removed. DRAFT option for the owner; nothing here is signed. Under V6 (b) a group with no test
+ row is NOT excluded: the engine keeps it as a donor-only group (its trees and rows are used; nothing is scored for it;
+@@ -48,19 +55,21 @@
+ import pandas as pd
+ import yaml
+ 
+-SOURCE_ROOT = r"D:\treeroute\coral_build"          # read only: the stage-1 visit table and built lead files
+-BUILD_ROOT = r"D:\treeroute\coral_build_v6b"      # the only place this copy writes
+-DRAFT_SPLIT = os.path.join(BUILD_ROOT, "engine", "datasets", "coral_draft", "split.yaml")
++SOURCE_ROOT = r"D:\treeroute\analysis\coral_sens_2017_2020"   # read: the sensitivity stage-1 visit table, lead files
++BUILD_ROOT = r"D:\treeroute\analysis\coral_sens_2017_2020"    # the only place this copy writes
++DRAFT_SPLIT = os.path.join(BUILD_ROOT, "package", "coral_sens_2017_2020", "split.yaml")
+ LEADS = (0, 183, 365)
+ INNER_SCORE_YEARS = 3          # build_visits.py INNER_SCORE_YEARS (decision-surface years: y0-3 to y0-1)
+ SIGNED = "2026-10-19"
+ 
+ HEADER = """\
+ # split.yaml -- %(pkg)s (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:477-490). GENERATED by
+-# coral_tables/make_split.py --write (%(stamp)s) from %(src)s.
++# the sensitivity copy D:/treeroute/analysis/coral_sens_2017_2020/builder/make_split.py --write (%(stamp)s) from
++# %(src)s.
++# Declared sensitivity row (V3); never the headline (engine/PREREGISTRATION_DRAFT_coral.md 4.2; owner ruling AN3).
+ # Leave one ecoregion out (rulings D, E, H1): no donor or test list; every group in the lead files that is not
+ # excluded trains its own trees and is tested on its test rows, if it has any (test window %(ty0)d-%(ty1)d).
+-# V6 (b) OPTION, DRAFT (D:/treeroute/coral_build_v6b/PLAN_V6B.md): not signed; the owner chooses V6 (a) or V6 (b).
++# V6 (b): owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6.
+ # excluded, by owner ruling V5 (OWNER_RULINGS_2026-10-06.md:107, 2026-10-19), disclosed in exceptions.yaml
+ # (G-SPLIT) and ingest/README.md:
+ #   V5: the %(n5)d groups the engine defaults refuse (SPEC_TABLE_MODE.md 7 O13: 0 train rows at a bank cut; O14: one
+
+=== builder/columns.py: byte-identical to D:/treeroute/coral_build/coral_tables/columns.py
+=== builder/npz_map.py: byte-identical to D:/treeroute/coral_build/coral_tables/npz_map.py
+
+=== package/coral_sens_2017_2020/dataset.yaml vs engine/datasets/coral/dataset.yaml
+--- "C:/Users/<user>/Desktop/data set for reserch paper/engine/datasets/coral/dataset.yaml"	2026-10-20 13:07:14.591642100 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/package/coral_sens_2017_2020/dataset.yaml	2026-10-28 14:46:14.580369600 +0300
+@@ -1,3 +1,19 @@
++# dataset.yaml -- coral_sens_2017_2020: declared sensitivity row (V3); never the headline.
++# Package copy made 2026-10-28 under owner ruling AN3 ("run it now, as declared ... from a copy of the settings; no
++# LIVE engine file is edited") from the signed package engine/datasets/coral (fingerprint 5b9383f0...), as declared
++# in engine/PREREGISTRATION_DRAFT_coral.md 4.2 step 5 and datasets/coral/ingest/README.md (section "The 2017-2020
++# sensitivity row"). What differs from `coral`, and nothing else:
++#   - name: coral_sens_2017_2020 (its own name);
++#   - stores.target: the sensitivity build D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full (its own store
++#     line; stage 1 run with --test-years 2017-2020, so the 2020 visits are written as test rows and the 2016 visits
++#     are train rows; R3 gives 2020, R5 2017-2020, every cut moves one year later);
++#   - split.yaml: regenerated for that window by the sensitivity copy of the (b) make_split.py (V5 recomputed; V6 b);
++#   - this header, and the DRAFT stamp at the start of `description` (the not-headline mark, section 4.2 option
++#     "a DRAFT stamp with a lock written outside the freeze tool"; to be confirmed by the owner in Part 627).
++# catalog.yaml, ban.yaml, exceptions.yaml, AUDIT_CHECKLIST.md and ingest/README.md are byte copies of `coral`; their
++# texts still describe the 2016-2019 headline window and its counts.
++#
++# Original header of the signed package `coral`, kept verbatim:
+ # dataset.yaml -- coral: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95).
+ # SIGNED by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md). Made by
+ # D:/treeroute/coral_build/tools/make_signed_coral.py from the development copy the agent wrote on 2026-10-19 in
+@@ -16,12 +32,12 @@
+ # 2017-2020 is the declared sensitivity row, never the headline (ingest/README.md, section Signed answers, ruling V).
+ # The tiny smoke build (4 groups) is a GENERATED copy of this package at
+ # D:/treeroute/coral_build/coral_data/tiny/package/, whose dataset.yaml points at coral_data/tiny/ (SPEC_CORAL_TABLES.md 5).
+-name: coral
++name: coral_sens_2017_2020
+ version: '0.1.0'
+ owner: 'the project owner -- signed 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md)'
+-description: 'percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by ecoregion; hand-built SST, marine-heatwave, cyclone and ENSO/IOD features that end before each issue date (leads 0, 183, 365 days); neighbour router; feature timing vouched by the owner (U2); signed 2026-10-20 (ruling X)'
++description: 'DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline. | percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by ecoregion; hand-built SST, marine-heatwave, cyclone and ENSO/IOD features that end before each issue date (leads 0, 183, 365 days); neighbour router; feature timing vouched by the owner (U2); signed 2026-10-20 (ruling X)'
+ input: table
+ stores:
+-  # published full build (write-once store, protected root; build_tables.py --publish full, 2026-10-20 02:15)
+-  target: 'D:/treeroute/coral_build/coral_store/20261020_014201/lead_{lead}.parquet'
++  # sensitivity full build (stage 2 of the builder copy, --visits-dir D:/treeroute/analysis/coral_sens_2017_2020/coral_data)
++  target: 'D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_{lead}.parquet'
+ includes: []
+
+=== package/coral_sens_2017_2020/split.yaml vs engine/datasets/coral/split.yaml
+--- "C:/Users/<user>/Desktop/data set for reserch paper/engine/datasets/coral/split.yaml"	2026-10-20 13:07:14.593635100 +0300
++++ D:/treeroute/analysis/coral_sens_2017_2020/package/coral_sens_2017_2020/split.yaml	2026-10-28 14:46:19.350091300 +0300
+@@ -1,31 +1,30 @@
+-# split.yaml -- coral (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:477-490). GENERATED by
+-# the V6 (b) copy D:/treeroute/coral_build_v6b/coral_tables/make_split.py --write (2026-10-19) from
+-# D:/treeroute/coral_build/coral_data/visits.parquet (stage 1). Checked 2026-10-20 by that file (SHA-256
+-# a69e1c8c...) with --check on the published lead tables: PASS (engine PENDING_PARTS.md Part 595).
++# split.yaml -- coral_sens_2017_2020 (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:477-490). GENERATED by
++# the sensitivity copy D:/treeroute/analysis/coral_sens_2017_2020/builder/make_split.py --write (2026-10-28) from
++# D:/treeroute/analysis/coral_sens_2017_2020/coral_data/visits.parquet.
++# Declared sensitivity row (V3); never the headline (engine/PREREGISTRATION_DRAFT_coral.md 4.2; owner ruling AN3).
+ # Leave one ecoregion out (rulings D, E, H1): no donor or test list; every group in the lead files that is not
+-# excluded trains its own trees and is tested on its test rows, if it has any (test window 2016-2019).
+-# V6 (b): owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6; built as
+-# D:/treeroute/coral_build_v6b (PLAN_V6B.md).
++# excluded trains its own trees and is tested on its test rows, if it has any (test window 2017-2020).
++# V6 (b): owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6.
+ # excluded, by owner ruling V5 (OWNER_RULINGS_2026-10-06.md:107, 2026-10-19), disclosed in exceptions.yaml
+ # (G-SPLIT) and ingest/README.md:
+ #   V5: the 11 groups the engine defaults refuse (SPEC_TABLE_MODE.md 7 O13: 0 train rows at a bank cut; O14: one
+-#       site). Rows lost: 35 test, 9 train.
++#       site). Rows lost: 25 test, 19 train.
+ #   Their rows stay in the lead files, so no rebuild is needed.
+-# Donor-only groups (V6 b, NOT excluded): the 46 kept groups with no test row in the lead files. They train their
+-#   trees and lend their 1,874 train visits (1,066 sites; 111 of them 2013-2015 decision-surface rows) to
++# Donor-only groups (V6 b, NOT excluded): the 57 kept groups with no test row in the lead files. They train their
++#   trees and lend their 2,446 train visits (1,439 sites; 197 of them 2014-2016 decision-surface rows) to
+ #   every bank, pool and the decision surface; nothing is scored for them (engine: derived.json 'R18:donor_only').
+-# After V5: 83 groups (37 scored + 46 donor-only), 11,338 train and 2,312 test visits at lead 0
+-#   (2,046 decision-surface rows).
++# After V5: 83 groups (26 scored + 57 donor-only), 12,211 train and 1,468 test visits at lead 0
++#   (2,277 decision-surface rows).
+ # seen_during_design: every kept group. Each was a donor or a test ecoregion of the legacy runs (fullscale_split.json:
+ # 20 donors, every other ecoregion with feature rows tested; forecast_features_L0.parquet ecoregion set), and the
+ # legacy runs scored the 2016-2019 rows of 24 ecoregions (APP_PLAN.md:310).
+ excluded:
+   Ashmore Reef, north-west Australia: 'excluded by owner ruling V5 (2026-10-19): one site (1 train, 0 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+-  Birds Head Peninsula, Papua: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at the cuts L0_inner, L183_guard, L365_guard (train rows: 1; test rows: 6); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206)'
++  Birds Head Peninsula, Papua: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at the cuts L365_guard (train rows: 1; test rows: 6); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206)'
+   Gulf of California: 'excluded by owner ruling V5 (2026-10-19): one site (2 train, 0 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+   Gulf of Guinea to Sierra Leone: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at every bank cut (test rows: 18); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206)'
+   Houtman Abrolhos Islands, west Australia: 'excluded by owner ruling V5 (2026-10-19): one site (1 train, 0 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+-  Kimberley Coast, north-west Australia: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at every bank cut (test rows: 10); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206)'
++  Kimberley Coast, north-west Australia: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at the cuts L0_inner, L183_guard, L365_fit, L365_guard (train rows: 10; test rows: 0); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206)'
+   Line Islands, north-east Kiribati: 'excluded by owner ruling V5 (2026-10-19): one site (1 train, 0 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+   North-west Arabian Sea: 'excluded by owner ruling V5 (2026-10-19): 0 train rows at every bank cut (test rows: 1); the table option refuses a group with 0 rows at any of the 6 bank cuts (SPEC_TABLE_MODE.md 7 O13; fit/bank.py:200-206); one site (0 train, 1 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+   Pompey and Swain Reefs, south-east Great Barrier Reef: 'excluded by owner ruling V5 (2026-10-19): one site (1 train, 0 test visits); derive_overlap_blocks refuses a one-unit group without grid indices (split.py:795-797; SPEC_TABLE_MODE.md 7 O14)'
+
+=== package/catalog.yaml: byte-identical to engine/datasets/coral/catalog.yaml
+=== package/ban.yaml: byte-identical to engine/datasets/coral/ban.yaml
+=== package/exceptions.yaml: byte-identical to engine/datasets/coral/exceptions.yaml
+=== package/AUDIT_CHECKLIST.md: byte-identical to engine/datasets/coral/AUDIT_CHECKLIST.md
+=== package/ingest/README.md: byte-identical to engine/datasets/coral/ingest/README.md

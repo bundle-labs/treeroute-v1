@@ -1,0 +1,150 @@
+# Defo human-rival registry (SPEC_HUMAN.txt 1.7 and section 3; Builder B). DATA, not code: the tool reads it,
+# validates it against registry/_schema.yaml (Builder A) at `init`, and never names the problem in its code.
+# Sources: RIVALS_PLAN_HUMAN.md :72 (section 2 table), rulings AB Q1, Q4, Q14 a, Q15; research_defo.md sections 2-6;
+# D:/treeroute/human_tools/reports/d4_processing_rules.md; run D:/treeroute/runs/defo/headline/20261017_d71c61f4.
+# Checked on that run (2026-10-21): R22 links [identity, log_c, arcsine]; R28 legal [0, 1]; R17 start_offset_steps 0
+# (history hist_last_1..3, hist_mean_5, hist_mean_all); R11 fit cut 2019, guard cut 2016 at leads 0 and 1; test
+# years 2020-2023, lead 0 issue = t, lead 1 issue = t - 1 (test_preds.parquet). Units are cell_id; group = region.
+# `decides` is derived by the tool from the tier (P, L decide; A, X never).
+format: human-registry/1
+package: defo
+run: 20261017_d71c61f4
+leads_without_rival: {}
+reference_note: "reference rows: persistence and damped persistence at the nowcast (Q4), guess-normal, last-5, predict-zero"
+joint_claims:
+  - name: "ours beats VT0007"
+    rivals: [vt0007_shipped, vt0007_cal]
+    rule: "YES only if ours BEATS both forms; else each form's verdict is printed (ruling Q14 a)"
+rivals:
+  - id: vt0007_shipped
+    label: "Verra VT0007 UDef-A risk-map allocation + VMD0055 quantity, rolling HRP t-10..t-1, as shipped"
+    kind: M
+    adapter: "adapters.defo_vt0007:build"
+    products: [hansen_gfc_v1_13, defo_target, defo_static, gadm36_defo42, defo_vt0007_prep]
+    stats: [x__vt0007]
+    families: [F0]
+    t1_kind_columns: []
+    reads_target_in_test_window: true
+    leads:
+      0: {tier: P}
+      1: {tier: P, label: "identical numbers to lead 0 (labels end at t-1 at both leads)"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: false
+    # label-free coverage of the TEST rows (fixed before the lock; board.py coverage_rule_mask): issue >= 2010 covers
+    # issue year t >= 2011 at lead 0 (issue = t) and at lead 1 (issue = t - 1); every test row (2020-2023) is covered.
+    # forest2000_px > 0 holds on every export row (the target loss_px / forest2000_px exists only there); the adapter
+    # returns NaN where it does not, and the board refuses a covered row without a value.
+    coverage: {issue_min: 2010}
+    coverage_note: "issue year t >= 2011 (a full 10-year HRP from the first Hansen loss year 2001) and forest2000_px > 0; earlier rows are NaN (not covered)"
+    prep: "adapters.defo_prep:prep"
+    disclosures:
+      - "the rival sees the 30 m forest map (forest-edge distance from treecover2000 + past loss); our model does not (Q15)"
+      - "quantity from wall-to-wall Hansen counts, not sample-based activity data; jurisdiction = our region"
+      - "annual rolling use of a certified frozen method is our adaptation (the frozen form is printed beside)"
+      - "anisotropic pixel spacing per block (dx = dy cos latitude of the block centre) instead of an equal-area reprojection"
+      - "distances on a fixed 512-bin log grid 1 m..20 km; the NRT is snapped up to a bin edge (~2%)"
+      - "GADM 3.6 level 2 (content 2018); IRL and HKG level 1; cell -> unit by largest overlap, else nearest within half a cell"
+      - "GFC pre-2011 regime break and reprocessing look-ahead (shared with the target)"
+    r10_note: "none"
+    options:
+      prep_rival: vt0007_shipped
+      prep_product: defo_vt0007_prep
+      prep_workers: 3
+      stat: x__vt0007
+      hansen_product: hansen_gfc_v1_13
+      pixel_deg: 0.00025
+      static_product: defo_static
+      static_file: part-0.parquet
+      target_product: defo_target
+      target_file_pattern: "%s.parquet"
+      gadm_product: gadm36_defo42
+      first_loss_year: 2001
+      hrp_years: 10
+      frozen_years: [2019]
+      d_lo_m: 1.0
+      d_max_m: 20000.0
+      n_bins: 512
+      block_px: 4000
+
+  - id: vt0007_cal
+    label: "VT0007 allocation, isotonic-calibrated on train rows (families F2 / F4 picked on inner MAE)"
+    kind: M
+    adapter: "adapters.defo_vt0007:build"
+    products: [hansen_gfc_v1_13, defo_target, defo_static, gadm36_defo42, defo_vt0007_prep]
+    stats: [x__vt0007]
+    families: [F2, F4]
+    t1_kind_columns: []
+    reads_target_in_test_window: true
+    leads:
+      0: {tier: P}
+      1: {tier: P, label: "identical index to lead 0; the picked map is refit on the lead's own refit rows"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: false
+    coverage: {issue_min: 2010}
+    disclosures:
+      - "the calibration map is fitted on train rows only (tune <= 2016 for the pick, refit <= 2019); L1 isotonic printed beside (Q13)"
+    r10_note: "none"
+    options:
+      prep_rival: vt0007_shipped
+      prep_product: defo_vt0007_prep
+      stat: x__vt0007
+      static_product: defo_static
+      static_file: part-0.parquet
+      first_loss_year: 2001
+      hrp_years: 10
+      d_lo_m: 1.0
+      d_max_m: 20000.0
+      n_bins: 512
+
+  - id: vt0007_frozen2019
+    label: "VT0007 frozen as certified: HRP 2010-2019, distance at end 2019, held for 2020-2023 (printed, own verdict)"
+    kind: M
+    adapter: "adapters.defo_vt0007:build"
+    products: [hansen_gfc_v1_13, defo_target, defo_static, gadm36_defo42, defo_vt0007_prep]
+    stats: [x__vt0007]
+    families: [F0]
+    t1_kind_columns: []
+    reads_target_in_test_window: true
+    leads:
+      0: {tier: P, label: "frozen form: not part of the 'ours beats VT0007' claim"}
+      1: {tier: P, label: "frozen form: not part of the 'ours beats VT0007' claim"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: true
+    resolution_matched: false
+    coverage: {issue_min: 2010}
+    disclosures:
+      - "the form Verra certified for Peru and Colombia (HRP 2010-2019, valid 2020-2025); issue years <= 2020 equal the rolling form"
+    r10_note: "non-blind: the frozen-at-2019 idea follows the old udef_a run (defo_papers.py, frozen at 2019, 17 hard-split test regions; years to confirm before signing; PLAN R10)"
+    options:
+      prep_rival: vt0007_shipped
+      prep_product: defo_vt0007_prep
+      stat: x__vt0007
+      frozen_year: 2019
+      static_product: defo_static
+      static_file: part-0.parquet
+      first_loss_year: 2001
+      hrp_years: 10
+      d_lo_m: 1.0
+      d_max_m: 20000.0
+      n_bins: 512
+
+# Product ids used above (the product registry of SPEC_HUMAN 1.8 is Builder A's registry/_products.yaml; request in
+# BUILD_NOTES_B_coral_defo.txt). Folders and files:
+#   hansen_gfc_v1_13   D:/hansen (231 files Hansen_GFC-2025-v1.13_{lossyear,treecover2000,datamask}_<tile>.tif; manifest
+#                      by the tool, O6; never the gain layer)
+#   defo_target        D:/defo_target (<region>.parquet: cell_id, year, loss_px, forest2000_px; parity only, years <= the
+#                      stage's ymax)
+#   defo_static        D:/defo_features/static (part-0.parquet: cell_id, region, lat, lon, forest2000_px)
+#   defo_vt0007_prep   the prep owner's work folder <index_root>/defo/20261017_d71c61f4/_work/vt0007_shipped
+#                      (production D:/treeroute/human_index/...), patterns prep_manifest_*.json, */map_T*__*.npz,
+#                      */map_T*__*.json, */divisions.parquet, */divisions.json; hashed by `manifest` after each prep stage
+#   gadm36_defo42      D:/treeroute/human_products/gadm/3.6_gpkg_defo42 (download D4; 52 zipped GeoPackages; read from the
+#                      zip, never copied: no redistribution)

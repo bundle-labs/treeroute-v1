@@ -1,0 +1,61 @@
+# exceptions.yaml -- fire (APP_PLAN.md 1.2): provenance flags, disclosed defects and test-exposure disclosures
+# only. A disclosure only discloses: it cannot relax a time rule, hold a timing value or set a derived value (the
+# train end itself is DERIVED by R6 from the data; this entry only says it was ruled knowing earlier results).
+# The first entry is the disclosure the plan names for this package (plan 1.2 row 'exceptions.yaml'; plan 7.2 row
+# "Fire's <= 2018 cut"). Wording drafted by the agent on 2026-09-28; the owner confirms it.
+# The entries after it (added 2026-10-05 with the Q34 installation, OWNER_RULINGS_2026-10-05.md section J) disclose
+# known defects of columns the installed ban.yaml lets into the trees, each taken from that column's reason in the
+# review (engine/datasets/review/proposed/fire_ban_proposed.yaml, fire_columns_proposed.csv) or from the rulings.
+# Revised the same day for the AMENDED J3: the livestock entry now discloses aglw_* as 'watch' (a lagged annual
+# driver); the first install's 'R9 freeze' entry is withdrawn with the freeze.
+# Every 'owner' field reads 'UNSIGNED -- basis: ...': the entry is NOT signed; it names the ruling or plan row
+# behind it. 'date' is the date of that basis, not a signature date. The owner signs by replacing 'UNSIGNED'.
+entries:
+  - kind: test_exposure
+    check: 'R6 (donor train end)'
+    decision: 'disclose (Q10 a: keep the 2018 cut and test 2019-22, declared)'
+    reason: "Fire's donor train end (<= 2018, test 2019-22) was chosen knowing earlier results (HEADLINE_QUESTIONS_AND_FIXES.md:143-146; APP_PLAN.md 7.2). R6 derives the same value from the data (plan 3.2), so the disclosure is about how the design was reached, not a hand-set number."
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling Q10 a (HEADLINE_QUESTIONS_AND_FIXES.md:71)'
+    date: '2026-09-27'
+  - kind: provenance_flag
+    check: 'L3 hold: aglw_cattle, aglw_buffalo, aglw_horse, aglw_sheep, aglw_goats, aglw_total_lsu; held as aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021'
+    decision: 'disclose; the raw columns banned (reason incomplete, ruling N S13) and the hold columns kept as watch, lagged one year by R8 (owner ruling L3, replacing the J3 AMENDED watch of the raw columns)'
+    reason: 'The Gridded Livestock layers (AGLW) are yearly FAOSTAT totals downscaled onto a YEAR-MATCHED optical land-cover mask (defo_ban.py:93-97); fire bans optical land cover itself as post-fire state, so the mask is a weak burn-scar channel, one year old at R8''s lag of 1 year on this monthly target (store window {1, year, backward} at period_end). Only the 2002-2021 layers are real (store fact observed_through 2021): the 2022 and 2023 rows are the 2021 layer multiplied by INDIA''s FAOSTAT head-count ratio, written for EVERY region (fetch_livestock_extend.py:49-50, :96-97). Ruling L3: those layers are not used; the raw columns are banned and features/build.py builds aglw_<x>_hold2021, equal to the raw column through 2021 and holding the real 2021 layer on the 2022 and 2023 rows (backward only). Fire never reads the 2022-2023 layers anyway: y_end is 2022, so at the 1-year lag every row reads at most the 2021 layer, and the hold columns equal the raw columns on every row fire reads. The store catalog''s content_epoch ''2002/2021'' (assumed, written for the withdrawn freeze) is inert: the engine reads it only for a ''freeze'' verdict (derive/orchestrate.py:481-483).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling L3 (OWNER_RULINGS_2026-10-05.md section L), ruling J3 as amended, and ruling N S13; refreshed 2026-10-06 for ruling N S8 (OWNER_RULINGS_2026-10-06.md), not yet read by the owner'
+    date: '2026-10-06'
+  - kind: disclosed_defect
+    column: ntl
+    decision: 'disclose (kept, R8 lag 1 year)'
+    reason: 'Night lights switch sensor from DMSP to VIIRS between 2013 and 2014 (assemble_human_drivers.py:100), inside the training years: one series, two instruments.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (the Q34 review adopted; fire_ban_proposed.yaml ntl)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: hdi
+    decision: 'disclose (kept, R8 lag 1 year)'
+    reason: "hdi carries 2015's value after 2015 (assemble_human_drivers.py:113; store fact observed_through 2015): held, never projected."
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (the Q34 review adopted; fire_ban_proposed.yaml hdi)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: fert_n
+    decision: 'disclose (kept, R8 lag 1 year)'
+    reason: "fert_n carries 2013's value after 2013 (assemble_human_drivers.py:146; store fact observed_through 2013): held, never projected."
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (the Q34 review adopted; fire_ban_proposed.yaml fert_n)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: fert_p
+    decision: 'disclose (kept, R8 lag 1 year)'
+    reason: "fert_p carries 2013's value after 2013 (assemble_human_drivers.py:146; store fact observed_through 2013): held, never projected."
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (the Q34 review adopted; fire_ban_proposed.yaml fert_p)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: luh2_urban
+    decision: 'disclose (kept as one of the six LUH2 states, which share one verdict; question Q4)'
+    reason: 'luh2_urban rises like a year clock inside each group (measured 2026-10-05 on the 40 fire groups: median r with the year 1.00, r > 0.9 in 39 of 40, every test year above the training maximum in 39 of 40). gdp_pc and population_density are banned as trend proxies on the same measure; luh2_urban stays because the owner keeps luh2_* (Parts 306-312).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (question Q4 default a; fire_ban_proposed.yaml luh2_urban)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: grace_lwe
+    decision: 'disclose (watch: named in every report)'
+    reason: 'The GRACE to GRACE-FO mission gap (about 2017-06 to 2018-05) leaves 17.2% of donor rows missing against 0% in the test years: under the R30 25% line, but an availability shift (the zero fill marks 2017-18).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (the Q34 review adopted; fire_ban_proposed.yaml grace_lwe)'
+    date: '2026-10-05'

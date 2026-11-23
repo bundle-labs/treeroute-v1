@@ -1,0 +1,118 @@
+{
+ "lens": "FACTS: every number, count, time, file name, cited line number and quoted protocol wording in V\\reconcile\\report.md, checked against the final reconcile files, the returns, A's and B's results.json, the official compare outputs, the logs, the run records, compare_shap.py, PROTOCOL.md, the brief and the spec",
+ "report_sha256_checked": "00aa4d546f8210e2065f0ab9e0236cc5f611e0c8a274fc53be76fa25895ef31e",
+ "verdict": "not_ready",
+ "findings": [
+  {
+   "severity": "major",
+   "where": "report.md section 1, lines 38-40 ('None of the compare outputs was opened before 2026-11-16 18:24:54 in this round. They were first opened by the reconciler's script ... r10_open_official.py'). A1 does not correct it, although the lead's note says A1 lists every statement that the skeptics changed.",
+   "what": "This is false for per_lead.json and bootstrap_draws.npy, which are 2 of the 10 compare files listed and 10 of the '50 first openings'. The spec writer, A and B opened both files earlier in the round, as the brief allows. The report's own A4 says so: 'no compare file other than per_lead.json (structural keys) and bootstrap_draws.npy was opened before the reconciler's first opening'. The supplement's blindness statement could be copied from section 1, so this matters.",
+   "evidence": "V\\A\\work\\opened_items_<p>.json (written 18:08) lists SHAP\\out\\<p>\\lead_0\\compare\\per_lead.json and bootstrap_draws.npy for coral, defo, fire, pm25 and ndvi. V\\A\\work\\opened_b1.json (18:00) lists per_lead.json for all five problems and bootstrap_draws.npy for fire, pm25 and ndvi. The brief's rules (brief_verify.md lines 101-106) allow 'per_lead.json ... its structural keys' and 'bootstrap_draws.npy'. In skeptic_blindness.json, 'checked' says 'The only compare files opened are per_lead.json and bootstrap_draws.npy' (by spec, A and B), and finding 2 covers the spec writer's per_lead.json read.",
+   "fix": "Add to A1: before 18:24:54, no statistic-bearing compare file was opened (the AW3/AW4 tables, AW4_main_row.json, the importance/families/pairs/bootstrap_stats parquet files and the pairs done record), and no key of per_lead.json beyond its structural keys was read. per_lead.json's structural keys and bootstrap_draws.npy were opened earlier in the round by the spec writer, A and B, as the brief allows. The 50 logged openings are the reconciler's own first openings."
+  },
+  {
+   "severity": "major",
+   "where": "report.md section 6, the B1 pair table: line 338 (fire, feature: Kendall tau-b), line 339 (fire, variable: top-20-union Spearman), line 343 (ndvi, variable: Spearman over J and Kendall tau-b). Not corrected in A1.",
+   "what": "Four printed 3-decimal values are wrongly rounded, so the table does not give A's (= B's) values. The cause is double rounding of r30_tables.py's 4-decimal output: 0.7215, 0.4995, 0.8445 and 0.7885 were each rounded up a second time. If the table goes into S3.13 as it stands, four wrong digits go with it.",
+   "evidence": "A's results.json values (B's are equal to within 1e-15): (1) b1/fire/feature/pair_main_b1/kendall_tau_b/value = 0.7214539730149903, which rounds to 0.721; printed '0.722 [0.640, 0.752]'. (2) b1/fire/variable/pair_main_b1/spearman_top20_union/ci_high = 0.49948717948717947, which rounds to 0.499; printed '0.391 [0.246, 0.500]'. (3) b1/ndvi/variable/pair_main_b1/spearman_J/value = 0.8444548441951847, which rounds to 0.844; printed '0.845 [0.833, 0.851]'. (4) b1/ndvi/variable/pair_main_b1/kendall_tau_b/ci_high = 0.7884636520706124, which rounds to 0.788; printed '0.774 [0.757, 0.789]'. The same errors are in V\\_lead\\returns\\reconcile.json b1_summary ('tau-b 0.722', 'top-20-union 0.391 [0.246, 0.500]', 'ndvi, variable ... Spearman 0.845'). r30_tables.py formats with nd=4 (line 18). I compared every other cell of both B1 tables (lines 338-349) with 3-decimal rounding of A's values in a script: all equal.",
+   "fix": "Print 0.721 [0.640, 0.752], 0.391 [0.246, 0.499], 0.844 [0.833, 0.851] and 0.774 [0.757, 0.788]. Build any S3.13 B1 table directly from results.json, with a single rounding step."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 3, line 113 ('all 3,950 rounded entries of AW3_table.md and AW4_table.md'), and the lead's note, lines 4-5 ('the counts and groups in its text equal the final mismatches.json and work\\summary.json')",
+   "what": "The final summary.json counts 3,953 rounded entries, not 3,950. So the lead's note's claim that the text's counts equal the final files does not hold, and A1 does not list the change. reconcile.py was edited at 18:49:37, after the 18:48:22 draft.",
+   "evidence": "work\\summary.json second_checks: n = 1114 (coral) + 790 (defo) + 754 (fire) + 505 (pm25) + 790 (ndvi) = 3,953. official_table_eq_unrounded is 3,953, B_eq 3,953 and A_eq 3,936 (so 'all but 17' is right). skeptic_reconcile.json says '3,953 table cells' (finding 1) and 'all 3,953 cells' (checked). reconcile.py's mtime is 18:49:37 and the final run started at 18:49:41.",
+   "fix": "Write 3,953 and add the change to A1."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 6, line 332 ('They agree on all 14,412 B1 keys but 12')",
+   "what": "The total is wrong. There are 14,424 B1 keys, and 14,412 of them agree. As written, the sentence implies that 14,400 keys agree, and it contradicts section 2 (line 85: '14,424 for B1').",
+   "evidence": "summary.json verdicts: 'b1 match' 14,412 and 'b1 mismatch' 12. reconcile.json b1_summary: '14,412 of 14,424 B1 keys agree'.",
+   "fix": "Write 'They agree on 14,412 of the 14,424 B1 keys (the other 12 are ...)'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md 'In short', lines 17-19, and section 3, lines 92-93",
+   "what": "Both passages claim that every official number A and B also hold agrees with them, except for open choices (In short) or C15 alone (section 3). Two more groups are numeric disagreements with the official files. Neither is an open choice: group 2 (285 keys) is a compare_bug and group 12 (5 keys) is 'other'.",
+   "evidence": "The A2 table and mismatches.json give AO = BO = diff for all 285 keys of sign_agreement_no_interval: the official ci_low and ci_high are NaN and finite_replicates is 0, against A's and B's intervals. Every sign row of the official pairs.parquet has finite_replicates 0 (102 rows). They also give AO = BO = diff for the 5 undefined_nan_zero_replicates keys (official finite_replicates 0, A and B null). A1 item 3 itself says this 0 'must not be printed'.",
+   "fix": "Name the exceptions. For example: 'except the open choice C15, and the sign-agreement intervals and fire's undefined W, where the official files write NaN with 0 finite replicates'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 6, lines 374-378 ('Only a20_b1.py opens treeroute_B1\\'; 'Only b_b1.py and b_crosscheck_b1.py open treeroute_B1\\')",
+   "what": "Neither 'only' is true: one inspection script per implementer also opens B1 files. The conclusion still holds, because both scripts print only and feed no number of items 1-8.",
+   "evidence": "V\\A\\scripts\\a04_checks.py lines 29-31 loop over models + ['treeroute_B1'] and read treeroute_B1\\rows.parquet (row, unit, group, time, year, pre, resid_flag). V\\B\\scripts\\b_inspect3.py lines 23-25 and 39 read treeroute_B1\\meta.json, the rows.parquet schema and the resid_flag and pre columns. Neither script writes a file.",
+   "fix": "Add: 'besides these, only the inspection scripts a04_checks.py (A) and b_inspect3.py (B) open treeroute_B1 files (key and flag columns, meta.json); they print only and write nothing'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 1, line 71 ('Logged in V\\reconcile\\work\\opened_other.jsonl'), and section 7, lines 386-387 ('opened_official.jsonl and opened_other.jsonl (every file opened, with its time)')",
+   "what": "The logs cover only the SHAP files that reconcile.py read, not every file opened. compare_shap.py, shapv1_stats.py, PROTOCOL.md, the brief, the spec and its schema, A's and B's results.json, choices.md, README.md, draws\\*.npz and the scripts are all listed as read in section 1, but none of them is in either log.",
+   "evidence": "opened_other.jsonl has 253 entries for 45 files, all with by = reconcile.py: one rows.parquet per problem, the 29 meta.json files, the four B1 done records, defo's two rows.parquet files, SAMPLE_REGISTER.txt and the four tr_shap logs. opened_official.jsonl has 436 entries: 50 by r10, 360 by reconcile.py, 16 bytes reads and 10 by r30. Both logs list compare and SHAP paths only.",
+   "fix": "Say that the two logs record the SHAP files read by the reconciler's scripts. The other files listed were read directly and are not logged."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 6, line 351 ('Under B1 the seasonal normal takes most of the attribution')",
+   "what": "This is not true for NDVI. Its seasonal-normal share is below one half, although it is the largest family.",
+   "evidence": "A's and B's results.json, b1/<p>/variable/families/seasonal_normal: fire 0.811, pm25 0.703, ndvi 0.443 (ndvi local drivers 0.420).",
+   "fix": "Write 'the seasonal normal is the largest family share under B1 (fire 0.811, pm25 0.703, ndvi 0.443)'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 4, group 8, lines 235-237 ('also name the rival whose share is that median when the number of rivals is odd (defo and pm25: rival_lgbm)')",
+   "what": "Coral also has an odd number of rivals (three), but A and B name no median rival for it. The rule as stated would predict a name.",
+   "evidence": "In results.json, problems/coral/main_row/median_rival_name is null in both. A's reason: no own-history variable. B's reason: a three-way tie at 0. The key is among the 157 keys with no number anywhere.",
+   "fix": "Add 'and the shares are defined and not tied (coral: none named)'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the numbers skeptic, item 1, lines 506-507 ('No other pair, in any problem or at either level, has a top-k overlap that exists only through a tie')",
+   "what": "The sentence comes right after the rival_bardl_h1|treeroute (variable level) example. Read against that example, it is wrong: two other BARDL pairs also have tie-only overlaps. It is right only if 'other pair' means a pair without BARDL.",
+   "evidence": "V\\skeptic\\numbers\\work\\s41_tie_artifacts.json, base collation: ndvi/variable/rival_bardl_h1|rival_rf has coincidental_top10 ['aet_total_mm'], and ndvi/feature/rival_bardl_h1|treeroute has coincidental_top20 ['x__V02_total_precip_mm_roll3'] (the skeptic's return: Jaccard top-20 0.111 'includes ... a column BARDL does not read'). Every pair without BARDL has empty coincidental lists.",
+   "fix": "Write 'No pair without BARDL ...', and note that bardl|rf (variable, top 10) and bardl|treeroute (feature, top 20) also overlap only through name-order ties."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the numbers skeptic, lines 514-516 ('recomputed ... the fire, pm25 and ndvi B1 numbers; every one equals A, B and the official files')",
+   "what": "This overstates the check. The skeptic recomputed a selection of the B1 numbers, not all of them, and the B1 numbers have no official files to compare with.",
+   "evidence": "skeptic_numbers.json 'checked' (b1 lines): for fire, Spearman over J, top-20-union, RBO 0.9, share and family distances, families, own-history share and top 10. For pm25 and ndvi, Spearman over J, share and family distances, own-history share, n_J and top 3. There is no tau-b, Jaccard, RBO 0.95 or sign agreement for pm25 or ndvi. Each B1 line says 'official: none exists'.",
+   "fix": "Write 'a sample of the fire, pm25 and ndvi B1 numbers ... equal A and B (and the official files where those exist)'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md section 1, lines 60-63 ('All other compare files of the current outputs had not been opened before')",
+   "what": "PROTOCOL.md section 14, which this very passage cites, records reads of the current comparisons before this round. per_lead.json's structural fields were read for all five comparisons. Text searches also passed over their AW3 and AW4 tables, although no line was shown.",
+   "evidence": "PROTOCOL.md lines 829-831: of the 04:47 comparisons (fire, PM2.5), 'only their logs and per_lead.json's models, main set, declined list, links, rows and sample hash'. Lines 936-938: the same fields of the defo (14:35) and NDVI (19:11) comparisons, and on 2026-11-15 of coral, fire and PM2.5. Lines 941-946: text searches ran over the AW3/AW4 tables of all five problems on 2026-11-15 at 19:14, 19:31 and 19:37, and 'no line of a table was shown'.",
+   "fix": "Write: 'apart from coral's AW4_table.md, only per_lead.json's structural fields of the current comparisons were read before this round, and text searches passed over their tables without showing a line (PROTOCOL.md section 14)'."
+  }
+ ],
+ "checked": [
+  "SHA-256 of report.md recomputed with Get-FileHash: 00aa4d54...5ef31e. Size 43,582 bytes; mtime 2026-11-16 19:31:37.",
+  "A2 table recounted with my own script (f01_groups.py) from the final mismatches.json: all 16 groups, sizes, kinds and AB/AO/BO status counts are exact. Derived keys: derived_only 904 match; C25 10 keys (5 J diff, 5 level match); fire_main_row_missing 3 match. Secondary group: 33 C15_empty_family keys -> no_interval_family_share. 157 no-number keys. Total 72,974.",
+  "Sections 2-3 counts against the final summary.json: keys A 117,944, B 117,946, official 38,354, derived 921; numbers 107,677 / 107,948 / 29,023. Verdicts give 34,121 + 14,412 = 48,533 matching, 157 with no number, 72,962 + 12 = 72,974 mismatching, 107,240 + 14,424 = 121,664 compared. Closeness: A-official 26,082 numbers, B-official 26,104, max 1.55e-15; A-B 94,383 (8.9e-16); B1 13,294 (4.4e-16); per-draw max 2.78e-15 over 408 arrays. 320/320 internal checks; A differs from the official table values in 17 cells. Only the rounded-entry count fails (3,953, not 3,950).",
+  "A-B differences: 52 + 3 + 204 + 12 + 5 = 276 keys, all in the three C15 groups plus test_set_columns_text.",
+  "Group arithmetic: 285 = 95 pair-levels x 3; 204 = 51 feature pairs x 4; 762 = 50 model-levels x 3 + 102 pair-levels x 2 x 3; 24 = 4 x 2 x 3; 64,089 = 7,121 player-model-levels x 3 stats x 3; 342 = 125 x 3 - 33; 898 structural-zero rows from per_lead player/active counts; 125 family mean_abs keys.",
+  "Section 3 main-row table (lines 126-148), checked by script (f22) against the five official AW4_main_row.json files at 4 decimals: all 23 rows match. A and B also equal the official values within 1e-9 at full precision (f04). Fire's A=B top 3 (0.0403, 0.0327, 0.0316) and own-history share 0.1358 [0.1082, 0.1647] with 2000 finite replicates also equal the official importance.parquet and families.parquet.",
+  "Section 6 B1 pair table and top-3/family table, checked by script (f21) against A's results.json (A = B per f06): all cells match except the four mis-rounded ones reported. Nonzero-count table (113/113/113/96/96; 105/105/105/91/91; 482/482/482/96/96) equals A, B and the B1 meta.json files.",
+  "B1 records read directly. Every meta.json has pass true, all four checks, 1000 rows, background B1, 4200/4000/12700/13300 trees and sample hashes that equal SAMPLE_REGISTER.txt (9989bd58, 1edbc3d1, ccb17021, f2bb2a79). Duplicates merged: none on defo, fire and pm25; on ndvi the same 5 as the main run. Defo B1 and main meta.json both give 279/99.",
+  "tr_shap logs, line numbers and values: defo 24/30 (16,000 pairs, 465.9 s, 464.3 s); fire 20/26 (187,186; 2,636.6; 2,631.6); pm25 25/39 (203,963; 17,890.4; 17,883.2); ndvi 17/32 (201,768; 11,883.1; 11,871.8). The done-record seconds agree.",
+  "Defo identity (summary.json, and A's and B's b1/defo/identity): max diff 0.0 over 309,000 phi and 121,000 phiv values, with 1000 rows, 309 players and 121 variables in both.",
+  "Independence: the done records' finished times are coral 00:06:12, fire 04:47:14, pm25 04:47:52, defo 14:35:05, ndvi 19:11:39, all before 23:06:16. Official I minus A's main-run I is at most 2.8e-17; minus the B1 run it reaches 0.0126, 0.201 and 0.0456. per_lead models never lists treeroute_B1.",
+  "Section 1 openings, from opened_official.jsonl: 50 r10 first openings at 18:24:54-55, in the stated order with the stated per-problem times. reconcile.py: 360 opens, 18:34:26 to 18:49:41, plus 16 bytes reads. r30: 10 opens at 18:42:42 and 18:42:55. A1 item 1 is right.",
+  "A3: the 'test set:' lines of the five rival_shap logs name 20261020_f3b8e3da, 20261017_d71c61f4, 20261017_869d1f38, 20261007_74e67609 and 20261016_d1de3158, with 2312, 369096, 96000, 91440 and 95184 rows. Each rival_export\\<p> holds exactly that one run folder. lead_0\\test holds 37/42/40/127/133 parquet files (names and counts only). A's records give the same counts; B names the folders.",
+  "A1 item 7 and group 16: A and B test_set_columns compared by set. Defo: A 310, B 306; only in A x__hist_last_1-3, x__hist_mean_5, x__hist_mean_all; only in B 'issue'. Coral's extras are context columns only; fire, pm25 and ndvi have both kinds. Global indices are 1/27/27/27/26 in A, B and the per_lead families.",
+  "Group 2 claims, from A's and B's results.json and the official pairs.parquet: 102 pair-levels; the 7 stated pair-levels have 0 finite replicates; fire variable ridge|treeroute is undefined on the full sample with 64 finite draws, [0, 1]. Every official sign row has finite_replicates 0 and NaN intervals.",
+  "Group 8 and A1 item 5: own-history shares per rival give the defo and pm25 medians at rival_lgbm; the NDVI median 0.25596 is the mean of 0.2548 and 0.2571, a value no rival has.",
+  "Group 9 and A1 item 8: per_lead nonzero_forecast_rows are 983/995/1000/973 (coral) and 226 (fire). The 12 largest item-8 values are distinct for all 5 models. The largest structural-zero count is 29 (defo feature).",
+  "compare_shap.py cited lines read: 88 (folder filter), 201-208, 227-235 (sign NaN/0 at 231-233), 245-248, 264-275 and 268-274, 281-295, 302-315 (argsort at 313), 333, 361-386, 379-380, 385 and 413 ([:30]). Each says what the report says.",
+  "PROTOCOL.md quotes read: section 5 line 369 ('Not defined for coral'); section 8 lines 477-478, 490-498, 505-506, 508-511 and 509; section 10 lines 553-555, 583-587, 597-602 ('or whether a count gets an interval'; 'make the main comparison's choice ...') and 598-599; section 14 lines 771-777, 818-819 and 938-939 (coral AW4_table.md read on 2026-11-13 at about 15:31). All quotes are verbatim; the cited lines are right.",
+  "Brief item 7 quote (brief_verify.md lines 56-57) is verbatim. Spec C15 phrases (SPEC.md line 595), the C08 phrase (line 556) and B's X03 (B\\choices.md line 434) match.",
+  "A1 items 2 and 9: work\\tables.md is absent, and r30_tables.py says 'Prints only' (line 182). reconcile.py classify() (lines 418-467) never reads st, and verdict() (lines 403-411) uses only AB/AO/BO.",
+  "A4, blindness: the three findings and the extra facts match skeptic_blindness.json. My own os.walk of SHAP (V and smoke\\bardl_fix not entered) at about 19:45 found 10,801 files, none created or changed at or after 17:09, the newest being RUN_COMMANDS.md at 17:05:41.",
+  "A4, numbers: 93 of 96 BARDL variables are exactly 0 in A. Jaccard 0.25 vs 0.111 and 0.25 vs 0.176 match s41 and the return. The main-row collation spread is 2.9e-5 (under 3e-5). 91.1% of draws lie above 0.3720, recomputed from V\\A\\draws\\pm25.npz (median 0.423). The consensus top 3 lie within 0.0035. The largest difference 1.5e-15 and the 29 row files match the return.",
+  "A4, reconcile: 1 major and 8 minor findings match skeptic_reconcile.json and map onto A1 items 3-9. The rerun mismatches.json and summary.json differ from the originals only in written_at, run_started, run_finished and seconds (my f19 compare).",
+  "Not verifiable from files: the lead's reading time 19:22, the 18:48:22 draft time, and that sections 'In short' to 7 are unchanged from the reconciler's refused Write (no transcript access)."
+ ]
+}

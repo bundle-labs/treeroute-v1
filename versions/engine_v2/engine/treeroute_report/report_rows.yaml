@@ -1,0 +1,10 @@
+# treeroute_report/report_rows.yaml -- extra subset rows the paper reports for a package (reporting only).
+#
+# Each row is scored by the table builder from the same saved rows with the same report/metrics.py functions, over a
+# subset of test years. It never changes a fit, a pick, a decision or a verdict. Keyed by the package name.
+# (The "without seen_during_design" row, Q49, needs no entry here: the builder reads the groups from the run's
+# derived.json, R18:groups.)
+
+ndvi:
+  - label: "2021-2023 comparison row (Q40 a)"
+    years: [2021, 2022, 2023]

@@ -1,0 +1,216 @@
+# PM2.5 human-rival registry (SPEC_HUMAN.txt 1.7 and section 4; Builder C). DATA, not code: the tool reads it,
+# validates it against registry/_schema.yaml (Builder A) at `init`, and never names the problem in its code.
+# Sources: RIVALS_PLAN_HUMAN.md :64-65 (section 2 table), rulings AB Q1, Q4, Q6, Q6b, Q7, Q19 a, Q21 a;
+# research_pm25.md sections 2-4; run D:/treeroute/runs/pm25/headline/20261007_74e67609.
+# Checked on that run (2026-10-21): R22 links [identity, log_c]; R28 legal [0, inf]; R17 start_offset_steps 0,
+# steps_per_year 12; R8: burn_frac is the one column co-measured with the target, steps 1 (T1 boundary issue - 1).
+# `decides` is derived by the tool from the tier (P, L decide; A, X never).
+# Leads 6 and 12: every rival is tier none with the reason "no operational 6-12 month PM2.5 forecast exists" (CAMS
+# forecasts reach 5 days; C3S seasonal has no aerosols; GEOS-S2S-2 unverified, ruling Q21 a). Lead 0: persistence and
+# damped persistence are "the human baseline to beat" (ruling Q4), printed as reference rows by refs.py.
+package: pm25
+rivals:
+  - id: eac4_lag1
+    label: "CAMS EAC4 monthly PM2.5 of month t-1: the operational product at parity"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [cams_eac4_monthly_pm2p5, pm25_static_cells]
+    stats: [x__pm25]
+    families: [F0, F1, F2, F3, F4, F5]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose product month m = t-1 is in the product (lead 0 loses the 2003-01 train rows; test fully covered)"
+    disclosures:
+      - "EAC4 is published 4-6 months late: reading month t-1 at issue t is generous to the rival"
+      - "EAC4 assimilates MODIS (and AATSR to 2012) AOD, the target's own source: lagged to t-1 for parity"
+      - "EAC4 holds no nitrate (aerosol components BC, dust, organic matter, sea salt, sulphate); verify before the Part"
+    r10_note: "F5 per-unit MOS is non-blind (the old Board C per-cell log MOS, MERRA-2 same-month, MAE 3.926; years to confirm before signing)"
+    options:
+      product: cams_eac4_monthly_pm2p5
+      reader: netcdf_zip
+      variables: {pm2p5: 1.0}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: -1
+      missing_message: "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first"
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+  - id: eac4_same
+    label: "same-month CAMS EAC4: real practice (input-advantaged, printed beside eac4_lag1)"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [cams_eac4_monthly_pm2p5, pm25_static_cells]
+    stats: [x__pm25]
+    families: [F0, F1, F2, F3, F4, F5]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: A}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    score_without_net: []
+    pick: nowcast_inner
+    print_beside: eac4_lag1
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose product month m = t is in the product"
+    disclosures:
+      - "assimilates the target month's MODIS AOD: breaks T1 and T2 by design (tier A, never decides; ruling Q6b)"
+      - "the real-time stand-in (CAMS NRT analysis) changed several times in 2020-2023; EAC4 is used instead"
+    r10_note: "F5 per-unit MOS is non-blind (old Board C M2 arm was same-month MERRA-2 + per-cell MOS)"
+    options:
+      product: cams_eac4_monthly_pm2p5
+      reader: netcdf_zip
+      variables: {pm2p5: 1.0}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: 0
+      missing_message: "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first"
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+  - id: merra2_lag1
+    label: "MERRA-2 surface PM2.5 of month t-1 (optional parity row)"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [merra2_aer_monthly, pm25_static_cells]
+    stats: [x__pm25]
+    families: [F0, F1, F2, F3, F4, F5]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: true
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose product month m = t-1 has a file (lead 0 loses the 2003-01 train rows; test fully covered)"
+    disclosures:
+      - "PM2.5 = DUSMASS25 + SSSMASS25 + BCSMASS + 1.4 OCSMASS + 1.375 SO4SMASS (Buchard et al. 2016); no nitrate, runs low where nitrate matters"
+      - "test months 2020-09 and 2021-06..09 are the MERRA2_401 reprocessed stream"
+      - "MERRA-2 assimilates MODIS, AVHRR, MISR AOD and AERONET: lagged to t-1 for parity"
+    r10_note: "F5 per-unit MOS is non-blind (old Board C M2: same-month MERRA-2 + per-cell log MOS, MAE 3.926; years to confirm)"
+    options:
+      product: merra2_aer_monthly
+      reader: monthly_files
+      file_pattern: "aer_{year:04d}{month:02d}.nc"
+      variables: {DUSMASS25: 1.0, SSSMASS25: 1.0, BCSMASS: 1.0, OCSMASS: 1.4, SO4SMASS: 1.375}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: -1
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+  - id: merra2_same
+    label: "same-month MERRA-2 (input-advantaged, printed beside merra2_lag1)"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [merra2_aer_monthly, pm25_static_cells]
+    stats: [x__pm25]
+    families: [F0, F1, F2, F3, F4, F5]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: A}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    score_without_net: []
+    pick: nowcast_inner
+    print_beside: merra2_lag1
+    slim_extra_columns: []
+    optional: true
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose product month m = t has a file"
+    disclosures:
+      - "reads the target month's assimilated AOD: tier A, never decides"
+    r10_note: "F5 per-unit MOS is non-blind (old Board C M2 was exactly this row + per-cell MOS)"
+    options:
+      product: merra2_aer_monthly
+      reader: monthly_files
+      file_pattern: "aer_{year:04d}{month:02d}.nc"
+      variables: {DUSMASS25: 1.0, SSSMASS25: 1.0, BCSMASS: 1.0, OCSMASS: 1.4, SO4SMASS: 1.375}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: 0
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+# Placebos (SPEC_HUMAN 4 "Placebo", printed only, never decide; tier X): the time-shifted product, the same unit and
+# calendar month 4 years earlier (old MP arm, pm25_products_map.py:9-13); rows with no product 4 years earlier are
+# not covered (never a later year, so T1/T2 hold). `placebo_of`: the tool refits the parity rival's pinned candidate
+# on the placebo values ("through the same pick").
+  - id: eac4_lag1_placebo
+    placebo_of: eac4_lag1
+    label: "placebo: EAC4 of the same calendar month 4 years earlier (the guard should decline it)"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [cams_eac4_monthly_pm2p5, pm25_static_cells]
+    stats: [x__pm25]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: X}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    optional: false
+    options:
+      product: cams_eac4_monthly_pm2p5
+      reader: netcdf_zip
+      variables: {pm2p5: 1.0}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: -1
+      placebo_shift_years: 4
+      missing_message: "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first"
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+  - id: merra2_lag1_placebo
+    placebo_of: merra2_lag1
+    label: "placebo: MERRA-2 of the same calendar month 4 years earlier (the guard should decline it)"
+    kind: N
+    adapter: "adapters.pm25_reanalysis:build"
+    availability: "adapters.pm25_reanalysis:availability"
+    products: [merra2_aer_monthly, pm25_static_cells]
+    stats: [x__pm25]
+    t1_kind_columns: [burn_frac]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: X}
+      6: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+      12: {tier: none, reason: "no operational 6-12 month PM2.5 forecast exists"}
+    optional: true
+    options:
+      product: merra2_aer_monthly
+      reader: monthly_files
+      file_pattern: "aer_{year:04d}{month:02d}.nc"
+      variables: {DUSMASS25: 1.0, SSSMASS25: 1.0, BCSMASS: 1.0, OCSMASS: 1.4, SO4SMASS: 1.375}
+      units_attr: "kg m-3"
+      scale: 1.0e9
+      month_offset: -1
+      placebo_shift_years: 4
+      unit_centres: {product: pm25_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+
+# Product ids used above (the product registry of SPEC_HUMAN 1.8 is Builder A's file; these are the folders):
+#   cams_eac4_monthly_pm2p5  D:/treeroute/human_products/cams_eac4_monthly_pm2p5/eac4_monthly_mean_2003-2023
+#                            (fetch_products.py spec_D1: one zipped netCDF; NOT on disk on 2026-10-21)
+#   merra2_aer_monthly       D:/pm25_products/merra2 (252 files aer_200301.nc .. aer_202312.nc; manifest via the
+#                            tool's `manifest` command, SPEC_HUMAN 8 O5)

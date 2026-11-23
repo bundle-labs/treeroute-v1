@@ -1,0 +1,60 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": false
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "13838e41843cf1ec",
+    "engine_root": "D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc",
+    "manifest": "13838e41843cf1ec"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [],
+    "path_map": false,
+    "static_files_sha256": [
+     "b7aa9016a63437a1",
+     "b7aa9016a63437a1"
+    ],
+    "target_files_sha256": [
+     "e4c7cb6809ca743f",
+     "e4c7cb6809ca743f"
+    ]
+   }
+  }
+ },
+ "seconds": 14.5
+}

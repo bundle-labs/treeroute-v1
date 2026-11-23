@@ -1,0 +1,114 @@
+{
+ "engine_code_sha256": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+ "finished": "2026-10-07T16:09:18+03:00",
+ "green": true,
+ "guards": [
+  {
+   "columns": [],
+   "id": "G-SPLIT",
+   "message": "[G-SPLIT] 42 groups in the data, 0 excluded, 42 after exclusions (every one trained and tested); seen_during_design: 0",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "V06_spei_12m_max_lag1",
+    "V06_spei_12m_mean_lag1",
+    "V06_spei_12m_min_lag1",
+    "V15_bare_ground_pct_lag2",
+    "V17_herb_cover_pct_lag2",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "amo_max_lag1",
+    "amo_mean_lag1",
+    "amo_min_lag1",
+    "phenology_sos_doy_lag2",
+    "spei_01m_max_lag1",
+    "spei_01m_mean_lag1",
+    "spei_01m_min_lag1",
+    "spei_03m_max_lag1",
+    "spei_03m_mean_lag1",
+    "spei_03m_min_lag1",
+    "spei_06m_max_lag1",
+    "spei_06m_mean_lag1",
+    "spei_06m_min_lag1",
+    "spei_24m_max_lag1",
+    "spei_24m_mean_lag1",
+    "spei_24m_min_lag1",
+    "tree_cover_pct_lag2"
+   ],
+   "id": "G-LINEAGE",
+   "message": "[G-LINEAGE] 28 entering columns carry a lineage flag: V06_spei_12m_max_lag1 (derived from V06_spei_12m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), V06_spei_12m_mean_lag1 (derived from V06_spei_12m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), V06_spei_12m_min_lag1 (derived from V06_spei_12m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), V15_bare_ground_pct_lag2 (derived from V15_bare_ground_pct, banned as 'coproduct', disclosed in a signed exceptions.yaml entry) ... (28 in all) Columns: V06_spei_12m_max_lag1, V06_spei_12m_mean_lag1, V06_spei_12m_min_lag1, V15_bare_ground_pct_lag2, V17_herb_cover_pct_lag2, aglw_buffalo_hold2021, aglw_cattle_hold2021, aglw_goats_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_total_lsu_hold2021, amo_max_lag1, amo_mean_lag1, amo_min_lag1, phenology_sos_doy_lag2, spei_01m_max_lag1, spei_01m_mean_lag1, spei_01m_min_lag1, spei_03m_max_lag1, spei_03m_mean_lag1 ... (28 in all). Fix: confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only)).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-CLOSED",
+   "message": "[G-CLOSED] every one of the 404 non-key columns has facts and one verdict; keep_unreviewed (listed in every report): none; 100 stored columns have no catalog row but are declared through the derived columns that carry their verdicts (owner ruling J4; they never enter): V01_mean_temp_C -> V01_mean_temp_C_max, V01_mean_temp_C_mean, V01_mean_temp_C_min, V02_total_precip_mm -> V02_total_precip_mm_max, V02_total_precip_mm_mean, V02_total_precip_mm_min ... (4 in all), V03_max_daily_precip_mm -> V03_max_daily_precip_mm_max, V03_max_daily_precip_mm_mean, V03_max_daily_precip_mm_min, V05_mean_vpd_kPa -> V05_mean_vpd_kPa_max, V05_mean_vpd_kPa_mean, V05_mean_vpd_kPa_min, V06_spei_12m -> V06_spei_12m_max, V06_spei_12m_mean, V06_spei_12m_min, V07_total_ref_ET_mm -> V07_total_ref_ET_mm_max, V07_total_ref_ET_mm_mean, V07_total_ref_ET_mm_min, V09_mean_wind_ms -> V09_mean_wind_ms_max, V09_mean_wind_ms_mean, V09_mean_wind_ms_min, V11_mean_ndvi -> V11_mean_ndvi_max, V11_mean_ndvi_mean, V11_mean_ndvi_min ... (100 in all)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-KEYS",
+   "message": "[G-KEYS] no key or key-derived column is a tree feature (303 tree features, 0 router context columns)",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "V15_bare_ground_pct_lag2",
+    "V17_herb_cover_pct_lag2",
+    "phenology_sos_doy_lag2",
+    "tree_cover_pct_lag2"
+   ],
+   "id": "G-LAG",
+   "message": "[G-LAG] every lag is computed; R4 note: the first data year is set by declared lag operations alone (V15_bare_ground_pct_lag2, V17_herb_cover_pct_lag2, phenology_sos_doy_lag2, tree_cover_pct_lag2 reads 2 target steps back, R8's largest lag is 1), so Y0 is about 2004 (first driver-store year 2002); an owner decision when it moves Y0 Columns: V15_bare_ground_pct_lag2, V17_herb_cover_pct_lag2, phenology_sos_doy_lag2, tree_cover_pct_lag2. Fix: confirm the engineered look-back (or shorten it) before the freeze.",
+   "status": "flag"
+  },
+  {
+   "columns": [
+    "irrigation_pct_gmia",
+    "travel_time"
+   ],
+   "id": "G-EPOCH",
+   "message": "[G-EPOCH] 2 entering columns carry an observation epoch that was not compared with a cut (no cut known to this check): irrigation_pct_gmia (content_epoch 2005), travel_time (content_epoch 2015) Columns: irrigation_pct_gmia, travel_time. Fix: run check --deep (it derives the windows and R11's cuts) or plan (derived.json R11).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-HIST",
+   "message": "[G-HIST] no dataset column is declared as a look-back of the own target",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-SUPPORT",
+   "message": "[G-SUPPORT] 42 groups; donor labels not judged here (check --deep reads them); census not judged here (check --deep reads it)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-FACTS",
+   "message": "[G-FACTS] every kept column's timing facts are verified or signed; co-measured answers and the target's legal-range source are present",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-MISSING",
+   "message": "[G-MISSING] R30's missing-value flags are not available to the quick check (they come from the data); not evaluated Fix: run check --deep (or plan: derived.json R30).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-DERIVED",
+   "message": "[G-DERIVED] the feature script fits no model (static scan)",
+   "status": "pass"
+  }
+ ],
+ "mode": "quick",
+ "package": "defo",
+ "package_fingerprint": "d109c36c0c4f87a771a9ca2203d701c100cd2cc9c0cf9ff706630287e821793f",
+ "started": "2026-10-07T16:09:14+03:00"
+}

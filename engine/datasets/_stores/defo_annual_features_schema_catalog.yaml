@@ -1,0 +1,6162 @@
+# defo_annual_features -- STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog) for the defo
+# package's FEATURES store: the annual <parent>_mean / _min / _max columns that its feature script
+# (features/build.py, not written yet) builds from the monthly panel with aggregate_time (plan 1.5). Ruling C
+# 'Defo store' (OWNER_RULINGS_2026-09-28.md): "Rebuild defo's yearly columns from the monthly panel with the
+# package's feature script (aggregate_time). Do not read D:/defo_matrix's target copy, train/test flag or
+# pre-lagged columns." Written 2026-09-28 by the catalogs task; every fact 'unverified' (tni / co2 aggregates 'assumed', as their parents); nothing signed.
+#
+# Columns: one per (monthly parent, stat) for the 101 defo catalog drivers whose panel cadence is {regular, 1, month}
+# (303 columns). Annual and static panel columns are already at or above the target's step and are read as they are.
+# Names follow defo_matrix.py:21-25 / 156-166 (annualise). Plan 1.4 family expansion lets a VERDICT declared on
+# the parent's family expand to these aggregates. It carries verdicts only: the package fact
+# co_measured_with_target (plan 1.3, no default) is not a verdict, and defo/catalog.yaml gives these names no
+# answer yet. Six parents that the shipped run read only lagged (defo_ban.py LAG) come out at lag 0 year as
+# aggregates, so their answers decide whether same-year post-event state enters: OPEN item in defo/catalog.yaml.
+# DO NOT write verdicts for these names while defo/dataset.yaml still declares D:/defo_matrix as the driver store:
+#   the names equal the matrix's shipped aggregate columns, which were built with the panel's NoData sentinels
+#   inside and without the D34 missing-month rule, so a verdict would bind the shipped values, not this rebuild.
+#   Switch dataset.yaml to the panel plus the features store (with this include) first.
+# Facts per column:
+#   derived_from [parent]; operation 'aggregate_time {window: 1 year, stat: mean|min|max}' (plan 1.5 spelling: the
+#     calendar year, the target's step, no season months); reads_target false.
+#   As treeroute/io/aggregate.py (F5 body) builds an aggregate's facts: dtype float64, fill_values none (the output
+#     holds NaN, never a code), cadence the target's, derived_from the source; EVERY OTHER FACT INHERITED from the
+#     parent (plan 1.5: units, legal range for mean/min/max, lineage, product family; also scope, baseline_period,
+#     observed_through and fact_status, so the tni / co2 aggregates are 'assumed' like their parents). Copied
+#     here because the schema requires the physical facts in a store catalog.
+#   cadence {regular, 1, year}; stamp period_end = the aggregate path's fixed stamp (timing.aggregate_window,
+#     AGGREGATE_STAMP), written because the schema requires a stamp.
+#   NO window: an aggregate's window is COMPUTED from the aggregation span, never typed (plan 1.5). Ruling F5:
+#     aggregate_time builds it with timing.aggregate_reach / timing.aggregate_window from the parent's facts, so
+#     the ruled 1-year annual lags survive aggregation (nino12/3/4/34, oni, the 8 sst_anom_*, tni, co2, V11, V12:
+#     December's content reaches past the year end; also V14_mean_albedo and gpp_kgC_m2, whose seeded 47-day
+#     centred windows reach past December). Until the feature runner writes it, R8 refuses these columns
+#     (no window fact), by design. tests/test_catalog_timing_facts.py computes it from the parents' facts today.
+#   operation: the declaration above REPLACES the parent's (six parents are themselves derived: wbal_*, eddi_observed).
+#   None of the 101 parents has a sum group, absent groups, content_epoch or a 2^30 opt-out.
+# Missing months: D34 (strict, accepted default) makes a unit-year with any missing month NaN. epo is NaN every
+#   December (INDEX_WINDOW_AUDIT.md T2), so its three aggregates are NaN in every year (R30 will flag them); amo is
+#   NaN from February 2023 and the SPEI columns after 2022-12 (observed_through), so their 2023 aggregates are NaN.
+# NOT YET WIRED: defo/dataset.yaml (outside the catalogs task's write scope) declares neither a features store path
+#   nor this include. Proposed path, the plan 1.1 default layout for new data:
+#   data/features/group={group}/year={year}/part-0.parquet (a NEW folder inside the package, never an existing store).
+store: defo_annual_features
+description: 'Engineered annual columns of the defo package: <parent>_mean/_min/_max of 101 monthly panel columns over
+  each calendar year, built by the package feature script with aggregate_time (plan 1.5; ruling C). Features store
+  path not declared yet in dataset.yaml (proposed: data/features/group={group}/year={year}/part-0.parquet). Written
+  2026-09-28; every fact unverified or, as its parent, assumed.'
+columns:
+  V01_mean_temp_C_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V01_mean_temp_C
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V01_mean_temp_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V01_mean_temp_C_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V01_mean_temp_C
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V01_mean_temp_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V01_mean_temp_C_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V01_mean_temp_C
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V01_mean_temp_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  diurnal_temp_range_C_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 50.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - diurnal_temp_range_C
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column diurnal_temp_range_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  diurnal_temp_range_C_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 50.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - diurnal_temp_range_C
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column diurnal_temp_range_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  diurnal_temp_range_C_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 50.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - diurnal_temp_range_C
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column diurnal_temp_range_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V02_total_precip_mm_mean:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 12000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V02_total_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V02_total_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V02_total_precip_mm_min:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 12000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V02_total_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V02_total_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V02_total_precip_mm_max:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 12000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V02_total_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V02_total_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V07_total_ref_ET_mm_mean:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V07_total_ref_ET_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V07_total_ref_ET_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V07_total_ref_ET_mm_min:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V07_total_ref_ET_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V07_total_ref_ET_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V07_total_ref_ET_mm_max:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V07_total_ref_ET_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V07_total_ref_ET_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aet_total_mm_mean:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aet_total_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column aet_total_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aet_total_mm_min:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aet_total_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column aet_total_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aet_total_mm_max:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aet_total_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column aet_total_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  climate_water_deficit_mm_mean:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - climate_water_deficit_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column climate_water_deficit_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  climate_water_deficit_mm_min:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - climate_water_deficit_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column climate_water_deficit_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  climate_water_deficit_mm_max:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - climate_water_deficit_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column climate_water_deficit_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soil_water_tc_mm_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - soil_water_tc_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column soil_water_tc_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soil_water_tc_mm_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - soil_water_tc_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column soil_water_tc_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soil_water_tc_mm_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - soil_water_tc_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column soil_water_tc_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V05_mean_vpd_kPa_mean:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V05_mean_vpd_kPa
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V05_mean_vpd_kPa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V05_mean_vpd_kPa_min:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V05_mean_vpd_kPa
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V05_mean_vpd_kPa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V05_mean_vpd_kPa_max:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V05_mean_vpd_kPa
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V05_mean_vpd_kPa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V09_mean_wind_ms_mean:
+    dtype: float64
+    units: 'm s-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V09_mean_wind_ms
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V09_mean_wind_ms over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V09_mean_wind_ms_min:
+    dtype: float64
+    units: 'm s-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V09_mean_wind_ms
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V09_mean_wind_ms over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V09_mean_wind_ms_max:
+    dtype: float64
+    units: 'm s-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - V09_mean_wind_ms
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V09_mean_wind_ms over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  solar_radiation_Wm2_mean:
+    dtype: float64
+    units: 'W m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 600.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - solar_radiation_Wm2
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column solar_radiation_Wm2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  solar_radiation_Wm2_min:
+    dtype: float64
+    units: 'W m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 600.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - solar_radiation_Wm2
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column solar_radiation_Wm2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  solar_radiation_Wm2_max:
+    dtype: float64
+    units: 'W m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 600.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - solar_radiation_Wm2
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column solar_radiation_Wm2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  swe_mean_mm_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 40000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - swe_mean_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column swe_mean_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  swe_mean_mm_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 40000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - swe_mean_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column swe_mean_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  swe_mean_mm_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 40000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - swe_mean_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column swe_mean_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aridity_index_p_pet_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aridity_index_p_pet
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column aridity_index_p_pet over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aridity_index_p_pet_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aridity_index_p_pet
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column aridity_index_p_pet over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  aridity_index_p_pet_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1000.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - aridity_index_p_pet
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column aridity_index_p_pet over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tc_vapor_pressure_mean:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 10.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - tc_vapor_pressure
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column tc_vapor_pressure over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tc_vapor_pressure_min:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 10.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - tc_vapor_pressure
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column tc_vapor_pressure over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tc_vapor_pressure_max:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 10.0
+    fill_values: []
+    product_family: 'TerraClimate'
+    derived_from:
+    - tc_vapor_pressure
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column tc_vapor_pressure over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V11_mean_ndvi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V11_mean_ndvi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V11_mean_ndvi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V11_mean_ndvi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V11_mean_ndvi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V11_mean_ndvi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V11_mean_ndvi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V11_mean_ndvi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V11_mean_ndvi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V13_mean_lst_C_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 80.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - V13_mean_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V13_mean_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V13_mean_lst_C_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 80.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - V13_mean_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V13_mean_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V13_mean_lst_C_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 80.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - V13_mean_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V13_mean_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nighttime_lst_C_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - nighttime_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nighttime_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nighttime_lst_C_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - nighttime_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nighttime_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nighttime_lst_C_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -90.0
+    - 60.0
+    fill_values: []
+    product_family: 'MODIS MOD11C3'
+    derived_from:
+    - nighttime_lst_C
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nighttime_lst_C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  snow_cover_fraction_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD10'
+    derived_from:
+    - snow_cover_fraction
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column snow_cover_fraction over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  snow_cover_fraction_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD10'
+    derived_from:
+    - snow_cover_fraction
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column snow_cover_fraction over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  snow_cover_fraction_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD10'
+    derived_from:
+    - snow_cover_fraction
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column snow_cover_fraction over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  cloud_frequency_pct_mean:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'MODIS MOD08 (atmosphere)'
+    derived_from:
+    - cloud_frequency_pct
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column cloud_frequency_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  cloud_frequency_pct_min:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'MODIS MOD08 (atmosphere)'
+    derived_from:
+    - cloud_frequency_pct
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column cloud_frequency_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  cloud_frequency_pct_max:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'MODIS MOD08 (atmosphere)'
+    derived_from:
+    - cloud_frequency_pct
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column cloud_frequency_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V14_mean_albedo_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MCD43'
+    derived_from:
+    - V14_mean_albedo
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V14_mean_albedo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V14_mean_albedo_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MCD43'
+    derived_from:
+    - V14_mean_albedo
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V14_mean_albedo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V14_mean_albedo_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MCD43'
+    derived_from:
+    - V14_mean_albedo
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V14_mean_albedo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gpp_kgC_m2_mean:
+    dtype: float64
+    units: 'kg C m-2 month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'FluxSat'
+    lineage:
+      assimilates: ['MODIS MCD43 NBAR reflectance']
+      trained_on: []
+    derived_from:
+    - gpp_kgC_m2
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column gpp_kgC_m2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gpp_kgC_m2_min:
+    dtype: float64
+    units: 'kg C m-2 month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'FluxSat'
+    lineage:
+      assimilates: ['MODIS MCD43 NBAR reflectance']
+      trained_on: []
+    derived_from:
+    - gpp_kgC_m2
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column gpp_kgC_m2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gpp_kgC_m2_max:
+    dtype: float64
+    units: 'kg C m-2 month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'FluxSat'
+    lineage:
+      assimilates: ['MODIS MCD43 NBAR reflectance']
+      trained_on: []
+    derived_from:
+    - gpp_kgC_m2
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column gpp_kgC_m2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V06_spei_12m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - V06_spei_12m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V06_spei_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V06_spei_12m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - V06_spei_12m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V06_spei_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V06_spei_12m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - V06_spei_12m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V06_spei_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_01m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_01m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spei_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_01m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_01m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spei_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_01m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_01m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spei_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_03m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_03m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spei_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_03m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_03m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spei_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_03m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_03m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spei_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_06m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_06m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spei_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_06m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_06m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spei_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_06m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_06m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spei_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_24m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_24m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spei_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_24m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_24m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spei_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spei_24m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -8.0
+    - 8.0
+    fill_values: []
+    observed_through: '2022-12'
+    product_family: 'SPEIbase'
+    derived_from:
+    - spei_24m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spei_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  frost_days_mean:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - frost_days
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column frost_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  frost_days_min:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - frost_days
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column frost_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  frost_days_max:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - frost_days
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column frost_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  heatwave_days_gt35C_mean:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - heatwave_days_gt35C
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column heatwave_days_gt35C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  heatwave_days_gt35C_min:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - heatwave_days_gt35C
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column heatwave_days_gt35C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  heatwave_days_gt35C_max:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - heatwave_days_gt35C
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column heatwave_days_gt35C over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gdd5_degC_days_mean:
+    dtype: float64
+    units: 'degC day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1200.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - gdd5_degC_days
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column gdd5_degC_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gdd5_degC_days_min:
+    dtype: float64
+    units: 'degC day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1200.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - gdd5_degC_days
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column gdd5_degC_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  gdd5_degC_days_max:
+    dtype: float64
+    units: 'degC day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1200.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - gdd5_degC_days
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column gdd5_degC_days over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wet_day_count_mean:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - wet_day_count
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wet_day_count over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wet_day_count_min:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - wet_day_count
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wet_day_count over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wet_day_count_max:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - wet_day_count
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wet_day_count over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V03_max_daily_precip_mm_mean:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - V03_max_daily_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V03_max_daily_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V03_max_daily_precip_mm_min:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - V03_max_daily_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V03_max_daily_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V03_max_daily_precip_mm_max:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - V03_max_daily_precip_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V03_max_daily_precip_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  precip_intensity_mm_mean:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - precip_intensity_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column precip_intensity_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  precip_intensity_mm_min:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - precip_intensity_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column precip_intensity_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  precip_intensity_mm_max:
+    dtype: float64
+    units: 'mm day-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2000.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - precip_intensity_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column precip_intensity_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_max_daily_mean:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 25.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_max_daily
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column vpd_max_daily over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_max_daily_min:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 25.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_max_daily
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column vpd_max_daily over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_max_daily_max:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 25.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_max_daily
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column vpd_max_daily over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_days_gt_2kpa_mean:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_days_gt_2kpa
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column vpd_days_gt_2kpa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_days_gt_2kpa_min:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_days_gt_2kpa
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column vpd_days_gt_2kpa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_days_gt_2kpa_max:
+    dtype: float64
+    units: 'day'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 31.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_days_gt_2kpa
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column vpd_days_gt_2kpa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_warm_season_mean_mean:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_warm_season_mean
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column vpd_warm_season_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_warm_season_mean_min:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_warm_season_mean
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column vpd_warm_season_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  vpd_warm_season_mean_max:
+    dtype: float64
+    units: 'kPa'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 20.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - vpd_warm_season_mean
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column vpd_warm_season_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  rmin_pct_mean:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - rmin_pct
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column rmin_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  rmin_pct_min:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - rmin_pct
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column rmin_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  rmin_pct_max:
+    dtype: float64
+    units: 'percent'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - rmin_pct
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column rmin_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sph_kgkg_mean:
+    dtype: float64
+    units: 'kg kg-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 0.05
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - sph_kgkg
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sph_kgkg over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sph_kgkg_min:
+    dtype: float64
+    units: 'kg kg-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 0.05
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - sph_kgkg
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sph_kgkg over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sph_kgkg_max:
+    dtype: float64
+    units: 'kg kg-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 0.05
+    fill_values: []
+    product_family: 'AgERA5'
+    derived_from:
+    - sph_kgkg
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sph_kgkg over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V30_soil_moisture_pct_mean:
+    dtype: float64
+    units: 'percent (volumetric)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - V30_soil_moisture_pct
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V30_soil_moisture_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V30_soil_moisture_pct_min:
+    dtype: float64
+    units: 'percent (volumetric)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - V30_soil_moisture_pct
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V30_soil_moisture_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V30_soil_moisture_pct_max:
+    dtype: float64
+    units: 'percent (volumetric)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 100.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - V30_soil_moisture_pct
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V30_soil_moisture_pct over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V20_burned_binary_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'FireCCI'
+    derived_from:
+    - V20_burned_binary
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V20_burned_binary over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V20_burned_binary_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'FireCCI'
+    derived_from:
+    - V20_burned_binary
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V20_burned_binary over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V20_burned_binary_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'FireCCI'
+    derived_from:
+    - V20_burned_binary
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V20_burned_binary over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_atl3_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_atl3
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_atl3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_atl3_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_atl3
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_atl3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_atl3_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_atl3
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_atl3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_west_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_west
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_iod_west over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_west_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_west
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_iod_west over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_west_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_west
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_iod_west over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_east_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_east
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_iod_east over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_east_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_east
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_iod_east over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_iod_east_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_iod_east
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_iod_east over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_subpolar_north_atlantic_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_subpolar_north_atlantic
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_subpolar_north_atlantic over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_subpolar_north_atlantic_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_subpolar_north_atlantic
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_subpolar_north_atlantic over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_subpolar_north_atlantic_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_subpolar_north_atlantic
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_subpolar_north_atlantic over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_coral_sea_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_coral_sea
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_coral_sea over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_coral_sea_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_coral_sea
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_coral_sea over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_coral_sea_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_coral_sea
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_coral_sea over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_mediterranean_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_mediterranean
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_mediterranean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_mediterranean_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_mediterranean
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_mediterranean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_mediterranean_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_mediterranean
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_mediterranean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_global_tropical_mean_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_global_tropical_mean
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_global_tropical_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_global_tropical_mean_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_global_tropical_mean
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_global_tropical_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_global_tropical_mean_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_global_tropical_mean
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_global_tropical_mean over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_nino34_mean:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_nino34
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sst_anom_nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_nino34_min:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_nino34
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sst_anom_nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sst_anom_nino34_max:
+    dtype: float64
+    units: 'degC'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -6.0
+    - 6.0
+    fill_values: []
+    baseline_period:
+    - '1971'
+    - '2000'
+    product_family: 'ERSSTv5'
+    derived_from:
+    - sst_anom_nino34
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sst_anom_nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino12_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino12
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nino12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino12_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino12
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nino12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino12_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino12
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nino12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino3_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino3
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nino3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino3_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino3
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nino3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino3_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino3
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nino3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino4_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino4
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nino4 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino4_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino4
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nino4 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino4_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino4
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nino4 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino34_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino34
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino34_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino34
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nino34_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nino34
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nino34 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  oni_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - oni
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column oni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  oni_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - oni
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column oni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  oni_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - oni
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column oni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - soi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column soi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - soi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column soi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  soi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - soi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column soi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tni_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tni
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'mean of the monthly panel column tni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tni_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tni
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'min of the monthly panel column tni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tni_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tni
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'max of the monthly panel column tni over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pdo_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pdo
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column pdo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pdo_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pdo
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column pdo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pdo_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pdo
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column pdo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  amo_mean:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2023-01'
+    product_family: 'NOAA indices'
+    derived_from:
+    - amo
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column amo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  amo_min:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2023-01'
+    product_family: 'NOAA indices'
+    derived_from:
+    - amo
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column amo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  amo_max:
+    dtype: float64
+    units: 'K (anomaly)'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    observed_through: '2023-01'
+    product_family: 'NOAA indices'
+    derived_from:
+    - amo
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column amo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tna_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tna
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column tna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tna_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tna
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column tna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tna_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tna
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column tna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tsa_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tsa
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column tsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tsa_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tsa
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column tsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  tsa_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - tsa
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column tsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  iod_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - iod
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column iod over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  iod_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - iod
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column iod over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  iod_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - iod
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column iod over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  noi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - noi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column noi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  noi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - noi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column noi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  noi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -60.0
+    - 60.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - noi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column noi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  ao_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - ao
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column ao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  ao_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - ao
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column ao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  ao_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - ao
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column ao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nao_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nao
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column nao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nao_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nao
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column nao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  nao_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - nao
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column nao over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pna_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pna
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column pna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pna_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pna
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column pna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  pna_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - pna
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column pna over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wp_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - wp
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wp over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wp_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - wp
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wp over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wp_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - wp
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wp over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  epo_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - epo
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column epo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  epo_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - epo
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column epo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  epo_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - epo
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column epo over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sam_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - sam
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column sam over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sam_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - sam
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column sam over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  sam_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - -10.0
+    - 10.0
+    fill_values: []
+    product_family: 'NOAA indices'
+    derived_from:
+    - sam
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column sam over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_events_mean:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_events
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column conflict_events over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_events_min:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_events
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column conflict_events over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_events_max:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_events
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column conflict_events over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_deaths_mean:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_deaths
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column conflict_deaths over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_deaths_min:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_deaths
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column conflict_deaths over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  conflict_deaths_max:
+    dtype: float64
+    units: 'count'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'UCDP'
+    derived_from:
+    - conflict_deaths
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column conflict_deaths over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  co2_mean:
+    dtype: float64
+    units: 'ppm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'NOAA GML'
+    derived_from:
+    - co2
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'mean of the monthly panel column co2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  co2_min:
+    dtype: float64
+    units: 'ppm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'NOAA GML'
+    derived_from:
+    - co2
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'min of the monthly panel column co2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  co2_max:
+    dtype: float64
+    units: 'ppm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    product_family: 'NOAA GML'
+    derived_from:
+    - co2
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: assumed
+    provenance: 'max of the monthly panel column co2 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_price_index_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_price_index
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_price_index over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_price_index_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_price_index
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_price_index over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_price_index_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_price_index
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_price_index over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_meat_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_meat
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_meat over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_meat_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_meat
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_meat over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_meat_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_meat
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_meat over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_dairy_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_dairy
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_dairy over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_dairy_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_dairy
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_dairy over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_dairy_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_dairy
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_dairy over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_cereals_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_cereals
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_cereals over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_cereals_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_cereals
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_cereals over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_cereals_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_cereals
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_cereals over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_oils_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_oils
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_oils over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_oils_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_oils
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_oils over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_oils_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_oils
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_oils over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_sugar_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_sugar
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column food_sugar over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_sugar_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_sugar
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column food_sugar over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  food_sugar_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: global
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 500.0
+    fill_values: []
+    baseline_period:
+    - '2014'
+    - '2016'
+    product_family: 'FAO FFPI'
+    derived_from:
+    - food_sugar
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column food_sugar over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  grace_lwe_mean:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -200.0
+    - 200.0
+    fill_values: []
+    product_family: 'GRACE'
+    derived_from:
+    - grace_lwe
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column grace_lwe over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  grace_lwe_min:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -200.0
+    - 200.0
+    fill_values: []
+    product_family: 'GRACE'
+    derived_from:
+    - grace_lwe
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column grace_lwe over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  grace_lwe_max:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -200.0
+    - 200.0
+    fill_values: []
+    product_family: 'GRACE'
+    derived_from:
+    - grace_lwe
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column grace_lwe over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V12_mean_evi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V12_mean_evi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column V12_mean_evi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V12_mean_evi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V12_mean_evi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column V12_mean_evi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  V12_mean_evi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -0.2
+    - 1.0
+    fill_values: []
+    product_family: 'MODIS MOD13C2'
+    derived_from:
+    - V12_mean_evi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column V12_mean_evi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  deeprec_twsa_mean:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -300.0
+    - 300.0
+    fill_values: []
+    product_family: 'DeepRec'
+    lineage:
+      assimilates: ['ONI', 'ISIMIP land use (LUH2)']
+      trained_on: ['GRACE/GRACE-FO']
+    derived_from:
+    - deeprec_twsa
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column deeprec_twsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  deeprec_twsa_min:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -300.0
+    - 300.0
+    fill_values: []
+    product_family: 'DeepRec'
+    lineage:
+      assimilates: ['ONI', 'ISIMIP land use (LUH2)']
+      trained_on: ['GRACE/GRACE-FO']
+    derived_from:
+    - deeprec_twsa
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column deeprec_twsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  deeprec_twsa_max:
+    dtype: float64
+    units: 'cm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -300.0
+    - 300.0
+    fill_values: []
+    product_family: 'DeepRec'
+    lineage:
+      assimilates: ['ONI', 'ISIMIP land use (LUH2)']
+      trained_on: ['GRACE/GRACE-FO']
+    derived_from:
+    - deeprec_twsa
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column deeprec_twsa over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_pev_mean:
+    dtype: float64
+    units: 'm_water_equiv'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -2.0
+    - 0.5
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_pev
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_pev over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_pev_min:
+    dtype: float64
+    units: 'm_water_equiv'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -2.0
+    - 0.5
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_pev
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_pev over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_pev_max:
+    dtype: float64
+    units: 'm_water_equiv'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -2.0
+    - 0.5
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_pev
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_pev over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sro_mean:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sro
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_sro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sro_min:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sro
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_sro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sro_max:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sro
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_sro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssro_mean:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssro
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_ssro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssro_min:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssro
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_ssro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssro_max:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 2.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssro
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_ssro over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_smlt_mean:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_smlt
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_smlt over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_smlt_min:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_smlt
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_smlt over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_smlt_max:
+    dtype: float64
+    units: 'm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 5.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_smlt
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_smlt over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_slhf_mean:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 6000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_slhf
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_slhf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_slhf_min:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 6000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_slhf
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_slhf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_slhf_max:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 6000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_slhf
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_slhf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sshf_mean:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 50000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sshf
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_sshf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sshf_min:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 50000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sshf
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_sshf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_sshf_max:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 50000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_sshf
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_sshf over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssr_mean:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssr
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_ssr over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssr_min:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssr
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_ssr over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_ssr_max:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 60000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_ssr
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_ssr over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_str_mean:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 5000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_str
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_str over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_str_min:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 5000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_str
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_str over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_str_max:
+    dtype: float64
+    units: 'J m-2'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - -50000000.0
+    - 5000000.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_str
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_str over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_d2m_mean:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 340.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_d2m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_d2m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_d2m_min:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 340.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_d2m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_d2m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_d2m_max:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 340.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_d2m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_d2m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_stl1_mean:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 350.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_stl1
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column era5l_stl1 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_stl1_min:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 350.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_stl1
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column era5l_stl1 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  era5l_stl1_max:
+    dtype: float64
+    units: 'K'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 180.0
+    - 350.0
+    fill_values: []
+    product_family: 'ERA5-Land'
+    derived_from:
+    - era5l_stl1
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column era5l_stl1 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  esacci_sm_mean:
+    dtype: float64
+    units: 'm3 m-3'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'ESA CCI SM'
+    derived_from:
+    - esacci_sm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column esacci_sm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  esacci_sm_min:
+    dtype: float64
+    units: 'm3 m-3'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'ESA CCI SM'
+    derived_from:
+    - esacci_sm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column esacci_sm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  esacci_sm_max:
+    dtype: float64
+    units: 'm3 m-3'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'ESA CCI SM'
+    derived_from:
+    - esacci_sm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column esacci_sm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  scpdsi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'CRU scPDSI'
+    derived_from:
+    - scpdsi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column scpdsi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  scpdsi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'CRU scPDSI'
+    derived_from:
+    - scpdsi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column scpdsi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  scpdsi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'CRU scPDSI'
+    derived_from:
+    - scpdsi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column scpdsi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_01m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_01m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spi_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_01m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_01m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spi_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_01m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_01m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spi_01m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_03m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_03m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spi_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_03m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_03m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spi_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_03m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_03m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spi_03m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_06m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_06m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spi_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_06m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_06m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spi_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_06m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_06m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spi_06m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_12m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_12m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spi_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_12m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_12m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spi_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_12m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_12m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spi_12m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_24m_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_24m
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column spi_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_24m_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_24m
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column spi_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  spi_24m_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'GPCC SPI'
+    derived_from:
+    - spi_24m
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column spi_24m over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column eddi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column eddi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column eddi over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_mm_mean:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_mm
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wbal_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_mm_min:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_mm
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wbal_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_mm_max:
+    dtype: float64
+    units: 'mm month-1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_mm
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wbal_mm over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll3_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll3
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wbal_roll3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll3_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll3
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wbal_roll3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll3_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll3
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wbal_roll3 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll6_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll6
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wbal_roll6 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll6_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll6
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wbal_roll6 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll6_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll6
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wbal_roll6 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll12_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll12
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wbal_roll12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll12_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll12
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wbal_roll12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll12_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll12
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wbal_roll12 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll24_mean:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll24
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column wbal_roll24 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll24_min:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll24
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column wbal_roll24 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  wbal_roll24_max:
+    dtype: float64
+    units: 'mm'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    fill_values: []
+    product_family: 'derived'
+    derived_from:
+    - wbal_roll24
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column wbal_roll24 over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_observed_mean:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi_observed
+    operation: 'aggregate_time {window: 1 year, stat: mean}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'mean of the monthly panel column eddi_observed over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_observed_min:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi_observed
+    operation: 'aggregate_time {window: 1 year, stat: min}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'min of the monthly panel column eddi_observed over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'
+  eddi_observed_max:
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    scope: unit
+    stamp: period_end
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    product_family: 'EDDI'
+    derived_from:
+    - eddi_observed
+    operation: 'aggregate_time {window: 1 year, stat: max}'
+    reads_target: false
+    fact_status: unverified
+    provenance: 'max of the monthly panel column eddi_observed over each calendar year (plan 1.5 aggregate_time; ruling C); shipped equivalent defo_matrix.py:156-166 (annualise)'

@@ -1,0 +1,124 @@
+[2026-11-12 19:38:47 +    3.7s] gate E1_engine_code: PASS {'engine': '85c64b55c02e638c', 'manifest': '85c64b55c02e638c', 'engine_root': 'D:\\treeroute\\engine_v2\\engine_v1_ref'}
+[2026-11-12 19:38:47 +    3.7s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 19:38:47 +    3.7s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 19:38:48 +    4.2s] engine| [19:38:48] package coral version 0.1.0, fingerprint 5b9383f0446df0f1 (input: table)
+[2026-11-12 19:38:48 +    4.2s] engine| [19:38:48] feature lineage: vouched by the package owner (U2)
+[2026-11-12 19:38:48 +    4.2s] engine| [19:38:48] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[2026-11-12 19:38:48 +    4.2s] engine| [19:38:48] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[2026-11-12 19:38:48 +    4.2s] engine| [19:38:48] preflight: table rows per lead {0: 13694, 183: 13686, 365: 13686}, 85 columns; RAM estimate 0.026 GiB: go
+[2026-11-12 19:38:48 +    4.5s] engine| [19:38:48] table read: 13650 rows of 8131 package units in 3 lead files (lead 0: 13650 rows, lead 183: 13642 rows, lead 365: 13642 rows) in 0.3 s
+[2026-11-12 19:38:48 +    4.5s] engine| [19:38:48] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[2026-11-12 19:38:50 +    6.4s] engine| [19:38:50] derive_all_table: 120 entries in 1.9 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[2026-11-12 19:38:51 +    7.9s] engine| [19:38:51] plan check: derived.json equals the latest plan's (20261112_f3b8e3da)
+[2026-11-12 19:38:51 +    7.9s] engine| [19:38:51] run folder D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\headline\20261112_f3b8e3da (resume)
+[2026-11-12 19:38:52 +    8.1s] engine| [19:38:52] plan check (resumed run): {"plan_folder": "D:\\treeroute\\analysis\\shap_v1\\smoke\\engine_runs\\coral\\headline\\20261112_f3b8e3da", "derived_sha256": "0afecb5ec4b1c4cf3985026ae54e13da245d6be260b1e2dd834a731d8d96f8f9", "plan_finished_utc": "2026-11-12T17:44:29+00:00", "plan_fingerprint": "f3b8e3daee7474db63e1d10d15b4b93d7044e35408efb31e7611958633e7f362", "same_fingerprint": true}
+[2026-11-12 19:38:52 +    8.1s] engine| [19:38:52] preflight: temp disk for the table run 2.539 GiB at its peak (two pools, two banks' tables): go
+[2026-11-12 19:38:52 +    8.1s] engine steps load..temp in 4.1 s; rebuild run folder D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\headline\20261112_f3b8e3da
+[2026-11-12 19:38:52 +    8.1s] gate E3_inputs: PASS {'package': '5b9383f0446df0f1', 'derived': '0afecb5ec4b1c4cf', 'fingerprint': 'f3b8e3daee7474db', 'manifest_fingerprint': 'f3b8e3daee7474db', 'config_keys_differing': []}
+[2026-11-12 19:38:52 +    8.1s] engine| [19:38:52] pool: 13650 table rows, 63 tree columns, 5 context columns (lead 0)
+[2026-11-12 19:38:52 +    8.3s] pool built in 0.2 s
+[2026-11-12 19:38:52 +    8.3s] engine| [19:38:52] fits: bank at the fit cut 735963: 83 groups x 100 trees
+[2026-11-12 19:38:52 +    8.4s] engine| [19:38:52] checkpoint: bank key ac6e072bd92d890e: 83 saved record(s) in D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\_checkpoints\bank-ac6e072bd92d890e
+[2026-11-12 19:38:53 +    9.1s] engine| [19:38:53] checkpoint: bank fit-cut (cut 735963, lead 0): 83 of 83 groups loaded, 0 fitted (folder bank-ac6e072bd92d890e)
+[2026-11-12 19:38:53 +    9.1s] engine| [19:38:53] fit-cut bank: 8300 trees, fingerprint b8f9084f87ba2a58, rows at or before 735963 (max label step 735960)
+[2026-11-12 19:38:53 +    9.1s] engine| [19:38:53] fit-cut bank: 5851 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 56 of 83 groups have none at all
+[2026-11-12 19:38:53 +    9.3s] engine| [19:38:53] fits: GLS weight model (R25) at the guard cut 734868
+[2026-11-12 19:38:53 +    9.4s] engine| [19:38:53] GLS weight model (R25): memory given back before the donor matrix (gc: 17 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\analysis\shap_v1\smoke\engine_tmp\treeroute_run_f3b8e3da_13840
+[2026-11-12 19:39:57 +   74.0s] engine| [19:39:57] GLS weight model (R25): memory given back before the forest's fit (gc: 0 objects; working-set trim ran)
+[2026-11-12 19:39:58 +   74.5s] bank and fits of lead 0 in 66.2 s
+[2026-11-12 19:39:58 +   74.5s] gate E4_donor_rows: PASS {'rows': [11338, 11338], 'row_key_hash': ['7b687cdf4d66b3c8', '7b687cdf4d66b3c8']}
+[2026-11-12 19:39:58 +   74.5s] gate E5_bank_fingerprint: FAIL {'rebuilt': 'b8f9084f87ba2a5860cdb3bf9e34993a7b5f1680c1d5237adb1247c49b4dd574', 'run': 'd7acde42e32c15d135010469a85b4188ec21e0d4224d1b5e0fcfb19d709f769c', 'trees': 8300, 'role': 'informational (answers decide: E5a, E8)'}
+[2026-11-12 19:39:58 +   74.5s] gate E6_c_and_tolerances: PASS {'c': [0.1084375, 0.1084375]}
+[2026-11-12 19:39:58 +   74.5s] gate E7_gls_weight_model: PASS {'rebuilt': 'D:\\treeroute\\analysis\\shap_v1\\smoke\\engine_runs\\coral\\headline\\20261112_f3b8e3da\\gls_weight_model.json', 'run': 'D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\gls_weight_model.json'}
+[2026-11-12 19:39:58 +   74.5s] bank exported: 8300 trees, 2449 correctors (corrector), 0.1 s
+[2026-11-12 19:41:45 +  181.1s] neighbour pass: 2312 rows routed in 106.6 s; 2312 row fits captured
+[2026-11-12 19:41:45 +  181.1s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 2312, 'fits_whose_X_b_differs_from_the_kernel': 0}
+[2026-11-12 19:41:55 +  191.8s] gate E5a_identity_twin: PASS {'arm': 'identity_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2312, 'arm_bit_equal': 2312, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'bit_identical': True}
+[2026-11-12 19:41:55 +  191.8s] gate E8_predictions: PASS {'arm': 'arcsine_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2228, 'arm_bit_equal': 2228, 'same_nan': True, 'max_abs_pre': 2.1316282072803006e-14, 'max_rel_pre': 1.055062494413031e-15, 'bit_identical': False, 'tolerance_rule': 'relative 1e-12 on an arcsine arm (owner decision D8), identity twin bit-identical'}
+[2026-11-12 19:42:19 +  215.8s] tree answers of row 0 (51 rows x 7700 trees): our export equals the engine's store bit for bit: True
+[2026-11-12 19:42:19 +  216.0s] lead 0 rebuilt in 207.8 s (peak 1.3 GB)
+[2026-11-12 19:42:25 +  221.2s] rebuild coral leads [0] finished in 219.2 s (peak 1.3 GB)
+[2026-11-12 21:13:35 +    4.2s] gate E1_engine_code: PASS {'engine': '85c64b55c02e638c', 'manifest': '85c64b55c02e638c', 'engine_root': 'D:\\treeroute\\engine_v2\\engine_v1_ref'}
+[2026-11-12 21:13:35 +    4.2s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 21:13:35 +    4.2s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 21:13:36 +    5.3s] engine| [21:13:36] package coral version 0.1.0, fingerprint 5b9383f0446df0f1 (input: table)
+[2026-11-12 21:13:36 +    5.3s] engine| [21:13:36] feature lineage: vouched by the package owner (U2)
+[2026-11-12 21:13:36 +    5.3s] engine| [21:13:36] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[2026-11-12 21:13:36 +    5.3s] engine| [21:13:36] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[2026-11-12 21:13:36 +    5.4s] engine| [21:13:36] preflight: table rows per lead {0: 13694, 183: 13686, 365: 13686}, 85 columns; RAM estimate 0.026 GiB: go
+[2026-11-12 21:13:36 +    5.4s] engine steps load..preflight in 0.2 s
+[2026-11-12 21:13:36 +    5.4s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': ['target_files_sha256'], 'static_files_sha256': ['4f53cda18c2baa0c', '4f53cda18c2baa0c'], 'target_files_sha256': ["{'_not_computed'", 'e1239c53e1a8b222'], 'pac
+[2026-11-12 21:13:36 +    5.9s] engine| [21:13:36] table read: 13650 rows of 8131 package units in 3 lead files (lead 0: 13650 rows, lead 183: 13642 rows, lead 365: 13642 rows) in 0.5 s
+[2026-11-12 21:13:36 +    5.9s] engine| [21:13:36] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[2026-11-12 21:13:38 +    7.7s] engine| [21:13:38] derive_all_table: 120 entries in 1.8 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[2026-11-12 21:13:40 +    9.3s] engine| [21:13:40] plan check: derived.json equals the latest plan's (20261112_f3b8e3da)
+[2026-11-12 21:13:40 +    9.3s] engine| [21:13:40] run folder D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\headline\20261112_f3b8e3da (resume)
+[2026-11-12 21:13:40 +    9.5s] engine| [21:13:40] plan check (resumed run): {"plan_folder": "D:\\treeroute\\analysis\\shap_v1\\smoke\\engine_runs\\coral\\headline\\20261112_f3b8e3da", "derived_sha256": "0afecb5ec4b1c4cf3985026ae54e13da245d6be260b1e2dd834a731d8d96f8f9", "plan_finished_utc": "2026-11-12T17:44:29+00:00", "plan_fingerprint": "f3b8e3daee7474db63e1d10d15b4b93d7044e35408efb31e7611958633e7f362", "same_fingerprint": true}
+[2026-11-12 21:13:40 +    9.5s] engine| [21:13:40] preflight: temp disk for the table run 2.539 GiB at its peak (two pools, two banks' tables): go
+[2026-11-12 21:13:40 +    9.5s] engine steps load..temp in 4.3 s; rebuild run folder D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\headline\20261112_f3b8e3da
+[2026-11-12 21:13:40 +    9.5s] gate E3_inputs: PASS {'package': '5b9383f0446df0f1', 'derived': '0afecb5ec4b1c4cf', 'fingerprint': 'f3b8e3daee7474db', 'manifest_fingerprint': 'f3b8e3daee7474db', 'config_keys_differing': []}
+[2026-11-12 21:13:40 +    9.5s] engine| [21:13:40] pool: 13650 table rows, 63 tree columns, 5 context columns (lead 0)
+[2026-11-12 21:13:40 +    9.7s] pool built in 0.3 s
+[2026-11-12 21:13:40 +   10.1s] engine| [21:13:40] fits: bank at the fit cut 735963: 83 groups x 100 trees
+[2026-11-12 21:13:41 +   10.3s] engine| [21:13:41] checkpoint: bank key ac6e072bd92d890e: 83 saved record(s) in D:\treeroute\analysis\shap_v1\smoke\engine_runs\coral\_checkpoints\bank-ac6e072bd92d890e
+[2026-11-12 21:13:43 +   13.0s] engine| [21:13:43] checkpoint: bank fit-cut (cut 735963, lead 0): 83 of 83 groups loaded, 0 fitted (folder bank-ac6e072bd92d890e)
+[2026-11-12 21:13:43 +   13.0s] engine| [21:13:43] fit-cut bank: 8300 trees, fingerprint b8f9084f87ba2a58, rows at or before 735963 (max label step 735960)
+[2026-11-12 21:13:43 +   13.0s] engine| [21:13:43] fit-cut bank: 5851 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 56 of 83 groups have none at all
+[2026-11-12 21:13:43 +   13.1s] engine| [21:13:43] fits: GLS weight model (R25) at the guard cut 734868
+[2026-11-12 21:13:44 +   13.2s] engine| [21:13:44] GLS weight model (R25): memory given back before the donor matrix (gc: 17 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\analysis\shap_v1\smoke\engine_tmp\treeroute_run_f3b8e3da_19676
+[2026-11-12 21:14:52 +   81.8s] engine| [21:14:52] GLS weight model (R25): memory given back before the forest's fit (gc: 0 objects; working-set trim ran)
+[2026-11-12 21:14:53 +   82.2s] bank and fits of lead 0 in 72.4 s
+[2026-11-12 21:14:53 +   82.3s] gate E4_donor_rows: PASS {'rows': [11338, 11338], 'row_key_hash': ['7b687cdf4d66b3c8', '7b687cdf4d66b3c8']}
+[2026-11-12 21:14:53 +   82.3s] gate E5_bank_fingerprint: FAIL {'rebuilt': 'b8f9084f87ba2a5860cdb3bf9e34993a7b5f1680c1d5237adb1247c49b4dd574', 'run': 'd7acde42e32c15d135010469a85b4188ec21e0d4224d1b5e0fcfb19d709f769c', 'trees': 8300, 'role': 'informational, cause not established (answers decide: E5a, E8, E10)'}
+[2026-11-12 21:14:53 +   82.3s] gate E6_c_and_tolerances: PASS {'c': [0.1084375, 0.1084375]}
+[2026-11-12 21:14:53 +   82.3s] gate E7_gls_weight_model: PASS {'rebuilt': 'D:\\treeroute\\analysis\\shap_v1\\smoke\\engine_runs\\coral\\headline\\20261112_f3b8e3da\\gls_weight_model.json', 'run': 'D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\gls_weight_model.json'}
+[2026-11-12 21:14:53 +   82.4s] bank exported: 8300 trees, 2449 correctors (corrector), 0.1 s
+[2026-11-12 21:16:40 +  189.9s] neighbour pass: 2312 rows routed in 107.4 s; 2312 row fits captured
+[2026-11-12 21:16:40 +  189.9s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 2312, 'fits_whose_X_b_differs_from_the_kernel': 0, 'region_proof': None}
+[2026-11-12 21:16:51 +  200.4s] gate E5a_identity_twin: PASS {'arm': 'identity_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2312, 'arm_bit_equal': 2312, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'max_rel_arm': 0.0, 'max_ulps_pre': 0, 'max_ulps_arm': 0, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': True}
+[2026-11-12 21:16:51 +  200.4s] gate E8_predictions: PASS {'arm': 'arcsine_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2228, 'arm_bit_equal': 2228, 'same_nan': True, 'max_abs_pre': 2.1316282072803006e-14, 'max_rel_pre': 1.055062494413031e-15, 'max_rel_arm': 1.055062494413031e-15, 'max_ulps_pre': 8, 'max_ulps_arm': 8, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': False, 'tolerance_rule': "relati
+[2026-11-12 21:16:51 +  201.0s] gate E10_exported_trees: PASS {'rows_x_trees': [51, 7700], 'what': "the first fitted row's pool and test row, every tree"}
+[2026-11-12 21:16:52 +  201.2s] lead 0 rebuilt in 191.4 s (peak 1.3 GB)
+[2026-11-12 21:16:57 +  206.3s] rebuild coral leads [0] finished in 204.0 s (peak 1.3 GB)
+[2026-11-12 23:49:54 +    9.0s] gate E1_engine_code: PASS {'engine': '85c64b55c02e638c', 'manifest': '85c64b55c02e638c', 'engine_root': 'D:\\treeroute\\engine_v2\\engine_v1_ref'}
+[2026-11-12 23:49:54 +    9.2s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 23:49:54 +    9.3s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 23:49:59 +   13.5s] engine| [23:49:59] package coral version 0.1.0, fingerprint 5b9383f0446df0f1 (input: table)
+[2026-11-12 23:49:59 +   13.5s] engine| [23:49:59] feature lineage: vouched by the package owner (U2)
+[2026-11-12 23:49:59 +   13.5s] engine| [23:49:59] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[2026-11-12 23:49:59 +   13.5s] engine| [23:49:59] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[2026-11-12 23:49:59 +   13.6s] engine| [23:49:59] preflight: table rows per lead {0: 13694, 183: 13686, 365: 13686}, 85 columns; RAM estimate 0.026 GiB: go
+[2026-11-12 23:49:59 +   13.6s] engine steps load..preflight in 0.3 s
+[2026-11-12 23:49:59 +   13.6s] gate E0_ram_preflight: PASS {'engine_warning': [], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning'}
+[2026-11-12 23:49:59 +   13.6s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': ['target_files_sha256'], 'static_files_sha256': ['4f53cda18c2baa0c', '4f53cda18c2baa0c'], 'target_files_sha256': ["{'_not_computed'", 'e1239c53e1a8b222'], 'pac
+[2026-11-12 23:49:59 +   14.0s] engine| [23:49:59] table read: 13650 rows of 8131 package units in 3 lead files (lead 0: 13650 rows, lead 183: 13642 rows, lead 365: 13642 rows) in 0.5 s
+[2026-11-12 23:49:59 +   14.1s] engine| [23:49:59] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[2026-11-12 23:50:01 +   16.0s] engine| [23:50:01] derive_all_table: 120 entries in 1.9 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[2026-11-12 23:50:03 +   17.6s] engine| [23:50:03] plan check: no plan folder of this package; this run's derived.json is its own
+[2026-11-12 23:50:03 +   17.7s] engine| [23:50:03] run folder D:\treeroute\analysis\shap_v1\engine_runs\coral\headline\20261112_f3b8e3da (new)
+[2026-11-12 23:50:06 +   21.1s] engine| [23:50:06] preflight: temp disk for the table run 2.539 GiB at its peak (two pools, two banks' tables): go
+[2026-11-12 23:50:06 +   21.1s] engine steps load..temp in 7.8 s; rebuild run folder D:\treeroute\analysis\shap_v1\engine_runs\coral\headline\20261112_f3b8e3da
+[2026-11-12 23:50:06 +   21.1s] gate E3_inputs: PASS {'package': '5b9383f0446df0f1', 'derived': '0afecb5ec4b1c4cf', 'fingerprint': 'f3b8e3daee7474db', 'manifest_fingerprint': 'f3b8e3daee7474db', 'config_keys_differing': []}
+[2026-11-12 23:50:06 +   21.1s] engine| [23:50:06] pool: 13650 table rows, 63 tree columns, 5 context columns (lead 0)
+[2026-11-12 23:50:06 +   21.3s] pool built in 0.2 s
+[2026-11-12 23:50:06 +   21.3s] engine| [23:50:06] fits: bank at the fit cut 735963: 83 groups x 100 trees
+[2026-11-12 23:50:07 +   21.4s] engine| [23:50:07] checkpoint: bank key ac6e072bd92d890e: no earlier checkpoint of this step; computing
+[2026-11-12 23:50:25 +   40.3s] engine| [23:50:25] checkpoint: bank fit-cut (cut 735963, lead 0): 0 of 83 groups loaded, 83 fitted (folder bank-ac6e072bd92d890e)
+[2026-11-12 23:50:25 +   40.3s] engine| [23:50:25] fit-cut bank: 8300 trees, fingerprint b8f9084f87ba2a58, rows at or before 735963 (max label step 735960)
+[2026-11-12 23:50:25 +   40.4s] engine| [23:50:25] fit-cut bank: 5851 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 56 of 83 groups have none at all
+[2026-11-12 23:50:26 +   40.4s] engine| [23:50:26] fits: GLS weight model (R25) at the guard cut 734868
+[2026-11-12 23:50:26 +   40.5s] engine| [23:50:26] GLS weight model (R25): memory given back before the donor matrix (gc: 17 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\analysis\shap_v1\engine_tmp\treeroute_run_f3b8e3da_12900
+[2026-11-12 23:51:37 +  111.8s] engine| [23:51:37] GLS weight model (R25): memory given back before the forest's fit (gc: 0 objects; working-set trim ran)
+[2026-11-12 23:51:38 +  112.4s] bank and fits of lead 0 in 91.2 s
+[2026-11-12 23:51:38 +  112.5s] gate E4_donor_rows: PASS {'rows': [11338, 11338], 'row_key_hash': ['7b687cdf4d66b3c8', '7b687cdf4d66b3c8']}
+[2026-11-12 23:51:38 +  112.5s] gate E5_bank_fingerprint: FAIL {'rebuilt': 'b8f9084f87ba2a5860cdb3bf9e34993a7b5f1680c1d5237adb1247c49b4dd574', 'run': 'd7acde42e32c15d135010469a85b4188ec21e0d4224d1b5e0fcfb19d709f769c', 'trees': 8300, 'role': 'informational, cause not established (answers decide: E5a, E8, E10)'}
+[2026-11-12 23:51:38 +  112.5s] gate E6_c_and_tolerances: PASS {'c': [0.1084375, 0.1084375]}
+[2026-11-12 23:51:38 +  112.5s] gate E7_gls_weight_model: PASS {'rebuilt': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\coral\\headline\\20261112_f3b8e3da\\gls_weight_model.json', 'run': 'D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\gls_weight_model.json'}
+[2026-11-12 23:51:38 +  112.7s] bank exported: 8300 trees, 2449 correctors (corrector), 0.1 s
+[2026-11-12 23:53:36 +  231.3s] neighbour pass: 2312 rows routed in 118.6 s; 2312 row fits captured
+[2026-11-12 23:53:36 +  231.3s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 2312, 'fits_whose_X_b_differs_from_the_kernel': 0, 'region_proof': None}
+[2026-11-12 23:53:49 +  243.7s] gate E5a_identity_twin: PASS {'arm': 'identity_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2312, 'arm_bit_equal': 2312, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'max_rel_arm': 0.0, 'max_ulps_pre': 0, 'max_ulps_arm': 0, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': True}
+[2026-11-12 23:53:49 +  243.7s] gate E8_predictions: PASS {'arm': 'arcsine_corrector_gls', 'rows_checked': 2312, 'units': 2312, 'pre_bit_equal': 2228, 'arm_bit_equal': 2228, 'same_nan': True, 'max_abs_pre': 2.1316282072803006e-14, 'max_rel_pre': 1.055062494413031e-15, 'max_rel_arm': 1.055062494413031e-15, 'max_ulps_pre': 8, 'max_ulps_arm': 8, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': False, 'tolerance_rule': "relati
+[2026-11-12 23:53:49 +  244.4s] gate E10_exported_trees: PASS {'rows_x_trees': [51, 7700], 'what': "the first fitted row's pool and test row, every tree"}
+[2026-11-12 23:53:50 +  244.6s] lead 0 rebuilt in 223.4 s (peak 1.3 GB)
+[2026-11-12 23:53:55 +  250.2s] rebuild coral leads [0] finished in 243.7 s (peak 1.3 GB)

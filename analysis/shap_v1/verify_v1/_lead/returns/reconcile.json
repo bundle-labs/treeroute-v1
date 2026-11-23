@@ -1,0 +1,262 @@
+{
+ "report_path": "NOT WRITTEN: V\\reconcile\\report.md. The harness refuses report files from a subagent, so the report's content is in this output instead (official_files_opened, mismatch_groups, compare_deviations, b1_summary, b1_checks). V = D:\\treeroute\\analysis\\shap_v1\\verify_v1. Written: V\\reconcile\\reconcile.py (run: py -3.9 -I -B V\\reconcile\\reconcile.py, about 9 s), V\\reconcile\\rlib.py, V\\reconcile\\mapping.md, V\\reconcile\\mismatches.json (all 72,974 mismatching keys, grouped, each group with its diagnosis), V\\reconcile\\work\\summary.json, V\\reconcile\\work\\opened_official.jsonl. Keys per source: A 117,944, B 117,946, official 38,354, plus 921 keys I rebuilt from official numbers using compare_shap's own rules (second check only). n_match_all counts 48,533 keys equal in every source that holds them, plus 157 keys that are null in A and B and absent from the official files (no number anywhere). What matched: every number the official files hold equals A's and B's within 1e-9, except the open choice C15 for families with no variable. Largest difference: 1.6e-15, over 26,082 numbers for A and 26,104 for B. bootstrap_stats.parquet equals A's and B's per-draw arrays on all 2,000 draws (largest difference 2.8e-15). A equals B on 94,383 numbers of items 1-8 (8.9e-16). All 3,950 rounded entries of AW3_table.md and AW4_table.md equal the unrounded official values; B matches all of them, A all but 17 (the C15 cells). 320 of 320 internal checks of the official files pass. Main-row W (official = A = B): coral 0.7346 [0.6943, 0.7637], defo 0.7958 [0.7789, 0.8080], pm25 0.8539 [0.8463, 0.8624], ndvi 0.6173 [0.6052, 0.6239]; fire undefined.",
+ "n_compared": 121664,
+ "n_match_all": 48690,
+ "n_mismatch_keys": 72974,
+ "mismatch_groups": [
+  {
+   "cause": "compare_shap.py writes neither treeroute's top 3 nor its own-history share [CI] in fire's main row (AW4_main_row.json, AW4_table.md)",
+   "kind": "compare_bug",
+   "n_keys": 6,
+   "affects_reported_numbers": true,
+   "diagnosis": "PROTOCOL.md section 8, main-text row: 'treeroute's top 3 variables; the consensus top 3; the own-history share of treeroute [CI] and of the median rival [CI]'. Brief item 7: 'Fire's main set is treeroute alone: W and the pair statistics are undefined there, and treeroute's top 3 and own-history share still have values.' compare_shap.py main_text_row() writes treeroute_top3 and own_history_share_treeroute only inside 'if tr and rivals:' (lines 361-386). Fire has no same-link rival, so both files lack them; PROTOCOL.md section 14 (entry of 2026-11-14) already describes these empty cells. A and B agree: top 3 hist_mean 0.0403, spei 0.0327, tslf_months 0.0316; own-history share 0.1358 [0.1082, 0.1647], 2,000 finite. The full-sample top 3 and share equal treeroute's values in importance.parquet and families.parquet (derived check), but the interval is in no official file. Finding for the owner; no file changed.",
+   "example_keys": [
+    "problems/fire/main_row/own_history_share_treeroute/value",
+    "problems/fire/main_row/own_history_share_treeroute/ci_low",
+    "problems/fire/main_row/treeroute_top3/names",
+    "problems/fire/main_row/treeroute_top3/shares"
+   ]
+  },
+  {
+   "cause": "compare_shap.py does not recompute the sign agreement on the draws: no interval, and finite_replicates is written as 0",
+   "kind": "compare_bug",
+   "n_keys": 285,
+   "affects_reported_numbers": false,
+   "diagnosis": "Section 8 lists the sign agreement among the 'Pairwise statistics, every pair, both levels' and says 'The importances, every statistic and every number of the main-text row are recomputed per draw. Percentile 95% intervals, each with its number of finite replicates.' Section 10 asks S3.13 for 'pairs x statistics with intervals'. compare_shap.py lines 227-235 evaluate it on the full sample only and write ci_low = ci_high = NaN and finite_replicates = 0, though no draw was evaluated. A and B recompute it on every draw (that draw's top-10 union and signed means, with the determined set fixed by the bootstrap interval, as compare_shap also fixes it) and agree on all 102 pair-levels. Values and signs_compared are equal in all three sources. The 285 keys are 95 pair-levels x (ci_low, ci_high, n_finite). The other 7 pair-levels match: no player is determined in both models on any draw, so A, B and the official file all have null and 0 finite (fire feature: the 4 pairs with treeroute; ndvi: BARDL with treeroute (feature), with LightGBM and with RF (variable)). Fire's variable-level rival_ridge|treeroute is undefined on the full sample but finite on 64 draws: A = B = [0, 1]. No value changes; an interval the protocol's words ask for is missing. Finding for the owner.",
+   "example_keys": [
+    "problems/coral/levels/feature/pairs/rival_hgb_l1|rival_lgbm/sign_agreement/ci_low",
+    "problems/coral/levels/feature/pairs/rival_hgb_l1|rival_lgbm/sign_agreement/n_finite",
+    "problems/fire/levels/variable/pairs/rival_ridge|treeroute/sign_agreement/n_finite"
+   ]
+  },
+  {
+   "cause": "A family with no variable (coral own history, defo context and calendar): A writes null, B and compare_shap write 0",
+   "kind": "open_choice",
+   "n_keys": 55,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C15 leaves 'a family with no variable in a problem' open. compare_shap.py lines 268-274 give an empty family a zero row sum and share 0, and coral's main-row own-history shares are 0.00 [0.00, 0.00] with 2,000 finite replicates. B does the same; A writes null with its reason. The keys are 11 family-share interval objects (coral own history x 6 models, defo context and calendar x 5) plus coral's main row: treeroute, median rival, and 3 per-rival entries. The reported numbers are compare_shap's (0). Secondary: the official file also has no interval for these shares (see the family-share group). No B1 problem has an empty family.",
+   "example_keys": [
+    "problems/coral/levels/variable/models/treeroute/family_shares/own_history/value",
+    "problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar/value",
+    "problems/coral/main_row/own_history_share_treeroute/value",
+    "problems/coral/main_row/own_history_share_median_rival/ci_high"
+   ]
+  },
+  {
+   "cause": "Feature-level family-share distance (items 1-8): A none, B repeats the variable-level number, compare_shap none",
+   "kind": "open_choice",
+   "n_keys": 204,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C15 leaves open 'whether the feature-level pairs carry a family-share distance, and from which phi'. Families are sums of variable-level phi (section 8). compare_shap.py computes tvd_family at the variable level only (lines 281-295), which is A's choice. B repeats the variable-level value (B's X03). The variable-level family distance agrees in all three sources, so no number differs in substance.",
+   "example_keys": [
+    "problems/coral/levels/feature/pairs/rival_hgb_l1|rival_lgbm/tv_family_shares/value",
+    "problems/ndvi/levels/feature/pairs/rival_ridge|treeroute/tv_family_shares/ci_low"
+   ]
+  },
+  {
+   "cause": "B1 feature-level family-share distance: A none, B gives a number",
+   "kind": "open_choice",
+   "n_keys": 12,
+   "affects_reported_numbers": false,
+   "diagnosis": "The same open choice for the pair (main run, B1 run). Section 10: where section 8 is open, the B1 numbers 'make the main comparison's choice (compare_shap.py), as the independent re-computation establishes it'. compare_shap has no feature-level family distance, so A's B1 choice (none) is the one to report. B's value equals its own variable-level B1 family distance, which equals A's (fire 0.8114, pm25 0.7038, ndvi 0.4904). Nothing needs recomputing.",
+   "example_keys": [
+    "b1/fire/feature/pair_main_b1/tv_family_shares/value",
+    "b1/pm25/feature/pair_main_b1/tv_family_shares/ci_low",
+    "b1/ndvi/feature/pair_main_b1/tv_family_shares/n_finite"
+   ]
+  },
+  {
+   "cause": "Counts have no interval in the official files (n_nonzero, sign_n_determined, sign_n_agree)",
+   "kind": "open_choice",
+   "n_keys": 762,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C08 (section 10: 'or whether a count gets an interval'). A and B give the counts intervals and agree. per_lead.json nonzero_players and pairs.parquet signs_compared hold full-sample counts only; the agreeing-sign count is not written but follows from share x count and agrees. compare_shap's choice: no interval for a count. C09 also differs: compare_shap counts nonzero players over J (line 333), A and B over each model's own columns; the counts are equal everywhere. Consequence for B1, by section 10's rule: report the B1 counts (n_nonzero, n_nonzero_before_merge, sign_n_determined, sign_n_agree) without intervals; their values stand.",
+   "example_keys": [
+    "problems/coral/levels/feature/models/rival_hgb_l1/n_nonzero/ci_low",
+    "problems/defo/levels/variable/pairs/rival_lgbm|treeroute/sign_n_determined/ci_high",
+    "problems/pm25/levels/feature/pairs/rival_rf|treeroute/sign_n_agree/n_finite"
+   ]
+  },
+  {
+   "cause": "The main row's range (min and max over the rivals) has no interval in the official output",
+   "kind": "open_choice",
+   "n_keys": 24,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C22 asks 'whether its ends get intervals'. compare_shap.py lines 379-380 report the full-sample min and max; section 8's row reads 'the median of the top-20-union Spearman [CI] and the range'. A and B add an interval to each end and agree. The min and max values agree in all three sources (coral 0.4148/0.4930, defo 0.0065/0.4685, pm25 -0.1214/0.0793, ndvi -0.4051/0.3841).",
+   "example_keys": [
+    "problems/coral/main_row/spearman_top20_union_min/ci_low",
+    "problems/ndvi/main_row/spearman_top20_union_max/n_finite"
+   ]
+  },
+  {
+   "cause": "The official main row names no 'median rival'",
+   "kind": "open_choice",
+   "n_keys": 2,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C23. compare_shap takes the numpy median of the rivals' own-history shares (line 385) and names no rival. A and B do the same, and with an odd number of rivals also name the rival whose share is that median: defo and pm25, rival_lgbm. The median's value and interval agree in all three sources (defo 0.3547 [0.3162, 0.3954], pm25 0.2977 [0.2755, 0.3200], ndvi 0.2560 [0.2357, 0.2757]).",
+   "example_keys": [
+    "problems/defo/main_row/median_rival_name",
+    "problems/pm25/main_row/median_rival_name"
+   ]
+  },
+  {
+   "cause": "Item 8: the official files hold only the row counts and the top-10 shares, on the full sample, with shares over every variable",
+   "kind": "open_choice",
+   "n_keys": 2562,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec C25 leaves open which numbers 'the variable-level importances' are, over which variables the shares are taken, and whether they get intervals. compare_shap.py lines 302-315 report, per arcsine-link model, the rows with pre > 0 and the top 10 [name, share] (per_lead.json nonzero_forecast_rows; the AW3 table). Shares are taken over every variable-level player of the problem. A and B add I, S, intervals, the nonzero count, the ranking and the regions used, with shares over the level's J. The numbers the official files hold equal A's and B's: rows (coral 983, 995, 1,000, 973; fire 226) and every top-10 name, order and share. The two denominators differ only by the structural zeros, which are exactly 0 on those rows. Minor, no effect: compare_shap sorts this top 10 with np.argsort(-Iz), which breaks ties arbitrarily rather than by name; no tie occurred.",
+   "example_keys": [
+    "problems/fire/nonzero_forecast/models/treeroute/players/hist_mean/I/value",
+    "problems/fire/nonzero_forecast/models/treeroute/J",
+    "problems/coral/nonzero_forecast/models/rival_hgb_l1/n_nonzero/value",
+    "problems/coral/nonzero_forecast/models/treeroute/regions_used"
+   ]
+  },
+  {
+   "cause": "importance.parquet holds no interval for I, s and S (full-sample values only)",
+   "kind": "open_choice",
+   "n_keys": 64089,
+   "affects_reported_numbers": false,
+   "diagnosis": "A and B give every player's I, share and signed mean (every model, level and problem) a percentile interval with its finite count, and agree on all 21,363 interval objects. compare_shap.py recomputes the importances on every draw (lines 201-208) and uses them for the statistics and the determined signs. It writes only the full-sample mean_abs, share, signed_mean and sign_determined (lines 245-248). Section 8 says the importances are 'recomputed per draw' (they are), but not that each is reported with an interval. Section 10 lists for S3.13 'pairs x statistics with intervals ... each model's top-10 with shares; family shares'. This is not one of the spec's C entries (spec 2.2 item 6: 'The format does not decide which numbers get an interval'). compare_shap's choice: no interval. No reported number changes; A's (= B's) intervals exist if S3.13 wants them. (For B1, section 10 asks for these intervals in so many words.)",
+   "example_keys": [
+    "problems/coral/levels/feature/models/rival_hgb_l1/players/c__ctx_abslat/I/ci_low",
+    "problems/ndvi/levels/variable/models/treeroute/players/hist_mean/share/ci_high",
+    "problems/defo/levels/feature/models/rival_ridge/players/x__V11_mean_ndvi_max/signed_mean/n_finite"
+   ]
+  },
+  {
+   "cause": "families.parquet holds no interval for the family shares",
+   "kind": "open_choice",
+   "n_keys": 342,
+   "affects_reported_numbers": false,
+   "diagnosis": "This is the same reading as for the importances. families.parquet holds each family's full-sample mean_abs and share (compare_shap.py lines 264-275); compare_shap bootstraps only the main row's own-history shares and the family distance. A and B give every family share an interval and agree; the full-sample shares agree in all three sources. compare_shap's choice: no interval. No reported number changes.",
+   "example_keys": [
+    "problems/coral/levels/variable/models/rival_hgb_l1/family_shares/global_indices/ci_low",
+    "problems/fire/levels/variable/models/treeroute/family_shares/own_history/n_finite"
+   ]
+  },
+  {
+   "cause": "Fire's undefined W and mean pairwise Spearman: official NaN with 0 finite replicates, A and B null",
+   "kind": "other",
+   "n_keys": 5,
+   "affects_reported_numbers": false,
+   "diagnosis": "Fire's main set is treeroute alone. compare_shap evaluates W and the mean Spearman on every draw and finds none finite: value NaN, interval NaN, finite_replicates 0 (both levels, and the main-row W). A and B write them as undefined by definition: null, with n_finite null. The meaning is the same; only the notation differs.",
+   "example_keys": [
+    "problems/fire/levels/variable/per_problem/kendall_w/n_finite",
+    "problems/fire/main_row/kendall_w/n_finite"
+   ]
+  },
+  {
+   "cause": "importance.parquet also has rows for the structural zeros (players outside J); A and B report players of J only",
+   "kind": "other",
+   "n_keys": 3592,
+   "affects_reported_numbers": false,
+   "diagnosis": "Spec 2.4: 'players holds one entry per player of J'. compare_shap writes one row per player and model, whether in J or not. These 898 rows (3,592 numbers) have no counterpart in A or B. Every one is exactly 0 (mean |phi|, share and signed mean) with sign_determined false.",
+   "example_keys": [
+    "problems/coral/levels/feature/models/rival_hgb_l1/players/normal/I/value",
+    "problems/fire/levels/variable/models/treeroute/players/calendar/share/value"
+   ]
+  },
+  {
+   "cause": "The mean_abs of families.parquet (each family's mean |row sum|) has no results.json key",
+   "kind": "other",
+   "n_keys": 125,
+   "affects_reported_numbers": false,
+   "diagnosis": "This is the numerator of each family share. A and B report the family shares, which agree with the official shares; the spec gives the unnormalised value no key.",
+   "example_keys": [
+    "problems/coral/levels/variable/models/rival_hgb_l1/family_mean_abs/own_history"
+   ]
+  },
+  {
+   "cause": "Lists and counts that no official file holds, rebuilt from official numbers with compare_shap's rules: all agree",
+   "kind": "other",
+   "n_keys": 904,
+   "affects_reported_numbers": false,
+   "diagnosis": "compare_shap.py does not write these: each model's ranking over J; each pair's top-20 and top-10 unions and its determined-in-both set; both_in_main_set; sign_n_agree; W's m and n; the main row's rivals, consensus shares and consensus top-3 shares; the region order; the global-index list. I rebuilt all 904 from the official files with compare_shap's own rules (mapping.md), and every one equals A's and B's. They still count as missing from the official outputs, as the rule requires.",
+   "example_keys": [
+    "problems/coral/levels/feature/models/rival_hgb_l1/ranking",
+    "problems/coral/draws/regions_in_draw_order",
+    "problems/ndvi/main_row/consensus_shares/spi"
+   ]
+  },
+  {
+   "cause": "A and B list different test-set columns read (an I04 record, not a number)",
+   "kind": "other",
+   "n_keys": 5,
+   "affects_reported_numbers": false,
+   "diagnosis": "A also lists the context columns it read; B lists the column 'issue'. Both read the same records (the rivals' lead-0 test export) and found the same global indices: coral 1; defo, fire and pm25 27; ndvi 26. Those equal the family map in per_lead.json.",
+   "example_keys": [
+    "problems/coral/levels/variable/families/test_set_columns",
+    "problems/ndvi/levels/variable/families/test_set_columns"
+   ]
+  }
+ ],
+ "compare_deviations": [
+  "Fire's main-text row omits treeroute's top 3 variables and its own-history share [CI]. Protocol: PROTOCOL.md section 8, main-text row: 'treeroute's top 3 variables; the consensus top 3; the own-history share of treeroute [CI] and of the median rival [CI]'; brief item 7: 'treeroute's top 3 and own-history share still have values'. Cause: compare_shap.py main_text_row() writes treeroute_top3 and own_history_share_treeroute only inside 'if tr and rivals:' (lines 361-386), so fire's AW4_main_row.json and AW4_table.md hold neither (PROTOCOL.md section 14, entry of 2026-11-14, already describes these empty cells). Values to use, A = B: top 3 hist_mean 0.0403, spei 0.0327, tslf_months 0.0316; own-history share 0.1358 [0.1082, 0.1647], 2,000 finite replicates. The full-sample values equal treeroute's in importance.parquet and families.parquet; the interval exists in no official file. No file was changed.",
+  "The sign agreement is not recomputed on the draws. Protocol: section 8, 'The importances, every statistic and every number of the main-text row are recomputed per draw. Percentile 95% intervals, each with its number of finite replicates.'; section 10, S3.13 shows 'pairs x statistics with intervals'. Cause: compare_shap.py lines 227-235 set its ci_low and ci_high to NaN and its finite_replicates to 0 without evaluating any draw, and the 0 reads as 'no finite draw'. Its full-sample values and signs_compared are right (A = B = official on all 102 pair-levels). A's (= B's) intervals exist for every pair-level. No file was changed."
+ ],
+ "b1_summary": "Status: coral has no treeroute_B1 folder (section 5: 'Not defined for coral'), so it has no B1 numbers. Defo, fire, pm25 and ndvi are finished pieces: each has rows.parquet.done.json and no FAILED.json. In each meta.json: pass true; S-ADD, S-EVAL, S-RESID and S-ZERO true; 1,000 rows; background 'B1'; the registered sample (defo 9989bd58, fire 1edbc3d1, pm25 ccb17021, ndvi f2bb2a79); trees used 4,200 / 4,000 / 12,700 / 13,300. Duplicates merged: none on defo, fire and pm25; on ndvi the same five context columns as its main run. A and B copied these fields exactly.\n\nDEFO IDENTITY (first). Largest |difference| between treeroute_B1 and treeroute rows.parquet: 0.0 over the phi__ columns and 0.0 over the phiv__ columns, in A, in B and in my own recomputation (309,000 and 121,000 values). Same 1,000 rows, 309 players and 121 variables, so as expected. Background pairs 16,000 (log = meta.json); 465.9 s total (log = done record); 464.3 s tree SHAP (log = meta.json); log lines 24 and 30 (A = B). The check held, so the fire, pm25 and ndvi numbers were computed.\n\nRun facts (A = B = the records):\n- fire: 187,186 pairs; 2,636.6 s total; 2,631.6 s tree SHAP (log lines 20 and 26).\n- pm25: 203,963 pairs; 17,890.4 s; 17,883.2 s (lines 25 and 39).\n- ndvi: 201,768 pairs; 11,883.1 s; 11,871.8 s (lines 17 and 32).\nNo merged context column needed summing.\n\nA against B: 14,412 of 14,424 B1 keys agree (largest difference 4.4e-16), and every per-draw array they both hold agrees. The other 12 keys are B's feature-level family-share distance, an open choice (C15). compare_shap has no feature-level family distance, so A's choice is the one section 10 asks for; B's value equals the variable-level one.\n\nMain B1 numbers (A = B; value [95% CI]; every interval 2,000 finite):\n- fire, feature: pair J 113; Spearman over J 0.822 [0.755, 0.857]; top-20-union Spearman 0.261 [0.064, 0.366]; tau-b 0.722; Jaccard top 5 / top 10 0.429 / 0.538; RBO p 0.9 / 0.95 0.569 / 0.627; share distance 0.526 [0.400, 0.628]; sign agreement 1 (1 sign).\n- fire, variable: J 96; Spearman 0.842 [0.783, 0.867]; top-20-union 0.391 [0.246, 0.500]; RBO 0.459 / 0.591; share distance 0.542; family-share distance 0.811 [0.716, 0.873]; top 3 normal 0.542, era5l_str 0.015, wbal 0.015; own-history share 0.022 [0.014, 0.034].\n- pm25, feature: J 105; Spearman 0.840 [0.823, 0.860]; top-20-union 0.346 [0.249, 0.428].\n- pm25, variable: J 91; Spearman 0.845 [0.831, 0.863]; top-20-union 0.446 [0.352, 0.506]; family-share distance 0.704 [0.675, 0.732]; top 3 normal 0.445, hist_last 0.030, wbal 0.024; own-history share 0.059 [0.050, 0.067].\n- ndvi, feature: J 482; Jaccard top 20 0.333 [0.290, 0.429]; Spearman 0.873 [0.860, 0.882]; top-20-union 0.062 [-0.015, 0.152].\n- ndvi, variable: J 96; Spearman 0.845 [0.833, 0.851]; top-20-union 0.165 [0.056, 0.240]; family-share distance 0.490 [0.453, 0.526]; top 3 normal 0.321, aet_total_mm 0.040, hist_last 0.038; own-history share 0.072 [0.062, 0.083].\nUnder B1 the seasonal-normal family share is fire 0.811, pm25 0.703 and ndvi 0.443 (under B2 it is exactly 0), as section 5 expects.\n\nWhat the reconciliation changes for B1. Section 10 says B1 makes compare_shap's choice where section 8 is open, so two presentation changes follow:\n- the B1 counts (n_nonzero, n_nonzero_before_merge, sign_n_determined, sign_n_agree) are reported without intervals;\n- there is no feature-level family distance.\nNo B1 value needs recomputing. The B1 importances, shares, signed means, family shares, own-history share and pair statistics, the sign agreement included, keep their intervals, because section 10 asks for them in so many words.",
+ "b1_checks": "Nonzero counts against each B1 meta.json (A = B):\n- fire: feature level 113 before any summing and 113 after, = players_nonzero 113; variable level 96 = variables_nonzero 96.\n- pm25: 105 / 105 = 105; 91 = 91.\n- ndvi: 482 / 482 = 482; 96 = 96.\nNo context column needed summing: ndvi's B1 run merged the same five columns as its main run, and fire and pm25 merged none. The B1 summary lines of the logs give the same counts. Defo's B1 meta.json gives 279 and 99, the main run's counts, as its identity requires (defo has no B1 count numbers by the brief's rule).\n\nper_lead.json's 'models' lists treeroute_B1 in none of the five problems. I checked this in the official files, and A and B report the same.\n\nNo number of items 1-8 depends on B1:\n- Official files: compare_shap.py reads only folders named 'treeroute' or 'rival_*' (line 88). Every comparison was finished before the first B1 run started (2026-11-15 23:06:16): coral 2026-11-13 00:06, fire 2026-11-14 04:47, pm25 04:47, defo 14:35, ndvi 2026-11-15 19:11 (pairs.parquet.done.json 'finished' times and file times agree). The official treeroute importances equal A's main-run values (largest difference 2.8e-17) and differ from the B1 run's (up to 0.013 in I on fire, 0.20 on pm25, 0.046 on ndvi). On defo the B1 run equals the main run exactly.\n- A's code: a10_items1_8.py and a05_global_rule.py open only the pieces of per_lead.json's models, and a10 stops if treeroute_B1 is among them. V\\A\\work\\opened_items_<p>.json names no B1 file. Only a20_b1.py opens treeroute_B1.\n- B's code: b_compare.py (which asserts that treeroute_B1 is not in models) and b_global_index.py open only the models' pieces. Only b_b1.py and b_crosscheck_b1.py open treeroute_B1.",
+ "official_files_opened": [
+  "Times are local (+01:00). Every open is logged in V\\reconcile\\work\\opened_official.jsonl. No compare output was opened in this round before 2026-11-16 18:24:54. First opening, by V\\reconcile\\work\\r10_open_official.py, in this order:",
+  "1. 2026-11-16 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\per_lead.json",
+  "2. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\bootstrap_draws.npy",
+  "3. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\importance.parquet",
+  "4. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\families.parquet",
+  "5. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\pairs.parquet",
+  "6. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\bootstrap_stats.parquet",
+  "7. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\AW4_main_row.json",
+  "8. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\AW3_table.md",
+  "9. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\AW4_table.md",
+  "10. 18:24:54 SHAP\\out\\coral\\lead_0\\compare\\pairs.parquet.done.json",
+  "11. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\per_lead.json",
+  "12. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\bootstrap_draws.npy",
+  "13. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\importance.parquet",
+  "14. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\families.parquet",
+  "15. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\pairs.parquet",
+  "16. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\bootstrap_stats.parquet",
+  "17. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\AW4_main_row.json",
+  "18. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\AW3_table.md",
+  "19. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\AW4_table.md",
+  "20. 18:24:54 SHAP\\out\\defo\\lead_0\\compare\\pairs.parquet.done.json",
+  "21. 18:24:54 SHAP\\out\\fire\\lead_0\\compare\\per_lead.json",
+  "22. 18:24:54 SHAP\\out\\fire\\lead_0\\compare\\bootstrap_draws.npy",
+  "23. 18:24:54 SHAP\\out\\fire\\lead_0\\compare\\importance.parquet",
+  "24. 18:24:54 SHAP\\out\\fire\\lead_0\\compare\\families.parquet",
+  "25. 18:24:54 SHAP\\out\\fire\\lead_0\\compare\\pairs.parquet",
+  "26. 18:24:55 SHAP\\out\\fire\\lead_0\\compare\\bootstrap_stats.parquet",
+  "27. 18:24:55 SHAP\\out\\fire\\lead_0\\compare\\AW4_main_row.json",
+  "28. 18:24:55 SHAP\\out\\fire\\lead_0\\compare\\AW3_table.md",
+  "29. 18:24:55 SHAP\\out\\fire\\lead_0\\compare\\AW4_table.md",
+  "30. 18:24:55 SHAP\\out\\fire\\lead_0\\compare\\pairs.parquet.done.json",
+  "31. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\per_lead.json",
+  "32. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\bootstrap_draws.npy",
+  "33. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\importance.parquet",
+  "34. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\families.parquet",
+  "35. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\pairs.parquet",
+  "36. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\bootstrap_stats.parquet",
+  "37. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\AW4_main_row.json",
+  "38. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\AW3_table.md",
+  "39. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\AW4_table.md",
+  "40. 18:24:55 SHAP\\out\\pm25\\lead_0\\compare\\pairs.parquet.done.json",
+  "41. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\per_lead.json",
+  "42. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\bootstrap_draws.npy",
+  "43. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\importance.parquet",
+  "44. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\families.parquet",
+  "45. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\pairs.parquet",
+  "46. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\bootstrap_stats.parquet",
+  "47. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\AW4_main_row.json",
+  "48. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\AW3_table.md",
+  "49. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\AW4_table.md",
+  "50. 18:24:55 SHAP\\out\\ndvi\\lead_0\\compare\\pairs.parquet.done.json",
+  "Re-reads of the same files, each logged: V\\reconcile\\reconcile.py, 2026-11-16 18:34:26 to 18:49:41 (360 opens, plus 16 reads of pairs.parquet as bytes for its SHA-256); V\\reconcile\\work\\r30_tables.py, the five AW4_main_row.json files, 18:42:42 to 18:42:55. The modification times of the compare files were read from the file system without opening them.",
+  "For the record: PROTOCOL.md section 14 records that coral's AW4_table.md (the same file, written 2026-11-13 00:06) was read once before this round, on 2026-11-13 at about 15:31. The other current compare files had not been opened; the fire comparison opened on 2026-11-13 for its layout was replaced on 2026-11-14 at 04:47.",
+  "Also read, none of them compare outputs: SHAP\\scripts\\compare_shap.py and shapv1_stats.py (in full, before any output was opened, to build the mapping); SHAP\\PROTOCOL.md; each piece's meta.json; the group column of one rows.parquet per problem; defo's treeroute and treeroute_B1 rows.parquet; the B1 rows.parquet.done.json files; SHAP\\SAMPLE_REGISTER.txt; SHAP\\logs\\tr_shap_<p>_lead0.log (numbers only). These are logged in V\\reconcile\\work\\opened_other.jsonl. SHAP\\smoke\\bardl_fix\\ was not opened, and no SHAP script was run."
+ ],
+ "verdict": "explained",
+ "n_numbers": {
+  "A": 107677,
+  "B": 107948,
+  "official": 29023
+ }
+}

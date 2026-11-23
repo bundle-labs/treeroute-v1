@@ -1,0 +1,43 @@
+{
+ "lens": "blindness and discipline",
+ "verdict": "ready",
+ "findings": [
+  {
+   "severity": "minor",
+   "what": "The spec writer started Python twice without -I -B, which breaks the round's Python rule. It was a package check and touched no project data.",
+   "evidence": "Spec call #10 (PowerShell, 17:12:43): `py -3.9 -c \"import sys, numpy, pandas, pyarrow, scipy; print(sys.version); print(numpy.__version__, ...)\"; py -3.9 -c \"import jsonschema\"`. It printed only the versions (3.9.13; 2.0.2 2.3.3 21.0.0 1.13.1) and a ModuleNotFoundError. It opened no project file, and nothing in SHAP changed. Every other Python start by the spec writer, A and B used -I -B.",
+   "fix": "Nothing to redo. In later rounds, use -I -B for one-line checks too."
+  },
+  {
+   "severity": "minor",
+   "what": "The spec writer's inspect_structure.py printed one line about per_lead.json besides its structural keys: a count of the other top-level keys. To make that count, it walked the whole key tree in memory looking for sha, hash and map keys. No key name or value beyond the structural ones was printed.",
+   "evidence": "V\\spec\\tools\\inspect_structure.py has `print(\"   (other top-level keys, not printed: %d)\" % n_other)`. For each problem the output was '(other top-level keys, not printed: 13)'. The find_paths tree search printed only 'sha path draws_sha256 = ...' and 'sha path sample_sha256 = ...', both structural, and found no map key. Checked against the full saved output of spec call #12.",
+   "fix": "None needed. A stricter script would print only the whitelisted keys."
+  },
+  {
+   "severity": "minor",
+   "what": "This is not a rule breach but a leak path in an allowed file. PROTOCOL.md section 14, lines 771-777, describes what an earlier official fire comparison wrote in its AW4 files, and both A and B read that passage.",
+   "evidence": "A call #12 (Read PROTOCOL.md lines 708-921, 17:40:31) and B call #11 (Read lines 720-919, 17:40:30) both include: 'With treeroute alone in the main set, compare_shap.py writes in the two AW4 files only W, undefined (NaN), the reference link, the cross-link note and the model lists; every other cell is empty (no top-3 variables, no shares)'. The passage holds no statistic, and the protocol is allowed reading. Brief item 7 settles the fire case ('treeroute's top 3 and own-history share still have values'). Both A and B followed the brief: both report fire treeroute's top 3 and own-history share. So no open choice was steered.",
+   "fix": "For the reconciler: if the official fire main row leaves treeroute's top 3 and own-history share empty, treat it as a compare_shap gap against brief item 7, not as an A/B error. In later rounds, keep descriptions of official output content out of the implementers' allowed reading, or point them to it."
+  }
+ ],
+ "checked": [
+  "Found the round's transcripts: the newest workflow folder whose journal names implement:A and implement:B. Agents: spec (17:10:40-17:39:49 local), implement:A (17:39:49-18:11:27), implement:B (17:39:51-18:18:07), reconcile and skeptic:blindness (from 18:18:07). I extracted every tool call: spec 46, A 102, B 94, reconciler 46 by 18:33 (still running). Timestamps were converted from UTC to local time (UTC+1).",
+  "Spec, A and B each received only their initial task message, with no message later in the run. The only injected file, the memory index, contains no statistic word.",
+  "Every Read call by spec, A and B was checked. They read the brief, SPEC.md, results_schema.json and PROTOCOL.md (spec: sections 5 and 8-10; A: sections 3, 5, 8-10 and section 14 up to line 921; B: the whole file). A read RUN_COMMANDS.md lines 1-60 and 195-244; B read lines 196-245. Both also read SAMPLE_REGISTER.txt, the four tr_shap_<p>_lead0.log files, V\\spec\\tools\\validate_results.py and their own work files. A also read machine_shap.yaml, the fire rebuild gates.json, precheck.json and DONE.json, and the fire sample_manifest.json. The spec writer re-read its own saved tool output. None of these files is forbidden, and the protocol and RUN_COMMANDS lines read hold no comparison statistic.",
+  "Grep calls by spec, A and B named only single files (PROTOCOL.md, RUN_COMMANDS.md) or the agent's own folder. None of them made a Glob call. No Grep or Glob ran over SHAP with a *.md pattern or over a compare folder.",
+  "PowerShell commands only listed the compare folders: spec #6 listed names; A #14 and B #15 listed names, sizes and times. No Get-Content, Select-String or Python call touched any compare file other than per_lead.json and bootstrap_draws.npy. Nobody opened the compare_<p>_lead0.log files, SHAP\\scripts or SHAP\\smoke, and no command names bardl_fix. A read the first 30 lines of rival_shap_fire_lead0.log and the 'test set:' lines of the rival_shap logs, which are allowed logs.",
+  "A never opened V\\B and B never opened V\\A. Both only listed the top-level folder names of V (A #10, B #13). B's calls after A finished touched only V\\B. Neither opened V\\reconcile or V\\skeptic, and neither used a relative path or a recursive listing of V.",
+  "I checked every script version, from the transcripts' Write and Edit content and from the final files in V\\spec\\tools, V\\A\\scripts and V\\B\\scripts. per_lead.json is loaded and only structural keys are kept or printed: spec uses a whitelist plus the sha paths; A's a_lib and a00 and B's b_compare, b_b1 and b_inspect keep models, main_set, declined_by_guard, links, rows, sample_sha256 and draws_sha256 or fewer. The only compare files opened are per_lead.json and bootstrap_draws.npy, which A's opened_*.json records confirm. Loops over pieces skip compare. No script uses subprocess, os.system, runpy, importlib or exec, or imports from SHAP\\scripts. Every write goes to the agent's own folder.",
+  "The per_lead.json content printed by A (a00_inspect.txt) and B (b_inspect output) is exactly the 7 structural keys for each of the 5 problems. The validator's --shap mode compares 5 structural keys plus draws_sha256 and prints no value.",
+  "The spec writer read no row-file values: only pyarrow read_schema and the parquet footer's row count. It printed meta.json and done.json as key names and types (inspect_structure.py, inspect_names.py), and SPEC.md states no fact derived from row values.",
+  "Tool results that mention statistic words come only from the brief, spec, schema, protocol and validator text, or from each agent's own results and self-tests.",
+  "A (a50_draws_generator_probe.py) and B (b_inspect2.py) rebuilt the draw matrix from the protocol's words: section 3's SHA-256 generator and section 8's salt. They did not take it from compare_shap.py.",
+  "The other run records B opened (fire exactness.json, ridge_shap_exactness.json, RUN_SUMMARY_scope_i.json, export_manifest.json) and those A opened (fire rebuild records) are allowed. They hold only checks and step statuses, and both READMEs list them.",
+  "SHAP outside V was listed by names and times only, with os.scandir; bardl_fix was not entered. At 18:33 that covered 10,801 files and 3,229 folders, and none was created or modified at or after 2026-11-16 17:09 local. The newest file is RUN_COMMANDS.md at 17:05:41, before the round. The bardl_fix folder entry was last modified on 2026-11-14 at 04:44.",
+  "Inside V, each agent wrote only in its own folder and only during its run: spec 17:13-17:38, A 17:41-18:09, B 17:42-18:16, reconciler from 18:19. V's root and V\\_brief are unchanged, and there is no __pycache__.",
+  "Nobody ran tr_shap.py, run_shap.py, compare_shap.py or any other SHAP\\scripts script: not spec, A or B, and not the reconciler in its 46 calls up to 18:33. No such command exists in the transcripts, no script starts a subprocess, and no log or compare output changed after 17:09. The reconciler only listed, line-counted and read compare_shap.py and shapv1_stats.py, which its task allows.",
+  "Every Python start by A and B used -I -B; spec call #10 is the only exception. No background jobs were started.",
+  "Privacy: V\\spec, V\\A and V\\B contain no user name, host name, session id or workflow id. My working files in V\\skeptic\\blindness are scrubbed, and I deleted my copies of the reconciler's transcript because they hold official outputs."
+ ]
+}

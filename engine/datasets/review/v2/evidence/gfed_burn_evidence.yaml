@@ -1,0 +1,40 @@
+# gfed_burn -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: gfed_burn
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/gfed_burn/{group}_burn_{year}.parquet
+keys:
+- cell_id
+- year
+- month
+provenance: gfed_burn_ingest.py:363
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  burn_frac:
+    window_text: burned fraction of the named calendar month (BA_TOT)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: GFED500m (van Wees et al.), provenance MCD64A1 (gfed_burn_ingest.py:13, 22-23)
+    footer_stats:
+      null_share_all_files: 0.00035
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  burn_npix:
+    window_text: number of 500 m pixels averaged into the cell
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 127
+      files_with_fill_code_as_min_or_max: 0
+      min: 0.0
+      max: 4265.0
+schema_catalog: _stores/gfed_burn_schema_catalog.yaml
+schema_catalog_sha256: 3588f0fc6d82033620e864a52aaf64cd19d51ca47f643c75ddb4e0e7557d64a0
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

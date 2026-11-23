@@ -1,0 +1,303 @@
+{
+ "guards": [
+  {
+   "details": {
+    "data_groups": 40,
+    "excluded": 0,
+    "groups": 40,
+    "seen_during_design": 0
+   },
+   "fix": "",
+   "id": "G-SPLIT",
+   "part": null,
+   "rule": "G-SPLIT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "V06_spei_12m_lag12": "derived from V06_spei_12m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_buffalo_hold2021": "derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_cattle_hold2021": "derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_goats_hold2021": "derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_horse_hold2021": "derived from aglw_horse, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_sheep_hold2021": "derived from aglw_sheep, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_total_lsu_hold2021": "derived from aglw_total_lsu, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_lag12": "derived from amo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "ctx:lat": "derived from lat, which is ban ('structural'): allowed only because 'structural' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_lag12": "derived from spei_01m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_lag12": "derived from spei_03m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_lag12": "derived from spei_06m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_lag12": "derived from spei_24m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)"
+    },
+    "leak_parent": {},
+    "sum_groups": {
+     "MOD44B_V15_V17_tree_cover": [
+      "V15_bare_ground_pct",
+      "V17_herb_cover_pct",
+      "tree_cover_pct"
+     ]
+    }
+   },
+   "fix": "confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only))",
+   "id": "G-LINEAGE",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {
+    "data_columns": 204,
+    "keep_unreviewed": [],
+    "verdicts": 204
+   },
+   "fix": "",
+   "id": "G-CLOSED",
+   "part": null,
+   "rule": "G-CLOSED"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-KEYS",
+   "part": null,
+   "rule": "G-KEYS"
+  },
+  {
+   "details": {
+    "lags": {
+     "V01_mean_temp_C": 0,
+     "V02_total_precip_mm": 0,
+     "V03_max_daily_precip_mm": 0,
+     "V04_precip_seasonality": 1,
+     "V05_mean_vpd_kPa": 0,
+     "V06_spei_12m_lag12": 0,
+     "V07_total_ref_ET_mm": 0,
+     "V09_mean_wind_ms": 0,
+     "V30_soil_moisture_pct": 0,
+     "aet_total_mm": 0,
+     "aglw_buffalo_hold2021": 1,
+     "aglw_cattle_hold2021": 1,
+     "aglw_goats_hold2021": 1,
+     "aglw_horse_hold2021": 1,
+     "aglw_sheep_hold2021": 1,
+     "aglw_total_lsu_hold2021": 1,
+     "amo_lag12": 0,
+     "ao": 1,
+     "burn_rate_120mo": 0,
+     "climate_water_deficit_mm": 0,
+     "cloud_frequency_pct": 1,
+     "conflict_deaths": 0,
+     "conflict_events": 0,
+     "ctx:month": 0,
+     "deeprec_twsa": 3,
+     "diurnal_temp_range_C": 0,
+     "epo": 1,
+     "era5l_d2m": 0,
+     "era5l_pev": 0,
+     "era5l_slhf": 0,
+     "era5l_smlt": 0,
+     "era5l_sro": 0,
+     "era5l_sshf": 0,
+     "era5l_ssr": 0,
+     "era5l_ssro": 0,
+     "era5l_stl1": 0,
+     "era5l_str": 0,
+     "fert_n": 1,
+     "fert_p": 1,
+     "frost_days": 0,
+     "gdd5_degC_days": 0,
+     "grace_lwe": 1,
+     "hdi": 1,
+     "heatwave_days_gt35C": 0,
+     "iod": 1,
+     "luh2_cropland": 1,
+     "luh2_forest": 1,
+     "luh2_pasture": 1,
+     "luh2_range": 1,
+     "luh2_secondary": 1,
+     "luh2_urban": 1,
+     "n_burns_12mo": 0,
+     "n_burns_60mo": 0,
+     "nao": 1,
+     "nbr25km_12mo_lag3": 0,
+     "nbr25km_12mo_lag6": 0,
+     "nbr75km_12mo_lag3": 0,
+     "nbr75km_12mo_lag6": 0,
+     "nino12": 2,
+     "nino3": 2,
+     "nino34": 2,
+     "nino4": 2,
+     "noi": 1,
+     "ntl": 1,
+     "oni": 3,
+     "pdo": 1,
+     "pna": 1,
+     "precip_intensity_mm": 0,
+     "rmin_pct": 0,
+     "sam": 1,
+     "snow_duration_days": 1,
+     "soi": 1,
+     "soil_water_tc_mm": 0,
+     "solar_radiation_Wm2": 0,
+     "spei_01m_lag12": 0,
+     "spei_03m_lag12": 0,
+     "spei_06m_lag12": 0,
+     "spei_24m_lag12": 0,
+     "sph_kgkg": 0,
+     "spi_01m": 0,
+     "spi_03m": 0,
+     "spi_06m": 0,
+     "spi_12m": 0,
+     "spi_24m": 0,
+     "sst_anom_atl3": 2,
+     "sst_anom_coral_sea": 2,
+     "sst_anom_global_tropical_mean": 2,
+     "sst_anom_iod_east": 2,
+     "sst_anom_iod_west": 2,
+     "sst_anom_mediterranean": 2,
+     "sst_anom_nino34": 2,
+     "sst_anom_subpolar_north_atlantic": 2,
+     "swe_mean_mm": 0,
+     "tc_vapor_pressure": 0,
+     "tna": 1,
+     "tni": 3,
+     "tsa": 1,
+     "tslf_censored": 0,
+     "tslf_months": 0,
+     "vpd_days_gt_2kpa": 0,
+     "vpd_max_daily": 0,
+     "vpd_warm_season_mean": 0,
+     "wbal_mm": 0,
+     "wbal_roll12": 0,
+     "wbal_roll3": 0,
+     "wbal_roll6": 0,
+     "wet_day_count": 0,
+     "wp": 1
+    },
+    "lags_by_steps": {
+     "0": 61,
+     "1": 32,
+     "2": 12,
+     "3": 3
+    },
+    "r4": {
+     "first_driver_year": 2002,
+     "first_year_estimate": 2003,
+     "largest_lookback_steps": 12,
+     "largest_r8_lag_steps": 12,
+     "set_by": [
+      "V04_precip_seasonality",
+      "V06_spei_12m_lag12",
+      "aglw_buffalo_hold2021",
+      "aglw_cattle_hold2021",
+      "aglw_goats_hold2021",
+      "aglw_horse_hold2021",
+      "aglw_sheep_hold2021",
+      "aglw_total_lsu_hold2021",
+      "amo_lag12",
+      "fert_n",
+      "fert_p",
+      "hdi",
+      "luh2_cropland",
+      "luh2_forest",
+      "luh2_pasture",
+      "luh2_range",
+      "luh2_secondary",
+      "luh2_urban",
+      "ntl",
+      "snow_duration_days",
+      "spei_01m_lag12",
+      "spei_03m_lag12",
+      "spei_06m_lag12",
+      "spei_24m_lag12"
+     ],
+     "set_only_by_declared_lag_operations": false
+    },
+    "refused": {}
+   },
+   "fix": "",
+   "id": "G-LAG",
+   "part": null,
+   "rule": "G-LAG"
+  },
+  {
+   "details": {
+    "baseline_disclosures": [],
+    "cuts": [],
+    "earliest_cut_day": null,
+    "never_used": "release_date, snapshot_date (plan 1.3)",
+    "not_compared": [],
+    "observed_through_decision": [],
+    "observed_through_not_compared": [
+     "V06_spei_12m_lag12 (observed_through 2022-12)",
+     "aglw_buffalo_hold2021 (observed_through 2021)",
+     "aglw_cattle_hold2021 (observed_through 2021)",
+     "aglw_goats_hold2021 (observed_through 2021)",
+     "aglw_horse_hold2021 (observed_through 2021)",
+     "aglw_sheep_hold2021 (observed_through 2021)",
+     "aglw_total_lsu_hold2021 (observed_through 2021)",
+     "amo_lag12 (observed_through 2023-01)",
+     "fert_n (observed_through 2013)",
+     "fert_p (observed_through 2013)",
+     "hdi (observed_through 2015)",
+     "spei_01m_lag12 (observed_through 2022-12)",
+     "spei_03m_lag12 (observed_through 2022-12)",
+     "spei_06m_lag12 (observed_through 2022-12)",
+     "spei_24m_lag12 (observed_through 2022-12)"
+    ]
+   },
+   "fix": "",
+   "id": "G-EPOCH",
+   "part": null,
+   "rule": "G-EPOCH"
+  },
+  {
+   "details": {},
+   "fix": "drop them: the engine builds the own-history block (R17); only event counts, years since the last event and neighbour aggregates may read the target (plan 1.5)",
+   "id": "G-HIST",
+   "part": 526,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "groups": 40,
+    "notes": [
+     "donor labels not judged here (check --deep reads them)",
+     "census not judged here (check --deep reads it)"
+    ]
+   },
+   "fix": "",
+   "id": "G-SUPPORT",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "co_measured_candidates": [],
+    "co_measured_unanswered": [],
+    "headline": true,
+    "unsigned": []
+   },
+   "fix": "",
+   "id": "G-FACTS",
+   "part": null,
+   "rule": "G-FACTS"
+  },
+  {
+   "details": {},
+   "fix": "run check --deep (or plan: derived.json R30)",
+   "id": "G-MISSING",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-DERIVED",
+   "part": null,
+   "rule": "G-DERIVED"
+  }
+ ],
+ "mode": "quick",
+ "package": "fire",
+ "package_fingerprint": "1ed3b01a2079fca41b5e7997dd911481ddb9e016272b4ab442d7257beafc919c"
+}

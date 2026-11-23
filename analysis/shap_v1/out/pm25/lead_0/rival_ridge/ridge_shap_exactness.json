@@ -1,0 +1,390 @@
+{
+ "alpha": "1000.0",
+ "bit_equal_rows": 91440,
+ "bit_patterns_equal_rows": {
+  "pre": 91440,
+  "raw": 91440,
+  "what": "information: rows whose float64 bit patterns equal the saved ones (the gate compares values, so -0.0 and +0.0 count as equal there)"
+ },
+ "block_rows": 65536,
+ "blocks": [
+  {
+   "C": false,
+   "F": true,
+   "rows": [
+    0,
+    65536
+   ],
+   "strides": [
+    8,
+    524288
+   ]
+  },
+  {
+   "C": false,
+   "F": true,
+   "rows": [
+    65536,
+    91440
+   ],
+   "strides": [
+    8,
+    207232
+   ]
+  }
+ ],
+ "board_code_reproduced": {
+  "equal_today": true,
+  "gate": false,
+  "kept_copies_tried": 0,
+  "models_py_sha256": "adfc8d06ed25ef6aae40aab12ad63f03255cd6334ea216047afa38e79b598e42",
+  "recipe": "rivals/harness.py:183-189 (harness_code_sha)",
+  "recipe_self_check": true,
+  "recorded": "b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2",
+  "reproduced_with": "today's rivals/*.py",
+  "today": "b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2"
+ },
+ "design_columns": 170,
+ "drift_guard": {
+  "ridge_design": {
+   "equal": true,
+   "lines": [
+    311,
+    327
+   ],
+   "recorded": "0dd33e29b52d54cdc78006945d6679cea32677b29e59587e5b1bb2d56110dc33",
+   "sha256": "0dd33e29b52d54cdc78006945d6679cea32677b29e59587e5b1bb2d56110dc33"
+  },
+  "run_ridge": {
+   "equal": true,
+   "lines": [
+    330,
+    389
+   ],
+   "recorded": "e4739ec46bbbb9b368b3b657950273eaf7055361d3df47f9b2c0c7288f79f5da",
+   "sha256": "e4739ec46bbbb9b368b3b657950273eaf7055361d3df47f9b2c0c7288f79f5da"
+  }
+ },
+ "dropped": [],
+ "duplicate_keys_saved": 0,
+ "duplicate_keys_test": 0,
+ "engine_code": {
+  "board": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+  "equal": true,
+  "gate": false,
+  "now": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814"
+ },
+ "env": {
+  "blas_details": [
+   {
+    "architecture": "SkylakeX",
+    "internal_api": "openblas",
+    "num_threads": 8,
+    "prefix": "libscipy_openblas",
+    "threading_layer": "pthreads",
+    "user_api": "blas",
+    "version": "0.3.27"
+   }
+  ],
+  "blas_pools": [
+   [
+    "blas",
+    "openblas",
+    "libscipy_openblas",
+    8
+   ]
+  ],
+  "board_numpy_blas_pool": [
+   [
+    "blas",
+    "openblas",
+    "libscipy_openblas",
+    8
+   ]
+  ],
+  "board_threads": 8,
+  "numpy_blas_pool": [
+   [
+    "blas",
+    "openblas",
+    "libscipy_openblas",
+    8
+   ]
+  ],
+  "pass": true,
+  "pins": {
+   "BLIS_NUM_THREADS": "8",
+   "MKL_NUM_THREADS": "8",
+   "NUMEXPR_NUM_THREADS": "8",
+   "OMP_NUM_THREADS": "8",
+   "OPENBLAS_NUM_THREADS": "8",
+   "VECLIB_MAXIMUM_THREADS": "8"
+  },
+  "switches": {
+   "OPENBLAS_CORETYPE": null,
+   "other_names": [
+    "BLIS_NUM_THREADS",
+    "KMP_DUPLICATE_LIB_OK",
+    "MKL_NUM_THREADS",
+    "NUMEXPR_NUM_THREADS",
+    "VECLIB_MAXIMUM_THREADS"
+   ],
+   "values": {
+    "OMP_NUM_THREADS": "8",
+    "OPENBLAS_NUM_THREADS": "8"
+   }
+  }
+ },
+ "flags": 45,
+ "inf_equal": true,
+ "inputs": {
+  "board.json export.lead_0.content_sha256 = the export's content hash": {
+   "equal": true,
+   "expected": "b97bdc9b3e918c4e5b84858574edff766d366c451df5d700676c189c9b5a7d65",
+   "value": "b97bdc9b3e918c4e5b84858574edff766d366c451df5d700676c189c9b5a7d65"
+  },
+  "board.json export.lead_0.files_sha256 = the export's files hash": {
+   "equal": true,
+   "expected": "96772f48b5f42029e827d6c981a87b00b1088ddec828aff37243808435ce41a0",
+   "value": "96772f48b5f42029e827d6c981a87b00b1088ddec828aff37243808435ce41a0"
+  },
+  "board.json export.lead_0.manifest_sha256 = the export manifest's SHA-256": {
+   "equal": true,
+   "expected": "e62e3966c5a70cb640a93ec1311862df4112e22ea5ccabb2bde7ecd3633dd64b",
+   "value": "e62e3966c5a70cb640a93ec1311862df4112e22ea5ccabb2bde7ecd3633dd64b"
+  },
+  "board.json unchanged since it was read": {
+   "equal": true,
+   "expected": "b2bcf4152f91c7ab2968f435d59fb9154d650431c2f83a874c0034cb59e01be0",
+   "value": "b2bcf4152f91c7ab2968f435d59fb9154d650431c2f83a874c0034cb59e01be0"
+  },
+  "done.fit_info.design_columns = the model's names": {
+   "equal": true,
+   "expected": 170,
+   "value": 170
+  },
+  "done.fit_info.dropped_columns = the model's dropped": {
+   "equal": true,
+   "expected": [],
+   "value": []
+  },
+  "done.fit_info.flag_columns = the model's missing flags": {
+   "equal": true,
+   "expected": 45,
+   "value": 45
+  },
+  "done.lead": {
+   "equal": true,
+   "expected": 0,
+   "value": 0
+  },
+  "done.learner": {
+   "equal": true,
+   "expected": "ridge",
+   "value": "ridge"
+  },
+  "done.model_file": {
+   "equal": true,
+   "expected": "model_ridge.json",
+   "value": "model_ridge.json"
+  },
+  "done.pick = picks.json's ridge pick": {
+   "equal": true,
+   "expected": "{\"checkpoint\":\"1000.0\",\"extended\":false,\"extension_trials\":[],\"flags\":[],\"inner_mae\":3.32745616496652,\"inner_mae_and_n2_are_of\":\"the tuning model, which is the reported model's lead-0 guard model\",\"link\":\"log_c\",\"n2_lead_0\":{\"comparator\":\"log_c_trees_off_unweighted\",\"comparator_mae\":3.5256518387286944,\"eligible\":true,\"rival_mae\":3.32745616496652},\"setting\":{},\"trial_id\":\"ridge__log_c__alphas\"}",
+   "value": "{\"checkpoint\":\"1000.0\",\"extended\":false,\"extension_trials\":[],\"flags\":[],\"inner_mae\":3.32745616496652,\"inner_mae_and_n2_are_of\":\"the tuning model, which is the reported model's lead-0 guard model\",\"link\":\"log_c\",\"n2_lead_0\":{\"comparator\":\"log_c_trees_off_unweighted\",\"comparator_mae\":3.5256518387286944,\"eligible\":true,\"rival_mae\":3.32745616496652},\"setting\":{},\"trial_id\":\"ridge__log_c__alphas\"}"
+  },
+  "done.pinned = the pick's checkpoint label": {
+   "equal": true,
+   "expected": "1000.0",
+   "value": "1000.0"
+  },
+  "done.preds_sha256 = the SHA-256 of preds_ridge.parquet": {
+   "equal": true,
+   "expected": "d80d64fa725bda67a0e6ca75ba2108b666e63673b8349fa708b30606b6b3d161",
+   "value": "d80d64fa725bda67a0e6ca75ba2108b666e63673b8349fa708b30606b6b3d161"
+  },
+  "done.test_rows = the export's test rows": {
+   "equal": true,
+   "expected": 91440,
+   "value": 91440
+  },
+  "lead_0/export.json export_content_sha256 = the export's content hash": {
+   "equal": true,
+   "expected": "b97bdc9b3e918c4e5b84858574edff766d366c451df5d700676c189c9b5a7d65",
+   "value": "b97bdc9b3e918c4e5b84858574edff766d366c451df5d700676c189c9b5a7d65"
+  },
+  "lead_0/export.json export_files_sha256 = the export's files hash": {
+   "equal": true,
+   "expected": "96772f48b5f42029e827d6c981a87b00b1088ddec828aff37243808435ce41a0",
+   "value": "96772f48b5f42029e827d6c981a87b00b1088ddec828aff37243808435ce41a0"
+  },
+  "lead_0/export.json lead": {
+   "equal": true,
+   "expected": 0,
+   "value": 0
+  },
+  "model.flags = its missing__ names": {
+   "equal": true,
+   "expected": [
+    "missing__x__hand_m",
+    "missing__x__upstream_area_km2",
+    "missing__x__V01_mean_temp_C",
+    "missing__x__V02_total_precip_mm",
+    "missing__x__V07_total_ref_ET_mm",
+    "missing__x__aet_total_mm",
+    "missing__x__climate_water_deficit_mm",
+    "missing__x__soil_water_tc_mm",
+    "missing__x__V05_mean_vpd_kPa",
+    "missing__x__V09_mean_wind_ms",
+    "missing__x__swe_mean_mm",
+    "missing__x__tc_vapor_pressure",
+    "missing__x__V30_soil_moisture_pct",
+    "missing__x__V04_precip_seasonality",
+    "missing__x__travel_time",
+    "missing__x__gdp_pc",
+    "missing__x__hdi",
+    "missing__x__luh2_cropland",
+    "missing__x__luh2_pasture",
+    "missing__x__luh2_range",
+    "missing__x__luh2_urban",
+    "missing__x__luh2_forest",
+    "missing__x__luh2_secondary",
+    "missing__x__fert_n",
+    "missing__x__fert_p",
+    "missing__x__deeprec_twsa",
+    "missing__x__era5l_pev",
+    "missing__x__era5l_sro",
+    "missing__x__era5l_ssro",
+    "missing__x__era5l_smlt",
+    "missing__x__era5l_slhf",
+    "missing__x__era5l_sshf",
+    "missing__x__era5l_str",
+    "missing__x__era5l_d2m",
+    "missing__x__era5l_stl1",
+    "missing__x__spi_06m",
+    "missing__x__wbal_mm",
+    "missing__x__wbal_roll3",
+    "missing__x__wbal_roll6",
+    "missing__x__wbal_roll12",
+    "missing__x__spei_01m_lag12",
+    "missing__x__spei_03m_lag12",
+    "missing__x__spei_06m_lag12",
+    "missing__x__V06_spei_12m_lag12",
+    "missing__x__spei_24m_lag12"
+   ],
+   "value": [
+    "missing__x__hand_m",
+    "missing__x__upstream_area_km2",
+    "missing__x__V01_mean_temp_C",
+    "missing__x__V02_total_precip_mm",
+    "missing__x__V07_total_ref_ET_mm",
+    "missing__x__aet_total_mm",
+    "missing__x__climate_water_deficit_mm",
+    "missing__x__soil_water_tc_mm",
+    "missing__x__V05_mean_vpd_kPa",
+    "missing__x__V09_mean_wind_ms",
+    "missing__x__swe_mean_mm",
+    "missing__x__tc_vapor_pressure",
+    "missing__x__V30_soil_moisture_pct",
+    "missing__x__V04_precip_seasonality",
+    "missing__x__travel_time",
+    "missing__x__gdp_pc",
+    "missing__x__hdi",
+    "missing__x__luh2_cropland",
+    "missing__x__luh2_pasture",
+    "missing__x__luh2_range",
+    "missing__x__luh2_urban",
+    "missing__x__luh2_forest",
+    "missing__x__luh2_secondary",
+    "missing__x__fert_n",
+    "missing__x__fert_p",
+    "missing__x__deeprec_twsa",
+    "missing__x__era5l_pev",
+    "missing__x__era5l_sro",
+    "missing__x__era5l_ssro",
+    "missing__x__era5l_smlt",
+    "missing__x__era5l_slhf",
+    "missing__x__era5l_sshf",
+    "missing__x__era5l_str",
+    "missing__x__era5l_d2m",
+    "missing__x__era5l_stl1",
+    "missing__x__spi_06m",
+    "missing__x__wbal_mm",
+    "missing__x__wbal_roll3",
+    "missing__x__wbal_roll6",
+    "missing__x__wbal_roll12",
+    "missing__x__spei_01m_lag12",
+    "missing__x__spei_03m_lag12",
+    "missing__x__spei_06m_lag12",
+    "missing__x__V06_spei_12m_lag12",
+    "missing__x__spei_24m_lag12"
+   ]
+  },
+  "model: every name is an export column, its missing flag, or __normal__": {
+   "equal": true,
+   "expected": [],
+   "value": []
+  },
+  "model: mean, sd and the pinned coef have one value per name": {
+   "equal": true,
+   "expected": [
+    170,
+    170,
+    170
+   ],
+   "value": [
+    170,
+    170,
+    170
+   ]
+  }
+ },
+ "inputs_pass": true,
+ "keys_only_saved": 0,
+ "keys_only_test": 0,
+ "legal": [
+  0.0,
+  null
+ ],
+ "link_space_sha256": "4be2861bacdc991ee0fd337757d7968e6b24484e3891385a223b93fb1c18efbb",
+ "max_abs_diff": 0.0,
+ "method": "the board's own scoring (rivals/models.py _fit_ridge, score loop 1135-1146) on the whole test set in the export's read order: per 65,536-row block a fresh design block (RidgeDesign.block) minus the saved means, times the saved coefficients of the pinned alpha, plus the intercept, with numpy's BLAS at the board's 8 threads; then the inverse link (pre) and the engine's legal clip (raw). Every row must match the saved pre__rival_ridge and arm__rival_ridge_raw bit for bit",
+ "model_file": "model_ridge.json",
+ "pass": true,
+ "peak_rss_gb": 0.44,
+ "pick_flags": [],
+ "raw": {
+  "bit_equal_rows": 91440,
+  "inf_equal": true,
+  "max_abs_diff": 0.0,
+  "pass": true,
+  "rows": 91440,
+  "rows_finite": 91440,
+  "rows_inf": 0,
+  "same_nan": true
+ },
+ "rival_shap_exactness_json": {
+  "bit_equal_rows": 70795,
+  "file": "exactness.json (rival_shap.py's own check of its row-by-row copy; kept, never changed here)",
+  "max_abs_diff": 1.7053025658242404e-13,
+  "pass": false,
+  "rows": 91440,
+  "rows_finite": 91440
+ },
+ "row_by_row_copy": {
+  "bit_equal_rows": 70795,
+  "link_space_rows_differing_from_the_board_way": 86627,
+  "pass": false,
+  "rows_finite": 91440,
+  "what": "information: the same blocks copied row by row before the product (rival_shap.py's arithmetic)"
+ },
+ "rows": 91440,
+ "rows_clipped": 0,
+ "rows_finite": 91440,
+ "rows_inf": 0,
+ "rows_test_set": 91440,
+ "same_nan": true,
+ "script": "ridge_shap.py",
+ "seconds": 0.3,
+ "stage": "bits"
+}

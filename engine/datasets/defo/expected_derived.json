@@ -1,0 +1,390 @@
+{
+  "_about": "Acceptance values from APP_PLAN.md Section 3.2 (the table at lines 277-304, revised 2026-09-28). Tests only: never read by a run (plan 1.1; load.py does not fingerprint this file). Milestone M1's gate: derive/ reproduces these from the real data; a value that comes out differently is corrected HERE and flagged, never patched in engine code (plan 3.2, last paragraph). status '=' means unchanged from the shipped run; 'CHANGES' marks a setting that moves beyond the owner's rulings (plan 3.3).",
+  "_field_names": "Structured values follow the PROPOSED signatures in engine/treeroute/_proposed/common.py (Windows, SeasonKeySpec, LeadPlan, RouterDesign, HistorySpec) and their enum values; they change if the owner edits those signatures. Free-text 'plan_3_2' fields quote the plan's cell.",
+  "_drafted": "2026-09-28 by the agent; unsigned",
+  "_revised": "2026-09-28 night by the agent (loro build), unsigned: leave one region out (owner rulings D, E: L1 K = 20, L2 rules 1-5, L7 b), the index lags of rulings R-A (a), R-B, R-C (a) and F4, fire's history offset (R-D b), R3 over all groups (C3). A value marked 'provisional' waits on a merge or on M1 (the field says which).",
+  "R1_cadence": {
+    "kind": "regular",
+    "length": 1,
+    "unit": "year",
+    "plan_3_2": "annual"
+  },
+  "R2_season_key": {
+    "kind": "constant",
+    "steps_per_year": 1
+  },
+  "R3_R7_windows": {
+    "y0": 2004,
+    "y_end": 2023,
+    "test_years": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "train_end": 2019,
+    "inner_fit": [
+      2004,
+      2016
+    ],
+    "inner_score": [
+      2017,
+      2018,
+      2019
+    ]
+  },
+  "R3_R7_status": {
+    "coverage": "= (adaptation.py:57 'DEFO ANNUAL 2003-2023'; the plan 3.2 cell cites adaptation.py:61-62, which is the fire line)",
+    "test_window": "=",
+    "train_end": "=",
+    "inner_score": "=",
+    "coverage_groups": "C3 under LORO: half of ALL groups (every group is tested); F2: counted over rows with a valid label AND the kept drivers",
+    "y0": "owner ruling N S17 a (OWNER_RULINGS_2026-10-06.md): Y0 2004. J5: the driver stores start in 2002 and the largest R4 look-back is 2 years (the K5 MOD44B trio and, since S28 a, phenology_sos_doy_lag2: 'lag k=2 unit=year', R8 0), so Y0 = 2002 + 2. Was 2003 (F3)"
+  },
+  "R12_valid_rows_per_unit": {
+    "inner_fit": 13,
+    "test_cut": 16,
+    "note": "every group's candidate units (LORO: every group is tested; plan 3.2); Y0 2004 (S17 a): 2004-2016 = 13 rows, 2004-2019 = 16 rows (was 14 / 17 from Y0 2003)"
+  },
+  "R12_router_kind": {
+    "value": "region",
+    "status": "=",
+    "note": "h is the median valid rows per candidate unit over EVERY group (D9 under LORO)"
+  },
+  "LORO_groups": {
+    "n_groups": 42,
+    "all_trained_and_tested": true,
+    "excluded": [],
+    "old_split": {
+      "donor": 25,
+      "test": 17
+    },
+    "old_lists": "legacy_harness/shipped_splits.yaml (moved from split.yaml, owner rulings E L7 b)",
+    "plan_3_2": "42 (was 25 donor / 17 test)"
+  },
+  "R13_decision_surface": {
+    "value": "inner_window",
+    "status": "="
+  },
+  "R14_router_design": {
+    "kind": "region",
+    "columns": [
+      "intercept",
+      "normal",
+      "trees"
+    ],
+    "unpenalised": [
+      "normal"
+    ],
+    "centre": [
+      100.0
+    ],
+    "grid_points": 7,
+    "levels": 7,
+    "ratios": null,
+    "fit_row_cap": 60000,
+    "inner_surface_rows": {
+      "units": 4615,
+      "rows_per_unit": 13,
+      "rows": 59995,
+      "capped": false
+    },
+    "test_pass_rows": {
+      "units_approx": 3750,
+      "rows_per_unit": 16,
+      "rows_approx": 60000,
+      "capped": true,
+      "pick": "evenly spaced whole units (plan 3.3 flag 4)"
+    },
+    "plan_3_2": "7 levels around lambda 100; edge flagged (Q13 a)"
+  },
+  "R14_overlap_blocks": {
+    "link_rule": "grid_indices",
+    "n_blocks": 40,
+    "linked_pairs": [
+      [
+        "andes_puna",
+        "bolivia_beni_savanna",
+        4
+      ],
+      [
+        "angola_zambia_fire_belt",
+        "miombo_woodland_zambia",
+        60
+      ]
+    ],
+    "linked_pairs_note": "[group, group, units of the smaller group linked to the other (same cell or one of its 8 neighbours; spacing rule on fire)]",
+    "shared_cells": {
+      "andes_puna+bolivia_beni_savanna": 1,
+      "angola_zambia_fire_belt+miombo_woodland_zambia": 29
+    },
+    "pairs_that_only_touch": [],
+    "measured": "2026-09-28 night by D:/treeroute/loro_build/measure_blocks.py with treeroute.split.derive_overlap_blocks, READ-ONLY, on every unit id of D:/defo_target/*.parquet (grid indices parsed from '{group}_{ix}_{iy}')",
+    "status": "provisional: M1 re-derives the blocks from the package's static table over the candidate units (a valid label at or before the train end); the store's units stand in for them here"
+  },
+  "R14_tree_columns": {
+    "bank_trees": 4200,
+    "one_group_block": 4100,
+    "two_group_block": 4000,
+    "groups_in_two_group_blocks": 4,
+    "was": 2500,
+    "plan_3_2": "4,100 (4,200); was 2,500. 100 fewer per other group in the router's block"
+  },
+  "R15_R16_normal": {
+    "plan_3_2": "unit mean over all its fit-year rows (Q11 a; the test-pass cap keeps evenly spaced whole units); new unpenalised column (U-1)",
+    "per": "unit (constant season key)"
+  },
+  "R34_verdict_reference": {
+    "plan_3_2": "own link-matched normal; arithmetic normal beside"
+  },
+  "R22_links": {
+    "value": [
+      "identity",
+      "log_c",
+      "arcsine"
+    ]
+  },
+  "R8_feature_lags": {
+    "plan_3_2": "same-year aggregates stay at lag 0 (=); annual-mean oni/tni lag 1 year unless the feature script shifts the monthly series first; the MOD44B triple is banned (defo_ban.py:34), so it needs no lag",
+    "same_year_aggregates_steps": 0,
+    "annual_mean_oni_tni_steps": 1,
+    "lag_1_year": [
+      "V11_mean_ndvi",
+      "V12_mean_evi",
+      "nino12",
+      "nino3",
+      "nino4",
+      "nino34",
+      "sst_anom_atl3",
+      "sst_anom_iod_west",
+      "sst_anom_iod_east",
+      "sst_anom_subpolar_north_atlantic",
+      "sst_anom_coral_sea",
+      "sst_anom_mediterranean",
+      "sst_anom_global_tropical_mean",
+      "sst_anom_nino34",
+      "oni",
+      "tni",
+      "co2"
+    ],
+    "lag_1_year_why": {
+      "V11_mean_ndvi, V12_mean_evi": "the 16-day composites of December reach into January (every ruling; INDEX_WINDOW_AUDIT.md:40)",
+      "nino*, sst_anom_*, oni": "R-A (a): the ERSSTv5 filter reaches 2 months ahead, so the calendar-year aggregate reaches into the next year",
+      "tni": "R-B: signed {7, month, centred}, reach 3 months",
+      "co2": "R-C (a): {3, month, centred} assumed, reach 1 month (only if the Q34 review keeps co2; the old matrix dropped it at build)"
+    },
+    "same_year_aggregates_note": "every other monthly column aggregated to the year (aggregate_time, owner ruling C; F5: its facts come from the timing helpers, so these 1-year lags survive aggregation) stays at lag 0",
+    "rulings": "OWNER_RULINGS_2026-09-28.md part B: R-A (a) nino* and sst_anom_* lag 2, oni 3, all 13 lag 1 year as annual aggregates; R-B tni signed {7, month, centred}: lag 3; R-C (a) co2 {3, month, centred} assumed: lag 1, and 1 year as an annual aggregate. Part F4: the stamp is merged with the ruled window for co2 and the 8 sst_anom_* so these come out right.",
+    "status": "the 1-year annual lags are reproduced through the aggregate path from the merged parent facts (tests/test_catalog_timing_facts.py::test_ruled_annual_aggregate_lag_on_the_defo_target, F5; store facts in datasets/_stores/defo_annual_features_schema_catalog.yaml). Still provisional: the merged facts are unsigned, and the annual store itself is not rebuilt yet (dataset.yaml still declares D:/defo_matrix; owner ruling C)",
+    "j_state_2026_10_05": {
+      "status": "ANNOTATION, unsigned (agent, 2026-10-05): lag_1_year above is the pre-J acceptance list (17 entries, with co2, which the installed ban list now bans as a trend proxy) and is left as it was; this block records what derive's R8 gives on the installed J state (owner ruling J with the AMENDED J3) so the comparison is meaningful. Not an acceptance value until the owner rules it.",
+      "measured": "derive_all on the real package, read-only, 3 groups x 10 stride-picked units (R8 depends on the facts only, not on the units): 248 entries, 76 at lag 1 year and 172 at lag 0; Y0 2003 (J5)",
+      "lag_1_year_aggregates": [
+        "V11_mean_ndvi",
+        "V12_mean_evi",
+        "V13_mean_lst_C",
+        "V14_mean_albedo",
+        "V20_burned_binary",
+        "cloud_frequency_pct",
+        "gpp_kgC_m2",
+        "nighttime_lst_C",
+        "nino12",
+        "nino3",
+        "nino34",
+        "nino4",
+        "oni",
+        "sst_anom_atl3",
+        "sst_anom_coral_sea",
+        "sst_anom_global_tropical_mean",
+        "sst_anom_iod_east",
+        "sst_anom_iod_west",
+        "sst_anom_mediterranean",
+        "sst_anom_nino34",
+        "sst_anom_subpolar_north_atlantic",
+        "tni"
+      ],
+      "lag_1_year_aggregates_note": "each parent's _mean, _min and _max (22 parents, 66 columns)",
+      "lag_1_year_annual": [
+        "aglw_buffalo",
+        "aglw_cattle",
+        "aglw_goats",
+        "aglw_horse",
+        "aglw_sheep",
+        "aglw_total_lsu",
+        "burn_doy_mean",
+        "burn_month_count",
+        "ntl",
+        "phenology_sos_doy"
+      ],
+      "why": {
+        "V11_mean_ndvi, V12_mean_evi, nino*, sst_anom_*, oni, tni": "as in lag_1_year_why (their windows reach past the calendar year)",
+        "V14_mean_albedo, gpp_kgC_m2": "their seeded 47-day centred windows reach 8 days past the calendar year (aggregate reach_after_max {8, day} in features/defo_features_store_catalog.yaml)",
+        "V13_mean_lst_C, nighttime_lst_C, cloud_frequency_pct, V20_burned_binary, burn_month_count, burn_doy_mean, ntl": "owner ruling J4: catalog co_measured_with_target true (unverified), R8 floors them at one year",
+        "aglw_* (6)": "owner ruling J3 AMENDED: catalog co_measured_with_target true (unverified), R8 floors them at one year",
+        "phenology_sos_doy": "owner ruling J2 (b): bound {1 year, centred} + reach_after_max {1 year} in the panel store catalog (assumed)",
+        "co2": "not in the J state: banned (trend_proxy)"
+      }
+    },
+    "k_state_2026_10_05": {
+      "status": "ANNOTATION, unsigned (agent, 2026-10-05): what derive's R8 and R4 give on the package under owner ruling K (OWNER_RULINGS_2026-10-05.md, 2026-10-06). No acceptance value above is changed: tests/test_derive_acceptance.py lags only the kept DRIVER columns (role driver / router_context), so it still derives Y0 2003; derive_all also lags the kept ENGINEERED columns and counts their declared lag operations (J5), which gives Y0 2004 (below). Not an acceptance value until the owner rules it.",
+      "measured": "timing.compute_lag on every kept time-varying tree feature with the package's store facts (features/build.py outputs added, as the pipeline adds them) and orchestrate._r04_lags (tests/test_defo_k_ruling.py::test_k_lags_r8_and_r4_and_the_y0_they_give): 278 tree features (20 static), R8 172 at lag 0 and 86 at lag 1 year; R4 151 at 0, 104 at 1 (the 18 K1/J2 a lag1 columns count 0 + 1) and 3 at 2 years. Re-measured 2026-10-06 after K2 keep and rulings L3/L4 (the first text, 2026-10-05, read 175 and 83: since then K2 added 3 at lag 1, L4 banned the 3 eddi_observed aggregates at lag 0, and L3 replaced the 6 raw aglw_* at lag 1 by their 6 hold columns at lag 1)",
+      "added_lag_1_year": [
+        "modis_landcover_class",
+        "modis_landcover_annual",
+        "shrub_cover_pct_global",
+        "cropland_fraction",
+        "deeprec_twsa_k3_mean",
+        "deeprec_twsa_k3_min",
+        "deeprec_twsa_k3_max",
+        "epo_mean",
+        "epo_min",
+        "epo_max"
+      ],
+      "added_lag_0": [
+        "V15_bare_ground_pct_lag2",
+        "V17_herb_cover_pct_lag2",
+        "tree_cover_pct_lag2"
+      ],
+      "why": {
+        "modis_landcover_class, modis_landcover_annual, shrub_cover_pct_global, cropland_fraction": "owner ruling K4: catalog co_measured_with_target true (fact_status assumed), R8 floors them at one year",
+        "deeprec_twsa_k3_*": "owner ruling K3: the K store's facts carry the J2 (b) reach through aggregate_time (reach_after_max {91, day}), R8 one year",
+        "*_lag2 (the MOD44B trio)": "owner ruling K5: content of year t-2 declared {2 years backward} from period_start, R8 0; the declared operation 'lag k=2 unit=year' makes R4 count 0 + 2 (J5)",
+        "epo_mean/_min/_max": "owner ruling K2: kept (2026-10-06, once the shared panel store catalog carried epo's window {3, month, centred}, ruling L1 b); the K store's aggregate_time facts ({1, year, backward} + reach 31 days, assumed) give R8 one year, so the empty 2023 aggregate is read by no target year"
+      },
+      "y0_under_derive_all": 2004,
+      "y0_note": "J5: the driver stores start in 2002 and the largest R4 lag is 2 years (K5), so Y0 = 2004, not 2003 (owner ruling F3's 'Y0 stays 2003' assumed the MOD44B trio banned). With Y0 2004 every window-dependent value of this file moves (inner_fit 2004-2016, 13 valid rows per unit, the bank 60,000 / 13, ...): OWNER ITEM, not written here. RESOLVED 2026-10-06: owner ruling N S17 a took Y0 2004; the window values above are written (_revised_2026_10_06)."
+    },
+    "n_state_2026_10_06": {
+      "status": "ANNOTATION (agent, 2026-10-06): what owner ruling N (OWNER_RULINGS_2026-10-06.md) changes in R8 and R4 on this package; the acceptance lists above are left as they were",
+      "now_lag_1_year": [
+        "population_density",
+        "pdo_mean",
+        "pdo_min",
+        "pdo_max"
+      ],
+      "now_lag_0": [
+        "phenology_sos_doy_lag2"
+      ],
+      "now_out": [
+        "phenology_sos_doy",
+        "scpdsi_mean",
+        "scpdsi_min",
+        "scpdsi_max",
+        "modis_landcover_class",
+        "modis_landcover_annual",
+        "shrub_cover_pct_global",
+        "cropland_fraction"
+      ],
+      "why": {
+        "population_density": "S6: catalog co_measured_with_target true (matches J3): R8 lag 0 -> 1 year",
+        "pdo_mean/_min/_max": "N1: the panel window of pdo carries the ERSSTv5 reach (+2 months); the K store aggregates reach 91 days into the next year; R8 stays 1 year on this annual target (lag 2 is the monthly packages')",
+        "phenology_sos_doy_lag2": "S28 a: features/build.py, content of year t-2 declared {2 years backward} from period_start; R8 0, R4 counts 0 + 2 (J5), like the K5 trio",
+        "phenology_sos_doy": "S28 a: conditional (out at lag 1: its signed reach runs one year past its year)",
+        "scpdsi_*": "S1: banned lookahead_unfixable (Wells 2004 backtracking)",
+        "MODIS land cover (4)": "S3: banned lookahead_unfixable (labels smoothed across years; re-rules K4)"
+      },
+      "y0": 2004
+    }
+  },
+  "R17_history": {
+    "n_columns": 5,
+    "last_values": 3,
+    "trailing_steps": [
+      1,
+      5
+    ],
+    "all_history_mean": true,
+    "start_offset_steps": 0,
+    "dropped_duplicates": [
+      "the 1-year trailing mean (equals the last value on annual data)"
+    ],
+    "plan_3_2": "5 columns; replace h_lag1-3 and h_cum (the all-history mean keeps h_cum's long memory, Q12)"
+  },
+  "R10_leads": {
+    "requested_months": [
+      6,
+      12
+    ],
+    "leads": [
+      1
+    ],
+    "lead_unit": "steps",
+    "merged": {
+      "1": [
+        6,
+        12
+      ]
+    },
+    "not_supplied": [],
+    "contract_lead_zero": true,
+    "status": "= (1 year; 6 and 12 months merge into one annual lead; owner ruling I1 (2026-10-05): 6 and 12 months plus the nowcast (lead 0, the contract); replaces Q41 a's 1/3/6/12)"
+  },
+  "R18_units_per_group": {
+    "bank": 4615,
+    "scored": 2197,
+    "rule": "bank = the pre-LORO R18 count (C7), capped at the units available; scored = max(10, floor(K x n / G)) with K = 20 (C16, owner rulings E L1), capped at the bank count, then the event floor; the scored units are an evenly spaced subset of the bank units (split.evenly_spaced_subset)",
+    "k_group_equivalents": 20,
+    "n_groups": 42,
+    "scored_total": 92274,
+    "old_test_units": 70487,
+    "old_test_units_note": "17 groups x min(4,285, available) by the rule (shipped 4,000 cells per group)",
+    "ratio_to_old": 1.31,
+    "event_floor": "does not bind at a donor event rate near 10%: it asks ceil(10 / (4 test rows x rate)) units per group; derive's R18 records it (M1)",
+    "bank_small_groups": {
+      "costa_rica": 2543,
+      "new_zealand_north_island": 4304,
+      "pantanal": 4585,
+      "pearl_river_delta": 2734,
+      "tasmania_western": 4016,
+      "tierra_del_fuego": 4554,
+      "tongass_alaska": 3938
+    },
+    "bank_status": "CHANGES: 4,615 = 60,000 / 13, rounded down (Y0 2004, owner ruling N S17 a; was 4,285 = 60,000 / 14 from Y0 2003), test and donor; seven smaller groups use all their cells. Shipped 4,000 test cells (adaptation.py:1213) and a 1.5M-row donor pool (adaptation.py:1211)",
+    "plan_3_2": "bank 4,615 = 60,000 / 13, rounded down (seven smaller groups use all their cells); scored 2,197 = floor(20 x 4,615 / 42): 92,274 units against the old 70,487 (x1.31; SIGNOFF_REVIEW.md S17). Was 4,285 / 2,040 / 85,680 (x1.22) under Y0 2003"
+  },
+  "R30_missing_flags": {
+    "plan_3_2": [
+      "conflict_*",
+      "eddi_observed"
+    ],
+    "plan_3_2_text": "conflict_* (stored as ZEROS, not blanks, in 35 of 42 regions) and eddi_observed (31) (defo_matrix.py:113): the Q34 review rules keep with evidence (zero-filled, as shipped) or ban",
+    "day1_review_csv": [
+      "snow_onset_doy",
+      "snow_disappearance_doy",
+      "snow_max_doy",
+      "V06_spei_12m",
+      "spei_01m",
+      "spei_03m",
+      "spei_06m",
+      "spei_24m",
+      "amo",
+      "esacci_sm"
+    ],
+    "note": "MISMATCH to resolve (owner): R30 counts MISSING values, but conflict_* and eddi_observed are stored as zeros, so a missing-share rule cannot see them (the day-1 sheet's footer shares do not flag them). Either the ingest turns the stored zeros into NaN, or 3.2's defo row is not reproduced by R30 as written."
+  },
+  "R32_hit_tolerance": {
+    "rule": "mean-based D9"
+  },
+  "R35_band": {
+    "plan_3_2": "from its first run",
+    "groups": 42,
+    "note": "derived on 'all' (42 groups, every one tested) and judges every reporting row"
+  },
+  "R34_continuity_row": {
+    "groups": 17,
+    "scored_units": 37349,
+    "label": "continuity, not a replication",
+    "source": "treeroute_report/continuity_groups.yaml (the old test groups; owner ruling D, rulings E L7 b)",
+    "plan_3_2": "17 groups, 37,349 units (17 x 2,197 under Y0 2004, S17 a; was 34,680 = 17 x 2,040)"
+  },
+  "type3": {
+    "plan_3_2": "hurdle gate (ctx.fit_bank on y > 0)"
+  },
+  "report_strata": {
+    "plan_3_2": "forest2000_px quartiles (Q50)",
+    "columns": [
+      "forest2000_px"
+    ]
+  },
+  "_revised_2026_10_06": "2026-10-06 by the agent (defo follow-ups of owner ruling N, OWNER_RULINGS_2026-10-06.md): S17 a (Y0 2004) written with the values the engine derives (tests/test_derive_acceptance.py, measured 2026-10-06 before this edit and pinned there as PENDING_OWNER_DERIVED): inner fit 2004-2016, 13 / 16 valid rows per unit, bank 4,615, scored 2,197 (92,274 in all, x1.31), region fit 4,615 / 3,750 units; R8 annotations for S1, S3, S6, S28 a and N1 under R8_feature_lags.n_state_2026_10_06"
+}

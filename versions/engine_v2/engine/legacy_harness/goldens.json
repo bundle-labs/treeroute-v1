@@ -1,0 +1,1401 @@
+{
+ "created": "2026-09-28 15:45:17",
+ "written_by": "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/legacy_harness/goldens.py",
+ "written_by_sha256": "3e11ea7624af99b102f13c15564c35bf21f44d3f4f11dd71e09b6d21b9f34237",
+ "plan": "APP_PLAN.md 4.4 (legacy harness) and the Day-1 corrections box",
+ "shipped_registry": {
+  "path": "D:/treeroute/registry/shipped.json",
+  "created": "2026-09-28 02:38:12",
+  "sha256": "bf6faa192d27ef4517725529fda2d03e313194c6e248f3ecd2538a6ba91e7b89"
+ },
+ "launcher": {
+  "path": "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/legacy_harness/launch_pinned.py",
+  "sha256": "a013a7b60967c660f5125f55d231556e61783aa635243a0b9e3bbf13a845bbc0",
+  "selftest_record": "D:/treeroute/golden/_launcher_selftest/launcher.json",
+  "selftest_record_sha256": "2f63912dcdfb8d88e356a9d163a955ba6420a1391e87c2fd7c43de5b1b335540"
+ },
+ "rules": [
+  "goldens are read-only references; nothing here is ever re-run into its own folder",
+  "new harness outputs go only under D:/treeroute/golden/",
+  "a replay passes only against these hashes/arrays at the plan's tolerances"
+ ],
+ "goldens": {
+  "pm25_u2_smoke": {
+   "problem": "pm25",
+   "produced_by_script": "C:/Users/moh the ghost/Desktop/data set for reserch paper/pm25_adaptation.py",
+   "produced_by_script_sha256": "cf2f2357e81209ef2fc7b2b7bdf36857b8087a5e04bda38f5556c5bec1f11057",
+   "script_sha256_now": "cf2f2357e81209ef2fc7b2b7bdf36857b8087a5e04bda38f5556c5bec1f11057",
+   "script_unchanged_since": true,
+   "rerun": "no (task rule: register, do not re-run)",
+   "evidence": [
+    "D:/treeroute/speedproof/compare_gates_final.txt",
+    "D:/treeroute/speedproof/compare_gates_final.json",
+    "D:/treeroute/speedproof/fix_round_status.txt",
+    "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/speedproof/SPEEDPROOF_REPORT.md"
+   ],
+   "what": "PM2.5 U2 smoke of the shipped pm25_adaptation.py: 8 donors, 3 test regions, 40 cells, 12 trees/donor, one-point grid (10, 0.0625), links identity/log/logc. The primal router path (Part 556 configuration).",
+   "command": "cd \"C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\"\npy -3.9 -u pm25_adaptation.py --smoke --links identity,log,logc --levels 10 --ratios 0.0625 --run-dir D:/treeroute/speedproof/golden_smoke --expect-from D:/pm25_adapt/smoke/inner_candidates.csv",
+   "run_at": "2026-09-28 11:55-11:59 (speed proof round 1)",
+   "threads": "NOT pinned by a launcher: the shipped script as launched from a shell with no thread variables, i.e. numpy OpenBLAS 16, scipy OpenBLAS 4, OpenMP 4 (SPEEDPROOF_REPORT.md finding 3). At this width the router solves are too small for OpenBLAS to use more than one thread (finding 4), and gate G10 shows it bit-identical to the copy run with every BLAS at 1 thread (final2_u2_w8).",
+   "facts": [
+    "bit-identical to the shipped D:/pm25_adapt/u2_smoke (speed proof round 1)",
+    "Part 556 regression gate inside the run: worst 8.88e-16 against D:/pm25_adapt/smoke/inner_candidates.csv (tolerance 1e-4)"
+   ],
+   "summary": {
+    "adopted": "treesoff",
+    "regression_gate": {
+     "source": "D:/pm25_adapt/smoke/inner_candidates.csv",
+     "n_shared": 6,
+     "worst": 8.881784197001252e-16,
+     "tol": 0.0001
+    },
+    "argv": [
+     "pm25_adaptation.py",
+     "--smoke",
+     "--links",
+     "identity,log,logc",
+     "--levels",
+     "10",
+     "--ratios",
+     "0.0625",
+     "--run-dir",
+     "D:/treeroute/speedproof/golden_smoke",
+     "--expect-from",
+     "D:/pm25_adapt/smoke/inner_candidates.csv"
+    ],
+    "npd": 12,
+    "levels": [
+     10.0
+    ],
+    "ratios": [
+     0.0625
+    ],
+    "started": "2026-09-28 11:55:48",
+    "finished": "2026-09-28 11:59:16"
+   },
+   "gates": [
+    "plan 4.4: PM2.5 replay equals the golden smoke (target 1e-9, hard stop 1e-4) -- U2 flags, primal path",
+    "plan 4.5 speedups 1 and 2: byte-identical smoke against the current code (G10 passed on the speed-proof copy)"
+   ],
+   "files": [
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/_adaptation.log",
+     "size": 410,
+     "sha256": "143dabaeaa9936a5587c65d9d0372ad65c4710f419fde358f28c41249da9c67a",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/inner_candidates.csv",
+     "size": 1379,
+     "sha256": "91193b40a3503aa5828dbfd753f1904988e2cb9d7f09601ad962678a0bb86b7b",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/inner_preds.npz",
+     "size": 159164,
+     "sha256": "1902cfc168944ddee7b6c77dc8b3cbca677ce722bb289e1a334de6ab64110417",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/per_region.csv",
+     "size": 4832,
+     "sha256": "1104d002943d56494aee152e2be81fba8d6793ece25b19a6b01f1f737cc3317e",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/per_year.csv",
+     "size": 6115,
+     "sha256": "433412260e4966330e1c549ce22b36831a1faa3091dc1936d721b178648ab76b",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/predictions.parquet",
+     "size": 646875,
+     "sha256": "fc6025095860329510848cb4a0a87dde959be7ba07910191eb91a20fdde218b1",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/run.log",
+     "size": 11803,
+     "sha256": "640c2f99cf810eeb63b348111b7ef1fa79404decce234fa41e2a320a6e884e07",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke/verdict.json",
+     "size": 11526,
+     "sha256": "a4f5e5bc895f2b19f5a819d866b2c13f5296738f12a66a0e033254bd188550fd",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/golden_smoke.console.txt",
+     "size": 12213,
+     "sha256": "313a49c3f9fe4044758c8f21ee8689195e5f94e0c94459fefda64e7dd7fbbc8e",
+     "sha256_from": "hashed by goldens.py build",
+     "role": "console"
+    }
+   ]
+  },
+  "pm25_wide_smoke_blas1": {
+   "problem": "pm25",
+   "produced_by_script": "C:/Users/moh the ghost/Desktop/data set for reserch paper/pm25_adaptation.py",
+   "produced_by_script_sha256": "cf2f2357e81209ef2fc7b2b7bdf36857b8087a5e04bda38f5556c5bec1f11057",
+   "script_sha256_now": "cf2f2357e81209ef2fc7b2b7bdf36857b8087a5e04bda38f5556c5bec1f11057",
+   "script_unchanged_since": true,
+   "rerun": "no (task rule: register, do not re-run)",
+   "evidence": [
+    "D:/treeroute/speedproof/compare_gates_final.txt",
+    "D:/treeroute/speedproof/compare_gates_final.json",
+    "D:/treeroute/speedproof/fix_round_status.txt",
+    "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/speedproof/SPEEDPROOF_REPORT.md"
+   ],
+   "what": "PM2.5 WIDE smoke of the shipped pm25_adaptation.py with every BLAS pinned to 1 thread: 8 donors, 3 test regions, 400 trees/donor (3,200 trees), the default 35-point grid, links identity/log/logc. Reaches the dual solve, NVERIFY and the (1.0, 0.5) contract check.",
+   "command": "cd \"C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\engine\\speedproof\"\npy -3.9 -u run_shipped_blas1.py --smoke --npd 400 --links identity,log,logc --run-dir D:/treeroute/speedproof/wide_golden_blas1",
+   "run_at": "2026-09-28 14:05:17 to 2026-09-28 14:13:08 (speed proof round 2)",
+   "launcher": "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/speedproof/run_shipped_blas1.py",
+   "launcher_sha256": "e13252c01cffc4cc18626bbcd609f2ccbb72ef0ade8d5fd86cea16919aeb909b",
+   "threads": "pinned: numpy and scipy OpenBLAS at 1 thread for the whole process (threadpoolctl, after both loaded); OpenMP 4 (the shipped cap_threads). Recorded in launcher.json: blas_all_one_thread_at_end=True.",
+   "facts": [
+    "G7 (speedup-3 plan gate): bit-identical to the speed-proof copy on 8 router workers at BLAS 1 (wide_final_w8)",
+    "G8: the shipped script as launched (wide_golden, BLAS numpy 16 / scipy 4) differs by at most 3.55e-13 ug/m3 on test predictions; every decision equal",
+    "temp files were redirected by name to D:/treeroute/speedproof/tmp; nothing was written to D:/pm25"
+   ],
+   "summary": {
+    "adopted": "log_corrector",
+    "regression_gate": null,
+    "argv": [
+     "C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\pm25_adaptation.py",
+     "--smoke",
+     "--npd",
+     "400",
+     "--links",
+     "identity,log,logc",
+     "--run-dir",
+     "D:/treeroute/speedproof/wide_golden_blas1"
+    ],
+    "npd": 400,
+    "levels": [
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     10.0,
+     30.0,
+     100.0
+    ],
+    "ratios": [
+     0.0625,
+     0.125,
+     0.25,
+     0.5,
+     1.0
+    ],
+    "started": "2026-09-28 14:05:19",
+    "finished": "2026-09-28 14:13:07"
+   },
+   "gates": [
+    "plan 4.4: PM2.5 replay equals the golden captured under the pins (target 1e-9, hard stop 1e-4) -- the pinned golden, and the only one wide enough to exercise the dual solve, NVERIFY and the contract check",
+    "plan 4.5 speedup 3: byte-identical across router worker counts at BLAS 1 (G7 passed)"
+   ],
+   "files": [
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/_adaptation.log",
+     "size": 414,
+     "sha256": "2d2f53a87700132337c22cab6ff2047d4b80ef2364d367dec16773cf53227f87",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/inner_candidates.csv",
+     "size": 31582,
+     "sha256": "ee4f1da043e8d44d0c623cf601b004ee77699811be6fedc144e5035177ffd676",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/inner_preds.npz",
+     "size": 3147775,
+     "sha256": "91992a0fd36af3ed36295c3ac37cc3403888b8f3c770de93bf8203dee21ddb66",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/launcher.json",
+     "size": 3874,
+     "sha256": "6c16652fd9dcc2163725413130587f4ff44aa07a812e4ef653991e758f437c1c",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/per_region.csv",
+     "size": 4709,
+     "sha256": "a7027a418f9d0fe3b20f6fa09db44bde17d82b5f8087eaf66827d4d6c3fa6c49",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/per_year.csv",
+     "size": 6153,
+     "sha256": "f31e852bee6bc688cffdad0502a3adfe26eb47467d564f2f9c4ce96ae9e295f7",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/predictions.parquet",
+     "size": 647218,
+     "sha256": "5b72adcaa0cdefbe3353bb5cdbf94a44decd6ee66d6d804dff1146afb9a2bc4c",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/run.log",
+     "size": 10744,
+     "sha256": "b3eac9b628e49d7054ec79e2465ef22319fc93285f0343a390554d8eae0a5022",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1/verdict.json",
+     "size": 11618,
+     "sha256": "7f126ff0096144ffb74c23ee20851df284857026210a32cf83e07fae4e4687a2",
+     "sha256_from": "hashed by goldens.py build"
+    },
+    {
+     "path": "D:/treeroute/speedproof/wide_golden_blas1.console.txt",
+     "size": 12209,
+     "sha256": "1041881a4d1491ffe98725a9d434c1350dad29df00e6f91ba8e9798d83f51015",
+     "sha256_from": "hashed by goldens.py build",
+     "role": "console"
+    }
+   ]
+  },
+  "fire_smoke": {
+   "problem": "fire",
+   "status": "PENDING -- not run yet",
+   "why_pending": "not run on 2026-09-28: 5.7 GB of RAM was available and the shipped fire smoke needs about 8.5 GB at start. Its own logs: 8.7 GB free before the pool build -> 4.9 GB before the bank (D:/adaptation/fire_strict_smoke/_adaptation.log), the bank guard needs 3.0 GB, and a smoke started at 7.2 GB fell to 1.2 GB during the pool build (adaptation.py comment at run_fire; D:/adaptation/fire_strict/_adaptation.log 02:51). A browser held about 5 GB. The launcher refuses below --min-avail-gb 8.5.",
+   "what": "Fire smoke of the shipped adaptation.py nowcast in its shipped configuration: --problem=fire --calib=strict --smoke=1, every arm (raw=base, link, raw_corrector, link_corrector, placebo): 30 donors, 10 test regions, 40 trees/donor, 40 test cells/region (fire_evt_arch default_rng(7) picks), TRAIN_END 2018, inner 2017-18.",
+   "command": "cd \"C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\engine\\legacy_harness\"\npy -3.9 -u launch_pinned.py --script adaptation_rooted.py --copy-of ../../adaptation.py --out-dir D:/treeroute/golden/fire_smoke --env ADAPTATION_OUT_ROOT=D:/treeroute/golden/fire_smoke --redirect-prefix D:/fire/pool_features_ --redirect-prefix D:/fire/lead1_pool_ --redirect-prefix D:/fire/A_ --min-avail-gb 8.5 -- --problem=fire --calib=strict --smoke=1",
+   "script": "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/legacy_harness/adaptation_rooted.py",
+   "script_sha256": "bc575cf88a521c43cf7f44a176b925c3340c9d8ed587931e75330c4e2b90c220",
+   "source": "C:/Users/moh the ghost/Desktop/data set for reserch paper/adaptation.py",
+   "source_sha256": "55bec38dd6341eab7876c281161b5c3fba45f06a7bbdf1f09f842b4842e21c59",
+   "rooted_copy_check": {
+    "ok": true,
+    "problems": [],
+    "changed_lines": [
+     {
+      "line": 139,
+      "source": "OUT_ROOT = \"D:/adaptation\"",
+      "copy": "OUT_ROOT = os.environ.get(\"ADAPTATION_OUT_ROOT\", \"D:/treeroute/golden\")"
+     }
+    ],
+    "unified_diff": "--- C:/Users/moh the ghost/Desktop/data set for reserch paper/adaptation.py\n+++ C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/legacy_harness/adaptation_rooted.py\n@@ -139 +139 @@\n-OUT_ROOT = \"D:/adaptation\"\r\n+OUT_ROOT = os.environ.get(\"ADAPTATION_OUT_ROOT\", \"D:/treeroute/golden\")\r\n"
+   },
+   "outputs_expected": [
+    "D:/treeroute/golden/fire_smoke/fire_strict_smoke/_adaptation.log",
+    "D:/treeroute/golden/fire_smoke/fire_strict_smoke/_preds.npz",
+    "D:/treeroute/golden/fire_smoke/fire_strict_smoke/_verdicts.csv",
+    "D:/treeroute/golden/fire_smoke/console.txt",
+    "D:/treeroute/golden/fire_smoke/launcher.json"
+   ],
+   "hashes_live_in": "D:/treeroute/golden/fire_smoke/launcher.json ('outputs': path, size, sha256 of every file, written once by launch_pinned.py); `goldens.py verify` re-checks them",
+   "threads": "pinned by launch_pinned.py: OPENBLAS/MKL/BLIS/VECLIB = 1 and OMP/NUMEXPR = 4 set before numpy loads, then numpy + scipy.linalg imported and threadpoolctl BLAS = 1 for the process. The shipped fire runs used numpy BLAS 16 / scipy 4, so this golden may differ from them at the 1e-13 rounding level (as PM2.5's G8 did).",
+   "scratch": "fire_architecture writes its pool and tree matrices to D:/fire/pool_features_<pid>.f32 and D:/fire/A_<tag>_<pid>.f16 (not protected, but outside this task's write scope); the launcher redirects those names to D:/treeroute/golden/_scratch, and the stale-file sweep (_sweep_stale_pools) then looks only there",
+   "shipped_references": {
+    "note": "NOT the golden. fire_strict_smoke was run 2026-09-21 23:08 with --arms=base (raw, link only; base MAE 0.007763, link 0.004247, 19,181 scored rows), BEFORE fire_architecture.py's sentinel fix (file time 2026-09-22 00:27), at BLAS 16/4. fire_strict/_preds.npz is the full shipped nowcast whose link_corrector test MAE is 0.003993 (59,892 rows) -- the reference the plan's fire replay gate cites for full width.",
+    "files": [
+     {
+      "path": "D:/adaptation/fire_strict/_adaptation.log",
+      "size": 23905,
+      "sha256": "e2b0669d015614c1150a88904dbee5235a22532e0bf14a643e3e6d3f8e258555",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict/_preds.npz",
+      "size": 540673,
+      "sha256": "1085c01db128cd4c544aac380607f06abb4e41395e93ce1d5cf9242a59f87cd3",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict/_preds.npz.bak",
+      "size": 540535,
+      "sha256": "14b303b6e750422716c37558b184fa0dbf3c77979f84ce532aeb8b3bfd0c8231",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict/_verdicts.csv",
+      "size": 680,
+      "sha256": "e67c3990b54d44f65165302dfd334c1e21cfd5ce680ba70c5be176354c4992c9",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict_smoke/_adaptation.log",
+      "size": 4060,
+      "sha256": "81d343edd86a223b8afa552df3a4d048ef29b3e31d236240b9b9b01eb18812c4",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict_smoke/_preds.npz",
+      "size": 73068,
+      "sha256": "2ade97ed5a53cb12d86448f25607ebcca705b11ac76130ad5167b20216b38534",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     },
+     {
+      "path": "D:/adaptation/fire_strict_smoke/_verdicts.csv",
+      "size": 158,
+      "sha256": "f710f3a19b9888dd58995cc1e8749a6be00ea055d485913c3be2c69d4bb37687",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_shipped_json": true
+     }
+    ]
+   },
+   "gates": [
+    "plan 4.4: fire replay equals its golden (shipped test MAE 0.003993 at full width); this smoke is the pinned, byte-level golden for the harness replay (cap800 rows, default_rng(7) cells, float16 matrices, seeds SEED*1000+e*17+j / SEED*100+j)",
+    "M4 gate 'Fire replay = golden'"
+   ],
+   "files": []
+  },
+  "defo_link_corrector": {
+   "problem": "defo",
+   "what": "The cached link_corrector arrays of the shipped defo nowcast: one npz per test region (4,000 cells, annual, test 2020-23, inner score 2017-19), keys link_corrector / inner_link_corrector next to y, inner_y and the other arms.",
+   "produced_by": [
+    "adaptation.py run_defo (base, link, corrector, placebo; the shipped file's sha256 now is 55bec38dd6341eab7876c281161b5c3fba45f06a7bbdf1f09f842b4842e21c59)",
+    "add_linkcorr.py (added link_corrector, inner_link_corrector and link_gate IN PLACE; D:/adaptation/defo/_addarm.log; its sha256 now is fc10ccca3fab8bd09d82891d834f05270d2ee54b2bd0fd26a3f5531ee1d4a361)"
+   ],
+   "rerun": "NEVER: run_defo deletes and rebuilds caches (task rule; plan G-NOOVERWRITE)",
+   "rows_per_region": {
+    "borneo_peat_fires": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "costa_rica": {
+     "test_rows": 10172,
+     "inner_rows": 7629,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "gran_chaco": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "greece_mainland": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "idaho_montana_wildfire": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "japan_central_honshu": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "llanos_venezuela": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "new_guinea_papua": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "pantanal": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "poland_central": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "tasmania_western": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "tierra_del_fuego": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "tongass_alaska": {
+     "test_rows": 15752,
+     "inner_rows": 10589,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "trans_baikal_steppe": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "vietnam_central_highlands": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "western_scotland": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    },
+    "yucatan_peninsula": {
+     "test_rows": 16000,
+     "inner_rows": 8000,
+     "keys": [
+      "y",
+      "inner_y",
+      "link",
+      "inner_link",
+      "base",
+      "inner_base",
+      "corrector",
+      "inner_corrector",
+      "placebo",
+      "inner_placebo",
+      "t3_shipped",
+      "t3_blind",
+      "link_corrector",
+      "inner_link_corrector",
+      "link_gate",
+      "inner_link_gate"
+     ]
+    }
+   },
+   "backup_folder": "D:/treeroute/registry/backup_20260928/defo",
+   "banks": {
+    "note": "the 25 lead-0 donor banks the replay needs (plan 4.4: 'defo's shipped artefact banks by sha256'). Donors = the 25 placebo-bank names. sha256 copied from shipped.json, not re-hashed by build; `verify --deep` re-hashes them. add_linkcorr.py's link_gate also reads D:/defo_overnight/banks (not protected, not needed for link_corrector).",
+    "donors": [
+     "amazon_basin_brazil",
+     "andes_puna",
+     "angola_zambia_fire_belt",
+     "atlantic_forest_brazil",
+     "australian_bushfire_belt",
+     "bc_inland_rainforest",
+     "bolivia_beni_savanna",
+     "borneo_rainforest",
+     "canadian_taiga",
+     "caucasus_highlands",
+     "congo_basin_drc",
+     "eastern_us_deciduous",
+     "ireland",
+     "miombo_woodland_zambia",
+     "new_zealand_fiordland",
+     "new_zealand_north_island",
+     "northeast_china_broadleaf",
+     "northern_thailand",
+     "pacific_nw_coast",
+     "pearl_river_delta",
+     "russian_far_east_primorye",
+     "siberian_taiga",
+     "southern_chile_rainforest",
+     "west_africa_monsoon_guinea",
+     "western_europe_temperate"
+    ],
+    "missing_from_shipped_json": [],
+    "files": [
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_amazon_basin_brazil.pkl",
+      "size": 29621767,
+      "sha256": "65db9defe0b1635bd6e52e3e49c4aa63c6c0365f1dc92e3959e6ae71e354e720",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_andes_puna.pkl",
+      "size": 36100429,
+      "sha256": "50e558f42ffe43e8976fa3a96f4d42d0f2257fb2932eb88d1bbfc5a5a08b0ea6",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_angola_zambia_fire_belt.pkl",
+      "size": 46605820,
+      "sha256": "6dbfdca734c1ef0eb68e6945192ec4be5870b4ce9cddc4c5b9a87a0e0a989d96",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_atlantic_forest_brazil.pkl",
+      "size": 50525158,
+      "sha256": "02b960dad4c6eb4fbb1bbb21b381ba58bc635d717e3543cd9f27554692f831a4",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_australian_bushfire_belt.pkl",
+      "size": 31596787,
+      "sha256": "6d029d5af5879f1c3ecb211c5f54c9d673823c0c47391c139f14de7a9960f59c",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_bc_inland_rainforest.pkl",
+      "size": 25616398,
+      "sha256": "2b7f48b21c474a21d9659a12d8fbd123da57191d2ebae3514e0711ee29aa2f30",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_bolivia_beni_savanna.pkl",
+      "size": 36656602,
+      "sha256": "0f695ebc207f9162d8d6a83c45de0fe081cec653c941eac94d1f706c73c8f87d",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_borneo_rainforest.pkl",
+      "size": 47750041,
+      "sha256": "4fdcec86a81495eeea25aebe94c94af3fad38f834cf9ac0fc755a2b75fcce292",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_canadian_taiga.pkl",
+      "size": 39578104,
+      "sha256": "e5b6f99a80c34c3965ca9b55fd6bc15f8b77caf7dadd6f9035366cf208498210",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_caucasus_highlands.pkl",
+      "size": 15503761,
+      "sha256": "f42d057b0cb4450629cc8835d6f55ae1b9b01b367f0b88cc45294f179340441f",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_congo_basin_drc.pkl",
+      "size": 65500675,
+      "sha256": "669db49463beebd9ee2f3bff6b0e0a08ea29ebfbf509d0b7045f7e3759820da0",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_eastern_us_deciduous.pkl",
+      "size": 46020730,
+      "sha256": "b486837a197fa9dc28a66dacf91f88f1d3c93b2637fdb9d68703ad48a32d6856",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_ireland.pkl",
+      "size": 48518029,
+      "sha256": "15a8eefc9327551950fed839e77c94788bc5b7c437b91adb08a48db211b0299b",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_miombo_woodland_zambia.pkl",
+      "size": 46080202,
+      "sha256": "56e57650ae13df2a644314d130ed0bf0fbe0d3178c534ae6ec10dd76cef009ea",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_new_zealand_fiordland.pkl",
+      "size": 30696055,
+      "sha256": "6888288da75ecd9864a78f3bf7c0c17ac675b168e9ca8af80afb9f3f6e5040bd",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_new_zealand_north_island.pkl",
+      "size": 42148747,
+      "sha256": "60d0c6ceb53a31dd3f2ffb8745b3cefdda49e19c670f97782833dd9323e5c7c5",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_northeast_china_broadleaf.pkl",
+      "size": 23000770,
+      "sha256": "c20078461631b744d55074a68902531257ba9ff7447883d7c90a2d2f9a5437f3",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_northern_thailand.pkl",
+      "size": 63351034,
+      "sha256": "bd8af254d8f7822c0a02402f7868bae3b5055eb1ba7d66eb1018af9a86f541d8",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_pacific_nw_coast.pkl",
+      "size": 68838634,
+      "sha256": "2b1b215074c7aefc3352f0b281c4d69037969a25d10ea3c67f6fc82cd3df0533",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_pearl_river_delta.pkl",
+      "size": 37199155,
+      "sha256": "cd2f7eef3dd745d6a73f23355bf0448f7db1c50489620e9854f5a725e27b9acb",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_russian_far_east_primorye.pkl",
+      "size": 25154245,
+      "sha256": "c5f4eade7885a1afed1b27b41e70d0e8fa97db2df51c600acd9deaf085897947",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_siberian_taiga.pkl",
+      "size": 40546852,
+      "sha256": "ea34e48d0b0a12ec6137a00bf23f8eb7bd9aa52122bff351f4eba081b5b1edfb",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_southern_chile_rainforest.pkl",
+      "size": 26873890,
+      "sha256": "63d67f70b222563b40f5706e9f0b2a2da18fc37300f30216916aef0fa7c79aa9",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_west_africa_monsoon_guinea.pkl",
+      "size": 67681723,
+      "sha256": "54762f1d3d1d20f703a6048f58cdb858ac657049813f89d0072c684b08ef47ca",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_corrector/banks/pair_hist_n250_mf15_c12_western_europe_temperate.pkl",
+      "size": 48389164,
+      "sha256": "1913ef317bba229040af94bd3333899e0d98476bb1280cab36f00fced1dc1789",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "pair bank (base + corrector trees)"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_amazon_basin_brazil.pkl",
+      "size": 6027132,
+      "sha256": "94936ea8af92754a03052dda2af8d727b72cb8818c9488522eda1e653f2e8489",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_andes_puna.pkl",
+      "size": 6855567,
+      "sha256": "22549ae9ef792f2255d7470080d54e0fc1b7e73bb273e005ec1707500ab740ea",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_angola_zambia_fire_belt.pkl",
+      "size": 7067433,
+      "sha256": "e608f90b1c32e069e59aa7933b3e842ac3e55d5f99b01d6df68594ad71132917",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_atlantic_forest_brazil.pkl",
+      "size": 8214153,
+      "sha256": "abbbf14e8d388b352d41ec5e40fcdac3ac49ccb03e28e822e7daf0860678a1f1",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_australian_bushfire_belt.pkl",
+      "size": 6329445,
+      "sha256": "1518e61017de629c4dd5c0d396e09195b0d60e46129984c6b65787b9ed7d1bdf",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_bc_inland_rainforest.pkl",
+      "size": 5630742,
+      "sha256": "2435dae3c54c8d1f8d8f56eb435590f656f17f6aa0394ad658320334bc55fda9",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_bolivia_beni_savanna.pkl",
+      "size": 6436149,
+      "sha256": "85c20b455b9b80a46e4ad6df03b2931461fbebef4db7cf59b5e8402d815f35e6",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_borneo_rainforest.pkl",
+      "size": 7893786,
+      "sha256": "6d2b9eb69bc4cf40fdbb960f40a6b5177ab47a31d940432b838a89a308684a0f",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_canadian_taiga.pkl",
+      "size": 5034783,
+      "sha256": "06981c101917effb76fea3f294ad336aeb0497753e10411d182c4e4f33a4d653",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_caucasus_highlands.pkl",
+      "size": 7508916,
+      "sha256": "8436590abf8e55db41e612761a1a09d8ce282b4e2fb1cfb068a32fbd23896766",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_congo_basin_drc.pkl",
+      "size": 8411712,
+      "sha256": "1c0ba9df806c21fce4a0c9927bff322d22b025e0e136078ea66187b44c884a3c",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_eastern_us_deciduous.pkl",
+      "size": 7867869,
+      "sha256": "41134d5612f65304f84b5c5899b87c771b6ea18914642f25c136ca790b5c649a",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_ireland.pkl",
+      "size": 8565564,
+      "sha256": "5eb0a1b2763de55c2b0e99d65faedd69b32f5521ef7a2ac942b64ec520038621",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_miombo_woodland_zambia.pkl",
+      "size": 6768735,
+      "sha256": "ad1d73515070cc4194c32f54e3b91f9c461cd9f4f8f09b643839d87eacc38ac1",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_new_zealand_fiordland.pkl",
+      "size": 6063150,
+      "sha256": "8200a3732da9687cdfa085a28185f07b9e2a972b3cb78711bae7f035710262fb",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_new_zealand_north_island.pkl",
+      "size": 8399043,
+      "sha256": "0ed3d1d22b00839d0ebf6dc3bb90a176b190c0742c7e7805532246c1645cc37f",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_northeast_china_broadleaf.pkl",
+      "size": 7104600,
+      "sha256": "82a6ca6d939199d3eb4769defba79572376be8346172098dae3d5304e1cff377",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_northern_thailand.pkl",
+      "size": 8603664,
+      "sha256": "21e48aedd295f1172733043f3e4e687a6b6c86837f1c2f838634df9dfb128010",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_pacific_nw_coast.pkl",
+      "size": 11657520,
+      "sha256": "4980ba926ae24c0c40fcf1747ad76a2dd9b5c31befb2fd4e5ec27fc0d635fbc1",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_pearl_river_delta.pkl",
+      "size": 7637043,
+      "sha256": "bd7fc154630140709a69893f21ebfe18608c543305e50db102a9a7173074e82d",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_russian_far_east_primorye.pkl",
+      "size": 6476898,
+      "sha256": "c1d87166eb04a86c467f03ef0227175ae3aa78b87bdc1e1a27455fffadae2570",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_siberian_taiga.pkl",
+      "size": 4271187,
+      "sha256": "ecf3ee4e10ecc1b122cb7e06adfc3ed189426b686f11460b5465921e5b6178c7",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_southern_chile_rainforest.pkl",
+      "size": 6297189,
+      "sha256": "d1b5a46522f6b0270ce482b8878a58917b8126442e9cfe4d8257ea033d5c140a",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_west_africa_monsoon_guinea.pkl",
+      "size": 10230654,
+      "sha256": "2c0b16dc85fe082453d4fea16d157fd1470817b9f233af73f6476d69969513c5",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     },
+     {
+      "path": "D:/defo_tier2/banks/plac_hist_n250_mf15_c12_western_europe_temperate.pkl",
+      "size": 7753266,
+      "sha256": "9e98c0b54fbd355c8fff0ddd0b1192102bd4453ca7fbfa9ad4c970cd9947b969",
+      "sha256_from": "D:/treeroute/registry/shipped.json",
+      "role": "placebo bank"
+     }
+    ]
+   },
+   "gates": [
+    "plan 4.4: the engine's region solver on defo's shipped banks equals the cached link_corrector arrays, with matching row counts",
+    "M3 gate 'Defo replay = cached link_corrector arrays with matching row counts' (part of the Tue 13 Oct kill switch)"
+   ],
+   "files": [
+    {
+     "path": "D:/adaptation/defo/_rival_L0_c4000.npz",
+     "size": 3005022,
+     "sha256": "24d1a94d8ea38d4bca31aa9e4b4a963c40db25d3a51ccf53714bb9141dee0c78",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "rival cache (no link_corrector key; matched by the glob only)",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/_rival_L0_c4000.npz",
+      "size": 3005022,
+      "sha256": "24d1a94d8ea38d4bca31aa9e4b4a963c40db25d3a51ccf53714bb9141dee0c78",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/borneo_peat_fires_c4000.npz",
+     "size": 1074589,
+     "sha256": "c6abbfcc8e3de9448c60010a5365a7fa8b46f6301ba5d0ea789f18a3d79a386d",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/borneo_peat_fires_c4000.npz",
+      "size": 1074589,
+      "sha256": "c6abbfcc8e3de9448c60010a5365a7fa8b46f6301ba5d0ea789f18a3d79a386d",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/costa_rica_c4000.npz",
+     "size": 785432,
+     "sha256": "bf8fd05e74bf38ddb15ed2ea016177c69e57150a2c73efa71690bc788323c146",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/costa_rica_c4000.npz",
+      "size": 785432,
+      "sha256": "bf8fd05e74bf38ddb15ed2ea016177c69e57150a2c73efa71690bc788323c146",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/gran_chaco_c4000.npz",
+     "size": 1026594,
+     "sha256": "83d36dacbf569652546ad29fb4bad1a19b3b29c0f4b2143c2b5bd599a6c465c6",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/gran_chaco_c4000.npz",
+      "size": 1026594,
+      "sha256": "83d36dacbf569652546ad29fb4bad1a19b3b29c0f4b2143c2b5bd599a6c465c6",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/greece_mainland_c4000.npz",
+     "size": 983005,
+     "sha256": "4fbaeb16b49135fef76ab128a265a1a50ca5c87c6165ee1bc995923f64ebe410",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/greece_mainland_c4000.npz",
+      "size": 983005,
+      "sha256": "4fbaeb16b49135fef76ab128a265a1a50ca5c87c6165ee1bc995923f64ebe410",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/idaho_montana_wildfire_c4000.npz",
+     "size": 1015542,
+     "sha256": "5bcc3c88cb3c4d0e2259c72118a59cee435c8dffc4209eb61cdd67bc56ff252e",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/idaho_montana_wildfire_c4000.npz",
+      "size": 1015542,
+      "sha256": "5bcc3c88cb3c4d0e2259c72118a59cee435c8dffc4209eb61cdd67bc56ff252e",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/japan_central_honshu_c4000.npz",
+     "size": 1057065,
+     "sha256": "32d37b586faca0af0ec43b91e567cdc984dd5c0192fbdeb975119228ad75f4db",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/japan_central_honshu_c4000.npz",
+      "size": 1057065,
+      "sha256": "32d37b586faca0af0ec43b91e567cdc984dd5c0192fbdeb975119228ad75f4db",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/llanos_venezuela_c4000.npz",
+     "size": 1033920,
+     "sha256": "2d6c00a30038f29a2f40e709a9b4c33dbca756554b2bc84122f61bd936f75daa",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/llanos_venezuela_c4000.npz",
+      "size": 1033920,
+      "sha256": "2d6c00a30038f29a2f40e709a9b4c33dbca756554b2bc84122f61bd936f75daa",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/new_guinea_papua_c4000.npz",
+     "size": 1078764,
+     "sha256": "438ab0c6b4606db2a51d469833f2ebd7b4f77066ebbc1f1c0ff39e43f65768fb",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/new_guinea_papua_c4000.npz",
+      "size": 1078764,
+      "sha256": "438ab0c6b4606db2a51d469833f2ebd7b4f77066ebbc1f1c0ff39e43f65768fb",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/pantanal_c4000.npz",
+     "size": 1048051,
+     "sha256": "32211f85425804bde3b683d47f6ce2c553295f606c25e32ce1ea26b565f50069",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/pantanal_c4000.npz",
+      "size": 1048051,
+      "sha256": "32211f85425804bde3b683d47f6ce2c553295f606c25e32ce1ea26b565f50069",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/poland_central_c4000.npz",
+     "size": 1060968,
+     "sha256": "a8323cfe6f894892fbf42ade6da048c9435e75b7e75dadd6442eb20161425b53",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/poland_central_c4000.npz",
+      "size": 1060968,
+      "sha256": "a8323cfe6f894892fbf42ade6da048c9435e75b7e75dadd6442eb20161425b53",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/tasmania_western_c4000.npz",
+     "size": 1033860,
+     "sha256": "347860abc243a2562133d060edb7fcc43ca0e5158b8c4502add74af4bcaf7a4d",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/tasmania_western_c4000.npz",
+      "size": 1033860,
+      "sha256": "347860abc243a2562133d060edb7fcc43ca0e5158b8c4502add74af4bcaf7a4d",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/tierra_del_fuego_c4000.npz",
+     "size": 1020556,
+     "sha256": "63965ee98e0d50661242e38b9841ddbe607c2079e5b1f8c22bad0b23d334f80a",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/tierra_del_fuego_c4000.npz",
+      "size": 1020556,
+      "sha256": "63965ee98e0d50661242e38b9841ddbe607c2079e5b1f8c22bad0b23d334f80a",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/tongass_alaska_c4000.npz",
+     "size": 1120847,
+     "sha256": "744db243c3c18221a6fdbd96cb4c6245475d077ec9810edfa8080988e50b66bb",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/tongass_alaska_c4000.npz",
+      "size": 1120847,
+      "sha256": "744db243c3c18221a6fdbd96cb4c6245475d077ec9810edfa8080988e50b66bb",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/trans_baikal_steppe_c4000.npz",
+     "size": 1009229,
+     "sha256": "e4cea139dd08a41e9f73612b5cfe53f4fcd155d4efbdb5bcca3bb88a2f47de5e",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/trans_baikal_steppe_c4000.npz",
+      "size": 1009229,
+      "sha256": "e4cea139dd08a41e9f73612b5cfe53f4fcd155d4efbdb5bcca3bb88a2f47de5e",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/vietnam_central_highlands_c4000.npz",
+     "size": 1075702,
+     "sha256": "74a99623e533e50854456c457c902323bdfedf16da427d6db1a34da632105d80",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/vietnam_central_highlands_c4000.npz",
+      "size": 1075702,
+      "sha256": "74a99623e533e50854456c457c902323bdfedf16da427d6db1a34da632105d80",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/western_scotland_c4000.npz",
+     "size": 1031190,
+     "sha256": "7b3328e35633b8420ee40124318faf9a9003f9b2dc60e964e09e5fbbeb95ece3",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/western_scotland_c4000.npz",
+      "size": 1031190,
+      "sha256": "7b3328e35633b8420ee40124318faf9a9003f9b2dc60e964e09e5fbbeb95ece3",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    },
+    {
+     "path": "D:/adaptation/defo/yucatan_peninsula_c4000.npz",
+     "size": 1072218,
+     "sha256": "3e6c405372750e910d1a0e380ff1d50cd815b0ad0cd4e473f83e5c4c45767d0f",
+     "sha256_from": "hashed by goldens.py build",
+     "matches_shipped_json": true,
+     "role": "link_corrector cache",
+     "backup": {
+      "path": "D:/treeroute/registry/backup_20260928/defo/yucatan_peninsula_c4000.npz",
+      "size": 1072218,
+      "sha256": "3e6c405372750e910d1a0e380ff1d50cd815b0ad0cd4e473f83e5c4c45767d0f",
+      "sha256_from": "hashed by goldens.py build",
+      "matches_original": true
+     }
+    }
+   ]
+  }
+ }
+}

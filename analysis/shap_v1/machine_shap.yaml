@@ -1,0 +1,6 @@
+# Machine file of the post hoc SHAP rebuilds (PROTOCOL.md 4.1). PATHS ONLY, the schema of engine/config/machine.yaml.
+# Every engine-made file of a rebuild (run folders, bank checkpoints, temp tables, the heavy-job lock) lands under this
+# folder, never under D:/treeroute/runs or D:/treeroute/tmp. The registry is the engine's own (read for its guards).
+run_root: D:/treeroute/analysis/shap_v1/engine_runs
+temp_dir: D:/treeroute/analysis/shap_v1/engine_tmp
+registry_dir: D:/treeroute/registry

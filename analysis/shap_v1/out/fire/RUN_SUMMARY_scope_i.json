@@ -1,0 +1,34 @@
+{
+ "finished": "2026-11-13 21:18:00",
+ "leads": [
+  0
+ ],
+ "problem": "fire",
+ "scope": "i",
+ "steps": [
+  {
+   "exit": 0,
+   "seconds": 7953.0,
+   "status": "done",
+   "step": "treeroute rebuild leads [0]"
+  },
+  {
+   "exit": 0,
+   "seconds": 279.5,
+   "status": "done",
+   "step": "treeroute SHAP lead 0"
+  },
+  {
+   "exit": 3,
+   "seconds": 6.1,
+   "status": "stopped at a gate (a stop rule)",
+   "step": "rivals lead 0"
+  },
+  {
+   "exit": 0,
+   "seconds": 10.5,
+   "status": "done",
+   "step": "compare lead 0"
+  }
+ ]
+}

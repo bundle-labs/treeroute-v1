@@ -1,0 +1,1139 @@
+﻿S41 top keys ['defo/feature/rival_lgbm|rival_lgbm_tweedie', 'defo/feature/rival_lgbm|rival_rf', 'defo/feature/rival_lgbm|rival_ridge', 'defo/feature/rival_lgbm|treeroute', 'fire/variable/rival_lgbm|rival_lgbm_tweedie', 'fire/variable/rival_lgbm|rival_rf', 'fire/variable/rival_lgbm|treeroute', 'fire/feature/rival_lgbm|rival_lgbm_tweedie', 'fire/feature/rival_lgbm|rival_rf', 'fire/feature/rival_lgbm|rival_ridge', 'fire/feature/rival_lgbm|treeroute', 'pm25/variable/rival_lgbm|rival_ridge', 'pm25/variable/rival_lgbm|treeroute', 'pm25/variable/rival_rf|rival_ridge', 'pm25/variable/rival_rf|treeroute', 'pm25/feature/rival_lgbm|rival_ridge', 'pm25/feature/rival_lgbm|treeroute', 'pm25/feature/rival_rf|rival_ridge', 'pm25/feature/rival_rf|treeroute', 'ndvi/variable/rival_bardl_h1|rival_lgbm', 'ndvi/variable/rival_bardl_h1|rival_rf', 'ndvi/variable/rival_bardl_h1|rival_ridge', 'ndvi/variable/rival_bardl_h1|treeroute', 'ndvi/variable/rival_lgbm|rival_ridge', 'ndvi/variable/rival_rf|rival_ridge', 'ndvi/variable/rival_ridge|treeroute', 'ndvi/feature/rival_bardl_h1|rival_lgbm', 'ndvi/feature/rival_bardl_h1|rival_rf', 'ndvi/feature/rival_bardl_h1|rival_ridge', 'ndvi/feature/rival_bardl_h1|treeroute']
+defo/feature/rival_lgbm|rival_lgbm_tweedie: dict(5)  {"base": {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "jaccard_top20": 0.42857142857142855, "coincidental_top20": [], "rho20": 0.35686918445539134, "rbo090": 0.5478245963972381, "rbo095": 0.5987130778387467}, "tie_ci": 
+  base: dict(9)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "jaccard_top20": 0.42857142857142855, "coincidental_top20": [], "rho20": 0.35686918445539134, "rbo090": 0.5478245963972381, "rbo095": 0.5987130778387467}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.42857142857142855
+    coincidental_top20: list(0)  []
+    rho20: 0.35686918445539134
+    rbo090: 0.5478245963972381
+    rbo095: 0.5987130778387467
+  tie_ci: dict(9)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "jaccard_top20": 0.42857142857142855, "coincidental_top20": [], "rho20": 0.35686918445539134, "rbo090": 0.5478245963972381, "rbo095": 0.5987130777173062}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.42857142857142855
+    coincidental_top20: list(0)  []
+    rho20: 0.35686918445539134
+    rbo090: 0.5478245963972381
+    rbo095: 0.5987130777173062
+  tie_desc: dict(9)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "jaccard_top20": 0.42857142857142855, "coincidental_top20": [], "rho20": 0.35686918445539134, "rbo090": 0.547824596397238, "rbo095": 0.5987130776023512}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.42857142857142855
+    coincidental_top20: list(0)  []
+    rho20: 0.35686918445539134
+    rbo090: 0.547824596397238
+    rbo095: 0.5987130776023512
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.0, "rbo090": 1.1102230246251565e-16, "rbo095": 2.36395569785941e-10}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.0
+    rbo090: 1.1102230246251565e-16
+    rbo095: 2.36395569785941e-10
+  zeros_in_J: dict(2)  {"rival_lgbm": 3, "rival_lgbm_tweedie": 0}
+    rival_lgbm: 3
+    rival_lgbm_tweedie: 0
+defo/feature/rival_lgbm|rival_rf: dict(5)  {"base": {"jaccard_top5": 1.0, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.23292547274749723, "rbo090": 0.7777416059503901, "rbo095": 0.7223971013205239}, "tie_ci": {"jaccard_top5":
+  base: dict(9)  {"jaccard_top5": 1.0, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.23292547274749723, "rbo090": 0.7777416059503901, "rbo095": 0.7223971013205239}
+    jaccard_top5: 1.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.23292547274749723
+    rbo090: 0.7777416059503901
+    rbo095: 0.7223971013205239
+  tie_ci: dict(9)  {"jaccard_top5": 1.0, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.23292547274749723, "rbo090": 0.7777416059503901, "rbo095": 0.7223971011990833}
+    jaccard_top5: 1.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.23292547274749723
+    rbo090: 0.7777416059503901
+    rbo095: 0.7223971011990833
+  tie_desc: dict(9)  {"jaccard_top5": 1.0, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.23292547274749723, "rbo090": 0.77774160595039, "rbo095": 0.7223971010841282}
+    jaccard_top5: 1.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.23292547274749723
+    rbo090: 0.77774160595039
+    rbo095: 0.7223971010841282
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.0, "rbo090": 1.1102230246251565e-16, "rbo095": 2.3639568080824347e-10}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.0
+    rbo090: 1.1102230246251565e-16
+    rbo095: 2.3639568080824347e-10
+  zeros_in_J: dict(2)  {"rival_lgbm": 3, "rival_rf": 1}
+    rival_lgbm: 3
+    rival_rf: 1
+defo/feature/rival_lgbm|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "jaccard_top20": 0.2903225806451613, "coincidental_top20": [], "rho20": -0.1907258064516129, "rbo090": 0.3000979890551959, "rbo095": 0.3623600402728075}, "tie_ci": {"jaccard_top5"
+  base: dict(9)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "jaccard_top20": 0.2903225806451613, "coincidental_top20": [], "rho20": -0.1907258064516129, "rbo090": 0.3000979890551959, "rbo095": 0.3623600402728075}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.2903225806451613
+    coincidental_top20: list(0)  []
+    rho20: -0.1907258064516129
+    rbo090: 0.3000979890551959
+    rbo095: 0.3623600402728075
+  tie_ci: dict(9)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "jaccard_top20": 0.2903225806451613, "coincidental_top20": [], "rho20": -0.1907258064516129, "rbo090": 0.30009798905519586, "rbo095": 0.3623600401513669}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.2903225806451613
+    coincidental_top20: list(0)  []
+    rho20: -0.1907258064516129
+    rbo090: 0.30009798905519586
+    rbo095: 0.3623600401513669
+  tie_desc: dict(9)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "jaccard_top20": 0.2903225806451613, "coincidental_top20": [], "rho20": -0.1907258064516129, "rbo090": 0.3000979890551959, "rbo095": 0.3623600402728075}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.2903225806451613
+    coincidental_top20: list(0)  []
+    rho20: -0.1907258064516129
+    rbo090: 0.3000979890551959
+    rbo095: 0.3623600402728075
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.0, "rbo090": 5.551115123125783e-17, "rbo095": 1.214405798144469e-10}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.0
+    rbo090: 5.551115123125783e-17
+    rbo095: 1.214405798144469e-10
+  zeros_in_J: dict(2)  {"rival_lgbm": 3, "rival_ridge": 0}
+    rival_lgbm: 3
+    rival_ridge: 0
+defo/feature/rival_lgbm|treeroute: dict(5)  {"base": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.3681868743047831, "rbo090": 0.6531965153195423, "rbo095": 0.6069637701146525}, "tie_ci": {"j
+  base: dict(9)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.3681868743047831, "rbo090": 0.6531965153195423, "rbo095": 0.6069637701146525}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.3681868743047831
+    rbo090: 0.6531965153195423
+    rbo095: 0.6069637701146525
+  tie_ci: dict(9)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.3681868743047831, "rbo090": 0.6531965153195421, "rbo095": 0.6069637699932119}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.3681868743047831
+    rbo090: 0.6531965153195421
+    rbo095: 0.6069637699932119
+  tie_desc: dict(9)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "jaccard_top20": 0.3333333333333333, "coincidental_top20": [], "rho20": 0.3681868743047831, "rbo090": 0.653196515319542, "rbo095": 0.6069637698782568}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.3333333333333333
+    coincidental_top20: list(0)  []
+    rho20: 0.3681868743047831
+    rbo090: 0.653196515319542
+    rbo095: 0.6069637698782568
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.0, "rbo090": 2.220446049250313e-16, "rbo095": 2.3639568080824347e-10}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.0
+    rbo090: 2.220446049250313e-16
+    rbo095: 2.3639568080824347e-10
+  zeros_in_J: dict(2)  {"rival_lgbm": 3, "treeroute": 1}
+    rival_lgbm: 3
+    treeroute: 1
+fire/variable/rival_lgbm|rival_lgbm_tweedie: dict(5)  {"base": {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": 0.10632478632478633, "rbo090": 0.5572471312670852, "rbo095": 0.6013729355463886}, "tie_ci": {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10"
+  base: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": 0.10632478632478633, "rbo090": 0.5572471312670852, "rbo095": 0.6013729355463886}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: 0.10632478632478633
+    rbo090: 0.5572471312670852
+    rbo095: 0.6013729355463886
+  tie_ci: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": 0.10632478632478633, "rbo090": 0.5572471312670852, "rbo095": 0.6013729355463886}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: 0.10632478632478633
+    rbo090: 0.5572471312670852
+    rbo095: 0.6013729355463886
+  tie_desc: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": 0.10632478632478633, "rbo090": 0.5572474892156692, "rbo095": 0.601395412202856}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: 0.10632478632478633
+    rbo090: 0.5572474892156692
+    rbo095: 0.601395412202856
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 3.5794858399551543e-07, "rbo095": 2.2476656467373957e-05}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 3.5794858399551543e-07
+    rbo095: 2.2476656467373957e-05
+  zeros_in_J: dict(2)  {"rival_lgbm": 7, "rival_lgbm_tweedie": 0}
+    rival_lgbm: 7
+    rival_lgbm_tweedie: 0
+fire/variable/rival_lgbm|rival_rf: dict(5)  {"base": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "rho20": 0.7323076923076923, "rbo090": 0.8470462984693166, "rbo095": 0.8210649867692924}, "tie_ci": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jac
+  base: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "rho20": 0.7323076923076923, "rbo090": 0.8470462984693166, "rbo095": 0.8210649867692924}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    rho20: 0.7323076923076923
+    rbo090: 0.8470462984693166
+    rbo095: 0.8210649867692924
+  tie_ci: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "rho20": 0.7323076923076923, "rbo090": 0.8470462984693166, "rbo095": 0.8210649867692924}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    rho20: 0.7323076923076923
+    rbo090: 0.8470462984693166
+    rbo095: 0.8210649867692924
+  tie_desc: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.6666666666666666, "coincidental_top10": [], "rho20": 0.7323076923076923, "rbo090": 0.8470459993672949, "rbo095": 0.8210445448070703}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.6666666666666666
+    coincidental_top10: list(0)  []
+    rho20: 0.7323076923076923
+    rbo090: 0.8470459993672949
+    rbo095: 0.8210445448070703
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.9910202170579936e-07, "rbo095": 2.044196222206196e-05}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.9910202170579936e-07
+    rbo095: 2.044196222206196e-05
+  zeros_in_J: dict(2)  {"rival_lgbm": 7, "rival_rf": 0}
+    rival_lgbm: 7
+    rival_rf: 0
+fire/variable/rival_lgbm|treeroute: dict(5)  {"base": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.04605116796440489, "rbo090": 0.5442316689172073, "rbo095": 0.5810565884627777}, "tie_ci": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "ja
+  base: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.04605116796440489, "rbo090": 0.5442316689172073, "rbo095": 0.5810565884627777}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.04605116796440489
+    rbo090: 0.5442316689172073
+    rbo095: 0.5810565884627777
+  tie_ci: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.04605116796440489, "rbo090": 0.5442316689172073, "rbo095": 0.5810565884627777}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.04605116796440489
+    rbo090: 0.5442316689172073
+    rbo095: 0.5810565884627777
+  tie_desc: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.04605116796440489, "rbo090": 0.5442315870602692, "rbo095": 0.5810513478980762}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.04605116796440489
+    rbo090: 0.5442315870602692
+    rbo095: 0.5810513478980762
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 8.18569381166867e-08, "rbo095": 5.24056470152523e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 8.18569381166867e-08
+    rbo095: 5.24056470152523e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 7, "treeroute": 0}
+    rival_lgbm: 7
+    treeroute: 0
+fire/feature/rival_lgbm|rival_lgbm_tweedie: dict(5)  {"base": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": -0.1346774193548387, "rbo090": 0.48679133621069015, "rbo095": 0.5196985340838571}, "tie_ci": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.33333333333
+  base: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": -0.1346774193548387, "rbo090": 0.48679133621069015, "rbo095": 0.5196985340838571}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: -0.1346774193548387
+    rbo090: 0.48679133621069015
+    rbo095: 0.5196985340838571
+  tie_ci: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": -0.1346774193548387, "rbo090": 0.48679133621069015, "rbo095": 0.5196985340838571}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: -0.1346774193548387
+    rbo090: 0.48679133621069015
+    rbo095: 0.5196985340838571
+  tie_desc: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": -0.1346774193548387, "rbo090": 0.4867914030494905, "rbo095": 0.5197087409436917}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: -0.1346774193548387
+    rbo090: 0.4867914030494905
+    rbo095: 0.5197087409436917
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 6.683880032776202e-08, "rbo095": 1.0206859834549498e-05}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 6.683880032776202e-08
+    rbo095: 1.0206859834549498e-05
+  zeros_in_J: dict(2)  {"rival_lgbm": 8, "rival_lgbm_tweedie": 0}
+    rival_lgbm: 8
+    rival_lgbm_tweedie: 0
+fire/feature/rival_lgbm|rival_rf: dict(5)  {"base": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "rho20": 0.68, "rbo090": 0.7818237525873049, "rbo095": 0.7752596545350171}, "tie_ci": {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0
+  base: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "rho20": 0.68, "rbo090": 0.7818237525873049, "rbo095": 0.7752596545350171}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    rho20: 0.68
+    rbo090: 0.7818237525873049
+    rbo095: 0.7752596545350171
+  tie_ci: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "rho20": 0.68, "rbo090": 0.7818237525873049, "rbo095": 0.7752596545350171}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    rho20: 0.68
+    rbo090: 0.7818237525873049
+    rbo095: 0.7752596545350171
+  tie_desc: dict(7)  {"jaccard_top5": 0.6666666666666666, "coincidental_top5": [], "jaccard_top10": 0.5384615384615384, "coincidental_top10": [], "rho20": 0.68, "rbo090": 0.7818237104897178, "rbo095": 0.7752524408206809}
+    jaccard_top5: 0.6666666666666666
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.5384615384615384
+    coincidental_top10: list(0)  []
+    rho20: 0.68
+    rbo090: 0.7818237104897178
+    rbo095: 0.7752524408206809
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 4.209758708295652e-08, "rbo095": 7.213714336207211e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 4.209758708295652e-08
+    rbo095: 7.213714336207211e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 8, "rival_rf": 0}
+    rival_lgbm: 8
+    rival_rf: 0
+fire/feature/rival_lgbm|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "rho20": 0.15763546798029557, "rbo090": 0.5713143390368944, "rbo095": 0.5766347063236962}, "tie_ci": {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], 
+  base: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "rho20": 0.15763546798029557, "rbo090": 0.5713143390368944, "rbo095": 0.5766347063236962}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    rho20: 0.15763546798029557
+    rbo090: 0.5713143390368944
+    rbo095: 0.5766347063236962
+  tie_ci: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "rho20": 0.15763546798029557, "rbo090": 0.5713143390368944, "rbo095": 0.5766347063236962}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    rho20: 0.15763546798029557
+    rbo090: 0.5713143390368944
+    rbo095: 0.5766347063236962
+  tie_desc: dict(7)  {"jaccard_top5": 0.42857142857142855, "coincidental_top5": [], "jaccard_top10": 0.42857142857142855, "coincidental_top10": [], "rho20": 0.15763546798029557, "rbo090": 0.5713143124772608, "rbo095": 0.5766306312511892}
+    jaccard_top5: 0.42857142857142855
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.42857142857142855
+    coincidental_top10: list(0)  []
+    rho20: 0.15763546798029557
+    rbo090: 0.5713143124772608
+    rbo095: 0.5766306312511892
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.6559633603540078e-08, "rbo095": 4.075072506992683e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.6559633603540078e-08
+    rbo095: 4.075072506992683e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 8, "rival_ridge": 0}
+    rival_lgbm: 8
+    rival_ridge: 0
+fire/feature/rival_lgbm|treeroute: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.36950146627565983, "rbo090": 0.2515431444934541, "rbo095": 0.33632944338430737}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.36950146627565983, "rbo090": 0.2515431444934541, "rbo095": 0.33632944338430737}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.36950146627565983
+    rbo090: 0.2515431444934541
+    rbo095: 0.33632944338430737
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.36950146627565983, "rbo090": 0.2515431444934541, "rbo095": 0.33632944338430737}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.36950146627565983
+    rbo090: 0.2515431444934541
+    rbo095: 0.33632944338430737
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.36950146627565983, "rbo090": 0.25154311922261524, "rbo095": 0.33632553881340965}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.36950146627565983
+    rbo090: 0.25154311922261524
+    rbo095: 0.33632553881340965
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.5270838865942835e-08, "rbo095": 3.904570897717008e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.5270838865942835e-08
+    rbo095: 3.904570897717008e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 8, "treeroute": 0}
+    rival_lgbm: 8
+    treeroute: 0
+pm25/variable/rival_lgbm|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.1423097974822113, "rbo090": 0.36628204698137745, "rbo095": 0.5067484909533607}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "ja
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.1423097974822113, "rbo090": 0.36628204698137745, "rbo095": 0.5067484909533607}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.1423097974822113
+    rbo090: 0.36628204698137745
+    rbo095: 0.5067484909533607
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.1423097974822113, "rbo090": 0.36628204698137745, "rbo095": 0.5067484909533607}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.1423097974822113
+    rbo090: 0.36628204698137745
+    rbo095: 0.5067484909533607
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.1423097974822113, "rbo090": 0.3662821657264642, "rbo095": 0.5067550439657994}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.1423097974822113
+    rbo090: 0.3662821657264642
+    rbo095: 0.5067550439657994
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 1.1874508676346096e-07, "rbo095": 6.553012438681449e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 1.1874508676346096e-07
+    rbo095: 6.553012438681449e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 2, "rival_ridge": 0}
+    rival_lgbm: 2
+    rival_ridge: 0
+pm25/variable/rival_lgbm|treeroute: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.07931034482758621, "rbo090": 0.5269802527528954, "rbo095": 0.5951297580557823}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "ja
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.07931034482758621, "rbo090": 0.5269802527528954, "rbo095": 0.5951297580557823}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.07931034482758621
+    rbo090: 0.5269802527528954
+    rbo095: 0.5951297580557823
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.07931034482758621, "rbo090": 0.5269802527528954, "rbo095": 0.5951297580557823}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.07931034482758621
+    rbo090: 0.5269802527528954
+    rbo095: 0.5951297580557823
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.07931034482758621, "rbo090": 0.5269801340078085, "rbo095": 0.5951232050433436}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.07931034482758621
+    rbo090: 0.5269801340078085
+    rbo095: 0.5951232050433436
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 1.1874508687448326e-07, "rbo095": 6.553012438681449e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 1.1874508687448326e-07
+    rbo095: 6.553012438681449e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 2, "treeroute": 1}
+    rival_lgbm: 2
+    treeroute: 1
+pm25/variable/rival_rf|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.20799124247400108, "rbo090": 0.39748420604656515, "rbo095": 0.5248454636383652}, "tie_ci": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.33333333333
+  base: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.20799124247400108, "rbo090": 0.39748420604656515, "rbo095": 0.5248454636383652}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.20799124247400108
+    rbo090: 0.39748420604656515
+    rbo095: 0.5248454636383652
+  tie_ci: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.20799124247400108, "rbo090": 0.39748420604656515, "rbo095": 0.5248454636383652}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.20799124247400108
+    rbo090: 0.39748420604656515
+    rbo095: 0.5248454636383652
+  tie_desc: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.3333333333333333, "coincidental_top10": [], "rho20": 0.20799124247400108, "rbo090": 0.39748432479165186, "rbo095": 0.5248520166508037}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.3333333333333333
+    coincidental_top10: list(0)  []
+    rho20: 0.20799124247400108
+    rbo090: 0.39748432479165186
+    rbo095: 0.5248520166508037
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 1.1874508670794981e-07, "rbo095": 6.553012438570427e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 1.1874508670794981e-07
+    rbo095: 6.553012438570427e-06
+  zeros_in_J: dict(2)  {"rival_rf": 2, "rival_ridge": 0}
+    rival_rf: 2
+    rival_ridge: 0
+pm25/variable/rival_rf|treeroute: dict(5)  {"base": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": -0.018909899888765295, "rbo090": 0.41887022927251716, "rbo095": 0.5300563836691562}, "tie_ci": {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10
+  base: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": -0.018909899888765295, "rbo090": 0.41887022927251716, "rbo095": 0.5300563836691562}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: -0.018909899888765295
+    rbo090: 0.41887022927251716
+    rbo095: 0.5300563836691562
+  tie_ci: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": -0.018909899888765295, "rbo090": 0.41887022927251716, "rbo095": 0.5300563836691562}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: -0.018909899888765295
+    rbo090: 0.41887022927251716
+    rbo095: 0.5300563836691562
+  tie_desc: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": [], "rho20": -0.018909899888765295, "rbo090": 0.4188701105274304, "rbo095": 0.5300498306567176}
+    jaccard_top5: 0.25
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(0)  []
+    rho20: -0.018909899888765295
+    rbo090: 0.4188701105274304
+    rbo095: 0.5300498306567176
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 1.1874508676346096e-07, "rbo095": 6.553012438570427e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 1.1874508676346096e-07
+    rbo095: 6.553012438570427e-06
+  zeros_in_J: dict(2)  {"rival_rf": 2, "treeroute": 1}
+    rival_rf: 2
+    treeroute: 1
+pm25/feature/rival_lgbm|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.017733990147783252, "rbo090": 0.24955538276784667, "rbo095": 0.4150533185138343}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1764705882
+  base: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.017733990147783252, "rbo090": 0.24955538276784667, "rbo095": 0.4150533185138343}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.017733990147783252
+    rbo090: 0.24955538276784667
+    rbo095: 0.4150533185138343
+  tie_ci: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.017733990147783252, "rbo090": 0.24955538276784667, "rbo095": 0.4150533185138343}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.017733990147783252
+    rbo090: 0.24955538276784667
+    rbo095: 0.4150533185138343
+  tie_desc: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.017733990147783252, "rbo090": 0.24955540620437508, "rbo095": 0.41505607562303004}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.017733990147783252
+    rbo090: 0.24955540620437508
+    rbo095: 0.41505607562303004
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.3436528412412727e-08, "rbo095": 2.7571091957279137e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.3436528412412727e-08
+    rbo095: 2.7571091957279137e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 2, "rival_ridge": 0}
+    rival_lgbm: 2
+    rival_ridge: 0
+pm25/feature/rival_lgbm|treeroute: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.2578420467185762, "rbo090": 0.41715092676439885, "rbo095": 0.4799251203444549}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "j
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.2578420467185762, "rbo090": 0.41715092676439885, "rbo095": 0.4799251203444549}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.2578420467185762
+    rbo090: 0.41715092676439885
+    rbo095: 0.4799251203444549
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.2578420467185762, "rbo090": 0.41715092676439885, "rbo095": 0.4799251203444549}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.2578420467185762
+    rbo090: 0.41715092676439885
+    rbo095: 0.4799251203444549
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.2578420467185762, "rbo090": 0.4171509033278704, "rbo095": 0.47992236323525916}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.2578420467185762
+    rbo090: 0.4171509033278704
+    rbo095: 0.47992236323525916
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.3436528440168303e-08, "rbo095": 2.7571091957279137e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.3436528440168303e-08
+    rbo095: 2.7571091957279137e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 2, "treeroute": 1}
+    rival_lgbm: 2
+    treeroute: 1
+pm25/feature/rival_rf|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.053170189098998885, "rbo090": 0.30390371287820583, "rbo095": 0.43661345179787114}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": []
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.053170189098998885, "rbo090": 0.30390371287820583, "rbo095": 0.43661345179787114}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.053170189098998885
+    rbo090: 0.30390371287820583
+    rbo095: 0.43661345179787114
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.053170189098998885, "rbo090": 0.30390371287820583, "rbo095": 0.43661345179787114}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.053170189098998885
+    rbo090: 0.30390371287820583
+    rbo095: 0.43661345179787114
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": [], "rho20": -0.053170189098998885, "rbo090": 0.3039037363147343, "rbo095": 0.43661620890706687}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(0)  []
+    rho20: -0.053170189098998885
+    rbo090: 0.3039037363147343
+    rbo095: 0.43661620890706687
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.3436528440168303e-08, "rbo095": 2.7571091957279137e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.3436528440168303e-08
+    rbo095: 2.7571091957279137e-06
+  zeros_in_J: dict(2)  {"rival_rf": 2, "rival_ridge": 0}
+    rival_rf: 2
+    rival_ridge: 0
+pm25/feature/rival_rf|treeroute: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.3116935483870968, "rbo090": 0.41549187847371505, "rbo095": 0.47682061904014844}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.3116935483870968, "rbo090": 0.41549187847371505, "rbo095": 0.47682061904014844}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.3116935483870968
+    rbo090: 0.41549187847371505
+    rbo095: 0.47682061904014844
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.3116935483870968, "rbo090": 0.41549187847371505, "rbo095": 0.47682061904014844}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.3116935483870968
+    rbo090: 0.41549187847371505
+    rbo095: 0.47682061904014844
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.3116935483870968, "rbo090": 0.4154918550371866, "rbo095": 0.4768178619309527}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.3116935483870968
+    rbo090: 0.4154918550371866
+    rbo095: 0.4768178619309527
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 2.3436528440168303e-08, "rbo095": 2.7571091957279137e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 2.3436528440168303e-08
+    rbo095: 2.7571091957279137e-06
+  zeros_in_J: dict(2)  {"rival_rf": 2, "treeroute": 1}
+    rival_rf: 2
+    treeroute: 1
+ndvi/variable/rival_bardl_h1|rival_lgbm: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "rho20": 0.1106710324412482, "rbo090": 0.20265897364697644, "rbo095": 0.2533344661593541}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "j
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "rho20": 0.1106710324412482, "rbo090": 0.20265897364697644, "rbo095": 0.2533344661593541}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(0)  []
+    rho20: 0.1106710324412482
+    rbo090: 0.20265897364697644
+    rbo095: 0.2533344661593541
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "rho20": 0.1106710324412482, "rbo090": 0.20265897364697644, "rbo095": 0.2533344661593541}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(0)  []
+    rho20: 0.1106710324412482
+    rbo090: 0.20265897364697644
+    rbo095: 0.2533344661593541
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": ["wbal"], "rho20": 0.029704146300551935, "rbo090": 0.25236708334592683, "rbo095": 0.32798868556527305}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(1)  ["wbal"]
+    rho20: 0.029704146300551935
+    rbo090: 0.25236708334592683
+    rbo095: 0.32798868556527305
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.05847953216374269, "rho20": 0.08096688614069626, "rbo090": 0.0497081096989504, "rbo095": 0.07465421940591893}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.05847953216374269
+    rho20: 0.08096688614069626
+    rbo090: 0.0497081096989504
+    rbo095: 0.07465421940591893
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 93, "rival_lgbm": 2}
+    rival_bardl_h1: 93
+    rival_lgbm: 2
+ndvi/variable/rival_bardl_h1|rival_rf: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": ["aet_total_mm"], "rho20": 0.16214876701125455, "rbo090": 0.15303415001248266, "rbo095": 0.24066535688660343}, "tie_ci": {"jaccard_top5": 0.1111111111111111, "coincident
+  base: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": ["aet_total_mm"], "rho20": 0.16214876701125455, "rbo090": 0.15303415001248266, "rbo095": 0.24066535688660343}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(1)  ["aet_total_mm"]
+    rho20: 0.16214876701125455
+    rbo090: 0.15303415001248266
+    rbo095: 0.24066535688660343
+  tie_ci: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": ["aet_total_mm"], "rho20": 0.16214876701125455, "rbo090": 0.15303415001248266, "rbo095": 0.24066535688660343}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(1)  ["aet_total_mm"]
+    rho20: 0.16214876701125455
+    rbo090: 0.15303415001248266
+    rbo095: 0.24066535688660343
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.17647058823529413, "coincidental_top10": ["wbal"], "rho20": 0.037683692330776127, "rbo090": 0.19688018423781442, "rbo095": 0.32208275906656736}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.17647058823529413
+    coincidental_top10: list(1)  ["wbal"]
+    rho20: 0.037683692330776127
+    rbo090: 0.19688018423781442
+    rbo095: 0.32208275906656736
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.12446507468047843, "rbo090": 0.04384603422533176, "rbo095": 0.08141740217996393}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.12446507468047843
+    rbo090: 0.04384603422533176
+    rbo095: 0.08141740217996393
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 93, "rival_rf": 2}
+    rival_bardl_h1: 93
+    rival_rf: 2
+ndvi/variable/rival_bardl_h1|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": 0.03279874646255405, "rbo090": 0.054837717986982136, "rbo095": 0.15209932175888727}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [
+  base: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": 0.03279874646255405, "rbo090": 0.054837717986982136, "rbo095": 0.15209932175888727}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    rho20: 0.03279874646255405
+    rbo090: 0.054837717986982136
+    rbo095: 0.15209932175888727
+  tie_ci: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": 0.03279874646255405, "rbo090": 0.054837717986982136, "rbo095": 0.15209932175888727}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    rho20: 0.03279874646255405
+    rbo090: 0.054837717986982136
+    rbo095: 0.15209932175888727
+  tie_desc: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": ["vpd_warm_season"], "rho20": -0.03650796888294844, "rbo090": 0.101390046323362, "rbo095": 0.23366781265639705}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(1)  ["vpd_warm_season"]
+    rho20: -0.03650796888294844
+    rbo090: 0.101390046323362
+    rbo095: 0.23366781265639705
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.05263157894736842, "rho20": 0.06930671534550248, "rbo090": 0.046552328336379865, "rbo095": 0.08156849089750978}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.05263157894736842
+    rho20: 0.06930671534550248
+    rbo090: 0.046552328336379865
+    rbo095: 0.08156849089750978
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 93, "rival_ridge": 0}
+    rival_bardl_h1: 93
+    rival_ridge: 0
+ndvi/variable/rival_bardl_h1|treeroute: dict(5)  {"base": {"jaccard_top5": 0.25, "coincidental_top5": ["aet_total_mm"], "jaccard_top10": 0.25, "coincidental_top10": ["aet_total_mm"], "rho20": 0.38409037216474107, "rbo090": 0.36523944852290047, "rbo095": 0.40296774849197836}, "tie_ci": {"jaccard_top5": 0.25, "coincidental_top5": ["aet_total_mm"], "
+  base: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": ["aet_total_mm"], "jaccard_top10": 0.25, "coincidental_top10": ["aet_total_mm"], "rho20": 0.38409037216474107, "rbo090": 0.36523944852290047, "rbo095": 0.40296774849197836}
+    jaccard_top5: 0.25
+    coincidental_top5: list(1)  ["aet_total_mm"]
+    jaccard_top10: 0.25
+    coincidental_top10: list(1)  ["aet_total_mm"]
+    rho20: 0.38409037216474107
+    rbo090: 0.36523944852290047
+    rbo095: 0.40296774849197836
+  tie_ci: dict(7)  {"jaccard_top5": 0.25, "coincidental_top5": ["aet_total_mm"], "jaccard_top10": 0.25, "coincidental_top10": ["aet_total_mm"], "rho20": 0.38409037216474107, "rbo090": 0.36523944852290047, "rbo095": 0.40296774849197836}
+    jaccard_top5: 0.25
+    coincidental_top5: list(1)  ["aet_total_mm"]
+    jaccard_top10: 0.25
+    coincidental_top10: list(1)  ["aet_total_mm"]
+    rho20: 0.38409037216474107
+    rbo090: 0.36523944852290047
+    rbo095: 0.40296774849197836
+  tie_desc: dict(7)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.25, "coincidental_top10": ["wbal"], "rho20": 0.3840610287694452, "rbo090": 0.3247420611011288, "rbo095": 0.3789931398153931}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.25
+    coincidental_top10: list(1)  ["wbal"]
+    rho20: 0.3840610287694452
+    rbo090: 0.3247420611011288
+    rbo095: 0.3789931398153931
+  spread: dict(5)  {"jaccard_top5": 0.1388888888888889, "jaccard_top10": 0.0, "rho20": 2.9343395295866603e-05, "rbo090": 0.04049738742177167, "rbo095": 0.02397460867658524}
+    jaccard_top5: 0.1388888888888889
+    jaccard_top10: 0.0
+    rho20: 2.9343395295866603e-05
+    rbo090: 0.04049738742177167
+    rbo095: 0.02397460867658524
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 93, "treeroute": 2}
+    rival_bardl_h1: 93
+    treeroute: 2
+ndvi/variable/rival_lgbm|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.5117647058823529, "rbo090": 0.1294967579135829, "rbo095": 0.27777695094656085}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111
+  base: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.5117647058823529, "rbo090": 0.1294967579135829, "rbo095": 0.27777695094656085}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.5117647058823529
+    rbo090: 0.1294967579135829
+    rbo095: 0.27777695094656085
+  tie_ci: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.5117647058823529, "rbo090": 0.1294967579135829, "rbo095": 0.27777695094656085}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.5117647058823529
+    rbo090: 0.1294967579135829
+    rbo095: 0.27777695094656085
+  tie_desc: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.5117647058823529, "rbo090": 0.1294968105240651, "rbo095": 0.2777811899649073}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.5117647058823529
+    rbo090: 0.1294968105240651
+    rbo095: 0.2777811899649073
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 5.261048219296072e-08, "rbo095": 4.239018346452461e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 5.261048219296072e-08
+    rbo095: 4.239018346452461e-06
+  zeros_in_J: dict(2)  {"rival_lgbm": 2, "rival_ridge": 0}
+    rival_lgbm: 2
+    rival_ridge: 0
+ndvi/variable/rival_rf|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": -0.6605026078710289, "rbo090": 0.07707004464378876, "rbo095": 0.22069611471132827}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": []
+  base: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": -0.6605026078710289, "rbo090": 0.07707004464378876, "rbo095": 0.22069611471132827}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    rho20: -0.6605026078710289
+    rbo090: 0.07707004464378876
+    rbo095: 0.22069611471132827
+  tie_ci: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": -0.6605026078710289, "rbo090": 0.07707004464378876, "rbo095": 0.22069611471132827}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    rho20: -0.6605026078710289
+    rbo090: 0.07707004464378876
+    rbo095: 0.22069611471132827
+  tie_desc: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "rho20": -0.6605026078710289, "rbo090": 0.07707009725427091, "rbo095": 0.22070035372967475}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    rho20: -0.6605026078710289
+    rbo090: 0.07707009725427091
+    rbo095: 0.22070035372967475
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 5.2610482151327354e-08, "rbo095": 4.239018346480217e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 5.2610482151327354e-08
+    rbo095: 4.239018346480217e-06
+  zeros_in_J: dict(2)  {"rival_rf": 2, "rival_ridge": 0}
+    rival_rf: 2
+    rival_ridge: 0
+ndvi/variable/rival_ridge|treeroute: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.4050802139037433, "rbo090": 0.1663591714144055, "rbo095": 0.32505373440625607}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111
+  base: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.4050802139037433, "rbo090": 0.1663591714144055, "rbo095": 0.32505373440625607}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.4050802139037433
+    rbo090: 0.1663591714144055
+    rbo095: 0.32505373440625607
+  tie_ci: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.4050802139037433, "rbo090": 0.1663591714144055, "rbo095": 0.32505373440625607}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.4050802139037433
+    rbo090: 0.1663591714144055
+    rbo095: 0.32505373440625607
+  tie_desc: dict(7)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "rho20": -0.4050802139037433, "rbo090": 0.16635922402488768, "rbo095": 0.3250579734246026}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    rho20: -0.4050802139037433
+    rbo090: 0.16635922402488768
+    rbo095: 0.3250579734246026
+  spread: dict(5)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "rho20": 0.0, "rbo090": 5.261048216520514e-08, "rbo095": 4.239018346507972e-06}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    rho20: 0.0
+    rbo090: 5.261048216520514e-08
+    rbo095: 4.239018346507972e-06
+  zeros_in_J: dict(2)  {"rival_ridge": 0, "treeroute": 2}
+    rival_ridge: 0
+    treeroute: 2
+ndvi/feature/rival_bardl_h1|rival_lgbm: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.05263157894736842, "coincidental_top20": [], "rho20": -0.18479375271654544, "rbo090": 0.2817811206425167, "rbo095": 0.19738466589498613}, "tie_ci":
+  base: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.05263157894736842, "coincidental_top20": [], "rho20": -0.18479375271654544, "rbo090": 0.2817811206425167, "rbo095": 0.19738466589498613}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.05263157894736842
+    coincidental_top20: list(0)  []
+    rho20: -0.18479375271654544
+    rbo090: 0.2817811206425167
+    rbo095: 0.19738466589498613
+  tie_ci: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.05263157894736842, "coincidental_top20": [], "rho20": -0.17363860958194857, "rbo090": 0.2815580750023593, "rbo095": 0.2012246855211569}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.05263157894736842
+    coincidental_top20: list(0)  []
+    rho20: -0.17363860958194857
+    rbo090: 0.2815580750023593
+    rbo095: 0.2012246855211569
+  tie_desc: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.05263157894736842, "coincidental_top20": [], "rho20": -0.18479375271654544, "rbo090": 0.2820770239957255, "rbo095": 0.2017056667003713}
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.05263157894736842
+    coincidental_top20: list(0)  []
+    rho20: -0.18479375271654544
+    rbo090: 0.2820770239957255
+    rbo095: 0.2017056667003713
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.011155143134596868, "rbo090": 0.0005189489933661862, "rbo095": 0.004321000805385167}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.011155143134596868
+    rbo090: 0.0005189489933661862
+    rbo095: 0.004321000805385167
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 470, "rival_lgbm": 2}
+    rival_bardl_h1: 470
+    rival_lgbm: 2
+ndvi/feature/rival_bardl_h1|rival_rf: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "jaccard_top20": 0.02564102564102564, "coincidental_top20": [], "rho20": -0.30545262406115364, "rbo090": 0.04714755535495919, "rbo095": 0.06197245504138446}, "tie_ci": {"jaccard_to
+  base: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "jaccard_top20": 0.02564102564102564, "coincidental_top20": [], "rho20": -0.30545262406115364, "rbo090": 0.04714755535495919, "rbo095": 0.06197245504138446}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.02564102564102564
+    coincidental_top20: list(0)  []
+    rho20: -0.30545262406115364
+    rbo090: 0.04714755535495919
+    rbo095: 0.06197245504138446
+  tie_ci: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "jaccard_top20": 0.02564102564102564, "coincidental_top20": [], "rho20": -0.31875105518051267, "rbo090": 0.0487275262495707, "rbo095": 0.06756901687861153}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.02564102564102564
+    coincidental_top20: list(0)  []
+    rho20: -0.31875105518051267
+    rbo090: 0.0487275262495707
+    rbo095: 0.06756901687861153
+  tie_desc: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.05263157894736842, "coincidental_top10": [], "jaccard_top20": 0.02564102564102564, "coincidental_top20": [], "rho20": -0.3033961656406342, "rbo090": 0.04663850676108654, "rbo095": 0.06623014350619545}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.05263157894736842
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.02564102564102564
+    coincidental_top20: list(0)  []
+    rho20: -0.3033961656406342
+    rbo090: 0.04663850676108654
+    rbo095: 0.06623014350619545
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.015354889539878458, "rbo090": 0.0020890194884841604, "rbo095": 0.005596561837227065}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.015354889539878458
+    rbo090: 0.0020890194884841604
+    rbo095: 0.005596561837227065
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 470, "rival_rf": 2}
+    rival_bardl_h1: 470
+    rival_rf: 2
+ndvi/feature/rival_bardl_h1|rival_ridge: dict(5)  {"base": {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "jaccard_top20": 0.0, "coincidental_top20": [], "rho20": -0.47081472161575627, "rbo090": 0.006310601822720665, "rbo095": 0.02717676540873006}, "tie_ci": {"jaccard_top5": 0.0, "coincidental_top5": 
+  base: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "jaccard_top20": 0.0, "coincidental_top20": [], "rho20": -0.47081472161575627, "rbo090": 0.006310601822720665, "rbo095": 0.02717676540873006}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.0
+    coincidental_top20: list(0)  []
+    rho20: -0.47081472161575627
+    rbo090: 0.006310601822720665
+    rbo095: 0.02717676540873006
+  tie_ci: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "jaccard_top20": 0.0, "coincidental_top20": [], "rho20": -0.3930725632236178, "rbo090": 0.0014206710379687302, "rbo095": 0.010826167722669176}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.0
+    coincidental_top20: list(0)  []
+    rho20: -0.3930725632236178
+    rbo090: 0.0014206710379687302
+    rbo095: 0.010826167722669176
+  tie_desc: dict(9)  {"jaccard_top5": 0.0, "coincidental_top5": [], "jaccard_top10": 0.0, "coincidental_top10": [], "jaccard_top20": 0.0, "coincidental_top20": [], "rho20": -0.36151386526245266, "rbo090": 0.0004366533682614488, "rbo095": 0.006662525066752194}
+    jaccard_top5: 0.0
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.0
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.0
+    coincidental_top20: list(0)  []
+    rho20: -0.36151386526245266
+    rbo090: 0.0004366533682614488
+    rbo095: 0.006662525066752194
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.0, "rho20": 0.10930085635330361, "rbo090": 0.005873948454459216, "rbo095": 0.020514240341977866}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.0
+    rho20: 0.10930085635330361
+    rbo090: 0.005873948454459216
+    rbo095: 0.020514240341977866
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 470, "rival_ridge": 0}
+    rival_bardl_h1: 470
+    rival_ridge: 0
+ndvi/feature/rival_bardl_h1|treeroute: dict(5)  {"base": {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.1111111111111111, "coincidental_top20": ["x__V02_total_precip_mm_roll3"], "rho20": -0.06396829222122019, "rbo090": 0.30720167145127647, "rbo095": 0
+  base: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.1111111111111111, "coincidental_top20": ["x__V02_total_precip_mm_roll3"], "rho20": -0.06396829222122019, "rbo090": 0.30720167145127647, "rbo095": 0.25698886
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.1111111111111111
+    coincidental_top20: list(1)  ["x__V02_total_precip_mm_roll3"]
+    rho20: -0.06396829222122019
+    rbo090: 0.30720167145127647
+    rbo095: 0.2569888642370535
+  tie_ci: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.14285714285714285, "coincidental_top20": ["x__aet_total_mm_lag1", "x__aet_total_mm_roll3"], "rho20": -0.12559470394611913, "rbo090": 0.3206583226653573, "rb
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.14285714285714285
+    coincidental_top20: list(2)  ["x__aet_total_mm_lag1", "x__aet_total_mm_roll3"]
+    rho20: -0.12559470394611913
+    rbo090: 0.3206583226653573
+    rbo095: 0.2774005410287606
+  tie_desc: dict(9)  {"jaccard_top5": 0.1111111111111111, "coincidental_top5": [], "jaccard_top10": 0.1111111111111111, "coincidental_top10": [], "jaccard_top20": 0.1111111111111111, "coincidental_top20": ["x__wet_day_count_lag1"], "rho20": 0.002707652580792389, "rbo090": 0.3044924004271797, "rbo095": 0.2418506797867858
+    jaccard_top5: 0.1111111111111111
+    coincidental_top5: list(0)  []
+    jaccard_top10: 0.1111111111111111
+    coincidental_top10: list(0)  []
+    jaccard_top20: 0.1111111111111111
+    coincidental_top20: list(1)  ["x__wet_day_count_lag1"]
+    rho20: 0.002707652580792389
+    rbo090: 0.3044924004271797
+    rbo095: 0.24185067978678587
+  spread: dict(6)  {"jaccard_top5": 0.0, "jaccard_top10": 0.0, "jaccard_top20": 0.031746031746031744, "rho20": 0.12830235652691152, "rbo090": 0.016165922238177644, "rbo095": 0.035549861241974734}
+    jaccard_top5: 0.0
+    jaccard_top10: 0.0
+    jaccard_top20: 0.031746031746031744
+    rho20: 0.12830235652691152
+    rbo090: 0.016165922238177644
+    rbo095: 0.035549861241974734
+  zeros_in_J: dict(2)  {"rival_bardl_h1": 470, "treeroute": 2}
+    rival_bardl_h1: 470
+    treeroute: 2
+S92 type list 158
+S92 "ndvi/main_row/rbo_p090_vs_consensus: mine 0.4028741299 [0.3756042466, 0.425874935] n=2000 | A 0.4028741299 [0.3756042466, 0.425874935] n=2000 | B 0.4028741299 [0.3756042466, 0.425874935] n=2000 | official 0.4028741299 [0.3756042466, 0.425874935] n=2000"
+S92 "ndvi/main_row/own_history_share_treeroute: mine 0.2445352152 [0.2168303994, 0.2718862955] n=2000 | A 0.2445352152 [0.2168303994, 0.2718862955] n=2000 | B 0.2445352152 [0.2168303994, 0.2718862955] n=2000 | official 0.2445352152 [0.2168303994, 0.2718862955] n=2000"
+S92 "ndvi/main_row/own_history_share_median_rival: mine 0.2559636849 [0.2356921029, 0.275664024] n=2000 | A 0.2559636849 [0.2356921029, 0.275664024] n=2000 | B 0.2559636849 [0.2356921029, 0.275664024] n=2000 | official 0.2559636849 [0.2356921029, 0.275664024] n=2000"
+S92 "pm25/main_row/kendall_w: mine 0.853889402 [0.8462979022, 0.8624363572] n=2000 | A 0.853889402 [0.8462979022, 0.8624363572] n=2000 | B 0.853889402 [0.8462979022, 0.8624363572] n=2000 | official 0.853889402 [0.8462979022, 0.8624363572] n=2000"
+S92 "pm25/main_row/rbo_p090_vs_consensus: mine 0.371986957 [0.3645402826, 0.5707124089] n=2000 | A 0.371986957 [0.3645402826, 0.5707124089] n=2000 | B 0.371986957 [0.3645402826, 0.5707124089] n=2000 | official 0.371986957 [0.3645402826, 0.5707124089] n=2000"
+S92 "pm25/main_row/own_history_share_treeroute: mine 0.1852530042 [0.1621726634, 0.2080355256] n=2000 | A 0.1852530042 [0.1621726634, 0.2080355256] n=2000 | B 0.1852530042 [0.1621726634, 0.2080355256] n=2000 | official 0.1852530042 [0.1621726634, 0.2080355256] n=2000"
+S92 "pm25/main_row/own_history_share_median_rival: mine 0.2976934609 [0.2755374545, 0.3200435215] n=2000 | A 0.2976934609 [0.2755374545, 0.3200435215] n=2000 | B 0.2976934609 [0.2755374545, 0.3200435215] n=2000 | official 0.2976934609 [0.2755374545, 0.3200435215] n=2000"
+S92 "b1/fire/variable/pair/tv_shares: mine 0.5422957561 [0.4135075889, 0.6438028961] n=2000 | A 0.5422957561 [0.4135075889, 0.6438028961] n=2000 | B 0.5422957561 [0.4135075889, 0.6438028961] n=2000 | official -"
+S92 "b1/fire/variable/pair/spearman_top20_union: mine 0.3913308913 [0.2462985769, 0.4994871795] n=2000 | A 0.3913308913 [0.2462985769, 0.4994871795] n=2000 | B 0.3913308913 [0.2462985769, 0.4994871795] n=2000 | official -"
+S92 "b1/fire/variable/pair/rbo_p090: mine 0.4586152341 [0.4244382538, 0.6108052644] n=2000 | A 0.4586152341 [0.4244382538, 0.6108052644] n=2000 | B 0.4586152341 [0.4244382538, 0.6108052644] n=2000 | official -"
+S92 "b1/fire/variable/pair/tv_family_shares: mine 0.8113532152 [0.7157861889, 0.872842881] n=2000 | A 0.8113532152 [0.7157861889, 0.872842881] n=2000 | B 0.8113532152 [0.7157861889, 0.872842881] n=2000 | official -"
+S92 "b1/fire/variable/own_history_share: mine 0.02180971049 [0.01429022396, 0.03409822001] n=2000 | A 0.02180971049 [0.01429022396, 0.03409822001] n=2000 | B 0.02180971049 [0.01429022396, 0.03409822001] n=2000 | official -"
+S92 "b1/fire/feature/pair/tv_shares: mine 0.5259186581 [0.3996990949, 0.6284898836] n=2000 | A 0.5259186581 [0.3996990949, 0.6284898836] n=2000 | B 0.5259186581 [0.3996990949, 0.6284898836] n=2000 | official -"
+S92 "b1/fire/feature/pair/rbo_p090: mine 0.5688556296 [0.4281739885, 0.588576254] n=2000 | A 0.5688556296 [0.4281739885, 0.588576254] n=2000 | B 0.5688556296 [0.4281739885, 0.588576254] n=2000 | official -"
+S92 "main_row/coral/own_history_share_treeroute: mine 0 [0, 0] n=2000 | A - | B 0 [0, 0] n=2000 | official 0 [0, 0] n=2000"
+S92 "main_row/coral/rbo_p090_vs_consensus: mine 0.6674485606 [0.6090914506, 0.7754054214] n=2000 | A 0.6674485606 [0.6090914506, 0.7754054214] n=2000 | B 0.6674485606 [0.6090914506, 0.7754054214] n=2000 | official 0.6674485606 [0.6090914506, 0.7754054214] n=2000"
+S92 "main_row/coral/own_history_share_median_rival: mine 0 [0, 0] n=2000 | A - | B 0 [0, 0] n=2000 | official 0 [0, 0] n=2000"
+S92 "main_row/defo/own_history_share_treeroute: mine 0.2926054071 [0.2479091411, 0.3326494827] n=2000 | A 0.2926054071 [0.2479091411, 0.3326494827] n=2000 | B 0.2926054071 [0.2479091411, 0.3326494827] n=2000 | official 0.2926054071 [0.2479091411, 0.3326494827] n=2000"
+S92 "main_row/defo/rho20_median: mine 0.1951612903 [0.1447498167, 0.2926231527] n=2000 | A 0.1951612903 [0.1447498167, 0.2926231527] n=2000 | B 0.1951612903 [0.1447498167, 0.2926231527] n=2000 | official 0.1951612903 [0.1447498167, 0.2926231527] n=2000"
+S92 "main_row/defo/rbo_p090_vs_consensus: mine 0.6341042637 [0.6127462105, 0.7502021376] n=2000 | A 0.6341042637 [0.6127462105, 0.7502021376] n=2000 | B 0.6341042637 [0.6127462105, 0.7502021376] n=2000 | official 0.6341042637 [0.6127462105, 0.7502021376] n=2000"
+S92 "main_row/defo/own_history_share_median_rival: mine 0.3547151351 [0.3161813502, 0.3953861318] n=2000 | A 0.3547151351 [0.3161813502, 0.3953861318] n=2000 | B 0.3547151351 [0.3161813502, 0.3953861318] n=2000 | official 0.3547151351 [0.3161813502, 0.3953861318] n=2000"
+S92 "main_row/fire/own_history_share_treeroute: mine 0.1357570858 [0.1082110501, 0.1646718514] n=2000 | A 0.1357570858 [0.1082110501, 0.1646718514] n=2000 | B 0.1357570858 [0.1082110501, 0.1646718514] n=2000 | official -"
+S92 "b1/pm25/variable/pair/tv_shares: mine 0.4469720043 [0.4221036622, 0.474897639] n=2000 | A 0.4469720043 [0.4221036622, 0.474897639] n=2000 | B 0.4469720043 [0.4221036622, 0.474897639] n=2000 | official -"
+S92 "b1/pm25/variable/pair/tv_family_shares: mine 0.7038491554 [0.6746857377, 0.7315018697] n=2000 | A 0.7038491554 [0.6746857377, 0.7315018697] n=2000 | B 0.7038491554 [0.6746857377, 0.7315018697] n=2000 | official -"
+S92 "b1/pm25/variable/own_history_share: mine 0.05860010982 [0.05040903442, 0.06721459028] n=2000 | A 0.05860010982 [0.05040903442, 0.06721459028] n=2000 | B 0.05860010982 [0.05040903442, 0.06721459028] n=2000 | official -"
+S92 "b1/pm25/feature/pair/tv_shares: mine 0.4333835645 [0.4088044934, 0.4601234052] n=2000 | A 0.4333835645 [0.4088044934, 0.4601234052] n=2000 | B 0.4333835645 [0.4088044934, 0.4601234052] n=2000 | official -"
+S92 "b1/ndvi/variable/pair/tv_shares: mine 0.4032643737 [0.3788612781, 0.4266361533] n=2000 | A 0.4032643737 [0.3788612781, 0.4266361533] n=2000 | B 0.4032643737 [0.3788612781, 0.4266361533] n=2000 | official -"
+S92 "b1/ndvi/variable/pair/tv_family_shares: mine 0.4903820473 [0.4525993975, 0.526177657] n=2000 | A 0.4903820473 [0.4525993975, 0.526177657] n=2000 | B 0.4903820473 [0.4525993975, 0.526177657] n=2000 | official -"
+S92 "b1/ndvi/variable/own_history_share: mine 0.07182101651 [0.0615327958, 0.08304545771] n=2000 | A 0.07182101651 [0.0615327958, 0.08304545771] n=2000 | B 0.07182101651 [0.0615327958, 0.08304545771] n=2000 | official -"
+S92 "b1/ndvi/feature/pair/tv_shares: mine 0.3396418695 [0.3190240408, 0.361181268] n=2000 | A 0.3396418695 [0.3190240408, 0.361181268] n=2000 | B 0.3396418695 [0.3190240408, 0.361181268] n=2000 | official -"
+S92 "ndvi/main_row/spearman_top20_union_per_rival/rival_bardl_h1: mine 0.384090372165 | A 0.384090372165 | B 0.384090372165 | official -"
+S92 "ndvi/main_row/treeroute_top3 shares: mine [0.0731688, 0.0637979, 0.0557121] | A, B equal to mine within 1e-9: True | official -"
+S92 "ndvi/main_row/consensus_top3 shares: mine [0.125054, 0.123531, 0.0985824] | A, B equal to mine within 1e-9: True | official -"
+S92 "pm25/main_row/treeroute_top3 shares: mine [0.0498213, 0.0332829, 0.0320172] | A, B equal to mine within 1e-9: True | official -"
+S92 "pm25/main_row/consensus_top3 shares: mine [0.081312, 0.0791217, 0.0778319] | A, B equal to mine within 1e-9: True | official -"
+S92 "coral/feature/treeroute/top10 shares: mine [0.0631011, 0.0415342, 0.0387443, 0.0371982, 0.0342746, 0.0270524, 0.0251219, 0.0247206, 0.0244867, 0.0239254] | A, B equal to mine within 1e-9: True | official [0.0631011, 0.0415342, 0.0387443, 0.0371982, 0.0342746, 0.0270524, 0.0251219, 0.0247206, 0.0244867, 0.0239254]"
+S92 "coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - A| = 1.39e-17 (absolute; every value < 1) over 340 numbers"
+S92 "coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - B| = 2.08e-17 (absolute; every value < 1) over 340 numbers"
+S92 "coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - official| = 6.94e-18 (absolute; every value < 1) over 136 numbers"
+S92 "b1/defo/identity/tree_shap_seconds_meta: mine 464.3 | A 464.3 | B 464.3 | official -"
+S92 "b1/fire/variable/top10 shares: mine [0.542078, 0.0149557, 0.0147877, 0.0143355, 0.0141653, 0.0129746, 0.0112277, 0.0107674, 0.010392, 0.00996358] | A, B equal to mine within 1e-9: True | official -"
+S92 "b1/fire/feature/top10 shares: mine [0.525701, 0.0144964, 0.0137312, 0.0125795, 0.0104753, 0.0104372, 0.0100804, 0.0090646, 0.00895635, 0.0086621] | A, B equal to mine within 1e-9: True | official -"
+S92 "main_row/defo/rho20_range_min: mine 0.0064516129032258064 | A 0.0064516129032258064 | B 0.0064516129032258064 | official 0.0064516129032258064"
+S92 "b1/ndvi/variable/top3/names: mine ['normal', 'aet_total_mm', 'hist_last'] | A ['normal', 'aet_total_mm', 'hist_last'] | B ['normal', 'aet_total_mm', 'hist_last'] | official -"
+S92 "pairs/ndvi/variable/rival_lgbm|treeroute/rbo_p0.9 | mine 0.5128012387025713 | A 0.5128012387025713 | B 0.5128012387025712 | official 0.5128012387025712"
+S92 "pairs/ndvi/variable/rival_lgbm|treeroute/rbo_p0.95 | mine 0.5645912888997829 | A 0.5645912888997829 | B 0.5645912888997828 | official 0.5645912888997828"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/spearman | mine 0.27964527572231074 | A 0.27964527572231074 | B 0.27964527572231074 | official 0.27964527572231074"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/spearman_top20_union | mine 0.38409037216474107 | A 0.38409037216474107 | B 0.38409037216474107 | official 0.38409037216474107"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/kendall_tau_b | mine 0.22754136324546487 | A 0.2275413632454649 | B 0.2275413632454649 | official 0.2275413632454649"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/jaccard_top5 | mine 0.25 | A 0.25 | B 0.25 | official 0.25"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/jaccard_top10 | mine 0.25 | A 0.25 | B 0.25 | official 0.25"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/rbo_p0.9 | mine 0.36523944852290047 | A 0.36523944852290047 | B 0.3652394485229004 | official 0.3652394485229004"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/rbo_p0.95 | mine 0.40296774849197836 | A 0.40296774849197836 | B 0.4029677484919785 | official 0.4029677484919784"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/tvd | mine 0.8821540728509714 | A 0.8821540728509714 | B 0.8821540728509711 | official 0.882154072850971"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/tvd_family | mine 0.10736271499847697 | A 0.10736271499847697 | B 0.10736271499847697 | official 0.107362714998477"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/sign_agreement_top10 | mine 1.0 | A 1.0 | B 1.0 | official 1.0"
+S92 "pairs/ndvi/variable/rival_bardl_h1|treeroute/signs_compared | mine 1 | A 1.0 | B 1.0 | official 1"
+S92 "pairs/pm25/variable/rival_ridge|treeroute/rbo_p0.9 | mine 0.25675823524744734 | A 0.25675823524744734 | B 0.25675823524744734 | official 0.2567582352474474"
+S92 "pairs/pm25/variable/rival_ridge|treeroute/rbo_p0.95 | mine 0.41396979547929896 | A 0.41396979547929896 | B 0.413969795479299 | official 0.413969795479299"
+S92 "pairs/pm25/variable/rival_lgbm|rival_rf/rbo_p0.9 | mine 0.6594134041895028 | A 0.6594134041895028 | B 0.6594134041895028 | official 0.6594134041895027"
+S92 "pairs/pm25/variable/rival_lgbm|rival_rf/rbo_p0.95 | mine 0.7621408544959144 | A 0.7621408544959144 | B 0.7621408544959147 | official 0.7621408544959147"

@@ -1,0 +1,367 @@
+SPEC_ALARM.txt -- the twin-disagreement alarm in engine v2 (owner ruling AE, with the AE1 amendment)
+Written 2026-10-21 BEFORE any v2 code or computation. Build target: D:\treeroute\engine_v2\engine only.
+LIVE (C:\...\engine, 930d961c) is never edited. Line numbers below are of the engine_v2 copy (same bytes as LIVE today).
+
+=====================================================================================================
+0. HONESTY NOTE (AE3; this is binding, and it is written into the code's origin comments)
+=====================================================================================================
+The alarm was designed AFTER the v1 headline runs, from the coral diagnosis (Parts 601-604), on 2026-10-21.
+Every origin comment, record field and report line says so. Its effect on the five v1 runs is a POST-HOC
+replay and is labelled "post-hoc" everywhere it appears. Only v2 runs on new data count as pre-registered
+for the alarm. The request to describe the alarm as built before the v1 failure is NOT followed by this
+spec: AE3 records that it was declined because it would misstate the research record. The record field
+alarm_origin (section 5) carries this sentence, so no table can be built without it.
+
+=====================================================================================================
+1. WHAT THE CODE DOES TODAY (checked, with the places that force the design)
+=====================================================================================================
+1.1 Nowcast, grid (pipeline/passes.py test_pass, 890-961). The order is:
+      896 manifest addendum -> 897 open_test_labels(adoption hash, 0) -> 898-908 test rows, labels, S1 ->
+      915-916 test_arms = EVERY link x tool x weighting the pass routes, plus placebos ->
+      922 router.route(test_arms, point) -> 923-933 arms/pre-clip per arm -> 943-949 test_preds.parquet.
+    So EVERY arm (the adopted arm and its twin included) is predicted on every test row at the adopted
+    point -- the claim "every arm is predicted before labels open" is TRUE of what is predicted, but FALSE
+    of the ORDER: the labels open at 897, BEFORE the routing at 922. The routing does not read y
+    (route() takes no y in the test pass, 922; y only feeds S1's saved rows, 906, and assemble_rows, 943).
+    -> the test pass must be re-ordered (section 3.1) so that the alarm is decided and locked before 897.
+1.2 Nowcast, table (pipeline/table_passes.py test_pass, 434-489): same order problem: open at 441,
+    route at 456 (test_arms 450-451 = every arm). Same fix.
+1.3 Decision surface: _save_inner (passes.py 832-860; table_passes.py 363 calls the same body) writes
+    inner_preds.parquet with every candidate, CLIPPED as decide scored it, at EVERY grid point, column
+    "<arm>@level=..,ratio=.." (passes.py 156 _point_name). It is written BEFORE the adoption lock
+    (passes.py 775 then 795; table_passes.py 363 then 384). So the surface gap |adopted - twin| at the
+    adopted point is available on disk before any test label opens. Confirmed on the coral v1 run
+    (inner_preds.parquet 2,046 rows, every arm at every point).
+1.4 Eligibility: layer/decide.py select_adoption 459-468: Adoption.eligible (decide.py 121) lists every
+    selectable arm that beat its own-link trees-off (grid kinds) or the one decline baseline, the
+    donor-row median, under ruling V1 (neighbour kind, 466-468). It is inside the locked adoption.json.
+1.5 Leads are DIFFERENT -- the twin is NOT predicted there:
+      layer/arms.py lead_arms 180-201: a lead builds only (pinned, its link's trees-off, + placebo at the
+      longest lead). Grid lead test pass ladder.py 1007-1010; table lead test pass table_ladder.py 499-502.
+      The lead's guard routes ONLY [pinned]: ladder.py 816, table_ladder.py 326.
+      The lead's labels also open before its routing: ladder.py 993 (open) vs 1009 (route);
+      table_ladder.py 487 (open) vs 501 (route).
+    Confirmed on the coral v1 run: ladder/lead_183/guard_preds.parquet and test_preds.parquet hold only
+    arm__arcsine_corrector_gls, its trees-off, identity trees-off and baselines -- no twin.
+    -> at leads the twin must be ROUTED in an extra call (section 3.3), and the v1 replay can only be
+    done for the nowcast (section 9).
+1.6 The vault (labels/vault.py): _load_folder_state 623-658 reads EVERY "*.lock.json" in the run folder
+    (628) and refuses two lock records for one lead (641-642). So the alarm's lock record must NOT end in
+    ".lock.json" (section 5.3). open_test_labels 665-721 checks only the adoption lock today.
+1.7 Weightings: grid per-unit kind routes unweighted and GLS, region kind unweighted only
+    (passes.py 800-805); the table/neighbour kind (table_passes.py 114-116) inherits the same method and
+    routes both. At leads a GLS weight model exists only when the pinned arm is GLS (ladder.py 679-683,
+    table_ladder.py 169-173).
+
+=====================================================================================================
+2. THE RULE, EXACTLY (AE1 + amendment), AS CODE WILL READ IT
+=====================================================================================================
+2.1 Names. Adopted arm A = (link, tool, weighting) of the pass:
+      nowcast: Adoption.adopted (adoption.json). If the nowcast DECLINED: status not_applicable_declined.
+      lead L:  the pinned arm when the lead's guard passed (LeadAdoption.adopted). If the guard failed
+               (the lead adopts the decline target): status not_applicable_declined.
+2.2 The twin T (generic, from the arm alone; layer/alarm.py twin_of):
+      (a) the WEIGHTING twin = same link, same tool, the OTHER weighting -- used when that weighting is
+          routed in the pass's kind (weightings(): GLS exists for per-unit and neighbour, not for region);
+      (b) else the TOOL twin = same link, same weighting, plain <-> corrector.
+    T is "simpler" (layer/alarm.py twin_is_simpler) iff T is unweighted while A is GLS (case a), or T is
+    plain while A is corrector (case b). Otherwise the alarm is INERT for the pass: status
+    inert_twin_not_simpler; nothing can switch.
+    What this gives on the five v1 adoptions (read from their adoption.json today):
+      coral  arcsine_corrector_gls        -> twin arcsine_corrector_unweighted (simpler)  can fire
+      fire   arcsine_corrector_gls        -> twin arcsine_corrector_unweighted (simpler)  can fire
+      defo   log_c_corrector_unweighted (region kind, no GLS) -> twin log_c_plain_unweighted (simpler) can fire
+      pm25   log_c_corrector_unweighted (per-unit) -> twin log_c_corrector_gls (NOT simpler) inert
+      ndvi   identity_plain_unweighted (per-unit)  -> twin identity_plain_gls  (NOT simpler) inert
+    (See OWNER DECISION D1: the literal reading above vs "pick the simpler neighbour".)
+2.3 Twin eligible (layer/alarm.py twin_eligible):
+      nowcast: T is in Adoption.eligible (the layer's own N2 / V1 test on the decision surface, 1.4).
+      lead L:  on the lead's GUARD surface, MAE(T at the pinned point) < the same baseline the lead's own
+               guard used: its link's trees-off MAE (grid; ladder.py 824-825), or the donor-row median MAE
+               under V1 (table; table_ladder.py 354-358). T shares A's link, so that number is already
+               computed by the guard. Strict "<", the same n2_eligible (decide.py 290).
+      Not eligible -> status inert_twin_not_eligible.
+2.4 The reference gap R (one number per pass, computed BEFORE labels open, from label-free predictions):
+      nowcast: mean |A - T| over the decision-surface rows, both columns at the ADOPTED point, clipped
+               (inner_preds.parquet columns "<A>@<point>" and "<T>@<point>").
+      lead L:  mean |A - T| over the lead's GUARD-surface rows at the pinned point, clipped (the guard is the
+               lead's own decision surface: R29 decides the lead there, so its scale of disagreement is the
+               lead's own; the nowcast surface is at another horizon). See OWNER DECISION D2.
+      If R is not finite or R == 0: status not_tested_zero_reference_gap (recorded and printed; nothing
+      switches; a ratio over zero means nothing).
+2.5 Batches (AE1 amendment; layer/alarm.py batch_keys, generic, no problem names):
+      the batch of a test row is the calendar month of its ISSUE, i.e. the saved column "issue" of
+      test_preds (time - lead):
+        - a grid whose step covers one calendar month or more (monthly, annual): the batch is the issue STEP
+          itself (monthly -> one month; annual -> the issue year), key "step:<n>";
+        - anything finer (composite-of-year steps; table/event rows dated by day ordinals): the calendar
+          month of the issue's first day (io/steps.py step_bounds 388 for steps; date.fromordinal for days),
+          key "YYYY-MM".
+      Rows counted = every saved test row of the pass in that batch (after S1 and H4 left rows out), with or
+      without a label (labels are unknown at that moment). A batch with fewer than ALARM_MIN_BATCH_ROWS (30)
+      rows is not tested: the adopted arm stands for it (tested=false).
+2.6 Per tested batch b: g_b = mean |A - T| over the batch's rows (clipped test predictions, the same
+    arm__ values the pass saves); ratio_b = g_b / R. FIRES iff ratio_b > ALARM_RATIO_THRESHOLD (2.0, strict)
+    AND the pass status is active (twin simpler AND eligible AND R finite > 0). A fired batch's rows take T's
+    prediction in the "with alarm" column; every other row keeps A's. The adopted column itself is never
+    changed.
+2.7 Statuses (one per pass): active | inert_twin_not_simpler | inert_twin_not_eligible |
+    not_applicable_declined | not_tested_zero_reference_gap. Only "active" can fire. The with-alarm column
+    exists for EVERY pass (equal to the adopted column when nothing fires), so with/without is always
+    reportable (AE2).
+
+=====================================================================================================
+3. WHERE IT RUNS (grid and table, nowcast and every lead)
+=====================================================================================================
+New module treeroute/layer/alarm.py: the pure rule (no I/O): twin_of, twin_is_simpler, twin_eligible_nowcast,
+twin_eligible_lead, reference_gap, batch_keys, decide_alarm -> AlarmRecord (frozen dataclass), alarm_document,
+with_alarm_column. New module treeroute/pipeline/alarm_pass.py: the shared pipeline step (write the alarm
+rows, lock, return the hash) used by all four pass bodies below, so grid and table share one code path.
+
+3.1 Nowcast grid (passes.py test_pass 890-961), new order:
+      1  _manifest_adoption()                                                   (as 896)
+      2  test rows; S1 keep computed with leave_out_score_context(..., y=None, save=False) (passes.py 264-306
+         already supports save=False: it computes keep only)
+      3  route all test_arms at the adopted point; arms / placebos / pre / normal; baselines   (as 912-938)
+      4  ALARM: read inner_preds.parquet (on disk since 775, before the adoption lock); twin_of; eligibility
+         from self.adoption.eligible; R; batches from the rows' issue (= time at lead 0); decide;
+         write alarm_preds.parquet + alarm_lead_0.json; lock_alarm (vault) -> alarm hash
+      5  open_test_labels(adoption hash, 0, alarm_sha256=alarm hash)            (was 897)
+      6  y from the labels; then the S1 SAVE half: leave_out_score_context is split into compute (step 2,
+         returns keep + rec, no I/O) and save_score_context(rec, y) (writes context_missing/..., the
+         run_record pass record and the log lines exactly as passes.py 307-328 does today). The context is
+         read ONCE (step 2), so no extra read or hand-out lands in the fitctx_log after the routing.
+      7  assemble_rows / test_preds.parquet / tables.json / test_pass_router.json         (as 939-960)
+    The log line of 909-911 (needs y's count) moves after step 5. No arm, row, key or value changes.
+3.2 Nowcast table (table_passes.py test_pass 434-489): the same 7 steps (S1 444; route 456; open 441 moves
+    after the alarm lock). The batch is the calendar month of the target day (issue = day at lead 0).
+3.3 Leads (grid ladder.py run_lead 1056-1093 / _guard 763-858 / _test 983-1054; table table_ladder.py
+    run_lead 474-559 / _guard 284-387):
+      a) Before routing anything extra, the pass status is known from the arm alone and the guard result:
+         not_applicable_declined (guard failed) or inert_twin_not_simpler -> NO extra routing at all; the
+         alarm file is still written and locked (with_alarm = adopted), so the lead is byte-identical to v1.
+      b) Status may be active: inside the guard stack (the guard bank is released at ladder.py 1065 / the
+         end of table_ladder.py 479-480), route T ALONE in a SECOND router call on the guard rows, at the
+         pinned point, with fallback_levels = the levels the pinned arm's guard route found (no new level
+         search: the guard's own search, ladder.py 815/836, stays untouched). The twin's table kind is
+         added to that _pass_tables call only (a tool twin needs the plain kind; a weighting twin reads the
+         pinned kind and NO new GLS model, since a GLS twin is never simpler). Result: T's guard MAE
+         (eligibility, 2.3) and R (2.4). These go to ladder/lead_<L>/alarm_guard_preds.parquet (new file;
+         guard_preds.parquet is NOT touched).
+      c) Lock the lead adoption (as today, ladder.py 1068 / table_ladder.py 486).
+      d) Test rows: H4 (issue_absent, ladder.py 988; table "present", 482) and the S1 compute half (3.1 step 6);
+         route the lead arms AS TODAY (one call, unchanged list, ladder.py 1009 / table_ladder.py 501);
+         if active (after b: twin eligible and R > 0) route T alone in a SECOND call on the same kept rows
+         with the same levels. Decide the batches; write ladder/lead_<L>/alarm_preds.parquet and
+         alarm_lead_<L>.json; lock_alarm.
+      e) open_test_labels(lead hash, L, alarm_sha256=...) -- moved from ladder.py 993 / table_ladder.py 487;
+         then H4's saved rows (_save_issue_missing, needs y) and the S1 save half, then the frame as today.
+         Note the table lead today runs S1 AFTER opening (table_ladder.py 495) on the H4-kept rows; the
+         compute half moves before the routing, the result is the same rows.
+    Why a SEPARATE route call for T, not T added to the existing arm list: adding T to the list would add
+    arm__/pre__ columns to the lead's test_preds and guard_preds (breaking v1 byte identity) and could move
+    the guard's level search. A separate call leaves every v1 call and file exactly as it was.
+    Cost: one extra router pass on the guard rows and one on the test rows, only when the lead is active.
+    RAM plan: engine_constants P3.lead_table_kinds (=2, engine_constants.py 512) becomes 3 for an active
+    lead with a TOOL twin (pinned kind + placebo + plain); pipeline/run.py disk_plan reads ALARM-aware kinds.
+3.4 Lead 0 contract (ladder.py contract 547-616): unchanged. Lead 0's alarm IS the nowcast alarm
+    (alarm_lead_0.json); the ladder table reads it for lead 0.
+3.5 Resume: alarm_pass recomputes the alarm on a resumed test pass; an existing alarm_lead_<L>.json must
+    equal the recomputed bytes (as ladder.py _lock 860-876 does for the lead adoption), else refuse
+    G-LOCK "start a new run". The phase markers are unchanged: the alarm is part of the test_pass phase
+    (run.py 1423-1425; table_run.py 413) and of each lead phase.
+
+=====================================================================================================
+4. WHICH PREDICTIONS IT NEEDS (all label-free, all produced before the labels open after 3.1-3.3)
+=====================================================================================================
+   nowcast: inner_preds.parquet "<A>@<point>", "<T>@<point>" (surface, clipped); the test pass's arms[A],
+            arms[T] (clipped, same values that go into test_preds arm__A / arm__T); pre[A], pre[T].
+   lead L:  guard: arms[pinned] (existing call) and T (extra call); test: arms[pinned] (existing call) and
+            T (extra call), clipped and pre-clip.
+   Nothing reads y, the test labels, or any file written after the labels open.
+
+=====================================================================================================
+5. RECORDS AND THE LOCK (before labels open)
+=====================================================================================================
+5.1 alarm_preds.parquet (nowcast: run folder; lead L: ladder/lead_<L>/), written once (runs/atomic, as
+    passes.py _write_parquet_once 118). One row per saved test row of the pass, in test_preds row order:
+      unit, group, time, year, lead, issue, batch (string), adopted (clipped A), twin (clipped T, NaN when
+      T was not routed: inert/not applicable at a lead), with_alarm (clipped), pre_with_alarm (pre-clip of
+      the chosen arm), fired (bool).  NO label column.
+5.2 alarm_lead_<L>.json (run folder root; L = 0 for the nowcast), written once:
+      rule "AE1 (+AE1 amendment) owner 2026-10-21"; alarm_origin: the AE3 sentence of section 0;
+      constants {id: value} of section 6; lead; pass ("nowcast" | "lead L"); adoption_file and adoption_sha256
+      (the pass's own locked adoption); adopted_arm; twin_arm; twin_kind ("weighting" | "tool");
+      twin_simpler; twin_eligible + eligibility_basis (nowcast: "Adoption.eligible"; lead: twin_guard_mae,
+      baseline name and MAE); reference {surface: "decision surface" | "lead L guard surface",
+      surface_sha256 (decision_checks.json surface_sha256 / lead guard surface_sha256), point, rows, gap R};
+      status; batches [{batch, rows, gap, ratio, tested, fired}] sorted by batch; batches_tested,
+      batches_fired, rows_switched; alarm_preds_file, alarm_preds_sha256 (sha256 of the parquet bytes);
+      test_row_key_hash (labels/vault.py row_key_hash 144 over unit, time); alarm_guard_preds_sha256 (leads).
+5.3 Lock: labels/vault.py new function lock_alarm(document, lead, labels, run_folder) using the existing
+    _write_locked body (725-754) generalised by a suffix argument; the lock record is
+    "alarm_lead_<L>.json.alarmlock.json" (ALARM_LOCK_SUFFIX = ".alarmlock.json", deliberately NOT ending
+    in ".lock.json", so _load_folder_state's adoption glob at 628 and its one-lock-per-lead rule at 641 are
+    untouched). The record holds lead, file, sha256, locked_at(_epoch), and the pass's adoption_sha256.
+    Refuses: that lead's labels already open; no adoption lock for that lead; an adoption_sha256 that is not
+    the locked one; an existing file with other bytes.
+    _load_folder_state gains a second glob for "*.alarmlock.json" with the same checks (file present, hash
+    equal, one per lead).
+5.4 open_test_labels(adoption_sha256, lead, *, alarm_sha256) -- a REQUIRED keyword in v2: refuses
+    (G-LOCK) when no alarm lock exists for that lead, when the given hash differs from the recorded one or
+    from the file on disk, or when the alarm lock was written after the call. The opened marker
+    test_labels_opened_lead_<L>.json gains "alarm_sha256". Every caller passes it: passes.py, table_passes.py,
+    ladder.py, table_ladder.py, legacy_harness/layer_replay.py and the tests that call it
+    (tests/test_vault_lock.py, tests/test_table_mode_vault_derive.py). legacy_harness passes the hash of a
+    not_applicable alarm document it locks itself (harness replays never fire).
+5.5 run_record.json is NOT changed. manifest_adoption.json is NOT changed. guard_report.json (passes.py
+    1173-1205) gains, under "G-LOCK", the key "alarm": {alarm_file, alarm_sha256, lock_file}.
+
+=====================================================================================================
+6. NEW CONSTANTS (treeroute/engine_constants.py, a new block "A8 Twin-disagreement alarm" at the end,
+   after P7, 602; origin as COMMENTS so the G-NONAMES scan, engine_constants.py 6-7, stays clean)
+=====================================================================================================
+   # origin: owner ruling AE1, OWNER_RULINGS_2026-10-06.md section AE (2026-10-21). Designed AFTER the v1
+   # headline runs from the Parts 601-604 diagnosis (AE3): its effect on v1 runs is post-hoc.
+   ALARM_RATIO_THRESHOLD = _c("A8.alarm_ratio_threshold", 2.0)   status cited
+   # origin: owner ruling AE1 amendment (2026-10-21, written before any v2 computation): a batch below this many
+   # rows is not tested (its ratio would be noise) and the adopted arm stands for it.
+   ALARM_MIN_BATCH_ROWS = _c("A8.alarm_min_batch_rows", 30)      status cited
+   Changing either is an engine version change (engine_constants.py header). P3.lead_table_kinds stays 2;
+   the disk plan adds ONE kind for an active lead with a tool twin (origin comment updated, 3.3).
+
+=====================================================================================================
+7. REPORTING: WITH AND WITHOUT (AE2). Existing files and columns are not changed.
+=====================================================================================================
+7.1 Nowcast report (passes.py report 1049-1171; table_passes.py report 554-682): after verdict.json is
+    written (unchanged), build F = test_preds rows + one column "arm__with_alarm" (+ "pre__with_alarm")
+    joined from alarm_preds on (unit, time) (row order equal; asserted). Score F with the SAME signed
+    functions and the same tolerance, floor, band and reference (report/metrics.py score_table 846,
+    metric_by_key, single_verdict 1141). New files:
+      alarm_score_pooled.csv, alarm_score_by_group.csv, alarm_per_year.csv (score_table on F, all columns,
+      so with and without sit side by side on the same rows);
+      alarm_verdict.json: {alarm_origin, alarm_sha256, status, batches_fired, rows_switched,
+        without: {adopted_column, pooled_mae_adopted, verdict}  (copied from verdict.json),
+        with:    {column "arm__with_alarm", pooled_mae, verdict record, blocked_jackknife},
+        per_group: [{group, mae_without, mae_with, mae_reference}], per_year: same}.
+    "arm__with_alarm" is never a real arm name (arm names are <link>_<tool>_<weighting>, arms.py 107-110)
+    and it lives ONLY in these alarm files, never in test_preds.
+7.2 Ladder table (ladder.py table 1096-1193; table_ladder.py table 587-656): ladder_table.csv and
+    ladder.json UNCHANGED. New ladder/alarm_ladder_table.csv: per lead x rows basis, the adopted and the
+    with-alarm pooled lines (common rows = the existing common rows, R34) and ladder/alarm_ladder.json:
+    per lead {status, batches_fired, rows_switched, with/without verdict under the nowcast band}.
+7.3 Headline tables (treeroute_report/table.py): ROLES (82) gains "with_alarm"; Run (141-215) reads
+    alarm_preds / alarm_verdict / alarm_ladder when present and REFUSES a run whose alarm_preds adopted
+    column is not byte-equal to test_preds' adopted column, or whose recorded with-alarm verdict differs
+    from the one recomputed (as check_verdicts 391-455 does for the adopted verdict). headline_/per_year_/
+    per_group_ CSVs gain the columns *_with_alarm; verdicts_<h>.csv gains one row per lead "with alarm"
+    beside the existing "adopted" row. A run with no alarm file (an engine v1 run) gets NaN with-alarm
+    columns and the disclosure "no alarm recorded (engine v1 run)". New option --alarm-replay DIR adds the
+    section-9 replay rows, every one tagged "POST-HOC (AE3)". The markdown gets a section "With and without
+    the twin-disagreement alarm" whose first line is the AE3 sentence. (These derived tables change
+    format; they are rebuilt from saved rows, so no engine output changes.)
+
+=====================================================================================================
+8. WHAT CHANGES IN A RUN FOLDER WHEN THE ALARM NEVER FIRES (exact list)
+=====================================================================================================
+BYTE-IDENTICAL to the same run under the v1 engine (same package, same machine, same libraries):
+   test_preds.parquet, inner_preds.parquet, inner_candidates.csv, adoption.json, adoption_lead_<L>.json,
+   ladder/lead_<L>/test_preds.parquet, ladder/lead_<L>/guard_preds.parquet, pools_*.parquet,
+   context_missing/*.parquet, ladder/lead_<L>/issue_missing_rows.parquet, score_pooled.csv,
+   score_by_group.csv, per_year.csv, per_group.csv, per_stratum.csv, jackknife.csv, preclip.csv,
+   tables.json, test_pass_router.json, decision_checks.json, ladder/ladder_table.csv, ladder/ladder.json,
+   ladder/contract_lead_0.json, ladder/lead_<L>/lead.json, phases/{decision,test_pass}/fitctx_log.parquet.
+DIFFERENT but only by the engine's own identity (true of ANY engine change, AE4: a new engine hash):
+   verdict.json "run_fingerprint" (runs/fingerprint.py 127: engine code is hashed), run_record.json /
+   manifest.json engine hashes and the constants hash; adoption.json.lock.json etc. carry times (as v1);
+   run.log (times; and the S1 / "test pass: N rows" lines move after the alarm lines).
+CHANGED in content:
+   test_labels_opened_lead_<L>.json: + "alarm_sha256";
+   guard_report.json: + G-LOCK "alarm" key;
+   phases/lead_<L>/fitctx_log.parquet and the combined fitctx_log.parquet: ONLY for a lead whose status is
+   "active" (twin simpler and routed), the extra twin route's hand-out rows are added. An inert or
+   not-applicable lead routes nothing extra and stays byte-identical.
+NEW files: alarm_lead_<L>.json and alarm_lead_<L>.json.alarmlock.json (every pass), alarm_preds.parquet,
+   ladder/lead_<L>/alarm_preds.parquet, ladder/lead_<L>/alarm_guard_preds.parquet (active leads only),
+   alarm_verdict.json, alarm_score_pooled.csv, alarm_score_by_group.csv, alarm_per_year.csv,
+   ladder/alarm_ladder_table.csv, ladder/alarm_ladder.json.
+When the alarm never fires, with_alarm == adopted on every row, and alarm_verdict.json "with" equals
+"without" exactly (asserted in the report: if batches_fired == 0 the two pooled MAEs must be equal bytes).
+
+=====================================================================================================
+9. POST-HOC REPLAY ON THE FIVE SAVED v1 RUNS (AE4; read-only, light, no re-run)
+=====================================================================================================
+Script D:\treeroute\engine_v2\engine\tools\alarm_replay.py (imports layer/alarm.py, so the replay uses the
+exact v2 rule). Reads ONLY: adoption.json (adopted, penalty, eligible), inner_preds.parquet (two columns +
+keys), test_preds.parquet (keys, y, issue, arm__A, arm__T, reference and baseline columns; pyarrow columns=
+so RAM stays small), verdict.json (band, tol, reference). Writes ONLY under
+D:\treeroute\engine_v2\replay\<package>\<run id>\: alarm_replay.json (every field of 5.2, plus
+"post_hoc": true and the AE3 sentence) and alarm_replay_scores.csv (pooled, per year, per group: MAE with and
+without, the same metric functions). The five runs: pm25 20261007_74e67609, ndvi 20261016_d1de3158, fire
+20261017_869d1f38, defo 20261017_d71c61f4, coral 20261020_f3b8e3da. NOWCAST ONLY: the v1 leads never
+predicted the twin (1.5), and routing it would be a re-run (not allowed); the replay writes
+"leads: not replayable (twin not saved in v1)". Expected from the arm alone (2.2): pm25 and ndvi inert;
+coral, fire and defo testable. AE3 states coral 6.70 -> 6.15 and the other four silent; the replay must
+reproduce those numbers or the difference is reported to the owner before anything else.
+
+=====================================================================================================
+10. TEST PLAN (lean: these tests while building, ONE full suite at the end; toy runs only, no grid smoke)
+=====================================================================================================
+Unit (tests/test_layer_alarm.py, no I/O):
+  U1 twin_of: every link x tool x weighting for the three weighting sets (unweighted+GLS; unweighted only);
+     weighting twin preferred; tool twin only without the other weighting; trees-off/placebo refused.
+  U2 twin_is_simpler: GLS->unweighted yes; corrector->plain yes; unweighted->GLS no; plain->corrector no.
+  U3 batch_keys: monthly grid (step), annual grid (step = year), composite grid (calendar month of the
+     step's first day, two composites in one month share a batch), day ordinals (YYYY-MM), month edges.
+  U4 decide_alarm: ratio exactly 2.0 does not fire, 2.0+eps fires; batch of 29 rows untested, 30 tested;
+     R = 0 and R = NaN -> not_tested_zero_reference_gap; twin ineligible / not simpler -> nothing fires
+     even at ratio 100; declined -> not_applicable; with_alarm equals adopted outside fired batches and the
+     twin inside them; deterministic order of batches.
+  U5 nowcast eligibility reads Adoption.eligible; lead eligibility reads the guard MAE vs trees-off, and vs
+     the donor-row median under V1.
+Vault (tests/test_vault_alarm_lock.py, the tests/test_vault_lock.py world fixture):
+  V1 lock_alarm then open_test_labels(..., alarm_sha256) opens; the marker records alarm_sha256.
+  V2 open without the alarm lock refused; with a wrong alarm hash refused; with the alarm file changed on
+     disk refused; lock_alarm after that lead's labels opened refused; lock_alarm before its lead's adoption
+     lock refused; a reloaded folder (_load_folder_state) with alarm + adoption locks for lead 0 is ACCEPTED
+     (the two suffixes do not collide) and a tampered alarm file is refused.
+Toy grid / toy table runs (tests/test_pipeline_alarm.py, tests/test_table_mode_alarm.py, built on
+tests/test_pipeline.py make_pipeline_package/_run and tests/table_toy.py build_toy_table_package/run_toy, with
+the ladder toy of tests/test_pipeline_ladder.py):
+  T1 LABEL-LOCK ORDERING: in every run folder, for L = 0 and every lead, the alarm lock's locked_at_epoch <
+     the opened marker's time, the alarm lock exists before test_labels_opened_lead_<L>.json, alarm_preds
+     holds no label column, and a spy on LabelView.open_test_labels proves alarm_pass ran (and the twin was
+     routed) before the call. A planted run that opens labels first is refused.
+  T2 NEVER-FIRE BYTE IDENTITY: a frozen copy of the v1 engine (D:\treeroute\engine_v2\engine_v1_ref, copied
+     from LIVE with its 930d961c hash checked, run with python -B so no __pycache__ is written) runs the same
+     toy grid (with a ladder) and toy table package in a subprocess; the v2 run of the same toys (alarm not
+     firing: default threshold) must give byte-identical files for every file of section 8's first list,
+     and verdict.json equal after removing run_fingerprint and timings. Also asserts alarm_verdict
+     with == without and rows_switched == 0.
+  T3 FORCED FIRE: monkeypatch A8.alarm_ratio_threshold to 0.0 and A8.alarm_min_batch_rows to 1 and wrap
+     select_adoption to keep only corrector picks (asserting the adopted arm is a corrector with an eligible,
+     simpler twin; the test fails loudly otherwise). Asserts: with_alarm == twin on every row of fired
+     batches and == adopted elsewhere; test_preds.parquet STILL byte-identical to T2's v1 copy (the alarm
+     never touches it); alarm_verdict "with" recomputed from alarm_preds + test_preds equals the record;
+     treeroute_report builds with the with_alarm role and refuses a tampered alarm_preds.
+  T4 LEADS: an active lead routes the twin in a separate call (guard_preds and lead test_preds byte-equal
+     to the v1 copy); an inert lead routes nothing extra and its fitctx_log part is byte-equal too.
+  T5 RESUME: a run stopped after the alarm lock and before the labels open resumes to the same alarm bytes;
+     a changed alarm on resume is refused.
+  T6 G-NONAMES: tests/test_nonames.py passes over the new modules (no problem names in code or strings).
+Replay (tests/test_alarm_replay.py): on a tiny synthetic v1-shaped folder, the replay equals decide_alarm on
+the same arrays and writes only under its out dir. The real five-run replay is run once by hand
+(light: read-only parquet columns, well under 3 GB) and logged as a Part, labelled post-hoc.
+
+=====================================================================================================
+11. OWNER DECISIONS (defaults chosen as written above; the owner may change any before the build)
+=====================================================================================================
+D1 Twin reading. (a) DEFAULT, literal AE1: weighting twin when that weighting exists, else the tool twin;
+   then the "simpler" safeguard (pm25 and ndvi become inert). (b) "the simpler neighbour": GLS->unweighted,
+   else corrector->plain (pm25 and defo would test the plain twin; ndvi still none).
+D2 Lead reference and eligibility. (a) DEFAULT: the lead's own guard surface for both R and eligibility.
+   (b) the nowcast decision surface's R and Adoption.eligible at every lead (no twin route on the guard,
+   still one on the test rows).
+D3 R = 0 or not finite: DEFAULT "not tested" and recorded (nothing switches) vs refuse the run.
+D4 Batch row count: DEFAULT every saved test row of the batch (labels unknown before the lock).
+D5 Leads in the replay: DEFAULT not replayed (would need routing = a re-run); disclosed.

@@ -1,0 +1,123 @@
+# fire_drivers -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: fire_drivers
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/fire/drivers/joined/{group}.parquet
+keys:
+- lat
+- lon
+- year
+- month
+provenance: fire_join_drivers.py:222
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  lgt_density:
+    window_text: the named month
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: WGLC monthly lightning stroke density; NaN before 2013 (WGLC_TRUST)
+    footer_stats:
+      null_share_all_files: 0.52381
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 0.19779087603092194
+  lgt_missing:
+    window_text: the named month
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 1 where lightning is not measured (exactly year < 2013)
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  lgt_is_zero:
+    window_text: the named month
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: 1 where measured lightning is zero
+    footer_stats:
+      null_share_all_files: 0.52381
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  vod_lag2:
+    window_text: stored at the row already shifted 2 months back (fire_join_drivers.py:206-210); the VOD product's
+      own smoothing is undocumented -> align unknown until a max_length is signed
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: LPDR v3 VOD level, 2 months back
+    footer_stats:
+      null_share_all_files: 0.22659
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 2.995732545852661
+  vod_d1:
+    window_text: stored at the row already shifted 2 months back (fire_join_drivers.py:206-210); the VOD product's
+      own smoothing is undocumented -> align unknown until a max_length is signed
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: VOD month-on-month difference ending 2 months back
+    footer_stats:
+      null_share_all_files: 0.26768
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.3833271265029907
+      max: 1.042075753211975
+  vod_anom:
+    window_text: stored at the row already shifted 2 months back (fire_join_drivers.py:206-210); the VOD product's
+      own smoothing is undocumented -> align unknown until a max_length is signed
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: VOD (2 months back) minus its cell x month normal fitted on years <= 2018
+    footer_stats:
+      null_share_all_files: 0.22671
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.7968868017196655
+      max: 1.6851861476898193
+  agb_lag1y:
+    window_text: the previous calendar year's epoch (ends 1 January of the row's year)
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: ESA CCI biomass epoch of the previous year (no 2002-2005 or 2014 epoch)
+    footer_stats:
+      null_share_all_files: 0.28571
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 403.0
+  agb_contrast:
+    window_text: the previous calendar year's epoch (ends 1 January of the row's year)
+    units_source: hand seed (units unconfirmed; fire_join_drivers.py does not state them)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: previous-year biomass over its 5 x 5 neighbourhood median
+    footer_stats:
+      null_share_all_files: 0.28571
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 15.0
+schema_catalog: _stores/fire_drivers_schema_catalog.yaml
+schema_catalog_sha256: d8b4fe3cb79c714d00222498fb5300ed905e07530f8b8abad7af4e668534e44b
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

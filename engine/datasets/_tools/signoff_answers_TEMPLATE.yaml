@@ -1,0 +1,340 @@
+# signoff_answers_TEMPLATE.yaml -- the owner's answers to engine/FREEZE_SIGNOFF_SHEET.md, in the form
+# datasets/_tools/apply_signoff.py reads.
+#
+# HOW TO USE (only AFTER the owner has answered; an agent never fills an answer the owner did not give):
+#   1. Copy this file (for example to D:/treeroute/signoff_<date>/answers.yaml). Do not edit the template itself.
+#   2. Fill 'ruling' (the owner's ruling id, its rulings file and the date) and each 'answer:' with the owner's word.
+#      "yes to all" means: every answer is the one marked RECOMMENDED. An empty answer leaves that item open.
+#   3. Dry run (writes nothing; prints every planned edit with counts):
+#        py -3.9 datasets/_tools/apply_signoff.py <answers.yaml>
+#   4. Write (every edited file's old copy is moved aside, never deleted):
+#        py -3.9 datasets/_tools/apply_signoff.py <answers.yaml> --apply
+#   5. Run it again: it must plan no edit. Then, after the last engine change, re-run for each package
+#        py -3.9 -m treeroute check datasets/<pkg>     and     py -3.9 -m treeroute check datasets/<pkg> --deep
+#      (the deep check runs on the R21 smoke groups and names them, ruling M2; the freeze accepts only those reports).
+#   6. Update the tests the tool lists at the end (they pin the unsigned state), then one full suite.
+#
+# S8 is 'yes after refresh': the tool refuses S8 while an unsigned exceptions.yaml entry still reads as an open owner
+# decision or calls a banned column kept/watch, and names each one. An agent refreshes those entries to the rulings
+# and to this file's answers (S13, S15, S16, S28, S29) first, or S8 is left blank for this run.
+#
+# The 'options' blocks hold the dataset details each answer writes (columns, notes). They were written from the
+# packages as they stood on 2026-10-06 15:47 (frozen copy D:/treeroute/signoff_20261006/frozen3). The script refuses
+# loudly if a named row, verdict or note line is gone; a note already settled is skipped.
+
+ruling:
+  id: ''              # for example 'N' (the next section letter of the owner's rulings)
+  file: ''            # for example 'OWNER_RULINGS_2026-10-07.md'
+  date: ''            # YYYY-MM-DD, the day the owner answered
+
+packages: [pm25, fire, defo, ndvi]
+
+# product_family of a store-catalog column -> the group that signs it (S1 climate and water, S2 indices and SST,
+# S3 satellite land and fire products, S4 human, land use and static). A family missing here is never signed.
+families:
+  TerraClimate: S1
+  ERA5-Land: S1
+  AgERA5: S1
+  GPCC SPI: S1
+  SPEIbase: S1
+  CRU scPDSI: S1
+  DeepRec: S1
+  GRACE: S1
+  derived: S1
+  EDDI: S1
+  ESA CCI SM: S1
+  derived (fire danger): S1
+  NOAA indices: S2
+  ERSSTv5: S2
+  NOAA GML: S2
+  MODIS MCD12C1: S3
+  MODIS MCD12Q1: S3
+  MODIS MCD12Q2: S3
+  MODIS MCD43: S3
+  MODIS MOD08 (atmosphere): S3
+  MODIS MOD10: S3
+  MODIS MOD11C3: S3
+  MODIS MOD13C2: S3
+  MODIS MOD13C2 derived: S3
+  MODIS MOD44B: S3
+  FireCCI: S3
+  GFED500m: S3
+  FluxSat: S3
+  night lights: S3
+  LPDR v3 VOD: S3
+  ESA CCI Biomass: S3
+  WGLC: S3
+  Hansen GFC: S3
+  fire target (MCD64A1) derived: S3
+  LUH2: S4
+  GDP: S4
+  HDI: S4
+  WorldPop: S4
+  fertiliser: S4
+  UCDP: S4
+  GLW: S4
+  GMIA: S4
+  GRIP4: S4
+  MERIT: S4
+  accessibility: S4
+  coast: S4
+  soil: S4
+  terrain: S4
+  grid: S4
+  GHSL: S4
+  EDGAR v8.1: S4
+  FAO FFPI: S4
+  infrastructure snapshots: S4
+  regime classifier: S4
+  (none): S4
+
+answers:
+  # ---------------------------------------------------------------- timing facts (G-FACTS)
+  S1:                 # store facts, climate and water families. yes (RECOMMENDED) | verified | no
+    answer: ''
+  S2:                 # store facts, climate indices and SST. yes (RECOMMENDED) | verified | no
+    answer: ''
+  S3:                 # store facts, satellite land and fire products. yes (RECOMMENDED) | verified | no
+    answer: ''
+  S4:                 # store facts, human, land use and static. yes (RECOMMENDED) | verified | no
+    answer: ''
+  S5:                 # derived columns (feature-script outputs, defo's generated catalogs). yes (RECOMMENDED) | no
+    answer: ''
+  S6:                 # co_measured_with_target. recommended (RECOMMENDED) | all_false | no
+    answer: ''
+    true_for:         # used by 'recommended'; every other kept time-varying column without an answer gets false
+      pm25: [burn_frac]
+      defo: [V11_mean_ndvi_*, V12_mean_evi_*, V14_mean_albedo_*, gpp_kgC_m2_*, phenology_sos_doy]
+    # A 'true' only floors a column at 1 step (R8); it does not stop a lag-1 value from reaching into the predicted
+    # step. The texts below say how far each one reaches, so the written fact is true.
+    reason_true:
+      pm25:
+        burn_frac: 'GFED burned area of month t feeds the fire emissions of the GEOS-Chem run behind the ACAG PM2.5 of month t; R8 floors it at 1 month, which its content lag already gives; its signed 1-month reach (rulings J1, L1 a) lets the lag-1 value use imagery from the predicted month, as ruled'
+      defo:
+        V11_mean_ndvi_*: 'the year-t vegetation index sees the clearing of year t (defo_ban.py LAG_VEG); R8 floors it at 1 year, which its content lag already gives; the lag-1 value still reaches up to 15 days into the predicted year (its January composite), accepted by the owner'
+        V12_mean_evi_*: 'the year-t vegetation index sees the clearing of year t (defo_ban.py LAG_VEG); R8 floors it at 1 year, which its content lag already gives; the lag-1 value still reaches up to 15 days into the predicted year (its January composite), accepted by the owner'
+        V14_mean_albedo_*: 'year-t albedo is a forest-state readout of year t (defo_ban.py LAG_VEG); R8 floors it at 1 year, which its content lag already gives; the lag-1 value still reaches up to 8 days into the predicted year (its January composite), accepted by the owner'
+        gpp_kgC_m2_*: 'year-t GPP (FluxSat, from MODIS reflectance) is a forest-state readout of year t; R8 floors it at 1 year, which its content lag already gives; the lag-1 value still reaches up to 8 days into the predicted year, accepted by the owner'
+        phenology_sos_doy: 'year-t start of season comes from the same year optical series; R8 floors it at 1 year, but its signed reach runs 1 year past its year, so the lag-1 value can hold data from the predicted year: kept with a disclosure (S28 c); under S28 a or b it no longer enters and this text is not written'
+    reason_false: 'not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'
+    reason_false_for:   # the owner's own reason for a 'no' that a reviewer could question
+      defo:
+        population_density: 'WorldPop spreads each year onto the map with covariates that include same-year land cover (the mechanism J3 used to call AGLW co-measured on defo); answered no because the owner ruled it not a leak by measurement (Part 437, within-cell rho 0.0076; ruling J1 keeps it)'
+    reason_derived: 'a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'
+    reason_coproduct: 'built from a column measured with the target (or banned as its co-product or post-event state, e.g. the MOD44B tree cover behind the defo lag-2 columns); no holds only because this column content ends before the predicted step (its lag or hold); a true answer would move it one more step back'
+  S7:                 # the target's legal-range source (PM2.5 only). yes (RECOMMENDED) | no
+    answer: ''
+    source:
+      pm25: 'physical bound: PM2.5 is a mass concentration (ug m-3), never negative; no upper bound is set. The ACAG V5.GL.06 documentation is not in the repository; the owner may add its citation here'
+  S8:                 # sign the unsigned exceptions.yaml disclosures (PM2.5 11, fire 8, defo 9, NDVI 17), AFTER an agent
+    answer: ''        # refreshes the 16 the tool names as stale (sheet S8). yes (RECOMMENDED: yes after refresh) | no
+
+  # ---------------------------------------------------------------- closed world, stores, lineage
+  S9:                 # fire's 19 history rows. a (RECOMMENDED: build the store, ruling J1) | b (drop all 19 rows) | no
+    answer: ''
+    options:
+      a:              # needs the owner's two build commands first, at D:/fire_history_lag2 (fire/dataset.yaml header; if
+                      # it is built elsewhere, change the path here); the script refuses before
+        add_driver:
+          fire: {template: 'D:/fire_history_lag2/{group}.parquet', after: 'D:/monthly_panel/'}
+        add_include:
+          fire: ingest/fire_history_store_catalog.yaml
+        verdicts:
+          fire:
+            tslf_months: {verdict: watch, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); months since the last burn, listed in every report'}
+            tslf_censored: {verdict: watch, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); right-censoring flag of tslf_months, listed'}
+            n_burns_12mo: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); event count before the row'}
+            n_burns_60mo: {verdict: watch, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 60-month event count, listed'}
+            burn_rate_120mo: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 120-month burn rate'}
+            nbr25km_12mo_lag3: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25 km neighbour ring at lag 3'}
+            nbr75km_12mo_lag3: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75 km neighbour ring at lag 3'}
+            nbr25km_12mo_lag6: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25 km neighbour ring at lag 6'}
+            nbr75km_12mo_lag6: {verdict: keep, reason: 'the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75 km neighbour ring at lag 6'}
+        remove_rows:  # the four lag-1 rings the rebuilt store never holds (features/target_history.py REFUSED_COLUMNS); all banned
+          fire: [nbr25km_lag1, nbr25km_12mo_lag1, nbr75km_lag1, nbr75km_12mo_lag1]
+      b:
+        remove_rows:
+          fire: [burn_rate_120mo, last_burn_month, last_burn_size, n_burns_12mo, n_burns_60mo, nbr25km_12mo_lag1,
+                 nbr25km_12mo_lag3, nbr25km_12mo_lag6, nbr25km_lag1, nbr25km_lag3, nbr25km_lag6, nbr75km_12mo_lag1,
+                 nbr75km_12mo_lag3, nbr75km_12mo_lag6, nbr75km_lag1, nbr75km_lag3, nbr75km_lag6, tslf_censored,
+                 tslf_months]
+  S10:                # defo closed world. yes (RECOMMENDED) | no. (The K store is built: its 33 index aggregates no longer refuse.)
+    answer: ''
+    options:
+      yes:
+        remove_rows:  # banned rows of columns no declared store holds
+          defo: [grace_lwe_max, grace_lwe_mean, grace_lwe_min, h_cum, h_lag1, h_lag2, h_lag3, is_train, land_px, y]
+        add_rows:     # two monthly-panel columns the data hold without a row; both stay out. The panel stays in
+                      # dataset.yaml: defo's store builders refuse a driver list without it (build_store.py)
+          defo:
+            month: {role: support, verdict: ban, reason: structural, evidence: 'the calendar month of the monthly panel; defo is annual (one row per unit and year), so no run reads it'}
+            grace_lwe: {role: driver, verdict: ban, reason: incomplete, evidence: 'banned like its yearly aggregates grace_lwe_mean/_min/_max (incomplete)'}
+  S11:                # NDVI's ctx:climatology row (no output holds it; the engine builds the normal). yes (RECOMMENDED) | no
+    answer: ''
+    options:
+      yes:
+        remove_rows:
+          ndvi: ['ctx:climatology']
+  S12:                # C9 guard tolerance k. a (RECOMMENDED: 5.230771281733543e-08; it also changes every smoke's
+                      # tolerance, which is why agent C1 left it unset) | b (per cut, engine change) | c (unset)
+    answer: ''
+
+  # ---------------------------------------------------------------- open notes in ban.yaml (F-BAN-OPEN)
+  S13:                # reason word of the raw aglw_* bans. incomplete (RECOMMENDED; departs from L3's literal word) |
+                      # post_window_snapshot (L3's word: every run then refuses the 6 hold columns until an engine change)
+    answer: ''
+    options:
+      incomplete:
+        notes:
+          - {package: pm25, contains: 'REASON WORD (owner check)', text: 'incomplete confirmed: the 2022-2023 layers are not observations, the record ends in 2021'}
+          - {package: fire, contains: 'REASON WORD (owner check)', text: 'incomplete confirmed: the 2022-2023 layers are not observations, the record ends in 2021'}
+          - {package: ndvi, contains: 'REASON WORD (owner check)', text: 'incomplete confirmed: the 2022-2023 layers are not observations, the record ends in 2021'}
+          - {package: defo, contains: 'post_window_snapshot ban: OWNER item', text: 'incomplete confirmed: the 2022-2023 layers are not observations, the record ends in 2021'}
+      post_window_snapshot:
+        reasons:
+          pm25: {aglw_cattle: post_window_snapshot, aglw_buffalo: post_window_snapshot, aglw_horse: post_window_snapshot, aglw_sheep: post_window_snapshot, aglw_goats: post_window_snapshot, aglw_total_lsu: post_window_snapshot}
+          fire: {aglw_cattle: post_window_snapshot, aglw_buffalo: post_window_snapshot, aglw_horse: post_window_snapshot, aglw_sheep: post_window_snapshot, aglw_goats: post_window_snapshot, aglw_total_lsu: post_window_snapshot}
+          ndvi: {aglw_cattle: post_window_snapshot, aglw_buffalo: post_window_snapshot, aglw_horse: post_window_snapshot, aglw_sheep: post_window_snapshot, aglw_goats: post_window_snapshot, aglw_total_lsu: post_window_snapshot}
+          defo: {aglw_cattle: post_window_snapshot, aglw_buffalo: post_window_snapshot, aglw_horse: post_window_snapshot, aglw_sheep: post_window_snapshot, aglw_goats: post_window_snapshot, aglw_total_lsu: post_window_snapshot}
+        notes:
+          - {package: pm25, contains: 'REASON WORD (owner check)', text: 'post_window_snapshot chosen; every run refuses the hold columns until the engine learns backward-only holds'}
+          - {package: fire, contains: 'REASON WORD (owner check)', text: 'post_window_snapshot chosen; every run refuses the hold columns until the engine learns backward-only holds'}
+          - {package: ndvi, contains: 'REASON WORD (owner check)', text: 'post_window_snapshot chosen; every run refuses the hold columns until the engine learns backward-only holds'}
+          - {package: defo, contains: 'post_window_snapshot ban: OWNER item', text: 'post_window_snapshot chosen; every run refuses the hold columns until the engine learns backward-only holds'}
+  S14:                # PM2.5 ban.yaml line 23 (three agent 'watch' choices) and two stale notes. confirm_watch (RECOMMENDED) | keep
+    answer: ''
+    options:
+      confirm_watch:
+        notes:
+          - {package: pm25, contains: 'DECISION pending: keep (Y0 2004)', text: 'ruled by L2: phenology_sos_doy is conditional and Y0 stays 2003'}
+          - {package: pm25, contains: "windows await the owner's signature", text: 'signed by L1 (b): the 13 index windows are {3, month, centred}'}
+          - {package: pm25, contains: 'three agent choices that await confirmation', text: 'watch confirmed for deeprec_twsa and spei_24m_lag12; phenology_sos_doy is conditional by L2'}
+      keep:
+        verdicts:
+          pm25:
+            deeprec_twsa: {verdict: keep}
+            spei_24m_lag12: {verdict: keep}
+        notes:
+          - {package: pm25, contains: 'DECISION pending: keep (Y0 2004)', text: 'ruled by L2: phenology_sos_doy is conditional and Y0 stays 2003'}
+          - {package: pm25, contains: "windows await the owner's signature", text: 'signed by L1 (b): the 13 index windows are {3, month, centred}'}
+          - {package: pm25, contains: 'three agent choices that await confirmation', text: 'deeprec_twsa and spei_24m_lag12 moved to keep; phenology_sos_doy is conditional by L2'}
+  S15:                # NDVI snow_cover_fraction polar-night gaps. watch (RECOMMENDED: the long gaps sit in 5 of 133 groups,
+                      # 4-13% of their labelled rows, where R30's zero-fill says 'no snow' when the truth is near-full
+                      # snow) | ban (J2 d's 'long seasonal masks stay banned', read literally) | conditional
+    answer: ''
+    options:
+      watch:
+        notes:
+          - {package: ndvi, column: snow_cover_fraction, contains: 'polar-night gaps longer than 2 months fall to R30', text: 'keep watch with the disclosure'}
+          - {package: ndvi, column: snow_cover_fraction, contains: 'OWNER DECISION OPEN', text: 'option (a) chosen, keep watch with the disclosure'}
+      ban:
+        verdicts:
+          ndvi:
+            snow_cover_fraction: {verdict: ban, reason: incomplete}
+        notes:
+          - {package: ndvi, column: snow_cover_fraction, contains: 'polar-night gaps longer than 2 months fall to R30', text: 'banned under the long seasonal mask clause of J2 (d)'}
+          - {package: ndvi, column: snow_cover_fraction, contains: 'OWNER DECISION OPEN', text: 'option (b) chosen, banned'}
+      conditional:
+        verdicts:
+          ndvi:
+            snow_cover_fraction: {verdict: conditional, reason: 'out (conditional): polar-night gaps longer than 2 months in five Arctic groups'}
+        notes:
+          - {package: ndvi, column: snow_cover_fraction, contains: 'polar-night gaps longer than 2 months fall to R30', text: 'held conditional (out)'}
+          - {package: ndvi, column: snow_cover_fraction, contains: 'OWNER DECISION OPEN', text: 'option (c) chosen, conditional'}
+  S16:                # defo's open notes: deeprec_twsa_mean/_min/_max reason word, K3 and K5 store columns.
+    answer: ''        # lookahead_unfixable (RECOMMENDED) | target_derived
+    options:
+      lookahead_unfixable:
+        notes:
+          - {package: defo, contains: 'so OWNER item: lookahead_unfixable', all_matches: true, text: 'lookahead_unfixable confirmed (stale stored facts; the K3 columns carry the reach)'}
+          - {package: defo, contains: 'in exceptions.yaml; OWNER item.', text: 'the engine checks store columns now; the K5 disclosure is signed under S8'}
+          - {package: defo, contains: 'the position of every features-store aggregate: OWNER item', all_matches: true, text: 'accepted: the K3 columns stay K-store columns'}
+          - {package: defo, contains: 'were reworded to pass it: OWNER item', all_matches: true, text: 'closed by the signed G-LINEAGE disclosure (S8)'}
+      target_derived:
+        reasons:
+          defo: {deeprec_twsa_mean: target_derived, deeprec_twsa_min: target_derived, deeprec_twsa_max: target_derived}
+        notes:
+          - {package: defo, contains: 'in exceptions.yaml; OWNER item.', text: 'the engine checks store columns now; the K5 disclosure is signed under S8'}
+          - {package: defo, contains: 'the position of every features-store aggregate: OWNER item', all_matches: true, text: 'accepted: the K3 columns stay K-store columns'}
+          - {package: defo, contains: 'were reworded to pass it: OWNER item', all_matches: true, text: 'closed by the signed G-LINEAGE disclosure (S8)'}
+
+  # ---------------------------------------------------------------- other owner decisions
+  S17:                # defo Y0. a (RECOMMENDED: keep the K5 lag-2 MOD44B columns, Y0 2004) | b (drop them, Y0 2003)
+    answer: ''
+    options:
+      b:
+        verdicts:
+          defo:
+            V15_bare_ground_pct_lag2: {verdict: conditional, reason: 'out: the MOD44B trio is dropped so Y0 stays 2003 (owner S17 b)'}
+            V17_herb_cover_pct_lag2: {verdict: conditional, reason: 'out: the MOD44B trio is dropped so Y0 stays 2003 (owner S17 b)'}
+            tree_cover_pct_lag2: {verdict: conditional, reason: 'out: the MOD44B trio is dropped so Y0 stays 2003 (owner S17 b)'}
+  S18:                # defo and the word "signed" (L_REPORT.md 5.1). a (RECOMMENDED: defo signed like the others) | b (defo unsigned)
+    answer: ''
+    package: defo     # used by b: this package's own files are left out of S1-S5
+    options:
+      a:
+        notes:
+          - {package: defo, contains: 'carry no reviewed_by (OWNER item)', text: 'defo is signed like the other packages (S1-S5)'}
+      b:
+        notes:
+          - {package: defo, contains: 'carry no reviewed_by (OWNER item)', text: 'defo kept unsigned (S18 b); its G-FACTS keeps refusing'}
+  S19:                # scope of the last-value record. a (RECOMMENDED: the rows the run reads, disclosed) | b (every target row)
+    answer: ''
+  S20:                # the 17 engine constants awaiting the owner. a (sign with the Part) | b (RECOMMENDED: mark them cited now) | c (freeze refuses)
+    answer: ''
+  S21:                # build departures (PREREGISTRATION_DRAFT.md item 6). accept (RECOMMENDED) | build
+    answer: ''
+  S22:                # the agent writes Appendix A (plan 3.3 flags) and removes the settled markers. yes (RECOMMENDED) | no
+    answer: ''
+  S27:                # fire travel_time (static map, content epoch 2015) lies after fire's lead-6 and lead-12 guard cuts
+    answer: ''        # (2015-07-31, 2015-01-31): the deep G-EPOCH refuses it. ban (RECOMMENDED) | freeze (R9; unsure with one epoch)
+    options:
+      ban:
+        verdicts:
+          fire:
+            travel_time: {verdict: ban, reason: post_window_snapshot}
+      freeze:
+        verdicts:
+          fire:
+            travel_time: {verdict: freeze, reason: 'static 2015 snapshot after the lead-6 and lead-12 guard cuts; R9 picks the epoch at or before each cut'}
+  S28:                # defo phenology_sos_doy at lag 1: its signed reach runs 1 year past its year, so last year's value can
+    answer: ''        # hold data from the predicted year (K5 moved MOD44B to lag 2 for a 2-month overlap). a (RECOMMENDED with
+                      # S17 a: an engineered lag-2 column, no Y0 change) | b (out) | c (keep lag 1, disclosed).
+                      # S17 b together with S28 a is refused (Y0 would move back to 2004).
+    options:
+      a:
+        verdicts:
+          defo:
+            phenology_sos_doy: {verdict: conditional, reason: 'out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year''s value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task)'}
+      b:
+        verdicts:
+          defo:
+            phenology_sos_doy: {verdict: conditional, reason: 'out (owner S28 b): at lag 1 its signed reach runs 1 year past its year, so last year''s value can hold data from the predicted year'}
+  S29:                # road_density (GRIP4, one road map compiled about 2018) records no content epoch, so G-EPOCH cannot
+    answer: ''        # see it; 2018 lies after every package's guard cuts (2015-2016). a (RECOMMENDED: record 2018, ban on
+                      # all four, as travel_time on fire) | b (keep everywhere, epoch unrecorded, disclosed)
+    options:
+      a:
+        store_facts:  # the shared panel catalog row (one edit; all four packages read it)
+          pm25:
+            road_density: {content_epoch: '2018', evidence: 'GRIP4 (Meijer et al. 2018) is one road map compiled about 2018 (DRIVERS_TO_ADD.md item 24, static about 2018 snapshot); its source dates are not in the repository'}
+        verdicts:
+          pm25: {road_density: {verdict: ban, reason: post_window_snapshot}}
+          fire: {road_density: {verdict: ban, reason: post_window_snapshot}}
+          defo: {road_density: {verdict: ban, reason: post_window_snapshot}}
+          ndvi: {road_density: {verdict: ban, reason: post_window_snapshot}}
+
+  # ---------------------------------------------------------------- not blocking the freeze
+  S23:                # observed_through of a regular column vs D42 (G-EPOCH flag). record_end (RECOMMENDED) | d42
+    answer: ''
+  S24:                # PM2.5 burn_lag1 (a duplicate of the lagged burn_frac). out (RECOMMENDED) | keep | t2
+    answer: ''
+    options:
+      out:
+        verdicts:
+          pm25:
+            burn_lag1: {verdict: conditional, reason: 'out: a duplicate of the lagged burn_frac (both hold month t-1 since ruling J1)'}
+  S25:                # fire's joined driver store (G-JOIN flag only). leave (RECOMMENDED) | remove
+    answer: ''
+  S26:                # for the record (no action): wbal -999 flag, luh2_forest range flag, co2. noted
+    answer: ''

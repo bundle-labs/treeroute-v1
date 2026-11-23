@@ -1,0 +1,33 @@
+﻿pm25  rival_lgbm             duplicates_merged: 0
+pm25  rival_rf               duplicates_merged: 0
+pm25  rival_ridge            duplicates_merged: 0
+pm25  treeroute              duplicates_merged: 0
+pm25  treeroute_B1           duplicates_merged: 0
+ndvi  rival_bardl_h1         duplicates_merged: 0
+ndvi  rival_lgbm             duplicates_merged: 5
+ndvi  rival_rf               duplicates_merged: 5
+ndvi  rival_ridge            duplicates_merged: 5
+ndvi  treeroute              duplicates_merged: 5
+    {"c__ctx:top5:V01_mean_temp_C": "x__V01_mean_temp_C", "c__ctx:top5:V07_total_ref_ET_mm_lag1": "x__V07_total_ref_ET_mm_lag1", "c__ctx:top5:era5l_d2m": "x__era5l_d2m", "c__ctx:top5:era5l_slhf_lag1": "x__era5l_slhf_lag1", "c__ctx:top5:sph_kgkg_lag6": "x__sph_kgkg_lag6"}
+ndvi  treeroute_B1           duplicates_merged: 5
+fire  rival_lgbm             duplicates_merged: 0
+fire  rival_lgbm_tweedie     duplicates_merged: 0
+fire  rival_rf               duplicates_merged: 0
+fire  rival_ridge            duplicates_merged: 0
+fire  treeroute              duplicates_merged: 0
+fire  treeroute_B1           duplicates_merged: 0
+defo  rival_lgbm             duplicates_merged: 0
+defo  rival_lgbm_tweedie     duplicates_merged: 0
+defo  rival_rf               duplicates_merged: 0
+defo  rival_ridge            duplicates_merged: 0
+defo  treeroute              duplicates_merged: 0
+defo  treeroute_B1           duplicates_merged: 0
+coral rival_hgb_l1           duplicates_merged: 0
+coral rival_lgbm             duplicates_merged: 0
+coral rival_lgbm_tweedie     duplicates_merged: 0
+coral rival_rf               duplicates_merged: 0
+coral rival_ridge            duplicates_merged: 0
+coral treeroute              duplicates_merged: 0
+background_keys columns: ['row', 'time', 'unit']
+rows.parquet key columns: ['row', 'unit', 'time'] rows: 1000
+background pairs: 50000; same reef site: 980 in 415 sample rows; dated on/after the explained visit: 0

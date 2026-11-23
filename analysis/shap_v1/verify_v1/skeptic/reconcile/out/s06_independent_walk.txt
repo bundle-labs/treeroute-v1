@@ -1,0 +1,169 @@
+﻿leaves: A 119510, B 119414
+interval objects with extra keys: A 0, B 0
+skipped-by-name keys, A: {'path': 5, 'sha256_covers': 5, 'region_source': 5, 'npz': 8, 'extra': 212, 'test_set_records': 5, 'models_covered_why': 5, 'numbers_why': 5, 'log_file': 4} B: {'path': 5, 'sha256_covers': 5, 'region_source': 5, 'npz': 8, 'extra': 113, 'test_set_records': 5, 'models_covered_why': 5, 'numbers_why': 5, 'log_file': 4}
+   A skipped problems/coral/draws/path: "SHAP\\out\\coral\\lead_0\\compare\\bootstrap_draws.npy"
+   A skipped problems/defo/draws/path: "SHAP\\out\\defo\\lead_0\\compare\\bootstrap_draws.npy"
+   A skipped problems/fire/draws/path: "SHAP\\out\\fire\\lead_0\\compare\\bootstrap_draws.npy"
+   A skipped problems/coral/draws/sha256_covers: "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"
+   A skipped problems/defo/draws/sha256_covers: "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"
+   A skipped problems/fire/draws/sha256_covers: "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"
+   A skipped problems/coral/draws/region_source: "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of first appearance by `
+   A skipped problems/defo/draws/region_source: "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of first appearance by `
+   A skipped problems/fire/draws/region_source: "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of first appearance by `
+   A skipped problems/coral/draws/npz: "V\\A\\draws\\coral.npz"
+   A skipped problems/defo/draws/npz: "V\\A\\draws\\defo.npz"
+   A skipped problems/fire/draws/npz: "V\\A\\draws\\fire.npz"
+   A skipped problems/coral/draws/extra: {"draws_are_rows": "each of the 2,000 rows is one draw of G region indices with replacement", "generator_reproduced": "entry (b, k) = int.from_bytes(sha256('sha
+   A skipped problems/coral/levels/feature/active_set/extra: {"names_in_problem": 69, "model_totals_mean_abs_phi": {"rival_hgb_l1": 0.3458836542475562, "rival_lgbm": 0.3011161396460534, "rival_lgbm_tweedie": 3.67060767647
+   A skipped problems/coral/levels/feature/models/rival_hgb_l1/extra: {"own_columns": 69, "meta_players_nonzero": 68, "meta_variables_nonzero": 25, "n_nonzero_over_J": 68, "sign_determined_count": 29}
+   A skipped problems/coral/levels/variable/families/test_set_records: ["SHAP\\logs\\rival_shap_coral_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\coral\\<run>\\lead_0\\test\\<region>.parquet (3
+   A skipped problems/defo/levels/variable/families/test_set_records: ["SHAP\\logs\\rival_shap_defo_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\defo\\<run>\\lead_0\\test\\<region>.parquet (42 
+   A skipped problems/fire/levels/variable/families/test_set_records: ["SHAP\\logs\\rival_shap_fire_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\fire\\<run>\\lead_0\\test\\<region>.parquet (40 
+   A skipped problems/coral/nonzero_forecast/models_covered_why: "Every model of this problem whose link string starts with 'arcsine' (section 8: 'For every arcsine-link model'); shares over the problem's variable-level J."
+   A skipped problems/defo/nonzero_forecast/models_covered_why: "No model of this problem has the arcsine link."
+   A skipped problems/fire/nonzero_forecast/models_covered_why: "Every model of this problem whose link string starts with 'arcsine' (section 8: 'For every arcsine-link model'); shares over the problem's variable-level J."
+   A skipped b1/coral/status/numbers_why: "B1 is not defined for coral (PROTOCOL.md section 5; tr_shap.py refuses the neighbour kind), and no treeroute_B1 folder exists, so coral has no B1 number."
+   A skipped b1/defo/status/numbers_why: "Defo's B1 background equals its main run's (annual data; section 10), so only the identity check with its pairs and seconds is reported; it holds exactly (0, t
+   A skipped b1/fire/status/numbers_why: "A finished B1 piece (background B1, registered sample, all four checks passed) and defo's identity check held, so section 10's B1 list is computed."
+   A skipped b1/defo/identity/log_file: "SHAP\\logs\\tr_shap_defo_lead0.log"
+   A skipped b1/fire/run/log_file: "SHAP\\logs\\tr_shap_fire_lead0.log"
+   A skipped b1/pm25/run/log_file: "SHAP\\logs\\tr_shap_pm25_lead0.log"
+leaf paths only in A: 68; only in B: 271; differing: 28
+== only A
+       51 problems/<*>/levels/feature/pairs/<*>/tv_family_shares
+       11 problems/<*>/levels/variable/models/<*>/family_shares/<*>
+        3 b1/<*>/feature/pair_main_b1/tv_family_shares
+        1 problems/<*>/main_row/own_history_share_median_rival
+        1 problems/<*>/main_row/own_history_share_per_rival
+        1 problems/<*>/main_row/own_history_share_treeroute
+== only B
+       51 problems/<*>/levels/feature/pairs/<*>/tv_family_shares/ci_high
+       51 problems/<*>/levels/feature/pairs/<*>/tv_family_shares/ci_low
+       51 problems/<*>/levels/feature/pairs/<*>/tv_family_shares/n_finite
+       51 problems/<*>/levels/feature/pairs/<*>/tv_family_shares/value
+       11 problems/<*>/levels/variable/models/<*>/family_shares/<*>/ci_high
+       11 problems/<*>/levels/variable/models/<*>/family_shares/<*>/ci_low
+       11 problems/<*>/levels/variable/models/<*>/family_shares/<*>/n_finite
+       11 problems/<*>/levels/variable/models/<*>/family_shares/<*>/value
+        3 b1/<*>/feature/pair_main_b1/tv_family_shares/ci_high
+        3 b1/<*>/feature/pair_main_b1/tv_family_shares/ci_low
+        3 b1/<*>/feature/pair_main_b1/tv_family_shares/n_finite
+        3 b1/<*>/feature/pair_main_b1/tv_family_shares/value
+        3 problems/<*>/main_row/own_history_share_per_rival/<*>
+        1 problems/<*>/main_row/own_history_share_median_rival/ci_high
+        1 problems/<*>/main_row/own_history_share_median_rival/ci_low
+        1 problems/<*>/main_row/own_history_share_median_rival/n_finite
+        1 problems/<*>/main_row/own_history_share_median_rival/value
+        1 problems/<*>/main_row/own_history_share_treeroute/ci_high
+        1 problems/<*>/main_row/own_history_share_treeroute/ci_low
+        1 problems/<*>/main_row/own_history_share_treeroute/n_finite
+        1 problems/<*>/main_row/own_history_share_treeroute/value
+== differ
+       10 problems/<*>/levels/variable/families/<*>
+        5 problems/<*>/draws/sha256_covers
+        5 problems/<*>/draws/region_source
+        5 problems/<*>/draws/npz
+        3 b1/<*>/run/npz
+== differing leaves outside the known groups (feature tv_family_shares, empty families, test_set_columns):
+    problems/coral/draws/sha256_covers ["leaf", "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"] | ["leaf", "every byte of the .npy file as saved (header and data), read in binary"]
+    problems/coral/draws/region_source ["leaf", "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of fi | ["leaf", "rows.parquet column `group` (the engine's region of the row; the same in every piece of the problem)"]
+    problems/coral/draws/npz ["leaf", "V\\A\\draws\\coral.npz"] | ["leaf", "V\\B\\draws\\coral.npz"]
+    problems/coral/levels/variable/families/test_set_records ["list", ["SHAP\\logs\\rival_shap_coral_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\coral\\<run>\\lead_0\\test\\ | ["list", ["D:\\treeroute\\rival_export\\coral\\20261020_f3b8e3da\\lead_0\\export_manifest.json", "D:\\treeroute\\rival_export\\coral\\20261020_f3b8e3d
+    problems/defo/draws/sha256_covers ["leaf", "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"] | ["leaf", "every byte of the .npy file as saved (header and data), read in binary"]
+    problems/defo/draws/region_source ["leaf", "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of fi | ["leaf", "rows.parquet column `group` (the engine's region of the row; the same in every piece of the problem)"]
+    problems/defo/draws/npz ["leaf", "V\\A\\draws\\defo.npz"] | ["leaf", "V\\B\\draws\\defo.npz"]
+    problems/defo/levels/variable/families/test_set_records ["list", ["SHAP\\logs\\rival_shap_defo_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\defo\\<run>\\lead_0\\test\\<r | ["list", ["D:\\treeroute\\rival_export\\defo\\20261017_d71c61f4\\lead_0\\export_manifest.json", "D:\\treeroute\\rival_export\\defo\\20261017_d71c61f4\
+    problems/fire/draws/sha256_covers ["leaf", "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"] | ["leaf", "every byte of the .npy file as saved (header and data), read in binary"]
+    problems/fire/draws/region_source ["leaf", "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of fi | ["leaf", "rows.parquet column `group` (the engine's region of the row; the same in every piece of the problem)"]
+    problems/fire/draws/npz ["leaf", "V\\A\\draws\\fire.npz"] | ["leaf", "V\\B\\draws\\fire.npz"]
+    problems/fire/levels/variable/families/test_set_records ["list", ["SHAP\\logs\\rival_shap_fire_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\fire\\<run>\\lead_0\\test\\<r | ["list", ["D:\\treeroute\\rival_export\\fire\\20261017_869d1f38\\lead_0\\export_manifest.json", "D:\\treeroute\\rival_export\\fire\\20261017_869d1f38\
+    problems/pm25/draws/sha256_covers ["leaf", "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"] | ["leaf", "every byte of the .npy file as saved (header and data), read in binary"]
+    problems/pm25/draws/region_source ["leaf", "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of fi | ["leaf", "rows.parquet column `group` (the engine's region of the row; the same in every piece of the problem)"]
+    problems/pm25/draws/npz ["leaf", "V\\A\\draws\\pm25.npz"] | ["leaf", "V\\B\\draws\\pm25.npz"]
+    problems/pm25/levels/variable/families/test_set_records ["list", ["SHAP\\logs\\rival_shap_pm25_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\pm25\\<run>\\lead_0\\test\\<r | ["list", ["D:\\treeroute\\rival_export\\pm25\\20261007_74e67609\\lead_0\\export_manifest.json", "D:\\treeroute\\rival_export\\pm25\\20261007_74e67609\
+    problems/ndvi/draws/sha256_covers ["leaf", "every byte of the .npy file as stored (its header and its data); the SHA-256 of the data bytes alone does not match"] | ["leaf", "every byte of the .npy file as saved (header and data), read in binary"]
+    problems/ndvi/draws/region_source ["leaf", "rows.parquet column `group` (identical in every piece of the problem); regions in Python sorted() order, which here equals their order of fi | ["leaf", "rows.parquet column `group` (the engine's region of the row; the same in every piece of the problem)"]
+    problems/ndvi/draws/npz ["leaf", "V\\A\\draws\\ndvi.npz"] | ["leaf", "V\\B\\draws\\ndvi.npz"]
+    problems/ndvi/levels/variable/families/test_set_records ["list", ["SHAP\\logs\\rival_shap_ndvi_lead0.log (its 'test set:' line names the folder)", "D:\\treeroute\\rival_export\\ndvi\\<run>\\lead_0\\test\\<r | ["list", ["D:\\treeroute\\rival_export\\ndvi\\20261016_d1de3158\\lead_0\\export_manifest.json", "D:\\treeroute\\rival_export\\ndvi\\20261016_d1de3158\
+    b1/fire/run/npz ["leaf", "V\\A\\draws\\b1_fire.npz"] | ["leaf", "V\\B\\draws\\b1_fire.npz"]
+    b1/pm25/run/npz ["leaf", "V\\A\\draws\\b1_pm25.npz"] | ["leaf", "V\\B\\draws\\b1_pm25.npz"]
+    b1/ndvi/run/npz ["leaf", "V\\A\\draws\\b1_ndvi.npz"] | ["leaf", "V\\B\\draws\\b1_ndvi.npz"]
+   one-side: problems/coral/levels/variable/models/rival_hgb_l1/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/rival_lgbm/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/rival_lgbm_tweedie/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/rival_rf/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/rival_ridge/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/treeroute/family_shares/own_history ["leaf", null] | null
+   one-side: problems/coral/main_row/own_history_share_median_rival ["leaf", null] | null
+   one-side: problems/coral/main_row/own_history_share_per_rival ["leaf", null] | null
+   one-side: problems/coral/main_row/own_history_share_treeroute ["leaf", null] | null
+   one-side: problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar ["leaf", null] | null
+   one-side: problems/defo/levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar ["leaf", null] | null
+   one-side: problems/defo/levels/variable/models/rival_rf/family_shares/context_and_calendar ["leaf", null] | null
+   one-side: problems/defo/levels/variable/models/rival_ridge/family_shares/context_and_calendar ["leaf", null] | null
+   one-side: problems/defo/levels/variable/models/treeroute/family_shares/context_and_calendar ["leaf", null] | null
+   one-side: problems/coral/levels/variable/models/rival_hgb_l1/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_hgb_l1/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_hgb_l1/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/rival_hgb_l1/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/rival_lgbm/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm_tweedie/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm_tweedie/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_lgbm_tweedie/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/rival_lgbm_tweedie/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_rf/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_rf/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_rf/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/rival_rf/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_ridge/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_ridge/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/rival_ridge/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/rival_ridge/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/treeroute/family_shares/own_history/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/treeroute/family_shares/own_history/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/levels/variable/models/treeroute/family_shares/own_history/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/levels/variable/models/treeroute/family_shares/own_history/value null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_median_rival/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_median_rival/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_median_rival/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/main_row/own_history_share_median_rival/value null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_per_rival/rival_hgb_l1 null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_per_rival/rival_lgbm null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_per_rival/rival_rf null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_treeroute/ci_high null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_treeroute/ci_low null | ["leaf", 0.0]
+   one-side: problems/coral/main_row/own_history_share_treeroute/n_finite null | ["leaf", 2000]
+   one-side: problems/coral/main_row/own_history_share_treeroute/value null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar/ci_high null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar/ci_low null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar/n_finite null | ["leaf", 2000]
+   one-side: problems/defo/levels/variable/models/rival_lgbm/family_shares/context_and_calendar/value null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar/ci_high null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar/ci_low null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar/n_finite null | ["leaf", 2000]
+   one-side: problems/defo/levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar/value null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_rf/family_shares/context_and_calendar/ci_high null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_rf/family_shares/context_and_calendar/ci_low null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_rf/family_shares/context_and_calendar/n_finite null | ["leaf", 2000]
+   one-side: problems/defo/levels/variable/models/rival_rf/family_shares/context_and_calendar/value null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_ridge/family_shares/context_and_calendar/ci_high null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_ridge/family_shares/context_and_calendar/ci_low null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/rival_ridge/family_shares/context_and_calendar/n_finite null | ["leaf", 2000]
+   one-side: problems/defo/levels/variable/models/rival_ridge/family_shares/context_and_calendar/value null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/treeroute/family_shares/context_and_calendar/ci_high null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/treeroute/family_shares/context_and_calendar/ci_low null | ["leaf", 0.0]
+   one-side: problems/defo/levels/variable/models/treeroute/family_shares/context_and_calendar/n_finite null | ["leaf", 2000]
+   one-side: problems/defo/levels/variable/models/treeroute/family_shares/context_and_calendar/value null | ["leaf", 0.0]
+test_set_records coral A= ["SHAP\\logs\\rival_shap_coral_lead0.log (its 'test set:' line names the folder)", 'D:\\treeroute\\rival_export\\coral\\<run>\\lead_0\\test\\<region>.parquet (37 files, 2312 rows, 2312 units, 793 time steps)'] B= ['D:\\treeroute\\rival_export\\coral\\20261020_f3b8e3da\\lead_0\\export_manifest.json', 'D:\\treeroute\\rival_export\\coral\\20261020_f3b8e3da\\lead_0\\test\\*.parquet'] equal: False
+   test_set_columns A-only: ['c__ctx_abslat', 'c__ctx_doy_cos', 'c__ctx_doy_sin', 'c__ctx_mmm', 'c__ctx_month'] B-only: ['issue'] n A 70 n B 66
+test_set_records defo A= ["SHAP\\logs\\rival_shap_defo_lead0.log (its 'test set:' line names the folder)", 'D:\\treeroute\\rival_export\\defo\\<run>\\lead_0\\test\\<region>.parquet (42 files, 369096 rows, 92274 units, 4 time steps)'] B= ['D:\\treeroute\\rival_export\\defo\\20261017_d71c61f4\\lead_0\\export_manifest.json', 'D:\\treeroute\\rival_export\\defo\\20261017_d71c61f4\\lead_0\\test\\*.parquet'] equal: False
+   test_set_columns A-only: ['x__hist_last_1', 'x__hist_last_2', 'x__hist_last_3', 'x__hist_mean_5', 'x__hist_mean_all'] B-only: ['issue'] n A 310 n B 306
+test_set_records fire A= ["SHAP\\logs\\rival_shap_fire_lead0.log (its 'test set:' line names the folder)", 'D:\\treeroute\\rival_export\\fire\\<run>\\lead_0\\test\\<region>.parquet (40 files, 96000 rows, 2000 units, 48 time steps)'] B= ['D:\\treeroute\\rival_export\\fire\\20261017_869d1f38\\lead_0\\export_manifest.json', 'D:\\treeroute\\rival_export\\fire\\20261017_869d1f38\\lead_0\\test\\*.parquet'] equal: False
+   test_set_columns A-only: ['c__ctx:lat', 'c__ctx:month', 'x__hist_last_1', 'x__hist_last_2', 'x__hist_last_3', 'x__hist_mean_12', 'x__hist_mean_60', 'x__hist_mean_all'] B-only: ['issue'] n A 135 n B 128
+test_set_records pm25 A= ["SHAP\\logs\\rival_shap_pm25_lead0.log (its 'test set:' line names the folder)", 'D:\\treeroute\\rival_export\\pm25\\<run>\\lead_0\\test\\<region>.parquet (127 files, 91440 rows, 1905 units, 48 time steps)'] B= ['D:\\treeroute\\rival_export\\pm25\\20261007_74e67609\\lead_0\\export_manifest.json', 'D:\\treeroute\\rival_export\\pm25\\20261007_74e67609\\lead_0\\test\\*.parquet'] equal: False
+   test_set_columns A-only: ['c__ctx:lat', 'c__ctx:month', 'x__hist_last_1', 'x__hist_last_2', 'x__hist_last_3', 'x__hist_mean_12', 'x__hist_mean_60', 'x__hist_mean_all'] B-only: ['issue'] n A 126 n B 119
+test_set_records ndvi A= ["SHAP\\logs\\rival_shap_ndvi_lead0.log (its 'test set:' line names the folder)", 'D:\\treeroute\\rival_export\\ndvi\\<run>\\lead_0\\test\\<region>.parquet (133 files, 95184 rows, 1983 units, 48 time steps)'] B= ['D:\\treeroute\\rival_export\\ndvi\\20261016_d1de3158\\lead_0\\export_manifest.json', 'D:\\treeroute\\rival_export\\ndvi\\20261016_d1de3158\\lead_0\\test\\*.parquet'] equal: False
+   test_set_columns A-only: ['c__ctx:cos1', 'c__ctx:cos2', 'c__ctx:sin1', 'c__ctx:sin2', 'x__hist_last_1', 'x__hist_last_2', 'x__hist_last_3', 'x__hist_mean_12', 'x__hist_mean_60', 'x__hist_mean_all'] B-only: ['issue'] n A 504 n B 495

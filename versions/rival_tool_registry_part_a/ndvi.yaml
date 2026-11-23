@@ -1,0 +1,97 @@
+# NDVI human-rival registry (SPEC_HUMAN.txt 1.7 and section 5; Builder C). DATA, not code.
+# Sources: RIVALS_PLAN_HUMAN.md :66-68, rulings AB Q8 a, Q9 (published inputs only, no VPD), Q10 (Kraft yes, CPU;
+# SEAS5 no); research_ndvi.md sections 3-4; run D:/treeroute/runs/ndvi/headline/20261016_d1de3158.
+# Checked on that run (2026-10-21): R22 links [identity]; R28 legal [-0.2, 1.0]; R17 start_offset_steps 1,
+# steps_per_year 12; R8 steps 0 for V02_total_precip_mm(_lag1, _lag2), V30_soil_moisture_pct(_lag1, _lag2),
+# V01_mean_temp_C, V05_mean_vpd_kPa, solar_radiation_Wm2, V09_mean_wind_ms; plan.json history_columns
+# hist_last_1..3, hist_mean_12/60/all.
+# `decides` is derived by the tool from the tier (P, L decide; A, X never).
+# Leads 6 and 12: no published NDVI forecast reaches 6 or 12 months; H1-direct is printed as a labelled
+# statistical extension (tier X, never decides; ruling Q8 a). Kraft has no row there (tier none, reason given).
+package: ndvi
+# Q8 a: printed at leads 6 and 12 even though bardl_h1 has a (tier X, extension) row there (review B issue 6)
+leads_without_rival:
+  6: "no published NDVI forecast reaches 6 months; H1-direct is printed only as a labelled statistical extension (Q8 a)"
+  12: "no published NDVI forecast reaches 12 months; H1-direct is printed only as a labelled statistical extension (Q8 a)"
+rivals:
+  - id: bardl_h1
+    label: "H1: per-unit Bayesian ARDL on the NDVI anomaly (BARDL / AstroCast family; Salakpi et al. 2022)"
+    kind: M
+    runner: adapters.ndvi_bardl          # fit(ctx, rival, lead, fit_set) / predict(...); F0, nothing picked
+    products: []
+    t1_kind_columns: [V02_total_precip_mm, V02_total_precip_mm_lag1, V02_total_precip_mm_lag2,
+                      V30_soil_moisture_pct, V30_soil_moisture_pct_lag1, V30_soil_moisture_pct_lag2]
+    reads_target_in_test_window: true
+    leads:
+      0: {tier: P}
+      6: {tier: X, label: "labelled statistical extension: no published NDVI forecast reaches 6 months"}
+      12: {tier: X, label: "labelled statistical extension: no published NDVI forecast reaches 12 months"}
+    score_without_net: []
+    # no `pick`: one published configuration, nothing is picked (SPEC_HUMAN 5)
+    slim_extra_columns: [x__V02_total_precip_mm, x__V02_total_precip_mm_lag1, x__V02_total_precip_mm_lag2,
+                         x__V30_soil_moisture_pct, x__V30_soil_moisture_pct_lag1, x__V30_soil_moisture_pct_lag2]
+    optional: false
+    resolution_matched: false
+    coverage: {units_column_true: is_scored}   # label-free rule (INTEGRATE, C-R1); equals predict(): pre finite exactly on scored units
+    coverage_note: "label-free: every scored unit is covered (units below 36 complete fit rows predict their normal, counted)"
+    disclosures:
+      - "H1 works on the NDVI anomaly (normal = the engine's identity normal), not on VCI (a per-cell linear rescaling)"
+      - "BARDL is published for 6-10 week horizons and piloted in 7 Kenyan counties; leads 6/12 are an extension"
+      - "BayesianRidge defaults (predictors unscaled unless options.standardize); a missing NDVI lag is set to the normal (anomaly 0), counted; a missing climate value at prediction is set to its unit x month mean (anomaly 0), counted"
+      - "at lead 0 H1 reads the TARGET month's precipitation and soil moisture (x__V02 / x__V30 at the issue step), not only past rain: legal because the run's R8 gives these columns steps 0 and our model reads them too (parity, not a leak; review issue 9)"
+    r10_note: "non-blind: NDVI rival history Parts 417-426 (Kraft, McPhillips); BARDL itself was never run before"
+    options:
+      history: [hist_last_1, hist_last_2, hist_last_3]
+      climate:
+        precip: [V02_total_precip_mm, V02_total_precip_mm_lag1, V02_total_precip_mm_lag2]
+        soil_moisture: [V30_soil_moisture_pct, V30_soil_moisture_pct_lag1, V30_soil_moisture_pct_lag2]
+      min_fit_rows: 36
+      standardize: true    # OWNER DECIDED (ruling AG, 2026-10-22: "Standardize"): z-score each predictor per unit on
+                           # its fit rows (the shared prior is not scale-invariant; on the toy ARDL the lag-1 AR term
+                           # 0.6 is fitted ~0.48 unscaled, ~0.52 standardized, ~0.58 by OLS). Was false (the spec's
+                           # literal "BayesianRidge defaults").
+
+  - id: kraft_lstm
+    label: "Kraft et al. 2019 global LSTM (climate windows + soil statics; re-run on the headline rows, CPU)"
+    kind: M
+    runner: adapters.ndvi_kraft          # coverage = scored-unit rows with a complete window (label-free)
+    prep: "adapters.ndvi_kraft_prep:run_prep"     # owner command SPEC_HUMAN 8 O15 (cross-file request: a cli hook)
+    products: [ndvi_kraft_store, ndvi_static_cells, monthly_panel]
+    t1_kind_columns: [V01_mean_temp_C, V02_total_precip_mm, V05_mean_vpd_kPa, V30_soil_moisture_pct,
+                      solar_radiation_Wm2, V09_mean_wind_ms]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      6: {tier: none, reason: "Kraft needs forecast climate beyond the nowcast; its honest arms were far below climatology (research_ndvi.md section 4)"}
+      12: {tier: none, reason: "Kraft needs forecast climate beyond the nowcast; its honest arms were far below climatology (research_ndvi.md section 4)"}
+    score_without_net: []
+    # no `pick`: one published configuration (as ndvi_kraft.py), nothing is picked
+    slim_extra_columns: []
+    optional: true
+    resolution_matched: false
+    coverage: {units_column_true: is_scored, function: "adapters.ndvi_kraft:coverage"}   # label-free rule (INTEGRATE, C-R1); equals predict()
+    coverage_note: "label-free: scored-unit rows with a complete 12-month driver window and statics in the Kraft store"
+    disclosures:
+      - "research model, not operational; reads no NDVI; land cover dropped (banned proxy)"
+      - "one fixed torch seed 0, CPU, 8 threads (PROT H18; ruling Q10 no GPU)"
+    r10_note: "non-blind: Kraft was run before (Parts 417-426, old hard split, 44 regions)"
+    options:
+      store_product: ndvi_kraft_store
+      drivers: [V01_mean_temp_C, V02_total_precip_mm, V05_mean_vpd_kPa, V30_soil_moisture_pct, solar_radiation_Wm2, V09_mean_wind_ms]
+      statics: [soil_organic_carbon_gkg, soil_ph, sand_pct, clay_pct, awc_cm3cm3, V25_elevation_m]
+      forbidden_columns: [V11_mean_ndvi, V12_mean_evi, modis_landcover_class, modis_landcover_annual, tree_cover_pct, V17_herb_cover_pct, shrub_cover_pct_global, cropland_fraction, luh2_cropland, luh2_forest]
+      panel_product: monthly_panel      # D:/monthly_panel (2,926 files, 40.9 GB; manifest O15)
+      years: [2002, 2023]
+      unit_centres: {product: ndvi_static_cells, file: part-0.parquet, id: cell_id, region: region}
+      seq: 12
+      hidden: 64
+      head: 64
+      epochs: 8
+      batch: 4096
+      lr: 0.002
+      seed: 0
+      threads: 8
+
+# Product ids used above (the product registry of SPEC_HUMAN 1.8 is Builder A's file):
+#   ndvi_kraft_store   the Kraft prep output folder (one parquet per region; SPEC_HUMAN 8 O15, owner command),
+#                      hashed by the tool's `manifest` command. Absent until the owner runs the prep.

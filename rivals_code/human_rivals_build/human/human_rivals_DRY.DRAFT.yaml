@@ -1,0 +1,25 @@
+# DRAFT config of the coral TUNE-ONLY DRY pass (owner command O9; SPEC_HUMAN A6). Written 2026-10-22. NOT USED BY ANY
+# BUILD COMMAND OR TEST. Same as human_rivals_production.DRAFT.yaml except the out root (a DRY folder) and the table
+# root. slim_root and index_root are the production ones ON PURPOSE: the dry pass re-uses the production slim copies
+# and index tables, and the run ledger lives under index_root (<index_root>/_ledger), so a lock made here is seen by
+# the production board and the other way round (review issue 7). The board is initialised with `init --dry`, so
+# refit, refs and score refuse it: it can never open a test label.
+engine_root: 'C:/Users/<user>/Desktop/data set for reserch paper/engine'
+machine_file: 'C:/Users/<user>/Desktop/data set for reserch paper/engine/config/machine.yaml'
+export_root: 'D:/treeroute/rival_export'
+export_ckpt_root: 'D:/treeroute/rival_export/_engine_run_root'
+out_root: 'D:/treeroute/rivals_human_dry'
+moved_root: 'D:/treeroute/rivals_human_dry/_moved'
+common_build_root: 'D:/treeroute/rivals_build'
+common_harness_sha256: 'b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2'   # Part 608 fix (was 71457aa9); ruling AG
+common_harness_accepted_boards:   # ruling AG (owner, 2026-10-22): boards made under the older harness
+  '71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97': 'ruling AG, Part 613: Part 608 changed only how an open (null) legal bound is read; the coral and fire boards (bounded targets) ran under it before the fix and are accepted without re-run'
+common_board_root: 'D:/treeroute/rivals'
+slim_root: 'D:/treeroute/rivals_human'
+index_root: 'D:/treeroute/human_index'
+products_root: 'D:/treeroute/human_products'
+on_disk_products: 'D:/treeroute/human_rivals_build/human/registry/_products.yaml'
+table_root: 'D:/treeroute/rivals_human_dry/_table'
+# the product manifests the production `manifest` commands wrote (<production out_root>/_products/<id>/...)
+product_manifest_root: 'D:/treeroute/rivals_human'
+registry_dir: 'D:/treeroute/human_rivals_build/human/registry'

@@ -1,0 +1,539 @@
+{
+ "adopted_arm": "log_c_corrector_unweighted",
+ "adopted_column": "arm__log_c_corrector_unweighted",
+ "adoption_file": "adoption.json",
+ "adoption_sha256": "b6408c90560b458543f0b1d7d46fc7f4c70de110ff2e6e2ad0e8cdef27ec4335",
+ "alarm_origin": "owner ruling AE3: the twin-disagreement alarm was designed AFTER the engine v1 headline runs, from the diagnosis of Parts 601-604. Its effect on any engine v1 run is a POST-HOC replay, labelled post-hoc. Only runs on new data under engine v2 count as pre-registered for the alarm.",
+ "batch_rule": "AE1 amendment: a batch is the rows sharing the issue calendar month (a grid step of one month or more: the issue step itself; a finer step or a day-dated row: the calendar month of the issue's first day); a batch below A8.alarm_min_batch_rows rows is not tested",
+ "batches": [
+  {
+   "batch": "step:24241",
+   "fired": false,
+   "gap": 0.3431958630068375,
+   "ratio": 1.2435982062058597,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24242",
+   "fired": false,
+   "gap": 0.3289430520963913,
+   "ratio": 1.1919519831822765,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24243",
+   "fired": false,
+   "gap": 0.3006205785658161,
+   "ratio": 1.0893231899056088,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24244",
+   "fired": false,
+   "gap": 0.2844601672016046,
+   "ratio": 1.0307646210230876,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24245",
+   "fired": false,
+   "gap": 0.2585212697231067,
+   "ratio": 0.9367729100141031,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24246",
+   "fired": false,
+   "gap": 0.19688859489937477,
+   "ratio": 0.7134418850333766,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24247",
+   "fired": false,
+   "gap": 0.20898391612931508,
+   "ratio": 0.7572702681999235,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24248",
+   "fired": false,
+   "gap": 0.235408997570396,
+   "ratio": 0.8530237064583481,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24249",
+   "fired": false,
+   "gap": 0.2858216614835186,
+   "ratio": 1.0356981066190782,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24250",
+   "fired": false,
+   "gap": 0.2826538323804898,
+   "ratio": 1.02421921944492,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24251",
+   "fired": false,
+   "gap": 0.2728740034734548,
+   "ratio": 0.9887812115993925,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24252",
+   "fired": false,
+   "gap": 0.290436826882525,
+   "ratio": 1.0524215349298482,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24253",
+   "fired": false,
+   "gap": 0.3032008407618054,
+   "ratio": 1.0986729804606576,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24254",
+   "fired": false,
+   "gap": 0.27455510117292814,
+   "ratio": 0.9948728062509288,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24255",
+   "fired": false,
+   "gap": 0.2587990992394456,
+   "ratio": 0.9377796479308222,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24256",
+   "fired": false,
+   "gap": 0.24616345259233072,
+   "ratio": 0.8919933515374706,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24257",
+   "fired": false,
+   "gap": 0.21520788377864486,
+   "ratio": 0.7798233227046498,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24258",
+   "fired": false,
+   "gap": 0.21063270045406224,
+   "ratio": 0.7632447727021384,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24259",
+   "fired": false,
+   "gap": 0.2367061664620782,
+   "ratio": 0.8577241037554155,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24260",
+   "fired": false,
+   "gap": 0.22821886810120878,
+   "ratio": 0.8269696857835973,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24261",
+   "fired": false,
+   "gap": 0.26031904998064737,
+   "ratio": 0.9432873134333115,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24262",
+   "fired": false,
+   "gap": 0.23952003068573094,
+   "ratio": 0.8679203703140589,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24263",
+   "fired": false,
+   "gap": 0.2271645396032596,
+   "ratio": 0.8231492404632084,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24264",
+   "fired": false,
+   "gap": 0.2853184792035382,
+   "ratio": 1.0338747845798912,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24265",
+   "fired": false,
+   "gap": 0.36498730716203087,
+   "ratio": 1.3225612817645347,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24266",
+   "fired": false,
+   "gap": 0.2718037759785927,
+   "ratio": 0.9849031549667103,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24267",
+   "fired": false,
+   "gap": 0.2540801542036472,
+   "ratio": 0.9206801656401922,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24268",
+   "fired": false,
+   "gap": 0.2357764457277762,
+   "ratio": 0.854355184831625,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24269",
+   "fired": false,
+   "gap": 0.2318281220242032,
+   "ratio": 0.8400481118026425,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24270",
+   "fired": false,
+   "gap": 0.19980537501797802,
+   "ratio": 0.7240110757328566,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24271",
+   "fired": false,
+   "gap": 0.23213202752502318,
+   "ratio": 0.8411493381763074,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24272",
+   "fired": false,
+   "gap": 0.23633564594344428,
+   "ratio": 0.8563814924305044,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24273",
+   "fired": false,
+   "gap": 0.24915230998610213,
+   "ratio": 0.9028237201233099,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24274",
+   "fired": false,
+   "gap": 0.25578922153612205,
+   "ratio": 0.9268731105385647,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24275",
+   "fired": false,
+   "gap": 0.3067914186449367,
+   "ratio": 1.1116837323257391,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24276",
+   "fired": false,
+   "gap": 0.28159785084570443,
+   "ratio": 1.0203927842107068,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24277",
+   "fired": false,
+   "gap": 0.325408973503481,
+   "ratio": 1.1791459611043058,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24278",
+   "fired": false,
+   "gap": 0.2831978105477729,
+   "ratio": 1.0261903687097202,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24279",
+   "fired": false,
+   "gap": 0.26226478712460727,
+   "ratio": 0.9503378507002145,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24280",
+   "fired": false,
+   "gap": 0.29235529697073515,
+   "ratio": 1.0593732677959002,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24281",
+   "fired": false,
+   "gap": 0.24902267773495393,
+   "ratio": 0.9023539870863732,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24282",
+   "fired": false,
+   "gap": 0.22124885555536505,
+   "ratio": 0.8017132767368749,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24283",
+   "fired": false,
+   "gap": 0.2504281984540642,
+   "ratio": 0.9074470060690522,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24284",
+   "fired": false,
+   "gap": 0.31297414844879684,
+   "ratio": 1.1340873581333812,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24285",
+   "fired": false,
+   "gap": 0.45066838864839703,
+   "ratio": 1.6330336700639827,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24286",
+   "fired": false,
+   "gap": 0.48401335196845496,
+   "ratio": 1.753861864808271,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24287",
+   "fired": false,
+   "gap": 0.35125739145739454,
+   "ratio": 1.2728098121749867,
+   "rows": 1905,
+   "tested": false
+  },
+  {
+   "batch": "step:24288",
+   "fired": false,
+   "gap": 0.3275117548221917,
+   "ratio": 1.186765560749479,
+   "rows": 1905,
+   "tested": false
+  }
+ ],
+ "batches_fired": 0,
+ "batches_tested": 0,
+ "constants": {
+  "A8.alarm_min_batch_rows": 30,
+  "A8.alarm_ratio_threshold": 2.0
+ },
+ "eligibility_basis": {
+  "baseline": "log_c_trees_off_unweighted",
+  "baseline_mae": 3.5256518387286944,
+  "basis": "owner ruling AF2: the twin's decision-surface MAE at the ADOPTED penalty point, strictly below its own link's trees-off (log_c_trees_off_unweighted)",
+  "eligible": true,
+  "in_adoption_eligible_list": true,
+  "in_adoption_eligible_list_note": "the twin's own best point (N2 in select_adoption); information only, not used since AF2",
+  "point": {
+   "level": 30.0,
+   "ratio": 1.0
+  },
+  "ruling": "AF2",
+  "twin_key": "log_c_corrector_gls@level=30.0,ratio=1.0",
+  "twin_mae": 3.3585540357961188
+ },
+ "lead": 0,
+ "leads": "not replayable (twin not saved in v1): a v1 lead routed only its pinned arm; routing the twin is a re-run",
+ "package": "pm25",
+ "pass": "nowcast test pass (POST-HOC replay of a saved v1 run)",
+ "post_hoc": true,
+ "reference": {
+  "columns": [
+   "log_c_corrector_unweighted@level=30.0,ratio=1.0",
+   "log_c_corrector_gls@level=30.0,ratio=1.0"
+  ],
+  "file": "inner_preds.parquet",
+  "gap": 0.2759700531041345,
+  "point": {
+   "level": 30.0,
+   "ratio": 1.0
+  },
+  "rows": 68559,
+  "surface": "decision surface",
+  "surface_sha256": "879d0da465b9cbd3d14a03f4f2e0f2f66d633adf4e559beac7e6a0d878188479"
+ },
+ "rows_switched": 0,
+ "rule": "owner ruling AE1 with the AE1 amendment (the owner rulings file, section AE): per issue batch, the mean absolute gap between the adopted arm and its twin on the test rows, over the same gap on the pass's reference surface at the adopted point; above the threshold, and only when the twin is the simpler arm and was eligible on the surface at the adopted point (AF2), the batch's rows take the twin; a zero reference gap is not tested (AF1); recorded and locked before the pass's test labels open",
+ "rulings": {
+  "AE1": "the rule (with the AE1 amendment: batches are issue calendar months, at least A8.alarm_min_batch_rows rows)",
+  "AF1": "owner ruling AF1 (the owner rulings file, section AF): if the adopted arm and its twin agree exactly on the reference surface (reference gap 0, or not finite), the pass is recorded 'not tested' and the adopted arm stands",
+  "AF2": "owner ruling AF2 (the owner rulings file, section AF): the twin's eligibility is judged at the point the alarm uses: at the nowcast, the ADOPTED penalty point (the twin's decision-surface MAE there strictly below its own link's trees-off MAE, or the donor-row median's under ruling V1), not the twin's own best point; at a lead, the pinned point on the lead's guard surface",
+  "AF3": "the alarm (AE, the AE1 amendment, AF1-AF2) is part of the architecture from engine v2 on"
+ },
+ "run_folder": "D:\\treeroute\\runs\\pm25\\headline\\20261007_74e67609",
+ "run_id": "20261007_74e67609",
+ "scores": {
+  "band": 0.04621194665693497,
+  "blocked_jackknife_with": {
+   "flag": false,
+   "high": 0.34224568940964706,
+   "low": 0.17747397971672094,
+   "mean": 0.259859834563184,
+   "n_blocks": 119,
+   "se": 0.04203359941146075
+  },
+  "pooled_mae_reference": 3.85316555881606,
+  "pooled_mae_with": 3.588091134093021,
+  "pooled_mae_without": 3.588091134093021,
+  "verdict_with": {
+   "band": 0.04621194665693497,
+   "contrast": {
+    "high": 0.35274160402290955,
+    "low": 0.17737608443300637,
+    "mean": 0.26505884422795795,
+    "n_groups": 127,
+    "se": 0.044736101936199785
+   },
+   "groups_better": 108,
+   "pooled_contrast": 0.26507442472303877,
+   "reference": "own_link_trees_off",
+   "sign_flip_groups": [
+    "atlantic_forest_brazil",
+    "cape_floristic_region",
+    "congo_basin_drc",
+    "ethiopian_highlands",
+    "falkland_islands",
+    "ganges_plain",
+    "great_sandy_desert_au",
+    "indian_acacia_babool",
+    "karoo",
+    "kazakh_steppe",
+    "north_algeria_tell_atlas",
+    "sahara_eastern",
+    "southern_chile_rainforest",
+    "sudanian_acacia",
+    "tuva_steppe",
+    "uk_midlands",
+    "uruguay",
+    "west_africa_monsoon_guinea",
+    "western_ghats"
+   ],
+   "tag": "helps"
+  },
+  "verdict_without": {
+   "band": 0.04621194665693497,
+   "contrast": {
+    "high": 0.35274160402290955,
+    "low": 0.17737608443300637,
+    "mean": 0.26505884422795795,
+    "n_groups": 127,
+    "se": 0.044736101936199785
+   },
+   "groups_better": 108,
+   "pooled_contrast": 0.26507442472303877,
+   "reference": "own_link_trees_off",
+   "sign_flip_groups": [
+    "atlantic_forest_brazil",
+    "cape_floristic_region",
+    "congo_basin_drc",
+    "ethiopian_highlands",
+    "falkland_islands",
+    "ganges_plain",
+    "great_sandy_desert_au",
+    "indian_acacia_babool",
+    "karoo",
+    "kazakh_steppe",
+    "north_algeria_tell_atlas",
+    "sahara_eastern",
+    "southern_chile_rainforest",
+    "sudanian_acacia",
+    "tuva_steppe",
+    "uk_midlands",
+    "uruguay",
+    "west_africa_monsoon_guinea",
+    "western_ghats"
+   ],
+   "tag": "helps"
+  }
+ },
+ "scores_file": "alarm_replay_scores.csv",
+ "scores_sha256": "4af423db412a4c24cdec82a499f0ba7b9dd4f1edcbf554c822f403010c910eed",
+ "status": "inert_twin_not_simpler",
+ "tag": "POST-HOC (AE3)",
+ "test_rows": 91440,
+ "twin_arm": "log_c_corrector_gls",
+ "twin_eligible": true,
+ "twin_kind": "weighting",
+ "twin_routed": true,
+ "twin_simpler": false
+}

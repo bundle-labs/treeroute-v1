@@ -1,0 +1,474 @@
+# fire_history -- shared STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog), SEEDED 2026-09-28T13:18:10
+# by engine/datasets/_tools/export_review_csv_v2.py. Every fact is 'unverified'. Review aids (footer statistics, samples,
+# sources, notes): engine/datasets/review/v2/evidence/fire_history_evidence.yaml.
+# Conventions (APP_PLAN 1.3): the row key names a calendar month (or a calendar year for annual values).
+#   plain window    -> stamp period_end   + window {length, unit, align: backward}
+#   centred window  -> stamp period_centre + window {length, unit, align: centred}
+#   unknown window  -> stamp period_centre + window {unit, align: unknown} (no length until a max_length is signed)
+#   reach past the period edge (no schema field for it) -> a WIDER window that ends at or after the content's
+#   end; R8 reads only the forward edge, so the wider start never changes a lag.
+#   static column   -> cadence {kind: static}, no window; stamp period_end is a placeholder the schema requires.
+# index_facts.yaml (the F10/V11 audit) writes EVERY window as period_centre + centred; both describe the same
+# content. Its proposals are not merged here: M1 merges them by hand once signed.
+store: fire_history
+description: 'Fire-history features derived from the fire TARGET (MCD64A1 burned fraction); every window ends at
+  t-1 (Part 492). One parquet per fire group: D:/fire/history/{group}.parquet; keys lat, lon, year, month (fire
+  cell key). Seeded 2026-09-28T13:18:10 by engine/datasets/_tools/export_review_csv_v2.py; every fact unverified.
+  Review aids: engine/datasets/review/v2/evidence/fire_history_evidence.yaml.'
+columns:
+  tslf_months:
+    scope: unit
+    dtype: float32
+    units: month
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: months since the cell's last burn, capped at 300 (CAP)
+    reads_target: true
+    provenance: fire_build_history.py:201
+    legal_range:
+    - 0.0
+    - 300.0
+    fill_values: []
+    fact_status: unverified
+  tslf_censored:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: 1 where tslf is at the cap (no burn in the record so far)
+    reads_target: true
+    provenance: fire_build_history.py:202
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  last_burn_month:
+    scope: unit
+    dtype: float32
+    units: month number
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: calendar month of the last burn; -1 = none yet (fire_build_history.py:118)
+    reads_target: true
+    provenance: fire_build_history.py:203
+    legal_range:
+    - -1.0
+    - 12.0
+    fill_values: []
+    fact_status: unverified
+  last_burn_size:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: the cell's own burned fraction at its last burn
+    reads_target: true
+    provenance: fire_build_history.py:204
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  n_burns_12mo:
+    scope: unit
+    dtype: float32
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 12
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: burned months in the previous 12
+    reads_target: true
+    provenance: fire_build_history.py:205
+    legal_range:
+    - 0.0
+    - 12.0
+    fill_values: []
+    fact_status: unverified
+  n_burns_60mo:
+    scope: unit
+    dtype: float32
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 60
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: burned months in the previous 60
+    reads_target: true
+    provenance: fire_build_history.py:206
+    legal_range:
+    - 0.0
+    - 60.0
+    fill_values: []
+    fact_status: unverified
+  burn_rate_120mo:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 120
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: share of burned months in the previous 120
+    reads_target: true
+    provenance: fire_build_history.py:207
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_lag1:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_lag1)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_12mo_lag1:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 12
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_12mo_lag1)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_lag1:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_lag1)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_12mo_lag1:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 12
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_12mo_lag1)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_lag3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 3
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_lag3)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_12mo_lag3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 14
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_12mo_lag3)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_lag3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 3
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_lag3)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_12mo_lag3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 14
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_12mo_lag3)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_lag6:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 6
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_lag6)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr25km_12mo_lag6:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 17
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr25km_12mo_lag6)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_lag6:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 6
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_lag6)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  nbr75km_12mo_lag6:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      length: 17
+      unit: month
+      align: backward
+    product_family: fire target (MCD64A1) derived
+    derived_from:
+    - burned_frac
+    operation: neighbour-ring burned fraction (nbr75km_12mo_lag6)
+    reads_target: true
+    provenance: fire_build_history.py:69
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified

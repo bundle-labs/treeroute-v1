@@ -1,0 +1,21 @@
+reference,arm,mean,se,low,high,n_groups,identical,tag,kind
+arm__identity_trees_off_unweighted,arm__identity_plain_unweighted,-0.40429543181944183,0.6313319320971502,-1.6417060187298562,0.8331151550909726,4,False,cannot_tell,band_pair
+arm__identity_trees_off_unweighted,arm__identity_corrector_unweighted,-0.40429543181944183,0.6313319320971502,-1.6417060187298562,0.8331151550909726,4,False,cannot_tell,band_pair
+placebo__identity_placebo_corrector_unweighted,arm__identity_corrector_unweighted,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+arm__identity_trees_off_unweighted,arm__identity_plain_gls,-0.06603057115632893,0.9027810651714644,-1.835481458892399,1.7034203165797412,4,False,cannot_tell,band_pair
+arm__identity_trees_off_unweighted,arm__identity_corrector_gls,-0.06603057115632893,0.9027810651714644,-1.835481458892399,1.7034203165797412,4,False,cannot_tell,band_pair
+placebo__identity_placebo_corrector_gls,arm__identity_corrector_gls,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_plain_unweighted,-0.30289757241966253,0.6005782897301307,-1.4800310202907188,0.8742358754513937,4,False,cannot_tell,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_corrector_unweighted,-0.30289757241966253,0.6005782897301307,-1.4800310202907188,0.8742358754513937,4,False,cannot_tell,band_pair
+placebo__log_c_placebo_corrector_unweighted,arm__log_c_corrector_unweighted,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_plain_gls,0.14838588187618296,0.9035612153977972,-1.6225941003034996,1.9193658640558655,4,False,cannot_tell,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_corrector_gls,0.14838588187618296,0.9035612153977972,-1.6225941003034996,1.9193658640558655,4,False,cannot_tell,band_pair
+placebo__log_c_placebo_corrector_gls,arm__log_c_corrector_gls,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_plain_unweighted,-0.3681060309331965,0.5448891308053151,-1.436088727311614,0.6998766654452211,4,False,cannot_tell,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_corrector_unweighted,-0.3681060309331965,0.5448891308053151,-1.436088727311614,0.6998766654452211,4,False,cannot_tell,band_pair
+placebo__arcsine_placebo_corrector_unweighted,arm__arcsine_corrector_unweighted,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_plain_gls,0.16227480478555734,0.9323285535290277,-1.665089160131337,1.9896387697024516,4,False,cannot_tell,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_corrector_gls,0.16227480478555734,0.9323285535290277,-1.665089160131337,1.9896387697024516,4,False,cannot_tell,band_pair
+placebo__arcsine_placebo_corrector_gls,arm__arcsine_corrector_gls,0.0,0.0,0.0,0.0,4,True,identical,band_pair
+base__donor_median,base__donor_median,0.0,0.0,0.0,0.0,4,,declined,single_verdict
+base__donor_median,base__donor_median,0.0,0.0,0.0,0.0,4,,,blocked_jackknife (report only)

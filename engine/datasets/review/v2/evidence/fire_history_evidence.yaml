@@ -1,0 +1,277 @@
+# fire_history -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: fire_history
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/fire/history/{group}.parquet
+keys:
+- lat
+- lon
+- year
+- month
+provenance: fire_build_history.py:69
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  tslf_months:
+    window_text: months since the cell's last burn, capped at 300 (CAP); backward memory unbounded; only the forward
+      edge (end of t-1) is written
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: 1.0
+      max: 300.0
+  tslf_censored:
+    window_text: 1 where tslf is at the cap (no burn in the record so far); backward memory unbounded; only the
+      forward edge (end of t-1) is written
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  last_burn_month:
+    window_text: calendar month of the last burn; -1 = none yet (fire_build_history.py:118); backward memory unbounded;
+      only the forward edge (end of t-1) is written
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.0
+      max: 12.0
+  last_burn_size:
+    window_text: the cell's own burned fraction at its last burn; backward memory unbounded; only the forward edge
+      (end of t-1) is written
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  n_burns_12mo:
+    window_text: burned months in the previous 12; 12-month window ending at t-1
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 8.0
+  n_burns_60mo:
+    window_text: burned months in the previous 60; 60-month window ending at t-1
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 24.0
+  burn_rate_120mo:
+    window_text: share of burned months in the previous 120; 120-month window ending at t-1
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  nbr25km_lag1:
+    window_text: neighbour-ring burned fraction (nbr25km_lag1); single month t-1, written as the 1 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.773947794214692e-10
+      max: 0.9984973669052124
+  nbr25km_12mo_lag1:
+    window_text: neighbour-ring burned fraction (nbr25km_12mo_lag1); 12-month window ending at t-1
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  nbr75km_lag1:
+    window_text: neighbour-ring burned fraction (nbr75km_lag1); single month t-1, written as the 1 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -8.869739144545807e-12
+      max: 0.7940008044242859
+  nbr75km_12mo_lag1:
+    window_text: neighbour-ring burned fraction (nbr75km_12mo_lag1); 12-month window ending at t-1
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.6022754303901543e-11
+      max: 1.0
+  nbr25km_lag3:
+    window_text: neighbour-ring burned fraction (nbr25km_lag3); single month t-3, written as the 3 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.773947794214692e-10
+      max: 0.9984973669052124
+  nbr25km_12mo_lag3:
+    window_text: neighbour-ring burned fraction (nbr25km_12mo_lag3); 12-month window ending at t-3, written as the
+      14 months before the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  nbr75km_lag3:
+    window_text: neighbour-ring burned fraction (nbr75km_lag3); single month t-3, written as the 3 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -8.869739144545807e-12
+      max: 0.7940008044242859
+  nbr75km_12mo_lag3:
+    window_text: neighbour-ring burned fraction (nbr75km_12mo_lag3); 12-month window ending at t-3, written as the
+      14 months before the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.6022754303901543e-11
+      max: 1.0
+  nbr25km_lag6:
+    window_text: neighbour-ring burned fraction (nbr25km_lag6); single month t-6, written as the 6 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.773947794214692e-10
+      max: 0.9984973669052124
+  nbr25km_12mo_lag6:
+    window_text: neighbour-ring burned fraction (nbr25km_12mo_lag6); 12-month window ending at t-6, written as the
+      17 months before the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.0
+      max: 1.0
+  nbr75km_lag6:
+    window_text: neighbour-ring burned fraction (nbr75km_lag6); single month t-6, written as the 6 month(s) before
+      the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -8.869739144545807e-12
+      max: 0.7940008044242859
+  nbr75km_12mo_lag6:
+    window_text: neighbour-ring burned fraction (nbr75km_12mo_lag6); 12-month window ending at t-6, written as the
+      17 months before the row (the content ends earlier)
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: hand seed (physical bound of the stored quantity)
+    fill_values_note: 'none known: the builder writes NaN for missing (codes such as last_burn_month -1 or tslf''s
+      cap 300 are values, not fills)'
+    footer_stats:
+      null_share_all_files: 0.0
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.6022754303901543e-11
+      max: 1.0
+schema_catalog: _stores/fire_history_schema_catalog.yaml
+schema_catalog_sha256: b8bdd9e0dde1ee9eeb902e6ad7faf0a5b7d7d929b9b68cceaf27484b6fedb880
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

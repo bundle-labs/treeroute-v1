@@ -1,0 +1,34 @@
+{
+ "finished": "2026-11-15 18:35:27",
+ "leads": [
+  0
+ ],
+ "problem": "ndvi",
+ "scope": "i",
+ "steps": [
+  {
+   "exit": 0,
+   "seconds": 87180.3,
+   "status": "done",
+   "step": "treeroute rebuild leads [0]"
+  },
+  {
+   "exit": 0,
+   "seconds": 1217.8,
+   "status": "done",
+   "step": "treeroute SHAP lead 0"
+  },
+  {
+   "exit": 3,
+   "seconds": 5504.6,
+   "status": "stopped at a gate (a stop rule)",
+   "step": "rivals lead 0"
+  },
+  {
+   "exit": 0,
+   "seconds": 34.5,
+   "status": "done",
+   "step": "compare lead 0"
+  }
+ ]
+}

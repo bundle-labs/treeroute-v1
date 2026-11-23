@@ -1,0 +1,95 @@
+{
+ "code_sha256": "e9be4b16486ec2b9456a6219ea95e8209f217743fab4e62463aa03916f84ff83",
+ "format": "rivals-engine-lineage/1",
+ "freeze_locks": [
+  {
+   "file_sha": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261006T203115Z.lock.json",
+   "stripped": "6d19c3e20e8111b82cb10734c776ce3c2135f653f8896575f86260b1863468b6"
+  },
+  {
+   "file_sha": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261007T130812Z.lock.json",
+   "stripped": "6d19c3e20e8111b82cb10734c776ce3c2135f653f8896575f86260b1863468b6"
+  },
+  {
+   "file_sha": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261007T132431Z.lock.json",
+   "stripped": "6d19c3e20e8111b82cb10734c776ce3c2135f653f8896575f86260b1863468b6"
+  },
+  {
+   "file_sha": "1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261013T102938Z.lock.json",
+   "stripped": "810eeca7664fc729a95dad5ea3408899812823c39fb4cb802413cc1fcb62fcaa"
+  },
+  {
+   "file_sha": "1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261013T103700Z.lock.json",
+   "stripped": "810eeca7664fc729a95dad5ea3408899812823c39fb4cb802413cc1fcb62fcaa"
+  },
+  {
+   "file_sha": "7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261016T012320Z.lock.json",
+   "stripped": "cf566e0549d426ded8adcaa4dbc59f36bc858a755c5cd42726badebd94866024"
+  },
+  {
+   "file_sha": "7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261016T012828Z.lock.json",
+   "stripped": "cf566e0549d426ded8adcaa4dbc59f36bc858a755c5cd42726badebd94866024"
+  },
+  {
+   "file_sha": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261016T090651Z.lock.json",
+   "stripped": "13838e41843cf1ec2598a1c3f7383c8ae2371dc094a1f3ec7f63fd7fc073f74a"
+  },
+  {
+   "file_sha": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261016T091126Z.lock.json",
+   "stripped": "13838e41843cf1ec2598a1c3f7383c8ae2371dc094a1f3ec7f63fd7fc073f74a"
+  },
+  {
+   "file_sha": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261017T105545Z.lock.json",
+   "stripped": "13838e41843cf1ec2598a1c3f7383c8ae2371dc094a1f3ec7f63fd7fc073f74a"
+  },
+  {
+   "file_sha": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+   "lock": "D:/treeroute/registry/freeze/FREEZE_20261020T100907Z.lock.json",
+   "stripped": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678"
+  }
+ ],
+ "hops": [
+  {
+   "from": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+   "packages_must_match": {
+    "defo": 0,
+    "fire": 0,
+    "ndvi": 0,
+    "pm25": 0
+   },
+   "proof": "D:/treeroute/coral_build/noop/noop_summary.txt",
+   "proof_sha256": "110ec59aa2eb657bfb4d64d57f522896ed89d476a37a5419da8ee72dd699359a",
+   "result_pass": true,
+   "to": "dd7c0984d3044aac6cf06d7614df7bd7e8622942580a5f1f0bb08c32ed085d38"
+  },
+  {
+   "from": "dd7c0984d3044aac6cf06d7614df7bd7e8622942580a5f1f0bb08c32ed085d38",
+   "packages_must_match": {
+    "defo": 0,
+    "fire": 0,
+    "ndvi": 0,
+    "pm25": 0
+   },
+   "proof": "D:/treeroute/coral_build_v6b/noop/noop_summary.txt",
+   "proof_sha256": "c45ba985e2b338035c427c0acb179968480608454f1bcf8c003b2896ed3d2376",
+   "result_pass": true,
+   "to": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814"
+  }
+ ],
+ "live": {
+  "file_sha": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+  "stripped": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678"
+ },
+ "rule": "a hop proves the no-op of its from-engine to its to-engine for a package when its proof file still has the recorded sha256, ends with the PASS line, and its COMPARE section of that package has must-match count 0",
+ "written_utc": "2026-10-20T15:01:47+00:00"
+}

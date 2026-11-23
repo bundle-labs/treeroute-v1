@@ -1,0 +1,143 @@
+# edgar_emis -- shared STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog), SEEDED 2026-09-28T13:18:10
+# by engine/datasets/_tools/export_review_csv_v2.py. Every fact is 'unverified'. Review aids (footer statistics, samples,
+# sources, notes): engine/datasets/review/v2/evidence/edgar_emis_evidence.yaml.
+# Conventions (APP_PLAN 1.3): the row key names a calendar month (or a calendar year for annual values).
+#   plain window    -> stamp period_end   + window {length, unit, align: backward}
+#   centred window  -> stamp period_centre + window {length, unit, align: centred}
+#   unknown window  -> stamp period_centre + window {unit, align: unknown} (no length until a max_length is signed)
+#   reach past the period edge (no schema field for it) -> a WIDER window that ends at or after the content's
+#   end; R8 reads only the forward edge, so the wider start never changes a lag.
+#   static column   -> cadence {kind: static}, no window; stamp period_end is a placeholder the schema requires.
+# index_facts.yaml (the F10/V11 audit) writes EVERY window as period_centre + centred; both describe the same
+# content. Its proposals are not merged here: M1 merges them by hand once signed.
+store: edgar_emis
+description: 'EDGAR v8.1 air-pollutant emissions summed to annual totals on the panel''s cells (ingested for PM2.5).
+  One parquet per group: D:/edgar_emis/{group}_edgar.parquet; keys cell_id, year. Seeded 2026-09-28T13:18:10 by
+  engine/datasets/_tools/export_review_csv_v2.py; every fact unverified. Review aids: engine/datasets/review/v2/evidence/edgar_emis_evidence.yaml.'
+columns:
+  edgar_carried:
+    scope: unit
+    dtype: int8
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    operation: 1 where the 2022 value is carried into 2023
+    provenance: edgar_emis_ingest.py:193
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: unverified
+  edgar_so2:
+    scope: unit
+    dtype: float32
+    units: t km-2 yr-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    observed_through: '2022'
+    provenance: edgar_emis_ingest.py:31
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified
+  edgar_nox:
+    scope: unit
+    dtype: float32
+    units: t km-2 yr-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    observed_through: '2022'
+    provenance: edgar_emis_ingest.py:31
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified
+  edgar_nh3:
+    scope: unit
+    dtype: float32
+    units: t km-2 yr-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    observed_through: '2022'
+    provenance: edgar_emis_ingest.py:31
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified
+  edgar_bc:
+    scope: unit
+    dtype: float32
+    units: t km-2 yr-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    observed_through: '2022'
+    provenance: edgar_emis_ingest.py:31
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified
+  edgar_oc:
+    scope: unit
+    dtype: float32
+    units: t km-2 yr-1
+    cadence:
+      kind: regular
+      length: 1
+      unit: year
+    stamp: period_end
+    window:
+      length: 1
+      unit: year
+      align: backward
+    product_family: EDGAR v8.1
+    observed_through: '2022'
+    provenance: edgar_emis_ingest.py:31
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified

@@ -1,0 +1,332 @@
+# catalog.yaml -- fire package facts (APP_PLAN.md 1.3). Drafted 2026-09-28 by the agent; unsigned.
+# Every entry is a PACKAGE fact (plan 1.3): a role and, for the target, its window, stamp, legal range and
+# error floor. Physical facts (dtype, units, cadence, windows, fills, lineage) live in the shared store catalogs
+# included by dataset.yaml; a store fact written here is refused by the schema.
+# fact_status is 'unverified' everywhere (the schema default where not written). Nothing here is signed.
+# Column list: the rows of engine/datasets/review/v2/fire_columns.csv (the Q34 review sheet, 214 rows) except 18,
+# plus the keys, plus the six lag-12 columns of owner rule J2 (a) (role engineered, built by features/build.py;
+# end of this file). The 18 omitted rows are listed at the end of this header: the target store's 4 columns other
+# than burned_frac, and the 8 fire_ndvi_lags and 6 fire_danger rows (stores dataset.yaml does not declare; ruling
+# J1 / Q7 a: left undeclared). Roles come from the sheet's store class: store column -> driver, 'router_context'
+# -> router_context, 'engineered' -> engineered; the three FireCCI burned-area columns are target_twin (below). A
+# role is NOT a verdict: the verdicts are the owner's, in ban.yaml.
+# Q34 INSTALLED 2026-10-05 (OWNER_RULINGS_2026-10-05.md section J): ban.yaml holds the review's verdicts
+# (engine/datasets/review/proposed/fire_ban_proposed.yaml) with J2 and J3 applied (ban.yaml header lists each
+# change). The package facts that installation writes here: the FireCCI trio's role target_twin (J1, review
+# section 5 C), snow_cover_fraction's co-measured answer (J2 d), and the six J2 (a) lag-12 rows.
+# co_measured_with_target has NO default (plan 1.3): it is written only where the owner has RULED it; every
+# other candidate the sheet marks 'yes' still needs an explicit true/false with a Part number. NOT WRITTEN, owner
+# item (G-FACTS, not built yet): the explicit 'false' on every other kept time-varying driver that the review
+# proposes (fire_columns_proposed.csv, column timing_fact_proposal).
+# NOT listed (owner items): the target store's other columns n_burned, n_valid, n_unmapped, unmapped_frac. The
+# plan-format target table holds unit id, group id, time and y only (plan 1.2); validity (n_valid) belongs to the
+# ingest. If the package reads D:/fire/target in place, each needs a role (support / report_stratum /
+# target_twin) and a verdict, or the ingest drops them. Also not listed: the 14 rows of the two sidecar stores not
+# declared in dataset.yaml (fire_ndvi_lags, fire_danger).
+# fire_history columns are target-derived (their store facts say derived_from burned_frac, reads_target true):
+# role ENGINEERED (plan 1.3: derived_from, operation and reads_target belong to engineered columns), not driver.
+# Their values come from a fire-history store. features/target_history.py recomputes them from the target,
+# strictly before each row: at the shipped label lag 1 it reproduces D:/fire/history value for value on every
+# cell it holds (40 groups x its cells x 252 months, 2026-09-29; tests/test_fire_package_data.py); at the RULED
+# label lag 2 (R-D b, see the fire_history block below) ingest/build_history.py writes the store (fire_draft
+# declares it for the shipped pick; the fire package declares NO history store until the owner builds it for
+# every unit, so a kept fire-history column has no store facts there and derive refuses it, R8).
+# plan 3.2: tslf / n_burns / burn_rate / last_burn / nbr are checked against G-HIST in the Q34 review:
+# none equals a column of the engine's own-history block or a plain lag on every row; last_burn_size equals
+# y(t-L) wherever that lag is non-zero, a sparse own lag (tests/test_fire_package*.py; the draft bans it).
+# The unit (key_unit cell_id) is the monthly panel's cell id; the target and both sidecars are keyed on lat + lon
+# and are mapped to it by the package's key map (ingest/build_static.py writes the static table; the target
+# reader and ingest/build_sidecars.py use it).
+
+# 2026-10-06 (ruling L, OWNER_RULINGS_2026-10-05.md section L): six engineered rows <aglw_*>_hold2021 (L3: the real 2021
+# livestock layer held for 2022-2023; features/build.py HOLD_PARENTS); cloud_frequency_pct's co_measured_with_target
+# true is SIGNED (L1 c: fact_status assumed + reviewed_by owner + date, the schema's spelling of a signed fact).
+columns:
+  # ---- keys (never tree features, G-KEYS)
+  cell_id: {role: key_unit}   # the panel cell id {group}_{ix}_{iy}; target and sidecars are keyed on lat+lon, mapped by the key map (ingest/build_static.py)
+  region: {role: key_group}  # in cells_1000.parquet and the panel; the target files take it from the {group} placeholder
+  year: {role: key_time, calendar_part: year}
+  month: {role: key_time, calendar_part: month}
+  # ---- the one target (package facts, plan 1.3; timing facts unverified)
+  burned_frac:
+    role: target
+    legal_range: [0, 1]
+    legal_range_source: 'fraction by construction: burned MODIS pixels / valid land pixels in the cell (fire_fetch_target.py:8, 339); MCD64A1.061 Burn_Date'
+    # window and stamp: the burn DATES lie in one calendar month (store catalogs' spelling: period_end + 1 month
+    # backward; the index audit writes period_centre + 1 month centred, the same month). RULED R-D (b)
+    # (OWNER_RULINGS_2026-09-28.md B): add a reach-after fact, because month m's burned/unburned label normally uses
+    # observations from month m+1 (MCD64 User Guide V6.1 3.1.2 [S34]; INDEX_WINDOW_AUDIT.md Table 3). The guide does
+    # not state the margin (INDEX_WINDOW_AUDIT.md: "The margin is not stated"), so reach_after_max is a PROPOSED
+    # BOUND of 1 month, chosen to fit the ruled consequence, not from evidence: the largest margin that keeps R17
+    # starting fire's history block at t-2 as for NDVI (a new acceptance flag; expected_derived.json R17
+    # start_offset_steps becomes 1). Any margin from 1 day to 1 month gives the same t-2; 2 months would give t-3.
+    # A smaller margin that can be documented is preferred. The ruling fixed the fact, not this value, so
+    # fact_status stays unverified until the owner signs the bound as 'assumed' (by Sat 10 Oct).
+    # The bound MOVES the nowcast reference: reference_day(NOWCAST) is the end of the target's content, reach
+    # included, so for month t it is the end of month t+1. On its own that reference would admit month t+1
+    # content (lag_trace on this target: oni 2, tni 2, nino* 1, sst_anom_* 1, co2 0, V11/V12 0, against the
+    # issue-step reference's 3, 3, 2, 2, 1, 1). The ruled lags hold only because R8 takes the larger of the two
+    # references (D24), and the issue-step reference is the month end; a larger bound moves the nowcast
+    # reference later still. Any later caller that reads the nowcast reference alone (an as-of join, a direct
+    # G-LAG check) must not. tests/test_catalog_timing_facts.py pins nowcast < issue-step here.
+    window: {length: 1, unit: month, align: backward, reach_after_max: {value: 1, unit: month}}
+    stamp: period_end
+    fact_status: unverified
+    provenance: 'MCD64A1.061 monthly Burn_Date; burned_frac = pixels with Burn_Date > 0 / valid land pixels; ingest fire_fetch_target.py:1-13, 114-125, 159-161, 226-228, 339 (index_facts.yaml). Validity n_valid > 0 lives in the ingest (fire_architecture.py:273-274): ingest/target_reader.py writes NaN where n_valid <= 0 and for every unit-month the store does not hold (a complete census), and maps lat/lon to cell_id through the key map (ingest/build_static.py).'
+  # ---- monthly_panel_v170
+  lon: {role: driver}
+  lat: {role: driver}
+  V25_elevation_m: {role: driver}
+  V26_slope_deg: {role: driver}
+  V27_southness: {role: driver}
+  V28_CTI: {role: driver}
+  clay_pct: {role: driver}
+  sand_pct: {role: driver}
+  silt_pct: {role: driver}
+  soil_organic_carbon_gkg: {role: driver}
+  nitrogen_gkg: {role: driver}
+  soil_ph: {role: driver}
+  awc_cm3cm3: {role: driver}
+  bulk_density_gcm3: {role: driver}
+  cec_cmolkg: {role: driver}
+  coarse_fragments_pct: {role: driver}
+  V15_bare_ground_pct: {role: driver}
+  V17_herb_cover_pct: {role: driver}
+  tree_cover_pct: {role: driver}
+  modis_landcover_class: {role: driver}
+  shrub_cover_pct_global: {role: driver}
+  phenology_sos_doy: {role: driver}
+  population_density: {role: driver}
+  built_surface_fraction: {role: driver}
+  cropland_fraction: {role: driver}
+  hand_m: {role: driver}
+  upstream_area_km2: {role: driver}
+  irrigation_pct_gmia: {role: driver}
+  dist_to_coast_km: {role: driver}
+  V01_mean_temp_C: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  diurnal_temp_range_C: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V02_total_precip_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V07_total_ref_ET_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aet_total_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  climate_water_deficit_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  soil_water_tc_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V05_mean_vpd_kPa: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V09_mean_wind_ms: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  solar_radiation_Wm2: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  swe_mean_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aridity_index_p_pet: {role: driver}
+  tc_vapor_pressure: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V11_mean_ndvi: {role: driver}
+  V13_mean_lst_C: {role: driver}
+  nighttime_lst_C: {role: driver}
+  # snow_cover_fraction: co-measured (J2 d: "lag 1 as same-sensor co-measured", written for NDVI's copy of this
+  # column; on fire the review's own timing proposal says the same: MOD10 is MODIS, the target MCD64A1's sensor, and
+  # a burn scar changes it in the same month). The answer only lengthens the lag (R8 floor 1); its verdict waits
+  # in ban.yaml (conditional) until the engine's J2 (d) last-value fill runs.
+  snow_cover_fraction: {role: driver, co_measured_with_target: true, co_measured_evidence: 'OWNER_RULINGS_2026-10-05.md J2 (d) ("lag 1 as same-sensor co-measured"); review/proposed/fire_columns_proposed.csv snow_cover_fraction (co_measured candidate: MODIS product, same sensor and month as MCD64A1; a burn scar changes it in the same month, fire_ban.py:57-60; timing proposal co_measured=true -> lag 1)'}
+  cloud_frequency_pct: {role: driver, co_measured_with_target: true, co_measured_evidence: 'RULED Q3 a (owner 2026-09-27): same-month MODIS cloud is co-measured -> at least a 1-step lag (plan 1.3, R8)', fact_status: assumed, reviewed_by: owner, date: '2026-10-06'}
+  # ^ cloud_frequency_pct: co_measured_with_target true SIGNED by the owner 2026-10-06 (ruling L1 c), written fact_status
+  #   'assumed' + reviewed_by + date (plan 1.3's spelling of a signed fact; the schema has no 'signed')
+  V14_mean_albedo: {role: driver}
+  gpp_kgC_m2: {role: driver}
+  snow_onset_doy: {role: driver}
+  snow_disappearance_doy: {role: driver}
+  snow_duration_days: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  snow_max_doy: {role: driver}
+  V06_spei_12m: {role: driver}
+  spei_01m: {role: driver}
+  spei_03m: {role: driver}
+  spei_06m: {role: driver}
+  spei_24m: {role: driver}
+  frost_days: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  heatwave_days_gt35C: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  gdd5_degC_days: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wet_day_count: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V03_max_daily_precip_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  precip_intensity_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  vpd_max_daily: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  vpd_days_gt_2kpa: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  vpd_warm_season_mean: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  rmin_pct: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sph_kgkg: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V30_soil_moisture_pct: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  # RULED (J1, 2026-10-05: the Q34 review adopted, its section 5 C 'give V20_burned_binary, burn_month_count and
+  # burn_doy_mean the role target_twin'): the three FireCCI burned-area columns measure the same fire events as the
+  # target (review sheet: co-measured candidate 'yes'; the shipped run banned them as 'the label or a transform of
+  # it', fire_ban.py:23-26), so they are TARGET TWINS: the engine forces their ban (io.apply_verdicts refuses any
+  # other verdict) and refuses a feature derived from them (G-LINEAGE stand-in, pipeline/data.py). ban.yaml bans
+  # them as 'label'. Before this ruling they were plain drivers here, and a 'keep' would have given the trees the
+  # row's own month of burned area at lag 0. fire_draft keeps its pre-installation copy (role driver, banned there).
+  V20_burned_binary: {role: target_twin}
+  burn_month_count: {role: target_twin}
+  burn_doy_mean: {role: target_twin}
+  sst_anom_atl3: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_iod_west: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_iod_east: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_subpolar_north_atlantic: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_coral_sea: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_mediterranean: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_global_tropical_mean: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sst_anom_nino34: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  nino12: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  nino3: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  nino4: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  nino34: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  oni: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  soi: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  tni: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  pdo: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  amo: {role: driver}
+  tna: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  tsa: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  iod: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  noi: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  ao: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  nao: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  pna: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wp: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  epo: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  sam: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  V04_precip_seasonality: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  clf_dry: {role: driver}
+  clf_wet: {role: driver}
+  road_density: {role: driver}
+  travel_time: {role: driver}
+  dist_powerplant: {role: driver}
+  dist_thermal: {role: driver}
+  dist_coal_mine: {role: driver}
+  dist_dam: {role: driver}
+  dist_reservoir: {role: driver}
+  dist_oilgas_well: {role: driver}
+  dist_pa: {role: driver}
+  gdp_pc: {role: driver}
+  ntl: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  hdi: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_cropland: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_pasture: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_range: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_urban: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_forest: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  luh2_secondary: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  fert_n: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  fert_p: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_cattle: {role: driver}
+  aglw_buffalo: {role: driver}
+  aglw_horse: {role: driver}
+  aglw_sheep: {role: driver}
+  aglw_goats: {role: driver}
+  aglw_total_lsu: {role: driver}
+  conflict_events: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  conflict_deaths: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  co2: {role: driver}
+  food_price_index: {role: driver}
+  food_meat: {role: driver}
+  food_dairy: {role: driver}
+  food_cereals: {role: driver}
+  food_oils: {role: driver}
+  food_sugar: {role: driver}
+  grace_lwe: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  modis_landcover_annual: {role: driver}
+  V12_mean_evi: {role: driver}
+  deeprec_twsa: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_pev: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_sro: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_ssro: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_smlt: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_slhf: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_sshf: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_ssr: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_str: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_d2m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  era5l_stl1: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  esacci_sm: {role: driver}
+  scpdsi: {role: driver}
+  spi_01m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spi_03m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spi_06m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spi_12m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spi_24m: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  eddi: {role: driver}
+  wbal_mm: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wbal_roll3: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wbal_roll6: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wbal_roll12: {role: driver, co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  wbal_roll24: {role: driver}
+  eddi_observed: {role: driver}
+  # ---- fire_history: ENGINEERED, target-derived (see the header)
+  # RULED R-D (b), APPLIED 2026-09-29. Month t-1's label uses observations from month t, so the engine's own
+  # history block (R17) starts at t-2, and no target-derived column may read a later label: the store is rebuilt
+  # at newest label lag 2 (features/target_history.py NEWEST_LABEL_LAG = 1 + R17's start offset; every column at
+  # month t reads labels of months <= t-2). The shipped store D:/fire/history reads label t-1 (Part 492) and must
+  # not be read (the computed lag cannot show the leak: timing.lag_trace gives 0 for all 19, with or without the
+  # 1-month reach carried to their windows, 2026-09-28). The rebuilt store holds 15 columns: the four lag-1
+  # rings nbr*_lag1 read label t-1 and cannot be built, so they need a ban (the sheet bans the single-month two
+  # already; nbr25km_12mo_lag1 and nbr75km_12mo_lag1 are shipped keeps). Its store catalog is generated by
+  # ingest/build_history.py (ingest/fire_history_store_catalog.yaml; fire_draft includes it). The fire package
+  # neither declares the shipped store nor includes its catalog (removed 2026-10-04: that catalog's 1-month
+  # window leaves out the target's reach-after, so R8 would lag these columns 0 and nothing would refuse label
+  # t-1); until the owner builds the every-unit store (dataset.yaml), these 19 rows have no store facts there and
+  # derive refuses any one that is kept (R8).
+  # Q34 (J1, Q5 default 'build fire's history store'): 9 of the 15 rebuildable columns wait as 'conditional' in
+  # ban.yaml until the every-unit store is built and declared; each one's ban.yaml reason names the verdict it
+  # switches to (ban.yaml header 'THE HISTORY-STORE SWITCH'). The other 10 rows stay banned (the four lag-1 rings
+  # and the single-month lag-3/6 rings: target_derived; last_burn_size: a sparse own lag; last_burn_month: a month
+  # key).
+  # RING EDGES (disclosed for the Q34 G-HIST review; the shipped definition, fire_build_history.py:162-169): the
+  # ring mean pads the region grid with scipy's 'nearest' mode, so for a unit on the grid's outermost row or column
+  # its OWN cell is repeated inside its own ring. Its own value's weight in nbr* is (r+2)/(4(r+1)) at a corner and
+  # r/((2r+1)^2-1) on an edge, 0 one cell in (r = ring radius in cells; over the 40 region grids r is 6-17 for
+  # 25 km and 19-52 for 75 km: 25.5-28.6% at corners, 0.5-3.6% on edges; tests/test_fire_package.py). So the
+  # eight lag-3/6 ring columns carry a partial own-history signal for edge units. It never reaches past the cut
+  # (ring lag >= 3 > L = 2), and the G-HIST tests (exact equality) cannot see it. A pure neighbour aggregate (mode
+  # 'constant', divided by the count of real neighbours) would change the shipped definition: owner's choice.
+  tslf_months: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  tslf_censored: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  last_burn_month: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  last_burn_size: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  n_burns_12mo: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  n_burns_60mo: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  burn_rate_120mo: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  nbr25km_lag3: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  nbr25km_12mo_lag3: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  nbr75km_lag3: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  nbr75km_12mo_lag3: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  nbr25km_lag6: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  nbr25km_12mo_lag6: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  nbr75km_lag6: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py'}
+  nbr75km_12mo_lag6: {role: engineered, provenance: 'target-derived (store facts: derived_from burned_frac, reads_target true); fire_build_history.py; recomputed by features/target_history.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): a derived column whose content already ends at least one step before the row (lag, hold or aggregate of an earlier period); a true answer would move it one more step back'}
+  # ---- fire_drivers (sidecar D:/fire/drivers/joined)
+  lgt_density: {role: driver}
+  lgt_missing: {role: driver}
+  lgt_is_zero: {role: driver}
+  vod_lag2: {role: driver}
+  vod_d1: {role: driver}
+  vod_anom: {role: driver}
+  agb_lag1y: {role: driver}
+  agb_contrast: {role: driver}
+  # ---- J2 (a) lag-12 columns: ENGINEERED by the package feature script (features/build.py, LAG12_BASES)
+  # OWNER_RULINGS_2026-10-05.md J2 (a): "Columns missing in a test year (spei_01m/03m/06m/12m/24m, amo): keep them
+  # through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent
+  # stays banned (incomplete)." Each row is the parent's value of the same unit 12 calendar months earlier; its
+  # store facts (derived_from, operation, a backward window composed from the parent's facts) are the feature
+  # script's OUTPUTS, so R8 lags it from facts (lag 0: its newest content ends 12 months before the row). In fire's
+  # 2003-2022 coverage the parents are complete (review Q6); J2 (a) is applied as for PM2.5, whose 2023 test year
+  # the parents miss. They are not review-sheet rows: tests/test_packages_declarative.py CATALOG_NOT_ON_SHEET['fire']
+  # must list them (that file is outside the fire package task: an orchestrator item).
+  V06_spei_12m_lag12: {role: engineered, provenance: 'owner rule J2 (a): V06_spei_12m of the same unit 12 calendar months earlier; features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spei_01m_lag12: {role: engineered, provenance: 'owner rule J2 (a): spei_01m of the same unit 12 calendar months earlier; features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spei_03m_lag12: {role: engineered, provenance: 'owner rule J2 (a): spei_03m of the same unit 12 calendar months earlier; features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spei_06m_lag12: {role: engineered, provenance: 'owner rule J2 (a): spei_06m of the same unit 12 calendar months earlier; features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  spei_24m_lag12: {role: engineered, provenance: 'owner rule J2 (a): spei_24m of the same unit 12 calendar months earlier; features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  amo_lag12: {role: engineered, provenance: 'owner rule J2 (a): amo of the same unit 12 calendar months earlier (a global index: every unit holds the same value); features/build.py', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  # ---- ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): the six yearly livestock columns kept through an engineered hold of the real 2021
+  # layer for 2022-2023; the raw aglw_* rows above are banned in ban.yaml
+  aglw_cattle_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_cattle with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_buffalo_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_buffalo with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_horse_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_horse with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_sheep_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_sheep with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_goats_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_goats with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  aglw_total_lsu_hold2021: {role: engineered, provenance: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06)): aglw_total_lsu with the real 2021 layer held for 2022-2023 (backward only); package feature script (plan 1.5), features/build.py HOLD_PARENTS', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  # ---- router_context (package feature script)
+  'ctx:month': {role: router_context, provenance: 'shipped router context CTX = [month, lat] (fire_evt_arch.py:78); made by the package feature script (plan 1.5); column name as on the review sheet', co_measured_with_target: false, co_measured_evidence: 'answered by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S6): not measured by the target product or sensor within the target step (climate, reanalysis, indices, human or static data); R8 lags it from its own timing facts'}
+  'ctx:lat': {role: router_context, provenance: 'shipped router context CTX = [month, lat] (fire_evt_arch.py:78); made by the package feature script (plan 1.5); column name as on the review sheet'}

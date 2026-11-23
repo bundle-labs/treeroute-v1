@@ -1,0 +1,138 @@
+# PreSplit-CC — single source of truth for a forecasting run.
+# Everything the core reads comes from here; no hard-coded paths/knobs in code.
+
+run:
+  name: "presplit_cc_mvp"
+  out_dir: "./runs"            # each run writes <out_dir>/<name>_<stamp>/ with a manifest
+  seed: 1729                   # all sampling is seeded for reproducibility/resume
+
+# ---- The frozen Desertflow bundle we wrap (NEVER retrained) — VERIFIED paths ----
+bundle:
+  framework_root: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global"  # added to sys.path -> import desertflow_framework
+  trained_dir: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/bundles/ta-wave-bundle_autosave"  # time-aware bundle (has year_diff slot)
+  # Loaded via desertflow_framework.bundle.Bundle.load(trained_dir).
+  # Schema columns are READ FROM THE BUNDLE, never hard-coded. (Confirmed:
+  # target=V11_mean_ndvi, cell_column=cell_id, region_column=region, time-aware.)
+
+data:
+  master_dir: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/master_final_e14_e26"
+  master_pattern: "{region}_master_2002_2023.parquet"  # 195-col FINAL master (all anomaly modules merged; matches the bundle's 181 slots). NOT the stale 166-col master/ dir.
+  year_column: "year"
+  first_data_year: 2002
+  last_data_year: 2023
+
+# ---- Target & horizons (your choices, 2026-06-11) ----
+target:
+  variable: "V11_mean_ndvi"   # next-year NDVI LEVEL (not delta)
+  mode: "level"
+horizons: [1, 2, 3, 4, 5]     # K = year_diff_for_test passed to bundle.predict()
+
+# ---- Driver predictability split (consumed by predictability_split.py — SCIENCE) ----
+predictability:
+  tau: null                   # null => auto knee on sorted rho_d; else hard threshold
+  probe_cv: "spatial_block"   # leakage-safe CV for the forecastability probe
+  use_manual_split: true      # Path B resamples the manual_volatile list below.
+                              # This list IS the 'hand-split' ablation baseline (E4-i).
+  report_auto_split: true     # also run auto_split() and print rho scores (auto-vs-hand ablation)
+  # VOLATILE = the cols Path B resamples (everything else stays at its observed value).
+  manual_volatile:
+    - V01_mean_temp_C
+    - V02_total_precip_mm
+    - V03_max_daily_precip_mm
+    - V04_precip_seasonality
+    - V05_mean_vpd_kPa
+    - V06_spei_12m
+    - V13_mean_lst_C
+    - V20_burned_binary
+    - diurnal_temp_range_C
+    - nighttime_lst_C
+    - snow_cover_fraction
+    - V01_mean_temp_C_DJF
+    - V01_mean_temp_C_MAM
+    - V01_mean_temp_C_JJA
+    - V01_mean_temp_C_SON
+    - V02_total_precip_mm_DJF
+    - V02_total_precip_mm_MAM
+    - V02_total_precip_mm_JJA
+    - V02_total_precip_mm_SON
+    - V05_mean_vpd_kPa_DJF
+    - V05_mean_vpd_kPa_MAM
+    - V05_mean_vpd_kPa_JJA
+    - V05_mean_vpd_kPa_SON
+    - burn_doy_mean
+    - burn_month_count
+    - aet_total_mm
+    - soil_water_tc_mm
+    - swe_mean_mm
+    - precip_intensity_mm
+    - vpd_max_daily
+    - vpd_days_gt_2kpa
+    - vpd_warm_season_mean
+    - snow_onset_doy
+    - snow_disappearance_doy
+    - snow_duration_days
+    - snow_max_doy
+    - sst_anom_nino34
+    - sst_anom_atl3
+    - sst_anom_iod_west
+    - sst_anom_iod_east
+    - sst_anom_subpolar_north_atlantic
+    - sst_anom_coral_sea
+    - sst_anom_mediterranean
+    - sst_anom_global_tropical_mean
+
+# ---- Volatile-driver resampler (resampler.py — flagged for your review) ----
+resampler:
+  n_draws: 300                # M Monte-Carlo whole-year draws per cell-year
+  block_length: 2             # >=2 to retain lag-1 autocorrelation
+  analog_k: 40                # kNN neighborhood size in climate-context space
+  length_scale: 1.0           # gaussian analog weight bandwidth (in z-units)
+  trend_tilt: false           # MVP off; Phase-3 turns on warming-plausible shift
+  context_features:           # analog-neighborhood space (run.py keeps only present cols)
+    - "lat"
+    - "lon"
+    - "V25_elevation_m"
+
+# ---- Calibration (conformal_essbmcp.py — SCIENCE; MVP uses the split-conformal subset) ----
+calibration:
+  alpha: [0.20, 0.10, 0.05]   # nominal miscoverage for 80/90/95% intervals
+  scheme: "split_region"      # naive baseline grouping
+  folds: "leave_one_spatial_block_out"
+  # ESS-BM-CP knobs (essbmcp_intervals):
+  regime_feature: "V06_spei_12m"  # per-cell temporal std of this = volatility regime
+  regime_bins: 4              # Mondrian groups = region x regime quartile
+  kappa: 1.0                  # sampling-noise weight (matters only when s_mc>0, i.e. Path B)
+  n_eff_floor: 30.0           # fail-loud: cells in groups with n_eff below this -> uncertified
+
+# ---- True-future forecast (forecast_future.py / forecast_all_regions.py) ----
+forecast:
+  last_driver_year: 2019    # forecast FROM this year's drivers (model uses 2002..this year only).
+  forecast_to_year: 2025    # forecast every year up to here -> 2020..2025 (6 years from 2019).
+  regions_dir: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/master_final_e14_TEST_REGIONS_e26"
+                            # the 44 TEST regions (held out from specialist training). null -> use data.master_dir.
+  truth_file: null          # optional single parquet/csv with NDVI truth (cell_id, year, NDVI col).
+  ndvi_only_dir: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/data/ndvi_only"
+                            # auto-loads {dir}/{year}/{region}_ndvi_only_{year}.csv for scoring
+                            # beyond-master years (2024-2025). Set null to disable.
+
+# ---- Full conformal test (run_full_test.py): TEMPORAL holdout ----
+# "calibrate on the past, predict the future" — the deployment-realistic test.
+full_test:
+  calib_year_range: [2003, 2019]   # conformal widths LEARNED on these target years
+  test_year_range:  [2020, 2023]   # coverage CHECKED on these (data ends 2023; no 2024-25)
+  horizons: [1, 2, 3, 4, 5]
+  smoke_cells: 300                 # null = ALL cells (slow but real). raise for the paper run.
+
+# ---- Pipeline execution (run.py) ----
+run_pipeline:
+  regions: [chihuahuan_desert]  # dryland: climate-sensitive NDVI (desertification focus). "auto" = first master, or a list.
+  smoke_cells: 200            # subsample cells for a fast run; null = all cells
+  calib_split: "lon_median"   # leave-one-spatial-block-out: cells with lon<median => calib, else test
+  path_a:
+    test_years: [2021, 2022, 2023]
+    horizons: [1, 2, 3, 4, 5]
+  path_b:                      # scenario / variance-decomposition (year_diff=0, resampled drivers)
+    enabled: true
+    scenario_years: [2023]
+    cells: 60                 # B is M× heavier than A; keep small for the MVP
+    n_draws: 50               # MVP smoke draws (config.resampler.n_draws=300 for real runs)

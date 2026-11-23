@@ -1,0 +1,166 @@
+﻿OK   A10 pm25 rows: got 1000 want 1000
+OK   A10 pm25 draws: got 2000 want 2000
+OK   A10 pm25 salt: got 'shap_v1|AW4|pm25|0' want 'shap_v1|AW4|pm25|0'
+OK   A10 pm25 j_rule: got 'player active when some model gives it > 1e-12 of its total' want 'player active when some model gives it > 1e-12 of its total'
+OK   A10 ndvi rows: got 1000 want 1000
+OK   A10 ndvi draws: got 2000 want 2000
+OK   A10 ndvi salt: got 'shap_v1|AW4|ndvi|0' want 'shap_v1|AW4|ndvi|0'
+OK   A10 ndvi j_rule: got 'player active when some model gives it > 1e-12 of its total' want 'player active when some model gives it > 1e-12 of its total'
+OK   A10 fire rows: got 1000 want 1000
+OK   A10 fire draws: got 2000 want 2000
+OK   A10 fire salt: got 'shap_v1|AW4|fire|0' want 'shap_v1|AW4|fire|0'
+OK   A10 fire j_rule: got 'player active when some model gives it > 1e-12 of its total' want 'player active when some model gives it > 1e-12 of its total'
+OK   A10 defo rows: got 1000 want 1000
+OK   A10 defo draws: got 2000 want 2000
+OK   A10 defo salt: got 'shap_v1|AW4|defo|0' want 'shap_v1|AW4|defo|0'
+OK   A10 defo j_rule: got 'player active when some model gives it > 1e-12 of its total' want 'player active when some model gives it > 1e-12 of its total'
+OK   A10 coral rows: got 1000 want 1000
+OK   A10 coral draws: got 2000 want 2000
+OK   A10 coral salt: got 'shap_v1|AW4|coral|0' want 'shap_v1|AW4|coral|0'
+OK   A10 coral j_rule: got 'player active when some model gives it > 1e-12 of its total' want 'player active when some model gives it > 1e-12 of its total'
+OK   A10/A14 regions range: got (37, 133) want (37, 133)
+OK   A14 pm25 frame/regions/units: got (91428, 127, 254) want (91428, 127, 254)
+OK   A14 pm25 n: got 1000 want 1000
+OK   A14 pm25 per-region units = ceil(N/(G*4)): got (2.0, 2) want (2.0, 2)
+     pm25 rows_per_year {'2020': 253, '2021': 249, '2022': 252, '2023': 246} per_lead regions 127
+OK   A14 ndvi frame/regions/units: got (94527, 133, 266) want (94527, 133, 266)
+OK   A14 ndvi n: got 1000 want 1000
+OK   A14 ndvi per-region units = ceil(N/(G*4)): got (2.0, 2) want (2.0, 2)
+     ndvi rows_per_year {'2020': 251, '2021': 249, '2022': 248, '2023': 252} per_lead regions 133
+OK   A14 fire frame/regions/units: got (94702, 40, 280) want (94702, 40, 280)
+OK   A14 fire n: got 1000 want 1000
+OK   A14 fire per-region units = ceil(N/(G*4)): got (7.0, 7) want (7.0, 7)
+     fire rows_per_year {'2019': 261, '2020': 238, '2021': 245, '2022': 256} per_lead regions 40
+OK   A14 defo frame/regions/units: got (369096, 42, 252) want (369096, 42, 252)
+OK   A14 defo n: got 1000 want 1000
+OK   A14 defo per-region units = ceil(N/(G*4)): got (6.0, 6) want (6.0, 6)
+     defo rows_per_year {'2020': 249, '2021': 249, '2022': 252, '2023': 250} per_lead regions 42
+OK   A14 coral frame/regions/units: got (2312, 37, 1000) want (2312, 37, 1000)
+OK   A14 coral n: got 1000 want 1000
+     coral rows_per_year {'2016': 440, '2017': 248, '2018': 149, '2019': 163} per_lead regions 37
+OK   A11 coral pairs: got 50000 want 50000
+OK   A11 coral background_rows lead0: got {'max': 50, 'median': 50.0, 'min': 50} want {'max': 50, 'median': 50.0, 'min': 50}
+     coral background_rows['0'] = {'max': 50, 'median': 50.0, 'min': 50}
+     pm25 rival_lgbm duplicates_merged=0 s_zero_viol=0 pairs=None
+     pm25 rival_rf duplicates_merged=0 s_zero_viol=0 pairs=None
+     pm25 rival_ridge duplicates_merged=0 s_zero_viol=0 pairs=None
+     pm25 treeroute duplicates_merged=0 s_zero_viol=0 pairs=17000
+     pm25 treeroute_B1 duplicates_merged=0 s_zero_viol=0 pairs=203963
+     ndvi rival_bardl_h1 duplicates_merged=0 s_zero_viol=0 pairs=16914
+     ndvi rival_lgbm duplicates_merged=5 s_zero_viol=0 pairs=None
+     ndvi rival_rf duplicates_merged=5 s_zero_viol=0 pairs=None
+     ndvi rival_ridge duplicates_merged=5 s_zero_viol=0 pairs=None
+     ndvi treeroute duplicates_merged=5 s_zero_viol=0 pairs=16914
+     ndvi treeroute_B1 duplicates_merged=5 s_zero_viol=0 pairs=201768
+     fire rival_lgbm duplicates_merged=0 s_zero_viol=0 pairs=None
+     fire rival_lgbm_tweedie duplicates_merged=0 s_zero_viol=0 pairs=None
+     fire rival_rf duplicates_merged=0 s_zero_viol=0 pairs=None
+     fire rival_ridge duplicates_merged=0 s_zero_viol=0 pairs=None
+     fire treeroute duplicates_merged=0 s_zero_viol=0 pairs=15759
+     fire treeroute_B1 duplicates_merged=0 s_zero_viol=0 pairs=187186
+     defo rival_lgbm duplicates_merged=0 s_zero_viol=0 pairs=None
+     defo rival_lgbm_tweedie duplicates_merged=0 s_zero_viol=0 pairs=None
+     defo rival_rf duplicates_merged=0 s_zero_viol=0 pairs=None
+     defo rival_ridge duplicates_merged=0 s_zero_viol=0 pairs=None
+     defo treeroute duplicates_merged=0 s_zero_viol=0 pairs=16000
+     defo treeroute_B1 duplicates_merged=0 s_zero_viol=0 pairs=16000
+     coral rival_hgb_l1 duplicates_merged=0 s_zero_viol=0 pairs=None
+     coral rival_lgbm duplicates_merged=0 s_zero_viol=0 pairs=None
+     coral rival_lgbm_tweedie duplicates_merged=0 s_zero_viol=0 pairs=None
+     coral rival_rf duplicates_merged=0 s_zero_viol=0 pairs=None
+     coral rival_ridge duplicates_merged=0 s_zero_viol=0 pairs=None
+     coral treeroute duplicates_merged=0 s_zero_viol=0 pairs=50000
+OK   A15 bardl nonzero vars: got 3 want 3
+OK   A15 bardl nonzero players: got 9 want 9
+OK   A15 ndvi J var/feat: got (96, 479) want (96, 479)
+OK   A15 93 of 96 / 470 of 479: got (93, 470) want (93, 470)
+     ndvi main_set ['rival_bardl_h1', 'rival_lgbm', 'rival_rf', 'rival_ridge', 'treeroute'] links bardl identity|c=-|ub=1 treeroute identity|c=-|ub=1
+OK   A16 pm25 W: got '0.85 [0.85, 0.86]' want '0.85 [0.85, 0.86]'
+OK   A17 pm25 spearman: got '−0.02 [−0.08, 0.07]' want '−0.02 [−0.08, 0.07]'
+OK   A17 pm25 rbo: got '0.37 [0.36, 0.57]' want '0.37 [0.36, 0.57]'
+OK   A18 pm25 own tr: got '0.19 [0.16, 0.21]' want '0.19 [0.16, 0.21]'
+OK   A18 pm25 own med: got '0.30 [0.28, 0.32]' want '0.30 [0.28, 0.32]'
+     pm25 finite reps W 2000 sp 2000 rbo 2000
+OK   A16 ndvi W: got '0.62 [0.61, 0.62]' want '0.62 [0.61, 0.62]'
+OK   A17 ndvi spearman: got '0.07 [−0.01, 0.12]' want '0.07 [−0.01, 0.12]'
+OK   A17 ndvi rbo: got '0.40 [0.38, 0.43]' want '0.40 [0.38, 0.43]'
+OK   A18 ndvi own tr: got '0.24 [0.22, 0.27]' want '0.24 [0.22, 0.27]'
+OK   A18 ndvi own med: got '0.26 [0.24, 0.28]' want '0.26 [0.24, 0.28]'
+     ndvi finite reps W 2000 sp 2000 rbo 2000
+OK   A16 defo W: got '0.80 [0.78, 0.81]' want '0.80 [0.78, 0.81]'
+OK   A17 defo spearman: got '0.20 [0.14, 0.29]' want '0.20 [0.14, 0.29]'
+OK   A17 defo rbo: got '0.63 [0.61, 0.75]' want '0.63 [0.61, 0.75]'
+OK   A18 defo own tr: got '0.29 [0.25, 0.33]' want '0.29 [0.25, 0.33]'
+OK   A18 defo own med: got '0.35 [0.32, 0.40]' want '0.35 [0.32, 0.40]'
+     defo finite reps W 2000 sp 2000 rbo 2000
+OK   A16 coral W: got '0.73 [0.69, 0.76]' want '0.73 [0.69, 0.76]'
+OK   A17 coral spearman: got '0.48 [0.39, 0.55]' want '0.48 [0.39, 0.55]'
+OK   A17 coral rbo: got '0.67 [0.61, 0.78]' want '0.67 [0.61, 0.78]'
+OK   A18 coral own tr: got '0.00 [0.00, 0.00]' want '0.00 [0.00, 0.00]'
+OK   A18 coral own med: got '0.00 [0.00, 0.00]' want '0.00 [0.00, 0.00]'
+     coral finite reps W 2000 sp 2000 rbo 2000
+BAD  A16 fire W undefined: got nan want None
+     fire AW4: {"ci_format": "[low, high, finite replicates]", "cross_link_models": ["rival_lgbm", "rival_lgbm_tweedie", "rival_rf"], "declined_models": ["rival_ridge"], "kendall_w": {"ci": [NaN, NaN, 0], "value": NaN}, "lead": 0, "level": "variable", "link_note": "no guard-passing rival explains in treeroute's link space (arcsine|c=0.012987012987|ub=1): treeroute-against-rival agreement cannot separate the link from the model; cross-link pairs are in S3.13 only", "models_in_main_set": ["treeroute"], "problem": "fire", "reference_link": "arcsine|c=0.012987012987|ub=1"}
+OK   A18 fire own tr (results): got '0.14 [0.11, 0.16]' want '0.14 [0.11, 0.16]'
+     fire main_row keys: ['level', 'main_set', 'rivals', 'kendall_w', 'kendall_w_why', 'spearman_top20_union_median', 'spearman_top20_union_median_why', 'spearman_top20_union_min', 'spearman_top20_union_min_why', 'spearman_top20_union_max', 'spearman_top20_union_max_why', 'spearman_top20_union_per_rival', 'spearman_top20_union_per_rival_why', 'rbo_p090_vs_consensus', 'rbo_p090_vs_consensus_why', 'consensus_shares', 'consensus_shares_why', 'consensus_top3', 'consensus_top3_why', 'own_history_share_median_rival', 'own_history_share_median_rival_why', 'own_history_share_per_rival', 'own_history_share_per_rival_why', 'median_rival_name', 'median_rival_name_why', 'treeroute_top3', 'own_history_share_treeroute']
+     fire main_row top3: [['hist_mean', 0.04029287049905637], ['spei', 0.03272860716805853], ['tslf_months', 0.031595490869684564]]
+OK   A22 pm25 B1 seasonal normal: got ('70.3%', '67.4%', '73.1%') want ('70.3%', '67.4%', '73.1%')
+     pm25 B1 top3 [['normal', 0.44492450400377875], ['hist_last', 0.030255223047613303], ['wbal', 0.023741253772626723]]
+OK   A22 ndvi B1 seasonal normal: got ('44.3%', '40.5%', '48.0%') want ('44.3%', '40.5%', '48.0%')
+     ndvi B1 top3 [['normal', 0.32097881681243046], ['aet_total_mm', 0.04015269454629183], ['hist_last', 0.03809501917348584]]
+OK   A22 fire B1 seasonal normal: got ('81.1%', '71.6%', '87.3%') want ('81.1%', '71.6%', '87.3%')
+     fire B1 top3 [['normal', 0.5420783730452287], ['era5l_str', 0.01495572963904638], ['wbal', 0.014787652244604143]]
+OK   A22 pm25 top var normal share: got ('normal', '44.5%') want ('normal', '44.5%')
+OK   A22 ndvi top var normal share: got ('normal', '32.1%') want ('normal', '32.1%')
+OK   A22 fire top var normal share: got ('normal', '54.2%') want ('normal', '54.2%')
+     defo identity: {'max_abs_diff_phi': 0.0, 'max_abs_diff_phiv': 0.0, 'same_rows': True, 'same_players': True, 'same_variables': True, 'n_rows_main': 1000, 'n_rows_b1': 1000, 'n_players_main': 309, 'n_players_b1': 309, 'n_variables_main': 121, 'n_variables_b1': 121, 'rows_only_in_main': [], 'rows_only_in_b1': [], 'players_only_in_main': [], 'players_only_in_b1': [], 'variables_only_in_main': [], 'variables_only_in_b1': [], 'as_expected': True, 'extra': {'cells_differing_phi': 0, 'cells_differing_phiv': 0, 'keys_unit_group_time_year_equal_on_matched_rows': True, 'rows_matched_by': 'row', 'columns_matched_by': 'name'}, 'log_file': 'SHAP\\logs\\tr_shap_defo_lead0.log', 'log_setup_line_number': 24, 'pairs_log': 16000, 'log_done_line_number': 30, 'total_seconds_log': 465.9, 'tree_shap_seconds_log': 464.3, 'pairs_meta': 16000, 'total_seconds_done_json': 465.9, 'tree_shap_seconds_meta': 464.3}
+OK   A21 defo identity: got (0.0, 0.0, 1000, 1000, 309, 309, 121, 121) want (0.0, 0.0, 1000, 1000, 309, 309, 121, 121)
+OK   A24 rival_ridge|treeroute n_finite: got 64 want 64
+OK   A24 rival_ridge|treeroute ci: got ('0.00', '1.00') want ('0.00', '1.00')
+     rival_ridge|treeroute sign_agreement {'value': None, 'value_why': 'No player of the union of the two top-10 sets has its sign determined in both models.', 'ci_low': 0.0, 'ci_high': 1.0, 'n_finite': 64}
+OK   A24 rival_lgbm|treeroute n_finite: got 1140 want 1140
+OK   A24 rival_lgbm|treeroute ci: got ('0.00', '1.00') want ('0.00', '1.00')
+     rival_lgbm|treeroute sign_agreement {'value': 1.0, 'ci_low': 0.0, 'ci_high': 1.0, 'n_finite': 1140}
+OK   A24 rival_rf|treeroute n_finite: got 1380 want 1380
+OK   A24 rival_rf|treeroute ci: got ('0.00', '1.00') want ('0.00', '1.00')
+     rival_rf|treeroute sign_agreement {'value': 1.0, 'ci_low': 0.0, 'ci_high': 1.0, 'n_finite': 1380}
+BAD  A24 thin intervals (all problems, levels): got [('fire', 'feature', 'rival_lgbm_tweedie|treeroute', 0), ('fire', 'feature', 'rival_lgbm|treeroute', 0), ('fire', 'feature', 'rival_rf|treeroute', 0), ('fire', 'feature', 'rival_ridge|treeroute', 0), ('fire', 'variable', 'rival_lgbm|treeroute', 1140), ('fire', 'variable', 'rival_rf|treeroute', 1380), ('fire', 'variable', 'rival_ridge|treeroute', 64), ('ndvi', 'feature', 'rival_bardl_h1|treeroute', 0), ('ndvi', 'variable', 'rival_bardl_h1|rival_lgbm', 0), ('ndvi', 'variable', 'rival_bardl_h1|rival_rf', 0)] want [('fire', 'variable', 'rival_lgbm|treeroute', 1140), ('fire', 'variable', 'rival_rf|treeroute', 1380), ('fire', 'variable', 'rival_ridge|treeroute', 64)]
+OK   A19 fire treeroute nonzero rows: got 226 want 226
+OK   A19 coral treeroute nonzero rows: got 973 want 973
+OK   A19 coral rival_rf nonzero rows: got 1000 want 1000
+OK   A19 coral rival_lgbm nonzero rows: got 995 want 995
+OK   A19 coral rival_hgb_l1 nonzero rows: got 983 want 983
+     pm25 nonzero_forecast_rows models: []
+     ndvi nonzero_forecast_rows models: []
+     fire nonzero_forecast_rows models: ['treeroute']
+     defo nonzero_forecast_rows models: []
+     coral nonzero_forecast_rows models: ['rival_hgb_l1', 'rival_lgbm', 'rival_rf', 'treeroute']
+     pm25 result={'arm': 'log_c_corrector_unweighted', 'c': 1.5, 'engine_folder': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\pm25\\headline\\20261114_74e67609', 'kind': 'per_unit', 'legal': [0.0, inf], 'link': 'log_c', 'point': {'level': 30.0, 'ratio': 1.0}, 'rows_checked': 12192, 'table_kind': 'corrector', 'ub': None, 'weighted': False} E5.pass=False E8 rows=12192 pre_bit_equal=12192 max_rel_pre=0.0 E5a=None
+        E5 role: informational, cause not established (answers decide: E5a, E8, E10)
+     ndvi result={'arm': 'identity_plain_unweighted', 'c': None, 'engine_folder': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\ndvi\\headline\\20261115_d1de3158', 'kind': 'per_unit', 'legal': [-0.2, 1.0], 'link': 'identity', 'point': {'level': 1.0, 'ratio': 0.0625}, 'rows_checked': 12768, 'table_kind': 'plain', 'ub': 1.0, 'weighted': False} E5.pass=False E8 rows=12768 pre_bit_equal=12768 max_rel_pre=0.0 E5a=None
+        E5 role: informational, cause not established (answers decide: E5a, E8, E10)
+     fire result={'arm': 'arcsine_corrector_gls', 'c': 0.012987012987012988, 'engine_folder': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\fire\\headline\\20261113_869d1f38', 'kind': 'per_unit', 'legal': [0.0, 1.0], 'link': 'arcsine', 'point': {'level': 100.0, 'ratio': 1.0}, 'rows_checked': 13440, 'table_kind': 'corrector', 'ub': 1.0, 'weighted': True} E5.pass=False E8 rows=13440 pre_bit_equal=13056 max_rel_pre=2.3560131176637307e-13 E5a={'rows_checked': 13440, 'pre_bit_equal': 13440}
+        E5 role: informational, cause not established (answers decide: E5a, E8, E10)
+     defo result={'arm': 'log_c_corrector_unweighted', 'c': 4.9563837819732726e-05, 'engine_folder': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\defo\\headline\\20261114_d71c61f4', 'kind': 'region', 'legal': [0.0, 1.0], 'link': 'log_c', 'point': {'level': 0.1, 'ratio': None}, 'rows_checked': 1008, 'table_kind': 'corrector', 'ub': 1.0, 'weighted': False} E5.pass=False E8 rows=1008 pre_bit_equal=1008 max_rel_pre=0.0 E5a=None
+        E5 role: informational, cause not established (answers decide: E5a, E8, E10)
+     coral result={'arm': 'arcsine_corrector_gls', 'c': 0.1084375, 'engine_folder': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\coral\\headline\\20261112_f3b8e3da', 'kind': 'neighbour', 'legal': [0.0, 100.0], 'link': 'arcsine', 'point': {'level': 100.0, 'ratio': 1.0}, 'rows_checked': 2312, 'table_kind': 'corrector', 'ub': 100.0, 'weighted': True} E5.pass=False E8 rows=2312 pre_bit_equal=2228 max_rel_pre=1.055062494413031e-15 E5a={'rows_checked': 2312, 'pre_bit_equal': 2312}
+        E5 role: informational, cause not established (answers decide: E5a, E8, E10)
+     coral E3a: {"checked": ["context_list", "draft", "engine_constants_sha256", "groups", "kind", "package", "package_fingerprint", "static_files_sha256", "strata", "trees_per_group", "feature_list (tree-feature prefix)"], "differ": [], "not_before_read": ["target_files_sha256"], "package_dir": null, "package_files_under_the_package_folder": [], "path_map": false, "static_files_sha256": ["4f53cda18c2baa0c", "4f53cda18c2baa0c"], "target_files_sha256": ["{'_not_computed'", "e1239c53e1a8b222"]}
+     sha256('[]') = 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+     families columns: ['model', 'family', 'mean_abs', 'share'] rows 20
+     pm25 own history: {'rival_lgbm': 0.2976934608647791, 'rival_rf': 0.25238036567124017, 'rival_ridge': 0.38213128334041724, 'treeroute': 0.18525300420176635}
+     pm25 context and calendar: {'rival_lgbm': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     pm25 seasonal normal: {'rival_lgbm': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     ndvi own history: {'rival_bardl_h1': 0.35189793023182664, 'rival_lgbm': 0.25480876628364835, 'rival_rf': 0.04223570529926814, 'rival_ridge': 0.25711860361675204, 'treeroute': 0.24453521523334967}
+     ndvi context and calendar: {'rival_bardl_h1': 0.0, 'rival_lgbm': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     ndvi seasonal normal: {'rival_bardl_h1': 0.0, 'rival_lgbm': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     fire own history: {'rival_lgbm': 0.17269016725616604, 'rival_lgbm_tweedie': 0.06084050212757436, 'rival_rf': 0.23799726657608977, 'rival_ridge': 0.17992576229721816, 'treeroute': 0.13575708581250595}
+     fire context and calendar: {'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     fire seasonal normal: {'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     defo own history: {'rival_lgbm': 0.35471513509185565, 'rival_lgbm_tweedie': 0.4605547007210978, 'rival_rf': 0.36904528490326377, 'rival_ridge': 0.12222469886058125, 'treeroute': 0.2926054071153381}
+     defo context and calendar: {'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     defo seasonal normal: {'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     coral own history: {'rival_hgb_l1': 0.0, 'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+     coral context and calendar: {'rival_hgb_l1': 0.12428056462590073, 'rival_lgbm': 0.12781316729447925, 'rival_lgbm_tweedie': 0.18945388533276897, 'rival_rf': 0.0638205085419443, 'rival_ridge': 0.16176657694153423, 'treeroute': 0.0019767722002855853}
+     coral seasonal normal: {'rival_hgb_l1': 0.0, 'rival_lgbm': 0.0, 'rival_lgbm_tweedie': 0.0, 'rival_rf': 0.0, 'rival_ridge': 0.0, 'treeroute': 0.0}
+BAD: 2

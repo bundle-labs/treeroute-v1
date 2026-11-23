@@ -1,0 +1,23 @@
+﻿coral  A_registered     == B_registered     EQUAL
+coral  A_status         == B_status         EQUAL
+defo   A_identity       == B_identity       EQUAL
+defo   A_meta_equal     == B_meta_equal     EQUAL
+defo   A_registered     == B_registered     EQUAL
+defo   A_run            == B_run            EQUAL
+defo   A_status         == B_status         EQUAL
+defo   identity_reconciler: {"max_abs_diff_phi": 0.0, "max_abs_diff_phiv": 0.0, "n_phi_b1": 309, "n_phi_main": 309, "n_phiv_b1": 121, "n_phiv_main": 121, "n_rows_b1": 1000, "n_rows_main": 1000, "n_values_compared_phi": 309000, "n_values_compared_phiv": 121000, "same_phi": true, "same_phiv": true, "same_rows": true}
+defo   A_identity:          {"as_expected": true, "max_abs_diff_phi": 0.0, "max_abs_diff_phiv": 0.0, "n_players_b1": 309, "n_players_main": 309, "n_rows_b1": 1000, "n_rows_main": 1000, "n_variables_b1": 121, "n_variables_main": 121, "same_players": true, "same_rows": true, "same_variables": true}
+fire   A_meta_equal     == B_meta_equal     EQUAL
+fire   A_registered     == B_registered     EQUAL
+fire   A_run            == B_run            EQUAL
+fire   A_status         == B_status         EQUAL
+pm25   A_meta_equal     == B_meta_equal     EQUAL
+pm25   A_registered     == B_registered     EQUAL
+pm25   A_run            == B_run            EQUAL
+pm25   A_status         == B_status         EQUAL
+ndvi   A_meta_equal     == B_meta_equal     EQUAL
+ndvi   A_registered     == B_registered     EQUAL
+ndvi   A_run            == B_run            EQUAL
+ndvi   A_status         == B_status         EQUAL
+
+field pairs compared: 19; equal: 19; different: 0

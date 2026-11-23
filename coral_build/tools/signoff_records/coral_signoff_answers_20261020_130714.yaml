@@ -1,0 +1,638 @@
+# coral sign-off answers, 2026-10-20 -- the owner's answers (owner ruling X, OWNER_RULINGS_2026-10-06.md section X):
+# "yes to all, (b), sign as drafted": every item as drafted; v6 b; matrix_dir approve; continuity empty; protected
+# root yes; text edits approved as listed in the dry run. Filled by the main session from those words.
+ruling:
+  id: X
+  file: OWNER_RULINGS_2026-10-06.md
+  date: '2026-10-20'
+signer: 'the project owner (in chat, 2026-10-20: "yes to all, (b), sign as drafted")'
+v6_choice: b
+protected_root_confirm: 'yes'
+matrix_dir: approve
+continuity_groups: empty
+dataset:
+  version: 0.1.0
+  owner: 'the project owner -- signed 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md)'
+  description: proposed
+target_facts:
+  fact_status: verified
+ban:
+  all: sign_all
+  owner_item_ctx_mmm: accept
+  verdicts:
+    pct_bleached:
+      now: ban/label
+      answer: ''
+    programme:
+      now: ban/structural
+      answer: ''
+    ctx_month:
+      now: keep/router context only (a calendar column is allowed only here, G-KEYS...
+      answer: ''
+    ctx_doy_sin:
+      now: keep/router context only (G-KEYS); legacy context
+      answer: ''
+    ctx_doy_cos:
+      now: keep/router context only (G-KEYS); legacy context
+      answer: ''
+    ctx_abslat:
+      now: keep/router context only; banned as a tree column (location fingerprint,...
+      answer: ''
+    ctx_mmm:
+      now: keep/router context only; an absolute temperature, banned from the trees...
+      answer: ''
+    dhw_30:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_30:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_30:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_30:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_30:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    dhw_56:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_56:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_56:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_56:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_56:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    dhw_84:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_84:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_84:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_84:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_84:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    dhw_90:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_90:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_90:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_90:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_90:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    dhw_180:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_180:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_180:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_180:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_180:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    dhw_365:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    hs_max_365:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm_365:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    n_above_mmm1_365:
+      now: keep/heat stress relative to the leak-free MMM
+      answer: ''
+    cool_365:
+      now: keep/cool relief relative to the leak-free MMM
+      answer: ''
+    days_since_max_hs:
+      now: keep/short window, not a level
+      answer: ''
+    slope_90:
+      now: keep/short window; a slope is not a level
+      answer: ''
+    lifetime_dhw:
+      now: ban/trend_proxy
+      answer: ''
+    n_dhw_ge4_before:
+      now: ban/trend_proxy
+      answer: ''
+    max_dhw_before:
+      now: ban/trend_proxy
+      answer: ''
+    n_dhw_ge8_before:
+      now: watch/same family as the banned running totals, weaker; listed in reports
+      answer: ''
+    days_since_dhw4:
+      now: watch/fixed declared cap 3,650 instead of the 99999 code (CORAL_DATA_AUDI...
+      answer: ''
+    mhw_days_365:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_days_90:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_days_30:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_icum_90:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_imax_90:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_nev_365:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_durmax_365:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_since_end:
+      now: keep/the one confirmed driver win; relative to the site's own prior clim...
+      answer: ''
+    mhw_cat_max_90:
+      now: keep/the one confirmed driver win; relative to the site's own prior climate
+      answer: ''
+    mhw_thr_gap:
+      now: watch/quasi-static site climate; listed in reports
+      answer: ''
+    cyc_mindist_30:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_200_30:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_200_30:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_500_30:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_500_30:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_mindist_90:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_200_90:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_200_90:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_500_90:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_500_90:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_mindist_365:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_200_365:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_200_365:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_maxw_500_365:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_n_500_365:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes
+      answer: ''
+    cyc_days_since_close:
+      now: keep/dated tracks; windows end before the cut; fixed caps, no fill codes...
+      answer: ''
+    nino34a_lag3:
+      now: 'keep/replaces the absolute Nino-3.4 (banned structural: an absolute temp...'
+      answer: ''
+    nino34a_lag6:
+      now: 'keep/replaces the absolute Nino-3.4 (banned structural: an absolute temp...'
+      answer: ''
+    nino34a_lag9:
+      now: 'keep/replaces the absolute Nino-3.4 (banned structural: an absolute temp...'
+      answer: ''
+    dmi_lag2:
+      now: conditional/out of every run until the owner signs the window bound {3, month, ...
+      answer: ''
+    dmi_lag5:
+      now: conditional/out of every run until the owner signs the window bound {3, month, ...
+      answer: ''
+    dmi_lag8:
+      now: conditional/out of every run until the owner signs the window bound {3, month, ...
+      answer: ''
+  changes: {}
+exceptions:
+  entries:
+    0:
+      about: 'disclosed_defect target_date: month precision: T = the month''s last day, features end b...'
+      owner_now: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:265 (Q20 a)'
+      answer: sign
+    1:
+      about: 'disclosed_defect target_date: rebuilt from GCBD Date_Year/Month/Day; events_dated.parqu...'
+      owner_now: 'UNSIGNED -- basis: CORAL_STATE.md:148-151'
+      answer: sign
+    2:
+      about: 'disclosed_defect pct_bleached: repeat surveys at one site and date are averaged into on...'
+      owner_now: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:252 (Q7 a)'
+      answer: sign
+    3:
+      about: 'disclosed_defect lat: not patched'
+      owner_now: 'UNSIGNED -- basis: CORAL_DATA_AUDIT.md:236-240'
+      answer: sign
+    4:
+      about: 'disclosed_defect T-LEADSET: visits with no SST series or too little SST history are not...'
+      owner_now: 'UNSIGNED -- basis: coral_forecast.py:106-116'
+      answer: sign
+    5:
+      about: 'provenance_flag programme: report per programme first; pooled numbers labelled as mixin...'
+      owner_now: 'UNSIGNED -- basis: CORAL_STATE.md:30-34; CORAL_ENGINE_PLAN.md:259 (Q14 a)'
+      answer: sign
+    6:
+      about: 'provenance_flag cyc_days_since_close: disclose'
+      owner_now: 'UNSIGNED -- basis: coral_extra_drivers.py:8-10, 70-122'
+      answer: sign
+    7:
+      about: 'provenance_flag nino34a_lag3: disclose: anomaly built in the package from the absolute ...'
+      owner_now: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): kept and disclosed. Basi...'
+      answer: keep
+    8:
+      about: 'provenance_flag dmi_lag2: conditional until the window bound is signed; base period dis...'
+      owner_now: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): DMI stays conditional, d...'
+      answer: keep
+    9:
+      about: 'provenance_flag dhw_56: disclose: CoralTemp content reach after its day stamp is unveri...'
+      owner_now: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:283 (risks), :267 (Q22 a: CoralTemp reach_after...'
+      answer: sign
+    10:
+      about: 'provenance_flag ctx_mmm: router context only; disclosed departure from the absolute-tem...'
+      owner_now: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:172 (C3), :267 (Q22 a)'
+      answer: sign
+    11:
+      about: 'test_exposure G-SPLIT: disclose'
+      owner_now: 'UNSIGNED -- basis: CORAL_ENGINE_PLAN.md:193, :295'
+      answer: sign
+    12:
+      about: 'provenance_flag pct_bleached: disclose: every forecast is conditional on a survey happe...'
+      owner_now: 'UNSIGNED -- basis: coral_forecast.py:31-35; SPEC_CORAL_TABLES.md REVIEW LOG LK11'
+      answer: sign
+    13:
+      about: 'disclosed_defect ctx_doy_sin: disclose: month-precision rows read their season context ...'
+      owner_now: 'UNSIGNED -- basis: SPEC_CORAL_TABLES.md 1.3 (LK9)'
+      answer: sign
+    14:
+      about: 'provenance_flag feature_end: SST and cyclone windows end before C - g (g = 1 day by def...'
+      owner_now: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): the 1-day gap is kept, d...'
+      answer: keep
+    15:
+      about: 'provenance_flag R18: scored rows = every test-marked visit (ruling U1); the R18(2) stri...'
+      owner_now: 'UNSIGNED -- basis: OWNER_RULINGS_2026-10-06.md:90 (U1); SPEC_CORAL_TABLES.md 2.1 (FS10)'
+      answer: sign
+    16:
+      about: 'disclosed_defect R11: disclose the one-day gap at the event cut (SPEC_TABLE_MODE.md 2.2...'
+      owner_now: 'UNSIGNED -- basis: SPEC_TABLE_MODE.md 2.2 (O27); timing/cuts.py:62-87, 91-100'
+      answer: sign
+    17:
+      about: 'disclosed_defect R3: test window 2016-2019, set by leaving out the 38 visits of 2020 (o...'
+      owner_now: owner ruling V3 (2026-10-19; OWNER_RULINGS_2026-10-06.md:105)
+      answer: keep
+    18:
+      about: 'test_exposure G-SPLIT: 11 groups left out in split.yaml (V5); 46 donor-only groups (V6 ...'
+      owner_now: owner ruling V5 (2026-10-19; OWNER_RULINGS_2026-10-06.md:107); V6 (b) is a DRAFT option...
+      answer: keep
+audit_checklist:
+  A1: tick
+  A2: tick
+  A3: tick
+  A4: tick
+  A5: tick
+  A6: tick
+  A7: tick
+  A8: tick
+  A9: tick
+  A10: tick
+  full_build_line: approve
+u2_vouch: 'yes'
+coral_questions:
+  Q1:
+    topic: item-13 flags
+    reading: not ruled as a bundle; pool part overtaken by U3; built engine values, one row each
+    answer: confirm
+  Q2:
+    topic: pool mode
+    reading: engine pool overtaken by U4; strict pool only; side rows out of scope
+    answer: confirm
+  Q3:
+    topic: close Q28-Q32 pool items
+    reading: not ruled; strict pool (U4)
+    answer: confirm
+  Q4:
+    topic: guard and decline objects
+    reading: overtaken by V1 (donor-row median)
+    answer: confirm
+  Q5:
+    topic: scored rows
+    reading: overtaken by U1 (test marks)
+    answer: confirm
+  Q6:
+    topic: test window end
+    reading: overtaken by V3 (2016-2019)
+    answer: confirm
+  Q7:
+    topic: repeat surveys
+    reading: not ruled; averaged, disclosed (exceptions entry 2)
+    answer: confirm
+  Q8:
+    topic: one-site groups
+    reading: overtaken by V5
+    answer: confirm
+  Q9:
+    topic: column set 77 / 80
+    reading: not ruled; the drafted ban.yaml column set, signed here
+    answer: confirm
+  Q10:
+    topic: heat totals
+    reading: not ruled; drafted ban.yaml as Q10 b, signed here
+    answer: confirm
+  Q11:
+    topic: season at a lead
+    reading: overtaken by H3 and V8
+    answer: confirm
+  Q12:
+    topic: GLS and c for folds
+    reading: not ruled; signed R13, R25; departure fold_gls_entry (V4)
+    answer: confirm
+  Q13:
+    topic: corrector arms
+    reading: not ruled; the engine's arms as for grids
+    answer: confirm
+  Q14:
+    topic: headline form
+    reading: not ruled; signed D74 decides; per-programme verdict lines are report only
+    answer: confirm
+  Q15:
+    topic: legacy harness replay
+    reading: not ruled; V7 toy-only replay; legacy replay out of scope
+    answer: confirm
+  Q16:
+    topic: G-DERIVED route
+    reading: overtaken by U2 (vouched, no recompute)
+    answer: confirm
+  Q17:
+    topic: verdict reference
+    reading: not ruled; donor-row median by signed R34 + V1; trees-off printed beside
+    answer: confirm
+  Q18:
+    topic: groups with no rows at a cut
+    reading: overtaken by V5
+    answer: confirm
+  Q19:
+    topic: rivals
+    reading: not ruled; deferred by signed rulings E, L3
+    answer: confirm
+  Q20:
+    topic: imputed day 15
+    reading: not ruled; month precision (exceptions entry 0)
+    answer: confirm
+  Q21:
+    topic: group id form
+    reading: not ruled; ecoregion names; R21 smoke groups as listed
+    answer: confirm
+  Q22:
+    topic: C3's remaining verdicts
+    reading: not ruled; partly overtaken by V9; drafted ban.yaml, signed here
+    answer: confirm
+acknowledge_q_answers: ''
+text_edits_approve: 'yes'
+text_edits:
+- id: D1
+  file: dataset.yaml
+  old: '# dataset.yaml -- coral_draft: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95).
+
+    # DRAFT, written 2026-10-19 by the agent in the build copy (D:/treeroute/coral_build). UNSIGNED. Development and smoke
+
+    # only, never a headline run. Design:'
+  new: '# dataset.yaml -- coral: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95).
+
+    # SIGNED by the owner {date} (ruling {ruling_id}, {ruling_file}). Made by
+
+    # D:/treeroute/coral_build/tools/make_signed_coral.py from the development copy the agent wrote on 2026-10-19 in
+
+    # the build copy (D:/treeroute/coral_build). The headline package. Design:'
+- id: D2
+  file: dataset.yaml
+  old: 'The owner adds the store root to D:/treeroute/registry/protected_roots.txt before
+
+    # the freeze (SPEC_TABLE_MODE.md 1.2).'
+  new: 'The store root D:/treeroute/coral_build/coral_store is listed in
+
+    # D:/treeroute/registry/protected_roots.txt (added 2026-10-20 by the session, confirmed by the owner {date};
+
+    # SPEC_TABLE_MODE.md 1.2).'
+- id: C1
+  file: catalog.yaml
+  old: '# catalog.yaml -- coral_draft package facts (SPEC_TABLE_MODE.md 1.3-1.5). GENERATED 2026-10-19 by
+
+    # D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py; edit columns.py, not this file. UNSIGNED.'
+  new: '# catalog.yaml -- coral package facts (SPEC_TABLE_MODE.md 1.3-1.5). GENERATED 2026-10-19 by
+
+    # D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py. The target''s facts were then signed by the
+
+    # owner {date} (ruling {ruling_id}) through make_signed_coral.py, so this file is no longer the generator''s output:
+
+    # never re-run make_draft.py on this package (it rewrites this file and ban.yaml and would lose the signatures).'
+- id: C2
+  file: catalog.yaml
+  old: 'fact_status is ''unverified'' everywhere (the schema default): nothing here is signed.'
+  new: 'fact_status is ''unverified'' (the schema default) on every column except the
+
+    # target pct_bleached, whose facts the owner signed {date} ({target_fact_status}, reviewed_by owner).'
+- id: B1
+  file: ban.yaml
+  old: '# ban.yaml -- coral_draft verdicts (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:446-474). GENERATED
+
+    # 2026-10-19 by D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py. UNSIGNED: the verdicts follow
+
+    # CORAL_ENGINE_PLAN.md:153-176 (section C3), whose open questions are Q9, Q10 and Q22 (:254-255, :267). The owner
+
+    # signs them before the coral freeze (ruling U6).'
+  new: '# ban.yaml -- coral verdicts (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:446-474). GENERATED
+
+    # 2026-10-19 by D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py. SIGNED by the owner {date}
+
+    # (ruling {ruling_id}, {ruling_file}) through make_signed_coral.py: every verdict below. The verdicts follow
+
+    # CORAL_ENGINE_PLAN.md:153-176 (section C3). Its questions (:254-255, :267): Q9 {Q9}; Q10 {Q10}; Q22 {Q22}.'
+- id: S1
+  file: split.yaml
+  old: '# split.yaml -- coral_draft (SPEC'
+  new: '# split.yaml -- coral (SPEC'
+- id: S2
+  file: split.yaml
+  old: '# V6 (b) OPTION, DRAFT (D:/treeroute/coral_build_v6b/PLAN_V6B.md): not signed; the owner chooses V6 (a) or V6 (b).'
+  new: '# V6 (b): owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6; built as
+
+    # D:/treeroute/coral_build_v6b (PLAN_V6B.md).'
+- id: S3
+  file: split.yaml
+  old: 'GENERATED by
+
+    # coral_tables/make_split.py --write (2026-10-19) from D:/treeroute/coral_build/coral_data/visits.parquet.'
+  new: 'GENERATED by
+
+    # the V6 (b) copy D:/treeroute/coral_build_v6b/coral_tables/make_split.py --write (2026-10-19) from
+
+    # D:/treeroute/coral_build/coral_data/visits.parquet (stage 1). Checked 2026-10-20 by that file (SHA-256
+
+    # a69e1c8c...) with --check on the published lead tables: PASS (engine PENDING_PARTS.md Part 595).'
+- id: X1
+  file: exceptions.yaml
+  old: '# exceptions.yaml -- coral_draft (SPEC'
+  new: '# exceptions.yaml -- coral (SPEC'
+- id: X2
+  file: exceptions.yaml
+  old: 'Drafted 2026-10-19 by the agent. Every ''owner'' field reads ''UNSIGNED -- basis: ...'':
+
+    # the entry is NOT signed; it names the evidence behind it. ''date'' is the date of that basis, not a signature.
+
+    # An ''owner'' field that names owner ruling V (OWNER_RULINGS_2026-10-06.md:97-114, signed 2026-10-19) is signed by
+
+    # that ruling item (V3, V5, V6, V9 below).'
+  new: 'Drafted 2026-10-19 by the agent. Signed {date}: an ''owner'' field that reads
+
+    # ''owner -- signed by the owner ...; basis: ...'' was signed through make_signed_coral.py (ruling {ruling_id}); one
+
+    # that names owner ruling V (OWNER_RULINGS_2026-10-06.md:97-114, signed 2026-10-19) or W1 (:116-121) is signed by
+
+    # that ruling item. ''date'' is the date of the entry''s basis, not of the signature.'
+- id: X3
+  file: exceptions.yaml
+  old: 'V6 (b) DRAFT OPTION (D:/treeroute/coral_build_v6b/PLAN_V6B.md; not signed): the 46 groups'
+  new: 'V6 (b), owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121; D:/treeroute/coral_build_v6b/PLAN_V6B.md): the 46 groups'
+- id: X4
+  file: exceptions.yaml
+  old: ; V6 (b) is a DRAFT option awaiting the owner (the signed V6 text, :108, says left out)
+  new: ; V6 (b) by owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6 (:108)
+- id: X5
+  file: exceptions.yaml
+  old: '(engine: derived.json R18:donor_only; listed in the plan, run record, verdict.json and the report disclosures)'
+  new: '(counted and disclosed as ruling W1 lists: derived.json R18:donor_only, the run records, the check report and one report disclosure row)'
+- id: R1
+  file: ingest/README.md
+  old: '# coral_draft: the coral bleaching table package (DRAFT)'
+  new: '# coral: the coral bleaching table package (signed {date})'
+- id: R2
+  file: ingest/README.md
+  old: Written 2026-10-19 under owner ruling U (OWNER_RULINGS_2026-10-06.md:84-95). Unsigned. Development and smoke only.
+  new: 'Written 2026-10-19 under owner ruling U (OWNER_RULINGS_2026-10-06.md:84-95). Signed by the owner {date} (ruling
+
+    {ruling_id}, {ruling_file}) through D:/treeroute/coral_build/tools/make_signed_coral.py. The headline package.'
+- id: R3
+  file: ingest/README.md
+  old: 'LIVE
+
+    (hash 65a177bc...) refuses it. The build copy''s table reader (in progress, 2026-10-19) loads the tiny copy.'
+  new: 'LIVE has
+
+    it since 2026-10-20 (engine_code_sha256 930d961c..., the V6 (b) engine; INSTALL_MANIFEST.json in
+
+    engine/_moved_coral_20261020_064437).'
+- id: R4
+  file: ingest/README.md
+  old: '(V6 b DRAFT option: no test row; they train and lend rows, nothing is scored for them)'
+  new: '(V6 b, owner ruling W1: no test row; they train and lend rows, nothing is scored for them)'
+- id: R5
+  file: ingest/README.md
+  old: (V3, V5 and V9 entries signed by ruling V; the V6 (b) donor-only entry is a DRAFT option, not signed)
+  new: (V3, V5 and V9 entries signed by ruling V, the donor-only entry by rulings V5 and W1, the others by the owner {date})
+- id: R6
+  file: ingest/README.md
+  old: '| AUDIT_CHECKLIST.md | human checks and the owner''s U2 timing statement (to sign) |'
+  new: '| AUDIT_CHECKLIST.md | human checks and the owner''s U2 timing statement (signed {date}) |'
+- id: R7
+  file: ingest/README.md
+  old: '- **V6 (b) donor-only groups (DRAFT option, not signed; D:/treeroute/coral_build_v6b/PLAN_V6B.md).**'
+  new: '- **V6 (b) donor-only groups (owner ruling W1, 2026-10-20, which replaces V6; D:/treeroute/coral_build_v6b/PLAN_V6B.md).**'
+- id: R8
+  file: ingest/README.md
+  old: 'py -3.9 make_draft.py                            # rewrite catalog.yaml and ban.yaml from columns.py
+
+    py -3.9 -u make_split.py --check                 # split.yaml still follows V5 with no V6 exclusion (V6 b copy; exit 1 if not); --write rewrites it
+
+    py -3.9 -u make_split.py --lead-dir D:\treeroute\coral_build\coral_data\full --check   # again after stage 2'
+  new: '# make_draft.py (it rewrites catalog.yaml and ban.yaml from columns.py) is NEVER run on the signed package: it
+
+    # would lose the signatures written by make_signed_coral.py.
+
+    # The split check uses the V6 (b) file in coral_build_v6b (SHA-256 a69e1c8c...), NOT coral_tables\make_split.py in
+
+    # this folder (the pre-(b) version, SHA-256 c38d76b1..., which checks V6 (a)). Its path guard (make_split.py:188-190)
+
+    # lets it read only a split.yaml under D:\treeroute\coral_build_v6b: its own copy of the development package''s
+
+    # split.yaml (the same entries as this package''s; only the comments differ).
+
+    py -3.9 -u D:\treeroute\coral_build_v6b\coral_tables\make_split.py --check   # V5 with no V6 exclusion (exit 1 if not)
+
+    py -3.9 -u D:\treeroute\coral_build_v6b\coral_tables\make_split.py --lead-dir D:\treeroute\coral_build\coral_data\full --check   # again after stage 2'
+- id: R9
+  file: ingest/README.md
+  old: '## Signed answers, ruling V (2026-10-19)'
+  new: '## Signed answers, ruling V (2026-10-19; V6 replaced by ruling W, 2026-10-20)'
+- id: R10
+  file: ingest/README.md
+  old: "The table departures (TABLE_DEPARTURES, pipeline/table_run.py:52-70) are accepted at the\n  coral freeze, as S21 did for the grid departures."
+  new: "The table departures are accepted at the coral freeze, as S21 did for the grid departures.\n  Built: they are listed in TABLE_ACCEPTED_DEPARTURES (pipeline/table_run.py:58-73) and written into the run record\n  as accepted_departures; TABLE_DEPARTURES is empty (:57)."
+- id: R11
+  file: ingest/README.md
+  old: '6. From LIVE after the install: check, smoke, run.'
+  new: "6. From LIVE (the table option is installed: engine 930d961c..., 2026-10-20): check, smoke, run, at the same engine\n   hash as the headline run."
+- id: A1
+  file: AUDIT_CHECKLIST.md
+  old: '# AUDIT_CHECKLIST -- coral_draft (table package)'
+  new: '# AUDIT_CHECKLIST -- coral (table package)'
+- id: A2
+  file: AUDIT_CHECKLIST.md
+  old: '**UNSIGNED.** Drafted by the agent
+
+    on 2026-10-19. Every box is open until the owner ticks it and signs at the bottom.'
+  new: '**SIGNED** by the owner {date} (ruling
+
+    {ruling_id}). Drafted by the agent on 2026-10-19; the boxes were ticked and the signature written from the
+
+    owner''s answers by make_signed_coral.py.'
+- id: A3
+  file: AUDIT_CHECKLIST.md
+  old: '(V6 b DRAFT option: they train trees and lend rows; nothing is scored for them)'
+  new: '(V6 b, owner ruling W1, 2026-10-20: they train trees and lend rows; nothing is scored for them)'
+- id: A4
+  file: AUDIT_CHECKLIST.md
+  old: 'Open timing facts the owner must accept or change before signing:'
+  new: 'Open timing facts the owner accepted by signing ({date}):'

@@ -1,0 +1,79 @@
+# gfed_burn -- shared STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog), SEEDED 2026-09-28T13:18:10
+# by engine/datasets/_tools/export_review_csv_v2.py. Every fact is 'unverified'. Review aids (footer statistics, samples,
+# sources, notes): engine/datasets/review/v2/evidence/gfed_burn_evidence.yaml.
+# Conventions (APP_PLAN 1.3): the row key names a calendar month (or a calendar year for annual values).
+#   plain window    -> stamp period_end   + window {length, unit, align: backward}
+#   centred window  -> stamp period_centre + window {length, unit, align: centred}
+#   unknown window  -> stamp period_centre + window {unit, align: unknown} (no length until a max_length is signed)
+#   reach past the period edge (no schema field for it) -> a WIDER window that ends at or after the content's
+#   end; R8 reads only the forward edge, so the wider start never changes a lag.
+#   static column   -> cadence {kind: static}, no window; stamp period_end is a placeholder the schema requires.
+# index_facts.yaml (the F10/V11 audit) writes EVERY window as period_centre + centred; both describe the same
+# content. Its proposals are not merged here: M1 merges them by hand once signed.
+store: gfed_burn
+description: 'GFED500m monthly burned fraction on the monthly panel''s cells (ingested for PM2.5). One parquet per
+  group-year: D:/gfed_burn/{group}_burn_{year}.parquet; keys cell_id, year, month. Seeded 2026-09-28T13:18:10 by
+  engine/datasets/_tools/export_review_csv_v2.py; every fact unverified. Review aids: engine/datasets/review/v2/evidence/gfed_burn_evidence.yaml.'
+columns:
+  burn_frac:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+      reach_after_max:
+        value: 1
+        unit: month
+    product_family: GFED500m
+    lineage:
+      assimilates:
+      - MODIS MCD64A1 burned area
+    absent_groups:
+      alaska_north_slope: no GFED file for this panel group (directory listing 2026-09-28)
+      canadian_arctic_nunavut: no GFED file for this panel group (directory listing 2026-09-28)
+      finnish_lapland: no GFED file for this panel group (directory listing 2026-09-28)
+      taimyr_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+      tierra_del_fuego: no GFED file for this panel group (directory listing 2026-09-28)
+      yamal_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+    provenance: 'gfed_burn_ingest.py:363; timing: reach_after_max {1, month}, ASSUMED: the MCD64A1 label of month m uses month m+1 observations (MCD64A1 User Guide 3.1.2), the detection margin ruling R-D (b) (OWNER_RULINGS_2026-09-28.md B) accepted for fire; carried to this store by ruling J1 (OWNER_RULINGS_2026-10-05.md: the Q1 default, burn_frac lag 1 on PM2.5; review/proposed/BAN_REVIEW_SUMMARY.md 5 A). timing.lag_trace, 2026-10-05: lag 1 on a monthly target (NDVI''s burn_frac is co-measured, lag 1 either way) fact_status ''assumed'' covers window.reach_after_max only (the store schema''s window carries no fact_status of its own); every other fact is the seed''s (unverified). Written beyond the J4 / J2 (b) store scope of the PM2.5 install task: the owner approves it with the J1 timing signatures.; SIGNED by the owner 2026-10-06 (ruling L1 a, OWNER_RULINGS_2026-10-05.md section L: ''fact_status signed, reviewed_by owner''): written fact_status ''assumed'' + reviewed_by owner + date, the schema''s spelling of a signed fact (plan 1.3: verified, or signed ''assumed''; treeroute/package/schema.py FactStatus has no ''signed'' value); the signature covers window.reach_after_max {1, month}'
+    legal_range:
+    - 0.0
+    - 1.0
+    fill_values: []
+    fact_status: assumed
+    reviewed_by: owner
+    date: '2026-10-06'
+  burn_npix:
+    scope: unit
+    dtype: int32
+    units: count
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_end
+    window:
+      length: 1
+      unit: month
+      align: backward
+    product_family: GFED500m
+    absent_groups:
+      alaska_north_slope: no GFED file for this panel group (directory listing 2026-09-28)
+      canadian_arctic_nunavut: no GFED file for this panel group (directory listing 2026-09-28)
+      finnish_lapland: no GFED file for this panel group (directory listing 2026-09-28)
+      taimyr_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+      tierra_del_fuego: no GFED file for this panel group (directory listing 2026-09-28)
+      yamal_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+    provenance: gfed_burn_ingest.py:364
+    legal_range:
+    - 0.0
+    - .inf
+    fill_values: []
+    fact_status: unverified

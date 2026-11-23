@@ -1,0 +1,195 @@
+LABEL-FREE GUIDANCE OF THE TOOL CHOICE WITH TEST-PERIOD INPUTS -- FIXED PROTOCOL
+(written 2026-10-21, BEFORE any result of these six methods is computed)
+================================================================================
+Status: post-hoc research for the next engine version. Nothing here changes any headline, verdict, adoption, run,
+package, store, engine file or anything under D:\treeroute\analysis\adv_validation. All writes go under
+D:\treeroute\analysis\guidance only. Freeze: the SHA-256 of this file is written to PROTOCOL.sha256.txt beside it.
+Any later change is a NEW protocol file with its own hash and a stated reason; results under this hash are reported
+as they come, good or bad.
+
+0. THE QUESTION, IN PLAIN WORDS
+-------------------------------
+The engine picks one tool by its MAE on past rows (the decision surface). On coral that pick was poor on test
+(6.698 vs 6.147 for its unweighted twin; Part 601). Can we use what we KNOW about the test period without its answers
+(its inputs, and the tools' own forecasts, which are built from inputs) to guide the choice better, on all five
+problems, without making the others worse? Six fixed methods are tried. Test LABELS are never read by any method;
+they are opened only at the very end to score the methods.
+
+Known bias, stated now: M1-M3 were suggested by the coral failure itself (Part 603, PENDING_PARTS.md:510-526), so their
+coral result is CIRCULAR. M4-M6 were not tuned on coral either, but this protocol was written after the coral numbers
+of the chosen arm and twin were known. Any pass is a lead to pre-register on new data, never proof.
+
+1. INPUTS (read-only)
+---------------------
+Runs (lead 0 only; ladder leads out of scope):
+  pm25  D:/treeroute/runs/pm25/headline/20261007_74e67609   surface 68,559 rows; test 91,440 rows (91,428 labelled)
+  ndvi  D:/treeroute/runs/ndvi/headline/20261016_d1de3158   surface 68,999 rows; test 95,184 rows (94,527 labelled)
+  fire  D:/treeroute/runs/fire/headline/20261017_869d1f38   surface 68,901 rows; test 96,000 rows (94,702 labelled)
+  defo  D:/treeroute/runs/defo/headline/20261017_d71c61f4   surface 276,822 rows; test 369,096 rows (all labelled)
+  coral D:/treeroute/runs/coral/headline/20261020_f3b8e3da  surface 2,046 rows; test 2,312 rows (all labelled)
+Surface predictions = inner_preds.parquet columns '<arm>@level=<L>,ratio=<R>' WITHOUT the 'pre__' prefix (the clipped
+values the engine scored). Test predictions = test_preds.parquet 'arm__<arm>' (clipped).
+ADOPTED POINT (adoption.json "penalty"; run.log):
+  pm25  level 30.0  ratio 1.0     (adoption.json:255; run.log:1338)
+  ndvi  level 1.0   ratio 0.0625  (adoption.json:221; run.log:754)
+  fire  level 100.0 ratio 1.0     (adoption.json:229; run.log:477)
+  defo  level 0.1   ratio None    (adoption.json:142; run.log:496)  -> surface column suffix '@level=0.1,ratio=None'
+  coral level 100.0 ratio 1.0     (adoption.json:294; run.log:141)
+FIXED LIMIT: test_preds holds every tree arm ONLY at the adopted point (run.log pm25:1339, ndvi:768, fire:478,
+defo:497, coral:142: "tree arms at level .. (the adopted penalty)"; no '@' column exists in any test_preds). So every
+method below uses EVERY arm at the ADOPTED point, on the surface and on test alike. An arm whose own surface pick was a
+different point (e.g. fire arcsine_corrector_unweighted, own pick ratio 0.0625, run.log:471) is used at the adopted
+point, and this is flagged per arm in the results.
+Original pick, band and test MAE (verdict.json "adopted", "band", "pooled_mae_adopted"):
+  pm25  log_c_corrector_unweighted  band 0.04621194665693497   (verdict.json:4)  test MAE 3.588091134093021 (:221)
+  ndvi  identity_plain_unweighted   band 0.0005974707755545328 (verdict.json:4)  test MAE 0.03146059686292064 (:175)
+  fire  arcsine_corrector_gls       band 1.3566970524883053e-05 (verdict.json:4) test MAE 0.004385064558301006 (:284)
+  defo  log_c_corrector_unweighted  band 0.0001104494047927938 (verdict.json:4)  test MAE 0.005415798421978487 (:186)
+  coral arcsine_corrector_gls       band 0.9175581931137083    (verdict.json:5)  test MAE 6.69798924506233 (:312)
+ELIGIBLE ARMS = adoption.json "eligible" exactly (engine N2 rule, decide.py:290-299 and :460; coral against
+base__donor_median, decide.py:468, owner ruling V1, run.log:140), listed in adoption.json "candidate_order":
+  pm25  8 of 8  (adoption.json:203; run.log:1338)        ndvi  4 of 4  (adoption.json:193; run.log:754)
+  fire  2 of 12: arcsine_plain_gls, arcsine_corrector_gls (adoption.json:213; run.log:477)
+  defo  6 of 6  (adoption.json:102; run.log:496; the 6 gls arms are MISSING by design, run.log:495)
+  coral 12 of 12 (adoption.json:218; run.log:141)
+
+2. THE TWIN (fixed per problem; weighting twin first, else the plain/corrector twin)
+-----------------------------------------------------------------------------------
+  problem  chosen                      twin                           kind        twin eligible?     twin SIMPLER?
+  pm25     log_c_corrector_unweighted  log_c_corrector_gls            weighting   yes                no (twin is gls)
+  ndvi     identity_plain_unweighted   identity_plain_gls             weighting   yes                no (twin is gls)
+  fire     arcsine_corrector_gls       arcsine_corrector_unweighted   weighting   NO (run.log:471 0.004387 vs
+                                                                                  trees-off :475 0.004368)  yes
+  defo     log_c_corrector_unweighted  log_c_plain_unweighted         tool        yes                yes (plain)
+           (no gls arm exists: run.log:495, adoption.json missing_arms)
+  coral    arcsine_corrector_gls       arcsine_corrector_unweighted   weighting   yes                yes
+SIMPLER means: twin weighting 'unweighted' while the chosen is 'gls', or twin tool 'plain' while the chosen is
+'corrector'. The twin is used whether or not it is eligible (as in Part 603); its eligibility is reported beside.
+
+3. GATES (fail = that problem stops and is reported 'not run')
+--------------------------------------------------------------
+G1 Surface reproduction: the chosen arm's surface MAE at the adopted point (mean |y - P| over all inner_preds rows,
+   decide.py:155) equals inner_candidates.csv for that arm and point within 1e-9 relative; every eligible arm's surface
+   MAE at its own picked point equals inner_candidates.csv within 1e-9 relative; the eligible set recomputed by the N2
+   rule from inner_candidates.csv equals adoption.json "eligible".
+G2 Test reproduction: the chosen arm's pooled test MAE from test_preds equals verdict.json pooled_mae_adopted within
+   1e-9 relative. SCORED ROWS = test rows with finite y and finite chosen prediction (the verdict's rows).
+G3 Feature join (M6 only): 100% of surface and test rows find their feature row, else M6 is 'not run' for that problem.
+G4 Two stages. STAGE A builds every method's test predictions and writes method_preds_<pkg>.parquet (unit, time,
+   one column per method and placebo) plus stageA_<pkg>.json (alarm ratios, weights, chooser diagnostics, fallbacks),
+   and the SHA-256 of all of them in stageA.sha256.txt, BEFORE stage B. Stage A reads test_preds with the key columns
+   and the 'arm__' columns only, never 'y'. Stage B opens test y only to score.
+Row-level predictions of every method are kept (method_preds_<pkg>.parquet), not only scores.
+
+4. THE SIX METHODS (all fixed; nothing is tuned)
+------------------------------------------------
+Notation: C = chosen arm, T = twin, both at the adopted point. gap(rows) = mean |C - T| over the rows.
+On the surface: all inner_preds rows. On test: all test rows with finite C and T (labels not consulted).
+
+M1 ALARM->SIMPLER. ratio = gap(test) / gap(surface). The alarm FIRES iff ratio > 2.0 (strict).
+   If it fires AND T is SIMPLER (section 2): every test row uses T. Otherwise every test row uses C.
+   (So on pm25 and ndvi M1 equals the original pick whatever the ratio; on defo T is the plain twin.)
+M2 ALARM->BLEND. Same ratio and threshold. If it fires: every test row uses 0.5*C + 0.5*T. Otherwise C.
+M3 BLEND-2. Always 0.5*C + 0.5*T on every test row.
+M4 BLEND-ELIGIBLE. Equal-weight mean of all ELIGIBLE arms (section 1 list), each at the ADOPTED point (no test column
+   exists at any arm's own picked point; section 1 FIXED LIMIT). fire = mean of its 2 eligible arms; pm25 8; ndvi 4;
+   defo 6; coral 12. The surface MAE of the same blend is reported beside (not used to decide anything).
+M5 LEARNED BLEND (stacking). Weights w over the eligible arms, w >= 0, sum w = 1, minimising
+   sum_i |y_i - sum_a w_a P_a,i| over surface rows, solved EXACTLY as a linear program:
+   scipy.optimize.linprog(method='highs', default options), variables (w, t), minimise sum t_i subject to
+   t_i >= y_i - P_i.w, t_i >= P_i.w - y_i, w >= 0, sum w = 1. After solving, w_a < 1e-9 is set to 0 and w renormalised.
+   Row cap (no seeds): if a training set has more than 50,000 rows, keep the 50,000 with the lowest
+   int(sha1(unit + '|' + str(time)).hexdigest(), 16).
+   Group-blocked cross-fitting, K = 5: fold(row) = int(sha1(G).hexdigest(), 16) mod 5, where G = the row's 'group'
+   (grid problems: pm25 127, ndvi 133, fire 40, defo 42 groups) and, on coral, G = the reef SITE = the part of 'unit'
+   before '|' (1,421 surface sites). Fold-k weights are fitted on rows NOT in fold k and predict fold k; the
+   cross-fitted surface MAE (CF-MAE) is the MAE of those out-of-fold predictions over all surface rows.
+   Test weights = one fit on ALL surface rows (same cap). FIXED GATE: M5 is applied on test only if CF-MAE is
+   strictly below the chosen arm's surface MAE at the adopted point; else every test row uses C (FALLBACK:CF).
+   Reported beside, not used in the success rule: the ungated M5 (M5raw), fold weights, full-surface weights.
+   If only one eligible arm existed M5 = that arm (does not occur: fire has 2).
+M6 PER-ROW CHOOSER (hard) and M6s SOFT.
+   Target per surface row: z = 1 if |y - T| < |y - C|, z = 0 if |y - C| < |y - T|; exact ties (equal absolute
+   error) are left out of training and of the accuracy. Model (fixed): sklearn LogisticRegression(penalty='l2', C=1.0,
+   solver='lbfgs', max_iter=2000, class_weight=None, fit_intercept=True). Nothing is tuned.
+   Preprocessing (fit on the training rows only): every column numeric; drop a column > 50% missing or constant on the
+   training rows; impute gaps with the training median; standardise with the training mean and sd; clip to [-10, 10].
+   Same row cap (50,000 by the sha1 order) and the same K = 5 group/site folds as M5.
+   Cross-fitted accuracy ACC = share of out-of-fold non-tie surface rows where (p > 0.5) == z; its base rate
+   (share of z = 1) and its AUC are reported beside.
+   FALLBACK (fixed): if the non-tie surface rows are fewer than 200, or either class has fewer than 20 rows, or
+   ACC < 0.55, every test row uses C (FALLBACK:ROWS or FALLBACK:ACC), for both M6 and M6s.
+   Otherwise one model is fitted on all non-tie surface rows (cap) and gives p = P(twin wins) per test row:
+   M6  hard: test row uses T if p > 0.5, else C (p = 0.5 exactly -> C).
+   M6s soft: test row uses (1 - p)*C + p*T.
+   FEATURES (read-only, from D:\treeroute\analysis\adv_validation; no arm predictions are added as features):
+     pm25  pm25/features_surface.parquet (join unit,time) and features_test.parquet (join unit, issue = time);
+           116 tree + 2 context (ctx:month, ctx:lat), hist_* already excluded (pm25/SUMMARY.txt).
+     ndvi  ndvi/features_ndvi.parquet (join unit, step = time; test on unit, issue): the fixed fallback subset,
+           9 context + 20 tree = 29 columns (features_ndvi_meta.json).
+     fire  fire/features_surface.parquet (unit,time) and features_test.parquet (unit,issue): 125 tree + 2 context,
+           MINUS the 9 fire-history columns that are built from the fire TARGET (catalog provenance
+           'target-derived', engine/datasets/fire/catalog.yaml:283-297; features_meta.json from_history_store):
+           tslf_months, tslf_censored, n_burns_12mo, n_burns_60mo, burn_rate_120mo, nbr25km_12mo_lag3,
+           nbr75km_12mo_lag3, nbr25km_12mo_lag6, nbr75km_12mo_lag6. On test rows they read test-period labels.
+     defo  defo/X_surface.npy and X_test.npy, row-aligned to inner_preds / test_preds row order
+           (defo/build_features.py:104-151), columns = features_meta.json "features" (303), MINUS h_nbr1, h_nbr2,
+           h_nbr_cum, h_yrs_since (indices 34-37; label-built, engine/datasets/defo/catalog.yaml:144) -> 299 columns.
+     coral the engine's 63 tree columns (plan.json tree_features = 63; NOT the literal 66) + the 5 router context
+           columns (ctx_month, ctx_doy_sin, ctx_doy_cos, ctx_abslat, ctx_mmm), read from
+           D:/treeroute/coral_build/coral_store/20261020_014201/lead_0.parquet by row_id = run 'unit', exactly the
+           list and join of adv_validation/coral/stage_a.py:175-210 (never pct_bleached, programme or mark).
+           Coral folds are by reef SITE (skeptic addendum, adv_validation/RESULT.txt).
+   Excluded always: keys, the target, programme, mark, hist_*, and every target-derived column above.
+
+5. PLACEBOS (fixed, no seeds; for the success rule they enter UNGATED)
+----------------------------------------------------------------------
+Fixed permutation pi of surface rows: rows sorted by int(sha1(unit + '|' + str(time))) ascending give order a;
+rows sorted by int(sha1('placebo|' + unit + '|' + str(time))) ascending give order b; the row a[k] is paired with
+the row b[k].
+M5 placebo: y_placebo[a[k]] = y[b[k]] (labels shuffled across surface rows, predictions untouched). Fit the
+   full-surface weights on y_placebo, apply to test, score on the true test y. Reported: ungated (used by the rule)
+   and gated with its own CF-MAE on y_placebo.
+M6 / M6s placebo: the feature row of b[k] is given to row a[k] (features shuffled against z; z untouched). Train,
+   apply to the true test features, score. Reported: ungated (used by the rule; the model still predicts) and gated.
+   This shows whether a gain comes from the features or only from the base rate of 'twin wins'.
+M1-M4 have no placebo in this protocol (none was asked for); for them the placebo item reads 'N/A' and the
+   circularity note of section 0 applies to M1-M3.
+
+6. OUTCOME MEASURES (stage B)
+-----------------------------
+Per method x problem, on SCORED ROWS (section 3 G2):
+  - test MAE; delta = method MAE - original MAE (negative = better); delta / band.
+  - HELPS (delta < 0), SAME (method prediction equals C on every scored row, e.g. no alarm or a fallback),
+    HURTS (delta > 0); a tally across the 5 problems, plus how many HURTS exceed 0.25 band.
+  - per test year MAE beside (not used by the rule).
+  - coral extra: MAE on BLEACHED-only rows (y > 0) and on SEVERE-only rows (y > 50; the bin used in
+    analysis/coral_choice/drift/scripts/analyse_drift.py:107 and extra.py:30), with row counts and the original's
+    MAE on the same rows; the per-programme MAE beside (evaluation confound, reported not used).
+  - diagnostics: alarm ratio per problem (also per test year, beside); M5 weights and CF-MAE; M6 ACC, base rate,
+    AUC, share of test rows switched to T, mean p.
+  - Point flag: every arm used at the adopted point where its own pick differed is listed.
+  - Sanity: on every problem the Part 603 numbers are recomputed (alarm ratio; M3 MAE pm25 3.584, ndvi 0.0314608,
+    fire 0.004409, coral 6.394; M1 coral 6.147). A mismatch beyond rounding is reported and explained, not hidden.
+
+7. SUCCESS RULE (fixed; judged per method; M6 and M6s judged separately)
+-----------------------------------------------------------------------
+A method is RECOMMENDED for a pre-registered test in the next engine version only if ALL hold:
+  S1 coral improves: coral delta < 0 (test MAE below 6.69798924506233). Bleached-only and severe-only coral MAE are
+     reported beside; they do not gate.
+  S2 no harm: on pm25, ndvi, fire and defo, delta <= 0.25 x that run's band (pm25 0.0115530, ndvi 0.000149368,
+     fire 3.39174e-06, defo 2.76124e-05; exact values from verdict.json at run time).
+  S3 not a placebo effect: M5 -> the ungated M5 placebo's coral delta is strictly greater (worse) than M5's coral
+     delta; M6 / M6s -> the ungated shuffled-feature placebo's coral delta is strictly greater than the method's.
+     M1-M4: N/A (section 5).
+  S4 not a no-op on coral: the method's coral predictions differ from C on at least one scored row (M5 and M6 did
+     not fall back on coral).
+If any fails: NOT RECOMMENDED, naming the failed item(s). M1-M3 passes are labelled CIRCULAR-ON-CORAL. Every pass is
+a lead, not proof: it rests on one problem's flip and ~33-37 coral survey groups.
+
+8. COMPUTE AND SAFETY
+---------------------
+Read stores and tables in small blocks and only the needed columns; RAM under ~4 GB (defo X_test.npy is 447 MB,
+read via mmap). No engine derive, no run, no write to runs/packages/stores/engine/adv_validation. Outputs only under
+D:\treeroute\analysis\guidance: scripts\, method_preds_<pkg>.parquet, stageA_<pkg>.json, stageA.sha256.txt,
+results_<pkg>.json, RESULT.txt (plain words, file:line cited).

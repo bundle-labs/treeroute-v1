@@ -1,0 +1,45 @@
+﻿SHAP listed 11:18:31-11:18:31 UTC: 11101 files, 5,868,405,152 B; reparse 0; pruned ['smoke/bardl_fix']
+  A compare                      45        6,706,556  gh    25        104,349
+  A coral manifest                1            2,617  gh     1          2,617
+  A gridded bg keys              23          424,276  gh     0              0
+  A gridded rebuild checks        8        6,687,598  gh     0              0
+  A gridded samples              19          262,341  gh     4          5,160
+  A logs                         50          614,971  gh    50        614,971
+  A piece records                82          663,237  gh    82        663,237
+  A rebuild records              14           36,583  gh    14         36,583
+  A run summaries                 5            2,692  gh     5          2,692
+  A scripts                      17          602,055  gh    17        602,055
+  A snapshots                    28        1,135,671  gh    28      1,135,671
+  A top                           4          156,335  gh     4        156,335
+  A verify_v1                   279       62,653,879  gh   279     62,653,879
+  K banks routers                10      727,824,592  gh     0              0
+  K coral row-level              19        6,856,651  gh     0              0
+  K draws npy                     5        6,064,640  gh     0              0
+  K engine_runs                1994    1,515,695,471  gh     0              0
+  K gridded SHAP rows            23       59,524,068  gh     0              0
+  K verify gz                     1              732  gh     0              0
+  K verify npz                   17      717,718,142  gh     0              0
+  K work rf                    1505    1,721,464,842  gh     0              0
+  L smoke                      6952    1,033,307,203  gh     0              0
+  archived 575 / 79,948,811; kept out 3574 / 4,755,149,138; left out 6952 / 1,033,307,203; github 509 / 65,977,549
+  archived by ext: {'.before_fix1': 1, '.before_fix2': 1, '.before_fix3': 1, '.json': 189, '.jsonl': 7, '.log': 50, '.md': 31, '.parquet': 66, '.py': 188, '.txt': 40, '.yaml': 1}
+  archived .py bytes (SHAP): 2,056,719
+  smoke engine folders: 787 files, 109,465,128 B
+  gridded SHAP rows per problem: {'pm25': 5, 'ndvi': 6, 'fire': 6, 'defo': 6}
+  rebuild records: ['coral:DONE.json', 'coral:gates.json', 'defo:DONE.json', 'defo:gates.json', 'defo:precheck.json', 'fire:DONE.json', 'fire:gates.json', 'fire:precheck.json', 'ndvi:DONE.json', 'ndvi:gates.json', 'ndvi:precheck.json', 'pm25:DONE.json', 'pm25:gates.json', 'pm25:precheck.json']
+  banks/routers: 10 files 727,824,592 B
+  work rf files per problem: {'pm25': 301, 'ndvi': 301, 'fire': 301, 'defo': 301, 'coral': 301}
+  archived gridded row-level parquet: 46 files 7,369,055 B
+  largest archived: [('16,321,120', 'verify_v1/skeptic/reconcile/rerun/mismatches.json'), ('16,321,120', 'verify_v1/reconcile/mismatches.json'), ('6,450,817', 'verify_v1/B/results.json'), ('6,237,737', 'verify_v1/A/results.json')]
+  verify npz by folder: {'verify_v1/skeptic/numbers': 1, 'verify_v1/B/draws': 8, 'verify_v1/A/draws': 8}
+  newest file mtime (UTC): 2026-11-16 22:31:06
+  unclassified: []
+  writer's listing: 11101 files 5,868,405,152 B, 2026-11-17T09:34:20Z-2026-11-17T09:34:21Z; pruned ['smoke/bardl_fix']
+  only in mine: 0; only in writer's: 0; size differs: 0
+
+OUT now: {'A': (46, '11,180,070'), 'B': (28, '10,557,371'), '_brief': (10, '76,096'), 'checks': (396, '38,644,632'), 'reconcile': (58, '8,940,650'), 'skeptic': (50, '1,084,515'), 'spec': (34, '823,092'), 'stage': (125, '5,762,496')}
+OUT archived folders now: 226 files 32,661,794 B; ext {'.md': 31, '.py': 179, '.txt': 1, '.json': 15}
+writer's OUT listing: 281 files 35,479,881 B, 2026-11-17T09:34:21Z-2026-11-17T09:34:21Z
+  writer's archived part: 226 files 32,661,953 B; stage 55 files 2,817,928 B
+  archived files changed since the writer's listing: [('_brief/lead_checks/verify_v5_claims.py', 3346, 3271, '2026-11-17T06:52:21Z', '2026-11-17T10:12:11Z'), ('_brief/lead_checks/verify_v5_claims_out.txt', 2055, 1971, '2026-11-17T06:53:59Z', '2026-11-17T10:12:15Z')]
+  archived files new since: [] gone: []

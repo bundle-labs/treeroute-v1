@@ -1,0 +1,100 @@
+18:03:55 | setup: tool sha (baseline maps) 57996b228a6f board 32ec5df06e80; engine eq True; harness eq True; threads eq True; libs eq True
+18:04:55 | setup: tool sha (board recipe) 32ec5df06e80 board 32ec5df06e80; engine eq True; harness eq True; threads eq True; libs eq True
+18:04:59 | start D:\treeroute\analysis\paper_posthoc\merra2_formula\A\rescore_A.py
+18:05:02 | setup: tool sha (board recipe) 32ec5df06e80 board 32ec5df06e80; engine eq True; harness eq True; threads eq True; libs eq True
+18:05:40 | tool | adapter | merra2_lag1 | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:05:47 | tool | adapter | merra2_lag1 | lead 0 | rival merra2_lag1 lead 0 stage all: 2681720 rows, 2669020 covered, 12700 rows without a product month, month offset -1, placebo shift 0 y
+18:05:48 | x build merra2_lag1 {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.4, 'SO4SMASS': 1.375}: 2681720 rows in 45.2 s
+18:05:48 | gate 0a merra2_lag1: {'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'nan_positions_equal': True, 'bitwise_equal': True, 'rows_compared': 2669020, 'keys_equal_row_by_row': True, 'rows': 2681720, 'info_end_equal': True, 'product_cell_equal': True, 'src_equal': True, 'pass': True}
+18:05:51 | tool | adapter | merra2_lag1 | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:05:59 | tool | adapter | merra2_lag1 | lead 0 | rival merra2_lag1 lead 0 stage all: 2681720 rows, 2669020 covered, 12700 rows without a product month, month offset -1, placebo shift 0 y
+18:06:00 | x build merra2_lag1 {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.0, 'SO4SMASS': 1.375}: 2681720 rows in 11.4 s
+18:06:03 | tool | adapter | merra2_lag1 | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:06:10 | tool | adapter | merra2_lag1 | lead 0 | rival merra2_lag1 lead 0 stage all: 2681720 rows, 2669020 covered, 12700 rows without a product month, month offset -1, placebo shift 0 y
+18:06:11 | x build merra2_lag1 {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.0, 'SO4SMASS': 1.3755985842181968}: 2681720 rows in 10.9 s
+18:06:15 | tool | adapter | merra2_same | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:06:23 | tool | adapter | merra2_same | lead 0 | rival merra2_same lead 0 stage all: 2681720 rows, 2681720 covered, 0 rows without a product month, month offset 0, placebo shift 0 y
+18:06:23 | x build merra2_same {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.4, 'SO4SMASS': 1.375}: 2681720 rows in 10.8 s
+18:06:23 | gate 0a merra2_same: {'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'nan_positions_equal': True, 'bitwise_equal': True, 'rows_compared': 2681720, 'keys_equal_row_by_row': True, 'rows': 2681720, 'info_end_equal': True, 'product_cell_equal': True, 'src_equal': True, 'pass': True}
+18:06:26 | tool | adapter | merra2_same | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:06:33 | tool | adapter | merra2_same | lead 0 | rival merra2_same lead 0 stage all: 2681720 rows, 2681720 covered, 0 rows without a product month, month offset 0, placebo shift 0 y
+18:06:33 | x build merra2_same {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.0, 'SO4SMASS': 1.375}: 2681720 rows in 9.9 s
+18:06:37 | tool | adapter | merra2_lag1_placebo | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:06:43 | tool | adapter | merra2_lag1_placebo | lead 0 | rival merra2_lag1_placebo lead 0 stage all: 2681720 rows, 2059464 covered, 622256 rows without a product month, month offset -1, placebo shift 4 y
+18:06:43 | x build merra2_lag1_placebo {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.4, 'SO4SMASS': 1.375}: 2681720 rows in 8.8 s
+18:06:44 | gate 0a merra2_lag1_placebo: {'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'nan_positions_equal': True, 'bitwise_equal': True, 'rows_compared': 2059464, 'keys_equal_row_by_row': True, 'rows': 2681720, 'info_end_equal': True, 'product_cell_equal': True, 'src_equal': True, 'pass': True}
+18:06:46 | tool | adapter | merra2_lag1_placebo | lead 0 | product merra2_aer_monthly: 252 months 2003-01..2023-12
+18:06:53 | tool | adapter | merra2_lag1_placebo | lead 0 | rival merra2_lag1_placebo lead 0 stage all: 2681720 rows, 2059464 covered, 622256 rows without a product month, month offset -1, placebo shift 4 y
+18:06:53 | x build merra2_lag1_placebo {'DUSMASS25': 1.0, 'SSSMASS25': 1.0, 'BCSMASS': 1.0, 'OCSMASS': 1.0, 'SO4SMASS': 1.375}: 2681720 rows in 9.2 s
+18:07:03 |   trial merra2_lag1 pm25__F0__native: inner MAE 11.652064392644446
+18:07:03 |   trial merra2_lag1 pm25__F1__identity: inner MAE 10.346020029170194
+18:07:04 |   trial merra2_lag1 pm25__F1__log_c: inner MAE 9.076705380967281
+18:07:05 |   trial merra2_lag1 pm25__F2__identity: inner MAE 9.492221811349893
+18:07:07 |   trial merra2_lag1 pm25__F2__log_c: inner MAE 8.820440633960612
+18:07:14 |   trial merra2_lag1 pm25__F3__identity: inner MAE 3.7115096987865654
+18:07:21 |   trial merra2_lag1 pm25__F3__log_c: inner MAE 3.542457307930805
+18:07:30 |   trial merra2_lag1 pm25__F4__identity: inner MAE 3.7195680891718395
+18:07:39 |   trial merra2_lag1 pm25__F4__log_c: inner MAE 3.5462437321304794
+18:07:48 |   trial merra2_lag1 pm25__F5__identity: inner MAE 3.6460524959485006
+18:07:57 |   trial merra2_lag1 pm25__F5__log_c: inner MAE 3.5208945819429056
+18:08:31 | procedure merra2_lag1 full pm25__F5__log_c: guard 3.5208945819429056 vs log_c_trees_off_unweighted 3.5256518387286944 -> passed (96.6 s)
+18:08:34 | gate 0b: pass=True guarded {'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'nan_positions_equal': True, 'bitwise_equal': True, 'rows_compared': 91440} guard {'rows': 68559, 'rival_mae': 3.5208945819429056, 'comparator': 'log_c_trees_off_unweighted', 'comparator_mae': 3.5256518387286944, 'passed': True, 'source': 'the pick fitted on the tune rows, scored on the covered inner rows'}
+18:08:36 | gate 0c: pass=True d 4.855619585591441 [-4.146349169990533, 13.857588341173415] CANNOT TELL
+18:09:21 | procedure merra2_same pinned pm25__F5__identity: guard 3.2855555720630174 vs identity_trees_off_unweighted 3.652063664702441 -> passed (42.7 s)
+18:09:22 | extra merra2_same: {'guard_equal_exact': True, 'd_exact': True}
+18:09:56 | procedure merra2_lag1_placebo pinned pm25__F5__log_c: guard 4.866805733494373 vs log_c_trees_off_unweighted 3.5256518387286944 -> failed (33.1 s)
+18:09:56 | extra merra2_lag1_placebo: {'guard_equal_exact': True, 'd_exact': True}
+18:10:10 |   trial merra2_lag1 pm25__F0__native: inner MAE 11.487575694761636
+18:10:10 |   trial merra2_lag1 pm25__F1__identity: inner MAE 10.432792406515931
+18:10:11 |   trial merra2_lag1 pm25__F1__log_c: inner MAE 9.14430431175341
+18:10:13 |   trial merra2_lag1 pm25__F2__identity: inner MAE 9.573156244540273
+18:10:15 |   trial merra2_lag1 pm25__F2__log_c: inner MAE 8.880823296465433
+18:10:24 |   trial merra2_lag1 pm25__F3__identity: inner MAE 3.7150257087990504
+18:10:32 |   trial merra2_lag1 pm25__F3__log_c: inner MAE 3.5518610632239964
+18:10:41 |   trial merra2_lag1 pm25__F4__identity: inner MAE 3.7121036262346303
+18:10:51 |   trial merra2_lag1 pm25__F4__log_c: inner MAE 3.546820630957649
+18:11:01 |   trial merra2_lag1 pm25__F5__identity: inner MAE 3.6465404182410763
+18:11:11 |   trial merra2_lag1 pm25__F5__log_c: inner MAE 3.5183670030839416
+18:11:42 | procedure merra2_lag1 full pm25__F5__log_c: guard 3.5183670030839416 vs log_c_trees_off_unweighted 3.5256518387286944 -> passed (100.1 s)
+18:12:18 | procedure merra2_lag1 pinned pm25__F5__log_c: guard 3.5183670030839416 vs log_c_trees_off_unweighted 3.5256518387286944 -> passed (35.9 s)
+18:12:33 |   trial merra2_same pm25__F0__native: inner MAE 10.604112660587933
+18:12:33 |   trial merra2_same pm25__F1__identity: inner MAE 9.764969633700955
+18:12:34 |   trial merra2_same pm25__F1__log_c: inner MAE 8.624717644205242
+18:12:35 |   trial merra2_same pm25__F2__identity: inner MAE 8.979772385198135
+18:12:36 |   trial merra2_same pm25__F2__log_c: inner MAE 8.417552689026639
+18:12:44 |   trial merra2_same pm25__F3__identity: inner MAE 3.453659568586462
+18:12:51 |   trial merra2_same pm25__F3__log_c: inner MAE 3.429998291351721
+18:12:59 |   trial merra2_same pm25__F4__identity: inner MAE 3.485013180775448
+18:13:07 |   trial merra2_same pm25__F4__log_c: inner MAE 3.393253552837021
+18:13:16 |   trial merra2_same pm25__F5__identity: inner MAE 3.294110631749477
+18:13:25 |   trial merra2_same pm25__F5__log_c: inner MAE 15.261271365157494
+18:13:52 | procedure merra2_same full pm25__F5__identity: guard 3.294110631749477 vs identity_trees_off_unweighted 3.652063664702441 -> passed (87.0 s)
+18:14:25 | procedure merra2_lag1_placebo pinned pm25__F5__log_c: guard 3.8148265910861228 vs log_c_trees_off_unweighted 3.5256518387286944 -> failed (30.6 s)
+18:14:36 |   trial merra2_lag1 pm25__F0__native: inner MAE 11.487501408140586
+18:14:36 |   trial merra2_lag1 pm25__F1__identity: inner MAE 10.43257933673317
+18:14:37 |   trial merra2_lag1 pm25__F1__log_c: inner MAE 9.144200305287542
+18:14:39 |   trial merra2_lag1 pm25__F2__identity: inner MAE 9.57317489659215
+18:14:40 |   trial merra2_lag1 pm25__F2__log_c: inner MAE 8.880872684831624
+18:14:47 |   trial merra2_lag1 pm25__F3__identity: inner MAE 3.7150211396329307
+18:14:54 |   trial merra2_lag1 pm25__F3__log_c: inner MAE 3.551856849408579
+18:15:02 |   trial merra2_lag1 pm25__F4__identity: inner MAE 3.7120641186215844
+18:15:10 |   trial merra2_lag1 pm25__F4__log_c: inner MAE 3.5467826168238106
+18:15:19 |   trial merra2_lag1 pm25__F5__identity: inner MAE 3.646536491313556
+18:15:28 |   trial merra2_lag1 pm25__F5__log_c: inner MAE 3.518363236629556
+18:15:56 | procedure merra2_lag1 full pm25__F5__log_c: guard 3.518363236629556 vs log_c_trees_off_unweighted 3.5256518387286944 -> passed (87.9 s)
+18:16:00 | wrote D:\treeroute\analysis\paper_posthoc\merra2_formula\A\result_A.json
+18:16:00 | 
+PLAIN-WORDS SUMMARY (post hoc, implementer A)
+gate 0a x rebuild: merra2_lag1 max abs diff 0.0 (bitwise True); merra2_same max abs diff 0.0 (bitwise True); merra2_lag1_placebo max abs diff 0.0 (bitwise True)
+gate 0b: pick pm25__F5__log_c, guard 3.5208945819429056 vs 3.5256518387286944 rows 68559 passed True; guarded column max abs diff 0.0 (bitwise True)
+gate 0c: d 4.855619585591441 [-4.146349169990533, 13.857588341173415] CANNOT TELL, rival 8.444331927157267 ours 3.588091134093021, 91440 rows 127 groups; max diff vs board csv 0.0
+merra2_lag1_full: pick pm25__F5__log_c guard 3.5183670030839416 vs 3.5256518387286944 (68559 rows) passed; test rival MAE 8.199032788242505 ours 3.588091134093021; d 4.610352878511604 [-3.9519247587120887, 13.172630515735296] CANNOT TELL
+   largest 397947.0472846153 at yakutia_larch_3553_2232 2021-08 (x 1229.554025494815); count > 1000: 4; yakutia 2021-08 397947.0472846153 from x 1229.554025494815
+merra2_lag1_forcedF5: pick pm25__F5__log_c guard 3.5183670030839416 vs 3.5256518387286944 (68559 rows) passed; test rival MAE 8.199032788242505 ours 3.588091134093021; d 4.610352878511604 [-3.9519247587120887, 13.172630515735296] CANNOT TELL
+   largest 397947.0472846153 at yakutia_larch_3553_2232 2021-08 (x 1229.554025494815); count > 1000: 4; yakutia 2021-08 397947.0472846153 from x 1229.554025494815
+merra2_same_full: pick pm25__F5__identity guard 3.294110631749477 vs 3.652063664702441 (68559 rows) passed; test rival MAE 3.4506194467620213 ours 3.588091134093021; d -0.13739811223770823 [-0.24989345117800096, -0.024902773297415498] LOSES
+merra2_lag1_placebo_full: pick pm25__F5__log_c guard 3.8148265910861228 vs 3.5256518387286944 (68559 rows) failed; test rival MAE 4.031610558456933 ours 3.588091134093021; d 0.44350541956405787 [0.2943131111754056, 0.5926977279527101] BEATS
+x change merra2_lag1: median ratio 0.9285757903263192, p99 0.9986159400959765, share moved > 10% 0.33904199475065616
+x change merra2_same: median ratio 0.9285778481874842, p99 0.9986252387810794, share moved > 10% 0.3394028871391076
+x change merra2_lag1_placebo: median ratio 0.9282930111529859, p99 0.9986064568705506, share moved > 10% 0.34267279090113734
+x change merra2_lag1_gmao_side_check: median ratio 0.928684577193809, p99 0.9986218507876249, share moved > 10% 0.3385498687664042

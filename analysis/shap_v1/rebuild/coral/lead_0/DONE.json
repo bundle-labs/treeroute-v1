@@ -1,0 +1,37 @@
+{
+ "arcsine_tolerance": 1e-12,
+ "arm": "arcsine_corrector_gls",
+ "c": 0.1084375,
+ "d8_licence": "E5a at this lead (the arm's identity-link twin, bit-identical)",
+ "e8_bit_identical": false,
+ "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\coral\\headline\\20261112_f3b8e3da",
+ "files": {
+  "bank.npz": "925d4d2ad17e0dec4419d3ca67be2815bcd6d4884a1f3488432774f85066f1df",
+  "preds_check.parquet": "b33df80e29469d88d1f9dc597c2bfb1951feae239993ad5ee50c46a73226bae5",
+  "routers.npz": "a134537e9400792e6b91778c23478cf5db681d9466513b0318d4c849d3f46294",
+  "rows.parquet": "7ff13a9b07ffa9efbe308486e78041b6de3a0a3f5fbd94aa38ce658d95b460b6"
+ },
+ "identity": {
+  "engine_root": "d:/treeroute/engine_v2/engine_v1_ref",
+  "package_dir": null,
+  "path_map": false,
+  "sample_sha256": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023",
+  "script_sha256": "b48196273b43ccc877249b00e16e2d4e11d3d09c83bad1eadd3ad200dc782beb",
+  "smoke_arm": null
+ },
+ "kind": "neighbour",
+ "legal": [
+  0.0,
+  100.0
+ ],
+ "link": "arcsine",
+ "point": {
+  "level": 100.0,
+  "ratio": 1.0
+ },
+ "rows_checked": 2312,
+ "sample_sha256": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023",
+ "table_kind": "corrector",
+ "ub": 100.0,
+ "weighted": true
+}

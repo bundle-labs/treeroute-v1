@@ -1,0 +1,190 @@
+HUMAN RIVALS (Part A: coral, defo, PM2.5, NDVI) - THE OWNER'S COMMANDS
+Written 2026-10-22. Every command below is for YOU to run in PowerShell. Nothing here runs by itself.
+Times and sizes marked (x) are estimates (SPEC_HUMAN.txt section 8, BUILD_NOTES_*); nothing human has run on real data.
+
+=====================================================================================================================
+0. HOW THIS FITS AROUND THE COMMON RIVAL RUNS
+=====================================================================================================================
+- Every human command (except `status`) takes the ENGINE heavy-job lock (the production config names the engine's
+  machine file). So a human command simply REFUSES while a common rival command (or an engine run) is working:
+  "REFUSED: ... heavy-job lock ...". You never run both at once; run human steps in the gaps.
+- Common order (RIVALS_OWNER_COMMANDS.md): coral DONE, fire DONE, pm25 RUNNING NOW (export, 2026-10-22), then defo,
+  then NDVI one lead at a time. The human steps below are placed in that order.
+- COPY BEFORE DELETE: a human `slim` copy must be made from each common export lead BEFORE you delete that export
+  folder (RIVALS_OWNER_COMMANDS.md section 7). Coral's export is still on disk: slim it at the first gap.
+- DISK: D: had 15.4 GB free on 2026-10-22. The defo common export needs ~8.5 GB + ~6.7 GB per lead, NDVI ~5.7 GB +
+  ~10 GB per lead. Before defo: delete the scored fire export (0.4 GB) and, once the pm25 common board is fully
+  scored, the pm25 export and its fit-set copies (~4 + ~3 GB) (common section 7). The human tool itself adds little
+  (x): slim copies ~0.1-1.5 GB per lead (NDVI largest), index tables < 0.3 GB per rival, defo prep work folder
+  ~0.5-2 GB, Kraft store ~0.2 GB.
+- RAM: close apps first. Human steps need < 2 GB, except the defo prep (O10/O11: ~6 GB with 3 workers) and the
+  optional Kraft prep (3-5 GB).
+- No human TEST score before Part A is signed (D:\treeroute\human_rivals_build\PREREGISTRATION_DRAFT_human_partA.txt).
+  Steps 1-5 below read no test label; step 7 (refit, refs, score) comes after the signature.
+
+=====================================================================================================================
+1. ONCE: SET UP (minutes; can run any time, even while pm25 runs, except the tests' RAM)
+=====================================================================================================================
+Review the two DRAFT configs, then make the production copies (only you create them):
+
+  cd D:\treeroute\human_rivals_build\human
+  Copy-Item human_rivals_production.DRAFT.yaml human_rivals_production.yaml
+  Copy-Item human_rivals_DRY.DRAFT.yaml        human_rivals_DRY.yaml
+
+Open PowerShell and set these once per window (copy all lines):
+
+  cd D:\treeroute\human_rivals_build\human
+  $env:PYTHONDONTWRITEBYTECODE = "1"
+  $HCFG = "D:\treeroute\human_rivals_build\human\human_rivals_production.yaml"
+  $HDRY = "D:\treeroute\human_rivals_build\human\human_rivals_DRY.yaml"
+  function hcli { py -3.9 -B -m rivals_human.cli @args --config $HCFG }
+  $CORAL = "D:\treeroute\runs\coral\headline\20261020_f3b8e3da"
+  $DEFO  = "D:\treeroute\runs\defo\headline\20261017_d71c61f4"
+  $PM    = "D:\treeroute\runs\pm25\headline\20261007_74e67609"
+  $NDVI  = "D:\treeroute\runs\ndvi\headline\20261016_d1de3158"
+  $FIRE  = "D:\treeroute\runs\fire\headline\20261017_869d1f38"
+  $EXP   = "D:\treeroute\rival_export"
+
+Freeze the code: from now on do not edit anything under D:\treeroute\human_rivals_build\human\rivals_human or
+\adapters (a code change changes the tool hash; every board refuses it). Watch a board with:
+  py -3.9 -B -m rivals_human.cli status --out <board folder>          (no --config; safe while a job runs)
+Resume after a kill: run the SAME command again (tune/refit with --resume). Any REFUSED line you do not expect:
+stop and send it to me.
+
+=====================================================================================================================
+2. FIRST GAP AFTER THE pm25 EXPORT ENDS (before or after its tune) - CORAL AND MANIFESTS (~1.5-2.5 h, < 1.5 GB)
+=====================================================================================================================
+  # O1 slim coral (BEFORE the coral export is ever deleted)                     2-5 min total (x), < 0.5 GB
+  foreach ($L in 0, 183, 365) { hcli slim --run $CORAL --export "$EXP\coral\20261020_f3b8e3da\lead_$L" }
+  # O4 manifests: coral products (SST npz 0.93 GB, climatology, Outlook 0.73 GB, store); downloads re-checked
+  foreach ($P in "coral_sst_npz", "crw_climatology", "crw_outlook", "coral_store_20261020") { hcli manifest --product $P }   # 1-3 min (x)
+  hcli manifest --product noaa_crw_dhw_sitedays --verify                         # D6, seconds
+  hcli manifest --product gadm36_defo42 --verify                                 # D4, ~1 min (x)
+  # O5 manifests: PM2.5 products (MERRA-2 0.84 GB)
+  foreach ($P in "merra2_aer_monthly", "pm25_static_cells", "ndvi_static_cells") { hcli manifest --product $P }   # 1-2 min (x)
+  # O7 / O8 coral index tables (O7 runs the D6 check and the replay check inside; a failure refuses: send it to me)
+  hcli adapt --run $CORAL --rival crw_dhw --lead all                             # 15-25 min (x), < 1.5 GB
+  hcli adapt --run $CORAL --rival crw_outlook --lead all                         # 0.5-1 h (x), < 1 GB
+  hcli check --run $CORAL --rival crw_dhw
+  hcli check --run $CORAL --rival crw_outlook
+  # O9 coral TUNE-ONLY DRY pass (DRY board: refit/refs/score refuse it; reads no test row)          minutes, < 1 GB
+  py -3.9 -B -m rivals_human.cli init --run $CORAL --dry --config $HDRY
+  $DOUT = "D:\treeroute\rivals_human_dry\coral\20261020_f3b8e3da"
+  py -3.9 -B -m rivals_human.cli tune --out $DOUT --resume --config $HDRY
+  py -3.9 -B -m rivals_human.cli lock --out $DOUT --config $HDRY
+  py -3.9 -B -c "import json,sys; sys.path.insert(0,'.'); from rivals_human import lockfile as LK; print(LK.picks_content_sha(json.load(open(r'$DOUT\human_picks.json'))['picks']))"
+  -> send me: the last line (DRY picks content), $DOUT\trials.csv, and the crw_outlook lines of the tune log
+     (they show the real 183 / 365 fit-row counts: expected about 239 rows / 22 groups and 38 / 11).
+
+=====================================================================================================================
+3. AFTER THE pm25 COMMON EXPORT IS SEALED (ACCEPTED_ALL_LEADS.json exists) - PM2.5 (~1-2 h, < 2 GB)
+=====================================================================================================================
+  # O2 slim pm25 (the pm25 export stays on disk until its common board is done anyway)
+  foreach ($L in 0, 6, 12) { hcli slim --run $PM --export "$EXP\pm25\20261007_74e67609\lead_$L" }   # 5-15 min per lead (x)
+  # O12 MERRA-2 rows (optional P row; the P row if D1 never lands, PLAN R2)
+  foreach ($R in "merra2_lag1", "merra2_same", "merra2_lag1_placebo") { hcli adapt --run $PM --rival $R --lead 0 }   # 10-20 min each (x)
+  # D1 (CAMS EAC4) needs YOUR ADS key file + licence click and the download (DOWNLOAD_COMMANDS.md 2.2). Then:
+  hcli manifest --product cams_eac4_monthly_pm2p5 --verify
+  foreach ($R in "eac4_lag1", "eac4_same", "eac4_lag1_placebo") { hcli adapt --run $PM --rival $R --lead 0 }       # O13, 10-20 min each (x)
+  IMPORTANT: do NOT `init` the pm25 human board before D1 is on disk and adapted. human_board.json is written once;
+  init now refuses while the non-optional parity rival eac4_lag1 is waiting. If you decide D1 will not come (PLAN R2:
+  MERRA-2 becomes the P row), record that decision in Part A section 11 and use, in step 7:
+      hcli init --run $PM --allow-waiting
+      hcli lock --out <board> --without eac4_lag1 eac4_same eac4_lag1_placebo --decision "<your decision, as in the Part>"
+
+=====================================================================================================================
+4. DEFO (an evening or night ALONE for the prep; then after the defo common export)
+=====================================================================================================================
+  # O6 manifests (reads 32 GB of Hansen tiles once: HDD)                       6-12 min (x), < 0.2 GB
+  foreach ($P in "hansen_gfc_v1_13", "defo_target", "defo_static") { hcli manifest --product $P }
+  # O10 defo prep stage TRAIN: ~20 distance maps (years <= 2019) + count tables + loss_px parity <= 2019
+  #     3 workers: 3-4.5 h (x), ~6 GB RAM. Nothing else running. Resumable per region x map (run it again).
+  hcli prep --run $DEFO --rival vt0007_shipped --stage train
+  hcli manifest --product defo_vt0007_prep                                       # staged product: hash stage train
+  # O3 slim defo: AFTER the common defo export exists, BEFORE you delete it
+  foreach ($L in 0, 1) { hcli slim --run $DEFO --export "$EXP\defo\20261017_d71c61f4\lead_$L" }   # 5-15 min per lead (x)
+  foreach ($R in "vt0007_shipped", "vt0007_cal", "vt0007_frozen2019") { hcli adapt --run $DEFO --rival $R --lead all --stage train; hcli check --run $DEFO --rival $R }   # minutes (x)
+  (The defo prep may run before the defo common export: it reads only Hansen tiles and the static table. The slim and
+  the adapt need the export.)
+
+=====================================================================================================================
+5. NDVI (with the common NDVI board, ONE LEAD AT A TIME)
+=====================================================================================================================
+  After EACH `rivcli export --run $NDVI --lead L` of the common board, and BEFORE you delete that lead's export:
+  hcli slim --run $NDVI --export "$EXP\ndvi\20261016_d1de3158\lead_<L>"        # 5-15 min per lead (x), < 2 GB
+  (H1 is a runner: no adapt. It refuses at slim if the export lacks its six x__V02 / x__V30 columns: send it to me.)
+  Optional Kraft LSTM (O15; a night; Part A lists it as optional):
+  hcli manifest --product monthly_panel                                          # 40.9 GB read: 8-12 min (x)
+  hcli prep --run $NDVI --rival kraft_lstm                                       # 1-2 h (x), 3-5 GB; RESUMES per region if killed
+  hcli manifest --product ndvi_kraft_store
+
+=====================================================================================================================
+6. PART A: SIGN (after steps 2-5 and your decisions in Part A section 11)
+=====================================================================================================================
+  foreach ($R in $CORAL, $DEFO, $PM, $NDVI) { hcli shas --run $R }              # seconds; the hashes for Part A section 1
+  Fill the "TO FILL" lines of PREREGISTRATION_DRAFT_human_partA.txt from this output (or send it to me), decide the
+  open items of its section 11, then sign. No human test score exists before this.
+
+=====================================================================================================================
+7. AFTER THE SIGNATURE: THE BOARDS (O16; per problem 1-3 h (x), < 3 GB; each after its common board is scored)
+=====================================================================================================================
+Coral (~0.5-1 h (x)):
+  hcli init --run $CORAL
+  $HOUT = "D:\treeroute\rivals_human\coral\20261020_f3b8e3da"
+  hcli tune --out $HOUT --resume ; hcli lock --out $HOUT
+  (check: picks content must equal the DRY pass of step 2; same command as there with $HOUT. If not: STOP, send it)
+  foreach ($L in 0, 183, 365) { hcli refit --out $HOUT --lead $L --resume }
+  foreach ($L in 365, 183, 0) { hcli refs --out $HOUT --lead $L }                # leads >= 1 first: the parity proof
+  foreach ($L in 0, 183, 365) { hcli score --out $HOUT --lead $L }               # opens the test labels
+  hcli board --out $HOUT
+
+Defo (~1.5-3 h (x) incl. the stage-test prep):
+  hcli init --run $DEFO
+  $HOUT = "D:\treeroute\rivals_human\defo\20261017_d71c61f4"
+  hcli tune --out $HOUT --resume ; hcli lock --out $HOUT
+  hcli prep --run $DEFO --rival vt0007_shipped --stage test                      # O11: 0.5-1 h (x), ~6 GB; needs the lock
+  hcli manifest --product defo_vt0007_prep                                       # adds the stage-test files
+  foreach ($R in "vt0007_shipped", "vt0007_cal", "vt0007_frozen2019") { hcli adapt --run $DEFO --rival $R --lead all --stage test; hcli check --run $DEFO --rival $R }
+  foreach ($L in 0, 1) { hcli refit --out $HOUT --lead $L --resume }
+  foreach ($L in 1, 0) { hcli refs --out $HOUT --lead $L }
+  foreach ($L in 0, 1) { hcli score --out $HOUT --lead $L }
+  hcli board --out $HOUT
+
+PM2.5 (~1-2 h (x)): after step 3 (D1 adapted, or the R2 decision):
+  hcli init --run $PM                                                            # or --allow-waiting (step 3)
+  $HOUT = "D:\treeroute\rivals_human\pm25\20261007_74e67609"
+  hcli tune --out $HOUT --resume ; hcli lock --out $HOUT                         # (+ --without ... --decision if R2)
+  foreach ($L in 0, 6, 12) { hcli refit --out $HOUT --lead $L --resume }
+  foreach ($L in 12, 6, 0) { hcli refs --out $HOUT --lead $L }
+  foreach ($L in 0, 6, 12) { hcli score --out $HOUT --lead $L }
+  hcli board --out $HOUT
+
+NDVI (~0.5-1.5 h (x); + Kraft 20-60 min CPU training if prepared): after all three NDVI slims:
+  hcli init --run $NDVI
+  $HOUT = "D:\treeroute\rivals_human\ndvi\20261016_d1de3158"
+  hcli tune --out $HOUT --resume ; hcli lock --out $HOUT
+  foreach ($L in 0, 6, 12) { hcli refit --out $HOUT --lead $L --resume }
+  foreach ($L in 12, 6, 0) { hcli refs --out $HOUT --lead $L }
+  foreach ($L in 0, 6, 12) { hcli score --out $HOUT --lead $L }
+  hcli board --out $HOUT
+
+=====================================================================================================================
+8. ONE RIVAL TABLE (O17; minutes, < 1 GB) - fire is Part B: joined from its common board as "pending" (Q24)
+=====================================================================================================================
+  hcli join --runs $CORAL $DEFO $PM $NDVI --pending $FIRE --part "<Part A number>"
+  -> D:\treeroute\rivals_table\<stamp>\RIVALS_TABLE.md / .csv / inputs_sha256.txt
+
+=====================================================================================================================
+9. TIME AND RAM SUMMARY (x = estimate)
+=====================================================================================================================
+| Step | When | Time | Peak RAM |
+|---|---|---|---|
+| 1 setup | any time | minutes | - |
+| 2 coral slim + manifests + adapt + DRY | first gap after the pm25 export | ~1.5-2.5 h | < 1.5 GB |
+| 3 pm25 slim + MERRA-2 (+ EAC4 after D1) | after the pm25 export is sealed | ~1-2 h (+0.5-1 h EAC4) | < 2 GB |
+| 4 defo manifests + prep train | an evening or night alone | ~3.5-5 h | ~6 GB |
+| 4 defo slim + adapt train | after the defo common export | ~0.5 h | < 2 GB |
+| 5 ndvi slim per lead (+ Kraft optional) | after each NDVI common export | ~0.3-0.8 h (+ ~2-3 h Kraft) | < 2 GB (3-5 GB Kraft) |
+| 7 boards (4 problems) | after the Part A signature | ~4-8 h | < 3 GB (defo stage test ~6 GB) |
+| 8 join | at the end | minutes | < 1 GB |
+| All human Part A | | about 11-20 h of machine time (SPEC_HUMAN 8: 9-20 h) | |

@@ -1,0 +1,25 @@
+columns:
+  row_id: {role: key_row}
+  site: {role: key_unit}
+  region: {role: key_group}
+  lat: {role: key_lat}
+  lon: {role: key_lon}
+  visit_date: {role: key_time, calendar_part: date}
+  issue_date: {role: key_issue}
+  feature_end: {role: key_feature_end}
+  mark: {role: key_mark}
+  y:
+    role: target
+    legal_range: [0, 100]
+    legal_range_source: a synthetic percent cover, 0 to 100
+    stamp: event_date
+    window: {length: 1, unit: day, align: backward}
+  f1: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  f2: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  f3: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  f4: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  f5: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  f6: {role: driver, co_measured_with_target: false, co_measured_evidence: Part 1}
+  c_season: {role: router_context}
+  c_aux: {role: router_context}
+  source: {role: report_stratum}

@@ -1,0 +1,147 @@
+{
+ "adopted_arm": "log_c_corrector_unweighted",
+ "adopted_column": "arm__log_c_corrector_unweighted",
+ "adoption_file": "adoption.json",
+ "adoption_sha256": "d8ebdd4cc458b276938bee2bf165088ac9c622f133518031f7c6c806592ee54a",
+ "alarm_origin": "owner ruling AE3: the twin-disagreement alarm was designed AFTER the engine v1 headline runs, from the diagnosis of Parts 601-604. Its effect on any engine v1 run is a POST-HOC replay, labelled post-hoc. Only runs on new data under engine v2 count as pre-registered for the alarm.",
+ "batch_rule": "AE1 amendment: a batch is the rows sharing the issue calendar month (a grid step of one month or more: the issue step itself; a finer step or a day-dated row: the calendar month of the issue's first day); a batch below A8.alarm_min_batch_rows rows is not tested",
+ "batches": [
+  {
+   "batch": "step:2020",
+   "fired": false,
+   "gap": 0.00014569897856135758,
+   "ratio": 1.0619900383296395,
+   "rows": 92274,
+   "tested": true
+  },
+  {
+   "batch": "step:2021",
+   "fired": false,
+   "gap": 0.00012882671244443455,
+   "ratio": 0.9390092273648379,
+   "rows": 92274,
+   "tested": true
+  },
+  {
+   "batch": "step:2022",
+   "fired": false,
+   "gap": 0.000141587162099692,
+   "ratio": 1.0320192851723704,
+   "rows": 92274,
+   "tested": true
+  },
+  {
+   "batch": "step:2023",
+   "fired": false,
+   "gap": 0.00015996570821736277,
+   "ratio": 1.1659792695776747,
+   "rows": 92274,
+   "tested": true
+  }
+ ],
+ "batches_fired": 0,
+ "batches_tested": 4,
+ "constants": {
+  "A8.alarm_min_batch_rows": 30,
+  "A8.alarm_ratio_threshold": 2.0
+ },
+ "eligibility_basis": {
+  "baseline": "log_c_trees_off_unweighted",
+  "baseline_mae": 0.006102746693604387,
+  "basis": "owner ruling AF2: the twin's decision-surface MAE at the ADOPTED penalty point, strictly below its own link's trees-off (log_c_trees_off_unweighted)",
+  "eligible": true,
+  "in_adoption_eligible_list": true,
+  "in_adoption_eligible_list_note": "the twin's own best point (N2 in select_adoption); information only, not used since AF2",
+  "point": {
+   "level": 0.1,
+   "ratio": null
+  },
+  "ruling": "AF2",
+  "twin_key": "log_c_plain_unweighted@level=0.1,ratio=None",
+  "twin_mae": 0.005808902179729096
+ },
+ "lead": 0,
+ "leads": "not replayable (twin not saved in v1): a v1 lead routed only its pinned arm; routing the twin is a re-run",
+ "package": "defo",
+ "pass": "nowcast test pass (POST-HOC replay of a saved v1 run)",
+ "post_hoc": true,
+ "reference": {
+  "columns": [
+   "log_c_corrector_unweighted@level=0.1,ratio=None",
+   "log_c_plain_unweighted@level=0.1,ratio=None"
+  ],
+  "file": "inner_preds.parquet",
+  "gap": 0.00013719429872479928,
+  "point": {
+   "level": 0.1,
+   "ratio": null
+  },
+  "rows": 276822,
+  "surface": "decision surface",
+  "surface_sha256": "d852c78378fa02e69a644df55510a62cdc09a46179d6e7d80eebeadbdfbad9e2"
+ },
+ "rows_switched": 0,
+ "rule": "owner ruling AE1 with the AE1 amendment (the owner rulings file, section AE): per issue batch, the mean absolute gap between the adopted arm and its twin on the test rows, over the same gap on the pass's reference surface at the adopted point; above the threshold, and only when the twin is the simpler arm and was eligible on the surface at the adopted point (AF2), the batch's rows take the twin; a zero reference gap is not tested (AF1); recorded and locked before the pass's test labels open",
+ "rulings": {
+  "AE1": "the rule (with the AE1 amendment: batches are issue calendar months, at least A8.alarm_min_batch_rows rows)",
+  "AF1": "owner ruling AF1 (the owner rulings file, section AF): if the adopted arm and its twin agree exactly on the reference surface (reference gap 0, or not finite), the pass is recorded 'not tested' and the adopted arm stands",
+  "AF2": "owner ruling AF2 (the owner rulings file, section AF): the twin's eligibility is judged at the point the alarm uses: at the nowcast, the ADOPTED penalty point (the twin's decision-surface MAE there strictly below its own link's trees-off MAE, or the donor-row median's under ruling V1), not the twin's own best point; at a lead, the pinned point on the lead's guard surface",
+  "AF3": "the alarm (AE, the AE1 amendment, AF1-AF2) is part of the architecture from engine v2 on"
+ },
+ "run_folder": "D:\\treeroute\\runs\\defo\\headline\\20261017_d71c61f4",
+ "run_id": "20261017_d71c61f4",
+ "scores": {
+  "band": 0.0001104494047927938,
+  "blocked_jackknife_with": {
+   "flag": false,
+   "high": 0.0005171178887912821,
+   "low": 7.864663029976996e-05,
+   "mean": 0.00029788225954552604,
+   "n_blocks": 40,
+   "se": 0.0001118549128804878
+  },
+  "pooled_mae_reference": 0.005714597480035355,
+  "pooled_mae_with": 0.005415798421978487,
+  "pooled_mae_without": 0.005415798421978487,
+  "verdict_with": {
+   "band": 0.0001104494047927938,
+   "contrast": {
+    "high": 0.0005101012594542418,
+    "low": 8.749685665949351e-05,
+    "mean": 0.0002987990580568677,
+    "n_groups": 42,
+    "se": 0.00010780724561090518
+   },
+   "groups_better": 42,
+   "pooled_contrast": 0.0002987990580568681,
+   "reference": "own_link_trees_off",
+   "sign_flip_groups": [],
+   "tag": "helps"
+  },
+  "verdict_without": {
+   "band": 0.0001104494047927938,
+   "contrast": {
+    "high": 0.0005101012594542418,
+    "low": 8.749685665949351e-05,
+    "mean": 0.0002987990580568677,
+    "n_groups": 42,
+    "se": 0.00010780724561090518
+   },
+   "groups_better": 42,
+   "pooled_contrast": 0.0002987990580568681,
+   "reference": "own_link_trees_off",
+   "sign_flip_groups": [],
+   "tag": "helps"
+  }
+ },
+ "scores_file": "alarm_replay_scores.csv",
+ "scores_sha256": "6f64bf05b262be1176c41e0fa2568aeca4ed38b98700d8a3821b9771dc1fe615",
+ "status": "active",
+ "tag": "POST-HOC (AE3)",
+ "test_rows": 369096,
+ "twin_arm": "log_c_plain_unweighted",
+ "twin_eligible": true,
+ "twin_kind": "tool",
+ "twin_routed": true,
+ "twin_simpler": true
+}

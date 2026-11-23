@@ -1,0 +1,30 @@
+# Human-rival tool config (SPEC_HUMAN.txt 1.1): paths only, every path absolute. BUILD and TEST values.
+# Every write root of the build is under D:/treeroute/human_rivals_build (the build's only write root); the machine
+# file is the build's TEST machine (builder D), whose temp_dir holds a heavy-job lock of its own, so a build command
+# never touches the engine's lock D:/treeroute/tmp/treeroute_heavy_job.lock.
+#
+# PRODUCTION values (owner commands; write them into a separate production yaml and pass it with --config):
+#   machine_file      C:/Users/<user>/Desktop/data set for reserch paper/engine/config/machine.yaml
+#   out_root          D:/treeroute/rivals_human            (boards at <out_root>/<package>/<run>, PROT:55)
+#   moved_root        D:/treeroute/rivals_human/_moved
+#   slim_root         D:/treeroute/rivals_human            (slim at <slim_root>/<package>/<run>/slim/lead_<L>, PROT:54)
+#   index_root        D:/treeroute/human_index             (PROT:53)
+#   table_root        D:/treeroute/rivals_table            (PROT:56)
+#   the other keys as below.
+engine_root: 'C:/Users/<user>/Desktop/data set for reserch paper/engine'
+machine_file: 'D:/treeroute/human_rivals_build/human/_machine/machine.yaml'
+export_root: 'D:/treeroute/rival_export'
+export_ckpt_root: 'D:/treeroute/rival_export/_engine_run_root'
+out_root: 'D:/treeroute/human_rivals_build/_out'
+moved_root: 'D:/treeroute/human_rivals_build/_moved'
+common_build_root: 'D:/treeroute/rivals_build'
+common_harness_sha256: 'b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2'   # Part 608 fix (was 71457aa9); ruling AG
+common_board_root: 'D:/treeroute/rivals'
+slim_root: 'D:/treeroute/human_rivals_build/_slim'
+index_root: 'D:/treeroute/human_rivals_build/_index'
+products_root: 'D:/treeroute/human_products'
+on_disk_products: 'D:/treeroute/human_rivals_build/human/registry/_products.yaml'
+table_root: 'D:/treeroute/human_rivals_build/_table'
+registry_dir: 'D:/treeroute/human_rivals_build/human/registry'
+# common_harness_accepted_boards: deliberately absent in the BUILD config (ruling AG5 applies to the production and DRY
+# configs only), so build commands refuse the real coral and fire boards (fail loud).

@@ -1,0 +1,44 @@
+[2026-11-12 22:18:03 +    0.1s] problem fire, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map True; with pinned False
+[2026-11-12 22:18:03 +    0.1s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem fire --n 1000 --defo-regions 0
+[2026-11-12 22:18:03 +    0.1s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem fire --leads 0 --arcsine-tolerance 1e-12 --recorded-path-map
+[2026-11-12 22:18:03 +    0.1s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem fire --lead 0
+[2026-11-12 22:18:03 +    0.1s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem fire --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-12 22:18:03 +    0.1s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem fire --lead 0 --draws 2000
+[2026-11-12 22:18:03 +    0.1s] runner finished: [["sample", "dry-run"], ["treeroute rebuild leads [0]", "dry-run"], ["treeroute SHAP lead 0", "dry-run"], ["rivals lead 0", "dry-run"], ["compare lead 0", "dry-run"]]
+[2026-11-13 17:22:56 +    0.0s] problem fire, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map True; with pinned False
+[2026-11-13 17:22:56 +    0.0s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem fire --n 1000 --defo-regions 0
+[2026-11-13 17:23:16 +   20.0s] STEP sample: done in 20.0 s
+[2026-11-13 17:23:16 +   20.0s] STEP treeroute rebuild leads [0] (pre-check only): D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem fire --leads 0 --arcsine-tolerance 1e-12 --recorded-path-map --ignore-ram-warning --precheck-only
+[2026-11-13 17:23:58 +   61.6s] STEP treeroute rebuild leads [0] (pre-check only): done in 41.6 s
+[2026-11-13 17:23:58 +   61.6s] pre-check finished: [["sample", "done"], ["treeroute rebuild leads [0] (pre-check only)", "done"]]
+[2026-11-13 18:12:26 +    0.0s] problem fire, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map True; with pinned False
+[2026-11-13 18:12:26 +    0.0s] sample: registered sample found (1edbc3d1d690c3a7), N 1000, defo regions all
+[2026-11-13 18:12:26 +    0.0s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem fire --leads 0 --arcsine-tolerance 1e-12 --recorded-path-map
+[2026-11-13 18:12:38 +   12.1s] STEP treeroute rebuild leads [0]: stopped at a gate (a stop rule) in 12.1 s
+[2026-11-13 18:12:38 +   12.1s] lead 0: no finished treeroute rebuild (a gate stopped it, or it declined): no treeroute SHAP
+[2026-11-13 18:12:38 +   12.1s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem fire --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-13 18:19:09 +  402.7s] STEP rivals lead 0: stopped at a gate (a stop rule) in 390.6 s
+[2026-11-13 18:19:09 +  402.7s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem fire --lead 0 --draws 2000
+[2026-11-13 18:19:16 +  409.7s] STEP compare lead 0: done in 7.0 s
+[2026-11-13 18:19:16 +  409.7s] runner finished: [["treeroute rebuild leads [0]", "stopped at a gate (a stop rule)"], ["rivals lead 0", "stopped at a gate (a stop rule)"], ["compare lead 0", "done"]]
+[2026-11-13 18:46:37 +    0.0s] problem fire, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map True; with pinned False
+[2026-11-13 18:46:37 +    0.0s] sample: registered sample found (1edbc3d1d690c3a7), N 1000, defo regions all
+[2026-11-13 18:46:37 +    0.0s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem fire --leads 0 --arcsine-tolerance 1e-12 --recorded-path-map
+[2026-11-13 18:46:50 +   12.4s] STEP treeroute rebuild leads [0]: stopped at a gate (a stop rule) in 12.4 s
+[2026-11-13 18:46:50 +   12.4s] lead 0: no finished treeroute rebuild (a gate stopped it, or it declined): no treeroute SHAP
+[2026-11-13 18:46:50 +   12.4s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem fire --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-13 18:46:53 +   15.2s] STEP rivals lead 0: stopped at a gate (a stop rule) in 2.8 s
+[2026-11-13 18:46:53 +   15.2s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem fire --lead 0 --draws 2000
+[2026-11-13 18:46:59 +   21.9s] STEP compare lead 0: done in 6.7 s
+[2026-11-13 18:46:59 +   21.9s] runner finished: [["treeroute rebuild leads [0]", "stopped at a gate (a stop rule)"], ["rivals lead 0", "stopped at a gate (a stop rule)"], ["compare lead 0", "done"]]
+[2026-11-13 19:00:31 +    0.0s] problem fire, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map True; with pinned False
+[2026-11-13 19:00:31 +    0.0s] sample: registered sample found (1edbc3d1d690c3a7), N 1000, defo regions all
+[2026-11-13 19:00:31 +    0.0s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem fire --leads 0 --arcsine-tolerance 1e-12 --recorded-path-map --ignore-ram-warning
+[2026-11-13 21:13:04 + 7953.0s] STEP treeroute rebuild leads [0]: done in 7953.0 s
+[2026-11-13 21:13:04 + 7953.1s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem fire --lead 0
+[2026-11-13 21:17:44 + 8232.5s] STEP treeroute SHAP lead 0: done in 279.5 s
+[2026-11-13 21:17:44 + 8232.5s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem fire --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-13 21:17:50 + 8238.6s] STEP rivals lead 0: stopped at a gate (a stop rule) in 6.1 s
+[2026-11-13 21:17:50 + 8238.6s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem fire --lead 0 --draws 2000
+[2026-11-13 21:18:00 + 8249.1s] STEP compare lead 0: done in 10.5 s
+[2026-11-13 21:18:00 + 8249.1s] runner finished: [["treeroute rebuild leads [0]", "done"], ["treeroute SHAP lead 0", "done"], ["rivals lead 0", "stopped at a gate (a stop rule)"], ["compare lead 0", "done"]]

@@ -1,0 +1,509 @@
+{
+ "protocol_sha256": "c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4",
+ "problem": "fire",
+ "run": "D:\\treeroute\\runs\\fire\\headline\\20261017_869d1f38",
+ "adopted_point": {
+  "level": 100.0,
+  "ratio": 1.0
+ },
+ "chosen": "arcsine_corrector_gls",
+ "twin": "arcsine_corrector_unweighted",
+ "twin_simpler": true,
+ "eligible": [
+  "arcsine_plain_gls",
+  "arcsine_corrector_gls"
+ ],
+ "G1": {
+  "chosen_adopted": {
+   "recomputed": 0.00432778799168326,
+   "csv": 0.0043277879916832,
+   "ok": true
+  },
+  "eligible_own_arcsine_plain_gls": {
+   "point": "arcsine_plain_gls@level=100.0,ratio=1.0",
+   "recomputed": 0.004330021614010874,
+   "csv": 0.0043300216140108,
+   "ok": true
+  },
+  "eligible_own_arcsine_corrector_gls": {
+   "point": "arcsine_corrector_gls@level=100.0,ratio=1.0",
+   "recomputed": 0.00432778799168326,
+   "csv": 0.0043277879916832,
+   "ok": true
+  },
+  "eligible_set": {
+   "recomputed": [
+    "arcsine_corrector_gls",
+    "arcsine_plain_gls"
+   ],
+   "adoption_json": [
+    "arcsine_corrector_gls",
+    "arcsine_plain_gls"
+   ],
+   "ok": true
+  },
+  "twin_own_pick": {
+   "level": 100.0,
+   "ratio": 0.0625,
+   "mae": 0.0043869327012027
+  },
+  "twin_surface_mae_adopted_point": 0.004386949584483835,
+  "arcsine_trees_off_mae": 0.0043677728642013,
+  "twin_eligible": false
+ },
+ "G3": {
+  "surface_joined": 68901,
+  "surface_rows": 68901,
+  "test_joined": 96000,
+  "test_rows": 96000
+ },
+ "point_flags": [
+  {
+   "arm": "arcsine_corrector_unweighted",
+   "own_pick": {
+    "level": 100.0,
+    "ratio": 0.0625,
+    "mae": 0.0043869327012027
+   },
+   "used": {
+    "level": 100.0,
+    "ratio": 1.0
+   }
+  }
+ ],
+ "surface_rows": 68901,
+ "test_rows": 96000,
+ "test_rows_finite_C_T": 96000,
+ "folds": {
+  "by": "group (sha1(group) mod 5)",
+  "sizes": {
+   "0": 20685,
+   "1": 12159,
+   "2": 8749,
+   "3": 13531,
+   "4": 13777
+  },
+  "groups": {
+   "0": [
+    "angola_zambia_fire_belt",
+    "california_chaparral",
+    "canadian_prairies",
+    "hulunbuir_grassland",
+    "kalahari_woodland",
+    "llanos_venezuela",
+    "mediterranean_andalusia",
+    "mopane_woodland",
+    "northern_australia_monsoon",
+    "russian_far_east_primorye",
+    "scandinavian_taiga",
+    "southern_african_savanna"
+   ],
+   "1": [
+    "amazon_basin_brazil",
+    "australian_bushfire_belt",
+    "borneo_peat_fires",
+    "congo_basin_drc",
+    "mongolian_steppe",
+    "new_guinea_papua",
+    "northern_australia_woodland"
+   ],
+   "2": [
+    "cerrado",
+    "east_african_savanna",
+    "gobi_desert",
+    "sahel",
+    "thar_desert"
+   ],
+   "3": [
+    "alaska_interior_taiga",
+    "central_chile",
+    "eurasian_steppe",
+    "great_plains",
+    "greece_mainland",
+    "iberian_wildfire",
+    "siberian_taiga",
+    "yakutia_larch"
+   ],
+   "4": [
+    "canadian_taiga",
+    "cape_floristic_region",
+    "finnish_lapland",
+    "gran_chaco",
+    "kazakh_steppe",
+    "miombo_woodland_zambia",
+    "north_algeria_tell_atlas",
+    "sudanian_acacia"
+   ]
+  }
+ },
+ "alarm": {
+  "gap_surface": 0.00030606890628046105,
+  "gap_test": 0.00027415975844650867,
+  "ratio": 0.89574521560608,
+  "threshold": 2.0,
+  "fires": false,
+  "ratio_by_test_year": {
+   "2019": 0.9918742401083098,
+   "2020": 0.8992261956758401,
+   "2021": 0.8750804330038299,
+   "2022": 0.81679999363634
+  }
+ },
+ "M1": {
+  "uses": "C"
+ },
+ "M2": {
+  "uses": "C"
+ },
+ "M3": {
+  "uses": "0.5C+0.5T"
+ },
+ "M4": {
+  "arms": [
+   "arcsine_plain_gls",
+   "arcsine_corrector_gls"
+  ],
+  "surface_mae": 0.004328876136898921,
+  "chosen_surface_mae": 0.00432778799168326
+ },
+ "M5": {
+  "fold_weights": {
+   "0": [
+    1.0,
+    0.0
+   ],
+   "1": [
+    0.0,
+    1.0
+   ],
+   "2": [
+    0.0,
+    1.0
+   ],
+   "3": [
+    0.0,
+    1.0
+   ],
+   "4": [
+    0.0,
+    1.0
+   ]
+  },
+  "full_weights": [
+   0.0,
+   1.0
+  ],
+  "cf_mae": 0.004330447485973333,
+  "n_full_train": 50000,
+  "lp_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "chosen_surface_mae": 0.00432778799168326,
+  "applied": false,
+  "status": "FALLBACK:CF",
+  "seconds": 3.2970943450927734
+ },
+ "M5_placebo": {
+  "fold_weights": {
+   "0": [
+    1.0,
+    0.0
+   ],
+   "1": [
+    1.0,
+    0.0
+   ],
+   "2": [
+    1.0,
+    0.0
+   ],
+   "3": [
+    1.0,
+    0.0
+   ],
+   "4": [
+    1.0,
+    0.0
+   ]
+  },
+  "full_weights": [
+   1.0,
+   0.0
+  ],
+  "cf_mae": 0.006564621039811784,
+  "n_full_train": 50000,
+  "lp_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+  "chosen_surface_mae_on_placebo_y": 0.006566955520176942,
+  "applied_gated": true
+ },
+ "M6": {
+  "n_nontie": 16630,
+  "n_ties": 52271,
+  "n_class1": 6519,
+  "n_class0": 10111,
+  "base_rate": 0.3920024052916416,
+  "acc": 0.5694527961515333,
+  "auc": 0.5557258744548489,
+  "oof_mean_p": 0.416874699202078,
+  "status": "APPLIED",
+  "n_full_train": 16630,
+  "n_iter": [
+   125,
+   139,
+   140,
+   121,
+   143,
+   129
+  ],
+  "features_used": 116,
+  "dropped_missing": 0,
+  "dropped_constant": 2,
+  "top10_coef": [
+   [
+    "sph_kgkg",
+    -0.42428356386435107
+   ],
+   [
+    "era5l_d2m",
+    0.38917407115479846
+   ],
+   [
+    "nino4",
+    -0.36235401869790335
+   ],
+   [
+    "solar_radiation_Wm2",
+    -0.3451218840122118
+   ],
+   [
+    "hand_m",
+    0.3398218988429713
+   ],
+   [
+    "tc_vapor_pressure",
+    0.3367546769212725
+   ],
+   [
+    "aglw_total_lsu_hold2021",
+    0.3334531086688327
+   ],
+   [
+    "V26_slope_deg",
+    -0.3306210966415314
+   ],
+   [
+    "era5l_stl1",
+    0.3220549988148466
+   ],
+   [
+    "gdd5_degC_days",
+    -0.321567498419069
+   ]
+  ],
+  "test_share_switched_to_T_raw": 0.19765625,
+  "test_mean_p": 0.3651002401562875,
+  "seconds": 3.3941330909729004
+ },
+ "M6_placebo": {
+  "n_nontie": 16630,
+  "n_ties": 52271,
+  "n_class1": 6519,
+  "n_class0": 10111,
+  "base_rate": 0.3920024052916416,
+  "acc": 0.6049308478653037,
+  "auc": 0.4961407893778051,
+  "oof_mean_p": 0.3956575865654445,
+  "status": "APPLIED",
+  "n_full_train": 16630,
+  "n_iter": [
+   106,
+   115,
+   116,
+   157,
+   106,
+   115
+  ],
+  "features_used": 116,
+  "dropped_missing": 0,
+  "dropped_constant": 2,
+  "top10_coef": [
+   [
+    "sst_anom_nino34",
+    0.3878993945437659
+   ],
+   [
+    "sst_anom_global_tropical_mean",
+    0.2617116725118379
+   ],
+   [
+    "nino3",
+    -0.2534555138879541
+   ],
+   [
+    "sph_kgkg",
+    0.2508854734267553
+   ],
+   [
+    "nino4",
+    -0.22887215234682973
+   ],
+   [
+    "sst_anom_coral_sea",
+    -0.17386641018034132
+   ],
+   [
+    "ao",
+    -0.15504587299310313
+   ],
+   [
+    "nino12",
+    0.13359972355832886
+   ],
+   [
+    "sst_anom_iod_west",
+    -0.13357662217527552
+   ],
+   [
+    "vpd_max_daily",
+    -0.13265967785177152
+   ]
+  ],
+  "test_share_switched_to_T_raw": 0.07472916666666667,
+  "test_mean_p": 0.3709872219676983
+ },
+ "M6_features": {
+  "n": 118,
+  "excluded_target_derived": [
+   "tslf_months",
+   "tslf_censored",
+   "n_burns_12mo",
+   "n_burns_60mo",
+   "burn_rate_120mo",
+   "nbr25km_12mo_lag3",
+   "nbr75km_12mo_lag3",
+   "nbr25km_12mo_lag6",
+   "nbr75km_12mo_lag6"
+  ],
+  "columns": [
+   "V25_elevation_m",
+   "V26_slope_deg",
+   "V27_southness",
+   "V28_CTI",
+   "clay_pct",
+   "sand_pct",
+   "silt_pct",
+   "soil_organic_carbon_gkg",
+   "nitrogen_gkg",
+   "soil_ph",
+   "awc_cm3cm3",
+   "bulk_density_gcm3",
+   "cec_cmolkg",
+   "coarse_fragments_pct",
+   "hand_m",
+   "upstream_area_km2",
+   "irrigation_pct_gmia",
+   "dist_to_coast_km",
+   "V01_mean_temp_C",
+   "diurnal_temp_range_C",
+   "V02_total_precip_mm",
+   "V07_total_ref_ET_mm",
+   "aet_total_mm",
+   "climate_water_deficit_mm",
+   "soil_water_tc_mm",
+   "V05_mean_vpd_kPa",
+   "V09_mean_wind_ms",
+   "solar_radiation_Wm2",
+   "swe_mean_mm",
+   "tc_vapor_pressure",
+   "cloud_frequency_pct",
+   "snow_duration_days",
+   "frost_days",
+   "heatwave_days_gt35C",
+   "gdd5_degC_days",
+   "wet_day_count",
+   "V03_max_daily_precip_mm",
+   "precip_intensity_mm",
+   "vpd_max_daily",
+   "vpd_days_gt_2kpa",
+   "vpd_warm_season_mean",
+   "rmin_pct",
+   "sph_kgkg",
+   "V30_soil_moisture_pct",
+   "sst_anom_atl3",
+   "sst_anom_iod_west",
+   "sst_anom_iod_east",
+   "sst_anom_subpolar_north_atlantic",
+   "sst_anom_coral_sea",
+   "sst_anom_mediterranean",
+   "sst_anom_global_tropical_mean",
+   "sst_anom_nino34",
+   "nino12",
+   "nino3",
+   "nino4",
+   "nino34",
+   "oni",
+   "soi",
+   "tni",
+   "pdo",
+   "tna",
+   "tsa",
+   "iod",
+   "noi",
+   "ao",
+   "nao",
+   "pna",
+   "wp",
+   "epo",
+   "sam",
+   "V04_precip_seasonality",
+   "ntl",
+   "hdi",
+   "luh2_cropland",
+   "luh2_pasture",
+   "luh2_range",
+   "luh2_urban",
+   "luh2_forest",
+   "luh2_secondary",
+   "fert_n",
+   "fert_p",
+   "conflict_events",
+   "conflict_deaths",
+   "grace_lwe",
+   "deeprec_twsa",
+   "era5l_pev",
+   "era5l_sro",
+   "era5l_ssro",
+   "era5l_smlt",
+   "era5l_slhf",
+   "era5l_sshf",
+   "era5l_ssr",
+   "era5l_str",
+   "era5l_d2m",
+   "era5l_stl1",
+   "spi_01m",
+   "spi_03m",
+   "spi_06m",
+   "spi_12m",
+   "spi_24m",
+   "wbal_mm",
+   "wbal_roll3",
+   "wbal_roll6",
+   "wbal_roll12",
+   "V06_spei_12m_lag12",
+   "spei_01m_lag12",
+   "spei_03m_lag12",
+   "spei_06m_lag12",
+   "spei_24m_lag12",
+   "amo_lag12",
+   "aglw_cattle_hold2021",
+   "aglw_buffalo_hold2021",
+   "aglw_horse_hold2021",
+   "aglw_sheep_hold2021",
+   "aglw_goats_hold2021",
+   "aglw_total_lsu_hold2021",
+   "ctx:month",
+   "ctx:lat"
+  ]
+ },
+ "test_y_read": false,
+ "seconds": 8.876134395599365,
+ "peak_rss_gb": 0.6486854553222656
+}

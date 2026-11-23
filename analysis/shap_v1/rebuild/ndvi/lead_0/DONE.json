@@ -1,0 +1,37 @@
+{
+ "arcsine_tolerance": 0.0,
+ "arm": "identity_plain_unweighted",
+ "c": null,
+ "d8_licence": null,
+ "e8_bit_identical": true,
+ "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\ndvi\\headline\\20261115_d1de3158",
+ "files": {
+  "bank.npz": "a90c6ace9ce1bee3eea762a89eb82e15d141838ad9916f144f7e371a5fe1ac18",
+  "preds_check.parquet": "b204a451c85f8948beed02b01bd90d4e472e0f558b597c22c06431ab83b392a9",
+  "routers.npz": "1c55cf5506695d2a3c7089edbcc660534928825d5e4b289337866169e0ce92a1",
+  "rows.parquet": "c2d5009692f6b03825078c31c2b2cdad1b02dd2b8b33386b7f450a41dec7a399"
+ },
+ "identity": {
+  "engine_root": "d:/treeroute/analysis/ablation_perlocation/ckproof/engine_65a177bc",
+  "package_dir": null,
+  "path_map": true,
+  "sample_sha256": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+  "script_sha256": "b48196273b43ccc877249b00e16e2d4e11d3d09c83bad1eadd3ad200dc782beb",
+  "smoke_arm": null
+ },
+ "kind": "per_unit",
+ "legal": [
+  -0.2,
+  1.0
+ ],
+ "link": "identity",
+ "point": {
+  "level": 1.0,
+  "ratio": 0.0625
+ },
+ "rows_checked": 12768,
+ "sample_sha256": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+ "table_kind": "plain",
+ "ub": 1.0,
+ "weighted": false
+}

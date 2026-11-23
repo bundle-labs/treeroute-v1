@@ -1,0 +1,277 @@
+# catalog.yaml -- coral_draft package facts (SPEC_TABLE_MODE.md 1.3-1.5). GENERATED 2026-10-19 by
+# D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py; edit columns.py, not this file. UNSIGNED.
+# Every written column of every lead file is declared here (closed world on columns, T-COLUMNS). A role is not a
+# verdict: the verdicts are in ban.yaml. No store catalog: in a table the engine computes no lag (ruling U1), so the
+# timing of each feature is in its 'provenance' text and the owner vouches for it (ruling U2, AUDIT_CHECKLIST.md B).
+# Words in the provenance texts: T target date, A feature anchor (= T, or the month's first day for a month-precision
+# visit), L lead in days, C = A - L the feature cut; every data value used is dated strictly before C, and C is never
+# later than the issue date T - L.
+# The target window is one day, stamp event_date: T is the label's last content day (SPEC_TABLE_MODE.md 1.3, 1.5).
+# For a month-precision visit T is the month's last day, so the label is surely known after T, and its features end
+# before the month starts (A). fact_status is 'unverified' everywhere (the schema default): nothing here is signed.
+columns:
+  row_id:
+    role: key_row
+    provenance: '''<unit_id>|<T as YYYY-MM-DD>''; the same id is the same visit in every lead file'
+  unit_id:
+    role: key_unit
+    provenance: '''<GCBD ecoregion id, 3 digits>_<lat>_<lon>'' with lat/lon at 4 decimals from coral_safe.site_key (coral_safe.py:97-107)'
+  group:
+    role: key_group
+    provenance: ecoregion NAME from GCBD Ecoregion_Name_LUT (Site_Info_tbl.Ecoregion_Name is its integer key)
+  lat:
+    role: key_lat
+    provenance: site latitude rebuilt from the 4-decimal site key (EPSG:4326)
+  lon:
+    role: key_lon
+    provenance: site longitude rebuilt from the 4-decimal site key (EPSG:4326)
+  target_date:
+    role: key_time
+    calendar_part: date
+    provenance: 'T: GCBD Sample_Event_tbl Date_Year/Month/Day (not events_dated.date, which clamps the day at 28, CORAL_STATE.md:148-151); month-precision visits (Donner or Safaie with day 15, CORAL_DATA_AUDIT.md:65-69) take the month''s last day'
+  issue_date:
+    role: key_issue
+    provenance: T - L days, exactly (T-ISSUE)
+  feature_end:
+    role: key_feature_end
+    provenance: 'the last content day any feature window of the row may read at this lead (a window bound computed before any data is read, P24): the largest of the SST window end (C - g - 1), the cyclone window end (C - g - 1) and each index month''s last content day (month end + reach: +2 months nino34a, +1 month dmi). g = --sst-gap-days (default 1; UTC source days vs local survey dates). Always before the issue date (T-FEATEND); build_tables.py asserts every value read is on or before it'
+  mark:
+    role: key_mark
+    provenance: '''train'' when T is before 1 January of the first test year; ''test'' inside the test years (package parameter, default 2016-2019); later visits are not written'
+  pct_bleached:
+    role: target
+    legal_range:
+    - 0
+    - 100
+    legal_range_source: 'percent of colonies (Reef Check: of the 4 transect segments, each a percentage, averaged) bleached: a percentage by the survey protocols (GCBD Bleaching_tbl Percent_Bleached and S1-S4; coral_smoke_regress.py:9-14); values outside [0, 100] are dropped by the recipe (coral_smoke_regress.py:73)'
+    window:
+      length: 1
+      unit: day
+      align: backward
+    stamp: event_date
+    provenance: 'percent of coral bleached per visit: Reef_Check Population rows (level 1) -> mean of S1..S4; AGRRA, FRRP, McClanahan, Donner -> Percent_Bleached; Kumagai and Safaie excluded (ordinal only); mean per Sample_ID, then mean over the Sample_IDs of one visit (unit, T); rows outside [0, 100] dropped (coral_smoke_regress.py:65-76)'
+  programme:
+    role: report_stratum
+    provenance: GCBD Data_Source_LUT via Site_Info_tbl.Data_Source; 'mixed' when one visit merges Sample_IDs of two programmes
+  ctx_month:
+    role: router_context
+    provenance: 'calendar month of C (H3: the issue step; legacy read the TRUE date, coral_forecast.py:121)'
+  ctx_doy_sin:
+    role: router_context
+    provenance: sin(2 pi dayofyear(C) / 365.25)
+  ctx_doy_cos:
+    role: router_context
+    provenance: cos(2 pi dayofyear(C) / 365.25)
+  ctx_abslat:
+    role: router_context
+    provenance: '|lat| of the site (static, a physical location)'
+  ctx_mmm:
+    role: router_context
+    provenance: 'MMM(C) = coral_dhw_model.mmm_from (coral_dhw_model.py:69-93) on the SST values before C: per calendar month a linear trend of the monthly means, read at epoch 1988.2857; the largest month; needs 365 values and 10 distinct years; every SST value used is dated strictly before C = A - L (coral_forecast.py:110: searchsorted ''left'')'
+  dhw_30:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 30 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_30:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 30 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_30:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 30 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_30:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 30 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_30:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 30 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  dhw_56:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 56 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_56:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 56 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_56:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 56 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_56:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 56 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_56:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 56 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  dhw_84:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 84 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_84:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 84 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_84:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 84 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_84:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 84 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_84:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 84 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  dhw_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 90 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 90 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 90 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 90 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 90 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  dhw_180:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 180 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_180:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 180 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_180:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 180 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_180:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 180 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_180:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 180 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  dhw_365:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 365 daily SST values before C; hs = SST - MMM(C); sum of hs over days with hs >= 1, divided by 7
+  hs_max_365:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 365 daily SST values before C; hs = SST - MMM(C); max(hs)
+  n_above_mmm_365:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 365 daily SST values before C; hs = SST - MMM(C); count of hs > 0
+  n_above_mmm1_365:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 365 daily SST values before C; hs = SST - MMM(C); count of hs >= 1
+  cool_365:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); the last 365 daily SST values before C; hs = SST - MMM(C); sum of max(-hs, 0), divided by 7
+  days_since_max_hs:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); days from the max of the last 365 hs values to the last value (coral_forecast.py:135-136)
+  slope_90:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); least-squares slope of the last 90 SST values (np.polyfit; 0 under 90 values; coral_forecast.py:137-138)
+  lifetime_dhw:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); sum of gated hs over the whole record / 7 (coral_forecast.py:142)
+  n_dhw_ge4_before:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); rolling 84-value sums of hs (hs >= 1 only) / 7 over the whole record before C (coral_forecast.py:139-145); count of sums >= 4
+  max_dhw_before:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); rolling 84-value sums of hs (hs >= 1 only) / 7 over the whole record before C (coral_forecast.py:139-145); max of the sums (0 when none)
+  n_dhw_ge8_before:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); rolling 84-value sums of hs (hs >= 1 only) / 7 over the whole record before C (coral_forecast.py:139-145); count of sums >= 8
+  days_since_dhw4:
+    role: engineered
+    provenance: CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); hs_all = every SST value before C minus MMM(C); rolling 84-value sums of hs (hs >= 1 only) / 7 over the whole record before C (coral_forecast.py:139-145); values since the last sum >= 4, capped at 3650; 3650 when none (legacy wrote 99999, coral_forecast.py:146-147)
+  mhw_days_365:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; count of exceedance days'
+  mhw_days_90:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; count in the last 90 values'
+  mhw_days_30:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; count in the last 30 values'
+  mhw_icum_90:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; sum of (SST - threshold) on exceedance days of the last 90 values / 7'
+  mhw_imax_90:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; max of (SST - threshold) on exceedance days of the last 90 values'
+  mhw_nev_365:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; number of runs of >= 5 exceedance days (coral_mhw_features.py:98-107)'
+  mhw_durmax_365:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; longest such run'
+  mhw_since_end:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; values since the last run ended; 365 when none (a declared cap, not a fill code)'
+  mhw_cat_max_90:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; max over the last 90 values of (SST - threshold) / (threshold - MMM(C)), gap > 0.05 only'
+  mhw_thr_gap:
+    role: engineered
+    provenance: 'CoralTemp daily SST per site, D:/coral/drivers/sst_compact_all.npz (members uk/start/end/day/sst, read by byte-offset memory map, npz_map.py; site key coral_safe.site_key at 4 decimals); day-of-year p90 threshold from the SST values before C (11-day window, >= 20 values; coral_mhw_features.py:74-95); over the last 365 values before C: exceedance = SST > threshold; median of (threshold - MMM(C)) where > 0.05'
+  cyc_mindist_30:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 30, C); great-circle km (R = 6371); nearest point distance, capped at 9999 km; 9999 when no point (legacy wrote 9999 only when the window was empty and could exceed it otherwise)
+  cyc_maxw_200_30:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 30, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 200 km; 0 when none
+  cyc_n_200_30:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 30, C); great-circle km (R = 6371); count of points within 200 km
+  cyc_maxw_500_30:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 30, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 500 km; 0 when none
+  cyc_n_500_30:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 30, C); great-circle km (R = 6371); count of points within 500 km
+  cyc_mindist_90:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 90, C); great-circle km (R = 6371); nearest point distance, capped at 9999 km; 9999 when no point (legacy wrote 9999 only when the window was empty and could exceed it otherwise)
+  cyc_maxw_200_90:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 90, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 200 km; 0 when none
+  cyc_n_200_90:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 90, C); great-circle km (R = 6371); count of points within 200 km
+  cyc_maxw_500_90:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 90, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 500 km; 0 when none
+  cyc_n_500_90:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 90, C); great-circle km (R = 6371); count of points within 500 km
+  cyc_mindist_365:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 365, C); great-circle km (R = 6371); nearest point distance, capped at 9999 km; 9999 when no point (legacy wrote 9999 only when the window was empty and could exceed it otherwise)
+  cyc_maxw_200_365:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 365, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 200 km; 0 when none
+  cyc_n_200_365:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 365, C); great-circle km (R = 6371); count of points within 200 km
+  cyc_maxw_500_365:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 365, C); great-circle km (R = 6371); max usa_wind (knots, missing = 0) of points within 500 km; 0 when none
+  cyc_n_500_365:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 365, C); great-circle km (R = 6371); count of points within 500 km
+  cyc_days_since_close:
+    role: engineered
+    provenance: IBTrACS v04r01 track points, D:/coral/drivers/static/IBTrACS.ALL.v04r01.nc (lat, lon, time, usa_wind); points whose day is in [C - 3650, C); great-circle km (R = 6371); C minus the day of the last point within 200 km; 3650 when none
+  nino34a_lag3:
+    role: engineered
+    provenance: 'Nino-3.4 monthly SST, D:/coral/drivers/climate/nina34.txt (ERSST V6, ABSOLUTE values, PSL format, read by coral_extra_drivers.psl_index, :46-67); anomaly = value minus that calendar month''s 1951-1980 mean (a fixed base that ends before every visit, the first visit being 1994); month = the month 3 months before C''s month: the content reach of +2 months (ruling R-A) then ends before C''s month starts'
+  nino34a_lag6:
+    role: engineered
+    provenance: 'Nino-3.4 monthly SST, D:/coral/drivers/climate/nina34.txt (ERSST V6, ABSOLUTE values, PSL format, read by coral_extra_drivers.psl_index, :46-67); anomaly = value minus that calendar month''s 1951-1980 mean (a fixed base that ends before every visit, the first visit being 1994); month = the month 6 months before C''s month: the content reach of +2 months (ruling R-A) then ends before C''s month starts'
+  nino34a_lag9:
+    role: engineered
+    provenance: 'Nino-3.4 monthly SST, D:/coral/drivers/climate/nina34.txt (ERSST V6, ABSOLUTE values, PSL format, read by coral_extra_drivers.psl_index, :46-67); anomaly = value minus that calendar month''s 1951-1980 mean (a fixed base that ends before every visit, the first visit being 1994); month = the month 9 months before C''s month: the content reach of +2 months (ruling R-A) then ends before C''s month starts'
+  dmi_lag2:
+    role: engineered
+    provenance: 'Dipole Mode Index monthly anomaly, D:/coral/drivers/climate/dmi.txt (HadISST1.1, PSL format, -9999 = missing); month = the month 2 months before C''s month: under the proposed bound {3, month, centred} (reach +1 month) its content ends before C''s month starts'
+  dmi_lag5:
+    role: engineered
+    provenance: 'Dipole Mode Index monthly anomaly, D:/coral/drivers/climate/dmi.txt (HadISST1.1, PSL format, -9999 = missing); month = the month 5 months before C''s month: under the proposed bound {3, month, centred} (reach +1 month) its content ends before C''s month starts'
+  dmi_lag8:
+    role: engineered
+    provenance: 'Dipole Mode Index monthly anomaly, D:/coral/drivers/climate/dmi.txt (HadISST1.1, PSL format, -9999 = missing); month = the month 8 months before C''s month: under the proposed bound {3, month, centred} (reach +1 month) its content ends before C''s month starts'

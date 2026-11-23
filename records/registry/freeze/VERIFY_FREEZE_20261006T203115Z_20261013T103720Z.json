@@ -1,0 +1,124 @@
+{
+ "affected": [
+  "all packages"
+ ],
+ "drift": [
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "derive/census.py",
+   "locked": "49f28794059518856b101f4734bcc2f5b3f1a211dc5234d31c9c12413ea50b6b",
+   "now": "608fd522bec2ee423b411d7492723f0d96ec383b51e15b1cee5cc1f4aef42a97",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "engine_constants.py",
+   "locked": "d0c7521eb90e79c05f1e4c18eba6a07032c8555a411d3fcbb59af0047d7a58fc",
+   "now": "5e616d506c94ec4aaa26eeb1efe9ca9b4e84aacdc0c00e460289a8cc4b6d60d6",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "pipeline/run.py",
+   "locked": "38e7a6a67f87b88d1a2bc4bf0cb0fb5c771e99be44b833a936a990cc54eb1573",
+   "now": "60083259861387985f4f370e2f02904dfab886b6b1bd96c3f52aee0a6d97d546",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "pipeline/stream.py",
+   "locked": "33aea6b6fa9afe0dee39ec5228611a722f36e3d8783f81cec490919dcb9e8751",
+   "now": "b762a3f009264f89ba85f0f7dadcd551a905c8f5b8ab501f16796fd81f612760",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "runs/atomic.py",
+   "locked": "1f9936e32c6a4cb7cd0582841474324f58373c5ee69ac4d86a21f48dbec461d3",
+   "now": "9874063c26724fed9c69d38d99f7d7b4b7243d7916b5974008416e72d1c0b482",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "runs/checkpoint.py",
+   "locked": null,
+   "now": "8c0ea1ca427ad01265070db66df95ffd6bbb998ab470eaae03e5f46e1befa52d",
+   "what": "engine file"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "engine",
+   "locked": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+   "now": "1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1",
+   "what": "engine_code_sha256"
+  },
+  {
+   "affects": "all packages",
+   "change": "changed",
+   "item": "engine",
+   "locked": "6d19c3e20e8111b82cb10734c776ce3c2135f653f8896575f86260b1863468b6",
+   "now": "810eeca7664fc729a95dad5ea3408899812823c39fb4cb802413cc1fcb62fcaa",
+   "what": "engine code hash (comments stripped)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.census_checkpoint_chunks",
+   "locked": null,
+   "now": "[100, \"cited\", false, \"P6  Crash-safe checkpoints inside the long steps (owner ruling P, OWNER_RULINGS_2026-10-06.md section P, 2026-10-13; runs/checkpoint.py), added in this separate block at the end of the file. None of them can change a number of a run (ruling P2: a step that loads a checkpoint ends in the same bytes as one that computed it; the gates compare): the chunk sizes decide how much work a stop loses, the byte sizes only the G-DISK go/refuse of the checkpoints. origin: owner ruling P1 (\\\"checkpoint every chunk of files\\\"): the census pass saves a chunk after every 1/100 of the target files, so a stop loses at most about 1% of the pass (full-size NDVI, 2,926 files in 1,998 s on 2026-10-12: 30 files, about 20 s; a smoke's few files: one file a chunk). A chunk is a delta of the counters the files touched (derive/census.py checkpoint_delta), a few MB at full size, so 100 of them cost seconds.\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.census_checkpoint_seconds",
+   "locked": null,
+   "now": "[60, \"cited\", false, \"origin: owner ruling P1: a chunk also closes after this many seconds, so a store of few slow files still saves at least once a minute (a stop loses at most this plus the file being read).\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.checkpoint_census_bit_copies",
+   "locked": null,
+   "now": "[2, \"cited\", false, \"origin: counted from the same delta: the existence and validity bits of every (calendar step, unit) are written by the chunk that holds the unit's file of that step; a chunk whose code range spans two groups writes the touched steps over both groups' codes, so at most twice. G-DISK go/refuse only.\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.checkpoint_census_unit_bytes",
+   "locked": null,
+   "now": "[128, \"cited\", false, \"origin: counted from derive/census.py checkpoint_delta, per census unit over all chunks: its id as JSON text (up to about 60 bytes with quotes and comma), its group index (8) and its row count (8, written again by each chunk whose code range holds it: at most twice for a unit whose group spans a chunk edge), rounded up to 128 for the npz headers. G-DISK go/refuse only.\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.checkpoint_r30_feature_bytes",
+   "locked": null,
+   "now": "[256, \"cited\", false, \"origin: counted from the same record, per tree feature: its donor missing and zero counts, its last-value counts (five) and its test-year counts (one per test year, twice: the donor rows' and the streamed count's), each a pickled int beside its key (the column name is pickled once and referenced), bounded at 256 bytes a feature. G-DISK go/refuse only.\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  },
+  {
+   "affects": "all packages",
+   "change": "added",
+   "item": "P6.checkpoint_r30_group_bytes",
+   "locked": null,
+   "now": "[262144, \"cited\", false, \"origin: counted from pipeline/stream.py StreamedShareReader._measure_by_group's group record (pickled): the group's column-reader leftovers (its data manifest, its static report strata over its picked units, its last-value record) and the fixed parts of the counts, bounded at 256 KiB a group; the per-feature part below is counted apart. G-DISK go/refuse only.\"]",
+   "what": "engine constant (value, status, test-exposed, origin)"
+  }
+ ],
+ "lock": "D:\\treeroute\\registry\\freeze\\FREEZE_20261006T203115Z.lock.json",
+ "lock_sha256": "cb41d40c500aa13cea87f8c117598a58f0162fc4e9933c8e2bf919f519f05c9b",
+ "no_op_rule": "plan 8.1 M5: after the freeze only bug fixes. A bug fix re-runs every package already run, unless the no-op rule applies for that package: its derived.json and smoke outputs stay byte-identical, AND either a one-group full-width probe stays byte-identical or the changed functions are shown never to run on that package at full size.",
+ "rehash_inputs": false,
+ "verified_utc": "2026-10-13T10:37:20+00:00"
+}

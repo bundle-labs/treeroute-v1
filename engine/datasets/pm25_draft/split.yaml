@@ -1,0 +1,16 @@
+# split.yaml -- PM2.5 (APP_PLAN.md 1.2).
+# Leave-one-region-out (owner ruling D, 2026-09-28 night; owner rulings E, L7 b): this file holds ONLY the
+# exclusions {group: reason} and the optional seen_during_design groups (APP_PLAN.md 1.2). There is no donor or
+# test list: every group in the target data that is not excluded trains its own specialist trees and is tested,
+# and a unit's router never uses the trees of its own overlap block (R14, R18-R20). The groups, their bank and
+# scored units and the overlap blocks are derived from the data by plan (treeroute/split.py). A donor_groups or
+# test_groups key is refused (G-NOKNOB: "derived: every group is tested").
+# The shipped hard split (107 donor / 20 test groups, transcribed EXACTLY from the frozen, owner-ruled pm25_split.py
+# v3, 2026-09-24, Part 554; rulings N1, Q1, G4.2, Q6; sha256 5507ff59ca7a9083e5bf1004879ec452f93661e68e916eb223d12f5f5e41e18a:
+# TEST = pm25_split.py:55-76, DONORS = :78-186) moved to legacy_harness/shipped_splits.yaml, with this file's former
+# provenance comments verbatim; its 20 test groups are the continuity row (treeroute_report/continuity_groups.yaml).
+# excluded: none. The target store D:/pm25_acag holds exactly 127 groups, 22 years each (directory listing
+# 2026-09-28): all 127 are trained and tested. The 6 panel groups with no ACAG file (alaska_north_slope,
+# canadian_arctic_nunavut, finnish_lapland, taimyr_peninsula, tierra_del_fuego, yamal_peninsula) are not in this
+# package's target data at all, so they need no exclusion.
+excluded: {}

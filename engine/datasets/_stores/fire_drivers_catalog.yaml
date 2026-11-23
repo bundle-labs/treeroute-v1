@@ -1,0 +1,86 @@
+# fire_drivers -- side-store catalog SEED (physical facts only, all 'unverified'), 2026-09-28T12:30:28
+store: fire_drivers
+path_template: D:/fire/drivers/joined/{group}.parquet
+keys:
+  unit: lat+lon (fire key)
+  time:
+  - year
+  - month
+product: WGLC lightning, LPDR v3 VOD, ESA CCI biomass on the fire cells (fire_join_drivers.py)
+provenance: fire_join_drivers.py:64
+cadence: mixed (monthly; agb_* annual epochs)
+stamp: period_end
+window:
+  length: null
+  unit: null
+  align: unknown
+  text: per column; VOD smoothing undocumented
+fill_values: []
+fact_status_default: unverified
+generated_by: engine/datasets/_tools/export_review_csv.py
+generated_at: '2026-09-28T12:30:28'
+columns:
+- name: lgt_density
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.52381
+    min: -0.0
+    max: 0.19779087603092194
+- name: lgt_missing
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: lgt_is_zero
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.52381
+    min: -0.0
+    max: 1.0
+- name: vod_lag2
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.22659
+    min: -0.0
+    max: 2.995732545852661
+- name: vod_d1
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.26768
+    min: -1.3833271265029907
+    max: 1.042075753211975
+- name: vod_anom
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.22671
+    min: -1.7968868017196655
+    max: 1.6851861476898193
+- name: agb_lag1y
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.28571
+    min: -0.0
+    max: 403.0
+- name: agb_contrast
+  dtype: float
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.28571
+    min: -0.0
+    max: 15.0

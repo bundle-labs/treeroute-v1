@@ -1,0 +1,41 @@
+START_2026-10-25T21:04:41Z
+............................................................             [100%]
+============================== warnings summary ===============================
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\dask\dataframe\__init__.py:42: FutureWarning: 
+  Dask dataframe query planning is disabled because dask-expr is not installed.
+  
+  You can install it with `pip install dask[dataframe]` or `conda install dask`.
+  This will raise in a future version.
+  
+    warnings.warn(msg, FutureWarning)
+
+test_r02_runner_label_scope.py::test_r02_runner_fitted_on_tune_cannot_read_later_labels
+  <frozen importlib._bootstrap>:228: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+60 passed, 15 warnings in 112.78s (0:01:52)
+EXIT=0
+END_2026-10-25T21:06:35Z

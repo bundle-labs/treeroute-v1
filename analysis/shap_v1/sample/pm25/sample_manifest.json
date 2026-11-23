@@ -1,0 +1,74 @@
+{
+ "background_keys_removed_missing_context": {
+  "0": 0,
+  "12": 0,
+  "6": 0
+ },
+ "background_rows": {
+  "0": {
+   "max": 17,
+   "median": 17.0,
+   "min": 17
+  },
+  "12": {
+   "max": 17,
+   "median": 16.0,
+   "min": 16
+  },
+  "6": {
+   "max": 17,
+   "median": 17.0,
+   "min": 16
+  }
+ },
+ "defo_regions": 0,
+ "excluded_no_background": [],
+ "excluded_sentinel_or_no_background": [],
+ "frame_rows": 91428,
+ "leads": [
+  0,
+  6,
+  12
+ ],
+ "models_in_frame": {
+  "0": [
+   "ridge",
+   "rf",
+   "lgbm"
+  ],
+  "12": [
+   "ridge",
+   "rf",
+   "lgbm"
+  ],
+  "6": [
+   "ridge",
+   "rf",
+   "lgbm"
+  ]
+ },
+ "n": 1000,
+ "n_asked": 1000,
+ "problem": "pm25",
+ "regions_in_sample": 127,
+ "rows_per_year": {
+  "2020": 253,
+  "2021": 249,
+  "2022": 252,
+  "2023": 246
+ },
+ "rule": "PROTOCOL.md section 3 (v3)",
+ "selection": {
+  "regions": 127,
+  "units_per_region": 2,
+  "years": 4
+ },
+ "sha256": {
+  "background_lead_0.parquet": "e48f1fed9e7830ca24951a1c118d73e1dff1d9f1c44361b0104dd9ed5502b9fe",
+  "background_lead_12.parquet": "e56f48dc26e94b5b23fd66dd933b5e1d574ccd015fc731c6eb83b91429258ce0",
+  "background_lead_6.parquet": "c98ae72f8ce08483082729d08b5872d267eae178a4675b055b959c589610c3a8",
+  "sample.parquet": "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca"
+ },
+ "tag": "v1",
+ "units_in_sample": 254
+}

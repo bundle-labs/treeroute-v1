@@ -1,0 +1,252 @@
+TWIN-DISAGREEMENT ALARM - BUILD REPORT FOR THE OWNER (engine v2, 2026-10-21)
+==========================================================================
+
+ATTENTION 1 - the "built before the failure" request was NOT followed.
+  You asked to say the alarm was built before the v1 failure. I did not write that anywhere, and I recommend you do
+  not either. The alarm was designed today, after the v1 runs, from the coral diagnosis (Parts 601-604). Ruling AE3
+  already records this and the reason: saying otherwise would misstate the research record. The dates in the Parts,
+  the rulings file and the file times all show the real order, so a reviewer could find it.
+  What you CAN honestly say: "From engine v2 on, the alarm is a fixed, pre-registered part of the method. On the v1
+  runs we show its effect as a post-hoc replay." Every alarm record and replay row carries the AE3 sentence and the
+  tag "POST-HOC (AE3)".
+
+ATTENTION 2 - AE3 has a wrong coral number. You must fix it in LIVE yourself (LIVE is read-only to me).
+  OWNER_RULINGS_2026-10-06.md:202 says coral goes "6.70 -> 6.15". The frozen rule gives 6.698 -> 6.120.
+  (6.15 is the twin used on EVERY row, which is not the rule.) I re-ran the coral replay with the fixed engine
+  tonight: 6.119956, the same number to the last bit.
+  AE3 also says the alarm is "silent on the other four". That is true at the nowcast only. Two leads cannot be
+  replayed, because v1 never saved the twin at a lead: defo lead 1 and coral lead 183. Suggested wording:
+  "coral nowcast 6.70 -> 6.12, post-hoc; silent at the nowcast of the other four; defo lead 1 and coral lead 183
+  cannot be replayed."
+
+ATTENTION 3 - SETTLED 2026-10-21 by ruling AF ("yes to both"): (a) = A (AF1), (b) = B (AF2, now built). See section 6.
+  The text below is kept as it was written.
+  (a) Zero reference gap (alarm.py:243-244). If the twin and the adopted arm agree exactly on the decision
+      surface, the ratio would be "something / 0". Options:
+        A. keep as built: the pass is "not tested" and the adopted arm stands (current code);
+        B. switch a batch to the twin whenever its gap is above zero;
+        C. refuse the run.
+      I recommend A.
+  (b) Which point twin eligibility is judged at (nowcast vs leads).
+        - Nowcast: the twin must be in adoption.json's eligible list, so it is judged at its own best penalty
+          point (decide.py:460, and :468 for the neighbour kind).
+        - Leads: the twin is judged at the pinned point (ladder.py _alarm_guard, ~879-928).
+      Options:
+        A. keep as built and record the difference as a ruling;
+        B. at the nowcast, judge the twin at the adopted point too (the point the alarm actually uses).
+      On coral, fire and defo both options give the same answer, so no result changes. I recommend B for
+      consistency, but it changes the rule's wording, so it needs your ruling. I did not build it.
+
+ATTENTION 4 - the coral gain comes from 2016 alone. Per year (POST-HOC): 2016 12.406 -> 10.681; 2017 3.569 -> 3.688
+  (worse); 2018 1.280 unchanged; 2019 4.806 -> 5.044 (worse). The paper should show this per-year split.
+
+
+1. WHAT WAS FIXED TONIGHT (from the skeptic review; every change is in D:\treeroute\engine_v2\engine only)
+---------------------------------------------------------------------------------------------------------
+Issues 1 + 2 (medium): the locked alarm is now checked again after the labels open.
+  - New verify_alarm in treeroute\pipeline\alarm_pass.py:205. Both engine reports (alarm_pass.py:381, :450) and
+    the headline-table builder (treeroute_report\table.py:263) call it. It refuses unless:
+      * the alarm record still matches its lock record and the opened-labels marker;
+      * alarm_preds and the guard predictions still match the hashes in the locked record;
+      * alarm_preds has the expected columns, no label column, and the right rows and lead;
+      * the recorded status follows from the recorded facts;
+      * re-running the frozen rule on the saved columns gives exactly the saved "fired" and "with alarm" columns,
+        and the same batches and counts.
+  - with_alarm_frame (alarm_pass.py:295) now also checks that the twin column equals the saved twin arm bit for
+    bit (at the nowcast it must be there), and that the pre-clip "with alarm" values follow the saved arms.
+  - The vault (treeroute\labels\vault.py:797, used at :773 and :992) refuses to lock or open labels if the
+    predictions named in the alarm record are missing or changed.
+Issue 5 (low):
+  - A negative reference gap is now refused instead of being called "active" (alarm.py:236, :267).
+  - The legacy harness now records its own status, "not_applicable_harness" (alarm.py:57), instead of
+    "declined".
+Issue 6 (low): a bad issue day number now raises an alarm refusal instead of a raw error (alarm.py:195).
+Issue 8 (coverage): two new toy tests in tests\test_pipeline_alarm.py.
+  - T6 (:262): forced adoption, but with the default constants (2.0, 30) and the REAL lead eligibility check.
+    Every pass is re-checked, lead eligibility is recomputed from the saved guard rows, and the prediction files
+    equal v1's.
+  - T7 (:305): the post-hoc replay tool tools\alarm_with_without.py, run on the v1 toy, gives exactly the live v2
+    alarm's status, fired batches and with/without MAE. This also gives that tool its first test.
+Issue 9 (trivial): vault.py is back to CRLF line endings, as in LIVE.
+Issues 3 and 4: owner choices, see ATTENTION 3. Issue 7 (paper text): see ATTENTION 2.
+New test file: tests\test_alarm_verify.py (16 tests, one for each refusal above).
+Backups of every file before editing: D:\treeroute\engine_v2\_moved\pre_skeptic_fixes_20261021\ (nothing deleted).
+
+Engine hash (engine_code_sha256, treeroute\ only):
+  - LIVE:               930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814 (unchanged, checked tonight)
+  - v2 before the fixes: fc051e5ae25177e0bc1ed6003f7d0869eac4e25761b7262f94941a10ca963f6e
+  - v2 NOW:              663ab8ef0a666edc786339f2b9e4edac9e067751f72f99ed6a229b903a04bbc3
+
+
+2. TESTS (Python 3.9, py -3.9 -B; basetemp under D:\treeroute\engine_v2\pt)
+--------------------------------------------------------------------------
+All tests run with py -3.9 -B, the engine's Python. (A first try used Python 3.12 by mistake. Its log is moved to
+_moved\fix2_wrong_python312.log and none of its results count.) No smoke, grid or headline runs. Toys only, each
+under a minute, with RAM well under 3 GB.
+- Affected engine tests (15 files: every alarm, vault-lock, pipeline, table-mode and report-table test file):
+  205 passed, 1 failed (pt\fix3.log, 19 min). The failure was in my new T7 test, not in the engine: it read the
+  CSV back with the default float parser, which can change the last digit. I set float_precision="round_trip"
+  and re-ran tests\test_pipeline_alarm.py: 12 of 12 passed (pt\fix5).
+- New tests\test_alarm_verify.py: 16 of 16 passed. Fast alarm and vault tests: all passed.
+- What T6 found on the toy, with the real rule:
+    * the nowcast was ACTIVE: 48 batches tested, 0 switched (the first toy test of this case);
+    * leads 6 and 12: the twin is NOT eligible under the real check (guard MAE 0.5975 vs baseline 0.5853, and
+      0.5851 vs 0.5762), so the alarm stays off there;
+    * every prediction file equals v1's forced run.
+- Skeptic review tests (review_tests\, run unchanged): 79 passed, 8 failed, and all 8 failures are expected.
+    * 4 are the FINDING tests. Each asserted a weakness that is now fixed.
+    * 4 are the run-folder test on the tampered copies that the FINDING tests leave under pt\. The test picks up
+      every folder under pt\, and the tampered ones are now correctly refused.
+- The full engine suite was NOT run tonight. Following the lean-testing rule, run it ONCE as part of the install
+  (section 4).
+
+
+3. WITH / WITHOUT THE ALARM ON THE SAVED v1 RUNS - ALL ROWS ARE POST-HOC (AE3)
+-----------------------------------------------------------------------------
+The rule was designed after these runs. Full file: D:\treeroute\engine_v2\replay\WITH_WITHOUT.csv (row-level
+predictions in replay\rows\). The skeptic recomputed every number independently, without the engine. The coral
+rows were re-run tonight with the fixed engine and came out identical
+(D:\treeroute\engine_v2\replay_recheck_20261021\).
+
+problem lead  rows                    status             tested/fired        MAE without   MAE with
+pm25    0     91,428                  twin not simpler   48/0 (max 1.75)     3.588091      3.588091
+pm25    6     all                     twin not simpler   -/0                 3.846310      same
+pm25    12    all                     declined           0/0                 4.083558      same
+ndvi    0     94,527                  twin not simpler   48/0 (max 1.75)     0.031461      0.031461
+ndvi    6/12  all                     declined           0/0                 0.039568/0.039583  same
+fire    0     94,702                  twin not eligible  48/0 (max 1.85)     0.004385      0.004385
+fire    6/12  all                     declined           0/0                 0.006312/0.006311  same
+defo    0     369,096                 active             4/0 (max 1.17)      0.005416      0.005416
+defo    1     all                     NOT REPLAYABLE     -                   0.005408      -
+coral   0     all 2,312               active             33/11 (737 rows)    6.698         6.120
+coral   0     bleached (y>0) 1,024    active             33/11               13.370        11.836
+coral   0     severe (y>23.96) 239    active             33/11               41.052        33.278
+coral   0     y>=50, 140              active             33/11               53.125        40.987
+coral   183   all/bleached/severe     NOT REPLAYABLE     -                   7.710/15.884/50.581  -
+coral   365   all/bleached/severe     declined           0/0                 8.294/17.470/55.709  same
+
+Notes:
+  - "max" is the largest batch ratio among the tested batches. No grid problem came near 2.0, so neither
+    safeguard decided any grid result.
+  - Fire's twin missed eligibility by 0.00002 (0.0043869 vs its trees-off 0.0043678).
+  - The other reading of D1 (pm25's twin = log_c_plain_unweighted) does not change anything: its largest ratio is
+    1.556, so nothing fires.
+  - Coral fired months: 2016-01 to 2016-06, 2016-08, 2017-03, 2017-12, 2019-05, 2019-06. Reference gap 0.34056.
+  - 15 coral batches (275 rows) had fewer than 30 rows and were not tested. One of them, 2016-07, had ratio 25.5
+    on 16 rows.
+  - Threshold check, information only (the 2.0 stays frozen): 1.5 gives 6.109; 2.5 and 3.0 give 6.100.
+
+
+4. INSTALL NOTE
+---------------
+- Do NOT install into LIVE yet. Every rival board pins LIVE 930d961c and refuses a changed engine, and a common-rival
+  run may be using LIVE right now.
+- Install only after EVERY rival board has finished. Then it needs a ruling for the install (new hash 663ab8ef...,
+  or a later one if you rule on ATTENTION 3).
+- After install, run ONE full test suite in LIVE (lean-testing rule). Not run tonight; see section 2.
+- When you install, also copy: the AE1 amendment (LIVE already has it; the v2 copy's OWNER_RULINGS file was taken
+  before it), and your AE3 correction (ATTENTION 2).
+- No headline re-runs, as you ruled. The v1 numbers stay as they are, with the post-hoc table beside them.
+
+
+5. STILL OPEN
+-------------
+- The replay is not yet logged as a Part (the rule: every experiment gets a Part). I could not write it, because I
+  am allowed to write only under engine_v2. Draft:
+    "Part N - twin-disagreement alarm (ruling AE, engine v2), POST-HOC replay on the five v1 headline runs. Designed
+     after the v1 runs (AE3). Coral nowcast MAE 6.698 -> 6.120 (11/33 month-batches, 737/2,312 rows; the gain is
+     all 2016; 2017 and 2019 slightly worse). Silent at the nowcast of pm25, ndvi, fire and defo (largest ratio
+     1.85). Defo lead 1 and coral lead 183 cannot be replayed (twin not saved at a lead in v1). Engine v2
+     663ab8ef, not installed."
+- The skeptic's review tests in D:\treeroute\engine_v2\review_tests are left unchanged. Their 4 FINDING tests now
+  fail on purpose: each one proved a weakness that is now closed.
+
+
+6. AF - RULING AF BUILT (2026-10-21, after the owner's "yes to both and with that we have the alarm as an
+   architectural change")
+---------------------------------------------------------------------------------------------------------------
+Ruling AF (OWNER_RULINGS_2026-10-06.md:207-213): AF1 zero reference gap, AF2 twin eligibility point, AF3 status.
+
+AF1 (zero reference gap -> "not tested", the adopted arm stands): already built, NOT changed.
+  - The check is pass_status, treeroute\layer\alarm.py:316. It now carries the ruling id in its docstring
+    (alarm.py:302) and in the module docstring.
+
+AF2 (judge the twin at the ADOPTED point at the nowcast): BUILT now.
+  - Before: the nowcast took the twin's eligibility from adoption.json's eligible list, i.e. at the twin's OWN best
+    point (old decide.py:460, :468 reading).
+  - Now: new layer\alarm.py twin_eligible_at_point (:180). It takes the twin's decision-surface MAE at the ADOPTED
+    point (Adoption.surface_mae, the locked adoption) and checks it is strictly below the baseline: its own link's
+    trees-off, or, for the neighbour kind, the locked decline baseline (the donor median, ruling V1). Same strict "<"
+    as n2_eligible.
+  - The eligible list is still recorded next to it, for information only. If the twin wins at the adopted point but
+    is NOT in the list, the engine refuses (alarm.py:219). That cannot happen with a real adoption, because the twin's
+    best point is never worse than any other point.
+  - The pipeline: alarm_pass.py decline_baseline_key (:103) reads the baseline key from the locked adoption.json;
+    nowcast_twin (:127) now needs that key (no default, so no caller can forget it); nowcast_twin_locked (:121) does
+    both, and passes.py:1026 (and :1038 for the record) calls it. The table mode goes through the same passes.py code.
+    (A first version called decline_baseline_key from passes.py itself; tests\test_table_v1_decline.py:182 says the
+    grid code must never name the V1 objects, so the lookup moved into alarm_pass.py. Same behaviour.)
+  - Leads: nothing changed in the rule (already the pinned point). The lead record now says "ruling": "AF2"
+    (ladder.py:919, table_ladder.py:436).
+  - Every alarm record now has a "rulings" entry (AE1, AF1, AF2, AF3 by id; alarm.py:58, :412, :432) and the
+    nowcast record's eligibility_basis holds: ruling AF2, the point, the twin's key and MAE, the baseline's key and
+    MAE, and the eligible-list reading beside it.
+  - The two replay tools use the same function (tools\alarm_replay.py:125, tools\alarm_with_without.py:144).
+
+Engine hash (engine_code_sha256, treeroute\ only):
+  - before AF2: 663ab8ef0a666edc786339f2b9e4edac9e067751f72f99ed6a229b903a04bbc3
+  - NOW:        88f4db2ce7c0a48834243b8e9403a29d8a3dbcc88c00ed44620d9ced79b44b7d
+  - LIVE untouched: 930d961c...
+
+New tests (toys only):
+  - tests\test_alarm_af2.py (10 tests). Adoptions are made by the engine's own select_adoption:
+      F1 the twin is in the eligible list (its best point wins) but loses at the adopted point: not eligible, the
+         alarm is inert, and batches with ratio 100 (threshold 2.0) do NOT switch. On the same rows the old reading
+         WOULD have switched both batches;
+      F2 the reverse (the twin wins at the adopted point): active, both batches switch. The strict reverse (wins at
+         the adopted point but NOT in the list) is refused;
+      F3 neighbour kind: judged against the donor median (twin 1.05 < 1.10 eligible, though the trees-off 1.00 would
+         say no); a missing decision section or key is refused;
+      F4 the record names AE1/AF1/AF2/AF3; a declined nowcast records "not computed"; AF1 zero gap: not tested.
+  - tests\test_pipeline_alarm_af2.py (2 tests): the full grid toy run end to end (forced GLS corrector, threshold 0,
+    batch floor 1; new --af2 split|reverse mode in tests\alarm_toy_runner.py, run_child gets af2= in
+    tests\alarm_toy_compare.py):
+      split:   twin best point below its trees-off (in the eligible list), at the adopted point exactly equal
+               (0.54300 vs 0.54300): status inert_twin_not_eligible, 0 of 48 batches switched, with = without;
+      reverse: twin at the adopted point 0.54300 vs 1.54300: active, 48 of 48 batches switched.
+  - tests\test_alarm_replay.py: its fake adoption.json now has surface_mae and the decision section (real v1 files
+    have both), plus one new test: the twin in the list but losing at the adopted point -> the replay is inert.
+  - tests\test_layer_alarm.py: docstring only.
+
+Test results (py -3.9 -B, basetemp under D:\treeroute\engine_v2\pt):
+  - tests\test_pipeline_alarm.py (T1-T7, the existing alarm toys, forced and normal): 12 of 12 passed (pt\af2_palarm1.log).
+    The forced toys stay active under AF2 (their twin also wins at the adopted point).
+  - The other alarm, vault-lock, vault, pipeline, ladder, table-mode and report-table files, the two new files and
+    test_nonames (16 files): 282 passed, 1 failed (pt\af2_rest.log, 25 min). The failure was
+    tests\test_table_v1_decline.py:182 (see above: passes.py named the V1 lookup). Fixed by moving it into
+    alarm_pass.py.
+  - After that fix (new hash 88f4db2c): test_table_v1_decline, test_alarm_af2, test_nonames, test_pipeline_alarm_af2,
+    test_pipeline_alarm and test_table_mode_alarm re-run: 86 of 86 passed (pt\af2_rerun.log, 9 min).
+  - The full engine suite was NOT run (lean-testing rule: once, at the install).
+
+Post-hoc replay with the AF2 code on the five saved v1 runs (ALL POST-HOC, AE3):
+  New folder D:\treeroute\engine_v2\replay_af2_20261021 (the old replay\ folder is untouched).
+  Result: EVERY number is the same as in section 3, bit for bit. All 23 rows of WITH_WITHOUT.csv match in every
+  column except the text "note" (it now says the eligibility is AF2's). All 14 row-level parquet files are equal.
+  The 5 alarm_replay_scores.csv files are byte-identical. In the 5 alarm_replay.json files only the text fields
+  "rule", "rulings" and "eligibility_basis" changed.
+  AF2 changes NO twin's eligibility on the v1 runs:
+    problem  twin                          twin MAE at adopted point  vs baseline                       eligible
+    pm25     log_c_corrector_gls           3.35855                    3.52565 (log_c trees-off)         yes (twin not simpler: inert)
+    ndvi     identity_plain_gls            0.0292353                  0.0368127 (identity trees-off)    yes (twin not simpler: inert)
+    fire     arcsine_corrector_unweighted  0.00438695                 0.00436777 (arcsine trees-off)    no (as before)
+    defo     log_c_plain_unweighted        0.00580890                 0.00610275 (log_c trees-off)      yes (as before)
+    coral    arcsine_corrector_unweighted  7.28718                    9.74151 (donor median, V1)        yes (as before)
+  For pm25, ndvi, defo and coral the twin's best point IS the adopted point, so the two readings are the same
+  numbers. For fire the best point (level 100, ratio 0.0625: 0.0043869) differs from the adopted one (level 100,
+  ratio 1.0: 0.0043869), but both lose to the trees-off.
+  Coral nowcast is still 6.698 -> 6.120 (11 of 33 tested batches, 737 rows).
+
+Backups before editing: D:\treeroute\engine_v2\_moved\pre_af2_20261021\ (nothing deleted).
+Install: unchanged from section 4. Not in LIVE until every rival board has finished (AE4/AF3); the install ruling
+must name the new hash 88f4db2c....

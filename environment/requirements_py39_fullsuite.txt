@@ -1,0 +1,27 @@
+# OPTIONAL extras for Python 3.9.13, needed ONLY to re-run the FULL human-rival test suite (fire Part B's final check).
+# Installed only when 2_setup_python.ps1 is run with -WithFullSuite. Versions as recorded on the old machine.
+# PyTorch itself (torch==2.8.0+cu128) is installed by the script in a separate step from the PyTorch index,
+# because that build is not on PyPI; the packages below include its dependencies, so it is installed with --no-deps.
+
+# GIS libraries (forest-loss adapter tests)
+rasterio==1.4.3
+affine==2.4.0
+attrs==26.1.0
+click-plugins==1.1.1.2
+cligj==0.7.2
+importlib-metadata==8.7.1
+zipp==3.23.1
+pyparsing==3.3.2
+geopandas==1.0.1
+shapely==2.0.7
+pyogrio==0.11.1
+pyproj==3.6.1
+
+# PyTorch 2.8.0+cu128 dependencies (NDVI Kraft LSTM adapter tests)
+filelock==3.19.1
+fsspec==2025.10.0
+mpmath==1.3.0
+networkx==3.2.1
+sympy==1.14.0
+jinja2==3.1.6
+MarkupSafe==3.0.3

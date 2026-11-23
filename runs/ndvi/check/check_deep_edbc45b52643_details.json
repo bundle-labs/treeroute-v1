@@ -1,0 +1,4957 @@
+{
+ "checked_groups": {
+  "constants": {
+   "C13.smoke_groups": 4,
+   "C15.min_groups": 3
+  },
+  "data_groups": 133,
+  "groups": [
+   "alaska_interior_taiga",
+   "alaska_north_slope",
+   "amazon_basin_brazil",
+   "anatolian_plateau"
+  ],
+  "package_groups": 133,
+  "refused": null,
+  "rule": "R21",
+  "selection": "R21 smoke groups, ruling M2"
+ },
+ "guards": [
+  {
+   "details": {
+    "data_groups": 133,
+    "excluded": 0,
+    "groups": 133,
+    "seen_during_design": 2
+   },
+   "fix": "",
+   "id": "G-SPLIT",
+   "part": null,
+   "rule": "G-SPLIT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "V06_spei_12m_lag12": "derived from V06_spei_12m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_buffalo_hold2021": "derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_cattle_hold2021": "derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_goats_hold2021": "derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_horse_hold2021": "derived from aglw_horse, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_sheep_hold2021": "derived from aglw_sheep, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_total_lsu_hold2021": "derived from aglw_total_lsu, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_lag12": "derived from amo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_lag12": "derived from spei_01m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_lag12": "derived from spei_03m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_lag12": "derived from spei_06m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_lag12": "derived from spei_24m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)"
+    },
+    "leak_parent": {},
+    "sum_groups": {
+     "MOD44B_V15_V17_tree_cover": [
+      "V15_bare_ground_pct",
+      "V17_herb_cover_pct",
+      "tree_cover_pct"
+     ]
+    }
+   },
+   "fix": "confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only))",
+   "id": "G-LINEAGE",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {
+    "data_columns": 562,
+    "keep_unreviewed": [],
+    "verdicts": 562
+   },
+   "fix": "",
+   "id": "G-CLOSED",
+   "part": null,
+   "rule": "G-CLOSED"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-KEYS",
+   "part": null,
+   "rule": "G-KEYS"
+  },
+  {
+   "details": {
+    "lags": {
+     "V01_mean_temp_C": 0,
+     "V01_mean_temp_C_lag1": 0,
+     "V01_mean_temp_C_lag12": 0,
+     "V01_mean_temp_C_lag2": 0,
+     "V01_mean_temp_C_lag3": 0,
+     "V01_mean_temp_C_lag6": 0,
+     "V02_total_precip_mm": 0,
+     "V02_total_precip_mm_lag1": 0,
+     "V02_total_precip_mm_lag12": 0,
+     "V02_total_precip_mm_lag2": 0,
+     "V02_total_precip_mm_lag3": 0,
+     "V02_total_precip_mm_lag6": 0,
+     "V02_total_precip_mm_roll12": 0,
+     "V02_total_precip_mm_roll3": 0,
+     "V02_total_precip_mm_roll6": 0,
+     "V03_max_daily_precip_mm": 0,
+     "V03_max_daily_precip_mm_lag1": 0,
+     "V03_max_daily_precip_mm_lag12": 0,
+     "V03_max_daily_precip_mm_lag2": 0,
+     "V03_max_daily_precip_mm_lag3": 0,
+     "V03_max_daily_precip_mm_lag6": 0,
+     "V04_precip_seasonality": 1,
+     "V05_mean_vpd_kPa": 0,
+     "V05_mean_vpd_kPa_lag1": 0,
+     "V05_mean_vpd_kPa_lag12": 0,
+     "V05_mean_vpd_kPa_lag2": 0,
+     "V05_mean_vpd_kPa_lag3": 0,
+     "V05_mean_vpd_kPa_lag6": 0,
+     "V06_spei_12m_lag12": 0,
+     "V07_total_ref_ET_mm": 0,
+     "V07_total_ref_ET_mm_lag1": 0,
+     "V07_total_ref_ET_mm_lag12": 0,
+     "V07_total_ref_ET_mm_lag2": 0,
+     "V07_total_ref_ET_mm_lag3": 0,
+     "V07_total_ref_ET_mm_lag6": 0,
+     "V07_total_ref_ET_mm_roll12": 0,
+     "V07_total_ref_ET_mm_roll3": 0,
+     "V07_total_ref_ET_mm_roll6": 0,
+     "V07_total_ref_ET_mm_wytd": 0,
+     "V09_mean_wind_ms": 0,
+     "V09_mean_wind_ms_lag1": 0,
+     "V09_mean_wind_ms_lag12": 0,
+     "V09_mean_wind_ms_lag2": 0,
+     "V09_mean_wind_ms_lag3": 0,
+     "V09_mean_wind_ms_lag6": 0,
+     "V30_soil_moisture_pct": 0,
+     "V30_soil_moisture_pct_lag1": 0,
+     "V30_soil_moisture_pct_lag12": 0,
+     "V30_soil_moisture_pct_lag2": 0,
+     "V30_soil_moisture_pct_lag3": 0,
+     "V30_soil_moisture_pct_lag6": 0,
+     "V30_soil_moisture_pct_roll12": 0,
+     "V30_soil_moisture_pct_roll3": 0,
+     "V30_soil_moisture_pct_roll6": 0,
+     "V30_soil_moisture_pct_wytd": 0,
+     "aet_total_mm": 0,
+     "aet_total_mm_lag1": 0,
+     "aet_total_mm_lag12": 0,
+     "aet_total_mm_lag2": 0,
+     "aet_total_mm_lag3": 0,
+     "aet_total_mm_lag6": 0,
+     "aet_total_mm_roll12": 0,
+     "aet_total_mm_roll3": 0,
+     "aet_total_mm_roll6": 0,
+     "aet_total_mm_wytd": 0,
+     "aglw_buffalo_hold2021": 1,
+     "aglw_cattle_hold2021": 1,
+     "aglw_goats_hold2021": 1,
+     "aglw_horse_hold2021": 1,
+     "aglw_sheep_hold2021": 1,
+     "aglw_total_lsu_hold2021": 1,
+     "amo_lag12": 0,
+     "ao": 1,
+     "ao_lag1": 0,
+     "ao_lag12": 0,
+     "ao_lag2": 0,
+     "ao_lag3": 0,
+     "ao_lag6": 0,
+     "api_precip": 0,
+     "api_soilmoist": 0,
+     "burn_frac": 1,
+     "climate_water_deficit_mm": 0,
+     "climate_water_deficit_mm_lag1": 0,
+     "climate_water_deficit_mm_lag12": 0,
+     "climate_water_deficit_mm_lag2": 0,
+     "climate_water_deficit_mm_lag3": 0,
+     "climate_water_deficit_mm_lag6": 0,
+     "climate_water_deficit_mm_roll12": 0,
+     "climate_water_deficit_mm_roll3": 0,
+     "climate_water_deficit_mm_roll6": 0,
+     "climate_water_deficit_mm_wytd": 0,
+     "cloud_frequency_pct": 1,
+     "cloud_frequency_pct_lag1": 0,
+     "cloud_frequency_pct_lag12": 0,
+     "cloud_frequency_pct_lag2": 0,
+     "cloud_frequency_pct_lag3": 0,
+     "cloud_frequency_pct_lag6": 0,
+     "conflict_deaths": 0,
+     "conflict_events": 0,
+     "consec_dry_months": 0,
+     "ctx:cos1": 0,
+     "ctx:cos2": 0,
+     "ctx:sin1": 0,
+     "ctx:sin2": 0,
+     "ctx:top5:V01_mean_temp_C": 0,
+     "ctx:top5:V07_total_ref_ET_mm_lag1": 0,
+     "ctx:top5:era5l_d2m": 0,
+     "ctx:top5:era5l_slhf_lag1": 0,
+     "ctx:top5:sph_kgkg_lag6": 0,
+     "deeprec_twsa": 3,
+     "deeprec_twsa_lag1": 2,
+     "deeprec_twsa_lag12": 0,
+     "deeprec_twsa_lag2": 1,
+     "deeprec_twsa_lag3": 0,
+     "deeprec_twsa_lag6": 0,
+     "diurnal_temp_range_C": 0,
+     "diurnal_temp_range_C_lag1": 0,
+     "diurnal_temp_range_C_lag12": 0,
+     "diurnal_temp_range_C_lag2": 0,
+     "diurnal_temp_range_C_lag3": 0,
+     "diurnal_temp_range_C_lag6": 0,
+     "epo": 1,
+     "epo_lag1": 0,
+     "epo_lag12": 0,
+     "epo_lag2": 0,
+     "epo_lag3": 0,
+     "epo_lag6": 0,
+     "era5l_d2m": 0,
+     "era5l_d2m_lag1": 0,
+     "era5l_d2m_lag12": 0,
+     "era5l_d2m_lag2": 0,
+     "era5l_d2m_lag3": 0,
+     "era5l_d2m_lag6": 0,
+     "era5l_pev": 0,
+     "era5l_pev_lag1": 0,
+     "era5l_pev_lag12": 0,
+     "era5l_pev_lag2": 0,
+     "era5l_pev_lag3": 0,
+     "era5l_pev_lag6": 0,
+     "era5l_slhf": 0,
+     "era5l_slhf_lag1": 0,
+     "era5l_slhf_lag12": 0,
+     "era5l_slhf_lag2": 0,
+     "era5l_slhf_lag3": 0,
+     "era5l_slhf_lag6": 0,
+     "era5l_smlt": 0,
+     "era5l_sro": 0,
+     "era5l_sro_lag1": 0,
+     "era5l_sro_lag12": 0,
+     "era5l_sro_lag2": 0,
+     "era5l_sro_lag3": 0,
+     "era5l_sro_lag6": 0,
+     "era5l_sshf": 0,
+     "era5l_sshf_lag1": 0,
+     "era5l_sshf_lag12": 0,
+     "era5l_sshf_lag2": 0,
+     "era5l_sshf_lag3": 0,
+     "era5l_sshf_lag6": 0,
+     "era5l_ssr": 0,
+     "era5l_ssr_lag1": 0,
+     "era5l_ssr_lag12": 0,
+     "era5l_ssr_lag2": 0,
+     "era5l_ssr_lag3": 0,
+     "era5l_ssr_lag6": 0,
+     "era5l_ssro": 0,
+     "era5l_ssro_lag1": 0,
+     "era5l_ssro_lag12": 0,
+     "era5l_ssro_lag2": 0,
+     "era5l_ssro_lag3": 0,
+     "era5l_ssro_lag6": 0,
+     "era5l_stl1": 0,
+     "era5l_stl1_lag1": 0,
+     "era5l_stl1_lag12": 0,
+     "era5l_stl1_lag2": 0,
+     "era5l_stl1_lag3": 0,
+     "era5l_stl1_lag6": 0,
+     "era5l_str": 0,
+     "era5l_str_lag1": 0,
+     "era5l_str_lag12": 0,
+     "era5l_str_lag2": 0,
+     "era5l_str_lag3": 0,
+     "era5l_str_lag6": 0,
+     "fert_n": 1,
+     "fert_p": 1,
+     "frost_days": 0,
+     "gdd5_degC_days": 0,
+     "gdd5_degC_days_lag1": 0,
+     "gdd5_degC_days_lag12": 0,
+     "gdd5_degC_days_lag2": 0,
+     "gdd5_degC_days_lag3": 0,
+     "gdd5_degC_days_lag6": 0,
+     "grace_lwe": 1,
+     "grace_lwe_lag1": 0,
+     "grace_lwe_lag12": 0,
+     "grace_lwe_lag2": 0,
+     "grace_lwe_lag3": 0,
+     "grace_lwe_lag6": 0,
+     "hdi": 1,
+     "heatwave_days_gt35C": 0,
+     "heatwave_days_gt35C_lag1": 0,
+     "heatwave_days_gt35C_lag12": 0,
+     "heatwave_days_gt35C_lag2": 0,
+     "heatwave_days_gt35C_lag3": 0,
+     "heatwave_days_gt35C_lag6": 0,
+     "iod": 1,
+     "iod_lag1": 0,
+     "iod_lag12": 0,
+     "iod_lag2": 0,
+     "iod_lag3": 0,
+     "iod_lag6": 0,
+     "luh2_cropland": 1,
+     "luh2_forest": 1,
+     "luh2_pasture": 1,
+     "luh2_range": 1,
+     "luh2_secondary": 1,
+     "luh2_urban": 1,
+     "months_since_sig_rain": 0,
+     "nao": 1,
+     "nao_lag1": 0,
+     "nao_lag12": 0,
+     "nao_lag2": 0,
+     "nao_lag3": 0,
+     "nao_lag6": 0,
+     "nino12": 2,
+     "nino12_lag1": 1,
+     "nino12_lag12": 0,
+     "nino12_lag2": 0,
+     "nino12_lag3": 0,
+     "nino12_lag6": 0,
+     "nino3": 2,
+     "nino34": 2,
+     "nino34_lag1": 1,
+     "nino34_lag12": 0,
+     "nino34_lag2": 0,
+     "nino34_lag3": 0,
+     "nino34_lag6": 0,
+     "nino3_lag1": 1,
+     "nino3_lag12": 0,
+     "nino3_lag2": 0,
+     "nino3_lag3": 0,
+     "nino3_lag6": 0,
+     "nino4": 2,
+     "nino4_lag1": 1,
+     "nino4_lag12": 0,
+     "nino4_lag2": 0,
+     "nino4_lag3": 0,
+     "nino4_lag6": 0,
+     "noi": 1,
+     "noi_lag1": 0,
+     "noi_lag12": 0,
+     "noi_lag2": 0,
+     "noi_lag3": 0,
+     "noi_lag6": 0,
+     "ntl": 1,
+     "oni": 3,
+     "oni_lag1": 2,
+     "oni_lag12": 0,
+     "oni_lag2": 1,
+     "oni_lag3": 0,
+     "oni_lag6": 0,
+     "pdo": 2,
+     "pdo_lag1": 1,
+     "pdo_lag12": 0,
+     "pdo_lag2": 0,
+     "pdo_lag3": 0,
+     "pdo_lag6": 0,
+     "pna": 1,
+     "pna_lag1": 0,
+     "pna_lag12": 0,
+     "pna_lag2": 0,
+     "pna_lag3": 0,
+     "pna_lag6": 0,
+     "precip_intensity_mm": 0,
+     "precip_intensity_mm_lag1": 0,
+     "precip_intensity_mm_lag12": 0,
+     "precip_intensity_mm_lag2": 0,
+     "precip_intensity_mm_lag3": 0,
+     "precip_intensity_mm_lag6": 0,
+     "precip_wytd": 0,
+     "rmin_pct": 0,
+     "rmin_pct_lag1": 0,
+     "rmin_pct_lag12": 0,
+     "rmin_pct_lag2": 0,
+     "rmin_pct_lag3": 0,
+     "rmin_pct_lag6": 0,
+     "sam": 1,
+     "sam_lag1": 0,
+     "sam_lag12": 0,
+     "sam_lag2": 0,
+     "sam_lag3": 0,
+     "sam_lag6": 0,
+     "snow_cover_fraction": 1,
+     "snow_duration_days": 1,
+     "soi": 1,
+     "soi_lag1": 0,
+     "soi_lag12": 0,
+     "soi_lag2": 0,
+     "soi_lag3": 0,
+     "soi_lag6": 0,
+     "soil_water_tc_mm": 0,
+     "soil_water_tc_mm_lag1": 0,
+     "soil_water_tc_mm_lag12": 0,
+     "soil_water_tc_mm_lag2": 0,
+     "soil_water_tc_mm_lag3": 0,
+     "soil_water_tc_mm_lag6": 0,
+     "soil_water_tc_mm_roll12": 0,
+     "soil_water_tc_mm_roll3": 0,
+     "soil_water_tc_mm_roll6": 0,
+     "soil_water_tc_mm_wytd": 0,
+     "solar_radiation_Wm2": 0,
+     "solar_radiation_Wm2_lag1": 0,
+     "solar_radiation_Wm2_lag12": 0,
+     "solar_radiation_Wm2_lag2": 0,
+     "solar_radiation_Wm2_lag3": 0,
+     "solar_radiation_Wm2_lag6": 0,
+     "spei_01m_lag12": 0,
+     "spei_03m_lag12": 0,
+     "spei_06m_lag12": 0,
+     "spei_24m_lag12": 0,
+     "sph_kgkg": 0,
+     "sph_kgkg_lag1": 0,
+     "sph_kgkg_lag12": 0,
+     "sph_kgkg_lag2": 0,
+     "sph_kgkg_lag3": 0,
+     "sph_kgkg_lag6": 0,
+     "spi_01m": 0,
+     "spi_01m_lag1": 0,
+     "spi_01m_lag12": 0,
+     "spi_01m_lag2": 0,
+     "spi_01m_lag3": 0,
+     "spi_01m_lag6": 0,
+     "spi_03m": 0,
+     "spi_03m_lag1": 0,
+     "spi_03m_lag12": 0,
+     "spi_03m_lag2": 0,
+     "spi_03m_lag3": 0,
+     "spi_03m_lag6": 0,
+     "spi_06m": 0,
+     "spi_06m_lag1": 0,
+     "spi_06m_lag12": 0,
+     "spi_06m_lag2": 0,
+     "spi_06m_lag3": 0,
+     "spi_06m_lag6": 0,
+     "spi_12m": 0,
+     "spi_12m_lag1": 0,
+     "spi_12m_lag12": 0,
+     "spi_12m_lag2": 0,
+     "spi_12m_lag3": 0,
+     "spi_12m_lag6": 0,
+     "spi_24m": 0,
+     "spi_24m_lag1": 0,
+     "spi_24m_lag12": 0,
+     "spi_24m_lag2": 0,
+     "spi_24m_lag3": 0,
+     "spi_24m_lag6": 0,
+     "sst_anom_atl3": 2,
+     "sst_anom_atl3_lag1": 1,
+     "sst_anom_atl3_lag12": 0,
+     "sst_anom_atl3_lag2": 0,
+     "sst_anom_atl3_lag3": 0,
+     "sst_anom_atl3_lag6": 0,
+     "sst_anom_coral_sea": 2,
+     "sst_anom_coral_sea_lag1": 1,
+     "sst_anom_coral_sea_lag12": 0,
+     "sst_anom_coral_sea_lag2": 0,
+     "sst_anom_coral_sea_lag3": 0,
+     "sst_anom_coral_sea_lag6": 0,
+     "sst_anom_global_tropical_mean": 2,
+     "sst_anom_global_tropical_mean_lag1": 1,
+     "sst_anom_global_tropical_mean_lag12": 0,
+     "sst_anom_global_tropical_mean_lag2": 0,
+     "sst_anom_global_tropical_mean_lag3": 0,
+     "sst_anom_global_tropical_mean_lag6": 0,
+     "sst_anom_iod_east": 2,
+     "sst_anom_iod_east_lag1": 1,
+     "sst_anom_iod_east_lag12": 0,
+     "sst_anom_iod_east_lag2": 0,
+     "sst_anom_iod_east_lag3": 0,
+     "sst_anom_iod_east_lag6": 0,
+     "sst_anom_iod_west": 2,
+     "sst_anom_iod_west_lag1": 1,
+     "sst_anom_iod_west_lag12": 0,
+     "sst_anom_iod_west_lag2": 0,
+     "sst_anom_iod_west_lag3": 0,
+     "sst_anom_iod_west_lag6": 0,
+     "sst_anom_nino34": 2,
+     "sst_anom_nino34_lag1": 1,
+     "sst_anom_nino34_lag12": 0,
+     "sst_anom_nino34_lag2": 0,
+     "sst_anom_nino34_lag3": 0,
+     "sst_anom_nino34_lag6": 0,
+     "sst_anom_subpolar_north_atlantic": 2,
+     "sst_anom_subpolar_north_atlantic_lag1": 1,
+     "sst_anom_subpolar_north_atlantic_lag12": 0,
+     "sst_anom_subpolar_north_atlantic_lag2": 0,
+     "sst_anom_subpolar_north_atlantic_lag3": 0,
+     "sst_anom_subpolar_north_atlantic_lag6": 0,
+     "swe_mean_mm": 0,
+     "tc_vapor_pressure": 0,
+     "tc_vapor_pressure_lag1": 0,
+     "tc_vapor_pressure_lag12": 0,
+     "tc_vapor_pressure_lag2": 0,
+     "tc_vapor_pressure_lag3": 0,
+     "tc_vapor_pressure_lag6": 0,
+     "tna": 1,
+     "tna_lag1": 0,
+     "tna_lag12": 0,
+     "tna_lag2": 0,
+     "tna_lag3": 0,
+     "tna_lag6": 0,
+     "tni": 3,
+     "tni_lag1": 2,
+     "tni_lag12": 0,
+     "tni_lag2": 1,
+     "tni_lag3": 0,
+     "tni_lag6": 0,
+     "tsa": 1,
+     "tsa_lag1": 0,
+     "tsa_lag12": 0,
+     "tsa_lag2": 0,
+     "tsa_lag3": 0,
+     "tsa_lag6": 0,
+     "vpd_days_gt_2kpa": 0,
+     "vpd_days_gt_2kpa_lag1": 0,
+     "vpd_days_gt_2kpa_lag12": 0,
+     "vpd_days_gt_2kpa_lag2": 0,
+     "vpd_days_gt_2kpa_lag3": 0,
+     "vpd_days_gt_2kpa_lag6": 0,
+     "vpd_max_daily": 0,
+     "vpd_max_daily_lag1": 0,
+     "vpd_max_daily_lag12": 0,
+     "vpd_max_daily_lag2": 0,
+     "vpd_max_daily_lag3": 0,
+     "vpd_max_daily_lag6": 0,
+     "vpd_warm_season_mean": 0,
+     "vpd_warm_season_mean_lag1": 0,
+     "vpd_warm_season_mean_lag12": 0,
+     "vpd_warm_season_mean_lag2": 0,
+     "vpd_warm_season_mean_lag3": 0,
+     "vpd_warm_season_mean_lag6": 0,
+     "wbal_mm": 0,
+     "wbal_mm_lag1": 0,
+     "wbal_mm_lag12": 0,
+     "wbal_mm_lag2": 0,
+     "wbal_mm_lag3": 0,
+     "wbal_mm_lag6": 0,
+     "wbal_roll12": 0,
+     "wbal_roll12_lag1": 0,
+     "wbal_roll12_lag12": 0,
+     "wbal_roll12_lag2": 0,
+     "wbal_roll12_lag3": 0,
+     "wbal_roll12_lag6": 0,
+     "wbal_roll24": 0,
+     "wbal_roll24_lag1": 0,
+     "wbal_roll24_lag12": 0,
+     "wbal_roll24_lag2": 0,
+     "wbal_roll24_lag3": 0,
+     "wbal_roll24_lag6": 0,
+     "wbal_roll3": 0,
+     "wbal_roll3_lag1": 0,
+     "wbal_roll3_lag12": 0,
+     "wbal_roll3_lag2": 0,
+     "wbal_roll3_lag3": 0,
+     "wbal_roll3_lag6": 0,
+     "wbal_roll6": 0,
+     "wbal_roll6_lag1": 0,
+     "wbal_roll6_lag12": 0,
+     "wbal_roll6_lag2": 0,
+     "wbal_roll6_lag3": 0,
+     "wbal_roll6_lag6": 0,
+     "wet_day_count": 0,
+     "wet_day_count_lag1": 0,
+     "wet_day_count_lag12": 0,
+     "wet_day_count_lag2": 0,
+     "wet_day_count_lag3": 0,
+     "wet_day_count_lag6": 0,
+     "wp": 1,
+     "wp_lag1": 0,
+     "wp_lag12": 0,
+     "wp_lag2": 0,
+     "wp_lag3": 0,
+     "wp_lag6": 0
+    },
+    "lags_by_steps": {
+     "0": 416,
+     "1": 48,
+     "2": 15,
+     "3": 3
+    },
+    "r4": {
+     "first_driver_year": 2002,
+     "first_year_estimate": 2003,
+     "largest_lookback_steps": 12,
+     "largest_r8_lag_steps": 12,
+     "set_by": [
+      "V01_mean_temp_C_lag12",
+      "V02_total_precip_mm_lag12",
+      "V03_max_daily_precip_mm_lag12",
+      "V04_precip_seasonality",
+      "V05_mean_vpd_kPa_lag12",
+      "V06_spei_12m_lag12",
+      "V07_total_ref_ET_mm_lag12",
+      "V09_mean_wind_ms_lag12",
+      "V30_soil_moisture_pct_lag12",
+      "aet_total_mm_lag12",
+      "aglw_buffalo_hold2021",
+      "aglw_cattle_hold2021",
+      "aglw_goats_hold2021",
+      "aglw_horse_hold2021",
+      "aglw_sheep_hold2021",
+      "aglw_total_lsu_hold2021",
+      "amo_lag12",
+      "ao_lag12",
+      "climate_water_deficit_mm_lag12",
+      "cloud_frequency_pct_lag12",
+      "deeprec_twsa_lag12",
+      "diurnal_temp_range_C_lag12",
+      "epo_lag12",
+      "era5l_d2m_lag12",
+      "era5l_pev_lag12",
+      "era5l_slhf_lag12",
+      "era5l_sro_lag12",
+      "era5l_sshf_lag12",
+      "era5l_ssr_lag12",
+      "era5l_ssro_lag12",
+      "era5l_stl1_lag12",
+      "era5l_str_lag12",
+      "fert_n",
+      "fert_p",
+      "gdd5_degC_days_lag12",
+      "grace_lwe_lag12",
+      "hdi",
+      "heatwave_days_gt35C_lag12",
+      "iod_lag12",
+      "luh2_cropland",
+      "luh2_forest",
+      "luh2_pasture",
+      "luh2_range",
+      "luh2_secondary",
+      "luh2_urban",
+      "nao_lag12",
+      "nino12_lag12",
+      "nino34_lag12",
+      "nino3_lag12",
+      "nino4_lag12",
+      "noi_lag12",
+      "ntl",
+      "oni_lag12",
+      "pdo_lag12",
+      "pna_lag12",
+      "precip_intensity_mm_lag12",
+      "rmin_pct_lag12",
+      "sam_lag12",
+      "snow_duration_days",
+      "soi_lag12",
+      "soil_water_tc_mm_lag12",
+      "solar_radiation_Wm2_lag12",
+      "spei_01m_lag12",
+      "spei_03m_lag12",
+      "spei_06m_lag12",
+      "spei_24m_lag12",
+      "sph_kgkg_lag12",
+      "spi_01m_lag12",
+      "spi_03m_lag12",
+      "spi_06m_lag12",
+      "spi_12m_lag12",
+      "spi_24m_lag12",
+      "sst_anom_atl3_lag12",
+      "sst_anom_coral_sea_lag12",
+      "sst_anom_global_tropical_mean_lag12",
+      "sst_anom_iod_east_lag12",
+      "sst_anom_iod_west_lag12",
+      "sst_anom_nino34_lag12",
+      "sst_anom_subpolar_north_atlantic_lag12",
+      "tc_vapor_pressure_lag12",
+      "tna_lag12",
+      "tni_lag12",
+      "tsa_lag12",
+      "vpd_days_gt_2kpa_lag12",
+      "vpd_max_daily_lag12",
+      "vpd_warm_season_mean_lag12",
+      "wbal_mm_lag12",
+      "wbal_roll12_lag12",
+      "wbal_roll24_lag12",
+      "wbal_roll3_lag12",
+      "wbal_roll6_lag12",
+      "wet_day_count_lag12",
+      "wp_lag12"
+     ],
+     "set_only_by_declared_lag_operations": false
+    },
+    "refused": {}
+   },
+   "fix": "",
+   "id": "G-LAG",
+   "part": null,
+   "rule": "G-LAG"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-HIST",
+   "part": null,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "groups": 133,
+    "notes": [
+     "donor labels not judged here (check --deep reads them)",
+     "census not judged here (check --deep reads it)"
+    ]
+   },
+   "fix": "",
+   "id": "G-SUPPORT",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "co_measured_candidates": [],
+    "co_measured_unanswered": [],
+    "headline": true,
+    "unsigned": []
+   },
+   "fix": "",
+   "id": "G-FACTS",
+   "part": null,
+   "rule": "G-FACTS"
+  },
+  {
+   "details": {
+    "constants": {
+     "C13.smoke_groups": 4,
+     "C15.min_groups": 3
+    },
+    "data_groups": 133,
+    "groups": [
+     "alaska_interior_taiga",
+     "alaska_north_slope",
+     "amazon_basin_brazil",
+     "anatolian_plateau"
+    ],
+    "package_groups": 133,
+    "refused": null,
+    "rule": "R21",
+    "selection": "R21 smoke groups, ruling M2"
+   },
+   "fix": "",
+   "id": "deep groups (ruling M2)",
+   "part": null,
+   "rule": "R21"
+  },
+  {
+   "details": {
+    "declared_absent": [
+     "D:/gfed_burn/{group}_burn_{year}.parquet: 1 (group, period) pairs declared absent"
+    ],
+    "years_checked": true
+   },
+   "fix": "",
+   "id": "G-MISSING (files)",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "cuts": {
+     "0": {
+      "fit_cut_day": "2019-12-31",
+      "guard_cut_day": "2016-12-31"
+     },
+     "12": {
+      "fit_cut_day": "2019-01-31",
+      "guard_cut_day": "2016-01-31"
+     },
+     "6": {
+      "fit_cut_day": "2019-07-31",
+      "guard_cut_day": "2016-07-31"
+     }
+    },
+    "groups": [
+     "alaska_interior_taiga",
+     "alaska_north_slope",
+     "amazon_basin_brazil",
+     "anatolian_plateau"
+    ],
+    "inner_fit": [
+     2003,
+     2016
+    ],
+    "inner_score": [
+     2017,
+     2018,
+     2019
+    ],
+    "joined_rows_per_group_year": {
+     "alaska_interior_taiga/2003": 320423,
+     "alaska_interior_taiga/2004": 320327,
+     "alaska_interior_taiga/2005": 320327,
+     "alaska_interior_taiga/2006": 320327,
+     "alaska_interior_taiga/2007": 320823,
+     "alaska_interior_taiga/2008": 320327,
+     "alaska_interior_taiga/2009": 320327,
+     "alaska_interior_taiga/2010": 320327,
+     "alaska_interior_taiga/2011": 320595,
+     "alaska_interior_taiga/2012": 320865,
+     "alaska_interior_taiga/2013": 320327,
+     "alaska_interior_taiga/2014": 320327,
+     "alaska_interior_taiga/2015": 320327,
+     "alaska_interior_taiga/2016": 320675,
+     "alaska_interior_taiga/2017": 320327,
+     "alaska_interior_taiga/2018": 320327,
+     "alaska_interior_taiga/2019": 320327,
+     "alaska_interior_taiga/2020": 320327,
+     "alaska_interior_taiga/2021": 320327,
+     "alaska_interior_taiga/2022": 320327,
+     "alaska_interior_taiga/2023": 320327,
+     "alaska_north_slope/2003": 352526,
+     "alaska_north_slope/2004": 352526,
+     "alaska_north_slope/2005": 352528,
+     "alaska_north_slope/2006": 352557,
+     "alaska_north_slope/2007": 352533,
+     "alaska_north_slope/2008": 352526,
+     "alaska_north_slope/2009": 353309,
+     "alaska_north_slope/2010": 352524,
+     "alaska_north_slope/2011": 352539,
+     "alaska_north_slope/2012": 352526,
+     "alaska_north_slope/2013": 354235,
+     "alaska_north_slope/2014": 352531,
+     "alaska_north_slope/2015": 352526,
+     "alaska_north_slope/2016": 352524,
+     "alaska_north_slope/2017": 353361,
+     "alaska_north_slope/2018": 353060,
+     "alaska_north_slope/2019": 352524,
+     "alaska_north_slope/2020": 352524,
+     "alaska_north_slope/2021": 352680,
+     "alaska_north_slope/2022": 353473,
+     "alaska_north_slope/2023": 352526,
+     "amazon_basin_brazil/2003": 235200,
+     "amazon_basin_brazil/2004": 235200,
+     "amazon_basin_brazil/2005": 235200,
+     "amazon_basin_brazil/2006": 235200,
+     "amazon_basin_brazil/2007": 235200,
+     "amazon_basin_brazil/2008": 235200,
+     "amazon_basin_brazil/2009": 235200,
+     "amazon_basin_brazil/2010": 235200,
+     "amazon_basin_brazil/2011": 235200,
+     "amazon_basin_brazil/2012": 235200,
+     "amazon_basin_brazil/2013": 235200,
+     "amazon_basin_brazil/2014": 235200,
+     "amazon_basin_brazil/2015": 235200,
+     "amazon_basin_brazil/2016": 235200,
+     "amazon_basin_brazil/2017": 235200,
+     "amazon_basin_brazil/2018": 235200,
+     "amazon_basin_brazil/2019": 235200,
+     "amazon_basin_brazil/2020": 235200,
+     "amazon_basin_brazil/2021": 235200,
+     "amazon_basin_brazil/2022": 235200,
+     "amazon_basin_brazil/2023": 235200,
+     "anatolian_plateau/2003": 180612,
+     "anatolian_plateau/2004": 180612,
+     "anatolian_plateau/2005": 180612,
+     "anatolian_plateau/2006": 180612,
+     "anatolian_plateau/2007": 180612,
+     "anatolian_plateau/2008": 180612,
+     "anatolian_plateau/2009": 180612,
+     "anatolian_plateau/2010": 180612,
+     "anatolian_plateau/2011": 180612,
+     "anatolian_plateau/2012": 180612,
+     "anatolian_plateau/2013": 180612,
+     "anatolian_plateau/2014": 180612,
+     "anatolian_plateau/2015": 180612,
+     "anatolian_plateau/2016": 180612,
+     "anatolian_plateau/2017": 180612,
+     "anatolian_plateau/2018": 180612,
+     "anatolian_plateau/2019": 180612,
+     "anatolian_plateau/2020": 180612,
+     "anatolian_plateau/2021": 180612,
+     "anatolian_plateau/2022": 180612,
+     "anatolian_plateau/2023": 180612
+    },
+    "leads": [
+     6,
+     12
+    ],
+    "r3_first_pass": 2023,
+    "r3_margins": {
+     "C3.coverage_group_share": 0.5
+    },
+    "r4_driver_stores": {
+     "first_data_year": 2002,
+     "rule": "J5: R4 counts from the latest first year of the driver stores that hold a lag source (R4 lag above 0: R8's lag plus a counted lag operation's look-back, _r04_lags), measured on the target's rows outside declared-absent groups, in whole years; never before the target's first year",
+     "stores": [
+      {
+       "absent_groups": [],
+       "catalog": "",
+       "first_year": 2002,
+       "lag_sources": [
+        "V01_mean_temp_C_lag1",
+        "V01_mean_temp_C_lag12",
+        "V01_mean_temp_C_lag2",
+        "V01_mean_temp_C_lag3",
+        "V01_mean_temp_C_lag6",
+        "V02_total_precip_mm_lag1",
+        "V02_total_precip_mm_lag12",
+        "V02_total_precip_mm_lag2",
+        "V02_total_precip_mm_lag3",
+        "V02_total_precip_mm_lag6",
+        "V03_max_daily_precip_mm_lag1",
+        "V03_max_daily_precip_mm_lag12",
+        "V03_max_daily_precip_mm_lag2",
+        "V03_max_daily_precip_mm_lag3",
+        "V03_max_daily_precip_mm_lag6",
+        "V05_mean_vpd_kPa_lag1",
+        "V05_mean_vpd_kPa_lag12",
+        "V05_mean_vpd_kPa_lag2",
+        "V05_mean_vpd_kPa_lag3",
+        "V05_mean_vpd_kPa_lag6",
+        "V06_spei_12m_lag12",
+        "V07_total_ref_ET_mm_lag1",
+        "V07_total_ref_ET_mm_lag12",
+        "V07_total_ref_ET_mm_lag2",
+        "V07_total_ref_ET_mm_lag3",
+        "V07_total_ref_ET_mm_lag6",
+        "V09_mean_wind_ms_lag1",
+        "V09_mean_wind_ms_lag12",
+        "V09_mean_wind_ms_lag2",
+        "V09_mean_wind_ms_lag3",
+        "V09_mean_wind_ms_lag6",
+        "V30_soil_moisture_pct_lag1",
+        "V30_soil_moisture_pct_lag12",
+        "V30_soil_moisture_pct_lag2",
+        "V30_soil_moisture_pct_lag3",
+        "V30_soil_moisture_pct_lag6",
+        "aet_total_mm_lag1",
+        "aet_total_mm_lag12",
+        "aet_total_mm_lag2",
+        "aet_total_mm_lag3",
+        "aet_total_mm_lag6",
+        "aglw_buffalo_hold2021",
+        "aglw_cattle_hold2021",
+        "aglw_goats_hold2021",
+        "aglw_horse_hold2021",
+        "aglw_sheep_hold2021",
+        "aglw_total_lsu_hold2021",
+        "amo_lag12",
+        "ao_lag1",
+        "ao_lag12",
+        "ao_lag2",
+        "ao_lag3",
+        "ao_lag6",
+        "climate_water_deficit_mm_lag1",
+        "climate_water_deficit_mm_lag12",
+        "climate_water_deficit_mm_lag2",
+        "climate_water_deficit_mm_lag3",
+        "climate_water_deficit_mm_lag6",
+        "cloud_frequency_pct_lag1",
+        "cloud_frequency_pct_lag12",
+        "cloud_frequency_pct_lag2",
+        "cloud_frequency_pct_lag3",
+        "cloud_frequency_pct_lag6",
+        "ctx:top5:V07_total_ref_ET_mm_lag1",
+        "ctx:top5:era5l_slhf_lag1",
+        "ctx:top5:sph_kgkg_lag6",
+        "deeprec_twsa_lag1",
+        "deeprec_twsa_lag12",
+        "deeprec_twsa_lag2",
+        "deeprec_twsa_lag3",
+        "deeprec_twsa_lag6",
+        "diurnal_temp_range_C_lag1",
+        "diurnal_temp_range_C_lag12",
+        "diurnal_temp_range_C_lag2",
+        "diurnal_temp_range_C_lag3",
+        "diurnal_temp_range_C_lag6",
+        "epo_lag1",
+        "epo_lag12",
+        "epo_lag2",
+        "epo_lag3",
+        "epo_lag6",
+        "era5l_d2m_lag1",
+        "era5l_d2m_lag12",
+        "era5l_d2m_lag2",
+        "era5l_d2m_lag3",
+        "era5l_d2m_lag6",
+        "era5l_pev_lag1",
+        "era5l_pev_lag12",
+        "era5l_pev_lag2",
+        "era5l_pev_lag3",
+        "era5l_pev_lag6",
+        "era5l_slhf_lag1",
+        "era5l_slhf_lag12",
+        "era5l_slhf_lag2",
+        "era5l_slhf_lag3",
+        "era5l_slhf_lag6",
+        "era5l_sro_lag1",
+        "era5l_sro_lag12",
+        "era5l_sro_lag2",
+        "era5l_sro_lag3",
+        "era5l_sro_lag6",
+        "era5l_sshf_lag1",
+        "era5l_sshf_lag12",
+        "era5l_sshf_lag2",
+        "era5l_sshf_lag3",
+        "era5l_sshf_lag6",
+        "era5l_ssr_lag1",
+        "era5l_ssr_lag12",
+        "era5l_ssr_lag2",
+        "era5l_ssr_lag3",
+        "era5l_ssr_lag6",
+        "era5l_ssro_lag1",
+        "era5l_ssro_lag12",
+        "era5l_ssro_lag2",
+        "era5l_ssro_lag3",
+        "era5l_ssro_lag6",
+        "era5l_stl1_lag1",
+        "era5l_stl1_lag12",
+        "era5l_stl1_lag2",
+        "era5l_stl1_lag3",
+        "era5l_stl1_lag6",
+        "era5l_str_lag1",
+        "era5l_str_lag12",
+        "era5l_str_lag2",
+        "era5l_str_lag3",
+        "era5l_str_lag6",
+        "gdd5_degC_days_lag1",
+        "gdd5_degC_days_lag12",
+        "gdd5_degC_days_lag2",
+        "gdd5_degC_days_lag3",
+        "gdd5_degC_days_lag6",
+        "grace_lwe_lag1",
+        "grace_lwe_lag12",
+        "grace_lwe_lag2",
+        "grace_lwe_lag3",
+        "grace_lwe_lag6",
+        "heatwave_days_gt35C_lag1",
+        "heatwave_days_gt35C_lag12",
+        "heatwave_days_gt35C_lag2",
+        "heatwave_days_gt35C_lag3",
+        "heatwave_days_gt35C_lag6",
+        "iod_lag1",
+        "iod_lag12",
+        "iod_lag2",
+        "iod_lag3",
+        "iod_lag6",
+        "nao_lag1",
+        "nao_lag12",
+        "nao_lag2",
+        "nao_lag3",
+        "nao_lag6",
+        "nino12_lag1",
+        "nino12_lag12",
+        "nino12_lag2",
+        "nino12_lag3",
+        "nino12_lag6",
+        "nino34_lag1",
+        "nino34_lag12",
+        "nino34_lag2",
+        "nino34_lag3",
+        "nino34_lag6",
+        "nino3_lag1",
+        "nino3_lag12",
+        "nino3_lag2",
+        "nino3_lag3",
+        "nino3_lag6",
+        "nino4_lag1",
+        "nino4_lag12",
+        "nino4_lag2",
+        "nino4_lag3",
+        "nino4_lag6",
+        "noi_lag1",
+        "noi_lag12",
+        "noi_lag2",
+        "noi_lag3",
+        "noi_lag6",
+        "oni_lag1",
+        "oni_lag12",
+        "oni_lag2",
+        "oni_lag3",
+        "oni_lag6",
+        "pdo_lag1",
+        "pdo_lag12",
+        "pdo_lag2",
+        "pdo_lag3",
+        "pdo_lag6",
+        "pna_lag1",
+        "pna_lag12",
+        "pna_lag2",
+        "pna_lag3",
+        "pna_lag6",
+        "precip_intensity_mm_lag1",
+        "precip_intensity_mm_lag12",
+        "precip_intensity_mm_lag2",
+        "precip_intensity_mm_lag3",
+        "precip_intensity_mm_lag6",
+        "rmin_pct_lag1",
+        "rmin_pct_lag12",
+        "rmin_pct_lag2",
+        "rmin_pct_lag3",
+        "rmin_pct_lag6",
+        "sam_lag1",
+        "sam_lag12",
+        "sam_lag2",
+        "sam_lag3",
+        "sam_lag6",
+        "soi_lag1",
+        "soi_lag12",
+        "soi_lag2",
+        "soi_lag3",
+        "soi_lag6",
+        "soil_water_tc_mm_lag1",
+        "soil_water_tc_mm_lag12",
+        "soil_water_tc_mm_lag2",
+        "soil_water_tc_mm_lag3",
+        "soil_water_tc_mm_lag6",
+        "solar_radiation_Wm2_lag1",
+        "solar_radiation_Wm2_lag12",
+        "solar_radiation_Wm2_lag2",
+        "solar_radiation_Wm2_lag3",
+        "solar_radiation_Wm2_lag6",
+        "spei_01m_lag12",
+        "spei_03m_lag12",
+        "spei_06m_lag12",
+        "spei_24m_lag12",
+        "sph_kgkg_lag1",
+        "sph_kgkg_lag12",
+        "sph_kgkg_lag2",
+        "sph_kgkg_lag3",
+        "sph_kgkg_lag6",
+        "spi_01m_lag1",
+        "spi_01m_lag12",
+        "spi_01m_lag2",
+        "spi_01m_lag3",
+        "spi_01m_lag6",
+        "spi_03m_lag1",
+        "spi_03m_lag12",
+        "spi_03m_lag2",
+        "spi_03m_lag3",
+        "spi_03m_lag6",
+        "spi_06m_lag1",
+        "spi_06m_lag12",
+        "spi_06m_lag2",
+        "spi_06m_lag3",
+        "spi_06m_lag6",
+        "spi_12m_lag1",
+        "spi_12m_lag12",
+        "spi_12m_lag2",
+        "spi_12m_lag3",
+        "spi_12m_lag6",
+        "spi_24m_lag1",
+        "spi_24m_lag12",
+        "spi_24m_lag2",
+        "spi_24m_lag3",
+        "spi_24m_lag6",
+        "sst_anom_atl3_lag1",
+        "sst_anom_atl3_lag12",
+        "sst_anom_atl3_lag2",
+        "sst_anom_atl3_lag3",
+        "sst_anom_atl3_lag6",
+        "sst_anom_coral_sea_lag1",
+        "sst_anom_coral_sea_lag12",
+        "sst_anom_coral_sea_lag2",
+        "sst_anom_coral_sea_lag3",
+        "sst_anom_coral_sea_lag6",
+        "sst_anom_global_tropical_mean_lag1",
+        "sst_anom_global_tropical_mean_lag12",
+        "sst_anom_global_tropical_mean_lag2",
+        "sst_anom_global_tropical_mean_lag3",
+        "sst_anom_global_tropical_mean_lag6",
+        "sst_anom_iod_east_lag1",
+        "sst_anom_iod_east_lag12",
+        "sst_anom_iod_east_lag2",
+        "sst_anom_iod_east_lag3",
+        "sst_anom_iod_east_lag6",
+        "sst_anom_iod_west_lag1",
+        "sst_anom_iod_west_lag12",
+        "sst_anom_iod_west_lag2",
+        "sst_anom_iod_west_lag3",
+        "sst_anom_iod_west_lag6",
+        "sst_anom_nino34_lag1",
+        "sst_anom_nino34_lag12",
+        "sst_anom_nino34_lag2",
+        "sst_anom_nino34_lag3",
+        "sst_anom_nino34_lag6",
+        "sst_anom_subpolar_north_atlantic_lag1",
+        "sst_anom_subpolar_north_atlantic_lag12",
+        "sst_anom_subpolar_north_atlantic_lag2",
+        "sst_anom_subpolar_north_atlantic_lag3",
+        "sst_anom_subpolar_north_atlantic_lag6",
+        "tc_vapor_pressure_lag1",
+        "tc_vapor_pressure_lag12",
+        "tc_vapor_pressure_lag2",
+        "tc_vapor_pressure_lag3",
+        "tc_vapor_pressure_lag6",
+        "tna_lag1",
+        "tna_lag12",
+        "tna_lag2",
+        "tna_lag3",
+        "tna_lag6",
+        "tni_lag1",
+        "tni_lag12",
+        "tni_lag2",
+        "tni_lag3",
+        "tni_lag6",
+        "tsa_lag1",
+        "tsa_lag12",
+        "tsa_lag2",
+        "tsa_lag3",
+        "tsa_lag6",
+        "vpd_days_gt_2kpa_lag1",
+        "vpd_days_gt_2kpa_lag12",
+        "vpd_days_gt_2kpa_lag2",
+        "vpd_days_gt_2kpa_lag3",
+        "vpd_days_gt_2kpa_lag6",
+        "vpd_max_daily_lag1",
+        "vpd_max_daily_lag12",
+        "vpd_max_daily_lag2",
+        "vpd_max_daily_lag3",
+        "vpd_max_daily_lag6",
+        "vpd_warm_season_mean_lag1",
+        "vpd_warm_season_mean_lag12",
+        "vpd_warm_season_mean_lag2",
+        "vpd_warm_season_mean_lag3",
+        "vpd_warm_season_mean_lag6",
+        "wbal_mm_lag1",
+        "wbal_mm_lag12",
+        "wbal_mm_lag2",
+        "wbal_mm_lag3",
+        "wbal_mm_lag6",
+        "wbal_roll12_lag1",
+        "wbal_roll12_lag12",
+        "wbal_roll12_lag2",
+        "wbal_roll12_lag3",
+        "wbal_roll12_lag6",
+        "wbal_roll24_lag1",
+        "wbal_roll24_lag12",
+        "wbal_roll24_lag2",
+        "wbal_roll24_lag3",
+        "wbal_roll24_lag6",
+        "wbal_roll3_lag1",
+        "wbal_roll3_lag12",
+        "wbal_roll3_lag2",
+        "wbal_roll3_lag3",
+        "wbal_roll3_lag6",
+        "wbal_roll6_lag1",
+        "wbal_roll6_lag12",
+        "wbal_roll6_lag2",
+        "wbal_roll6_lag3",
+        "wbal_roll6_lag6",
+        "wet_day_count_lag1",
+        "wet_day_count_lag12",
+        "wet_day_count_lag2",
+        "wet_day_count_lag3",
+        "wet_day_count_lag6",
+        "wp_lag1",
+        "wp_lag12",
+        "wp_lag2",
+        "wp_lag3",
+        "wp_lag6"
+       ]
+      },
+      {
+       "absent_groups": [
+        "alaska_north_slope",
+        "canadian_arctic_nunavut",
+        "finnish_lapland",
+        "taimyr_peninsula",
+        "tierra_del_fuego",
+        "yamal_peninsula"
+       ],
+       "catalog": "../_stores/gfed_burn_schema_catalog.yaml",
+       "first_year": 2002,
+       "lag_sources": [
+        "burn_frac"
+       ]
+      },
+      {
+       "absent_groups": [],
+       "catalog": "../_stores/monthly_panel_v170_schema_catalog.yaml",
+       "first_year": 2002,
+       "lag_sources": [
+        "V04_precip_seasonality",
+        "ao",
+        "cloud_frequency_pct",
+        "deeprec_twsa",
+        "epo",
+        "fert_n",
+        "fert_p",
+        "grace_lwe",
+        "hdi",
+        "iod",
+        "luh2_cropland",
+        "luh2_forest",
+        "luh2_pasture",
+        "luh2_range",
+        "luh2_secondary",
+        "luh2_urban",
+        "nao",
+        "nino12",
+        "nino3",
+        "nino34",
+        "nino4",
+        "noi",
+        "ntl",
+        "oni",
+        "pdo",
+        "pna",
+        "sam",
+        "snow_cover_fraction",
+        "snow_duration_days",
+        "soi",
+        "sst_anom_atl3",
+        "sst_anom_coral_sea",
+        "sst_anom_global_tropical_mean",
+        "sst_anom_iod_east",
+        "sst_anom_iod_west",
+        "sst_anom_nino34",
+        "sst_anom_subpolar_north_atlantic",
+        "tna",
+        "tni",
+        "tsa",
+        "wp"
+       ]
+      }
+     ],
+     "target_first_year": 2002
+    },
+    "r4_flags": [],
+    "r4_set_by": [
+     "V01_mean_temp_C_lag1",
+     "V01_mean_temp_C_lag12",
+     "V01_mean_temp_C_lag2",
+     "V01_mean_temp_C_lag3",
+     "V01_mean_temp_C_lag6",
+     "V02_total_precip_mm_lag1",
+     "V02_total_precip_mm_lag12",
+     "V02_total_precip_mm_lag2",
+     "V02_total_precip_mm_lag3",
+     "V02_total_precip_mm_lag6",
+     "V03_max_daily_precip_mm_lag1",
+     "V03_max_daily_precip_mm_lag12",
+     "V03_max_daily_precip_mm_lag2",
+     "V03_max_daily_precip_mm_lag3",
+     "V03_max_daily_precip_mm_lag6",
+     "V04_precip_seasonality",
+     "V05_mean_vpd_kPa_lag1",
+     "V05_mean_vpd_kPa_lag12",
+     "V05_mean_vpd_kPa_lag2",
+     "V05_mean_vpd_kPa_lag3",
+     "V05_mean_vpd_kPa_lag6",
+     "V06_spei_12m_lag12",
+     "V07_total_ref_ET_mm_lag1",
+     "V07_total_ref_ET_mm_lag12",
+     "V07_total_ref_ET_mm_lag2",
+     "V07_total_ref_ET_mm_lag3",
+     "V07_total_ref_ET_mm_lag6",
+     "V09_mean_wind_ms_lag1",
+     "V09_mean_wind_ms_lag12",
+     "V09_mean_wind_ms_lag2",
+     "V09_mean_wind_ms_lag3",
+     "V09_mean_wind_ms_lag6",
+     "V30_soil_moisture_pct_lag1",
+     "V30_soil_moisture_pct_lag12",
+     "V30_soil_moisture_pct_lag2",
+     "V30_soil_moisture_pct_lag3",
+     "V30_soil_moisture_pct_lag6",
+     "aet_total_mm_lag1",
+     "aet_total_mm_lag12",
+     "aet_total_mm_lag2",
+     "aet_total_mm_lag3",
+     "aet_total_mm_lag6",
+     "aglw_buffalo_hold2021",
+     "aglw_cattle_hold2021",
+     "aglw_goats_hold2021",
+     "aglw_horse_hold2021",
+     "aglw_sheep_hold2021",
+     "aglw_total_lsu_hold2021",
+     "amo_lag12",
+     "ao",
+     "ao_lag1",
+     "ao_lag12",
+     "ao_lag2",
+     "ao_lag3",
+     "ao_lag6",
+     "burn_frac",
+     "climate_water_deficit_mm_lag1",
+     "climate_water_deficit_mm_lag12",
+     "climate_water_deficit_mm_lag2",
+     "climate_water_deficit_mm_lag3",
+     "climate_water_deficit_mm_lag6",
+     "cloud_frequency_pct",
+     "cloud_frequency_pct_lag1",
+     "cloud_frequency_pct_lag12",
+     "cloud_frequency_pct_lag2",
+     "cloud_frequency_pct_lag3",
+     "cloud_frequency_pct_lag6",
+     "ctx:top5:V07_total_ref_ET_mm_lag1",
+     "ctx:top5:era5l_slhf_lag1",
+     "ctx:top5:sph_kgkg_lag6",
+     "deeprec_twsa",
+     "deeprec_twsa_lag1",
+     "deeprec_twsa_lag12",
+     "deeprec_twsa_lag2",
+     "deeprec_twsa_lag3",
+     "deeprec_twsa_lag6",
+     "diurnal_temp_range_C_lag1",
+     "diurnal_temp_range_C_lag12",
+     "diurnal_temp_range_C_lag2",
+     "diurnal_temp_range_C_lag3",
+     "diurnal_temp_range_C_lag6",
+     "epo",
+     "epo_lag1",
+     "epo_lag12",
+     "epo_lag2",
+     "epo_lag3",
+     "epo_lag6",
+     "era5l_d2m_lag1",
+     "era5l_d2m_lag12",
+     "era5l_d2m_lag2",
+     "era5l_d2m_lag3",
+     "era5l_d2m_lag6",
+     "era5l_pev_lag1",
+     "era5l_pev_lag12",
+     "era5l_pev_lag2",
+     "era5l_pev_lag3",
+     "era5l_pev_lag6",
+     "era5l_slhf_lag1",
+     "era5l_slhf_lag12",
+     "era5l_slhf_lag2",
+     "era5l_slhf_lag3",
+     "era5l_slhf_lag6",
+     "era5l_sro_lag1",
+     "era5l_sro_lag12",
+     "era5l_sro_lag2",
+     "era5l_sro_lag3",
+     "era5l_sro_lag6",
+     "era5l_sshf_lag1",
+     "era5l_sshf_lag12",
+     "era5l_sshf_lag2",
+     "era5l_sshf_lag3",
+     "era5l_sshf_lag6",
+     "era5l_ssr_lag1",
+     "era5l_ssr_lag12",
+     "era5l_ssr_lag2",
+     "era5l_ssr_lag3",
+     "era5l_ssr_lag6",
+     "era5l_ssro_lag1",
+     "era5l_ssro_lag12",
+     "era5l_ssro_lag2",
+     "era5l_ssro_lag3",
+     "era5l_ssro_lag6",
+     "era5l_stl1_lag1",
+     "era5l_stl1_lag12",
+     "era5l_stl1_lag2",
+     "era5l_stl1_lag3",
+     "era5l_stl1_lag6",
+     "era5l_str_lag1",
+     "era5l_str_lag12",
+     "era5l_str_lag2",
+     "era5l_str_lag3",
+     "era5l_str_lag6",
+     "fert_n",
+     "fert_p",
+     "gdd5_degC_days_lag1",
+     "gdd5_degC_days_lag12",
+     "gdd5_degC_days_lag2",
+     "gdd5_degC_days_lag3",
+     "gdd5_degC_days_lag6",
+     "grace_lwe",
+     "grace_lwe_lag1",
+     "grace_lwe_lag12",
+     "grace_lwe_lag2",
+     "grace_lwe_lag3",
+     "grace_lwe_lag6",
+     "hdi",
+     "heatwave_days_gt35C_lag1",
+     "heatwave_days_gt35C_lag12",
+     "heatwave_days_gt35C_lag2",
+     "heatwave_days_gt35C_lag3",
+     "heatwave_days_gt35C_lag6",
+     "iod",
+     "iod_lag1",
+     "iod_lag12",
+     "iod_lag2",
+     "iod_lag3",
+     "iod_lag6",
+     "luh2_cropland",
+     "luh2_forest",
+     "luh2_pasture",
+     "luh2_range",
+     "luh2_secondary",
+     "luh2_urban",
+     "nao",
+     "nao_lag1",
+     "nao_lag12",
+     "nao_lag2",
+     "nao_lag3",
+     "nao_lag6",
+     "nino12",
+     "nino12_lag1",
+     "nino12_lag12",
+     "nino12_lag2",
+     "nino12_lag3",
+     "nino12_lag6",
+     "nino3",
+     "nino34",
+     "nino34_lag1",
+     "nino34_lag12",
+     "nino34_lag2",
+     "nino34_lag3",
+     "nino34_lag6",
+     "nino3_lag1",
+     "nino3_lag12",
+     "nino3_lag2",
+     "nino3_lag3",
+     "nino3_lag6",
+     "nino4",
+     "nino4_lag1",
+     "nino4_lag12",
+     "nino4_lag2",
+     "nino4_lag3",
+     "nino4_lag6",
+     "noi",
+     "noi_lag1",
+     "noi_lag12",
+     "noi_lag2",
+     "noi_lag3",
+     "noi_lag6",
+     "ntl",
+     "oni",
+     "oni_lag1",
+     "oni_lag12",
+     "oni_lag2",
+     "oni_lag3",
+     "oni_lag6",
+     "pdo",
+     "pdo_lag1",
+     "pdo_lag12",
+     "pdo_lag2",
+     "pdo_lag3",
+     "pdo_lag6",
+     "pna",
+     "pna_lag1",
+     "pna_lag12",
+     "pna_lag2",
+     "pna_lag3",
+     "pna_lag6",
+     "precip_intensity_mm_lag1",
+     "precip_intensity_mm_lag12",
+     "precip_intensity_mm_lag2",
+     "precip_intensity_mm_lag3",
+     "precip_intensity_mm_lag6",
+     "rmin_pct_lag1",
+     "rmin_pct_lag12",
+     "rmin_pct_lag2",
+     "rmin_pct_lag3",
+     "rmin_pct_lag6",
+     "sam",
+     "sam_lag1",
+     "sam_lag12",
+     "sam_lag2",
+     "sam_lag3",
+     "sam_lag6",
+     "snow_cover_fraction",
+     "snow_duration_days",
+     "soi",
+     "soi_lag1",
+     "soi_lag12",
+     "soi_lag2",
+     "soi_lag3",
+     "soi_lag6",
+     "soil_water_tc_mm_lag1",
+     "soil_water_tc_mm_lag12",
+     "soil_water_tc_mm_lag2",
+     "soil_water_tc_mm_lag3",
+     "soil_water_tc_mm_lag6",
+     "solar_radiation_Wm2_lag1",
+     "solar_radiation_Wm2_lag12",
+     "solar_radiation_Wm2_lag2",
+     "solar_radiation_Wm2_lag3",
+     "solar_radiation_Wm2_lag6",
+     "spei_01m_lag12",
+     "spei_03m_lag12",
+     "spei_06m_lag12",
+     "spei_24m_lag12",
+     "sph_kgkg_lag1",
+     "sph_kgkg_lag12",
+     "sph_kgkg_lag2",
+     "sph_kgkg_lag3",
+     "sph_kgkg_lag6",
+     "spi_01m_lag1",
+     "spi_01m_lag12",
+     "spi_01m_lag2",
+     "spi_01m_lag3",
+     "spi_01m_lag6",
+     "spi_03m_lag1",
+     "spi_03m_lag12",
+     "spi_03m_lag2",
+     "spi_03m_lag3",
+     "spi_03m_lag6",
+     "spi_06m_lag1",
+     "spi_06m_lag12",
+     "spi_06m_lag2",
+     "spi_06m_lag3",
+     "spi_06m_lag6",
+     "spi_12m_lag1",
+     "spi_12m_lag12",
+     "spi_12m_lag2",
+     "spi_12m_lag3",
+     "spi_12m_lag6",
+     "spi_24m_lag1",
+     "spi_24m_lag12",
+     "spi_24m_lag2",
+     "spi_24m_lag3",
+     "spi_24m_lag6",
+     "sst_anom_atl3",
+     "sst_anom_atl3_lag1",
+     "sst_anom_atl3_lag12",
+     "sst_anom_atl3_lag2",
+     "sst_anom_atl3_lag3",
+     "sst_anom_atl3_lag6",
+     "sst_anom_coral_sea",
+     "sst_anom_coral_sea_lag1",
+     "sst_anom_coral_sea_lag12",
+     "sst_anom_coral_sea_lag2",
+     "sst_anom_coral_sea_lag3",
+     "sst_anom_coral_sea_lag6",
+     "sst_anom_global_tropical_mean",
+     "sst_anom_global_tropical_mean_lag1",
+     "sst_anom_global_tropical_mean_lag12",
+     "sst_anom_global_tropical_mean_lag2",
+     "sst_anom_global_tropical_mean_lag3",
+     "sst_anom_global_tropical_mean_lag6",
+     "sst_anom_iod_east",
+     "sst_anom_iod_east_lag1",
+     "sst_anom_iod_east_lag12",
+     "sst_anom_iod_east_lag2",
+     "sst_anom_iod_east_lag3",
+     "sst_anom_iod_east_lag6",
+     "sst_anom_iod_west",
+     "sst_anom_iod_west_lag1",
+     "sst_anom_iod_west_lag12",
+     "sst_anom_iod_west_lag2",
+     "sst_anom_iod_west_lag3",
+     "sst_anom_iod_west_lag6",
+     "sst_anom_nino34",
+     "sst_anom_nino34_lag1",
+     "sst_anom_nino34_lag12",
+     "sst_anom_nino34_lag2",
+     "sst_anom_nino34_lag3",
+     "sst_anom_nino34_lag6",
+     "sst_anom_subpolar_north_atlantic",
+     "sst_anom_subpolar_north_atlantic_lag1",
+     "sst_anom_subpolar_north_atlantic_lag12",
+     "sst_anom_subpolar_north_atlantic_lag2",
+     "sst_anom_subpolar_north_atlantic_lag3",
+     "sst_anom_subpolar_north_atlantic_lag6",
+     "tc_vapor_pressure_lag1",
+     "tc_vapor_pressure_lag12",
+     "tc_vapor_pressure_lag2",
+     "tc_vapor_pressure_lag3",
+     "tc_vapor_pressure_lag6",
+     "tna",
+     "tna_lag1",
+     "tna_lag12",
+     "tna_lag2",
+     "tna_lag3",
+     "tna_lag6",
+     "tni",
+     "tni_lag1",
+     "tni_lag12",
+     "tni_lag2",
+     "tni_lag3",
+     "tni_lag6",
+     "tsa",
+     "tsa_lag1",
+     "tsa_lag12",
+     "tsa_lag2",
+     "tsa_lag3",
+     "tsa_lag6",
+     "vpd_days_gt_2kpa_lag1",
+     "vpd_days_gt_2kpa_lag12",
+     "vpd_days_gt_2kpa_lag2",
+     "vpd_days_gt_2kpa_lag3",
+     "vpd_days_gt_2kpa_lag6",
+     "vpd_max_daily_lag1",
+     "vpd_max_daily_lag12",
+     "vpd_max_daily_lag2",
+     "vpd_max_daily_lag3",
+     "vpd_max_daily_lag6",
+     "vpd_warm_season_mean_lag1",
+     "vpd_warm_season_mean_lag12",
+     "vpd_warm_season_mean_lag2",
+     "vpd_warm_season_mean_lag3",
+     "vpd_warm_season_mean_lag6",
+     "wbal_mm_lag1",
+     "wbal_mm_lag12",
+     "wbal_mm_lag2",
+     "wbal_mm_lag3",
+     "wbal_mm_lag6",
+     "wbal_roll12_lag1",
+     "wbal_roll12_lag12",
+     "wbal_roll12_lag2",
+     "wbal_roll12_lag3",
+     "wbal_roll12_lag6",
+     "wbal_roll24_lag1",
+     "wbal_roll24_lag12",
+     "wbal_roll24_lag2",
+     "wbal_roll24_lag3",
+     "wbal_roll24_lag6",
+     "wbal_roll3_lag1",
+     "wbal_roll3_lag12",
+     "wbal_roll3_lag2",
+     "wbal_roll3_lag3",
+     "wbal_roll3_lag6",
+     "wbal_roll6_lag1",
+     "wbal_roll6_lag12",
+     "wbal_roll6_lag2",
+     "wbal_roll6_lag3",
+     "wbal_roll6_lag6",
+     "wet_day_count_lag1",
+     "wet_day_count_lag12",
+     "wet_day_count_lag2",
+     "wet_day_count_lag3",
+     "wet_day_count_lag6",
+     "wp",
+     "wp_lag1",
+     "wp_lag12",
+     "wp_lag2",
+     "wp_lag3",
+     "wp_lag6"
+    ],
+    "test_years": [
+     2020,
+     2021,
+     2022,
+     2023
+    ],
+    "train_end": 2019,
+    "y0": 2003,
+    "y_end": 2023
+   },
+   "fix": "",
+   "id": "windows (R3-R11)",
+   "part": null,
+   "rule": "R3-R11"
+  },
+  {
+   "details": {
+    "counts": {
+     "wbal_roll12": {
+      "near_sentinel": 0,
+      "rows": 25593480,
+      "undeclared_codes": {
+       "-999.0": 82
+      }
+     },
+     "wbal_roll24": {
+      "near_sentinel": 0,
+      "rows": 25593480,
+      "undeclared_codes": {
+       "-999.0": 209
+      }
+     },
+     "wbal_roll6": {
+      "near_sentinel": 0,
+      "rows": 25593480,
+      "undeclared_codes": {
+       "-999.0": 5
+      }
+     }
+    }
+   },
+   "fix": "declare the provider's fill codes in the store catalog (fill_values), or opt the column out of the near-sentinel flag when such magnitudes are real",
+   "id": "G-SENTINEL (deep)",
+   "part": null,
+   "rule": "G-SENTINEL"
+  },
+  {
+   "details": {
+    "counts": {
+     "V01_mean_temp_C": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V02_total_precip_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V03_max_daily_precip_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V04_precip_seasonality": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V05_mean_vpd_kPa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V06_spei_12m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24430140
+     },
+     "V07_total_ref_ET_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V09_mean_wind_ms": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "V13_mean_lst_C": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25566352
+     },
+     "V14_mean_albedo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 22675651
+     },
+     "V15_bare_ground_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25346688
+     },
+     "V17_herb_cover_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25346688
+     },
+     "V20_burned_binary": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V25_elevation_m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V26_slope_deg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V27_southness": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V28_CTI": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "V30_soil_moisture_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "aet_total_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "aglw_buffalo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aglw_cattle": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aglw_goats": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aglw_horse": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aglw_sheep": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aglw_total_lsu": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "amo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24527085
+     },
+     "ao": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "aridity_index_p_pet": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15872243
+     },
+     "awc_cm3cm3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "built_surface_fraction": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "bulk_density_gcm3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "burn_doy_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "burn_frac": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 16221744
+     },
+     "burn_month_count": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "burn_npix": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 16221744
+     },
+     "cec_cmolkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "clay_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "clf_dry": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "clf_wet": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "climate_water_deficit_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "cloud_frequency_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "co2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "coarse_fragments_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "conflict_deaths": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "conflict_events": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "cropland_fraction": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25581864
+     },
+     "deeprec_twsa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25554408
+     },
+     "dist_coal_mine": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_dam": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_oilgas_well": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_pa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_powerplant": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_reservoir": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_thermal": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "dist_to_coast_km": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "diurnal_temp_range_C": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "eddi_observed": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "epo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 23460690
+     },
+     "era5l_d2m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_pev": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_slhf": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585465
+     },
+     "era5l_smlt": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_sro": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_sshf": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_ssr": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_ssro": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_stl1": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "era5l_str": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585560
+     },
+     "esacci_sm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 11686531
+     },
+     "fert_n": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25472304
+     },
+     "fert_p": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25472304
+     },
+     "food_cereals": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "food_dairy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "food_meat": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "food_oils": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "food_price_index": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "food_sugar": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "frost_days": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "gdd5_degC_days": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "gdp_pc": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593216
+     },
+     "gpp_kgC_m2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25496535
+     },
+     "grace_lwe": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 21909570
+     },
+     "hand_m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585032
+     },
+     "hdi": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588728
+     },
+     "heatwave_days_gt35C": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "iod": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "irrigation_pct_gmia": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "lat": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "lon": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_cropland": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_forest": {
+      "above": 13104,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_pasture": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_range": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_secondary": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "luh2_urban": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "modis_landcover_annual": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "modis_landcover_class": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nao": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nighttime_lst_C": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24641182
+     },
+     "nino12": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nino3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nino34": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nino4": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "nitrogen_gkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "noi": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "ntl": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "oni": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "pdo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "phenology_sos_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24636720
+     },
+     "pna": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "population_density": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "precip_intensity_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "rmin_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "road_density": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25545432
+     },
+     "sam": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sand_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "shrub_cover_pct_global": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585296
+     },
+     "silt_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "snow_cover_fraction": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 22349433
+     },
+     "snow_disappearance_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 19923516
+     },
+     "snow_duration_days": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "snow_max_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 20103420
+     },
+     "snow_onset_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 18820824
+     },
+     "soi": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "soil_organic_carbon_gkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "soil_ph": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "soil_water_tc_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "solar_radiation_Wm2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "spei_01m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24429897
+     },
+     "spei_03m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24430140
+     },
+     "spei_06m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24430140
+     },
+     "spei_24m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 24430140
+     },
+     "sph_kgkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_atl3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_coral_sea": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_global_tropical_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_iod_east": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_iod_west": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_mediterranean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_nino34": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "sst_anom_subpolar_north_atlantic": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "swe_mean_mm": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "tc_vapor_pressure": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25588992
+     },
+     "tna": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "tni": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "travel_time": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25569192
+     },
+     "tree_cover_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25346688
+     },
+     "tsa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "upstream_area_km2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25585032
+     },
+     "vpd_days_gt_2kpa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "vpd_max_daily": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "vpd_warm_season_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "wet_day_count": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     },
+     "wp": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 25593480
+     }
+    },
+    "not_built": "not built: (1) D96's 'one unit per physical quantity by UDUNITS dimension equality': no units library is installed and the G-NONAMES scan forbids unit spellings in engine code, so one unit per quantity is checked only where the facts identify the quantity (one unit string per sum group; a copy, lag, hold or trailing mean carries its single parent's unit string); (2) the output-side pre-clip rate and calibration ratio per arm: both exist only after a run (R28, R34; layer/decide.py prints each arm's pre-clip counts), and check runs before any plan",
+    "refuse_share": 0.001,
+    "target": {
+     "above": 0,
+     "at_bounds": 0,
+     "below": 0,
+     "name": "V11_mean_ndvi",
+     "nonmissing": 18512964
+    },
+    "units": []
+   },
+   "fix": "",
+   "id": "G-RANGE",
+   "part": null,
+   "rule": "G-RANGE"
+  },
+  {
+   "details": {
+    "counts": {
+     "V01_mean_temp_C": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "V02_total_precip_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "V03_max_daily_precip_mm": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "V04_precip_seasonality": {
+      "judged": 2132416,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "V05_mean_vpd_kPa": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "V06_spei_12m": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "V07_total_ref_ET_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "V09_mean_wind_ms": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "V13_mean_lst_C": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "V14_mean_albedo": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "V15_bare_ground_pct": {
+      "judged": 2112224,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "V17_herb_cover_pct": {
+      "judged": 2112224,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "V20_burned_binary": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 162650
+     },
+     "V25_elevation_m": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V26_slope_deg": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V27_southness": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V28_CTI": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V30_soil_moisture_pct": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2127598
+     },
+     "aet_total_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "aglw_buffalo": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "aglw_cattle": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "aglw_goats": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "aglw_horse": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "aglw_sheep": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "aglw_total_lsu": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "amo": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "ao": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "aridity_index_p_pet": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "awc_cm3cm3": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "built_surface_fraction": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "bulk_density_gcm3": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "burn_doy_mean": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "burn_frac": {
+      "judged": 1351812,
+      "judged_as": "fine",
+      "varying": 41840
+     },
+     "burn_month_count": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "burn_npix": {
+      "judged": 1351812,
+      "judged_as": "fine",
+      "varying": 0
+     },
+     "cec_cmolkg": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "clay_pct": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "clf_dry": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "clf_wet": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "climate_water_deficit_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2075504
+     },
+     "cloud_frequency_pct": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "co2": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "coarse_fragments_pct": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "conflict_deaths": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 115
+     },
+     "conflict_events": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 123
+     },
+     "cropland_fraction": {
+      "judged": 2131822,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "deeprec_twsa": {
+      "judged": 2129534,
+      "judged_as": "fine",
+      "varying": 2129534
+     },
+     "dist_coal_mine": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_dam": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_oilgas_well": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_pa": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_powerplant": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_reservoir": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_thermal": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_to_coast_km": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "diurnal_temp_range_C": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "eddi": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "eddi_observed": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 1370468
+     },
+     "epo": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "era5l_d2m": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_pev": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_slhf": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_smlt": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 1699635
+     },
+     "era5l_sro": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2130326
+     },
+     "era5l_sshf": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_ssr": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_ssro": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2125534
+     },
+     "era5l_stl1": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "era5l_str": {
+      "judged": 2132130,
+      "judged_as": "fine",
+      "varying": 2132130
+     },
+     "esacci_sm": {
+      "judged": 1786596,
+      "judged_as": "fine",
+      "varying": 1786596
+     },
+     "fert_n": {
+      "judged": 2122692,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "fert_p": {
+      "judged": 2122692,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "food_cereals": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "food_dairy": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "food_meat": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "food_oils": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "food_price_index": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "food_sugar": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "frost_days": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 1699480
+     },
+     "gdd5_degC_days": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2131734
+     },
+     "gdp_pc": {
+      "judged": 2132768,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "gpp_kgC_m2": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "grace_lwe": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "hand_m": {
+      "judged": 2132086,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "hdi": {
+      "judged": 2132394,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "heatwave_days_gt35C": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 166301
+     },
+     "iod": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "irrigation_pct_gmia": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "lat": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "lon": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "luh2_cropland": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "luh2_forest": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "luh2_pasture": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "luh2_range": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "luh2_secondary": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "luh2_urban": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "modis_landcover_annual": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "modis_landcover_class": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "nao": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nighttime_lst_C": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nino12": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nino3": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nino34": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nino4": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "nitrogen_gkg": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "noi": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "ntl": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "oni": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "pdo": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "phenology_sos_doy": {
+      "judged": 2053060,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "pna": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "population_density": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "precip_intensity_mm": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "rmin_pct": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "road_density": {
+      "judged": 2128786,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "sam": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sand_pct": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "scpdsi": {
+      "judged": 2128566,
+      "judged_as": "fine",
+      "varying": 2128566
+     },
+     "shrub_cover_pct_global": {
+      "judged": 2132108,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "silt_pct": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "snow_cover_fraction": {
+      "judged": 2126212,
+      "judged_as": "fine",
+      "varying": 1675097
+     },
+     "snow_disappearance_doy": {
+      "judged": 1660293,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "snow_duration_days": {
+      "judged": 2132790,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "snow_max_doy": {
+      "judged": 1675285,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "snow_onset_doy": {
+      "judged": 1568402,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "soi": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "soil_organic_carbon_gkg": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "soil_ph": {
+      "judged": 2132790,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "soil_water_tc_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2082476
+     },
+     "solar_radiation_Wm2": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "spei_01m": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "spei_03m": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "spei_06m": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "spei_24m": {
+      "judged": 2035845,
+      "judged_as": "fine",
+      "varying": 2035845
+     },
+     "sph_kgkg": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "spi_01m": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "spi_03m": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "spi_06m": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "spi_12m": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2129150
+     },
+     "spi_24m": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_atl3": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_coral_sea": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_global_tropical_mean": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_iod_east": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_iod_west": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_mediterranean": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_nino34": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "sst_anom_subpolar_north_atlantic": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "swe_mean_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 1671720
+     },
+     "tc_vapor_pressure": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "tna": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "tni": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "travel_time": {
+      "judged": 2130766,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "tree_cover_pct": {
+      "judged": 2112224,
+      "judged_as": "coarse",
+      "varying": 0
+     },
+     "tsa": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "upstream_area_km2": {
+      "judged": 2132086,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "vpd_days_gt_2kpa": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 307288
+     },
+     "vpd_max_daily": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "vpd_warm_season_mean": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "wbal_mm": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "wbal_roll12": {
+      "judged": 2035488,
+      "judged_as": "fine",
+      "varying": 2035488
+     },
+     "wbal_roll24": {
+      "judged": 1938560,
+      "judged_as": "fine",
+      "varying": 1938560
+     },
+     "wbal_roll3": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "wbal_roll6": {
+      "judged": 2132416,
+      "judged_as": "fine",
+      "varying": 2132416
+     },
+     "wet_day_count": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     },
+     "wp": {
+      "judged": 2132790,
+      "judged_as": "fine",
+      "varying": 2132790
+     }
+    },
+    "entering_refused": [],
+    "not_judged": [],
+    "tolerance": 0.001
+   },
+   "fix": "correct the column's cadence fact (declare the coarser step it really has), or rebuild the column at the declared step",
+   "id": "G-CADENCE",
+   "part": 549,
+   "rule": "G-CADENCE"
+  },
+  {
+   "details": {
+    "joins": 154,
+    "refusals": {},
+    "report_only": {},
+    "rows_without_file": {
+     "store D:/gfed_burn/{group}_burn_{year}.parquet (groups its store facts declare absent, F8)": 9371736
+    },
+    "tables": 2,
+    "unmatched_left_rows": 0
+   },
+   "fix": "",
+   "id": "G-JOIN",
+   "part": null,
+   "rule": "G-JOIN"
+  },
+  {
+   "details": {
+    "all_missing_group_years": {
+     "V06_spei_12m": [
+      "alaska_interior_taiga/2023",
+      "alaska_north_slope/2023",
+      "amazon_basin_brazil/2023",
+      "anatolian_plateau/2023"
+     ],
+     "snow_disappearance_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023"
+     ],
+     "snow_max_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023"
+     ],
+     "snow_onset_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023"
+     ],
+     "spei_01m": [
+      "alaska_interior_taiga/2023",
+      "alaska_north_slope/2023",
+      "amazon_basin_brazil/2023",
+      "anatolian_plateau/2023"
+     ],
+     "spei_03m": [
+      "alaska_interior_taiga/2023",
+      "alaska_north_slope/2023",
+      "amazon_basin_brazil/2023",
+      "anatolian_plateau/2023"
+     ],
+     "spei_06m": [
+      "alaska_interior_taiga/2023",
+      "alaska_north_slope/2023",
+      "amazon_basin_brazil/2023",
+      "anatolian_plateau/2023"
+     ],
+     "spei_24m": [
+      "alaska_interior_taiga/2023",
+      "alaska_north_slope/2023",
+      "amazon_basin_brazil/2023",
+      "anatolian_plateau/2023"
+     ],
+     "wbal_roll24": [
+      "alaska_interior_taiga/2002",
+      "alaska_north_slope/2002",
+      "amazon_basin_brazil/2002",
+      "anatolian_plateau/2002"
+     ]
+    },
+    "declared_absent_group_years": {
+     "burn_frac": 22,
+     "burn_npix": 22
+    },
+    "summary": {
+     "V01_mean_temp_C": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V02_total_precip_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V03_max_daily_precip_mm": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V04_precip_seasonality": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V05_mean_vpd_kPa": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V06_spei_12m": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "V07_total_ref_ET_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V09_mean_wind_ms": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "V13_mean_lst_C": {
+      "cells": 88,
+      "max_missing_share": 0.015855,
+      "mean_missing_share": 0.001311
+     },
+     "V14_mean_albedo": {
+      "cells": 88,
+      "max_missing_share": 0.457687,
+      "mean_missing_share": 0.08786
+     },
+     "V15_bare_ground_pct": {
+      "cells": 88,
+      "max_missing_share": 0.472154,
+      "mean_missing_share": 0.006746
+     },
+     "V17_herb_cover_pct": {
+      "cells": 88,
+      "max_missing_share": 0.472154,
+      "mean_missing_share": 0.006746
+     },
+     "V20_burned_binary": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V25_elevation_m": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V26_slope_deg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V27_southness": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V28_CTI": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V30_soil_moisture_pct": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "aet_total_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "aglw_buffalo": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_cattle": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_goats": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_horse": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_sheep": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_total_lsu": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "amo": {
+      "cells": 88,
+      "max_missing_share": 0.916667,
+      "mean_missing_share": 0.041667
+     },
+     "ao": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aridity_index_p_pet": {
+      "cells": 88,
+      "max_missing_share": 0.676418,
+      "mean_missing_share": 0.298641
+     },
+     "awc_cm3cm3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "built_surface_fraction": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "bulk_density_gcm3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "burn_doy_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "burn_frac": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.25
+     },
+     "burn_month_count": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "burn_npix": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.25
+     },
+     "cec_cmolkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "clay_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "clf_dry": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "clf_wet": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "climate_water_deficit_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "cloud_frequency_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "co2": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "coarse_fragments_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_deaths": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_events": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "cropland_fraction": {
+      "cells": 88,
+      "max_missing_share": 0.001239,
+      "mean_missing_share": 0.00031
+     },
+     "deeprec_twsa": {
+      "cells": 88,
+      "max_missing_share": 0.004169,
+      "mean_missing_share": 0.001042
+     },
+     "dist_coal_mine": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_dam": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_oilgas_well": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_pa": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_powerplant": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_reservoir": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_thermal": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_to_coast_km": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "diurnal_temp_range_C": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "eddi": {
+      "cells": 88,
+      "max_missing_share": 0.416667,
+      "mean_missing_share": 0.179098
+     },
+     "eddi_observed": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "epo": {
+      "cells": 88,
+      "max_missing_share": 0.083333,
+      "mean_missing_share": 0.083333
+     },
+     "era5l_d2m": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_pev": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_slhf": {
+      "cells": 88,
+      "max_missing_share": 0.000894,
+      "mean_missing_share": 0.000214
+     },
+     "era5l_smlt": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_sro": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_sshf": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_ssr": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_ssro": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_stl1": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "era5l_str": {
+      "cells": 88,
+      "max_missing_share": 0.000845,
+      "mean_missing_share": 0.000211
+     },
+     "esacci_sm": {
+      "cells": 88,
+      "max_missing_share": 0.734859,
+      "mean_missing_share": 0.487695
+     },
+     "fert_n": {
+      "cells": 88,
+      "max_missing_share": 0.01293,
+      "mean_missing_share": 0.003232
+     },
+     "fert_p": {
+      "cells": 88,
+      "max_missing_share": 0.01293,
+      "mean_missing_share": 0.003232
+     },
+     "food_cereals": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_dairy": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_meat": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_oils": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_price_index": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_sugar": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "frost_days": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdd5_degC_days": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdp_pc": {
+      "cells": 88,
+      "max_missing_share": 2.8e-05,
+      "mean_missing_share": 7e-06
+     },
+     "gpp_kgC_m2": {
+      "cells": 88,
+      "max_missing_share": 0.083333,
+      "mean_missing_share": 0.003788
+     },
+     "grace_lwe": {
+      "cells": 88,
+      "max_missing_share": 0.583333,
+      "mean_missing_share": 0.143939
+     },
+     "hand_m": {
+      "cells": 88,
+      "max_missing_share": 0.000901,
+      "mean_missing_share": 0.000225
+     },
+     "hdi": {
+      "cells": 88,
+      "max_missing_share": 0.000507,
+      "mean_missing_share": 0.000127
+     },
+     "heatwave_days_gt35C": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "iod": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "irrigation_pct_gmia": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "lat": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "lon": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_cropland": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_forest": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_pasture": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_range": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_secondary": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_urban": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "modis_landcover_annual": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "modis_landcover_class": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nao": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nighttime_lst_C": {
+      "cells": 88,
+      "max_missing_share": 0.283104,
+      "mean_missing_share": 0.04601
+     },
+     "nino12": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino34": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino4": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nitrogen_gkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "noi": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "ntl": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "oni": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pdo": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "phenology_sos_doy": {
+      "cells": 88,
+      "max_missing_share": 0.12358,
+      "mean_missing_share": 0.040603
+     },
+     "pna": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "population_density": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "precip_intensity_mm": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "rmin_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "road_density": {
+      "cells": 88,
+      "max_missing_share": 0.00392,
+      "mean_missing_share": 0.002103
+     },
+     "sam": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sand_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "scpdsi": {
+      "cells": 88,
+      "max_missing_share": 0.012757,
+      "mean_missing_share": 0.003189
+     },
+     "shrub_cover_pct_global": {
+      "cells": 88,
+      "max_missing_share": 0.000873,
+      "mean_missing_share": 0.000218
+     },
+     "silt_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "snow_cover_fraction": {
+      "cells": 88,
+      "max_missing_share": 0.304293,
+      "mean_missing_share": 0.101611
+     },
+     "snow_disappearance_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.280893
+     },
+     "snow_duration_days": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "snow_max_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.269573
+     },
+     "snow_onset_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.350271
+     },
+     "soi": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_organic_carbon_gkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_ph": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_water_tc_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "solar_radiation_Wm2": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "spei_01m": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04547
+     },
+     "spei_03m": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "spei_06m": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "spei_24m": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "sph_kgkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "spi_01m": {
+      "cells": 88,
+      "max_missing_share": 0.005481,
+      "mean_missing_share": 0.000101
+     },
+     "spi_03m": {
+      "cells": 88,
+      "max_missing_share": 0.003333,
+      "mean_missing_share": 3.8e-05
+     },
+     "spi_06m": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "spi_12m": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "spi_24m": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_atl3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_coral_sea": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_global_tropical_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_east": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_west": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_mediterranean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_nino34": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_subpolar_north_atlantic": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "swe_mean_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "tc_vapor_pressure": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "tna": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tni": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "travel_time": {
+      "cells": 88,
+      "max_missing_share": 0.002592,
+      "mean_missing_share": 0.000648
+     },
+     "tree_cover_pct": {
+      "cells": 88,
+      "max_missing_share": 0.472154,
+      "mean_missing_share": 0.006746
+     },
+     "tsa": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "upstream_area_km2": {
+      "cells": 88,
+      "max_missing_share": 0.000901,
+      "mean_missing_share": 0.000225
+     },
+     "vpd_days_gt_2kpa": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_max_daily": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_warm_season_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wbal_mm": {
+      "cells": 88,
+      "max_missing_share": 0.000479,
+      "mean_missing_share": 0.00012
+     },
+     "wbal_roll12": {
+      "cells": 88,
+      "max_missing_share": 0.916707,
+      "mean_missing_share": 0.041781
+     },
+     "wbal_roll24": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.087231
+     },
+     "wbal_roll3": {
+      "cells": 88,
+      "max_missing_share": 0.167066,
+      "mean_missing_share": 0.007695
+     },
+     "wbal_roll6": {
+      "cells": 88,
+      "max_missing_share": 0.416946,
+      "mean_missing_share": 0.019057
+     },
+     "wet_day_count": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wp": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     }
+    }
+   },
+   "fix": "",
+   "id": "G-MISSING (deep)",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "all_zero_units": 0,
+    "census": [
+     {
+      "count_max": 264,
+      "count_min": 264,
+      "duplicates": false,
+      "first_max": 24025,
+      "first_min": 24025,
+      "group": "alaska_interior_taiga",
+      "last_max": 24288,
+      "last_min": 24288,
+      "rows": 7073880,
+      "units": 26795
+     },
+     {
+      "count_max": 264,
+      "count_min": 264,
+      "duplicates": false,
+      "first_max": 24025,
+      "first_min": 24025,
+      "group": "alaska_north_slope",
+      "last_max": 24288,
+      "last_min": 24288,
+      "rows": 9371736,
+      "units": 35499
+     },
+     {
+      "count_max": 264,
+      "count_min": 264,
+      "duplicates": false,
+      "first_max": 24025,
+      "first_min": 24025,
+      "group": "amazon_basin_brazil",
+      "last_max": 24288,
+      "last_min": 24288,
+      "rows": 5174400,
+      "units": 19600
+     },
+     {
+      "count_max": 264,
+      "count_min": 264,
+      "duplicates": false,
+      "first_max": 24025,
+      "first_min": 24025,
+      "group": "anatolian_plateau",
+      "last_max": 24288,
+      "last_min": 24288,
+      "rows": 3973464,
+      "units": 15051
+     }
+    ],
+    "groups": 133,
+    "notes": [
+     "donor rows: 18512964 valid labels, distinct values: >= 3"
+    ],
+    "train_end": 2019
+   },
+   "fix": "",
+   "id": "G-SUPPORT (deep)",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "burn_frac": [
+      "over_threshold"
+     ]
+    },
+    "ruled": [
+     "burn_frac"
+    ]
+   },
+   "fix": "",
+   "id": "G-MISSING",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "baseline_disclosures": [],
+    "cuts": [
+     {
+      "cut": "lead 0 fit cut",
+      "day": "2019-12-31"
+     },
+     {
+      "cut": "lead 0 guard cut",
+      "day": "2016-12-31"
+     },
+     {
+      "cut": "lead 6 fit cut",
+      "day": "2019-07-31"
+     },
+     {
+      "cut": "lead 6 guard cut",
+      "day": "2016-07-31"
+     },
+     {
+      "cut": "lead 12 fit cut",
+      "day": "2019-01-31"
+     },
+     {
+      "cut": "lead 12 guard cut",
+      "day": "2016-01-31"
+     }
+    ],
+    "earliest_cut_day": 735994,
+    "never_used": "release_date, snapshot_date (plan 1.3)",
+    "not_compared": [],
+    "observed_through_record_end": [
+     "V06_spei_12m_lag12 (observed_through 2022-12, regular cadence)",
+     "aglw_buffalo_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_cattle_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_goats_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_horse_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_sheep_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_total_lsu_hold2021 (observed_through 2021, regular cadence)",
+     "amo_lag12 (observed_through 2023-01, regular cadence)",
+     "fert_n (observed_through 2013, regular cadence)",
+     "fert_p (observed_through 2013, regular cadence)",
+     "hdi (observed_through 2015, regular cadence)",
+     "spei_01m_lag12 (observed_through 2022-12, regular cadence)",
+     "spei_03m_lag12 (observed_through 2022-12, regular cadence)",
+     "spei_06m_lag12 (observed_through 2022-12, regular cadence)",
+     "spei_24m_lag12 (observed_through 2022-12, regular cadence)"
+    ],
+    "static_undated": []
+   },
+   "fix": "",
+   "id": "G-EPOCH",
+   "part": null,
+   "rule": "G-EPOCH"
+  },
+  {
+   "details": {
+    "lags": [
+     1,
+     2,
+     3
+    ],
+    "reads": 2970
+   },
+   "fix": "",
+   "id": "G-CALENDAR",
+   "part": null,
+   "rule": "G-CALENDAR"
+  },
+  {
+   "details": {
+    "matched": {
+     "V01_mean_temp_C_lag1": 1000,
+     "V01_mean_temp_C_lag12": 1000,
+     "V01_mean_temp_C_lag2": 1000,
+     "V01_mean_temp_C_lag3": 1000,
+     "V01_mean_temp_C_lag6": 1000,
+     "V02_total_precip_mm_lag1": 1000,
+     "V02_total_precip_mm_lag12": 1000,
+     "V02_total_precip_mm_lag2": 1000,
+     "V02_total_precip_mm_lag3": 1000,
+     "V02_total_precip_mm_lag6": 1000,
+     "V02_total_precip_mm_roll12": 1000,
+     "V02_total_precip_mm_roll3": 1000,
+     "V02_total_precip_mm_roll6": 1000,
+     "V03_max_daily_precip_mm_lag1": 1000,
+     "V03_max_daily_precip_mm_lag12": 1000,
+     "V03_max_daily_precip_mm_lag2": 1000,
+     "V03_max_daily_precip_mm_lag3": 1000,
+     "V03_max_daily_precip_mm_lag6": 1000,
+     "V05_mean_vpd_kPa_lag1": 1000,
+     "V05_mean_vpd_kPa_lag12": 1000,
+     "V05_mean_vpd_kPa_lag2": 1000,
+     "V05_mean_vpd_kPa_lag3": 1000,
+     "V05_mean_vpd_kPa_lag6": 1000,
+     "V06_spei_12m_lag12": 1000,
+     "V07_total_ref_ET_mm_lag1": 1000,
+     "V07_total_ref_ET_mm_lag12": 1000,
+     "V07_total_ref_ET_mm_lag2": 1000,
+     "V07_total_ref_ET_mm_lag3": 1000,
+     "V07_total_ref_ET_mm_lag6": 1000,
+     "V07_total_ref_ET_mm_roll12": 1000,
+     "V07_total_ref_ET_mm_roll3": 1000,
+     "V07_total_ref_ET_mm_roll6": 1000,
+     "V07_total_ref_ET_mm_wytd": 1000,
+     "V09_mean_wind_ms_lag1": 1000,
+     "V09_mean_wind_ms_lag12": 1000,
+     "V09_mean_wind_ms_lag2": 1000,
+     "V09_mean_wind_ms_lag3": 1000,
+     "V09_mean_wind_ms_lag6": 1000,
+     "V30_soil_moisture_pct_lag1": 1000,
+     "V30_soil_moisture_pct_lag12": 1000,
+     "V30_soil_moisture_pct_lag2": 1000,
+     "V30_soil_moisture_pct_lag3": 1000,
+     "V30_soil_moisture_pct_lag6": 1000,
+     "V30_soil_moisture_pct_roll12": 1000,
+     "V30_soil_moisture_pct_roll3": 1000,
+     "V30_soil_moisture_pct_roll6": 1000,
+     "V30_soil_moisture_pct_wytd": 1000,
+     "aet_total_mm_lag1": 1000,
+     "aet_total_mm_lag12": 1000,
+     "aet_total_mm_lag2": 1000,
+     "aet_total_mm_lag3": 1000,
+     "aet_total_mm_lag6": 1000,
+     "aet_total_mm_roll12": 1000,
+     "aet_total_mm_roll3": 1000,
+     "aet_total_mm_roll6": 1000,
+     "aet_total_mm_wytd": 1000,
+     "aglw_buffalo_hold2021": 1000,
+     "aglw_cattle_hold2021": 1000,
+     "aglw_goats_hold2021": 1000,
+     "aglw_horse_hold2021": 1000,
+     "aglw_sheep_hold2021": 1000,
+     "aglw_total_lsu_hold2021": 1000,
+     "amo_lag12": 1000,
+     "ao_lag1": 1000,
+     "ao_lag12": 1000,
+     "ao_lag2": 1000,
+     "ao_lag3": 1000,
+     "ao_lag6": 1000,
+     "api_precip": 1000,
+     "api_soilmoist": 1000,
+     "climate_water_deficit_mm_lag1": 1000,
+     "climate_water_deficit_mm_lag12": 1000,
+     "climate_water_deficit_mm_lag2": 1000,
+     "climate_water_deficit_mm_lag3": 1000,
+     "climate_water_deficit_mm_lag6": 1000,
+     "climate_water_deficit_mm_roll12": 1000,
+     "climate_water_deficit_mm_roll3": 1000,
+     "climate_water_deficit_mm_roll6": 1000,
+     "climate_water_deficit_mm_wytd": 1000,
+     "cloud_frequency_pct_lag1": 1000,
+     "cloud_frequency_pct_lag12": 1000,
+     "cloud_frequency_pct_lag2": 1000,
+     "cloud_frequency_pct_lag3": 1000,
+     "cloud_frequency_pct_lag6": 1000,
+     "consec_dry_months": 1000,
+     "ctx:cos1": 1000,
+     "ctx:cos2": 1000,
+     "ctx:sin1": 1000,
+     "ctx:sin2": 1000,
+     "ctx:top5:V01_mean_temp_C": 1000,
+     "ctx:top5:V07_total_ref_ET_mm_lag1": 1000,
+     "ctx:top5:era5l_d2m": 1000,
+     "ctx:top5:era5l_slhf_lag1": 1000,
+     "ctx:top5:sph_kgkg_lag6": 1000,
+     "deeprec_twsa_lag1": 1000,
+     "deeprec_twsa_lag12": 1000,
+     "deeprec_twsa_lag2": 1000,
+     "deeprec_twsa_lag3": 1000,
+     "deeprec_twsa_lag6": 1000,
+     "diurnal_temp_range_C_lag1": 1000,
+     "diurnal_temp_range_C_lag12": 1000,
+     "diurnal_temp_range_C_lag2": 1000,
+     "diurnal_temp_range_C_lag3": 1000,
+     "diurnal_temp_range_C_lag6": 1000,
+     "epo_lag1": 1000,
+     "epo_lag12": 1000,
+     "epo_lag2": 1000,
+     "epo_lag3": 1000,
+     "epo_lag6": 1000,
+     "era5l_d2m_lag1": 1000,
+     "era5l_d2m_lag12": 1000,
+     "era5l_d2m_lag2": 1000,
+     "era5l_d2m_lag3": 1000,
+     "era5l_d2m_lag6": 1000,
+     "era5l_pev_lag1": 1000,
+     "era5l_pev_lag12": 1000,
+     "era5l_pev_lag2": 1000,
+     "era5l_pev_lag3": 1000,
+     "era5l_pev_lag6": 1000,
+     "era5l_slhf_lag1": 1000,
+     "era5l_slhf_lag12": 1000,
+     "era5l_slhf_lag2": 1000,
+     "era5l_slhf_lag3": 1000,
+     "era5l_slhf_lag6": 1000,
+     "era5l_sro_lag1": 1000,
+     "era5l_sro_lag12": 1000,
+     "era5l_sro_lag2": 1000,
+     "era5l_sro_lag3": 1000,
+     "era5l_sro_lag6": 1000,
+     "era5l_sshf_lag1": 1000,
+     "era5l_sshf_lag12": 1000,
+     "era5l_sshf_lag2": 1000,
+     "era5l_sshf_lag3": 1000,
+     "era5l_sshf_lag6": 1000,
+     "era5l_ssr_lag1": 1000,
+     "era5l_ssr_lag12": 1000,
+     "era5l_ssr_lag2": 1000,
+     "era5l_ssr_lag3": 1000,
+     "era5l_ssr_lag6": 1000,
+     "era5l_ssro_lag1": 1000,
+     "era5l_ssro_lag12": 1000,
+     "era5l_ssro_lag2": 1000,
+     "era5l_ssro_lag3": 1000,
+     "era5l_ssro_lag6": 1000,
+     "era5l_stl1_lag1": 1000,
+     "era5l_stl1_lag12": 1000,
+     "era5l_stl1_lag2": 1000,
+     "era5l_stl1_lag3": 1000,
+     "era5l_stl1_lag6": 1000,
+     "era5l_str_lag1": 1000,
+     "era5l_str_lag12": 1000,
+     "era5l_str_lag2": 1000,
+     "era5l_str_lag3": 1000,
+     "era5l_str_lag6": 1000,
+     "gdd5_degC_days_lag1": 1000,
+     "gdd5_degC_days_lag12": 1000,
+     "gdd5_degC_days_lag2": 1000,
+     "gdd5_degC_days_lag3": 1000,
+     "gdd5_degC_days_lag6": 1000,
+     "grace_lwe_lag1": 1000,
+     "grace_lwe_lag12": 1000,
+     "grace_lwe_lag2": 1000,
+     "grace_lwe_lag3": 1000,
+     "grace_lwe_lag6": 1000,
+     "heatwave_days_gt35C_lag1": 1000,
+     "heatwave_days_gt35C_lag12": 1000,
+     "heatwave_days_gt35C_lag2": 1000,
+     "heatwave_days_gt35C_lag3": 1000,
+     "heatwave_days_gt35C_lag6": 1000,
+     "iod_lag1": 1000,
+     "iod_lag12": 1000,
+     "iod_lag2": 1000,
+     "iod_lag3": 1000,
+     "iod_lag6": 1000,
+     "months_since_sig_rain": 1000,
+     "nao_lag1": 1000,
+     "nao_lag12": 1000,
+     "nao_lag2": 1000,
+     "nao_lag3": 1000,
+     "nao_lag6": 1000,
+     "nino12_lag1": 1000,
+     "nino12_lag12": 1000,
+     "nino12_lag2": 1000,
+     "nino12_lag3": 1000,
+     "nino12_lag6": 1000,
+     "nino34_lag1": 1000,
+     "nino34_lag12": 1000,
+     "nino34_lag2": 1000,
+     "nino34_lag3": 1000,
+     "nino34_lag6": 1000,
+     "nino3_lag1": 1000,
+     "nino3_lag12": 1000,
+     "nino3_lag2": 1000,
+     "nino3_lag3": 1000,
+     "nino3_lag6": 1000,
+     "nino4_lag1": 1000,
+     "nino4_lag12": 1000,
+     "nino4_lag2": 1000,
+     "nino4_lag3": 1000,
+     "nino4_lag6": 1000,
+     "noi_lag1": 1000,
+     "noi_lag12": 1000,
+     "noi_lag2": 1000,
+     "noi_lag3": 1000,
+     "noi_lag6": 1000,
+     "oni_lag1": 1000,
+     "oni_lag12": 1000,
+     "oni_lag2": 1000,
+     "oni_lag3": 1000,
+     "oni_lag6": 1000,
+     "pdo_lag1": 1000,
+     "pdo_lag12": 1000,
+     "pdo_lag2": 1000,
+     "pdo_lag3": 1000,
+     "pdo_lag6": 1000,
+     "pna_lag1": 1000,
+     "pna_lag12": 1000,
+     "pna_lag2": 1000,
+     "pna_lag3": 1000,
+     "pna_lag6": 1000,
+     "precip_intensity_mm_lag1": 1000,
+     "precip_intensity_mm_lag12": 1000,
+     "precip_intensity_mm_lag2": 1000,
+     "precip_intensity_mm_lag3": 1000,
+     "precip_intensity_mm_lag6": 1000,
+     "precip_wytd": 1000,
+     "rmin_pct_lag1": 1000,
+     "rmin_pct_lag12": 1000,
+     "rmin_pct_lag2": 1000,
+     "rmin_pct_lag3": 1000,
+     "rmin_pct_lag6": 1000,
+     "sam_lag1": 1000,
+     "sam_lag12": 1000,
+     "sam_lag2": 1000,
+     "sam_lag3": 1000,
+     "sam_lag6": 1000,
+     "soi_lag1": 1000,
+     "soi_lag12": 1000,
+     "soi_lag2": 1000,
+     "soi_lag3": 1000,
+     "soi_lag6": 1000,
+     "soil_water_tc_mm_lag1": 1000,
+     "soil_water_tc_mm_lag12": 1000,
+     "soil_water_tc_mm_lag2": 1000,
+     "soil_water_tc_mm_lag3": 1000,
+     "soil_water_tc_mm_lag6": 1000,
+     "soil_water_tc_mm_roll12": 1000,
+     "soil_water_tc_mm_roll3": 1000,
+     "soil_water_tc_mm_roll6": 1000,
+     "soil_water_tc_mm_wytd": 1000,
+     "solar_radiation_Wm2_lag1": 1000,
+     "solar_radiation_Wm2_lag12": 1000,
+     "solar_radiation_Wm2_lag2": 1000,
+     "solar_radiation_Wm2_lag3": 1000,
+     "solar_radiation_Wm2_lag6": 1000,
+     "spei_01m_lag12": 1000,
+     "spei_03m_lag12": 1000,
+     "spei_06m_lag12": 1000,
+     "spei_24m_lag12": 1000,
+     "sph_kgkg_lag1": 1000,
+     "sph_kgkg_lag12": 1000,
+     "sph_kgkg_lag2": 1000,
+     "sph_kgkg_lag3": 1000,
+     "sph_kgkg_lag6": 1000,
+     "spi_01m_lag1": 1000,
+     "spi_01m_lag12": 1000,
+     "spi_01m_lag2": 1000,
+     "spi_01m_lag3": 1000,
+     "spi_01m_lag6": 1000,
+     "spi_03m_lag1": 1000,
+     "spi_03m_lag12": 1000,
+     "spi_03m_lag2": 1000,
+     "spi_03m_lag3": 1000,
+     "spi_03m_lag6": 1000,
+     "spi_06m_lag1": 1000,
+     "spi_06m_lag12": 1000,
+     "spi_06m_lag2": 1000,
+     "spi_06m_lag3": 1000,
+     "spi_06m_lag6": 1000,
+     "spi_12m_lag1": 1000,
+     "spi_12m_lag12": 1000,
+     "spi_12m_lag2": 1000,
+     "spi_12m_lag3": 1000,
+     "spi_12m_lag6": 1000,
+     "spi_24m_lag1": 1000,
+     "spi_24m_lag12": 1000,
+     "spi_24m_lag2": 1000,
+     "spi_24m_lag3": 1000,
+     "spi_24m_lag6": 1000,
+     "sst_anom_atl3_lag1": 1000,
+     "sst_anom_atl3_lag12": 1000,
+     "sst_anom_atl3_lag2": 1000,
+     "sst_anom_atl3_lag3": 1000,
+     "sst_anom_atl3_lag6": 1000,
+     "sst_anom_coral_sea_lag1": 1000,
+     "sst_anom_coral_sea_lag12": 1000,
+     "sst_anom_coral_sea_lag2": 1000,
+     "sst_anom_coral_sea_lag3": 1000,
+     "sst_anom_coral_sea_lag6": 1000,
+     "sst_anom_global_tropical_mean_lag1": 1000,
+     "sst_anom_global_tropical_mean_lag12": 1000,
+     "sst_anom_global_tropical_mean_lag2": 1000,
+     "sst_anom_global_tropical_mean_lag3": 1000,
+     "sst_anom_global_tropical_mean_lag6": 1000,
+     "sst_anom_iod_east_lag1": 1000,
+     "sst_anom_iod_east_lag12": 1000,
+     "sst_anom_iod_east_lag2": 1000,
+     "sst_anom_iod_east_lag3": 1000,
+     "sst_anom_iod_east_lag6": 1000,
+     "sst_anom_iod_west_lag1": 1000,
+     "sst_anom_iod_west_lag12": 1000,
+     "sst_anom_iod_west_lag2": 1000,
+     "sst_anom_iod_west_lag3": 1000,
+     "sst_anom_iod_west_lag6": 1000,
+     "sst_anom_nino34_lag1": 1000,
+     "sst_anom_nino34_lag12": 1000,
+     "sst_anom_nino34_lag2": 1000,
+     "sst_anom_nino34_lag3": 1000,
+     "sst_anom_nino34_lag6": 1000,
+     "sst_anom_subpolar_north_atlantic_lag1": 1000,
+     "sst_anom_subpolar_north_atlantic_lag12": 1000,
+     "sst_anom_subpolar_north_atlantic_lag2": 1000,
+     "sst_anom_subpolar_north_atlantic_lag3": 1000,
+     "sst_anom_subpolar_north_atlantic_lag6": 1000,
+     "tc_vapor_pressure_lag1": 1000,
+     "tc_vapor_pressure_lag12": 1000,
+     "tc_vapor_pressure_lag2": 1000,
+     "tc_vapor_pressure_lag3": 1000,
+     "tc_vapor_pressure_lag6": 1000,
+     "tna_lag1": 1000,
+     "tna_lag12": 1000,
+     "tna_lag2": 1000,
+     "tna_lag3": 1000,
+     "tna_lag6": 1000,
+     "tni_lag1": 1000,
+     "tni_lag12": 1000,
+     "tni_lag2": 1000,
+     "tni_lag3": 1000,
+     "tni_lag6": 1000,
+     "tsa_lag1": 1000,
+     "tsa_lag12": 1000,
+     "tsa_lag2": 1000,
+     "tsa_lag3": 1000,
+     "tsa_lag6": 1000,
+     "vpd_days_gt_2kpa_lag1": 1000,
+     "vpd_days_gt_2kpa_lag12": 1000,
+     "vpd_days_gt_2kpa_lag2": 1000,
+     "vpd_days_gt_2kpa_lag3": 1000,
+     "vpd_days_gt_2kpa_lag6": 1000,
+     "vpd_max_daily_lag1": 1000,
+     "vpd_max_daily_lag12": 1000,
+     "vpd_max_daily_lag2": 1000,
+     "vpd_max_daily_lag3": 1000,
+     "vpd_max_daily_lag6": 1000,
+     "vpd_warm_season_mean_lag1": 1000,
+     "vpd_warm_season_mean_lag12": 1000,
+     "vpd_warm_season_mean_lag2": 1000,
+     "vpd_warm_season_mean_lag3": 1000,
+     "vpd_warm_season_mean_lag6": 1000,
+     "wbal_mm_lag1": 1000,
+     "wbal_mm_lag12": 1000,
+     "wbal_mm_lag2": 1000,
+     "wbal_mm_lag3": 1000,
+     "wbal_mm_lag6": 1000,
+     "wbal_roll12_lag1": 1000,
+     "wbal_roll12_lag12": 1000,
+     "wbal_roll12_lag2": 1000,
+     "wbal_roll12_lag3": 1000,
+     "wbal_roll12_lag6": 1000,
+     "wbal_roll24_lag1": 1000,
+     "wbal_roll24_lag12": 1000,
+     "wbal_roll24_lag2": 1000,
+     "wbal_roll24_lag3": 1000,
+     "wbal_roll24_lag6": 1000,
+     "wbal_roll3_lag1": 1000,
+     "wbal_roll3_lag12": 1000,
+     "wbal_roll3_lag2": 1000,
+     "wbal_roll3_lag3": 1000,
+     "wbal_roll3_lag6": 1000,
+     "wbal_roll6_lag1": 1000,
+     "wbal_roll6_lag12": 1000,
+     "wbal_roll6_lag2": 1000,
+     "wbal_roll6_lag3": 1000,
+     "wbal_roll6_lag6": 1000,
+     "wet_day_count_lag1": 1000,
+     "wet_day_count_lag12": 1000,
+     "wet_day_count_lag2": 1000,
+     "wet_day_count_lag3": 1000,
+     "wet_day_count_lag6": 1000,
+     "wp_lag1": 1000,
+     "wp_lag12": 1000,
+     "wp_lag2": 1000,
+     "wp_lag3": 1000,
+     "wp_lag6": 1000
+    },
+    "sample_rows": 1000,
+    "tolerance": 1e-09
+   },
+   "fix": "",
+   "id": "G-DERIVED (recompute)",
+   "part": null,
+   "rule": "G-DERIVED"
+  },
+  {
+   "details": {
+    "look_backs": [
+     "lag 0",
+     "lag 1",
+     "lag 2",
+     "lag 3",
+     "trailing mean 12",
+     "trailing mean 60"
+    ],
+    "sample_rows": 820
+   },
+   "fix": "",
+   "id": "G-HIST (sample)",
+   "part": null,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "sum_groups": 1
+   },
+   "fix": "",
+   "id": "G-LINEAGE (deep)",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-DERIVED",
+   "part": null,
+   "rule": "G-DERIVED"
+  }
+ ],
+ "mode": "deep",
+ "package": "ndvi",
+ "package_fingerprint": "edbc45b52643dcddc8ddb3928b3f955ad1a404e227051532f00734a3e01227bf"
+}

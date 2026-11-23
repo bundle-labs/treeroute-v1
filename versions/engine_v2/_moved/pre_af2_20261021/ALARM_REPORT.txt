@@ -1,0 +1,161 @@
+TWIN-DISAGREEMENT ALARM - BUILD REPORT FOR THE OWNER (engine v2, 2026-10-21)
+==========================================================================
+
+ATTENTION 1 - the "built before the failure" request was NOT followed.
+  You asked to say the alarm was built before the v1 failure. I did not write that anywhere, and I recommend you do
+  not either. The alarm was designed today, after the v1 runs, from the coral diagnosis (Parts 601-604). Ruling AE3
+  already records this and the reason: saying otherwise would misstate the research record. The dates in the Parts,
+  the rulings file and the file times all show the real order, so a reviewer could find it.
+  What you CAN honestly say: "From engine v2 on, the alarm is a fixed, pre-registered part of the method. On the v1
+  runs we show its effect as a post-hoc replay." Every alarm record and replay row carries the AE3 sentence and the
+  tag "POST-HOC (AE3)".
+
+ATTENTION 2 - AE3 has a wrong coral number. You must fix it in LIVE yourself (LIVE is read-only to me).
+  OWNER_RULINGS_2026-10-06.md:202 says coral goes "6.70 -> 6.15". The frozen rule gives 6.698 -> 6.120.
+  (6.15 is the twin used on EVERY row, which is not the rule.) I re-ran the coral replay with the fixed engine
+  tonight: 6.119956, the same number to the last bit.
+  AE3 also says the alarm is "silent on the other four". That is true at the nowcast only. Two leads cannot be
+  replayed, because v1 never saved the twin at a lead: defo lead 1 and coral lead 183. Suggested wording:
+  "coral nowcast 6.70 -> 6.12, post-hoc; silent at the nowcast of the other four; defo lead 1 and coral lead 183
+  cannot be replayed."
+
+ATTENTION 3 - two choices for you to make (nothing changes any v1 number either way).
+  (a) Zero reference gap (alarm.py:243-244). If the twin and the adopted arm agree exactly on the decision
+      surface, the ratio would be "something / 0". Options:
+        A. keep as built: the pass is "not tested" and the adopted arm stands (current code);
+        B. switch a batch to the twin whenever its gap is above zero;
+        C. refuse the run.
+      I recommend A.
+  (b) Which point twin eligibility is judged at (nowcast vs leads).
+        - Nowcast: the twin must be in adoption.json's eligible list, so it is judged at its own best penalty
+          point (decide.py:460, and :468 for the neighbour kind).
+        - Leads: the twin is judged at the pinned point (ladder.py _alarm_guard, ~879-928).
+      Options:
+        A. keep as built and record the difference as a ruling;
+        B. at the nowcast, judge the twin at the adopted point too (the point the alarm actually uses).
+      On coral, fire and defo both options give the same answer, so no result changes. I recommend B for
+      consistency, but it changes the rule's wording, so it needs your ruling. I did not build it.
+
+ATTENTION 4 - the coral gain comes from 2016 alone. Per year (POST-HOC): 2016 12.406 -> 10.681; 2017 3.569 -> 3.688
+  (worse); 2018 1.280 unchanged; 2019 4.806 -> 5.044 (worse). The paper should show this per-year split.
+
+
+1. WHAT WAS FIXED TONIGHT (from the skeptic review; every change is in D:\treeroute\engine_v2\engine only)
+---------------------------------------------------------------------------------------------------------
+Issues 1 + 2 (medium): the locked alarm is now checked again after the labels open.
+  - New verify_alarm in treeroute\pipeline\alarm_pass.py:205. Both engine reports (alarm_pass.py:381, :450) and
+    the headline-table builder (treeroute_report\table.py:263) call it. It refuses unless:
+      * the alarm record still matches its lock record and the opened-labels marker;
+      * alarm_preds and the guard predictions still match the hashes in the locked record;
+      * alarm_preds has the expected columns, no label column, and the right rows and lead;
+      * the recorded status follows from the recorded facts;
+      * re-running the frozen rule on the saved columns gives exactly the saved "fired" and "with alarm" columns,
+        and the same batches and counts.
+  - with_alarm_frame (alarm_pass.py:295) now also checks that the twin column equals the saved twin arm bit for
+    bit (at the nowcast it must be there), and that the pre-clip "with alarm" values follow the saved arms.
+  - The vault (treeroute\labels\vault.py:797, used at :773 and :992) refuses to lock or open labels if the
+    predictions named in the alarm record are missing or changed.
+Issue 5 (low):
+  - A negative reference gap is now refused instead of being called "active" (alarm.py:236, :267).
+  - The legacy harness now records its own status, "not_applicable_harness" (alarm.py:57), instead of
+    "declined".
+Issue 6 (low): a bad issue day number now raises an alarm refusal instead of a raw error (alarm.py:195).
+Issue 8 (coverage): two new toy tests in tests\test_pipeline_alarm.py.
+  - T6 (:262): forced adoption, but with the default constants (2.0, 30) and the REAL lead eligibility check.
+    Every pass is re-checked, lead eligibility is recomputed from the saved guard rows, and the prediction files
+    equal v1's.
+  - T7 (:305): the post-hoc replay tool tools\alarm_with_without.py, run on the v1 toy, gives exactly the live v2
+    alarm's status, fired batches and with/without MAE. This also gives that tool its first test.
+Issue 9 (trivial): vault.py is back to CRLF line endings, as in LIVE.
+Issues 3 and 4: owner choices, see ATTENTION 3. Issue 7 (paper text): see ATTENTION 2.
+New test file: tests\test_alarm_verify.py (16 tests, one for each refusal above).
+Backups of every file before editing: D:\treeroute\engine_v2\_moved\pre_skeptic_fixes_20261021\ (nothing deleted).
+
+Engine hash (engine_code_sha256, treeroute\ only):
+  - LIVE:               930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814 (unchanged, checked tonight)
+  - v2 before the fixes: fc051e5ae25177e0bc1ed6003f7d0869eac4e25761b7262f94941a10ca963f6e
+  - v2 NOW:              663ab8ef0a666edc786339f2b9e4edac9e067751f72f99ed6a229b903a04bbc3
+
+
+2. TESTS (Python 3.9, py -3.9 -B; basetemp under D:\treeroute\engine_v2\pt)
+--------------------------------------------------------------------------
+All tests run with py -3.9 -B, the engine's Python. (A first try used Python 3.12 by mistake. Its log is moved to
+_moved\fix2_wrong_python312.log and none of its results count.) No smoke, grid or headline runs. Toys only, each
+under a minute, with RAM well under 3 GB.
+- Affected engine tests (15 files: every alarm, vault-lock, pipeline, table-mode and report-table test file):
+  205 passed, 1 failed (pt\fix3.log, 19 min). The failure was in my new T7 test, not in the engine: it read the
+  CSV back with the default float parser, which can change the last digit. I set float_precision="round_trip"
+  and re-ran tests\test_pipeline_alarm.py: 12 of 12 passed (pt\fix5).
+- New tests\test_alarm_verify.py: 16 of 16 passed. Fast alarm and vault tests: all passed.
+- What T6 found on the toy, with the real rule:
+    * the nowcast was ACTIVE: 48 batches tested, 0 switched (the first toy test of this case);
+    * leads 6 and 12: the twin is NOT eligible under the real check (guard MAE 0.5975 vs baseline 0.5853, and
+      0.5851 vs 0.5762), so the alarm stays off there;
+    * every prediction file equals v1's forced run.
+- Skeptic review tests (review_tests\, run unchanged): 79 passed, 8 failed, and all 8 failures are expected.
+    * 4 are the FINDING tests. Each asserted a weakness that is now fixed.
+    * 4 are the run-folder test on the tampered copies that the FINDING tests leave under pt\. The test picks up
+      every folder under pt\, and the tampered ones are now correctly refused.
+- The full engine suite was NOT run tonight. Following the lean-testing rule, run it ONCE as part of the install
+  (section 4).
+
+
+3. WITH / WITHOUT THE ALARM ON THE SAVED v1 RUNS - ALL ROWS ARE POST-HOC (AE3)
+-----------------------------------------------------------------------------
+The rule was designed after these runs. Full file: D:\treeroute\engine_v2\replay\WITH_WITHOUT.csv (row-level
+predictions in replay\rows\). The skeptic recomputed every number independently, without the engine. The coral
+rows were re-run tonight with the fixed engine and came out identical
+(D:\treeroute\engine_v2\replay_recheck_20261021\).
+
+problem lead  rows                    status             tested/fired        MAE without   MAE with
+pm25    0     91,428                  twin not simpler   48/0 (max 1.75)     3.588091      3.588091
+pm25    6     all                     twin not simpler   -/0                 3.846310      same
+pm25    12    all                     declined           0/0                 4.083558      same
+ndvi    0     94,527                  twin not simpler   48/0 (max 1.75)     0.031461      0.031461
+ndvi    6/12  all                     declined           0/0                 0.039568/0.039583  same
+fire    0     94,702                  twin not eligible  48/0 (max 1.85)     0.004385      0.004385
+fire    6/12  all                     declined           0/0                 0.006312/0.006311  same
+defo    0     369,096                 active             4/0 (max 1.17)      0.005416      0.005416
+defo    1     all                     NOT REPLAYABLE     -                   0.005408      -
+coral   0     all 2,312               active             33/11 (737 rows)    6.698         6.120
+coral   0     bleached (y>0) 1,024    active             33/11               13.370        11.836
+coral   0     severe (y>23.96) 239    active             33/11               41.052        33.278
+coral   0     y>=50, 140              active             33/11               53.125        40.987
+coral   183   all/bleached/severe     NOT REPLAYABLE     -                   7.710/15.884/50.581  -
+coral   365   all/bleached/severe     declined           0/0                 8.294/17.470/55.709  same
+
+Notes:
+  - "max" is the largest batch ratio among the tested batches. No grid problem came near 2.0, so neither
+    safeguard decided any grid result.
+  - Fire's twin missed eligibility by 0.00002 (0.0043869 vs its trees-off 0.0043678).
+  - The other reading of D1 (pm25's twin = log_c_plain_unweighted) does not change anything: its largest ratio is
+    1.556, so nothing fires.
+  - Coral fired months: 2016-01 to 2016-06, 2016-08, 2017-03, 2017-12, 2019-05, 2019-06. Reference gap 0.34056.
+  - 15 coral batches (275 rows) had fewer than 30 rows and were not tested. One of them, 2016-07, had ratio 25.5
+    on 16 rows.
+  - Threshold check, information only (the 2.0 stays frozen): 1.5 gives 6.109; 2.5 and 3.0 give 6.100.
+
+
+4. INSTALL NOTE
+---------------
+- Do NOT install into LIVE yet. Every rival board pins LIVE 930d961c and refuses a changed engine, and a common-rival
+  run may be using LIVE right now.
+- Install only after EVERY rival board has finished. Then it needs a ruling for the install (new hash 663ab8ef...,
+  or a later one if you rule on ATTENTION 3).
+- After install, run ONE full test suite in LIVE (lean-testing rule). Not run tonight; see section 2.
+- When you install, also copy: the AE1 amendment (LIVE already has it; the v2 copy's OWNER_RULINGS file was taken
+  before it), and your AE3 correction (ATTENTION 2).
+- No headline re-runs, as you ruled. The v1 numbers stay as they are, with the post-hoc table beside them.
+
+
+5. STILL OPEN
+-------------
+- The replay is not yet logged as a Part (the rule: every experiment gets a Part). I could not write it, because I
+  am allowed to write only under engine_v2. Draft:
+    "Part N - twin-disagreement alarm (ruling AE, engine v2), POST-HOC replay on the five v1 headline runs. Designed
+     after the v1 runs (AE3). Coral nowcast MAE 6.698 -> 6.120 (11/33 month-batches, 737/2,312 rows; the gain is
+     all 2016; 2017 and 2019 slightly worse). Silent at the nowcast of pm25, ndvi, fire and defo (largest ratio
+     1.85). Defo lead 1 and coral lead 183 cannot be replayed (twin not saved at a lead in v1). Engine v2
+     663ab8ef, not installed."
+- The skeptic's review tests in D:\treeroute\engine_v2\review_tests are left unchanged. Their 4 FINDING tests now
+  fail on purpose: each one proved a weakness that is now closed.

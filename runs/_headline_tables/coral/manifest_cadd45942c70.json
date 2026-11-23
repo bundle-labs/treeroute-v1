@@ -1,0 +1,108 @@
+{
+ "continuity_groups_sha256": "5c7272dd3a40bfa1ca060e0b6cf00997bc5a62bb1ce96b4407a03bc5089bbfb4",
+ "history_bands_sha256": "93f474341798f389c91f89ab2ed0949f96ff0ab7a659a10364246dfa9e54c0f6",
+ "inputs": [
+  {
+   "file": "derived",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\derived.json",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "5fd02863f8b91573cf145edc98db7f8b4a9d6a9fd34a1519ef0a0f831e184660"
+  },
+  {
+   "file": "ladder",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\ladder\\ladder.json",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "f68e0c89c227e5949588ee8efc53701ce26301457253113e18abc7d1b8a72e18"
+  },
+  {
+   "file": "per_stratum",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\per_stratum.csv",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "821d5b48d3865f48d209336b9353ddae0f0605e68124a392dee4f55bd8182241"
+  },
+  {
+   "file": "run_record",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\run_record.json",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "7bcc19ca726961af52898f9327d0ba9f1bd75adc01d94dfd5611ee4b9734fbdc"
+  },
+  {
+   "file": "test_preds_lead_0",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "dd07762558023d5fed6007a99c5b92f935c518a2c408622ccb8230397db6e3fa"
+  },
+  {
+   "file": "test_preds_lead_183",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\ladder\\lead_183\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "28273c6f2c3b293f30324ee9cbe242213b76ec46675ab65a895bf1c02b1f00b9"
+  },
+  {
+   "file": "test_preds_lead_365",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\ladder\\lead_365\\test_preds.parquet",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "a237ba9c77ac297b42cb5260e8da2b1290008bc1c171c31f773bd73e5fd71e3f"
+  },
+  {
+   "file": "verdict",
+   "package": "coral",
+   "path": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\verdict.json",
+   "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+   "sha256": "6bf9b04970173323c9112d90910c47c16da9e65bf214be3e6e9e9bb46fcde200"
+  }
+ ],
+ "notes": [],
+ "outputs": {
+  "continuity": {
+   "file": "continuity_bbff151092ad.csv",
+   "sha256": "bbff151092ad81393422d8f17170e9f86eca8f7c6ddef78760f2f61389397f23"
+  },
+  "disclosures": {
+   "file": "disclosures_a6d0f1d46939.csv",
+   "sha256": "a6d0f1d46939dc3ddc088b6f1f227d362b2882c1f105f6d989ee9a8476fc3254"
+  },
+  "headline": {
+   "file": "headline_344838cf7de1.csv",
+   "sha256": "344838cf7de1df55b5379426e8d131b99bc06a4b8fb7e847121b01c592a9119f"
+  },
+  "markdown": {
+   "file": "headline_25e5848897eb.md",
+   "sha256": "25e5848897eb24d34fe7ac9aec50c6f346fc7d128a230c2e3162eb4348ea0a8f"
+  },
+  "per_group": {
+   "file": "per_group_1e2505d594fc.csv",
+   "sha256": "1e2505d594fc8b1864c05078f6d8918272ec206e3536829349cbc4612af67b7e"
+  },
+  "per_stratum": {
+   "file": "per_stratum_efe3264836e0.csv",
+   "sha256": "efe3264836e005a08e085691fe9d2103739fa67dd8cdead3a962d7bbb4f3254e"
+  },
+  "per_year": {
+   "file": "per_year_7dde14b4e308.csv",
+   "sha256": "7dde14b4e3082054c09ec7a5148a08f4e4280f13a79db65b3ef91c49f168de95"
+  },
+  "scores_long": {
+   "file": "scores_long_57920b9d8983.csv",
+   "sha256": "57920b9d8983659ec398c006ecbc31b4db35c27798a0611ccd0f9b78a9495a2a"
+  },
+  "subsets": {
+   "file": "subsets_e7e0be563aaf.csv",
+   "sha256": "e7e0be563aafd4e93d940eea62f2b7314ace9d3e44132157d298e56cf428d2ea"
+  },
+  "verdicts": {
+   "file": "verdicts_a9d948cbf26b.csv",
+   "sha256": "a9d948cbf26be365dde300fd05c6d3fff1af092507c371e7101832e51ed59839"
+  }
+ },
+ "report_rows_sha256": "8185cd4b5eb9cbf33876bd4053f7530f7e38a25f752190cc181360719e2a7d7d",
+ "tool": "treeroute_report.table",
+ "watermark": null
+}

@@ -1,0 +1,23 @@
+# DRAFT production config of the human-rival tool (written at integration, 2026-10-22, from the PRODUCTION comment
+# block of human_rivals.yaml; SPEC_HUMAN.txt 1.1, PROT:53-56). NOT USED BY ANY BUILD COMMAND OR TEST.
+# The owner reviews it, renames it (e.g. D:/treeroute/rivals_human/human_rivals_production.yaml) and passes it with
+# --config on every owner command. machine_file is the ENGINE's machine file, so human jobs take the engine's heavy-job
+# lock (D:/treeroute/tmp/treeroute_heavy_job.lock) and can never run beside the pm25 rival job.
+# Code root stays D:/treeroute/human_rivals_build/human (registry_dir, on_disk_products) until the owner freezes it.
+engine_root: 'C:/Users/<user>/Desktop/data set for reserch paper/engine'
+machine_file: 'C:/Users/<user>/Desktop/data set for reserch paper/engine/config/machine.yaml'
+export_root: 'D:/treeroute/rival_export'
+export_ckpt_root: 'D:/treeroute/rival_export/_engine_run_root'
+out_root: 'D:/treeroute/rivals_human'
+moved_root: 'D:/treeroute/rivals_human/_moved'
+common_build_root: 'D:/treeroute/rivals_build'
+common_harness_sha256: 'b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2'   # Part 608 fix (was 71457aa9); ruling AG
+common_harness_accepted_boards:   # ruling AG (owner, 2026-10-22): boards made under the older harness
+  '71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97': 'ruling AG, Part 613: Part 608 changed only how an open (null) legal bound is read; the coral and fire boards (bounded targets) ran under it before the fix and are accepted without re-run'
+common_board_root: 'D:/treeroute/rivals'
+slim_root: 'D:/treeroute/rivals_human'
+index_root: 'D:/treeroute/human_index'
+products_root: 'D:/treeroute/human_products'
+on_disk_products: 'D:/treeroute/human_rivals_build/human/registry/_products.yaml'
+table_root: 'D:/treeroute/rivals_table'
+registry_dir: 'D:/treeroute/human_rivals_build/human/registry'

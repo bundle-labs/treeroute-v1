@@ -1,0 +1,390 @@
+{
+ "what": "POST-HOC sensitivity of the PM2.5 published rival merra2_lag1 (human rival, tier P), deciding contrast guarded_vs_headline at lead 0; implementer B. Post hoc: the board's verdict (CANNOT TELL) stands; these numbers are sensitivities, not verdicts.",
+ "inputs": {
+  "board_run": "D:\\treeroute\\rivals_human\\pm25\\20261007_74e67609",
+  "preds_file": "D:\\treeroute\\rivals_human\\pm25\\20261007_74e67609\\lead_0\\preds_merra2_lag1.parquet",
+  "preds_sha256": "5b312bdbed13e14df198cc2680a6dc7b1e24afc5a225b7284258595c1fda3494",
+  "test_rows_file": "D:\\treeroute\\runs\\pm25\\headline\\20261007_74e67609\\test_preds.parquet",
+  "test_rows_sha256": "9e62fe4256c08c50108f09bb0eef65bd46bed78c1deb045a2746eb500f454225",
+  "rivals_table": "D:\\treeroute\\rivals_table\\20261025T162302876402Z\\RIVALS_TABLE.csv",
+  "headline_column": "arm__log_c_corrector_unweighted",
+  "band": 0.04621194665693497,
+  "legal_range": [
+   0.0,
+   "inf"
+  ],
+  "pick": {
+   "candidate": "pm25__F5__log_c",
+   "family": "F5",
+   "link": "log_c",
+   "stat": "x__pm25",
+   "form": "calibrated"
+  },
+  "guard": {
+   "comparator": "log_c_trees_off_unweighted",
+   "comparator_mae": 3.5256518387286944,
+   "passed": true,
+   "rival_mae": 3.5208945819429056,
+   "rows": 68559,
+   "run": true,
+   "score_without_net": false,
+   "source": "the pick fitted on the tune rows, scored on the covered inner rows"
+  }
+ },
+ "population": {
+  "test_rows": 91440,
+  "covered_rows": 91440,
+  "deciding_rows": 91440,
+  "deciding_rows_labelled_scored": 91428,
+  "deciding_rows_unlabelled_not_scored": 12,
+  "groups": 127,
+  "units": 1905,
+  "months": "2020-01 .. 2023-12"
+ },
+ "step0_reproduction": {
+  "result": "REPRODUCED",
+  "contrast": {
+   "verdict": "CANNOT TELL",
+   "tag": "cannot_tell",
+   "d_mean": 4.855619585591441,
+   "d_se": 4.592841201827538,
+   "d_low": -4.146349169990533,
+   "d_high": 13.857588341173415,
+   "n_groups": 127,
+   "blocked_mean_report_only": 5.166046361097596,
+   "blocked_se_report_only": 4.901567110294892,
+   "n_blocks": 119,
+   "rival_mae_pooled": 8.444331927157267,
+   "ours_mae_pooled_same_rows": 3.588091134093021,
+   "scored_rows": 91428,
+   "groups_rival_worse": 104,
+   "groups_rival_better": 23
+  },
+  "checks": {
+   "board_csv.d_mean": {
+    "ours": 4.855619585591441,
+    "board": 4.855619585591441,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.d_se": {
+    "ours": 4.592841201827538,
+    "board": 4.592841201827538,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.d_low": {
+    "ours": -4.146349169990533,
+    "board": -4.146349169990533,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.d_high": {
+    "ours": 13.857588341173415,
+    "board": 13.857588341173415,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.rival_mae": {
+    "ours": 8.444331927157267,
+    "board": 8.444331927157267,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.ours_mae_same_rows": {
+    "ours": 3.588091134093021,
+    "board": 3.588091134093021,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.blocked_mean": {
+    "ours": 5.166046361097596,
+    "board": 5.166046361097596,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "board_csv.blocked_se": {
+    "ours": 4.901567110294892,
+    "board": 4.901567110294892,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "rivals_table.d_mean": {
+    "ours": 4.855619585591441,
+    "table": 4.855619585591441,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "rivals_table.d_low": {
+    "ours": -4.146349169990533,
+    "table": -4.146349169990533,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "rivals_table.d_high": {
+    "ours": 13.857588341173415,
+    "table": 13.857588341173416,
+    "abs_diff": 1.7763568394002505e-15,
+    "bit_exact": false
+   },
+   "rivals_table.rival_mae": {
+    "ours": 8.444331927157267,
+    "table": 8.444331927157267,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "rivals_table.ours_mae_same_rows": {
+    "ours": 3.588091134093021,
+    "table": 3.588091134093021,
+    "abs_diff": 0.0,
+    "bit_exact": true
+   },
+   "verdict": {
+    "ours": "CANNOT TELL",
+    "board": "CANNOT TELL",
+    "table": "CANNOT TELL"
+   },
+   "n_groups": {
+    "ours": 127,
+    "board": 127,
+    "table": 127
+   },
+   "deciding_rows": {
+    "ours": 91440,
+    "board": 91440,
+    "table": 91440
+   },
+   "band": {
+    "ours": 0.04621194665693497,
+    "board": 0.04621194665693497
+   },
+   "per_group_mae_vs_saved_group_table": {
+    "groups": 127,
+    "columns": 2,
+    "max_abs_diff": 0.0,
+    "all_bit_exact": true
+   },
+   "engine_contrast_tag": {
+    "engine_tag": "cannot_tell",
+    "engine_mean": 4.855619585591441,
+    "engine_low": -4.146349169990533,
+    "engine_high": 13.857588341173415,
+    "agrees_bit_exact": true
+   }
+  }
+ },
+ "step1_runaway": {
+  "confirmed": true,
+  "rival_forecast_ug_m3": 418377.5244015924,
+  "rival_pre_clip_ug_m3": 418377.5244015924,
+  "observed_label_y_ug_m3": 188.36666870117188,
+  "our_headline_forecast_ug_m3": 23.708080766514666,
+  "normal_ug_m3": 16.87156879200655,
+  "rival_abs_error": 418189.1577328912,
+  "our_abs_error": 164.65858793465722,
+  "unit": "yakutia_larch_3553_2232",
+  "region_group": "yakutia_larch",
+  "unit_centre_lat_lon": [
+   62.297367095947266,
+   127.68653106689453
+  ],
+  "merra2_product_cell": "r304_c203",
+  "target_month": "2021-08",
+  "time_step": 24260,
+  "issue_step": 24260,
+  "input_x_merra2_pm25_ug_m3": 1698.279737975195,
+  "input_x_month": "2021-07",
+  "input_x_source_file": "aer_202107.nc",
+  "second_largest_rival_forecast": {
+   "value": 2243.760497785017,
+   "unit": "australian_bushfire_belt_4176_-1041",
+   "region_group": "australian_bushfire_belt",
+   "target_month": "2020-01"
+  },
+  "share_of_all_rival_absolute_error_pct": 54.16618554893096,
+  "region_rows_scored": 720,
+  "region_rival_mae": 590.9304351954271,
+  "region_our_mae": 7.439292595103624,
+  "region_d": 583.4911426003234,
+  "region_d_share_of_d_mean": 4.594418445671838,
+  "region_rival_mae_without_row": 10.126224767477611
+ },
+ "step2_drop_runaway_row": {
+  "verdict": "BEATS",
+  "tag": "helps",
+  "d_mean": 0.2840798486169017,
+  "d_se": 0.07061669902834647,
+  "d_low": 0.14567111852134265,
+  "d_high": 0.4224885787124608,
+  "n_groups": 127,
+  "blocked_mean_report_only": 0.2871762216373736,
+  "blocked_se_report_only": 0.07390575193947486,
+  "n_blocks": 119,
+  "rival_mae_pooled": 3.8704017599094724,
+  "ours_mae_pooled_same_rows": 3.5863293952543787,
+  "scored_rows": 91427,
+  "groups_rival_worse": 104,
+  "groups_rival_better": 23,
+  "engine_check": {
+   "engine_tag": "helps",
+   "engine_mean": 0.2840798486169017,
+   "engine_low": 0.14567111852134265,
+   "engine_high": 0.4224885787124608,
+   "agrees_bit_exact": true
+  },
+  "post_hoc": true,
+  "population": {
+   "deciding_rows": 91439,
+   "scored_rows": 91427,
+   "groups": 127,
+   "removed": "1 row (yakutia_larch_3553_2232, 2021-08) from both rival and ours",
+   "region_rows_after": 719
+  },
+  "region_d_after": 2.905596004556955,
+  "drafting_agent_claim": {
+   "d_mean": 0.284,
+   "d_low": 0.146,
+   "d_high": 0.422,
+   "matches_to_3_decimals": true
+  }
+ },
+ "step3_clip_to_max_training_label": {
+  "verdict": "BEATS",
+  "tag": "helps",
+  "d_mean": 0.2382911585372159,
+  "d_se": 0.043378039149484335,
+  "d_low": 0.15327020180422662,
+  "d_high": 0.3233121152702052,
+  "n_groups": 127,
+  "blocked_mean_report_only": 0.24235311974047796,
+  "blocked_se_report_only": 0.04515619557572035,
+  "n_blocks": 119,
+  "rival_mae_pooled": 3.826397471959314,
+  "ours_mae_pooled_same_rows": 3.588091134093021,
+  "scored_rows": 91428,
+  "groups_rival_worse": 104,
+  "groups_rival_better": 23,
+  "engine_check": {
+   "engine_tag": "helps",
+   "engine_mean": 0.2382911585372159,
+   "engine_low": 0.15327020180422662,
+   "engine_high": 0.3233121152702052,
+   "agrees_bit_exact": true
+  },
+  "post_hoc": true,
+  "clip_value_ug_m3": 583.2750244140625,
+  "clip_source": "largest label y over the rival's refit rows (board slim lead_0 train set, flag r_refit; 2590280 rows, steps 2003-01 .. 2019-12); the map was fitted on 2577580 of them (rows with a finite MERRA-2 input), and the row holding this label is one of them (its x is finite)",
+  "clip_label_row": {
+   "unit": "borneo_peat_fires_3186_-70",
+   "target_month": "2015-09",
+   "rows_at_this_value": 1,
+   "x_merra2": 32.484238747626044
+  },
+  "rows_clipped": 6,
+  "rows_clipped_list": [
+   {
+    "unit": "australian_bushfire_belt_4176_-1041",
+    "group": "australian_bushfire_belt",
+    "target_month": "2020-01",
+    "rival": 2243.760497785017,
+    "y": 42.36666488647461,
+    "ours": 11.2212356964611
+   },
+   {
+    "unit": "australian_bushfire_belt_4183_-1054",
+    "group": "australian_bushfire_belt",
+    "target_month": "2020-01",
+    "rival": 2040.270742889498,
+    "y": 38.9555549621582,
+    "ours": 12.402526561246647
+   },
+   {
+    "unit": "california_central_valley_-3329_1123",
+    "group": "california_central_valley",
+    "target_month": "2020-10",
+    "rival": 1276.2239251349704,
+    "y": 111.84166717529297,
+    "ours": 11.876700993390553
+   },
+   {
+    "unit": "yakutia_larch_3533_2270",
+    "group": "yakutia_larch",
+    "target_month": "2021-08",
+    "rival": 900.7805701506924,
+    "y": 328.0,
+    "ours": 28.67178237299279
+   },
+   {
+    "unit": "yakutia_larch_3553_2232",
+    "group": "yakutia_larch",
+    "target_month": "2021-08",
+    "rival": 418377.5244015924,
+    "y": 188.36666870117188,
+    "ours": 23.708080766514666
+   },
+   {
+    "unit": "yakutia_larch_3553_2232",
+    "group": "yakutia_larch",
+    "target_month": "2021-09",
+    "rival": 869.6013787702786,
+    "y": 5.816666603088379,
+    "ours": 7.271105979214413
+   }
+  ],
+  "population": {
+   "deciding_rows": 91440,
+   "scored_rows": 91428,
+   "groups": 127,
+   "note": "every deciding row kept; only the rival forecast is clipped (ours unchanged)"
+  }
+ },
+ "step4_forecasts_above_1000": {
+  "threshold_ug_m3": 1000.0,
+  "test_rows_count": 4,
+  "test_rows_population": 91440,
+  "deciding_labelled_rows_count": 4,
+  "deciding_labelled_rows_population": 91428,
+  "rows": [
+   {
+    "unit": "yakutia_larch_3553_2232",
+    "group": "yakutia_larch",
+    "target_month": "2021-08",
+    "rival": 418377.5244015924,
+    "x_merra2_lag1": 1698.279737975195,
+    "y": 188.36666870117188,
+    "ours": 23.708080766514666
+   },
+   {
+    "unit": "australian_bushfire_belt_4176_-1041",
+    "group": "australian_bushfire_belt",
+    "target_month": "2020-01",
+    "rival": 2243.760497785017,
+    "x_merra2_lag1": 145.78906904330975,
+    "y": 42.36666488647461,
+    "ours": 11.2212356964611
+   },
+   {
+    "unit": "australian_bushfire_belt_4183_-1054",
+    "group": "australian_bushfire_belt",
+    "target_month": "2020-01",
+    "rival": 2040.270742889498,
+    "x_merra2_lag1": 131.2566104355116,
+    "y": 38.9555549621582,
+    "ours": 12.402526561246647
+   },
+   {
+    "unit": "california_central_valley_-3329_1123",
+    "group": "california_central_valley",
+    "target_month": "2020-10",
+    "rival": 1276.2239251349704,
+    "x_merra2_lag1": 956.4688092678639,
+    "y": 111.84166717529297,
+    "ours": 11.876700993390553
+   }
+  ],
+  "test_rows_above_max_training_label": 6,
+  "context_inner_guard_rows_count": 0,
+  "context_inner_guard_rows_population": 68559,
+  "context_inner_guard_max_pred": 376.3798853541504
+ }
+}

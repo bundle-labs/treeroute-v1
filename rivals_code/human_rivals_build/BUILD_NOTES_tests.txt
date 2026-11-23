@@ -1,0 +1,123 @@
+BUILD_NOTES_tests.txt - builder D (tests) -> builders A, B, C and the orchestrator. Written 2026-10-22.
+
+Where: D:\treeroute\human_rivals_build\human\rivals_human\tests\ (layout of BUILD_NOTES_shared.txt), pytest.ini and
+_machine\machine.yaml in D:\treeroute\human_rivals_build\human\. Run from D:\treeroute\human_rivals_build\human:
+    set PYTHONDONTWRITEBYTECODE=1
+    py -3.9 -B -m pytest rivals_human/tests --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH name>
+conftest refuses a basetemp outside D:\treeroute\human_rivals_build, one whose parent is missing, and one that
+already exists (pytest would empty it: a delete). Default basetemp: pt\tests\auto_<utc stamp>.
+
+The tests call the tool ONLY through rivals_human/tests/hooks.py (one place to fix a signature). A missing hook fails
+the test naming the item below (need()); a refusal test fails on an interface error (TypeError, AttributeError, ...)
+so a broken call never passes as a refusal.
+
+=====================================================================================================================
+HOOKS THE TESTS USE (all exist in the code as of 2026-10-22 00:30; listed so nobody renames them)
+=====================================================================================================================
+A1 config.load_config(path), load_registry(cfg, package), load_products(cfg); constants SHRINK_K, MIN_FIT_ROWS,
+   MIN_FIT_GROUPS, MIN_UNIT_ROWS.
+A2 common.load(cfg) -> (LY, H); common.check_common_board(H, cfg, package, run_name, required); common.HumanCtx.
+A3 slim.slim(run, export_lead_dir, config) -> slim lead folder; slim.SlimLead(folder, run).read_set(name, lock=);
+   .keys(name); slim.open_slim(cfg, run, lead); slim.check_rows(run, lead, set, keys, where).
+A4 index.adapt(run, rival, lead, stage, config); index.check(run, rival, config); index.check_frame(frame, keys,
+   rival, timing, tier, legal, opened, manifests, what); index.index_files(cfg, run, rival, lead);
+   index.product_manifest(cfg, products, pid); index.AdapterCtx(cfg, hctx, run, registry, products, rival, lead,
+   stage, slim, token).
+A5 index.Timing(run, rival, lead); index.check_tier_timing(tier, timing, keys, info_end, target_obs_end, covered, what).
+A6 maps.fit(family, x, y, z0, link, c, ub, units, keys) (keys hold season_key); maps.fit_l1; maps.candidates(rival,
+   links); maps.l1_isotonic(x, t, increasing) -> (xk, yk); maps.link_forward / link_inverse; maps.NotCalibratable.
+A7 board.pick_of(records).
+A10 board.init(run, config), tune(out, resume=, config=), lock(out, config=), refit(out, lead, resume=, config=),
+   score(out, lead, config=), board_md(out, config=), status(out).
+A11 refs.refs(out, lead, config=) -> lead_<L>/refs.parquet with base__human_persistence,
+   base__human_damped_persistence (grids) / base__human_last_visit (tables).
+A12 lockfile.verify_lock(out) -> token (.picks_sha256); lockfile.ledger_path(out, fingerprint).
+A13 join.join(run_folders, config=) -> table folder (RIVALS_TABLE.md / .csv, inputs_sha256.txt).
+A14 manifest.manifest(product_id, config=) (not yet tested: see open items).
+A16 board tune fits every candidate through maps.fit as a module attribute (T-H21 interrupts it there).
+B1 coral_crw.heat_stats(days, sst, mmm, d_star), baa_level, SstCache(path), member_map(path, member),
+   OfficialMmm(path).at(lat, lon), read_store(path, label_column, columns), STORE_KEY_COLUMNS.
+B2 coral_outlook.read_week(path, icwk_ordinal, week), nearest_ocean(arr, i, j), grid_index(lat, lon).
+B3 defo_prep.lossyear_guard, map_pass (its refusals before any file read), FineBins, assign_divisions, parity_check;
+   defo_vt0007.class_of_bins, solve_scale, vt0007_region.
+C1 pm25_reanalysis.Grid(lat, lon) (.weights, .interpolate, .orient), product_months(keys, opt),
+   availability(ctx, rival), build(ctx, rival, lead, stage).
+C2 ndvi_bardl.fit / predict (runner contract) and design(...), _options.
+C3 ndvi_kraft._net(opt), _torch_setup(opt).
+Board files read by the tests (builder A's names): human_picks.json (picks.<rival>: status, stat, family, link,
+pick_lead, pick_set, pick_mae, leads.<L>.coverage.file/sha256, coverage_sha256, leads.<L>.timing.t1_rule),
+trials/<rival>/<candidate>.json (lead, fit_set, score_set, status, pick_mae, order) + .parquet + .map.json,
+lead_<L>/preds_<rival>.parquet (covered, pre, raw, guarded, filled, guard_passed, no_safety_net),
+lead_<L>/guard_<rival>.parquet (y, pred, comparator), lead_<L>/done_<rival>.json (guard.passed,
+guard.score_without_net), lead_<L>/map_<rival>.json (candidate, refit, guard), lead_<L>/coverage_<rival>.parquet,
+human_board_lead_<L>.csv (rival, rival_type, tier, decides, contrast, verdict, tag, d_mean, d_low, d_high, n_groups,
+band, rows, rows_covered, rows_total, groups, groups_total, rival_mae, ours_mae_same_rows, ours_mae_all_rows,
+filled_mae_all_rows, flags, label), scores/lead_0_ours_check.json, scores/lead_<L>_all_pooled.csv,
+test_labels_opened_human_lead_<L>.json (test_preds_sha256), <out_root>/_ledger/<fingerprint>.jsonl.
+
+=====================================================================================================================
+DEFECTS / SPEC FINDINGS (found by the tests; for the owner of the named file)
+=====================================================================================================================
+F1 SPEC 1.10 (refs.py, builder A; FIXED in code during the build). The common export stores every x__ column as
+   float32, so clip(x__hist_last_1) can never equal the saved float64 base__persistence byte for byte (max |d| ~5e-7
+   on the grid toy). The parity proof must read the float64 label at the T2 step (slim train y; the saved lead-0 test
+   y after the lock). Pinned by test_oracles.py::test_export_history_is_float32_...; the oracle with labels
+   reproduces base__persistence AND base__damped_persistence byte for byte at leads 6 and 12. refs.py now passes
+   labels (all_labels) and its parity proof passes on the toy. The spec text of 1.10 should say "the label at the T2
+   step", not "x__hist_last_1" (owner / Part A draft).
+F2 SPEC 1.10 coral last visit (refs.py; FIXED in code). "site key = the part of the unit id before |" is coral's
+   export form only; the engine's table toy uses visit row ids with the site in another package column, which neither
+   units.parquet nor the export's train rows carry. refs.py now reads the package unit from the package's lead files
+   (package_units) and its parity proof passes at 183 / 365. Pinned by test_oracles.py::test_table_toy_export_units_...
+F3 HQ9 floor vs the engine's table toy: 73 tune / 66 guard-fit rows, below 100, so every map rival of a table toy is
+   "not calibratable" (no row, disclosed). The coral-like table mechanics (forecast-only pick on the lowest covered
+   lead's guard rows, score_without_net, L tiers, last visit) are therefore toy-tested with M runners; the map path
+   (F2-F5 with links) is toy-tested on the grid toy only. Not a defect; a coverage limit of the toys.
+F4 tool_code_sha covers rivals_human/*.py AND adapters/*.py: any builder edit while a suite runs makes every board
+   refuse "the human tool code changed since init" (seen in run f03). Run the final suite on frozen code.
+F5 (harmless, for builder A) human_board_lead_<L>.csv floats are written by pandas and must be read with
+   float_precision="round_trip" to compare exactly (the tests do).
+F6 (builders B / C, contract) every ctx.<name> an adapter calls must exist on index.AdapterCtx; test_h20 checks it by
+   source scan (getattr(ctx, ...) names count as optional). Passing at the end of the build.
+
+=====================================================================================================================
+DEVIATIONS IN THE TESTS (orchestrator / owner decides)
+=====================================================================================================================
+D1 Paths: files live under D:	reeroute\human_rivals_build\human (the task's "human" folder, as builder A read it);
+   SPEC 1.1 / 7 name the build root without "human". pytest basetemp under D:	reeroute\human_rivals_build\pt	ests   (the task's pt\<key>), not SPEC 7's _pt\<run>. Two empty folders I first made at the outer root were moved to
+   _moved\<stamp>\ (never deleted); so was one __pycache__ of mine from a py_compile check.
+D2 Extra helper modules in rivals_human/tests (SPEC 6 lists conftest, toy_products, test_*): hooks.py (the one place
+   that calls the tool) and oracles.py (hand computations, each checked against the engine or a closed form in
+   test_oracles.py). test_h23_manifest.py tests SPEC 1.8 (no T-H number).
+D3 T-H17 quantity scaling: builder B reads SPEC 3 "scaled so the total equals Q ... each pixel capped at 1" as an
+   exact water-filling (total = Q with the cap). The test checks that reading against an independent bisection
+   oracle. If the owner meant "scale, then cap" (total < Q when a pixel caps), oracle and code both change.
+D4 T-H17 does not run defo_prep.map_pass on toy GeoTIFF tiles (its mosaic reader expects 10-degree Hansen granules);
+   it tests the pure parts (guard, refusals, classes, quantity, region allocation, divisions, parity). The toy tiles
+   are written and read back in test_toy_products.py for a later map_pass toy.
+D5 T-H18 bilinear is tested on Grid directly; the full PM2.5 adapter on a toy run needs unit centres from the
+   engine's pm25 static table (not a toy); builder C's own tests (tests_builder_c) cover build() with a fake ctx.
+   The EAC4 refusal is tested through the tool's real AdapterCtx with the real pm25.yaml entry.
+D6 T-H19 uses a small fake runner context (the BUILD_NOTES_shared runner contract); the real AdapterCtx path of a
+   runner is exercised by the toy M runner in both flows. Kraft: the adapter's own network + seed setup, 5 SGD steps
+   twice, byte-equal (the full Kraft fit determinism is in builder C's tests).
+D7 T-H22 / T-H21 use variant boards (own out roots) on the same toy slim and index tables.
+D8 Real-data tests (HUMAN_REAL=1, skipped by default): the four real registries checked against their headline runs
+   (run JSON files only). The coral TUNE-ONLY dry pass (A6) is not run (needs the SST pass; owner command O9).
+
+=====================================================================================================================
+OPEN ITEMS
+=====================================================================================================================
+O1 SPEC 1.10 wording (F1, F2) for the Part A draft.
+O2 A defo toy flow (map_pass on toy granules -> prep files -> vt0007 build -> "lead 1 equals lead 0" in check) is not
+   built; the equality is asserted by the adapter by construction (defo_vt0007.py docstring), not yet by a test.
+O3 A coral adapter toy flow (crw_dhw build with a toy store, D6 check and replay check on toy site-days) is not built;
+   the rule pieces are tested (T-H16).
+
+=====================================================================================================================
+LAST RUN
+=====================================================================================================================
+2026-10-22, full suite once at the end: 157 passed, 4 skipped (real-data, HUMAN_REAL=1), 11 min 52 s
+(basetemp D:\treeroute\human_rivals_build\pt\tests\full01, log pt\tests\full01.log). Earlier runs f01-f04 failed on
+toy/test defects fixed since (negative N-kind toy product, too-small table toy for the HQ9 floor, CSV float parsing,
+refs.json read for leads >= 1) and on F4 (code changed mid-run).

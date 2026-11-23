@@ -1,0 +1,34 @@
+{
+ "finished": "2026-11-14 04:29:34",
+ "leads": [
+  0
+ ],
+ "problem": "pm25",
+ "scope": "i",
+ "steps": [
+  {
+   "exit": 0,
+   "seconds": 18270.9,
+   "status": "done",
+   "step": "treeroute rebuild leads [0]"
+  },
+  {
+   "exit": 0,
+   "seconds": 1402.5,
+   "status": "done",
+   "step": "treeroute SHAP lead 0"
+  },
+  {
+   "exit": 3,
+   "seconds": 1164.2,
+   "status": "stopped at a gate (a stop rule)",
+   "step": "rivals lead 0"
+  },
+  {
+   "exit": 0,
+   "seconds": 8.1,
+   "status": "done",
+   "step": "compare lead 0"
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+[2026-11-14 04:36:34 +    0.0s] problem defo, scope (i): leads (0,); N 1000; arcsine tolerance 0; recorded path map False; with pinned False
+[2026-11-14 04:36:34 +    0.0s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem defo --n 1000 --defo-regions 0
+[2026-11-14 04:37:20 +   45.9s] STEP sample: done in 45.9 s
+[2026-11-14 04:37:20 +   45.9s] STEP treeroute rebuild leads [0] (pre-check only): D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem defo --leads 0 --arcsine-tolerance 0.0 --precheck-only
+[2026-11-14 04:37:47 +   72.8s] STEP treeroute rebuild leads [0] (pre-check only): done in 26.9 s
+[2026-11-14 04:37:47 +   72.8s] pre-check finished: [["sample", "done"], ["treeroute rebuild leads [0] (pre-check only)", "done"]]
+[2026-11-14 05:17:20 +    0.0s] problem defo, scope (i): leads (0,); N 1000; arcsine tolerance 0; recorded path map False; with pinned False
+[2026-11-14 05:17:20 +    0.0s] sample: registered sample found (9989bd588993f268), N 1000, defo regions all
+[2026-11-14 05:17:20 +    0.0s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem defo --leads 0 --arcsine-tolerance 0.0 --ignore-ram-warning
+[2026-11-14 12:11:59 +24878.3s] STEP treeroute rebuild leads [0]: done in 24878.3 s
+[2026-11-14 12:11:59 +24878.3s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem defo --lead 0
+[2026-11-14 12:18:55 +25294.4s] STEP treeroute SHAP lead 0: done in 416.1 s
+[2026-11-14 12:18:55 +25294.4s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem defo --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-14 12:59:40 +27739.2s] STEP rivals lead 0: stopped at a gate (a stop rule) in 2444.8 s
+[2026-11-14 12:59:40 +27739.3s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem defo --lead 0 --draws 2000
+[2026-11-14 13:00:03 +27762.6s] STEP compare lead 0: done in 23.2 s
+[2026-11-14 13:00:03 +27762.6s] runner finished: [["treeroute rebuild leads [0]", "done"], ["treeroute SHAP lead 0", "done"], ["rivals lead 0", "stopped at a gate (a stop rule)"], ["compare lead 0", "done"]]

@@ -1,0 +1,290 @@
+# signoff_answers_2026-10-07_fire_O2.yaml -- GENERATED from signoff_answers_2026-10-06.yaml (ruling N) for the
+# fire-only re-signing after ruling O2 (OWNER_RULINGS_2026-10-06.md): the fire history store catalog was regenerated
+# with reworded operation texts, which drops its S3/S5/S9 signatures. Same answers, restricted to package fire;
+# S7 (PM2.5), S12 and S20 (engine constants) left blank here: already applied, and not fire's.
+ruling:
+  id: N
+  file: OWNER_RULINGS_2026-10-06.md
+  date: '2026-10-06'
+packages:
+- fire
+families:
+  TerraClimate: S1
+  ERA5-Land: S1
+  AgERA5: S1
+  GPCC SPI: S1
+  SPEIbase: S1
+  CRU scPDSI: S1
+  DeepRec: S1
+  GRACE: S1
+  derived: S1
+  EDDI: S1
+  ESA CCI SM: S1
+  derived (fire danger): S1
+  NOAA indices: S2
+  ERSSTv5: S2
+  NOAA GML: S2
+  MODIS MCD12C1: S3
+  MODIS MCD12Q1: S3
+  MODIS MCD12Q2: S3
+  MODIS MCD43: S3
+  MODIS MOD08 (atmosphere): S3
+  MODIS MOD10: S3
+  MODIS MOD11C3: S3
+  MODIS MOD13C2: S3
+  MODIS MOD13C2 derived: S3
+  MODIS MOD44B: S3
+  FireCCI: S3
+  GFED500m: S3
+  FluxSat: S3
+  night lights: S3
+  LPDR v3 VOD: S3
+  ESA CCI Biomass: S3
+  WGLC: S3
+  Hansen GFC: S3
+  fire target (MCD64A1) derived: S3
+  LUH2: S4
+  GDP: S4
+  HDI: S4
+  WorldPop: S4
+  fertiliser: S4
+  UCDP: S4
+  GLW: S4
+  GMIA: S4
+  GRIP4: S4
+  MERIT: S4
+  accessibility: S4
+  coast: S4
+  soil: S4
+  terrain: S4
+  grid: S4
+  GHSL: S4
+  EDGAR v8.1: S4
+  FAO FFPI: S4
+  infrastructure snapshots: S4
+  regime classifier: S4
+  (none): S4
+answers:
+  S1:
+    answer: true
+    options:
+      true: {}
+  S2:
+    answer: true
+  S3:
+    answer: true
+    options:
+      true: {}
+  S4:
+    answer: true
+  S5:
+    answer: true
+  S6:
+    answer: recommended
+    true_for: {}
+    reason_true: {}
+    reason_false: not measured by the target product or sensor within the target step (climate, reanalysis, indices,
+      human or static data); R8 lags it from its own timing facts
+    reason_false_for: {}
+    reason_derived: a derived column whose content already ends at least one step before the row (lag, hold or aggregate
+      of an earlier period); a true answer would move it one more step back
+    reason_coproduct: built from a column measured with the target (or banned as its co-product or post-event state,
+      e.g. the MOD44B tree cover behind the defo lag-2 columns); no holds only because this column content ends
+      before the predicted step (its lag or hold); a true answer would move it one more step back
+  S7:
+    answer: ''
+    source: {}
+  S8:
+    answer: true
+    sign_only:
+      fire:
+        0: R6 (donor train end)
+        1: 'L3 hold:'
+        2: ntl
+        3: hdi
+        4: fert_n
+        5: fert_p
+        6: luh2_urban
+        7: grace_lwe
+  S9:
+    answer: a
+    options:
+      a:
+        add_driver:
+          fire:
+            template: D:/fire_history_lag2/{group}.parquet
+            after: D:/monthly_panel/
+        add_include:
+          fire: ingest/fire_history_store_catalog.yaml
+        verdicts:
+          fire:
+            tslf_months:
+              verdict: watch
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); months since
+                the last burn, listed in every report
+            tslf_censored:
+              verdict: watch
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); right-censoring
+                flag of tslf_months, listed
+            n_burns_12mo:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); event count
+                before the row
+            n_burns_60mo:
+              verdict: watch
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 60-month event
+                count, listed
+            burn_rate_120mo:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 120-month
+                burn rate
+            nbr25km_12mo_lag3:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25
+                km neighbour ring at lag 3
+            nbr75km_12mo_lag3:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75
+                km neighbour ring at lag 3
+            nbr25km_12mo_lag6:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25
+                km neighbour ring at lag 6
+            nbr75km_12mo_lag6:
+              verdict: keep
+              reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75
+                km neighbour ring at lag 6
+        remove_rows:
+          fire:
+          - nbr25km_lag1
+          - nbr25km_12mo_lag1
+          - nbr75km_lag1
+          - nbr75km_12mo_lag1
+      b:
+        remove_rows:
+          fire:
+          - burn_rate_120mo
+          - last_burn_month
+          - last_burn_size
+          - n_burns_12mo
+          - n_burns_60mo
+          - nbr25km_12mo_lag1
+          - nbr25km_12mo_lag3
+          - nbr25km_12mo_lag6
+          - nbr25km_lag1
+          - nbr25km_lag3
+          - nbr25km_lag6
+          - nbr75km_12mo_lag1
+          - nbr75km_12mo_lag3
+          - nbr75km_12mo_lag6
+          - nbr75km_lag1
+          - nbr75km_lag3
+          - nbr75km_lag6
+          - tslf_censored
+          - tslf_months
+  S10:
+    answer: true
+    options:
+      true: {}
+  S11:
+    answer: true
+    options:
+      true: {}
+  S12:
+    answer: ''
+  S13:
+    answer: incomplete
+    options:
+      incomplete:
+        notes:
+        - package: fire
+          contains: REASON WORD (owner check)
+          text: 'incomplete confirmed: the 2022-2023 layers are not observations, the record ends in 2021'
+      post_window_snapshot:
+        reasons:
+          fire:
+            aglw_cattle: post_window_snapshot
+            aglw_buffalo: post_window_snapshot
+            aglw_horse: post_window_snapshot
+            aglw_sheep: post_window_snapshot
+            aglw_goats: post_window_snapshot
+            aglw_total_lsu: post_window_snapshot
+        notes:
+        - package: fire
+          contains: REASON WORD (owner check)
+          text: post_window_snapshot chosen; every run refuses the hold columns until the engine learns backward-only
+            holds
+  S14:
+    answer: confirm_watch
+    options:
+      confirm_watch: {}
+      keep: {}
+  S15:
+    answer: watch
+    options:
+      watch: {}
+      ban: {}
+      conditional: {}
+  S16:
+    answer: lookahead_unfixable
+    options:
+      lookahead_unfixable: {}
+      target_derived: {}
+  S17:
+    answer: a
+    options:
+      b: {}
+  S18:
+    answer: a
+    package: defo
+    options:
+      a: {}
+      b: {}
+  S19:
+    answer: a
+  S20:
+    answer: ''
+  S21:
+    answer: accept
+  S22:
+    answer: true
+  S27:
+    answer: ban
+    options:
+      ban:
+        verdicts:
+          fire:
+            travel_time:
+              verdict: ban
+              reason: post_window_snapshot
+      freeze:
+        verdicts:
+          fire:
+            travel_time:
+              verdict: freeze
+              reason: static 2015 snapshot after the lead-6 and lead-12 guard cuts; R9 picks the epoch at or before
+                each cut
+  S28:
+    answer: a
+    options:
+      a: {}
+      b: {}
+  S29:
+    answer: a
+    options:
+      a:
+        verdicts:
+          fire:
+            road_density:
+              verdict: ban
+              reason: post_window_snapshot
+  S23:
+    answer: record_end
+  S24:
+    answer: out
+    options:
+      out: {}
+  S25:
+    answer: leave
+  S26:
+    answer: noted

@@ -1,0 +1,219 @@
+{
+ "lens": "NUMBERS: every number, count, time, file name and cited line number in the new parts of report.md (lead's note, A1, A4, A5, A6, A7), checked against A's and B's results.json, the final reconcile files, the returns, s41/s92 of the numbers skeptic, PROTOCOL.md, the brief and the spec; plus a byte check of the spans the second version says it kept unchanged",
+ "report_sha256_checked": "488814ed20638e92077b53d324d7ffe4aa97eb676e8e5c4702889eaf27b94151",
+ "verdict": "not_ready",
+ "findings": [
+  {
+   "severity": "major",
+   "where": "report.md, lead's note lines 5-7 ('A1 ... lists each one that the final run, the three skeptics or the two report checkers found wrong or too wide'). The reconciler's text that is left uncorrected: line 59 (section 1, 'reconcile.py (its runs from 18:34:26 to 18:46:03 ...)'), line 355 (section 6, 'The full B1 tables, with every interval, are in V\\reconcile\\work\\tables.md') and line 389 (section 7, 'tables.md (the main row and B1 tables)'). A1 is lines 403-488.",
+   "what": "The second version silently drops two corrections that the first version's A1 made (v1 items 1 and 2), and both first-round checkers had confirmed them. (1) Section 1's window for reconcile.py's re-reads of the compare files ends at 18:46:03, but the final run re-read them at 18:49:41. (2) Sections 6 and 7 point to work\\tables.md, a file that was never written. Neither correction appears anywhere in v2, so the lead's note's claim that A1 lists every statement found wrong is false. Section 1's record of reads could be copied into PROTOCOL.md section 14 or the supplement's blindness statement. Section 7's file list and section 6's pointer send readers to a file that does not exist.",
+   "evidence": "V\\reconcile\\work\\opened_official.jsonl (my n04): reconcile.py made 360 opens from 18:34:26 to 18:49:41 in 6 runs, plus 16 byte reads from 18:43:43 to 18:49:41. The last run (18:49:41, 55 entries) is after 18:46:03. A listing of V\\reconcile\\work shows no tables.md (r30_tables.py, mtime 18:49:18, prints only). v1's A1 item 1 read 're-read the compare files from 18:34:26 to 18:49:41 (the final run included; 360 opens, plus 16 reads ...), not to 18:46:03', and its item 2 read 'work\\tables.md was not written'. check_facts.json 'checked' says 'A1 item 1 is right' and 'work\\tables.md is absent'. check_completeness.json 'checked' says 'r30_tables.py writes no file, and work\\ holds no tables.md'. In v2, '18:46:03' occurs only on line 59 and 'tables.md' only on lines 355 and 389. v1's A1 items 3-9 reappear as v2's items 9-13, 16 and 17, but items 1 and 2 do not.",
+   "fix": "Restore both as A1 items. (a) Section 1: reconcile.py re-read the compare files from 18:34:26 to 18:49:41, the final run included (360 opens, plus 16 reads of pairs.parquet as bytes). (b) Sections 6 and 7: work\\tables.md was never written; the B1 tables are in A6, and every number is in results.json under b1. Then point A7's completeness 5 and 11 rows to these items as well."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the numbers, item 1, lines 578-579 ('No pair without BARDL, in any problem or at either level, has a top-k overlap that exists only through a tie, or a collation dependence above 1e-12 (the skeptic's script s41)')",
+   "what": "The added clause 'or a collation dependence above 1e-12' is contradicted by the s41 file it cites. Every pair without BARDL that s41 lists depends on the collation in RBO by more than 1e-12. The clause came from the skeptic's return, but its own file disagrees. For pairs without BARDL, the Jaccard and top-20-union Spearman spreads are exactly 0, and no digit moves at the 2 decimals of the AW3 tables or the 3 decimals of A6, so no reported number is affected.",
+   "evidence": "s41_tie_artifacts.json 'spread' fields (my n08): all 22 of 22 pairs without BARDL have rbo090 or rbo095 spreads above 1e-12. The largest are 3.58e-07 at p 0.9 and 2.25e-05 at p 0.95, both fire/variable/rival_lgbm|rival_lgbm_tweedie; the defo pairs reach 2.4e-10. n12: no printed value moves at 2 or 3 decimals. At 4 decimals four RBO p 0.95 cells move: fire variable lgbm|rf 0.8211/0.8210; pm25 variable lgbm|ridge 0.5067/0.5068, rf|ridge 0.5248/0.5249, rf|treeroute 0.5301/0.5300.",
+   "fix": "Write: 'No pair without BARDL has a top-k overlap that exists only through a tie. Its Jaccard and top-20-union Spearman do not depend on the collation, and its RBO depends on it by at most 2.3e-5, which changes no printed digit.'"
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the numbers, item 1, bullets at lines 567-575; A5 point 3, lines 636-641 (the footnote that is to 'give the size of the effect')",
+   "what": "The bullets read as the list of BARDL cells that move with the collation, but they omit moves of the same size. The largest RBO p 0.95 spread of any pair, 0.082, belongs to the variable-level bardl|ridge pair, which is not listed. A footnote built from these bullets would understate the effect.",
+   "evidence": "s41, base against descending collation. Variable level: bardl|ridge top-20-union Spearman 0.033 / -0.037, RBO p 0.9 0.055 / 0.101, RBO p 0.95 0.152 / 0.234, Jaccard top 10 0.000 / 0.053. bardl|lgbm RBO p 0.9 0.203 / 0.252, p 0.95 0.253 / 0.328, Jaccard top 10 0.053 / 0.111. bardl|rf RBO p 0.9 0.153 / 0.197. bardl|treeroute RBO p 0.95 0.403 / 0.379. Feature level: bardl|treeroute RBO p 0.95 0.257 / 0.277 / 0.242 under the three collations; the top-20-union Spearman spread of bardl|lgbm is 0.011 and of bardl|rf 0.015. Every figure that A4 does quote equals s41 and skeptic_numbers.json.",
+   "fix": "Mark the bullets as examples. Take the footnote's sizes from s41 for all eight BARDL pair-levels, or give the largest spread per statistic (for example RBO p 0.95: 0.082, variable bardl|ridge)."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md lead's note lines 7-9 ('Do not copy numbers from the reconciler's tables ... A6 rebuilds every B1 table from results.json'); A1 item 4, lines 429-430; A6, lines 662-664 ('These tables replace the reconciler's section-6 B1 tables')",
+   "what": "A6 rebuilds the pair tables, the family/top-3 table and the two top-10 tables. It does not rebuild section 6's defo identity table, its nonzero-count table or its run facts, and it does not say where they are. Brief item 9 and section 10's B1 bullet ask for each B1 run's nonzero counts at both levels, defo's identity at both levels, and each run's pairs and seconds. Read together with the lead's note, the report offers no sanctioned source for these numbers. The section-6 values themselves are right.",
+   "evidence": "A6 has no n_nonzero, identity or seconds row. The values sit in section 6, lines 304-333. My n10 check: 113/113/113/96/96, 105/105/105/91/91 and 482/482/482/96/96 equal A's b1/<p>/<level>/importance n_nonzero and n_nonzero_before_merge and the meta players_nonzero and variables_nonzero. In summary.json, A's identity equals B's and the reconciler's (0.0 over 309,000 phi and 121,000 phiv values). The run facts match the logs, per the first-round facts check. A6 does name where the per-player I, s and S are (b1/<p>/<level>/importance/players), and that path exists, with all 2,949 entries at n_finite 2,000.",
+   "fix": "In A6 and the lead's note, state that section 6's status, identity, nonzero-count and run-fact parts stand (checked), or rebuild them in A6. Limit 'do not copy' to the section-6 pair table."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A1 item 4 (lines 428-429); A4, the numbers, item 2 (lines 582-584); A1 item 14 (lines 467-469); A4, blindness (line 554); A5 point 3 (line 636); A5 point 6 (line 656)",
+   "what": "Small inaccuracies in the new text. (a) 'The reconciler's returned b1_summary carries the same digits': it carries three of the four wrong cells, and has no NDVI variable-level tau-b. (b) A4 item 2 says the facts checker compared the section-3 main row with A's results.json. It compared it with the official AW4_main_row.json, with A equal to the official values at full precision; it was the completeness checker that compared section 3 with A's main row. (c) The inspection scripts also read the B1 pre column, not only key and flag columns. (d) The blindness skeptic's 'no file changed from 17:09' came from its os.scandir listing at 18:33, not from the transcripts. (e) 'BARDL gives 0 to 93 of its 96 variables': the 96 are J's variables, and BARDL has three. (f) 'C10' names both the spec's collation choice (A4, A5 point 3) and an owner question (A5 point 6).",
+   "evidence": "(a) The reconcile.json b1_summary text has 'tau-b 0.722', 'top-20-union 0.391 [0.246, 0.500]' and 'ndvi, variable ... Spearman 0.845 [0.833, 0.851]', but no ndvi tau-b. (b) check_facts.json 'checked' gives f22 against AW4_main_row.json and f21 against A's results.json; check_completeness.json gives 'Section 3 main-row table against A's main_row at 4 decimals'. (c) a04_checks.py lines 30-31 read row, unit, group, time, year, pre and resid_flag; b_inspect3.py line 39 reads resid_flag and pre. (d) skeptic_blindness.json 'checked': 'SHAP outside V was listed by names and times only, with os.scandir ... At 18:33'. (e) s41 zeros_in_J for rival_bardl_h1 is 93 at the variable level.",
+   "fix": "Reword: (a) 'carries three of these digits'; (b) name the right checker and file; (c) add pre; (d) 'and, by its listing at 18:33, that no file ... changed'; (e) '93 of the 96 variables of J'; (f) give the owner question another label, for example 'owner question C10'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A1 item 17, line 487 ('The lead compared the records in code'); addendum introduction, lines 399-400 (the list of the lead's scripts)",
+   "what": "The comparison is not traceable. The addendum lists the lead's four scripts, and none of them compares summary.json's A and B B1 records: tally.py tallies statuses and test_set entries, b1_tables.py reads results.json, and scan_shap_mtimes.py and recover_writes.py do neither. The claim itself holds.",
+   "evidence": "V\\_lead holds only returns\\ and scripts\\ (b1_tables.py, recover_writes.py, scan_shap_mtimes.py, tally.py). My n06 check of summary.json found that A_status = B_status, A_registered = B_registered, A_meta_equal = B_meta_equal, A_run = B_run and A_identity = B_identity for all five problems, and that the defo identity is 0.0 / 0.0 in A and in the reconciler's recomputation.",
+   "fix": "Save the comparison as a script in V\\_lead\\scripts and name it in the addendum introduction, or say how the check was made."
+  }
+ ],
+ "first_round_findings": [
+  {
+   "checker": "facts",
+   "number": 1,
+   "status": "answered",
+   "note": "A1 item 1 names the eight statistic-bearing files and the earlier, allowed opens of per_lead.json (structural keys) and bootstrap_draws.npy. A's opened_items_<p>.json and opened_b1.json exist and list both files. The 50 first openings at 18:24:54-55 are confirmed in opened_official.jsonl."
+  },
+  {
+   "checker": "facts",
+   "number": 2,
+   "status": "answered",
+   "note": "A1 item 4's four corrected cells equal A (= B) rounded once: 0.721 [0.640, 0.752]; 0.391 [0.246, 0.499]; 0.844 [0.833, 0.851]; 0.774 [0.757, 0.788]. Exactly these 4 of the 51 section-6 pair cells are wrong (n10), and all 159 A6 cells match. Only imprecision: b1_summary carries three of the four wrong digits, not all four."
+  },
+  {
+   "checker": "facts",
+   "number": 3,
+   "status": "answered",
+   "note": "A1 item 5: 3,953 = 1,114 + 790 + 754 + 505 + 790; B 3,953 and A 3,936 (17 C15 cells), as in summary.json. The rewritten lead's note is right about groups and key counts, but its new claim that A1 lists every wrong statement fails (major finding)."
+  },
+  {
+   "checker": "facts",
+   "number": 4,
+   "status": "answered",
+   "note": "A1 item 6: 14,412 of 14,424, matching summary.json's verdicts (14,412 + 12)."
+  },
+  {
+   "checker": "facts",
+   "number": 5,
+   "status": "answered",
+   "note": "A1 item 8 names group 2, C15 (group 3) and group 12. In mismatches.json, AO or BO = diff occurs only there and in C15_feature_family_tvd, whose 204 official values are all null. So 'three groups' with official numbers is right."
+  },
+  {
+   "checker": "facts",
+   "number": 6,
+   "status": "answered",
+   "note": "A1 item 14 names a04_checks.py and b_inspect3.py. Both read treeroute_B1 files and write nothing. The description leaves out the pre column (minor)."
+  },
+  {
+   "checker": "facts",
+   "number": 7,
+   "status": "answered",
+   "note": "A1 item 3: opened_official.jsonl has 436 entries and opened_other.jsonl 253, all SHAP files read by r10, reconcile.py and r30, none of them scripts, PROTOCOL.md or V files."
+  },
+  {
+   "checker": "facts",
+   "number": 8,
+   "status": "answered",
+   "note": "A1 item 15: 0.811, 0.703 and 0.443, and NDVI's local drivers at 0.420, equal A (= B)."
+  },
+  {
+   "checker": "facts",
+   "number": 9,
+   "status": "answered",
+   "note": "A1 item 11: no median rival named for coral (all three shares are 0); rival_lgbm for defo and pm25; NDVI's 0.2560 [0.2357, 0.2757] is the mean of the two middle shares."
+  },
+  {
+   "checker": "facts",
+   "number": 10,
+   "status": "answered",
+   "note": "A4 item 1 now says 'No pair without BARDL' and names bardl|rf (variable top 10, aet_total_mm) and bardl|treeroute (feature top 20, x__V02_total_precip_mm_roll3), as in s41. The same sentence adds a 1e-12 bound that s41 contradicts (minor finding)."
+  },
+  {
+   "checker": "facts",
+   "number": 11,
+   "status": "answered",
+   "note": "A4's closing paragraph lists the B1 sample exactly as skeptic_numbers.json 'checked' gives it and says that B1 has no official counterpart."
+  },
+  {
+   "checker": "facts",
+   "number": 12,
+   "status": "answered",
+   "note": "A1 item 2 cites PROTOCOL.md lines 829-831, 936-938 and 941-946, and they say what it says."
+  },
+  {
+   "checker": "completeness",
+   "number": 1,
+   "status": "answered",
+   "note": "A5 point 1 gives routes (a) and (b) and the three thin fire intervals: ridge 64 (value undefined), lgbm 1,140 and rf 1,380, all [0, 1], the same in A and B. These are the only intervals anywhere with 0 < n_finite < 2,000. Lines 540-542, 553-556 and 605-607 are cited correctly."
+  },
+  {
+   "checker": "completeness",
+   "number": 2,
+   "status": "answered",
+   "note": "A1 item 10 and A5 point 4 keep the defined 0 with a label. 0.00 [0.00, 0.00] (2,000 finite; official = B) and 0.0% are the official values. Whether the proposal is fair is outside the numbers lens."
+  },
+  {
+   "checker": "completeness",
+   "number": 3,
+   "status": "answered",
+   "note": "A1 item 4 and A6 fix the cells, and A4 item 2 records the check. My s92 comparison: 66 B1 numbers equal A within 1e-9 and round to the same three decimals, and s92's main-row cells appear in section 3. A4 item 2 names the wrong comparison file for the facts checker (minor)."
+  },
+  {
+   "checker": "completeness",
+   "number": 4,
+   "status": "answered",
+   "note": "The numbers of A1 items 5-8 are confirmed: 3,953; 14,412 of 14,424; the 2,000-replicate exceptions; and the widened exception groups."
+  },
+  {
+   "checker": "completeness",
+   "number": 5,
+   "status": "partly",
+   "note": "A1 items 1-3 answer the first openings and what the logs hold (436 and 253 entries). But section 1's 'runs from 18:34:26 to 18:46:03' stands uncorrected: the final run re-read the compare files at 18:49:41, and v1's A1 item 1, which said so, was dropped."
+  },
+  {
+   "checker": "completeness",
+   "number": 6,
+   "status": "answered",
+   "note": "A1 item 17 and A4 cover the uncompared records. My check of summary.json: A equals B in every b1 field for all five problems, and the identity is 0/0. The lead's comparison script is not saved (minor)."
+  },
+  {
+   "checker": "completeness",
+   "number": 7,
+   "status": "answered",
+   "note": "A4 now carries the label, both fixes and the 18:33 limit. Its numbers (13 keys, 18:33, 17:09, 10,801 files, 17:05:41) match the return. My repeat scan finds 10,801 files, none changed at or after 17:09."
+  },
+  {
+   "checker": "completeness",
+   "number": 8,
+   "status": "answered",
+   "note": "A5 point 3 names code-point order, both levels, section 10 and BA1 (lines 618-623) and the size of the effect, and every quoted figure equals s41. The bullet list omits equally large moves, and the 1e-12 clause is false (two minor findings)."
+  },
+  {
+   "checker": "completeness",
+   "number": 9,
+   "status": "answered",
+   "note": "A1 item 12 and A5 point 2 give both readings. Their only number is right: B's feature-level value equals the variable-level one (0.8114, 0.7038, 0.4904). Whether the options are fair is outside the numbers lens."
+  },
+  {
+   "checker": "completeness",
+   "number": 10,
+   "status": "answered",
+   "note": "A1 item 11 and A5 point 4 propose one label, 'median of the rivals'. The numbers are right: rival_lgbm's share for defo and pm25, the mean of the two middle of four shares for NDVI."
+  },
+  {
+   "checker": "completeness",
+   "number": 11,
+   "status": "partly",
+   "note": "A6 shows every interval (all at 2,000 finite), the family-share intervals and both top-10 lists, all equal to A (= B); A1 item 15 fixes 'most'. But the pointer to the nonexistent work\\tables.md in sections 6 and 7 is no longer corrected, and A6 does not say where the nonzero counts, the identity and the run facts are."
+  },
+  {
+   "checker": "completeness",
+   "number": 12,
+   "status": "answered",
+   "note": "A5 point 5 puts the question to the owner. It is consistent with A6, where the B1 shares carry intervals."
+  }
+ ],
+ "checked": [
+  "SHA-256 of report.md: 488814ed20638e92077b53d324d7ffe4aa97eb676e8e5c4702889eaf27b94151, 63,078 bytes. report.md.before_fix1: 00aa4d546f8210e2065f0ab9e0236cc5f611e0c8a274fc53be76fa25895ef31e, 43,582 bytes.",
+  "n01_spans.py: the reconciler's text, from '# Round 14 reconciliation' to '## Lead's addendum', is byte-identical in both versions (31,044 bytes, SHA-256 a0b1924c...). A2 plus A3, from '### A2.' to '### A4.', is byte-identical (3,348 bytes, SHA-256 a18da387...). v2 is valid UTF-8 with no BOM, no CR, no tab and ASCII only, and ends with LF.",
+  "n03_a6_cells.py: I rebuilt all 159 cells of A6's five tables from A's and B's results.json (b1) with one rounding step, using two methods (exact binary value half-even, shortest repr half-up) that agree on all 306 numbers. No cell differs. A against B: at most 4.4e-16.",
+  "A6 finite counts: all 155 interval cells have n_finite 2,000 in both A and B, so no '(N finite)' note is due. Jaccard top 20 reads 'not defined' exactly where J < 200 (ndvi feature J = 482). B's feature-level family distance equals its own and A's variable-level value. top3 = top10[:3], the top-10 names equal ranking[:10], the family shares sum to 1, and all 2,949 per-player I, share and signed-mean entries have 2,000 finite.",
+  "A6 coverage against brief item 9 and section 10's B1 bullet: the pair statistics, sign counts, family shares, top 3, own-history share and both top-10 lists are present. The per-player I, s and S path exists. The nonzero counts, defo identity and run facts are absent and not pointed to; they are correct in section 6.",
+  "n10_sec6_cells.py: of the 51 section-6 pair cells, exactly 4 are wrong at 3 decimals, the four of A1 item 4. The top-3, family and own-history table is right. The nonzero counts equal A and meta.json.",
+  "reconcile.json b1_summary: it holds three of the four mis-rounded digits; the NDVI variable-level tau-b is absent.",
+  "n04_open_logs.py: opened_official.jsonl has 436 entries over 50 files: r10 50 (18:24:54-55); reconcile.py 360 (18:34:26-18:49:41, 6 runs); 16 byte reads (18:43:43-18:49:41); r30 10 (18:42:42-55). opened_other.jsonl has 253 entries over 45 files, all by reconcile.py (18:34:26-18:49:49).",
+  "V\\reconcile\\work listing: no tables.md (r30_tables.py mtime 18:49:18). In v2, '18:46:03' appears only on line 59 and 'tables.md' only on lines 355 and 389. v1's A1 items 1 and 2 have no counterpart in v2.",
+  "n06_groups_official.py on summary.json: second_checks n = 1,114 + 790 + 754 + 505 + 790 = 3,953; official 3,953, B 3,953, A 3,936. Verdicts b1: 14,412 + 12 = 14,424. Derived keys per implementer: 916 match and 5 differ (the item-8 J keys). The b1 A and B records (status, registered, meta_equal, run, identity) are equal for all five problems.",
+  "n06_groups_official.py on mismatches.json: AO or BO = diff occurs only in sign_agreement_no_interval (official null on 190 keys, 0 on 95), C15_empty_family (official 0.0), C15_feature_family_tvd (official null on all 204) and undefined_nan_zero_replicates (official 0 on 5). This supports A1 item 8's three groups.",
+  "n07_finite_counts.py on A and B: 102 pair-levels. Sign-agreement n_finite is 2,000 on 92 and 0 on 7 (group 2's list). On fire's variable level it is 64 (ridge|treeroute, value null), 1,140 (lgbm) and 1,380 (rf), all [0, 1]. No other interval in either file has 0 < n_finite < 2,000, and every B1 interval has 2,000.",
+  "n08_s41.py and n12_s41_digits.py: every BARDL figure quoted in A4 item 1 and A5 point 3 equals s41 and skeptic_numbers.json: 0.25/0.111; 0.25/0.176; 0.365/0.325; 0.162/0.038; 0.241/0.322; 0.111/0.030; 0.111/0.143; -0.064/-0.126/0.003; -0.471/-0.393/-0.362; 93 zeros; main row under 3e-5 (2.9e-5). The 22 pairs without BARDL have RBO spreads up to 2.25e-05; no digit moves at 2 or 3 decimals.",
+  "n09_s92_quotes.py: 66 B1 numbers in s92_final_lines.json equal A within 1e-9 and round to the same 3 decimals, and every A6 cell they touch is present. s92's 10 NDVI and PM2.5 main-row cells appear in section 3 at 4 decimals.",
+  "PROTOCOL.md cited lines read: 829-831, 936-938, 941-946, 540-542, 553-556, 605-607, 618-623 (BA1 is named on line 621; the D16 row is line 672; the ruling is lines 678-679) and 771-777. Each says what the report says.",
+  "SPEC.md lines read: C10 (lines 564-569, 'direction and collation') and C21 (lines 627-630, 'the fewest finite replicates for which an interval is given') match A4 and A5.",
+  "A's open records: opened_items_fire.json lists per_lead.json and bootstrap_draws.npy, and opened_b1.json lists per_lead.json for all five problems and bootstrap_draws.npy for fire, pm25 and ndvi. This supports A1 item 1.",
+  "n11_scan.py (os.scandir and stat only; V and smoke\\bardl_fix not entered): 10,801 files, none created or changed at or after 2026-11-16 17:09, newest RUN_COMMANDS.md at 17:05:41. This matches A4's 10,801 and 17:05:41.",
+  "a04_checks.py (lines 29-31) and b_inspect3.py (lines 23-25 and 39) read treeroute_B1 files: key columns, pre and resid_flag, meta.json and the rows schema. Neither writes a file.",
+  "Skeptic returns against A4. Blindness: 3 minor findings, 13 keys, the 18:33 limit, the label and both fixes all match. Numbers: 3 minor findings, 93 of 96, 3e-5, 0.0035, 91.1%, 1.5e-15, 29 row files and the B1 sample list all match. Reconcile: 1 major and 8 minor findings, mapped to A1 items 9-13, 16 and the first two parts of 17.",
+  "A7: the first-round counts (facts 2 major and 10 minor; completeness 3 major and 9 minor) are right, and every target item exists. The before_fix1 SHA-256 prefix and size are right. '19:33' matches the first facts-checker script (19:33:11).",
+  "Rules kept: read-only on existing files. Scripts n01-n12 only in V\\skeptic\\report_check2\\numbers, run as py -3.9 -I -B. smoke\\bardl_fix not opened. No SHAP\\scripts or V\\_lead\\scripts script run. No Grep or Glob over SHAP with a *.md pattern. No report file written."
+ ]
+}

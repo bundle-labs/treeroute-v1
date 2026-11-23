@@ -1,0 +1,681 @@
+SPEC_HUMAN.txt - the human-rival tool (type 2 rivals), Part A: coral, defo, PM2.5, NDVI
+==========================================================================================
+
+Written 2026-10-21. Status: SPEC ONLY. Nothing is built, run, downloaded or scored by this file.
+Build folder: D:\treeroute\human_rivals_build (the ONLY place builders write; never delete; replaced files go
+to D:\treeroute\human_rivals_build\_moved\<utc stamp>\).
+
+Short names used for sources (all read-only):
+  PLAN  = C:\Users\<user>\Desktop\data set for reserch paper\engine\RIVALS_PLAN_HUMAN.md
+  RUL   = ...\engine\OWNER_RULINGS_2026-10-06.md (section AB = :172-179; Y :136-145; Z :147-158; AC :181-188)
+  PROT  = D:\treeroute\rivals_plan_human\protocol.md (rules H0-H19)
+  R-COR, R-DEF, R-PM, R-NDV = D:\treeroute\rivals_plan_human\research_{coral,defo,pm25,ndvi}.md
+  H     = D:\treeroute\rivals_build\rivals\harness.py   (common harness, code hash 71457aa9, signed Part 598)
+  LY    = D:\treeroute\rivals_build\rivals\layout.py
+  SPECR = D:\treeroute\rivals_build\SPEC_RIVALS.md
+  MET   = ...\engine\treeroute\report\metrics.py          (LIVE engine 930d961c)
+  LAD   = ...\engine\treeroute\pipeline\ladder.py ; TLAD = ...\engine\treeroute\pipeline\table_ladder.py
+Runs (read-only): pm25 D:/treeroute/runs/pm25/headline/20261007_74e67609, ndvi .../ndvi/headline/20261016_d1de3158,
+defo .../defo/headline/20261017_d71c61f4, coral .../coral/headline/20261020_f3b8e3da.
+
+Facts checked for this spec (2026-10-21, read-only):
+- Common harness code hash recomputed with H:183-189: 71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97.
+- AMENDMENT (owner ruling AG5, 2026-10-22, Part 613): after the Part 608 fix the common harness is
+  b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2, and the tool is pinned to it (the IMPORTED harness
+  must equal the pin, unchanged). A common board's harness_code_sha256 must be the pin OR an older harness listed in the
+  config's common_harness_accepted_boards with the owner's written reason, and an accepted board's legal range must be
+  bounded at both ends. 71457aa9 is accepted for the coral and fire boards. Where this spec says "71457aa9" or "== the
+  board's harness_code_sha256" (1.2, 1.12, 9), read it with this amendment.
+- R17 start_offset_steps: pm25 0, ndvi 1, defo 0, coral 0. History columns (plan.json): pm25/ndvi hist_last_1..3,
+  hist_mean_12/60/all; defo hist_last_1..3, hist_mean_5, hist_mean_all; coral NONE (R17 columns []).
+- Lead-0 test_preds hold only base__guess_normal, base__last5_normal, base__predict_zero (coral: base__donor_median,
+  base__predict_zero). Lead >= 1 test_preds also hold base__persistence and base__damped_persistence (all four runs).
+- derived.json R8 entries carry the field `steps` (PLAN calls it "nowcast_steps"); counts: pm25 {0:50, 1:32, 2:13,
+  3:3}, ndvi {0:416, 1:48, 2:15, 3:3}; ndvi V02_* and V30_* columns all have steps 0. Coral R8 is empty; coral
+  plan.json `max_feature_end_minus_issue_day` = -1 at every lead.
+- Coral export exists: D:/treeroute/rival_export/coral/20261020_f3b8e3da/lead_{0,183,365} (counts lead 0: refit
+  11,338, tune 9,292, inner 2,046, test 2,312). Its units are VISITS ("site|date"); units.parquet holds unit, group,
+  is_scored, seen_during_design, programme. pm25 export is being written by the running common job; ndvi and defo
+  exports do not exist yet.
+- D4 GADM 3.6: 52 country GeoPackages + product_manifest.json in D:/treeroute/human_products/gadm/3.6_gpkg_defo42;
+  rules for the build in D:/treeroute/human_tools/reports/d4_processing_rules.md (overlap assignment; IRL and HKG
+  level-1 fallback). D6: 300 site-days (200 train, 100 test) in
+  D:/treeroute/human_products/noaa_crw_dhw_sitedays/v3.1_sitedays_v2_train200_test100_pifsc; SST equal at 300/300;
+  DHW/BAA NOT yet compared to our recomputation (that is the coral adapter's job, d6_summary_v2.py:12).
+- sst_compact_all.npz members are STORED (uncompressed): day.npy and sst.npy 465,870,224 bytes each, so they can
+  be memory-mapped by offset (RAM stays low).
+- Libraries present: rasterio 1.4.3, netCDF4 1.7.2, xarray 2024.7.0, scipy 1.13.1, sklearn 1.6.1, torch 2.8.0,
+  geopandas 1.0.1, pyogrio, yaml, psutil. GDAL python bindings (osgeo): MISSING (not needed).
+
+**ATTENTION (must-reads before building)**
+A1. Folder name. PLAN:136 and PROT:51 say D:/treeroute/rivals_human_build; the task and hard rules say
+    D:\treeroute\human_rivals_build. This spec uses human_rivals_build. The protocol.md path line is added to the
+    PLAN 3.15 change list (applied at Part A drafting, not now).
+A2. Test-window labels hide in feature files. The export's test files and lead files hold x__hist_* columns: they
+    are labels of OTHER rows inside the test window (as-of the T2 step). The common harness never opens a test file
+    before its lock (H:7-9). The human tool keeps the same rule: `slim` may COPY those files (bytes + hash), but
+    `tune` and `lock` never open them, and every rival or reference row that reads a target observation inside the
+    test window (NDVI H1 at test rows, VT0007 at test issue years 2020-2023, persistence, coral last visit) is
+    computed only AFTER the human lock. This is stricter than PROT H16 order; it changes no ruling.
+A3. `slim` takes the engine heavy-job lock (PROT:321), so it cannot run while the pm25 common job runs. The coral
+    export is still on disk: the owner must NOT delete D:/treeroute/rival_export/coral/... until human `slim` has
+    copied it (PLAN ATTENTION 3).
+A4. F5 per-unit MOS needs a shrinkage strength the plan never fixed. Proposed constant SHRINK_K = 10 rows (the
+    engine's 10-row floor, MET:115): slope_u* = (n_u*b_u + K*b_pool)/(n_u + K), same for the intercept. Owner
+    confirms in the Part A draft; it is a pre-registered constant, never tuned.
+A5. NDVI H1 reads its climate inputs from the export's own x__ columns (same values our model reads, already
+    date-safe), not from a 40.9 GB panel pass. `slim` refuses if one of the named columns is missing from the ndvi
+    export; only then is the panel pass (owner command, 0.5-1.5 h) needed.
+A6. The coral tune-only dry pass allowed by the task cannot run now: its index needs a pass over the 932 MB SST file
+    (forbidden while the pm25 run uses the PC). Deferred to an owner command after the pm25 run ends.
+A7. The defo distance-map prep is split at the lock (A2): maps that need loss of 2020-2022 are built only after
+    the human defo lock.
+
+-----------------------------------------------------------------------------------------------------------------
+0. WHAT IS BUILT, IN ONE PICTURE
+-----------------------------------------------------------------------------------------------------------------
+
+  common export (lead L)  --slim-->  slim copy (keys, roles, train y, normals, history, named extras)
+  product files on disk   --adapter-->  index table per rival x lead (x__<stat>, info_end, target_obs_end, src)
+  slim + index tables     --check-->  identity, one row per key, timing rules T1/T2, manifests
+                          --tune-->   calibration candidates fitted on tune rows, scored on inner rows (lead 0)
+                          --lock-->   picks + coverage masks + hashes, write-once (before any test label)
+                          --refit-->  per lead: guard (N2) + refit + test predictions raw and guarded
+                          --score-->  the ONE reader of test y; engine metrics; verdicts; reference rows
+                          --join-->   common board + human board -> ONE rival table
+
+Plain idea: the human tool is a thin layer. It borrows from the signed common harness everything that decides a
+score (run facts, export reading rules, guard, comparators, metrics, contrasts). It adds only what a product needs:
+an index table, a small fixed family of calibration maps, coverage, and the joiner.
+
+-----------------------------------------------------------------------------------------------------------------
+1. THE SHARED TOOL
+-----------------------------------------------------------------------------------------------------------------
+
+1.1 Where things live (one YAML config, paths only; plug and predict: no problem name in the tool code)
+
+  D:\treeroute\human_rivals_build\human_rivals.yaml   (build/test values; production values are owner commands)
+    engine_root, machine_file, export_root, export_ckpt_root, out_root, moved_root   (LY:27 ROOT_KEYS, read with
+                                                      LY.load_roots, LY:84; extra keys allowed, LY:80)
+    extra keys:
+      common_build_root   D:/treeroute/rivals_build          (import path only; READ-ONLY)
+      common_harness_sha256 71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97
+      common_board_root   D:/treeroute/rivals                (the common boards, read-only)
+      slim_root           production D:/treeroute/rivals_human/<pkg>/<run>/slim   (PROT:54)
+      index_root          production D:/treeroute/human_index (PROT:53)
+      products_root       D:/treeroute/human_products        (read-only; downloads)
+      on_disk_products    the product registry file (1.8)
+      table_root          production D:/treeroute/rivals_table (PROT:56)
+      registry_dir        the problem rival registries (1.7): D:/treeroute/human_rivals_build/registry
+  Build/test values: every write root under D:/treeroute/human_rivals_build/_out, _slim, _index, _table, _moved;
+  a test machine D:/treeroute/human_rivals_build/_machine/machine.yaml (temp_dir there, so tests take a heavy-job
+  lock of their own and never touch D:/treeroute/tmp/treeroute_heavy_job.lock; registry_dir = D:/treeroute/registry,
+  read-only), exactly the pattern of D:/treeroute/rivals_build/_machine/machine.yaml.
+  Every write path goes through the engine registry check (Ctx.mkdir / replace_* -> Registry.assert_writable,
+  H:256-258, H:272-291). None of the roots is in D:/treeroute/registry/protected_roots.txt (checked).
+
+1.2 Reusing the common harness read-only (ruling AB, Q2.HQ1 a; PROT:47-76)
+
+  rivals_human/common.py is the ONE place that imports the common package:
+    - sets sys.dont_write_bytecode = True BEFORE the import (an import must not write __pycache__ into
+      D:/treeroute/rivals_build); all commands also run as `py -3.9 -B`.
+    - inserts common_build_root on sys.path, imports `rivals.layout as LY`, `rivals.harness as H`.
+    - refuses unless H.harness_code_sha() (H:183-189) == common_harness_sha256 from the config, AND == the
+      `harness_code_sha256` of the problem's common board.json (H:1464). A mismatch is a loud refusal (PLAN R4).
+  Used from H (by name; pinned by the hash, so private names are safe to call):
+    Run (H:451-560: links, cuts, legal, band, tol, floor, decline target, ours(lead), c(lead), test_preds_path),
+    ExportLead (H:646-925, only inside `slim`), export_identity (H:577), check_accept_seal (H:595, pm25 Z1 seal),
+    export_content_sha (H:626), Engine (H:243), Ctx (H:261-332), _Command (H:418-446: heavy-job lock + RAM
+    watchdog), read_columns (H:363, refuses a y request), parquet_bytes (H:372), sha256_file / dumps_canonical /
+    read_json / utc_now (H:129-176), saved_test_keys (H:2074), to_saved_order (H:2088), _join (H:1884),
+    apply_guard (H:2100-2113), _inner_comparator (H:1872), _guard_comparator (H:2269-2294), check_ours_against_run
+    (H:2416), _strata_tables (H:2383), _pooled (H:2533), VERDICT_WORDS (H:107), TWEEDIE_ZERO_SHARE (H:90),
+    library_versions (H:192), thread_state (H:405).
+  Used from the engine through H.Engine: metrics.score_table, metric_by_key, _paired_contrast, contrast_tag,
+    blocked_jackknife, mae, corr2, calibration_ratio, anomaly_r2 (MET; lines in H:12-17); links.link_forward /
+    link_inverse / clip_to_legal; decide.n2_eligible; metrics.baseline_persistence (MET:436),
+    shares_season_key (MET:447), damped_persistence_phi (MET:461), baseline_damped_persistence (MET:534).
+  NEVER imported: rivals.py / pm25_rivals.py (their clip caps at 1; PROT:194), anything that writes into the common
+  build or a common board.
+
+1.3 The slim copy (`slim`; PLAN ATTENTION 3; PROT ATTENTION H-A2)
+
+  Purpose: keep what the human rivals need from a common export BEFORE the owner deletes it.
+  Input: --run <run folder> --export <export lead folder>. Refuses unless: the export manifest exists (H:653-656),
+  names the run fingerprint (H:660), its cuts equal derived R11 (H:665-672), the files on disk equal the manifest
+  list (H:685-694), the accept seal holds where an accepted engine difference exists (H:595-623; pm25 ruling Z1),
+  and export_identity equals the common board.json `export.identity` (H:1412) when that board exists.
+  What is copied, per group file, every value checked through ExportLead.path(verify=True) (H:737-757):
+    train/<group>.parquet    keys (unit, group, time, issue, lead), role flags r_* (LY:174-175), y,
+                             nfit__<link> for every R22 link, x__<plan.json history_columns>,
+                             and the problem's named extra columns (registry `slim_extra_columns`, 1.7)
+    guardside/<group>.parquet keys, h__<history>, ngd__<link>  (whole file, same row order)
+    test/<group>.parquet     keys, nfit__<link>, x__<history>, named extras   (NO y: the export has none, H:836-837)
+    units.parquet, export_manifest.json   (bytes, as H.keep_export_files does, H:1490-1510)
+  Output: <slim_root>/lead_<L>/ in the same layout + slim_manifest.json (format "human-slim/1"): source export
+  content sha (H:626), source file sha per file, slim file sha per file, columns, row counts per role, the run
+  fingerprint, the common harness sha, utc. Written LAST (as the export does). Resumable per group file.
+  Refuses: a named extra column missing (A5); a duplicate key; a train row that breaks its cut rule (same rule as
+  H:778-812, re-implemented in the slim reader and tested equal on the toy export).
+  The slim reader `SlimLead.read_set(name)` returns (keys, y or None, normals by link, history, extras) with the
+  guard-side substitution of ExportLead._group_block (H:859-877: h__ replaces the history and ngd__ the normal on
+  tune/inner/guardfit/guard rows). `test` is readable only with a valid human lock (A2).
+  Cost: reads ~10-25 columns per row; 5-15 min per lead (PROT:340), RAM < 2 GB (one group file at a time).
+
+1.4 The index table (adapter output; PROT H1 :86-99)
+
+  One parquet per rival x lead: <index_root>/<pkg>/<run>/<rival>/lead_<L>.parquet, one row per slim key of that
+  lead (every role, and test rows), columns:
+    keys (unit, group, time, issue, lead); x__<stat> float64 (at most 3 stats; NaN = not covered);
+    info_end int64 (newest data time used, run step units; days for a table package);
+    target_obs_end int64 or NaN (newest time of any observation of the target or its direct source);
+    product_cell str (product grid box; resolution-matched table); src str (product file name).
+  A table is written in two STAGES when its rival reads target observations in the test window (registry flag
+  `reads_target_in_test_window`, A2): stage `train` (rows with time <= the lead's fit cut) before the lock, stage
+  `test` only after it (refuses without a valid human lock). Other rivals write both in one go.
+  `check` refuses on: a missing or extra key, a duplicate, +-inf, a src whose sha256 differs from the product
+  manifest, a T1 or T2 break on a P or L row (1.5), and N-kind values outside [-1e-9, legal max] before mapping
+  (warn-only for I kind).
+
+1.5 Timing rules, read from the run (PLAN 3.3; PROT H2 :101-122; nothing hand-set)
+
+  T1 (driver-kind inputs): info_end <= boundary(row).
+    grids: boundary = issue - S, S = max `steps` over the run's R8 entries of the columns the rival's registry
+           names as its "same kind" (`t1_kind_columns`); a rival naming none uses S = max over all R8 entries.
+           Recorded in the lock per rival (PLAN 3.3 "recorded in the lock").
+    tables: boundary = issue + plan.json max_feature_end_minus_issue_day[lead] (coral: issue - 1).
+  T2 (target observations): target_obs_end <= newest readable label step.
+    grids: timing.latest_label_step(t, L) - R17 start_offset_steps (cuts.py:50-60; t-1 at lead 0, t-L at L>=1);
+           the same step hist_last_1 reads (LAD:880-893).
+    tables: strictly before the issue day (TLAD:390-396 last_label_before).
+  Tier on each row of the index table comes from the registry (P, L, A, or X = labelled extension, 1.9). A P, L or
+  X row that breaks T1 or T2 refuses. An A row must break one of them (else it is P and the registry is wrong:
+  refuse). Toy test T-H06: a target-month driver passes on a run whose R8 says steps 0 and refuses on a copy whose
+  R8 says 1 (PLAN 3.3).
+
+1.6 Calibration maps and the inner-MAE pick (PROT H6 :146-171; Q19 a; Q13; HQ6 a)
+
+  Notation: z = link-space prediction; z0 = the row's link-space normal (ngd__ on tune/inner/guardfit/guard rows,
+  nfit__ on refit/test rows; PROT H4); c = the run's c of the lead (H:502-509); xbar = the index's own mean per
+  unit x season key over the same fit rows (a unit with < 3 covered rows in a key uses the pooled key mean; season
+  key from the export manifest `season`, e.g. coral event_month).
+    F0 native       pred = x                                       N kind and M kind only (no fit)
+    F1 lin_link     link(y) = a + b*link(x)   OLS                   N only
+    F2 iso_raw      link(y) = iso(x)                                I, N, and defo calibrated form
+    F3 lin_anom     link(y) - z0 = a + b*(x - xbar)  OLS            I, N
+    F4 iso_anom     link(y) - z0 = iso(x - xbar)                    I, N, and defo calibrated form
+    F5 unit_mos     link(y) - z0 = a_u + b_u*(x - xbar), per unit, a_u and b_u shrunk toward the pooled F3
+                    (a, b) with SHRINK_K = 10 (A4); a unit with < 3 covered fit rows uses the pooled F3 map
+                    (counted, disclosed: PLAN R12)                  I, N
+    F6 (Part B, fire only) normal x per-group isotonic ratio of a per-unit percentile stat (PLAN :69). Built
+                    generic ("percentile stat x per-group ratio"), enabled only by a registry that lists it.
+  Rules: maps fitted per lead on that fit set's covered rows with finite y and x; no weights; links = every R22
+  link of the run (F0 has none); isotonic direction = sign of Spearman of the pair the map fits on the same rows (F2: x vs y; F4 and the anomaly L1 map: x - xbar vs link(y) - z0; review 2026-10-22 issue 5) (recorded);
+  sklearn IsotonicRegression(increasing=<sign>, out_of_bounds="clip"), squared error; back-transform with
+  link_inverse, no smearing; clip with clip_to_legal, keep pre-clip (PROT H9). Minimum to fit: >= 100 covered
+  labelled rows in >= 3 groups (Q2.HQ9); below that "not calibratable at this lead": no row, disclosed.
+  Candidates per rival = stats (<= 3) x allowed families x links. The PICK = lowest inner MAE of the clipped
+  prediction on the inner rows the rival covers (lead 0); ties broken by the fixed order (stat order, family
+  F0..F6, R22 link order). corr2, calibration ratio and predict-zero MAE are logged beside each candidate.
+  A forecast-only product (no nowcast form; today coral Outlook) is picked on the guard rows of its lowest covered
+  lead, pre-registered (Q2.HQ10). One pick per rival, PINNED at every lead, refit per lead (Q2.HQ10 a).
+  L1 print (Q13): when the run's legal_min == 0 and the lead-0 refit zero share >= TWEEDIE_ZERO_SHARE (H:90;
+  data-driven: today coral and defo in Part A), the picked candidate is refit once more with an L1 (weighted
+  median, pool-adjacent-violators) isotonic map and printed beside. It never decides.
+  M kind (published method): output as shipped, F0 only (PROT H7), except defo where both forms are rivals (1.9).
+
+1.7 Problem rival registries (data, not code; one YAML per problem, owned by the adapter builders)
+
+  registry/<pkg>.yaml lists, per rival: id, kind (I | N | M), adapter (module:function), products (ids from 1.8),
+  stats (<= 3, ordered), families allowed, `t1_kind_columns`, `reads_target_in_test_window`, per lead: tier
+  (P | L | A | X) or "none" with a reason (horizon gap), `decides` (derived: P and L decide; A and X never;
+  Q12 b keeps the coral Outlook A), `score_without_net` leads (coral Outlook 365 only, Q12 b), pick rule
+  (nowcast inner | lowest covered lead guard), `slim_extra_columns`, `optional: true|false`, `r10_note` (the
+  PLAN R10 non-blind note for the Part). The tool reads the registry; a problem never appears in tool code
+  (checked by the engine's nonames scan, as SPECR T14).
+
+1.8 Product manifests
+
+  Downloads (D1-D6) already carry product_manifest.json under products_root (fetch_products.py). Products that were
+  on disk before the plan (coral SST npz, CRW climatology, CRW Outlook nc folder, MERRA-2 folder, Hansen tiles,
+  defo_target, monthly panel if Kraft runs) get a manifest from the tool's `manifest` command: file list, size,
+  sha256, mtime, licence text, source note, written to <out_root>/_products/<product>/product_manifest.json
+  (never into the product folder). The Part lists every manifest sha (PROT H16).
+
+1.9 Rows of the human board and what decides (PLAN 3.4, 3.8, 3.9; PROT H8-H14)
+
+  Per rival x lead, after the lock:
+    raw     = picked candidate refit on the lead's refit rows, predicted on covered test rows, clipped.
+    guard   = lead 0: the picked candidate fitted on tune rows, scored on covered inner rows (no second fit);
+              lead L: fitted on covered guardfit rows, scored on covered guard rows.
+              Comparator on the same covered rows: H._inner_comparator / H._guard_comparator with learner name
+              "human" and the pick's link (F0 and M: identity); neighbour kind (coral, v1): the run's decline target
+              = donor-row median (H:536-541, :2278-2280). Passed iff MAE(rival) < MAE(comparator) strictly
+              (n2_eligible). Both helpers check the labels byte for byte against inner_preds / guard_preds (P4/P5).
+    guarded = raw if passed, else the run's decline target column (saved_test_keys, H:2074) on covered rows.
+    Exception: a lead listed in `score_without_net` (coral Outlook 365: 38 guard rows in 11 groups, R-COR:136-138):
+              guarded = raw, flag "no safety net" (Q12 b).
+  Coverage mask (Q2.HQ3 a): test rows where the picked candidate has a finite x (I/N) or the registry's
+  label-free coverage rule holds (M kind); written at the lock, hashed. A group enters the deciding contrast only
+  with >= 10 covered test rows (Q2.HQ9). Printed beside: rows k of n, groups g of G, years; our MAE and the
+  normal's MAE on covered vs all rows; a "filled" line (uncovered rows take the decline target). Filled never
+  decides.
+  Verdict rows (same code path as H:2486-2514): d_g = MAE_rival(g) - MAE_ours(g) on covered rows
+  (metric_by_key, _paired_contrast), tag = contrast_tag(d, nowcast band of the run) at every lead, words from
+  VERDICT_WORDS, blocked_jackknife with R14 blocks beside, timid flag as H:2499-2501.
+  Two contrasts per rival: guarded_vs_headline (decides, when the row's tier decides) and raw_vs_raw (printed).
+  Tier X (labelled extension, NDVI 6/12, Q8 a) and tier A rows get both contrasts printed and never decide.
+  Defo (Q14 a): two rivals vt0007_shipped and vt0007_cal, both P; the board writes one extra line
+  "ours beats VT0007: YES only if BEATS on both forms; else each verdict printed".
+  Our side: run.ours(lead) (H:543-560): headline column and pinned raw arm. Lead 0: check_ours_against_run on ALL
+  rows must pass (H:2416-2451) before any covered-rows table is written.
+  Resolution-matched table (PROT H15) for coarse products (registry flag): y, ours and rival averaged by
+  (group, product_cell, time), scored the same way; printed only.
+
+1.10 Reference rows (Q4, Q23; PLAN :76-77)
+
+  Built by rivals_human/refs.py, generic, after the lock (A2), scored with the same frame:
+  - persistence at the nowcast (grids with history columns): clip(x__hist_last_1 of the test row) =
+    baseline_persistence (MET:436) of the label at the T2 step (LAD:880-893 states hist_last_1 reads that step).
+  - damped persistence at the nowcast: baseline_damped_persistence (MET:534) with normal_target = nfit__identity
+    of the row, normal_issue = the unit's fit-cut identity normal at the season key of the T2 step (from slim
+    rows of the same unit), phi = damped_persistence_phi (MET:461) on unit histories built from the lead-0 refit
+    rows (labels <= fit cut; duck-typed objects with unit_id, times, season_keys, y, cut, as MET:306-320 reads),
+    gap = 1 + offset, same_season_key = shares_season_key(gap, steps_per_year) (MET:447).
+    PARITY PROOF FIRST: the same code at every lead >= 1 must reproduce the run's saved base__persistence and
+    base__damped_persistence byte for byte (pm25/ndvi 6 and 12, defo 1). If it does not, refuse; the nowcast
+    rows are never written.
+  - coral last visit at the site (Q23): the label of the latest earlier visit of the same site (site key = the
+    part of the unit id before "|") strictly before the issue day, from slim train y and, for test-window visits,
+    from the saved test y read by the one reader AFTER the lock. PARITY PROOF FIRST: at 183 and 365 the same rule
+    must reproduce the run's saved base__persistence (TLAD:390-396) byte for byte, else refuse.
+  - guess-normal, last-5-years normal, predict-zero, donor median: the run's saved base__* columns, unchanged.
+  Reference rows get MAE lines and printed contrasts; at PM2.5 lead 0 (damped) persistence is "the human
+  baseline to beat" (PLAN :64, Q4): its verdict is printed in the human block, labelled reference.
+
+1.11 Lock before test (PROT H8, H16; design copied from H:1907-2012, own files)
+
+  Files in <out_root>/<pkg>/<run>/: human_board.json (written once at `init`: run facts as H:1399-1407, the common
+  board.json path and sha, common harness sha, human tool code sha (same recipe as H:183-189 over
+  rivals_human/*.py + adapters/*.py), registry sha, slim manifest shas, product manifest shas, index table shas,
+  constants, library versions, thread state 8), trials/<rival>/<candidate>.json + inner predictions,
+  human_picks.json and human_picks.json.lock.json (write-once), lead_<L>/ (guard, preds, maps as JSON),
+  test_labels_opened_human_lead_<L>.json, scores/, human_board_lead_<L>.csv, human_board.md, human_rivals.log.
+  Ledger: <out_root>/_ledger/<run fingerprint>.jsonl (outside the board folder, as H:1333-1334): "locked" and
+  "test_labels_opened" events with the picks content sha.
+  The lock holds: per rival the pick (stat, family, link) or "as shipped", its inner MAE, the N2 record at lead 0,
+  tiers and `decides` per lead, the T1 boundary used, coverage mask sha per lead, index table shas (train stage),
+  slim shas, harness and tool shas. `lock` refuses if any test-side trace exists (as H:1943-1946), if the
+  human_picks.json exists without its lock (move aside and redo, H:1949-1952), or if the ledger shows test labels
+  opened under other picks (H:1997-2002).
+  The ONE reader of test y (`score`): refuses without a valid lock (verify as H:1907-1936 on the human file names),
+  appends the ledger, reads the lead's saved test_preds, records test_preds sha256, joins one to one on the saved
+  keys (H:2088-2097, F65). Nothing is re-picked or added after a test number is seen (PROT H16).
+
+1.12 The joiner: ONE rival table (PROT section 4 :295-317; PLAN 3.14)
+
+  `join --runs <run folders>` reads, read-only: each common board (D:/treeroute/rivals/<pkg>/<run>/board.json,
+  board_lead_<L>.csv, scores/lead_<L>_*.csv) and each human board.
+  Refuses unless, per problem and lead: same run fingerprint; same test_preds sha256 (common
+  test_labels_opened_rivals_lead_<L>.json vs human test_labels_opened_human_lead_<L>.json); same band; same
+  "ours" pooled MAE on all rows (both equal to score_pooled.csv at lead 0); same common harness sha.
+  One schema per row: problem, lead, rival, rival_type (common | human | own_history | reference), kind
+  (learner | I | N | M | -), tier (P | L | A | X | -), decides, rows_basis (all | covered), rows, rows_total, groups,
+  groups_total, contrast (guarded_vs_headline | raw_vs_raw), verdict, d_mean, d_low, d_high, rival_mae,
+  ours_mae_same_rows, ours_mae_all_rows, normal_mae_same_rows, anomaly_r2, corr2, hit, calibration_ratio,
+  timid_win, guard_passed, flags (horizon gap, extension, no safety net, not calibratable, edge, coverage), part.
+  Order in a problem x lead block: our headline, common rivals, human P and L rows, human X rows, human A rows,
+  own history, reference. A lead with no human rival prints one line "no human rival: <reason from the registry>".
+  No "best rival" line. Reading rules printed under the table (PROT :313-317) plus the coral L wording rule
+  ("beats NOAA's nowcast rule fed old heat", PLAN 3.4) and the defo both-forms rule.
+  Output: <table_root>/<utc stamp>/RIVALS_TABLE.md, RIVALS_TABLE.csv, inputs_sha256.txt.
+
+1.13 Commands (cli.py; every heavy one takes the engine heavy-job lock and the RAM watchdog via H._Command
+     pattern; resumable; one plain log line per step; owner commands, never backgrounded by the agent)
+
+  py -3.9 -B -m rivals_human.cli manifest --product <id>                  (hash an on-disk product, 1.8)
+  py -3.9 -B -m rivals_human.cli slim     --run <run> --export <export lead folder>
+  py -3.9 -B -m rivals_human.cli adapt    --run <run> --rival <id> --lead <L|all> [--stage train|test]
+  py -3.9 -B -m rivals_human.cli check    --run <run> --rival <id>
+  py -3.9 -B -m rivals_human.cli init     --run <run>                      (human_board.json once)
+  py -3.9 -B -m rivals_human.cli tune     --out <board> --resume
+  py -3.9 -B -m rivals_human.cli lock     --out <board>
+  py -3.9 -B -m rivals_human.cli refit    --out <board> --lead <L> --resume
+  py -3.9 -B -m rivals_human.cli refs     --out <board> --lead <L>          (reference rows; after lock)
+  py -3.9 -B -m rivals_human.cli score    --out <board> --lead <L>
+  py -3.9 -B -m rivals_human.cli board    --out <board>
+  py -3.9 -B -m rivals_human.cli join     --runs <run folders>
+  py -3.9 -B -m rivals_human.cli status   --out <board>                    (read-only, no lock)
+  Threads pinned to 8 (as rivals/cli.py:30-31). No seeds varied; one fixed torch seed for Kraft (PROT H18).
+
+-----------------------------------------------------------------------------------------------------------------
+2. CORAL (Part A; leads 0, 183, 365 days; run 20261020_f3b8e3da)
+-----------------------------------------------------------------------------------------------------------------
+
+Rivals (PLAN :73-74; R-COR 2.1, 2.2; Q11, Q12 b, Q13, Q23):
+  crw_dhw     kind I. Lead 0 tier P (decides). Leads 183, 365 tier L, labelled "NOAA's nowcast rule fed old heat"
+              (decides, wording rule). Stats x__dhw, x__baa7d (in that order). Families F2, F3, F4, F5 x links
+              identity, log_c, arcsine. Picked at the nowcast on inner rows, pinned.
+  crw_outlook kind I, forecast-only. Lead 0: none (the observed product is strictly better, R-COR:143).
+              Leads 183 and 365: tier A "advantaged horizon" (issued 42-49 / ~225 days after our issue date,
+              R-COR:125-130). Stats x__baa060_w20, x__baa4p_w20. Families F2, F3, F4 x 3 links (F5: units are
+              visits, so per-unit MOS degenerates to pooled; not listed). Picked on lead-183 guard rows. 365:
+              score_without_net (38 guard-fit rows in 11 groups, R-COR:136-138; Q12 b).
+  Reference: last visit at the site (1.10), donor median, predict-zero.
+  Leads with no human forecast: 183 and 365 print "no forecast with a public 2016-19 archive covering our sites
+  reaches 183 d or 365 d" (PLAN :74); BoM ACCESS-S check before Part A (PLAN R15).
+
+Inputs on disk (no download):
+  D:/coral/drivers/sst_compact_all.npz (CoralTemp v3.1 daily SST per site pixel, days 1985-01-01..2020-12-31;
+    members stored uncompressed: memory-map uk/start/end/day/sst by zip offset; key = site_key(lat, lon) of
+    coral_safe.py:97-107).
+  D:/coral/drivers/static/ct5km_climatology_v3.1.nc (official MMM `sst_clim_mmm`, 0.05 deg).
+  D:/coral/crw/nc/ (1,984 Outlook v5 files, 4 percentile products x 496 issues, 2011-07-03..2020-12-27).
+  Row facts: D:/treeroute/coral_build/coral_store/20261020_014201/lead_{0,183,365}.parquet (protected; READ ONLY):
+    columns unit_id, lat, lon, target_date, issue_date, feature_end, mark ONLY. The adapter's column list never
+    contains pct_bleached (read through a reader that refuses it, like H:363-369).
+  D6 check set: D:/treeroute/human_products/noaa_crw_dhw_sitedays/v3.1_sitedays_v2_train200_test100_pifsc
+    (+ D:/treeroute/human_tools/d6_sitedays_v2.csv: day = d*, px_lat, px_lon).
+
+Exact computation, date-safe at the issue date:
+  For each export key (unit, time = target day, issue, lead): join the store row on (unit_id, target_date, lead);
+  refuse if any key is unmatched or matched twice. d* = feature_end of that row (= C - g - 1; T - 2 on day rows at
+  the nowcast; T - L - 2 at a lead; SPEC_CORAL_TABLES.md:163-173). Assert d* <= issue - 2 on day rows and
+  d* <= issue + max_feature_end_minus_issue_day (= issue - 1) on every row (T1, 1.5).
+  MMM = sst_clim_mmm at the 0.05 deg pixel holding (lat, lon); masked -> nearest valid pixel within 3 cells
+  (pre-registered); none -> NaN (not covered).
+  HotSpot(d) = SST(d) - MMM. DHW(d*) = (sum of HotSpot(d) over the 84 days d*-83..d* where HotSpot >= 1) / 7.
+  A missing SST day inside the window -> NaN (not covered; counted). BAA level per day: 0 if HS <= 0; 1 if
+  0 < HS < 1; 2 if HS >= 1 and 0 < DHW < 4; 3 if DHW in [4, 8); 4 if DHW >= 8 (the 5-level scale of 2016-19;
+  NOAA's later levels 5-7 merged into 4; Q13). x__baa7d = max level over d*-6..d*.
+  info_end = d*; target_obs_end = NaN (no label read; T2 empty); product_cell = MMM pixel id; src = npz name.
+  Outlook (183, 365): for target day T, the issue whose Week_20 window [start_time, stop_time) holds T (read from
+  each variable's attributes, asserted); 0.5 deg cell of the site, land -> nearest ocean cell within 3 rings, max
+  within the ring (R-COR:125-130); x__baa060_w20 = Week_20 BAA of the 060 file; x__baa4p_w20 = mean over the 010,
+  030, 060, 090 files. info_end = the issue week day (> boundary by design: tier A must break T1, 1.5).
+  Train rows before the archive (targets before 2011-11-14) are NaN (not covered).
+
+Checks that must pass before the coral index is used (refuse otherwise):
+  D6: recomputed DHW and BAA7d at the 300 site-days (day = d* column) equal NOAA's values to rounding
+    (|DHW diff| <= 0.005 + 1e-6; BAA level equal after merging NOAA levels >= 4 into 4) (PLAN :162, R14).
+  Replay: with the package MMM (store ctx_mmm) in place of NOAA's, the adapter reproduces the export's
+    x__dhw_84 and x__hs_max_84 to relative 1e-9 on every row (R-COR:176; SPEC_CORAL_TABLES.md:239-242).
+    slim_extra_columns for coral: x__dhw_84, x__hs_max_84, c__ctx_mmm.
+
+Calibration: 1.6 maps on train rows only, per lead: tune rows (labels <= 2012-12-31, lead-0 guard cut) for the
+pick, scored on inner rows; guardfit/guard at 183 and 365; refit rows (labels before 2015-12-31 / 2015-07-02 /
+2015-01-01). Isotonic direction from train Spearman. L1 isotonic printed beside (coral is zero-heavy).
+xbar: units are visits, so the anomaly forms use the pooled mean per event-month key (PROT:162-164).
+Covered rows: crw_dhw essentially all (every store row has an SST series, R-COR:92); crw_outlook only targets from
+2011-11-14 (fit rows: 239 / 22 groups before the 183 guard cut; 38 / 11 before the 365 guard cut).
+Tier summary: lead 0 crw_dhw P; 183/365 crw_dhw L, crw_outlook A (365 without net); last visit reference.
+
+-----------------------------------------------------------------------------------------------------------------
+3. DEFO (Part A; leads 0 and 1 year; run 20261017_d71c61f4)
+-----------------------------------------------------------------------------------------------------------------
+
+Rivals (PLAN :72; R-DEF section 2; Q14 a, Q15):
+  vt0007_shipped  kind M, tier P at both leads, F0 (as shipped).
+  vt0007_cal      kind M index, tier P at both leads, isotonic-calibrated: families F2, F4 x links identity, log_c,
+                  arcsine, picked on inner MAE (HQ6 a), pinned at lead 1. L1 isotonic printed beside.
+  vt0007_frozen2019  optional, tier P printed with its own verdict, NOT part of the "beats VT0007" claim; the
+                  form Verra certified (HRP 2010-2019, distance at end 2019, held for 2020-2023). R10 note: chosen
+                  after the old udef_a frozen run (defo_papers.py), years to confirm before signing.
+  Leads 0 and 1 get identical numbers (labels end at t-1 at both; R-DEF:13-15): the adapter writes lead 1 from the
+  lead-0 values and `check` asserts equality per (unit, time).
+  Reference: persistence and damped persistence at the nowcast (1.10), guess-normal, last-5, predict-zero.
+
+Inputs on disk:
+  Hansen GFC-2025-v1.13 tiles D:/hansen (76 lossyear, 77 treecover2000, 77 datamask; same version as the target,
+    defo_fetch.py:20-24). Missing tile 20S_040W is all ocean.
+  D:/defo_target/<group>.parquet (cell grid; loss_px, forest2000_px per cell and year) and
+    D:/defo_features/static/part-0.parquet (forest2000_px) - for the parity check and the denominator.
+  GADM 3.6 level 2: D:/treeroute/human_products/gadm/3.6_gpkg_defo42 (52 zips + manifest; read with pyogrio /
+    geopandas directly from the zip; never copied). Rules of d4_processing_rules.md: cell->division by largest
+    overlap, else nearest within half a cell; IRL and HKG level 1; counts of each step reported.
+  Pixel->cell mapping: the exact rule of defo_ingest.py:100-200 (searchsorted on the region's cell centres).
+
+Exact computation (issue year t; HRP = t-10..t-1; R-DEF:68-79):
+  forest(T) = treecover2000 >= 30 AND datamask land AND NOT (1 <= lossyear <= T-2000).
+  Never read lossyear >= t-2000 for issue year t (assert per tile: max lossyear read <= t-1-2000; PLAN R8);
+  never read the gain layer; value 0 ("never lost") carries no information beyond forest(T).
+  Fit: distance (anisotropic per-tile metres, R-DEF:105-106) from each forest pixel at end of t-11 to non-forest
+  land (water excluded, Q15); 30 geometric classes cut at the distance holding 99.5% of HRP loss; loss frequency
+  per class x division over HRP (VT0007 5.3.1).
+  Predict: distance at end of t-1 -> classes -> fitted frequencies -> scaled so the group's total equals its mean
+  annual loss over the HRP (VMD0055 quantity; jurisdiction = our group); each pixel capped at 1.
+  Cell value x__vt0007 = sum of expected loss pixels in the cell / forest2000_px (target scale). Margin pixels
+  outside a region read from the whole 10-degree granules; a margin falling in a tile we do not hold is counted
+  and disclosed.
+  Coverage rule (label-free, fixed): issue year t >= 2001 + 10 = 2011 (a full 10-year HRP) and forest2000_px > 0.
+  Earlier export rows are NaN (not covered); disclosed with the years.
+  info_end = target_obs_end = t-1 (passes T2 at both leads: latest_label_step(t, 0) = t-1, (t, 1) = t-1, offset 0).
+  reads_target_in_test_window = true: stage train (issue years <= 2019; loss <= 2018) before the lock; stage
+  test (issue 2020-2023; loss up to 2022) after the lock (A2, A7).
+  Parity check (stops on any mismatch): the builder's per-cell counts reproduce loss_px (years <= 2019 pre-lock;
+  2020-2022 post-lock) and forest2000_px of D:/defo_target cell by cell.
+
+Calibration: vt0007_cal fitted on train rows only, per lead (tune rows <= 2016 for the pick, scored on inner
+2017-2019; refit rows <= 2019 for test). Q14 a rule printed. Strata: per forest2000_px stratum (H:2383-2413).
+
+-----------------------------------------------------------------------------------------------------------------
+4. PM2.5 (Part A; leads 0, 6, 12 months; run 20261007_74e67609)
+-----------------------------------------------------------------------------------------------------------------
+
+Rivals (PLAN :64-65; R-PM sections 2-4; Q6, Q6b, Q7, Q19 a, Q21 a):
+  eac4_lag1     kind N, lead 0, tier P "the operational product at parity": EAC4 monthly pm2p5 of month t-1.
+  eac4_same     kind N, lead 0, tier A "real practice", printed directly beside eac4_lag1 (Q6b).
+  merra2_lag1   kind N, lead 0, tier P, optional (on disk).
+  merra2_same   kind N, lead 0, tier A beside it.
+  Families F0-F5 x links identity, log_c, stat x__pm25 (monthly mean). Each P/A pair shares the family list but
+  is picked separately on inner rows. Resolution-matched table printed (0.75 / 0.5 x 0.625 deg boxes).
+  Leads 6 and 12: "no human rival: no operational 6-12 month PM2.5 forecast exists" (Q1, Q21 a).
+  Reference: persistence and damped persistence at lead 0 = "the human baseline to beat" (Q4).
+
+Inputs:
+  EAC4: NOT on disk (D1 needs the owner's ADS key file and licence click; RUL AB2). The adapter looks for
+    <products_root>/cams_eac4/<version>/product_manifest.json; without it `adapt` REFUSES with the plain line
+    "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first" and `init` lists eac4_* as "waiting for
+    D1". The board may be built and locked without EAC4 only by an owner decision recorded in the Part (PLAN R2:
+    MERRA-2 then becomes the P product); the tool never decides that by itself.
+  MERRA-2: D:/pm25_products/merra2/aer_200301.nc .. aer_202312.nc (252 files, 0.84 GB; manifest via `manifest`).
+    PM2.5 = DUSMASS25 + SSSMASS25 + BCSMASS + 1.4*OCSMASS + 1.375*SO4SMASS (kg m-3) x 1e9 (R-PM:72-77).
+  Unit centres: engine datasets/pm25/data/static/part-0.parquet (cell_id, region, lat, lon); every slim unit must
+    match one cell_id (refuse otherwise).
+  Never reuse D:/pm25_rivals caches (old rows, unlagged; protected root; R-PM:160).
+
+Exact computation:
+  Product month m: P rows m = t-1 (lead 0); A rows m = t. Bilinear interpolation at the unit centre (EAC4: lon
+  0..359.25 wrapped, lat north->south; MERRA-2: lon -180..179.375, lat ascending; R-PM:113-117), x 1e9.
+  info_end = m. target_obs_end = m (both reanalyses assimilate MODIS AOD, the target's own source).
+  T2 at lead 0 = t-1 - 0: P rows pass; A rows (m = t) break T2 and must be tier A (1.5).
+  Coverage: rows whose month m has a product file; lead 0 loses 2003-01 train rows (no 2002-12 file). Test fully
+  covered. product_cell = product box id.
+  Disclosures carried into the Part: EAC4 published 4-6 months late (t-1 generous); MERRA2_401 stream months
+  2020-09, 2021-06..09; no nitrate in MERRA-2; AATSR ends 2012.
+
+Calibration: 1.6 families F0-F5 on all bank units to the cut (gauged global, Q7): tune rows <= guard cut
+(2016 inner fit), inner rows 2017-2019, refit rows <= 2019. xbar per unit x calendar month over the same fit rows.
+F5 per-unit MOS with SHRINK_K (A4). Not zero-heavy: no L1 print.
+Placebo (printed only, never decides; R-PM:138-139): the time-shifted product (same unit and calendar month,
+another train year), through the same pick; the guard should decline it.
+
+-----------------------------------------------------------------------------------------------------------------
+5. NDVI (Part A; leads 0, 6, 12 months; run 20261016_d1de3158)
+-----------------------------------------------------------------------------------------------------------------
+
+Rivals (PLAN :66-68; R-NDV sections 3-4; Q8 a, Q9, Q10):
+  bardl_h1      kind M (per unit). Lead 0 tier P (decides). Leads 6 and 12 tier X "labelled statistical
+                extension: no published NDVI forecast reaches 6 or 12 months" (printed, never decides).
+  kraft_lstm    kind M (global), optional, lead 0 only, tier P, CPU only (Q10). R10 note (Parts 417-426).
+  Not built: SEAS5 for NDVI (D5 not approved, RUL AB1), VPD in H1 (Q9: published inputs only), McPhillips GP,
+  SARIMA (R-NDV:36-37).
+  Reference: persistence and damped persistence at the nowcast (1.10).
+
+Inputs (all on disk, read through the slim copy; A5):
+  NDVI lags: x__hist_last_1, x__hist_last_2, x__hist_last_3 (fit side) / h__hist_last_* (guard side), as the
+    export gives each set (H:859-877). At lead L they hold y at the T2 step and the two before it (t-1-1 = t-2 at
+    the nowcast with offset 1; PLAN :66 "past NDVI to t-2").
+  Climate at the issue step i and i-1, i-2: slim_extra_columns for ndvi = x__V02_total_precip_mm,
+    x__V02_total_precip_mm_lag1, x__V02_total_precip_mm_lag2, x__V30_soil_moisture_pct,
+    x__V30_soil_moisture_pct_lag1, x__V30_soil_moisture_pct_lag2 (R8 steps 0 for all; ban.yaml keeps them,
+    R-NDV:49). The 3-month mean is the mean of the three (not roll3, whose definition is not checked here).
+  Kraft only: 12-month windows of V01, V02, V05, V30, solar_radiation_Wm2, V09 + soil statics (clay_pct, sand_pct,
+    soil_organic_carbon_gkg, soil_ph, awc_cm3cm3, V25_elevation_m) from D:/monthly_panel (owner prep command,
+    section 8); land cover dropped (banned proxy, R-NDV:61).
+
+Exact computation (H1, per unit u and lead L, direct model; R-NDV:44-57):
+  target a(t) = y(t) - z0 (z0 = ngd__identity on guard-side sets, nfit__identity on refit/test).
+  NDVI anomalies: hist_last_k minus the unit's identity normal at the season key of that label step (from the
+    same set's normals of the unit; missing lag -> 0 = the normal; counted).
+  Climate anomalies: value minus the unit x calendar-month mean over the same fit set's rows (calendar month of
+    the column's own month i-k).
+  Predictors: 3 NDVI anomaly lags + precipitation and soil moisture anomalies at i, i-1, i-2 + their 3-month
+    means = 11 columns. Fit sklearn BayesianRidge (defaults, deterministic) per unit on the fit set's rows with
+    finite target; scored units only (1,983; per-unit methods predict the units they were fitted on, PROT H7).
+  A unit with < 36 complete fit rows -> prediction = the normal (counted, disclosed; PLAN R12).
+  Prediction = z0 + a_hat, clipped to [-0.2, 1] (R28), pre-clip kept. F0 (no extra map).
+  info_end = issue i (climate, T1 boundary = i - max steps of V02/V30 entries = i - 0). target_obs_end = the
+  T2 step (hist_last_1's step). reads_target_in_test_window = true (test predictions after the lock).
+  Coverage rule (label-free): every scored unit is covered (fallback rows are covered and counted).
+  Fit sets: lead 0 tune (<= 2016) -> inner (2017-2019) for the guard; refit (<= 2019) -> test. Leads 6/12:
+  guardfit -> guard; refit -> test. Nothing is picked (published settings; one configuration).
+Kraft (optional): one global LSTM, all bank units' rows with target <= guard cut for the guard, <= fit cut for
+  test; torch seed 0, CPU, 8 threads; F0; row-level predictions saved; architecture as ndvi_kraft.py (read-only
+  reference, never imported) with land cover dropped.
+
+-----------------------------------------------------------------------------------------------------------------
+6. FILE OWNERSHIP (four parallel builders; nobody edits another's file; all under D:\treeroute\human_rivals_build)
+-----------------------------------------------------------------------------------------------------------------
+
+Builder A - shared tool:
+  rivals_human/__init__.py, cli.py, config.py, common.py (pinned import, 1.2), slim.py, index.py (schema, check,
+  timing rules 1.5), maps.py (F0-F6, L1 isotonic), methods.py (the M-runner interface), refs.py (1.10),
+  board.py (init, tune, lock, refit, score, board), lockfile.py (1.11), join.py (1.12), manifest.py (1.8);
+  human_rivals.yaml (build values); registry/_schema.yaml (the registry schema of 1.7);
+  PREREGISTRATION_DRAFT_human_partA.txt (filled from the registries and manifests; owner signs).
+Builder B - coral + defo adapters:
+  adapters/coral_crw.py (crw_dhw, D6 check, replay check), adapters/coral_outlook.py (crw_outlook),
+  adapters/defo_vt0007.py (the three VT0007 forms), adapters/defo_prep.py (distance maps + count tables, staged),
+  registry/coral.yaml, registry/defo.yaml.
+Builder C - PM2.5 + NDVI adapters:
+  adapters/pm25_reanalysis.py (EAC4 and MERRA-2 readers, P and A rows, the placebo),
+  adapters/ndvi_bardl.py (H1), adapters/ndvi_kraft.py (optional) and adapters/ndvi_kraft_prep.py,
+  registry/pm25.yaml, registry/ndvi.yaml.
+Builder D - tests:
+  rivals_human/tests/__init__.py, conftest.py, toy_products.py, test_*.py; pytest.ini; _machine/ (test machine).
+Fixed interfaces (the contract between A, B, C, D):
+  Adapter: build(ctx: AdapterCtx, rival: dict, lead: int, stage: str) -> pandas.DataFrame (the 1.4 columns).
+    AdapterCtx gives: run facts (H.Run), slim keys per set (no y), unit table (units.parquet), verified product
+    file opening by manifest (open_product(id, name) -> path after a sha check), step <-> date helpers, a log.
+    I/N adapters never receive y. M adapters get y only through ctx.fit_labels(set) for fit sets (tune, refit,
+    guardfit); ctx.fit_labels("test"|"inner"|"guard") refuses.
+  M runner: fit(ctx, rival, lead, fit_set) -> params (JSON-able), predict(ctx, rival, lead, params, score_set) ->
+    DataFrame(keys, pre, info_end, target_obs_end). The tool calls them in tune/refit; runners never pick.
+  Map family: fit(x, y, z0, link, c, ub, units, keys) -> MapModel; MapModel.predict(...) -> link-space z;
+    MapModel.to_json().
+  Registry: registry/<pkg>.yaml per 1.7; validated against registry/_schema.yaml by `init`.
+  Names and paths only from config.py (as SPECR:631-642 for the common build).
+
+-----------------------------------------------------------------------------------------------------------------
+7. TOY-TEST PLAN (pytest, py -3.9 -B, -p no:cacheprovider, PYTHONDONTWRITEBYTECODE=1;
+   --basetemp D:/treeroute/human_rivals_build/_pt/<run> (parent must exist); each test < 1 min, RAM < 1 GB;
+   relevant tests while building, ONE full suite at the end; no real product pass)
+-----------------------------------------------------------------------------------------------------------------
+
+Fixtures: the common toy builders imported read-only from D:/treeroute/rivals_build/rivals/tests/toy_runs.py
+(build_grid_toy :267, build_table_toy :283, export_run :447, ReadSpy :301) under the human basetemp; a toy common
+board (H.init) for the identity checks; toy_products.py writes tiny synthetic products in the basetemp: a monthly
+netCDF grid (N kind), an uncompressed npz SST + a small MMM netCDF (coral rule), 64x64 rasterio GeoTIFF tiles
+(lossyear, treecover2000, datamask) + a 2-polygon GeoPackage (defo), a tiny Outlook-like weekly netCDF.
+
+  T-H01 import guard: wrong common harness sha -> refuse; common import writes no file under rivals_build
+        (snapshot of the folder before/after); `-B` respected.
+  T-H02 slim: copied columns equal the export byte for byte; slim_manifest sha chain; missing named extra column
+        refuses; export with a stray file refuses; accept-seal case refuses without the seal.
+  T-H03 SlimLead.read_set keys, y and normals equal ExportLead.read_set on the toy export for every train set,
+        including the guard-side substitution.
+  T-H04 no test-window label before the lock: a ReadSpy over parquet/netCDF/open: init, tune, lock never open
+        slim test files, never ask y of test_preds; ctx.fit_labels("inner") refuses; stage-test adapt refuses
+        without a lock.
+  T-H05 index check: missing key, duplicate, inf, wrong src sha -> each refuses.
+  T-H06 T1 from R8: a target-month driver passes on the toy run (steps 0) and refuses on a copied run whose R8
+        says 1; a table toy: info_end = issue refuses, issue - 2 passes.
+  T-H07 T2: a P row reading the target month refuses; the same row as tier A passes; a tier-A row that breaks
+        nothing refuses (registry error); shifted-label M runner refuses (PLAN R8).
+  T-H08 maps: F1-F5 recover known synthetic maps; isotonic direction follows train Spearman; F5 shrinkage equals
+        the hand formula with K = 10; < 3 rows -> pooled fallback counted; < 100 rows / < 3 groups -> "not
+        calibratable"; link round trip <= 1e-12; clip uses clip_to_legal and keeps pre-clip.
+  T-H09 pick: lowest inner MAE wins; ties follow the fixed order; forecast-only product picked on guard rows of
+        its lowest covered lead; the pick is pinned and refit per lead.
+  T-H10 lock: write-once; edited picks refuse; test-side trace before lock refuses; ledger with other picks
+        refuses; score refuses without lock.
+  T-H11 guard: a rival worse than its comparator on covered guard rows gets the decline target; better -> raw;
+        score_without_net lead -> raw with flag; comparator labels must equal inner_preds / guard_preds.
+  T-H12 coverage: groups with < 10 covered rows leave the deciding contrast; ours is scored on the same rows;
+        filled line equals decline target on uncovered rows; coverage mask unchanged by labels.
+  T-H13 scoring path: verdict, d, jackknife equal a hand computation (as SPECR T15); check_ours_against_run passes
+        on the toy and refuses on an edited ours column.
+  T-H14 reference rows: the nowcast persistence code reproduces the toy run's saved lead >= 1 base__persistence
+        and base__damped_persistence byte for byte; a perturbed phi refuses; table toy last-visit reproduces its
+        lead >= 1 base__persistence.
+  T-H15 joiner: mismatched fingerprint / test_preds sha / band / ours MAE each refuse; row order and schema;
+        "no human rival" lines; no best-rival line.
+  T-H16 coral rule on synthetic SST: DHW and BAA (5 levels) equal a hand computation; window ends at d*; a
+        missing day -> NaN; MMM masked -> nearest within 3 cells; store column list never contains the label
+        column (reader refuses it).
+  T-H17 defo rule on toy tiles: forest(T), 30 classes, frequency table, quantity scaling, pixel cap, cell sum;
+        lossyear >= t read -> refuses; lead 1 equals lead 0; parity with toy loss_px counts; overlap assignment
+        and nearest-within-half-cell fallback; level-1 fallback.
+  T-H18 PM2.5 readers: bilinear on a known field; lon wrap and lat flip; m = t-1 vs t gives P vs A tiers;
+        EAC4 without its manifest refuses with the plain D1 line.
+  T-H19 NDVI H1: BayesianRidge per unit recovers a synthetic ARDL; < 36 rows -> normal fallback counted; missing
+        lag -> anomaly 0; uses only fit labels; deterministic twice.
+  T-H20 plug and predict: the engine's nonames scan over rivals_human/ (adapters/ and registry/ excluded) finds
+        no problem name.
+  T-H21 determinism and resume: tune twice -> byte-equal trials and picks; kill after candidate k, resume ->
+        byte-equal outputs.
+  T-H22 heavy-job lock: a live holder -> every heavy command refuses (tests use the test machine's temp_dir).
+Kraft: a 2-unit, 20-step toy fit runs on CPU with seed 0 twice and gives equal predictions (marked slow-ok,
+  still < 1 min).
+
+-----------------------------------------------------------------------------------------------------------------
+8. HEAVY PREP = OWNER COMMANDS LATER (never run by builders; one heavy job at a time; x = estimate)
+-----------------------------------------------------------------------------------------------------------------
+
+| # | Command (after Part A tooling is built and tested) | When | Time (x) | RAM (x) |
+|---|---|---|---|---|
+| O1 | slim coral leads 0/183/365 (export on disk now; A3) | first free slot after the pm25 job; BEFORE the coral export is deleted | 2-5 min total | < 0.5 GB |
+| O2 | slim pm25 leads 0/6/12 | after each pm25 export lead exists, before its deletion | 5-15 min per lead | < 2 GB |
+| O3 | slim defo leads 0/1; slim ndvi 0/6/12 | as their common exports appear | 5-15 min per lead | < 2 GB |
+| O4 | manifest coral (SST npz 0.93 GB, climatology 0.08 GB, Outlook 0.73 GB) | any free slot | 1-3 min | < 0.2 GB |
+| O5 | manifest MERRA-2 (0.84 GB) | any free slot | 1-2 min | < 0.2 GB |
+| O6 | manifest Hansen (231 tiles, 32 GB) + defo_target | any free slot | 6-12 min (HDD) | < 0.2 GB |
+| O7 | adapt crw_dhw (all leads) incl. D6 check and replay check | after O1, O4 | 15-25 min | < 1.5 GB (memory-mapped npz) |
+| O8 | adapt crw_outlook (183, 365) | after O4 | 0.5-1 h | < 1 GB |
+| O9 | coral tune-only dry pass (init, tune, lock into a DRY folder; labelled DRY; A6) | after O7, O8 | minutes | < 1 GB |
+| O10 | defo_prep stage train: distance maps for years <= 2019 (~20 maps over 9.3 Gpx) + class/division count tables + loss_px parity <= 2019 | an evening or night alone | 3 workers: 3-4.5 h, ~6 GB; 6 workers: 1.5-2.5 h, ~12 GB (only with nothing else running) | 2 GB per worker |
+| O11 | defo_prep stage test (3 maps, end 2020-2022) + parity 2020-2022 | after the defo human lock | 0.5-1 h | 2 GB per worker |
+| O12 | adapt merra2_lag1 / merra2_same | after O2, O5 | 10-20 min each | < 2 GB |
+| O13 | adapt eac4_lag1 / eac4_same | after D1 is downloaded and hashed | 10-20 min each | < 2 GB |
+| O14 | ndvi H1 (adapt stage train, tune, lock, refit 0/6/12) | after O3 (ndvi) | 15-45 min | < 2 GB |
+| O15 | ndvi Kraft prep (panel pass for 12-month windows, ~13,300 bank units) + manifest of the panel (40.9 GB, 8-12 min) | optional; a night | 1-2 h + 20-60 min CPU training | 3-5 GB |
+| O16 | per problem: init, tune, lock, refit per lead, refs, score, board | after each Part A signature | 1-3 h per problem (PROT:338-344) | < 3 GB |
+| O17 | join (one rival table) | after all boards scored | minutes | < 1 GB |
+
+Total Part A machine time (x): about 9-20 h (slim ~1-2.5 h; coral ~1.5-2.5 h; defo ~4-8.5 h; PM2.5 ~1.5-3 h; NDVI
+~1.5-4 h, + Kraft 2-3 h optional), in line with PLAN section 5 (coral 2-4.5, defo 3-7, NDVI 2-5, PM2.5 1.5-4.5).
+
+-----------------------------------------------------------------------------------------------------------------
+9. BEFORE PART A IS SIGNED (inputs the draft needs; PLAN 3.12, PROT H16)
+-----------------------------------------------------------------------------------------------------------------
+- Rival list per problem and lead with kind, tier, decides (sections 2-5); "no human rival" leads and reasons.
+- Every product manifest sha (1.8), adapter and tool code shas, common harness sha 71457aa9 pinned.
+- Families, links, stats, SHRINK_K (A4), HQ9 constants, coverage rules, T1 boundaries per rival (from the lock).
+- R10 non-blind list with years confirmed: coral stats x__baa060_w20 / x__baa4p_w20 (Parts 456-457); PM2.5 F5
+  per-unit MOS (old board, years to confirm); NDVI Kraft / BARDL (Parts 417-426); defo frozen-2019 form.
+- Disclosures: coral MMM content to 2012, CoralTemp reanalysis/NRT, v3.1 later than 2016-17, Outlook 2019 reissue,
+  Outlook 365 without net; defo forest map seen by the rival only, wall-to-wall quantity, anisotropic spacing,
+  GFC reprocessing, rolling use of a certified frozen method; EAC4 late publication, MERRA-2 streams; NDVI H1 on
+  NDVI anomaly not VCI, extension rows at 6/12.
+- BoM ACCESS-S archive check (PLAN R15) and the D6 result (O7) recorded.

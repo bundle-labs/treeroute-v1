@@ -1,0 +1,422 @@
+{
+ "protocol_sha256": "c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4",
+ "run": "D:\\treeroute\\runs\\defo\\headline\\20261017_d71c61f4",
+ "chosen": "log_c_corrector_unweighted",
+ "twin": "log_c_plain_unweighted",
+ "twin_simpler": true,
+ "twin_eligible": true,
+ "eligible": [
+  "identity_plain_unweighted",
+  "identity_corrector_unweighted",
+  "log_c_plain_unweighted",
+  "log_c_corrector_unweighted",
+  "arcsine_plain_unweighted",
+  "arcsine_corrector_unweighted"
+ ],
+ "adopted_point": "@level=0.1,ratio=None",
+ "point_flag": [],
+ "G1": {
+  "rows": 276822,
+  "chosen_surface_mae": 0.005787517240034018,
+  "chosen_csv": 0.005787517240034,
+  "chosen_rel": 2.99735344886267e-15,
+  "own_pick": {
+   "identity_plain_unweighted": {
+    "level": 0.1,
+    "mae": 0.0077564386245137
+   },
+   "identity_corrector_unweighted": {
+    "level": 0.1,
+    "mae": 0.0078250776297062
+   },
+   "log_c_plain_unweighted": {
+    "level": 0.1,
+    "mae": 0.005808902179729
+   },
+   "log_c_corrector_unweighted": {
+    "level": 0.1,
+    "mae": 0.005787517240034
+   },
+   "arcsine_plain_unweighted": {
+    "level": 0.1,
+    "mae": 0.0059476862110503
+   },
+   "arcsine_corrector_unweighted": {
+    "level": 0.1,
+    "mae": 0.0059439491951054
+   }
+  },
+  "own_pick_rel": {
+   "identity_plain_unweighted": 2.4601442955324415e-15,
+   "identity_corrector_unweighted": 1.1084385088981788e-15,
+   "log_c_plain_unweighted": 1.6574070269712195e-14,
+   "log_c_corrector_unweighted": 2.99735344886267e-15,
+   "arcsine_plain_unweighted": 1.3708188441318632e-14,
+   "arcsine_corrector_unweighted": 1.1673878218241038e-15
+  },
+  "recomputed_eligible": [
+   "arcsine_corrector_unweighted",
+   "arcsine_plain_unweighted",
+   "identity_corrector_unweighted",
+   "identity_plain_unweighted",
+   "log_c_corrector_unweighted",
+   "log_c_plain_unweighted"
+  ],
+  "pass": true
+ },
+ "G3": {
+  "surface_joined": 276822,
+  "surface_rows": 276822,
+  "test_joined": 369096,
+  "test_rows": 369096,
+  "pass": true,
+  "note": "row-aligned to inner_preds / test_preds order (adv_validation/defo/build_features.py:104-151)"
+ },
+ "alarm": {
+  "gap_surface": 0.00013719429872479928,
+  "gap_test": 0.00014401964033071174,
+  "ratio": 1.0497494551111308,
+  "fires": false,
+  "ratio_per_test_year": {
+   "2020": 1.0619900383296395,
+   "2021": 0.9390092273648382,
+   "2022": 1.0320192851723704,
+   "2023": 1.1659792695776752
+  },
+  "threshold": 2.0,
+  "M1_uses": "C",
+  "M2_uses": "C"
+ },
+ "M4": {
+  "surface_mae_blend": 0.00637029046730122,
+  "chosen_surface_mae": 0.005787517240034018
+ },
+ "M5": {
+  "weights_full": {
+   "identity_plain_unweighted": 0.0,
+   "identity_corrector_unweighted": 0.0,
+   "log_c_plain_unweighted": 0.0,
+   "log_c_corrector_unweighted": 0.8600347537763698,
+   "arcsine_plain_unweighted": 0.0,
+   "arcsine_corrector_unweighted": 0.13996524622363016
+  },
+  "fold_weights": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.8068514793574442,
+    0.0,
+    0.19314852064255583
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.8207323459770308,
+    0.0,
+    0.17926765402296918
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.9248134207642867,
+    0.0,
+    0.07518657923571326
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.6154579239552809,
+    0.0,
+    0.3845420760447191
+   ]
+  ],
+  "CF_MAE": 0.005832266522817174,
+  "chosen_surface_mae": 0.005787517240034018,
+  "gate_pass": false,
+  "status": "FALLBACK:CF"
+ },
+ "M5_placebo": {
+  "weights_full": {
+   "identity_plain_unweighted": 0.0,
+   "identity_corrector_unweighted": 0.0,
+   "log_c_plain_unweighted": 1.0,
+   "log_c_corrector_unweighted": 0.0,
+   "arcsine_plain_unweighted": 0.0,
+   "arcsine_corrector_unweighted": 0.0
+  },
+  "fold_weights": [
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  ],
+  "CF_MAE": 0.007462470237266501,
+  "chosen_surface_mae_on_y_placebo": 0.007495580720761036,
+  "gate_pass": true,
+  "status": "APPLY"
+ },
+ "M6": {
+  "ACC": 0.5287793441760419,
+  "base_rate_twin_wins": 0.5265935222296158,
+  "AUC": 0.5376941529827931,
+  "non_tie_rows": 258484,
+  "z1": 136116,
+  "z0": 122368,
+  "fallback": "FALLBACK:ACC",
+  "folds": [
+   {
+    "train_rows": 50000,
+    "test_rows": 54741,
+    "n_iter": 587,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 48384,
+    "n_iter": 577,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 45186,
+    "n_iter": 604,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 37433,
+    "n_iter": 529,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 72740,
+    "n_iter": 615,
+    "kept_columns": 294
+   }
+  ],
+  "full_train_rows": 50000,
+  "full_n_iter": 582,
+  "full_kept_columns": 294,
+  "oof_mean_p": 0.5151398618881976,
+  "test_share_switched_to_twin": 0.5699140602986756,
+  "test_mean_p": 0.5330564098422769,
+  "top10_coef": [
+   [
+    "wbal_roll24_mean",
+    -1.8389059804692631
+   ],
+   [
+    "tc_vapor_pressure_mean",
+    1.5905873605727197
+   ],
+   [
+    "sph_kgkg_mean",
+    -1.1240969590413985
+   ],
+   [
+    "V01_mean_temp_C_mean",
+    1.0907094267207829
+   ],
+   [
+    "wbal_roll6_mean",
+    1.0186257039981108
+   ],
+   [
+    "wbal_roll24_min",
+    0.9922272867826847
+   ],
+   [
+    "wbal_roll24_max",
+    0.9407932015296376
+   ],
+   [
+    "V01_mean_temp_C_min",
+    -0.8334188259553054
+   ],
+   [
+    "sph_kgkg_max",
+    0.8093489901372108
+   ],
+   [
+    "era5l_slhf_mean",
+    0.6165933826988669
+   ]
+  ]
+ },
+ "M6_placebo": {
+  "ACC": 0.5111496262824778,
+  "base_rate_twin_wins": 0.5265935222296158,
+  "AUC": 0.4925068837349543,
+  "non_tie_rows": 258484,
+  "z1": 136116,
+  "z0": 122368,
+  "fallback": "FALLBACK:ACC",
+  "folds": [
+   {
+    "train_rows": 50000,
+    "test_rows": 54741,
+    "n_iter": 256,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 48384,
+    "n_iter": 250,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 45186,
+    "n_iter": 230,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 37433,
+    "n_iter": 311,
+    "kept_columns": 294
+   },
+   {
+    "train_rows": 50000,
+    "test_rows": 72740,
+    "n_iter": 294,
+    "kept_columns": 294
+   }
+  ],
+  "full_train_rows": 50000,
+  "full_n_iter": 264,
+  "full_kept_columns": 294,
+  "oof_mean_p": 0.5249845686066491,
+  "test_share_switched_to_twin": 0.7378053406159915,
+  "test_mean_p": 0.5237719226842559
+ },
+ "M6_features": {
+  "n": 299,
+  "excluded_label_built": [
+   "h_nbr1",
+   "h_nbr2",
+   "h_nbr_cum",
+   "h_yrs_since"
+  ],
+  "full_fit_kept": 294
+ },
+ "folds_rows": {
+  "0": 59319,
+  "1": 52728,
+  "2": 46137,
+  "3": 39546,
+  "4": 79092
+ },
+ "fold_groups": {
+  "0": [
+   "andes_puna",
+   "angola_zambia_fire_belt",
+   "ireland",
+   "llanos_venezuela",
+   "northeast_china_broadleaf",
+   "russian_far_east_primorye",
+   "southern_chile_rainforest",
+   "western_scotland",
+   "yucatan_peninsula"
+  ],
+  "1": [
+   "amazon_basin_brazil",
+   "australian_bushfire_belt",
+   "borneo_peat_fires",
+   "caucasus_highlands",
+   "congo_basin_drc",
+   "new_guinea_papua",
+   "new_zealand_fiordland",
+   "western_europe_temperate"
+  ],
+  "2": [
+   "borneo_rainforest",
+   "costa_rica",
+   "eastern_us_deciduous",
+   "japan_central_honshu",
+   "new_zealand_north_island",
+   "northern_thailand",
+   "west_africa_monsoon_guinea"
+  ],
+  "3": [
+   "atlantic_forest_brazil",
+   "greece_mainland",
+   "pacific_nw_coast",
+   "poland_central",
+   "siberian_taiga",
+   "vietnam_central_highlands"
+  ],
+  "4": [
+   "bc_inland_rainforest",
+   "bolivia_beni_savanna",
+   "canadian_taiga",
+   "gran_chaco",
+   "idaho_montana_wildfire",
+   "miombo_woodland_zambia",
+   "pantanal",
+   "pearl_river_delta",
+   "tasmania_western",
+   "tierra_del_fuego",
+   "tongass_alaska",
+   "trans_baikal_steppe"
+  ]
+ },
+ "versions": {
+  "python": "3.12.10",
+  "numpy": "2.5.0",
+  "scipy": "1.18.0",
+  "sklearn": "1.9.0",
+  "pandas": "3.0.3"
+ },
+ "seconds": 200.4489665031433,
+ "peak_ram_gb": 1.9247283935546875
+}

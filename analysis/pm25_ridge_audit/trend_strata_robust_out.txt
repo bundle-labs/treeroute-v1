@@ -1,0 +1,28 @@
+lead 0 [answer]: Spearman(slope, gap) +0.312; Spearman(drift, gap) +0.298
+               units  mean_gap  ours_better  slope_lo  slope_hi
+t                                                              
+falling third    635    -0.542          195   -29.479    -1.669
+middle third     635     0.006          332    -1.668     0.231
+rising third     635     0.051          408     0.243    17.620
+
+lead 6 [answer]: Spearman(slope, gap) +0.244; Spearman(drift, gap) +0.285
+               units  mean_gap  ours_better  slope_lo  slope_hi
+t                                                              
+falling third    635    -0.574          158   -29.479    -1.669
+middle third     635    -0.088          250    -1.668     0.231
+rising third     635    -0.078          289     0.243    17.620
+
+lead 12 [answer]: Spearman(slope, gap) +0.516; Spearman(drift, gap) +0.531
+               units  mean_gap  ours_better  slope_lo  slope_hi
+t                                                              
+falling third    635    -1.045           67   -29.479    -1.669
+middle third     635    -0.242          199    -1.668     0.231
+rising third     635     0.005          347     0.243    17.620
+
+lead 12 [model]: Spearman(slope, gap) +0.242; Spearman(drift, gap) +0.175
+               units  mean_gap  ours_better  slope_lo  slope_hi
+t                                                              
+falling third    635    -0.456          162   -29.479    -1.669
+middle third     635    -0.087          266    -1.668     0.231
+rising third     635    -0.010          293     0.243    17.620
+

@@ -1,0 +1,986 @@
+{
+ "guards": [
+  {
+   "details": {
+    "data_groups": 42,
+    "excluded": 0,
+    "groups": 42,
+    "seen_during_design": 0
+   },
+   "fix": "",
+   "id": "G-SPLIT",
+   "part": null,
+   "rule": "G-SPLIT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "V06_spei_12m_max_lag1": "derived from V06_spei_12m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V06_spei_12m_mean_lag1": "derived from V06_spei_12m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V06_spei_12m_min_lag1": "derived from V06_spei_12m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V15_bare_ground_pct_lag2": "derived from V15_bare_ground_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')",
+     "V17_herb_cover_pct_lag2": "derived from V17_herb_cover_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')",
+     "aglw_buffalo_hold2021": "derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_cattle_hold2021": "derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_goats_hold2021": "derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_horse_hold2021": "derived from aglw_horse, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_sheep_hold2021": "derived from aglw_sheep, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_total_lsu_hold2021": "derived from aglw_total_lsu, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_max_lag1": "derived from amo_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_mean_lag1": "derived from amo_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_min_lag1": "derived from amo_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "phenology_sos_doy_lag2": "derived from phenology_sos_doy, which is conditional (\"out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task)\"): allowed only because \"out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task)\" is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_max_lag1": "derived from spei_01m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_mean_lag1": "derived from spei_01m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_min_lag1": "derived from spei_01m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_max_lag1": "derived from spei_03m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_mean_lag1": "derived from spei_03m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_min_lag1": "derived from spei_03m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_max_lag1": "derived from spei_06m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_mean_lag1": "derived from spei_06m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_min_lag1": "derived from spei_06m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_max_lag1": "derived from spei_24m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_mean_lag1": "derived from spei_24m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_min_lag1": "derived from spei_24m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "tree_cover_pct_lag2": "derived from tree_cover_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')"
+    },
+    "leak_parent": {
+     "V15_bare_ground_pct_lag2": "derived from V15_bare_ground_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')",
+     "V17_herb_cover_pct_lag2": "derived from V17_herb_cover_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')",
+     "tree_cover_pct_lag2": "derived from tree_cover_pct, banned as 'coproduct' (a leak reason); no signed exceptions.yaml entry discloses why it does not carry what the ban keeps out (for example a lag that ends before the predicted period) (an exceptions.yaml entry names it, but it is not signed: owner 'UNSIGNED -- basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md); APP_PLAN.md 1.4 (G-LINEAGE)')"
+    },
+    "sum_groups": {
+     "MOD44B_V15_V17_tree_cover": [
+      "V15_bare_ground_pct",
+      "V17_herb_cover_pct",
+      "tree_cover_pct"
+     ],
+     "MOD44B_V15_V17_tree_cover_lag2": [
+      "V15_bare_ground_pct_lag2",
+      "V17_herb_cover_pct_lag2",
+      "tree_cover_pct_lag2"
+     ]
+    }
+   },
+   "fix": "confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only))",
+   "id": "G-LINEAGE",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {
+    "data_columns": 404,
+    "declared_through": {
+     "V01_mean_temp_C": [
+      "V01_mean_temp_C_max",
+      "V01_mean_temp_C_mean",
+      "V01_mean_temp_C_min"
+     ],
+     "V02_total_precip_mm": [
+      "V02_total_precip_mm_max",
+      "V02_total_precip_mm_mean",
+      "V02_total_precip_mm_min",
+      "V04_precip_seasonality"
+     ],
+     "V03_max_daily_precip_mm": [
+      "V03_max_daily_precip_mm_max",
+      "V03_max_daily_precip_mm_mean",
+      "V03_max_daily_precip_mm_min"
+     ],
+     "V05_mean_vpd_kPa": [
+      "V05_mean_vpd_kPa_max",
+      "V05_mean_vpd_kPa_mean",
+      "V05_mean_vpd_kPa_min"
+     ],
+     "V06_spei_12m": [
+      "V06_spei_12m_max",
+      "V06_spei_12m_mean",
+      "V06_spei_12m_min"
+     ],
+     "V07_total_ref_ET_mm": [
+      "V07_total_ref_ET_mm_max",
+      "V07_total_ref_ET_mm_mean",
+      "V07_total_ref_ET_mm_min"
+     ],
+     "V09_mean_wind_ms": [
+      "V09_mean_wind_ms_max",
+      "V09_mean_wind_ms_mean",
+      "V09_mean_wind_ms_min"
+     ],
+     "V11_mean_ndvi": [
+      "V11_mean_ndvi_max",
+      "V11_mean_ndvi_mean",
+      "V11_mean_ndvi_min"
+     ],
+     "V12_mean_evi": [
+      "V12_mean_evi_max",
+      "V12_mean_evi_mean",
+      "V12_mean_evi_min"
+     ],
+     "V13_mean_lst_C": [
+      "V13_mean_lst_C_max",
+      "V13_mean_lst_C_mean",
+      "V13_mean_lst_C_min"
+     ],
+     "V14_mean_albedo": [
+      "V14_mean_albedo_max",
+      "V14_mean_albedo_mean",
+      "V14_mean_albedo_min"
+     ],
+     "V20_burned_binary": [
+      "V20_burned_binary_max",
+      "V20_burned_binary_mean",
+      "V20_burned_binary_min"
+     ],
+     "V30_soil_moisture_pct": [
+      "V30_soil_moisture_pct_max",
+      "V30_soil_moisture_pct_mean",
+      "V30_soil_moisture_pct_min"
+     ],
+     "aet_total_mm": [
+      "aet_total_mm_max",
+      "aet_total_mm_mean",
+      "aet_total_mm_min"
+     ],
+     "amo": [
+      "amo_max",
+      "amo_mean",
+      "amo_min"
+     ],
+     "ao": [
+      "ao_max",
+      "ao_mean",
+      "ao_min"
+     ],
+     "aridity_index_p_pet": [
+      "aridity_index_p_pet_max",
+      "aridity_index_p_pet_mean",
+      "aridity_index_p_pet_min"
+     ],
+     "climate_water_deficit_mm": [
+      "climate_water_deficit_mm_max",
+      "climate_water_deficit_mm_mean",
+      "climate_water_deficit_mm_min"
+     ],
+     "cloud_frequency_pct": [
+      "cloud_frequency_pct_max",
+      "cloud_frequency_pct_mean",
+      "cloud_frequency_pct_min"
+     ],
+     "co2": [
+      "co2_max",
+      "co2_mean",
+      "co2_min"
+     ],
+     "conflict_deaths": [
+      "conflict_deaths_max",
+      "conflict_deaths_mean",
+      "conflict_deaths_min"
+     ],
+     "conflict_events": [
+      "conflict_events_max",
+      "conflict_events_mean",
+      "conflict_events_min"
+     ],
+     "deeprec_twsa": [
+      "deeprec_twsa_k3_max",
+      "deeprec_twsa_k3_mean",
+      "deeprec_twsa_k3_min",
+      "deeprec_twsa_max",
+      "deeprec_twsa_mean",
+      "deeprec_twsa_min"
+     ],
+     "diurnal_temp_range_C": [
+      "diurnal_temp_range_C_max",
+      "diurnal_temp_range_C_mean",
+      "diurnal_temp_range_C_min"
+     ],
+     "eddi": [
+      "eddi_max",
+      "eddi_mean",
+      "eddi_min"
+     ],
+     "eddi_observed": [
+      "eddi_observed_max",
+      "eddi_observed_mean",
+      "eddi_observed_min"
+     ],
+     "epo": [
+      "epo_max",
+      "epo_mean",
+      "epo_min"
+     ],
+     "era5l_d2m": [
+      "era5l_d2m_max",
+      "era5l_d2m_mean",
+      "era5l_d2m_min"
+     ],
+     "era5l_pev": [
+      "era5l_pev_max",
+      "era5l_pev_mean",
+      "era5l_pev_min"
+     ],
+     "era5l_slhf": [
+      "era5l_slhf_max",
+      "era5l_slhf_mean",
+      "era5l_slhf_min"
+     ],
+     "era5l_smlt": [
+      "era5l_smlt_max",
+      "era5l_smlt_mean",
+      "era5l_smlt_min"
+     ],
+     "era5l_sro": [
+      "era5l_sro_max",
+      "era5l_sro_mean",
+      "era5l_sro_min"
+     ],
+     "era5l_sshf": [
+      "era5l_sshf_max",
+      "era5l_sshf_mean",
+      "era5l_sshf_min"
+     ],
+     "era5l_ssr": [
+      "era5l_ssr_max",
+      "era5l_ssr_mean",
+      "era5l_ssr_min"
+     ],
+     "era5l_ssro": [
+      "era5l_ssro_max",
+      "era5l_ssro_mean",
+      "era5l_ssro_min"
+     ],
+     "era5l_stl1": [
+      "era5l_stl1_max",
+      "era5l_stl1_mean",
+      "era5l_stl1_min"
+     ],
+     "era5l_str": [
+      "era5l_str_max",
+      "era5l_str_mean",
+      "era5l_str_min"
+     ],
+     "esacci_sm": [
+      "esacci_sm_max",
+      "esacci_sm_mean",
+      "esacci_sm_min"
+     ],
+     "food_cereals": [
+      "food_cereals_max",
+      "food_cereals_mean",
+      "food_cereals_min"
+     ],
+     "food_dairy": [
+      "food_dairy_max",
+      "food_dairy_mean",
+      "food_dairy_min"
+     ],
+     "food_meat": [
+      "food_meat_max",
+      "food_meat_mean",
+      "food_meat_min"
+     ],
+     "food_oils": [
+      "food_oils_max",
+      "food_oils_mean",
+      "food_oils_min"
+     ],
+     "food_price_index": [
+      "food_price_index_max",
+      "food_price_index_mean",
+      "food_price_index_min"
+     ],
+     "food_sugar": [
+      "food_sugar_max",
+      "food_sugar_mean",
+      "food_sugar_min"
+     ],
+     "frost_days": [
+      "frost_days_max",
+      "frost_days_mean",
+      "frost_days_min"
+     ],
+     "gdd5_degC_days": [
+      "gdd5_degC_days_max",
+      "gdd5_degC_days_mean",
+      "gdd5_degC_days_min"
+     ],
+     "gpp_kgC_m2": [
+      "gpp_kgC_m2_max",
+      "gpp_kgC_m2_mean",
+      "gpp_kgC_m2_min"
+     ],
+     "heatwave_days_gt35C": [
+      "heatwave_days_gt35C_max",
+      "heatwave_days_gt35C_mean",
+      "heatwave_days_gt35C_min"
+     ],
+     "iod": [
+      "iod_max",
+      "iod_mean",
+      "iod_min"
+     ],
+     "nao": [
+      "nao_max",
+      "nao_mean",
+      "nao_min"
+     ],
+     "nighttime_lst_C": [
+      "nighttime_lst_C_max",
+      "nighttime_lst_C_mean",
+      "nighttime_lst_C_min"
+     ],
+     "nino12": [
+      "nino12_max",
+      "nino12_mean",
+      "nino12_min"
+     ],
+     "nino3": [
+      "nino3_max",
+      "nino3_mean",
+      "nino3_min"
+     ],
+     "nino34": [
+      "nino34_max",
+      "nino34_mean",
+      "nino34_min"
+     ],
+     "nino4": [
+      "nino4_max",
+      "nino4_mean",
+      "nino4_min"
+     ],
+     "noi": [
+      "noi_max",
+      "noi_mean",
+      "noi_min"
+     ],
+     "oni": [
+      "oni_max",
+      "oni_mean",
+      "oni_min"
+     ],
+     "pdo": [
+      "pdo_max",
+      "pdo_mean",
+      "pdo_min"
+     ],
+     "pna": [
+      "pna_max",
+      "pna_mean",
+      "pna_min"
+     ],
+     "precip_intensity_mm": [
+      "precip_intensity_mm_max",
+      "precip_intensity_mm_mean",
+      "precip_intensity_mm_min"
+     ],
+     "rmin_pct": [
+      "rmin_pct_max",
+      "rmin_pct_mean",
+      "rmin_pct_min"
+     ],
+     "sam": [
+      "sam_max",
+      "sam_mean",
+      "sam_min"
+     ],
+     "scpdsi": [
+      "scpdsi_max",
+      "scpdsi_mean",
+      "scpdsi_min"
+     ],
+     "snow_cover_fraction": [
+      "snow_cover_fraction_max",
+      "snow_cover_fraction_mean",
+      "snow_cover_fraction_min"
+     ],
+     "soi": [
+      "soi_max",
+      "soi_mean",
+      "soi_min"
+     ],
+     "soil_water_tc_mm": [
+      "soil_water_tc_mm_max",
+      "soil_water_tc_mm_mean",
+      "soil_water_tc_mm_min"
+     ],
+     "solar_radiation_Wm2": [
+      "solar_radiation_Wm2_max",
+      "solar_radiation_Wm2_mean",
+      "solar_radiation_Wm2_min"
+     ],
+     "spei_01m": [
+      "spei_01m_max",
+      "spei_01m_mean",
+      "spei_01m_min"
+     ],
+     "spei_03m": [
+      "spei_03m_max",
+      "spei_03m_mean",
+      "spei_03m_min"
+     ],
+     "spei_06m": [
+      "spei_06m_max",
+      "spei_06m_mean",
+      "spei_06m_min"
+     ],
+     "spei_24m": [
+      "spei_24m_max",
+      "spei_24m_mean",
+      "spei_24m_min"
+     ],
+     "sph_kgkg": [
+      "sph_kgkg_max",
+      "sph_kgkg_mean",
+      "sph_kgkg_min"
+     ],
+     "spi_01m": [
+      "spi_01m_max",
+      "spi_01m_mean",
+      "spi_01m_min"
+     ],
+     "spi_03m": [
+      "spi_03m_max",
+      "spi_03m_mean",
+      "spi_03m_min"
+     ],
+     "spi_06m": [
+      "spi_06m_max",
+      "spi_06m_mean",
+      "spi_06m_min"
+     ],
+     "spi_12m": [
+      "spi_12m_max",
+      "spi_12m_mean",
+      "spi_12m_min"
+     ],
+     "spi_24m": [
+      "spi_24m_max",
+      "spi_24m_mean",
+      "spi_24m_min"
+     ],
+     "sst_anom_atl3": [
+      "sst_anom_atl3_max",
+      "sst_anom_atl3_mean",
+      "sst_anom_atl3_min"
+     ],
+     "sst_anom_coral_sea": [
+      "sst_anom_coral_sea_max",
+      "sst_anom_coral_sea_mean",
+      "sst_anom_coral_sea_min"
+     ],
+     "sst_anom_global_tropical_mean": [
+      "sst_anom_global_tropical_mean_max",
+      "sst_anom_global_tropical_mean_mean",
+      "sst_anom_global_tropical_mean_min"
+     ],
+     "sst_anom_iod_east": [
+      "sst_anom_iod_east_max",
+      "sst_anom_iod_east_mean",
+      "sst_anom_iod_east_min"
+     ],
+     "sst_anom_iod_west": [
+      "sst_anom_iod_west_max",
+      "sst_anom_iod_west_mean",
+      "sst_anom_iod_west_min"
+     ],
+     "sst_anom_mediterranean": [
+      "sst_anom_mediterranean_max",
+      "sst_anom_mediterranean_mean",
+      "sst_anom_mediterranean_min"
+     ],
+     "sst_anom_nino34": [
+      "sst_anom_nino34_max",
+      "sst_anom_nino34_mean",
+      "sst_anom_nino34_min"
+     ],
+     "sst_anom_subpolar_north_atlantic": [
+      "sst_anom_subpolar_north_atlantic_max",
+      "sst_anom_subpolar_north_atlantic_mean",
+      "sst_anom_subpolar_north_atlantic_min"
+     ],
+     "swe_mean_mm": [
+      "swe_mean_mm_max",
+      "swe_mean_mm_mean",
+      "swe_mean_mm_min"
+     ],
+     "tc_vapor_pressure": [
+      "tc_vapor_pressure_max",
+      "tc_vapor_pressure_mean",
+      "tc_vapor_pressure_min"
+     ],
+     "tna": [
+      "tna_max",
+      "tna_mean",
+      "tna_min"
+     ],
+     "tni": [
+      "tni_max",
+      "tni_mean",
+      "tni_min"
+     ],
+     "tsa": [
+      "tsa_max",
+      "tsa_mean",
+      "tsa_min"
+     ],
+     "vpd_days_gt_2kpa": [
+      "vpd_days_gt_2kpa_max",
+      "vpd_days_gt_2kpa_mean",
+      "vpd_days_gt_2kpa_min"
+     ],
+     "vpd_max_daily": [
+      "vpd_max_daily_max",
+      "vpd_max_daily_mean",
+      "vpd_max_daily_min"
+     ],
+     "vpd_warm_season_mean": [
+      "vpd_warm_season_mean_max",
+      "vpd_warm_season_mean_mean",
+      "vpd_warm_season_mean_min"
+     ],
+     "wbal_mm": [
+      "wbal_mm_max",
+      "wbal_mm_mean",
+      "wbal_mm_min"
+     ],
+     "wbal_roll12": [
+      "wbal_roll12_max",
+      "wbal_roll12_mean",
+      "wbal_roll12_min"
+     ],
+     "wbal_roll24": [
+      "wbal_roll24_max",
+      "wbal_roll24_mean",
+      "wbal_roll24_min"
+     ],
+     "wbal_roll3": [
+      "wbal_roll3_max",
+      "wbal_roll3_mean",
+      "wbal_roll3_min"
+     ],
+     "wbal_roll6": [
+      "wbal_roll6_max",
+      "wbal_roll6_mean",
+      "wbal_roll6_min"
+     ],
+     "wet_day_count": [
+      "wet_day_count_max",
+      "wet_day_count_mean",
+      "wet_day_count_min"
+     ],
+     "wp": [
+      "wp_max",
+      "wp_mean",
+      "wp_min"
+     ]
+    },
+    "keep_unreviewed": [],
+    "verdicts": 404
+   },
+   "fix": "",
+   "id": "G-CLOSED",
+   "part": null,
+   "rule": "G-CLOSED"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-KEYS",
+   "part": null,
+   "rule": "G-KEYS"
+  },
+  {
+   "details": {
+    "lags": {
+     "V01_mean_temp_C_max": 0,
+     "V01_mean_temp_C_mean": 0,
+     "V01_mean_temp_C_min": 0,
+     "V02_total_precip_mm_max": 0,
+     "V02_total_precip_mm_mean": 0,
+     "V02_total_precip_mm_min": 0,
+     "V03_max_daily_precip_mm_max": 0,
+     "V03_max_daily_precip_mm_mean": 0,
+     "V03_max_daily_precip_mm_min": 0,
+     "V04_precip_seasonality": 0,
+     "V05_mean_vpd_kPa_max": 0,
+     "V05_mean_vpd_kPa_mean": 0,
+     "V05_mean_vpd_kPa_min": 0,
+     "V06_spei_12m_max_lag1": 0,
+     "V06_spei_12m_mean_lag1": 0,
+     "V06_spei_12m_min_lag1": 0,
+     "V07_total_ref_ET_mm_max": 0,
+     "V07_total_ref_ET_mm_mean": 0,
+     "V07_total_ref_ET_mm_min": 0,
+     "V09_mean_wind_ms_max": 0,
+     "V09_mean_wind_ms_mean": 0,
+     "V09_mean_wind_ms_min": 0,
+     "V11_mean_ndvi_max": 1,
+     "V11_mean_ndvi_mean": 1,
+     "V11_mean_ndvi_min": 1,
+     "V12_mean_evi_max": 1,
+     "V12_mean_evi_mean": 1,
+     "V12_mean_evi_min": 1,
+     "V13_mean_lst_C_max": 1,
+     "V13_mean_lst_C_mean": 1,
+     "V13_mean_lst_C_min": 1,
+     "V14_mean_albedo_max": 1,
+     "V14_mean_albedo_mean": 1,
+     "V14_mean_albedo_min": 1,
+     "V15_bare_ground_pct_lag2": 0,
+     "V17_herb_cover_pct_lag2": 0,
+     "V20_burned_binary_max": 1,
+     "V20_burned_binary_mean": 1,
+     "V20_burned_binary_min": 1,
+     "V30_soil_moisture_pct_max": 0,
+     "V30_soil_moisture_pct_mean": 0,
+     "V30_soil_moisture_pct_min": 0,
+     "aet_total_mm_max": 0,
+     "aet_total_mm_mean": 0,
+     "aet_total_mm_min": 0,
+     "aglw_buffalo_hold2021": 1,
+     "aglw_cattle_hold2021": 1,
+     "aglw_goats_hold2021": 1,
+     "aglw_horse_hold2021": 1,
+     "aglw_sheep_hold2021": 1,
+     "aglw_total_lsu_hold2021": 1,
+     "amo_max_lag1": 0,
+     "amo_mean_lag1": 0,
+     "amo_min_lag1": 0,
+     "ao_max": 1,
+     "ao_mean": 1,
+     "ao_min": 1,
+     "burn_doy_mean": 1,
+     "burn_month_count": 1,
+     "climate_water_deficit_mm_max": 0,
+     "climate_water_deficit_mm_mean": 0,
+     "climate_water_deficit_mm_min": 0,
+     "cloud_frequency_pct_max": 1,
+     "cloud_frequency_pct_mean": 1,
+     "cloud_frequency_pct_min": 1,
+     "conflict_deaths_max": 0,
+     "conflict_deaths_mean": 0,
+     "conflict_deaths_min": 0,
+     "conflict_events_max": 0,
+     "conflict_events_mean": 0,
+     "conflict_events_min": 0,
+     "deeprec_twsa_k3_max": 1,
+     "deeprec_twsa_k3_mean": 1,
+     "deeprec_twsa_k3_min": 1,
+     "diurnal_temp_range_C_max": 0,
+     "diurnal_temp_range_C_mean": 0,
+     "diurnal_temp_range_C_min": 0,
+     "epo_max": 1,
+     "epo_mean": 1,
+     "epo_min": 1,
+     "era5l_d2m_max": 0,
+     "era5l_d2m_mean": 0,
+     "era5l_d2m_min": 0,
+     "era5l_pev_max": 0,
+     "era5l_pev_mean": 0,
+     "era5l_pev_min": 0,
+     "era5l_slhf_max": 0,
+     "era5l_slhf_mean": 0,
+     "era5l_slhf_min": 0,
+     "era5l_smlt_max": 0,
+     "era5l_smlt_mean": 0,
+     "era5l_smlt_min": 0,
+     "era5l_sro_max": 0,
+     "era5l_sro_mean": 0,
+     "era5l_sro_min": 0,
+     "era5l_sshf_max": 0,
+     "era5l_sshf_mean": 0,
+     "era5l_sshf_min": 0,
+     "era5l_ssr_max": 0,
+     "era5l_ssr_mean": 0,
+     "era5l_ssr_min": 0,
+     "era5l_ssro_max": 0,
+     "era5l_ssro_mean": 0,
+     "era5l_ssro_min": 0,
+     "era5l_stl1_max": 0,
+     "era5l_stl1_mean": 0,
+     "era5l_stl1_min": 0,
+     "era5l_str_max": 0,
+     "era5l_str_mean": 0,
+     "era5l_str_min": 0,
+     "fert_n": 0,
+     "fert_p": 0,
+     "frost_days_max": 0,
+     "frost_days_mean": 0,
+     "frost_days_min": 0,
+     "gdd5_degC_days_max": 0,
+     "gdd5_degC_days_mean": 0,
+     "gdd5_degC_days_min": 0,
+     "gpp_kgC_m2_max": 1,
+     "gpp_kgC_m2_mean": 1,
+     "gpp_kgC_m2_min": 1,
+     "h_nbr1": 0,
+     "h_nbr2": 0,
+     "h_nbr_cum": 0,
+     "h_yrs_since": 0,
+     "hdi": 0,
+     "heatwave_days_gt35C_max": 0,
+     "heatwave_days_gt35C_mean": 0,
+     "heatwave_days_gt35C_min": 0,
+     "iod_max": 1,
+     "iod_mean": 1,
+     "iod_min": 1,
+     "nao_max": 1,
+     "nao_mean": 1,
+     "nao_min": 1,
+     "nighttime_lst_C_max": 1,
+     "nighttime_lst_C_mean": 1,
+     "nighttime_lst_C_min": 1,
+     "nino12_max": 1,
+     "nino12_mean": 1,
+     "nino12_min": 1,
+     "nino34_max": 1,
+     "nino34_mean": 1,
+     "nino34_min": 1,
+     "nino3_max": 1,
+     "nino3_mean": 1,
+     "nino3_min": 1,
+     "nino4_max": 1,
+     "nino4_mean": 1,
+     "nino4_min": 1,
+     "noi_max": 1,
+     "noi_mean": 1,
+     "noi_min": 1,
+     "ntl": 1,
+     "oni_max": 1,
+     "oni_mean": 1,
+     "oni_min": 1,
+     "pdo_max": 1,
+     "pdo_mean": 1,
+     "pdo_min": 1,
+     "phenology_sos_doy_lag2": 0,
+     "pna_max": 1,
+     "pna_mean": 1,
+     "pna_min": 1,
+     "population_density": 1,
+     "precip_intensity_mm_max": 0,
+     "precip_intensity_mm_mean": 0,
+     "precip_intensity_mm_min": 0,
+     "rmin_pct_max": 0,
+     "rmin_pct_mean": 0,
+     "rmin_pct_min": 0,
+     "sam_max": 1,
+     "sam_mean": 1,
+     "sam_min": 1,
+     "snow_duration_days": 0,
+     "soi_max": 1,
+     "soi_mean": 1,
+     "soi_min": 1,
+     "soil_water_tc_mm_max": 0,
+     "soil_water_tc_mm_mean": 0,
+     "soil_water_tc_mm_min": 0,
+     "solar_radiation_Wm2_max": 0,
+     "solar_radiation_Wm2_mean": 0,
+     "solar_radiation_Wm2_min": 0,
+     "spei_01m_max_lag1": 0,
+     "spei_01m_mean_lag1": 0,
+     "spei_01m_min_lag1": 0,
+     "spei_03m_max_lag1": 0,
+     "spei_03m_mean_lag1": 0,
+     "spei_03m_min_lag1": 0,
+     "spei_06m_max_lag1": 0,
+     "spei_06m_mean_lag1": 0,
+     "spei_06m_min_lag1": 0,
+     "spei_24m_max_lag1": 0,
+     "spei_24m_mean_lag1": 0,
+     "spei_24m_min_lag1": 0,
+     "sph_kgkg_max": 0,
+     "sph_kgkg_mean": 0,
+     "sph_kgkg_min": 0,
+     "spi_01m_max": 0,
+     "spi_01m_mean": 0,
+     "spi_01m_min": 0,
+     "spi_03m_max": 0,
+     "spi_03m_mean": 0,
+     "spi_03m_min": 0,
+     "spi_06m_max": 0,
+     "spi_06m_mean": 0,
+     "spi_06m_min": 0,
+     "spi_12m_max": 0,
+     "spi_12m_mean": 0,
+     "spi_12m_min": 0,
+     "spi_24m_max": 0,
+     "spi_24m_mean": 0,
+     "spi_24m_min": 0,
+     "sst_anom_atl3_max": 1,
+     "sst_anom_atl3_mean": 1,
+     "sst_anom_atl3_min": 1,
+     "sst_anom_coral_sea_max": 1,
+     "sst_anom_coral_sea_mean": 1,
+     "sst_anom_coral_sea_min": 1,
+     "sst_anom_global_tropical_mean_max": 1,
+     "sst_anom_global_tropical_mean_mean": 1,
+     "sst_anom_global_tropical_mean_min": 1,
+     "sst_anom_iod_east_max": 1,
+     "sst_anom_iod_east_mean": 1,
+     "sst_anom_iod_east_min": 1,
+     "sst_anom_iod_west_max": 1,
+     "sst_anom_iod_west_mean": 1,
+     "sst_anom_iod_west_min": 1,
+     "sst_anom_mediterranean_max": 1,
+     "sst_anom_mediterranean_mean": 1,
+     "sst_anom_mediterranean_min": 1,
+     "sst_anom_nino34_max": 1,
+     "sst_anom_nino34_mean": 1,
+     "sst_anom_nino34_min": 1,
+     "sst_anom_subpolar_north_atlantic_max": 1,
+     "sst_anom_subpolar_north_atlantic_mean": 1,
+     "sst_anom_subpolar_north_atlantic_min": 1,
+     "swe_mean_mm_max": 0,
+     "swe_mean_mm_mean": 0,
+     "swe_mean_mm_min": 0,
+     "tc_vapor_pressure_max": 0,
+     "tc_vapor_pressure_mean": 0,
+     "tc_vapor_pressure_min": 0,
+     "tna_max": 1,
+     "tna_mean": 1,
+     "tna_min": 1,
+     "tni_max": 1,
+     "tni_mean": 1,
+     "tni_min": 1,
+     "tree_cover_pct_lag2": 0,
+     "tsa_max": 1,
+     "tsa_mean": 1,
+     "tsa_min": 1,
+     "vpd_days_gt_2kpa_max": 0,
+     "vpd_days_gt_2kpa_mean": 0,
+     "vpd_days_gt_2kpa_min": 0,
+     "vpd_max_daily_max": 0,
+     "vpd_max_daily_mean": 0,
+     "vpd_max_daily_min": 0,
+     "vpd_warm_season_mean_max": 0,
+     "vpd_warm_season_mean_mean": 0,
+     "vpd_warm_season_mean_min": 0,
+     "wbal_mm_max": 0,
+     "wbal_mm_mean": 0,
+     "wbal_mm_min": 0,
+     "wbal_roll12_max": 0,
+     "wbal_roll12_mean": 0,
+     "wbal_roll12_min": 0,
+     "wbal_roll24_max": 0,
+     "wbal_roll24_mean": 0,
+     "wbal_roll24_min": 0,
+     "wbal_roll3_max": 0,
+     "wbal_roll3_mean": 0,
+     "wbal_roll3_min": 0,
+     "wbal_roll6_max": 0,
+     "wbal_roll6_mean": 0,
+     "wbal_roll6_min": 0,
+     "wet_day_count_max": 0,
+     "wet_day_count_mean": 0,
+     "wet_day_count_min": 0,
+     "wp_max": 1,
+     "wp_mean": 1,
+     "wp_min": 1
+    },
+    "lags_by_steps": {
+     "0": 169,
+     "1": 115
+    },
+    "r4": {
+     "first_driver_year": 2002,
+     "first_year_estimate": 2004,
+     "largest_lookback_steps": 2,
+     "largest_r8_lag_steps": 1,
+     "set_by": [
+      "V15_bare_ground_pct_lag2",
+      "V17_herb_cover_pct_lag2",
+      "phenology_sos_doy_lag2",
+      "tree_cover_pct_lag2"
+     ],
+     "set_only_by_declared_lag_operations": true
+    },
+    "refused": {}
+   },
+   "fix": "confirm the engineered look-back (or shorten it) before the freeze",
+   "id": "G-LAG",
+   "part": null,
+   "rule": "G-LAG"
+  },
+  {
+   "details": {
+    "baseline_disclosures": [],
+    "cuts": [],
+    "earliest_cut_day": null,
+    "never_used": "release_date, snapshot_date (plan 1.3)",
+    "not_compared": [
+     "irrigation_pct_gmia (content_epoch 2005)",
+     "travel_time (content_epoch 2015)"
+    ],
+    "observed_through_decision": [],
+    "observed_through_not_compared": [
+     "aglw_buffalo_hold2021 (observed_through 2021)",
+     "aglw_cattle_hold2021 (observed_through 2021)",
+     "aglw_goats_hold2021 (observed_through 2021)",
+     "aglw_horse_hold2021 (observed_through 2021)",
+     "aglw_sheep_hold2021 (observed_through 2021)",
+     "aglw_total_lsu_hold2021 (observed_through 2021)",
+     "fert_n (observed_through 2013)",
+     "fert_p (observed_through 2013)",
+     "hdi (observed_through 2015)",
+     "population_density (observed_through 2020)"
+    ],
+    "static_undated": []
+   },
+   "fix": "run check --deep (it derives the windows and R11's cuts) or plan (derived.json R11)",
+   "id": "G-EPOCH",
+   "part": null,
+   "rule": "G-EPOCH"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-HIST",
+   "part": null,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "groups": 42,
+    "notes": [
+     "donor labels not judged here (check --deep reads them)",
+     "census not judged here (check --deep reads it)"
+    ]
+   },
+   "fix": "",
+   "id": "G-SUPPORT",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "co_measured_candidates": [],
+    "co_measured_unanswered": [],
+    "headline": true,
+    "unsigned": []
+   },
+   "fix": "",
+   "id": "G-FACTS",
+   "part": null,
+   "rule": "G-FACTS"
+  },
+  {
+   "details": {},
+   "fix": "run check --deep (or plan: derived.json R30)",
+   "id": "G-MISSING",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-DERIVED",
+   "part": null,
+   "rule": "G-DERIVED"
+  }
+ ],
+ "mode": "quick",
+ "package": "defo",
+ "package_fingerprint": "5fcb4c25a27b7955d3646de633aae0c79ecd063e81fb90468f9ed24e64bc9c52"
+}

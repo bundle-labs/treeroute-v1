@@ -1,0 +1,94 @@
+==========================================================================================================================
+PUBLISHED BASELINES vs THE SOFT GATE | arm hist | 8 donors | 2 regions | fitted off
+  every arm is a named published method rebuilt on THESE rows; no published accuracy is quoted
+  costa_rica               vm0015 +0.4988 | ff_persist +0.2147 | softgate +0.5675 | 1.0 min
+  tasmania_western         vm0015 +0.1083 | ff_persist -16.5259 | softgate +0.0949 | 0.7 min
+==========================================================================================================================
+RESULT | 2 regions | ranked by R2c | softgate is the reference
+  arm                   R2c  vs softgate       MAE     hit    PRED MAX     MAE@ext
+  softgate          +0.3312      +0.0000  0.008649   0.497      0.0310    0.110097  <-- OURS
+  vm0015            +0.3035      -0.0277  0.008583   0.494      0.0071    0.116931
+  geomod            +0.3023      -0.0289  0.009007   0.383      0.0137    0.115636
+  pontius_null      +0.2775      -0.0537  0.004311   0.864      0.0000    0.124006
+  udef_a            +0.2508      -0.0805  0.008629   0.453      0.0149    0.116447
+  vm0015_trend      +0.0359      -0.2954  0.015290   0.080      0.0162    0.108993
+  forestcast_ch     +0.0246      -0.3067  0.008348   0.663      0.0570    0.114370
+  varnier_rand      -0.4750      -0.8062  0.009601   0.781      0.0580    0.116212
+  cushman_null      -4.6389      -4.9701  0.011187   0.842      0.3553    0.123369
+  ff_persist        -8.1556      -8.4868  0.025935   0.743      0.5407    0.114750
+
+  SOFT GATE vs EACH PUBLISHED METHOD, jackknife over regions:
+    vs vm0015         +0.0277  95% CI [-0.0528, +0.1082]  we win 1/2  ns
+    vs geomod         +0.0289  95% CI [-0.0256, +0.0834]  we win 2/2  ns
+    vs pontius_null   +0.0537  95% CI [-0.0503, +0.1577]  we win 2/2  ns
+    vs udef_a         +0.0805  95% CI [-0.0932, +0.2541]  we win 1/2  ns
+    vs vm0015_trend   +0.2954  95% CI [-0.0392, +0.6300]  we win 2/2  ns
+    vs forestcast_ch  +0.3067  95% CI [-0.2166, +0.8299]  we win 2/2  ns
+    vs varnier_rand   +0.8062  95% CI [-0.0713, +1.6837]  we win 2/2  ns
+    vs cushman_null   +4.9701  95% CI [+1.8975, +8.0428]  we win 2/2  SIG
+    vs ff_persist     +8.4868  95% CI [-7.4558, +24.4294]  we win 2/2  ns
+
+  ADAPTATIONS -- these arms are NOT the published model verbatim:
+    cushman_null   d = travel_time; canonical distance-to-forest-edge is banned under rule (d)
+    geomod         suitability from 6 static/accessibility columns
+    udef_a         density fitted against travel_time/road_density, 20 strata
+    forestcast_ch  h_* snapshot at 2019 held constant across the test window
+  DONE | 1.7 min | artefacts in D:/defo_papers
+==========================================================================================================================
+PUBLISHED BASELINES vs THE SOFT GATE | arm hist | 8 donors | 17 regions | fitted ON
+  every arm is a named published method rebuilt on THESE rows; no published accuracy is quoted
+  donor pool: 250,000 rows from 8 donors
+  costa_rica               vm0015 +0.4782 | ff_persist +0.1848 | softgate +0.5525 | 3.6 min
+  tasmania_western         vm0015 +0.1142 | ff_persist -16.6704 | softgate +0.1133 | 4.4 min
+  tongass_alaska           vm0015 +0.0897 | ff_persist -0.1096 | softgate +0.0602 | 3.3 min
+  pantanal                 vm0015 +0.0309 | ff_persist -0.0900 | softgate +0.0537 | 3.1 min
+  borneo_peat_fires        vm0015 +0.2424 | ff_persist -0.1484 | softgate +0.3385 | 3.6 min
+  yucatan_peninsula        vm0015 +0.0563 | ff_persist -0.4874 | softgate +0.0936 | 4.0 min
+  tierra_del_fuego         vm0015 +0.1381 | ff_persist +0.1282 | softgate +0.1484 | 3.8 min
+  greece_mainland          vm0015 +0.0571 | ff_persist -0.6207 | softgate +0.0654 | 3.4 min
+  vietnam_central_highlands vm0015 +0.1717 | ff_persist -0.2600 | softgate +0.3229 | 3.4 min
+  western_scotland         vm0015 +0.0324 | ff_persist -0.8466 | softgate +0.0888 | 3.5 min
+  japan_central_honshu     vm0015 -0.0228 | ff_persist -0.1077 | softgate +0.0841 | 3.9 min
+  new_guinea_papua         vm0015 -0.2152 | ff_persist -0.3784 | softgate +0.1152 | 3.6 min
+  idaho_montana_wildfire   vm0015 +0.0990 | ff_persist +0.0006 | softgate +0.1384 | 3.4 min
+  llanos_venezuela         vm0015 +0.0713 | ff_persist -0.2292 | softgate +0.1131 | 3.3 min
+  gran_chaco               vm0015 +0.0932 | ff_persist -3.9787 | softgate +0.0926 | 3.7 min
+  trans_baikal_steppe      vm0015 +0.2571 | ff_persist -0.1283 | softgate +0.2940 | 3.7 min
+  poland_central           vm0015 +0.0151 | ff_persist -0.5591 | softgate +0.1215 | 3.5 min
+==========================================================================================================================
+RESULT | 17 regions | ranked by R2c | softgate is the reference
+  arm                   R2c  vs softgate       MAE     hit    PRED MAX     MAE@ext
+  softgate          +0.1645      +0.0000  0.008098   0.610      0.0347    0.119777  <-- OURS
+  geomod            +0.1027      -0.0618  0.008749   0.521      0.0110    0.124477
+  vm0015            +0.1005      -0.0640  0.008798   0.531      0.0061    0.124773
+  udef_a            +0.0923      -0.0722  0.008768   0.538      0.0101    0.124472
+  vm0015_trend      +0.0701      -0.0944  0.009087   0.488      0.0070    0.124246
+  sales_hurdle      +0.0623      -0.1022  0.008316   0.683      0.0948    0.119623
+  pontius_null      +0.0578      -0.1067  0.005328   0.859      0.0000    0.130881
+  forestcast_ch     +0.0056      -0.1588  0.008777   0.693      0.0486    0.123803
+  vieilledent       -0.0564      -0.2208  0.012609   0.405      0.0596    0.112958
+  varnier_rand      -0.4110      -0.5755  0.009691   0.780      0.0517    0.126278
+  ff_persist        -1.4295      -1.5940  0.010356   0.811      0.4251    0.123085
+  cuelarosa         -1.9601      -2.1246  0.020858   0.403      0.1720    0.106485
+  cushman_null      -3.9504      -4.1149  0.010462   0.752      0.2783    0.129715
+
+  SOFT GATE vs EACH PUBLISHED METHOD, jackknife over regions:
+    vs geomod         +0.0618  95% CI [+0.0217, +0.1019]  we win 15/17  SIG
+    vs vm0015         +0.0640  95% CI [+0.0244, +0.1035]  we win 14/17  SIG
+    vs udef_a         +0.0722  95% CI [+0.0308, +0.1136]  we win 16/17  SIG
+    vs vm0015_trend   +0.0944  95% CI [+0.0311, +0.1576]  we win 15/17  SIG
+    vs sales_hurdle   +0.1022  95% CI [+0.0373, +0.1670]  we win 13/17  SIG
+    vs pontius_null   +0.1067  95% CI [+0.0419, +0.1715]  we win 15/17  SIG
+    vs forestcast_ch  +0.1588  95% CI [+0.0928, +0.2248]  we win 17/17  SIG
+    vs vieilledent    +0.2208  95% CI [+0.0792, +0.3625]  we win 16/17  SIG
+    vs varnier_rand   +0.5755  95% CI [+0.4128, +0.7382]  we win 17/17  SIG
+    vs ff_persist     +1.5940  95% CI [-0.3171, +3.5050]  we win 17/17  ns
+    vs cuelarosa      +2.1246  95% CI [+0.0637, +4.1855]  we win 17/17  SIG
+    vs cushman_null   +4.1149  95% CI [+1.3199, +6.9099]  we win 17/17  SIG
+
+  ADAPTATIONS -- these arms are NOT the published model verbatim:
+    cushman_null   d = travel_time; canonical distance-to-forest-edge is banned under rule (d)
+    geomod         suitability from 6 static/accessibility columns
+    udef_a         density fitted against travel_time/road_density, 20 strata
+    forestcast_ch  h_* snapshot at 2019 held constant across the test window
+  DONE | 61.4 min | artefacts in D:/defo_papers

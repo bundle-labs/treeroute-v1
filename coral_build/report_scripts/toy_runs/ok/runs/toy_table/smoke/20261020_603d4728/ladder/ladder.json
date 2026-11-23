@@ -1,0 +1,96 @@
+{
+ "band": 0.7670564986343074,
+ "band_source": "the nowcast's band (F57: the nowcast band decides at every lead)",
+ "common_rows": 52,
+ "hit_tolerance": 12.138130629310343,
+ "issue_rows_left_out": {
+  "by_lead": {
+   "183": {
+    "rows_file": null,
+    "rows_left_out": 0
+   },
+   "365": {
+    "rows_file": "ladder/lead_365/issue_missing_rows.parquet",
+    "rows_left_out": 4
+   }
+  },
+  "rule": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features"
+ },
+ "lead_unit": "days",
+ "leads": [
+  183,
+  365
+ ],
+ "longest_lead": 365,
+ "measurement_error_floor": null,
+ "penalty": {
+  "level": 0.1,
+  "ratio": 0.0625
+ },
+ "pinned": "log_c_plain_gls",
+ "reference": "base__donor_median",
+ "reference_rule": "donor_row_median",
+ "rulings": {
+  "H2": "owner ruling H2 (L6 b at every lead): each lead refits its bank, correctors and placebo correctors at the lead's GUARD cut and builds its guard history block there (F1's fallbacks at the guard cut), as the nowcast's inner decision does at the inner cut, so no guard row sits inside a bank trained on its labels (asserted: guard_rows_in_bank_label_window is 0); one more bank per lead. The guard reads the lead's FIT-cut c and R36 tolerances, exactly as the nowcast's inner decision does: c by ruling D63 a (one c per lead, from its FIT cut, serves that lead's guard surface and its test pass; layer.c_for_cut refuses guard-cut donor rows); R36's tolerances are the identity-check tolerances, which move no prediction. A weighted pin's GLS weight model (R25 / D57: its donor rows at the lead's guard cut) reads its error target's tree answers from the lead's fit-cut bank, as the nowcast's does (fit.weights.L6_ANSWERS_DISCLOSURE; READINGS guard_gls_answers)",
+  "H3": "owner ruling H3: at a lead the router context moves to the issue step with the whole feature row (plan 1.5, io.apply.features_at_issue_step)",
+  "H4": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+  "H5": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels",
+  "I1": "owner ruling I1: the leads are 6 and 12 months (C6.lead_months), generic for every package, plus lead 0 (the contract); on annual data both round to 1 year and merge; the pinned placebo is built at the longest lead"
+ },
+ "verdicts": {
+  "0": {
+   "adopted": "base__donor_median",
+   "band": 0.7670564986343074,
+   "common_rows": 52,
+   "contrast": {
+    "high": 0.0,
+    "low": 0.0,
+    "mean": 0.0,
+    "n_groups": 4,
+    "se": 0.0
+   },
+   "groups_better": 0,
+   "guard_passed": null,
+   "pooled_contrast": 0.0,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [],
+   "tag": "declined"
+  },
+  "183": {
+   "adopted": "base__donor_median",
+   "band": 0.7670564986343074,
+   "common_rows": 52,
+   "contrast": {
+    "high": 0.0,
+    "low": 0.0,
+    "mean": 0.0,
+    "n_groups": 4,
+    "se": 0.0
+   },
+   "groups_better": 0,
+   "guard_passed": false,
+   "pooled_contrast": 0.0,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [],
+   "tag": "declined"
+  },
+  "365": {
+   "adopted": "base__donor_median",
+   "band": 0.7670564986343074,
+   "common_rows": 52,
+   "contrast": {
+    "high": 0.0,
+    "low": 0.0,
+    "mean": 0.0,
+    "n_groups": 4,
+    "se": 0.0
+   },
+   "groups_better": 0,
+   "guard_passed": false,
+   "pooled_contrast": 0.0,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [],
+   "tag": "declined"
+  }
+ }
+}

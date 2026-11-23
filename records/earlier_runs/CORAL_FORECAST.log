@@ -1,0 +1,99 @@
+[09:36:32] ========================================================================================================
+[09:36:32] FORECAST CURVE | leads [0, 30, 180, 365] days | free 6.2/16.9 GB
+[09:36:32]   forecast_features_L0.parquet exists -> skip
+   continuous target built for 20,244 events
+   by source: {'Reef_Check': np.int64(11297), 'Donner': np.int64(3488), 'AGRRA': np.int64(2847), 'FRRP': np.int64(2394), 'McClanahan': np.int64(218)}
+   EXCLUDED Kumagai + Safaie (ordinal only -- midpoint substitution is fabrication)
+[09:41:07]   lead   0 d scored | 74 cols | 3,042 test rows
+[09:41:20]   lead 30 d | sst 116,467,524 rows | 21628 events with a series
+[09:43:06]      4000/23258 built 3912 | 1.8 min | free 5.9/16.9 GB
+[09:44:44]      8000/23258 built 7544 | 3.4 min | free 5.9/16.9 GB
+[09:46:20]      12000/23258 built 11157 | 5.0 min | free 5.7/16.9 GB
+[09:49:14]      20000/23258 built 18314 | 7.9 min | free 5.6/16.9 GB
+   IBTrACS track points usable: 725,903 (1842-10-25 .. 2026-08-20)
+   ... cyclones 2000/21430
+   ... cyclones 4000/21430
+   ... cyclones 6000/21430
+   ... cyclones 8000/21430
+   ... cyclones 10000/21430
+   ... cyclones 12000/21430
+   ... cyclones 14000/21430
+   ... cyclones 16000/21430
+   ... cyclones 18000/21430
+   ... cyclones 20000/21430
+   mask grid (3600, 7200) | water pixels 16,959,654 (65.4%)
+[09:51:20]   wrote forecast_features_L30.parquet | 21,430 rows x 95 cols | 10.0 min
+   continuous target built for 20,244 events
+   by source: {'Reef_Check': np.int64(11297), 'Donner': np.int64(3488), 'AGRRA': np.int64(2847), 'FRRP': np.int64(2394), 'McClanahan': np.int64(218)}
+   EXCLUDED Kumagai + Safaie (ordinal only -- midpoint substitution is fabrication)
+[09:54:54]   lead  30 d scored | 74 cols | 3,042 test rows
+[09:55:05]   lead 180 d | sst 116,467,524 rows | 21628 events with a series
+[09:56:37]      4000/23258 built 3912 | 1.5 min | free 9.1/16.9 GB
+[09:58:01]      8000/23258 built 7544 | 2.9 min | free 9.1/16.9 GB
+[09:59:23]      12000/23258 built 11157 | 4.3 min | free 10.1/16.9 GB
+[10:02:00]      20000/23258 built 18302 | 6.9 min | free 10.0/16.9 GB
+   IBTrACS track points usable: 725,903 (1842-10-25 .. 2026-08-20)
+   ... cyclones 2000/21418
+   ... cyclones 4000/21418
+   ... cyclones 6000/21418
+   ... cyclones 8000/21418
+   ... cyclones 10000/21418
+   ... cyclones 12000/21418
+   ... cyclones 14000/21418
+   ... cyclones 16000/21418
+   ... cyclones 18000/21418
+   ... cyclones 20000/21418
+   mask grid (3600, 7200) | water pixels 16,959,654 (65.4%)
+[10:03:58]   wrote forecast_features_L180.parquet | 21,418 rows x 95 cols | 8.9 min
+   continuous target built for 20,244 events
+   by source: {'Reef_Check': np.int64(11297), 'Donner': np.int64(3488), 'AGRRA': np.int64(2847), 'FRRP': np.int64(2394), 'McClanahan': np.int64(218)}
+   EXCLUDED Kumagai + Safaie (ordinal only -- midpoint substitution is fabrication)
+[10:07:26]   lead 180 d scored | 74 cols | 3,039 test rows
+[10:07:36]   lead 365 d | sst 116,467,524 rows | 21628 events with a series
+[10:09:05]      4000/23258 built 3912 | 1.5 min | free 9.2/16.9 GB
+[10:10:26]      8000/23258 built 7544 | 2.8 min | free 9.2/16.9 GB
+[10:11:46]      12000/23258 built 11157 | 4.2 min | free 9.1/16.9 GB
+[10:14:19]      20000/23258 built 18296 | 6.7 min | free 10.1/16.9 GB
+   IBTrACS track points usable: 725,903 (1842-10-25 .. 2026-08-20)
+   ... cyclones 2000/21412
+   ... cyclones 4000/21412
+   ... cyclones 6000/21412
+   ... cyclones 8000/21412
+   ... cyclones 10000/21412
+   ... cyclones 12000/21412
+   ... cyclones 14000/21412
+   ... cyclones 16000/21412
+   ... cyclones 18000/21412
+   ... cyclones 20000/21412
+   mask grid (3600, 7200) | water pixels 16,959,654 (65.4%)
+[10:16:15]   wrote forecast_features_L365.parquet | 21,412 rows x 95 cols | 8.6 min
+   continuous target built for 20,244 events
+   by source: {'Reef_Check': np.int64(11297), 'Donner': np.int64(3488), 'AGRRA': np.int64(2847), 'FRRP': np.int64(2394), 'McClanahan': np.int64(218)}
+   EXCLUDED Kumagai + Safaie (ordinal only -- midpoint substitution is fabrication)
+[10:19:45]   lead 365 d scored | 74 cols | 3,036 test rows
+[10:19:45] ========================================================================================================
+[10:19:45]   common test rows across all leads: 3,036 (dropped per lead: L0:6, L30:6, L180:3, L365:0)
+[10:19:45] ========================================================================================================
+[10:19:45] ALL held-out regions -- 3,036 rows, 74 regions
+[10:19:45]   lead(d)       MAE         R2      AUC  pred@sev    skill%  vs lead0
+[10:19:45]   --------------------------------------------------------------------------
+[10:19:45]   0           5.252    +0.6095   0.8228     52.63     +39.9%    +0.000
+[10:19:45]   30          5.725    +0.5462   0.8130     48.52     +34.5%    +0.473
+[10:19:45]   180         5.674    +0.5523   0.7965     46.89     +35.1%    +0.421
+[10:19:45]   365         6.218    +0.4671   0.7968     42.56     +28.8%    +0.966
+[10:19:46]   event-clustered vs lead 0 (2548 clusters):
+[10:19:46]     lead  30 d  dMAE +0.475  CI [+0.224, +0.732]  SIGNIFICANT WORSE
+[10:19:46]     lead 180 d  dMAE +0.421  CI [+0.019, +0.827]  SIGNIFICANT WORSE
+[10:19:46]     lead 365 d  dMAE +0.967  CI [+0.560, +1.365]  SIGNIFICANT WORSE
+[10:19:46] ========================================================================================================
+[10:19:46] ACTIVE regions only (true mean bleaching >= 2%) -- 1,788 rows, 45 regions
+[10:19:46]   lead(d)       MAE         R2      AUC  pred@sev    skill%  vs lead0
+[10:19:46]   --------------------------------------------------------------------------
+[10:19:46]   0           8.004    +0.5819   0.8623     53.08     +44.3%    +0.000
+[10:19:46]   30          8.493    +0.5320   0.8497     48.94     +40.9%    +0.489
+[10:19:46]   180         8.673    +0.5212   0.8424     47.29     +39.6%    +0.670
+[10:19:46]   365         9.524    +0.4338   0.8303     42.93     +33.7%    +1.520
+[10:19:46]   event-clustered vs lead 0 (1589 clusters):
+[10:19:46]     lead  30 d  dMAE +0.491  CI [+0.101, +0.907]  SIGNIFICANT WORSE
+[10:19:46]     lead 180 d  dMAE +0.671  CI [+0.076, +1.306]  SIGNIFICANT WORSE
+[10:19:46]     lead 365 d  dMAE +1.524  CI [+0.964, +2.127]  SIGNIFICANT WORSE

@@ -1,0 +1,93 @@
+{
+ "hops": [
+  {
+   "hop": 1,
+   "old": {
+    "run": "D:/treeroute/ckpt_20261013/runs_t1_before/pm25/smoke/20261013_51c05110",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "6d19c3e20e8111b82cb10734c776ce3c2135f653f8896575f86260b1863468b6",
+    "engine_file_sha": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+    "engine_constants_sha256": "d1592748460935ec6c2d430357556690d4c69631eff28f028875477ff034207e"
+   },
+   "new": {
+    "run": "D:/treeroute/ckpt_20261013/runs_t1_after_final/pm25/smoke/20261013_b30913d1",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "810eeca7664fc729a95dad5ea3408899812823c39fb4cb802413cc1fcb62fcaa",
+    "engine_file_sha": "1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1",
+    "engine_constants_sha256": "9509bf337328e5935a352ef2f8b112c9a0174df1ba7940b7fd00c5eeb80cee2d"
+   },
+   "recheck": {
+    "gate_files_byte_identical": 15,
+    "gate_files_differing_or_missing": [],
+    "gate_file_sha256": {
+     "derived.json": "86d72acf9a569d18fd186afaffeecc554ce2d30467000ddd298b9a50c874f496",
+     "inner_candidates.csv": "c588bf0b6d56d2b4c2b99c57870d92bdd2b380119b3ef46ba711b1001d2adc05",
+     "inner_preds.parquet": "a618c78256192e6d647181844c3ec7ce2e9d97463e54781b072a61981aae8404",
+     "jackknife.csv": "9536352e92666d9702a12a1948ebcdd0fec2372d9a4d22a679986298797fa686",
+     "ladder/ladder_table.csv": "1ad87bb54663cb32e394572b59f7c8526afd9107ef1b784b791afbe07db987f3",
+     "ladder/lead_12/guard_preds.parquet": "ae2b9df081f7401655105d513f84525a15e582d20f13f2cfb4faa416313c6c2e",
+     "ladder/lead_12/test_preds.parquet": "88b92f3ccf288c22fcbc7f351b087c5f985ae07104629113cf08011754f6615d",
+     "ladder/lead_6/guard_preds.parquet": "f3aa52486d583b3b8466ac8254b84cfda84b8dc23858a73efec5774b870f81dd",
+     "ladder/lead_6/test_preds.parquet": "52c934245ee8dd2bdd6ac15569b61ddc26b0c3204dbc4db86874aab8459ca639",
+     "per_group.csv": "24f2947b56a0965a728517a45c91373e10f2b167c3a05662802bc5349ab05e3c",
+     "per_year.csv": "0fd683da95ee5df0bd1fdba9a74aaf2153cd0a0ce16655cb195d675adb815acc",
+     "preclip.csv": "ac795a772877b76d7a043132c003c3c95c2ad24bbbf491322fc1f20872924740",
+     "score_by_group.csv": "c2fa952cdca5562accfd27880e50344e02af082324f42980ec6bf62cd3155c98",
+     "score_pooled.csv": "bbaa64c18cfc510f792f1aab6c2867626f044fc804106d788f5ba307d65b6c79",
+     "test_preds.parquet": "ad02ac2bcf3bf651ec6bf3a0df9f74bebff31d0556032ebc3b633f6053240d11"
+    }
+   },
+   "record": "engine PENDING_PARTS.md Part 586 (T1: 15 gate files byte-identical); compare script D:/treeroute/ckpt_20261013/scratch2/compare_runs.py (its output was not saved)"
+  },
+  {
+   "hop": 2,
+   "old": {
+    "run": "D:/treeroute/install_20261015/smokes/old/pm25/smoke/20261015_b30913d1",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "810eeca7664fc729a95dad5ea3408899812823c39fb4cb802413cc1fcb62fcaa",
+    "engine_file_sha": "1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1",
+    "engine_constants_sha256": "9509bf337328e5935a352ef2f8b112c9a0174df1ba7940b7fd00c5eeb80cee2d"
+   },
+   "new": {
+    "run": "D:/treeroute/install_20261015/smokes/new/pm25/smoke/20261015_54a994fb",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "cf566e0549d426ded8adcaa4dbc59f36bc858a755c5cd42726badebd94866024",
+    "engine_file_sha": "7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8",
+    "engine_constants_sha256": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b"
+   },
+   "record": "D:/treeroute/install_20261015/smokes/compare_pm25.txt",
+   "record_sha256": "9d821e0d8d622fa9d6d36e9bc354f170002277f5c454052d302256b3ff3a101d"
+  },
+  {
+   "hop": 3,
+   "old": {
+    "run": "D:/treeroute/s_20261016/smokes/old/pm25/smoke/20261016_54a994fb",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "cf566e0549d426ded8adcaa4dbc59f36bc858a755c5cd42726badebd94866024",
+    "engine_file_sha": "7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8",
+    "engine_constants_sha256": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b"
+   },
+   "new": {
+    "run": "D:/treeroute/s_20261016/smokes/new_resume/pm25/smoke/20261016_ad41a993",
+    "kind": "smoke",
+    "package": "pm25",
+    "engine_stripped": "13838e41843cf1ec2598a1c3f7383c8ae2371dc094a1f3ec7f63fd7fc073f74a",
+    "engine_file_sha": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+    "engine_constants_sha256": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b"
+   },
+   "record": [
+    "D:/treeroute/s_20261016/smokes/compare_pm25_resume_vs_old_today.txt",
+    "D:/treeroute/s_20261016/smokes/compare_pm25_resume_vs_install.txt"
+   ],
+   "record_sha256": [
+    "425420d437861d087963e8d387a795748dec8f2cd0d47cd68fef5acfe2c3b400",
+    "425420d437861d087963e8d387a795748dec8f2cd0d47cd68fef5acfe2c3b400"
+   ]
+  }
+ ]
+}

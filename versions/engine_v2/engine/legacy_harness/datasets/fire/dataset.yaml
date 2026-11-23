@@ -1,0 +1,85 @@
+# dataset.yaml -- the fire (monthly burned fraction) dataset package (APP_PLAN.md 1.1-1.2). Drafted 2026-09-28;
+# unsigned. Name, version, owner, description, store path templates, shared store-catalog includes. Nothing else.
+#
+# Stores are READ IN PLACE (plan 1.2). Paths: engine/datasets/_tools/export_review_csv.py:59-76 (FIRE_TARGET_DIR,
+# FIRE_HIST_DIR, FIRE_DRV_DIR, PANEL_DIR) and :1844-1890 / :1972-1974 (file patterns).
+#
+# THE KEY MAP (plan 1.2: "id maps (fire's lat/lon to id) live in the ingest script"; M4 'fire's key map'). The
+# fire target and both sidecars are keyed on lat + lon, not on a unit id. The unit is the monthly panel's cell
+# ({group}_{ix}_{iy}); ingest/build_static.py writes the static table (cell_id, region, lat, lon, grid_ix,
+# grid_iy), which is also the key map: every cell of the target (union over its years) that is a panel cell,
+# matched on the shipped key (lat/lon to 5 decimals, fire_architecture.py:241-243). The target reader
+# (ingest/target_reader.py) maps each target row through it, applies the n_valid rule and returns a complete
+# census (a unit-month missing from the store is a NaN label).
+#
+# static: data/static/part-0.parquet (with data/static/key_map_manifest.json), WRITTEN 2026-10-05 23:10 under owner
+# ruling L5 (OWNER_RULINGS_2026-10-05.md section L) by
+#     py -3.9 datasets/fire/ingest/build_static.py datasets/fire        (about 4 minutes; read-only on D:)
+# It holds every unit (925,737 in 40 groups; fire_draft/data/static holds the same table), not the shipped
+# 1,000-cell pick D:/fire/cells_1000.parquet: ruling C ('Fire cells') runs R18's stride over ALL cells, and the
+# 1,000 were drawn with np.random.default_rng(seed + abs(hash(region)) % 1e6) (fire_select_cells.py:79), which
+# Python's per-process string hashing makes irreproducible (disclosed; see AUDIT_CHECKLIST.md).
+#
+# ATTENTION (owner): NO FIRE-HISTORY STORE IS DECLARED (removed 2026-10-04). The shipped store D:/fire/history
+# reads label t-1, a LEAK under ruling R-D (b): month t-1's label uses month-t observations, and the engine's own
+# history starts at t-2. Its shared catalog (../_stores/fire_history_schema_catalog.yaml, no longer included) gives
+# every column the window {1 month, backward, stamp period_start}, which leaves out the target's 1-month
+# reach-after, so R8 would give those columns lag 0; and the engine checks reads_target only on feature-script
+# outputs, never on store columns. Declared, a Q34 keep of a shipped keep (tslf_months, n_burns_*, nbr*_12mo_lag1,
+# ...) would have fed labels at t-1 to the trees with nothing refusing it (only the store's missing cell_id column
+# stood in the way). Undeclared, the 19 fire-history rows of catalog.yaml (role engineered) have no store facts in
+# this package, so derive refuses a kept one loudly (R8 'kept columns have no store facts', naming it;
+# tests/test_fire_package.py). To use them, the owner builds the store at label lag 2 for EVERY unit (15
+# columns; about 2 GB, 10 minutes; data/static is written, above):
+#     py -3.9 datasets/fire/ingest/build_history.py datasets/fire D:/<owner path>
+#     py -3.9 datasets/fire/ingest/build_history.py catalog datasets/fire "D:/<owner path>/{group}.parquet" --every-unit
+# then adds the template D:/<owner path>/{group}.parquet under drivers and the include line the second command
+# prints (ingest/fire_history_store_catalog.yaml, by sha256). fire_draft declares that rebuilt store for the
+# shipped 1,000-cell pick only (its data/fire_history).
+# Q34 INSTALLED 2026-10-05 (ruling J1, Q5 default: build it). The store is NOT declared here before it exists:
+# the engine's driver reader refuses a declared driver store that holds no file (G-MISSING, before it looks at
+# any column), so declaring it early would stop every read of this package. Until the build, the 9 history
+# columns the review keeps are 'conditional' in ban.yaml (header 'THE HISTORY-STORE SWITCH' names each one's
+# verdict after the switch). The owner's commands, from the engine folder (proposed store folder
+# D:/fire_history_lag2: not under a protected root, no 'fire/history' in its path):
+#     py -3.9 datasets/fire/ingest/build_static.py datasets/fire                  (done 2026-10-05, ruling L5)
+#     py -3.9 datasets/fire/ingest/build_history.py datasets/fire D:/fire_history_lag2       (about 10 minutes,
+#         about 2 GB on D:, about 2.5 GB of RAM for yakutia_larch; resumable: a finished group file is skipped)
+#     py -3.9 datasets/fire/ingest/build_history.py catalog datasets/fire "D:/fire_history_lag2/{group}.parquet" --every-unit
+# then, in ONE change: the driver template 'D:/fire_history_lag2/{group}.parquet' after the panel, the printed
+# include line, and the 9 verdict switches in ban.yaml.
+#
+# ATTENTION (owner): the drivers sidecar template below cannot be read by the engine in place. Its driver reader
+# joins every driver store on the unit id (cell_id), and D:/fire/drivers/joined holds lat + lon only (pyarrow
+# fails on the missing cell_id column: loud, but not an engine refusal naming the cause). ingest/build_sidecars.py
+# writes a unit-keyed copy (values unchanged); fire_draft reads it from its data/ folder. The owner chooses where
+# the copy lives. It covers only the shipped 1,000-cell pick per group, so about 92% of R18's bank units have no
+# row; the lightning / VOD / biomass columns cannot be rebuilt for every unit without re-joining their raw
+# products (fire_draft marks them conditional).
+#
+# Sidecar stores NOT declared, as in the shipped run: D:/fire/drivers/ndvi and D:/fire/drivers/danger were switched
+# off (USE_NDVI = USE_DANGER = 0, fire_architecture.py:157, 164). Owner decision (review/v2/README.md item 7):
+# (a) leave them out (this file), or (b) declare them, include fire_ndvi_lags_schema_catalog.yaml and
+# fire_danger_schema_catalog.yaml, and rule their 14 rows. D:/fire/drivers/fwi is empty.
+# No store catalog exists yet for the target store D:/fire/target (owner item).
+name: fire
+version: '0.1.0'
+owner: 'UNSIGNED -- the project owner fills in the name'
+description: 'Monthly MODIS MCD64A1 burned fraction on the panel cells of 40 regions, 2002-2022; declarative package, every fact unverified'
+stores:
+  target: 'D:/fire/target/{group}_{year}.parquet'
+  static: 'data/static/part-0.parquet'
+  drivers:
+    - 'D:/monthly_panel/{group}_monthly_{year}.parquet'
+    - 'D:/fire_history_lag2/{group}.parquet'  # added by owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9)
+    # (no fire-history store: the shipped D:/fire/history leaks under R-D (b); ATTENTION above)
+    # WGLC lightning, LPDR v3 VOD, ESA CCI biomass (fire_join_drivers.py)
+    - 'D:/fire/drivers/joined/{group}.parquet'
+includes:
+  # 2026-10-06: re-pinned after ruling L (L1 signatures and the 13 index windows in the panel catalog; burn_frac signed
+  # in the GFED catalog).
+# 2026-10-05 evening: the panel catalog sha256 re-pinned to its 16:06 edit (the header and aglw_* provenance notes for
+# the AMENDED J3, content_epoch inert; noi's bound not written). Re-pin after any later edit of that catalog.
+  - {path: ../_stores/monthly_panel_v170_schema_catalog.yaml, sha256: 6bb3f9eca049d965143d25a3125de0e1e06465d945209659a85aad503de23e9b}
+  - {path: ../_stores/fire_drivers_schema_catalog.yaml, sha256: d8b4fe3cb79c714d00222498fb5300ed905e07530f8b8abad7af4e668534e44b}
+  - {path: ingest/fire_history_store_catalog.yaml, sha256: c93a2bd71276dbc1b7fcee7418a8e56ba843bc1f547966eecd124322c80b80c8}

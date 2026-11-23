@@ -1,0 +1,86 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [
+     " GiB) beside the census (3.03 GiB): 8.35 GiB in all, 4.87 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"
+    ],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": true
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "13838e41843cf1ec",
+    "engine_root": "D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc",
+    "manifest": "13838e41843cf1ec"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [
+     "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet"
+    ],
+    "path_map": true,
+    "static_files_sha256": [
+     "30b298a937307eba",
+     "30b298a937307eba"
+    ],
+    "target_files_sha256": [
+     "8f67233c6628cc8c",
+     "8f67233c6628cc8c"
+    ]
+   }
+  },
+  "E3m_recorded_path_map": {
+   "pass": true,
+   "values": {
+    "files": [
+     {
+      "equal": true,
+      "lock_records": 4,
+      "locks": [
+       "FREEZE_20261007T130812Z.lock.json",
+       "FREEZE_20261013T102938Z.lock.json",
+       "FREEZE_20261016T012828Z.lock.json",
+       "FREEZE_20261016T091126Z.lock.json"
+      ],
+      "recorded": "C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet",
+      "sha256": "c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb",
+      "size": 4300416,
+      "today": "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet"
+     }
+    ],
+    "rule": "content SHA-256, size and mtime equal every freeze-lock record of the recorded path"
+   }
+  }
+ },
+ "seconds": 27.3
+}

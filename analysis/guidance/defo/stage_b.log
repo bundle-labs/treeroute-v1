@@ -1,0 +1,19 @@
+stage A hashes verified
+G2 PASS: 0.005415798421978 vs 0.005415798421978 (rel 0.0e+00), scored 369096
+T_twin                 MAE 0.005416406  delta +6.079e-07  /band +0.0055  HURTS  differs 347734
+M1                     MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M2                     MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M3                     MAE 0.005414062  delta -1.736e-06  /band -0.0157  HELPS  differs 347734
+M4                     MAE 0.006232348  delta +8.165e-04  /band +7.3930  HURTS  differs 354457
+M5                     MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M5raw                  MAE 0.005435338  delta +1.954e-05  /band +0.1769  HURTS  differs 346911
+M5_placebo_ungated     MAE 0.005416406  delta +6.079e-07  /band +0.0055  HURTS  differs 347734
+M5_placebo_gated       MAE 0.005416406  delta +6.079e-07  /band +0.0055  HURTS  differs 347734
+M6                     MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M6s                    MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M6_ungated             MAE 0.005417730  delta +1.931e-06  /band +0.0175  HURTS  differs 194591
+M6s_ungated            MAE 0.005414517  delta -1.282e-06  /band -0.0116  HELPS  differs 347734
+M6_placebo_ungated     MAE 0.005416753  delta +9.545e-07  /band +0.0086  HURTS  differs 256019
+M6s_placebo_ungated    MAE 0.005414149  delta -1.649e-06  /band -0.0149  HELPS  differs 347734
+M6_placebo_gated       MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0
+M6s_placebo_gated      MAE 0.005415798  delta +0.000e+00  /band +0.0000  SAME   differs 0

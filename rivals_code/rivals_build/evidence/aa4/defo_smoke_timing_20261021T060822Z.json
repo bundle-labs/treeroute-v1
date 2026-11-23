@@ -1,0 +1,127 @@
+{
+ "byte_identical": true,
+ "files_per_lead": {
+  "0": 13,
+  "1": 13
+ },
+ "full_mean_seconds": 50.06665766239166,
+ "lean_mean_seconds": 44.68347644805908,
+ "lean_record": {
+  "on": true,
+  "r30_test_year_count": {
+   "not_needed": 2,
+   "run_record": true,
+   "skipped": 0
+  },
+  "separability_check": {
+   "ran": 0,
+   "run_record": true,
+   "skipped": 1
+  },
+  "steps": {
+   "r30_test_year_count": "R30's per-test-year missing count streamed over every census row of the test years (pipeline/stream.py StreamedShareReader._count_setup/_count_group, with its window check _check_block): taken from the run's derived.json R30 inputs.test_year_missing_share. Skipped only when the count would run (not every census row is a picked row); when every census row is picked the engine takes the shares from the picked readers at no extra cost and nothing is skipped",
+   "separability_check": "the per-group path's feature-script separability check on a sample (pipeline/stream.py check_group_separable: one sample reader of the sampled groups together and one per group): taken from the run's per_group_plan.json 'separability' record when it shows the check passed (or was not needed)"
+  }
+ },
+ "manifest_timings_seconds": {
+  "full0": {
+   "lead_0": {
+    "derive": 16.08,
+    "lead_0_p15": 1.04,
+    "lead_0_rows": 4.11,
+    "lead_files": 4.98,
+    "read": 8.67,
+    "total": 39.56
+   },
+   "lead_1": {
+    "derive": 16.08,
+    "lead_0_p15": 1.04,
+    "lead_0_rows": 4.11,
+    "lead_1_p15": 1.08,
+    "lead_1_rows": 4.11,
+    "lead_files": 5.04,
+    "read": 8.67,
+    "total": 49.0
+   }
+  },
+  "full2": {
+   "lead_0": {
+    "derive": 16.62,
+    "lead_0_p15": 1.08,
+    "lead_0_rows": 4.1,
+    "lead_files": 4.9,
+    "read": 8.74,
+    "total": 40.26
+   },
+   "lead_1": {
+    "derive": 16.62,
+    "lead_0_p15": 1.08,
+    "lead_0_rows": 4.1,
+    "lead_1_p15": 1.08,
+    "lead_1_rows": 4.21,
+    "lead_files": 4.87,
+    "read": 8.74,
+    "total": 49.63
+   }
+  },
+  "lean1": {
+   "lead_0": {
+    "derive": 11.07,
+    "lead_0_p15": 1.1,
+    "lead_0_rows": 4.08,
+    "lead_files": 4.91,
+    "read": 8.54,
+    "total": 34.4
+   },
+   "lead_1": {
+    "derive": 11.07,
+    "lead_0_p15": 1.1,
+    "lead_0_rows": 4.08,
+    "lead_1_p15": 1.06,
+    "lead_1_rows": 4.22,
+    "lead_files": 4.94,
+    "read": 8.54,
+    "total": 43.88
+   }
+  },
+  "lean3": {
+   "lead_0": {
+    "derive": 11.04,
+    "lead_0_p15": 1.07,
+    "lead_0_rows": 4.16,
+    "lead_files": 4.83,
+    "read": 8.75,
+    "total": 34.65
+   },
+   "lead_1": {
+    "derive": 11.04,
+    "lead_0_p15": 1.07,
+    "lead_0_rows": 4.16,
+    "lead_1_p15": 1.08,
+    "lead_1_rows": 4.16,
+    "lead_files": 4.84,
+    "read": 8.75,
+    "total": 44.04
+   }
+  }
+ },
+ "order": [
+  "full",
+  "lean",
+  "full",
+  "lean"
+ ],
+ "parity": "P1-P15 pass in every export (p15 on)",
+ "run": "D:\\treeroute\\coral_build_v6b\\noop\\new\\defo\\smoke\\20261020_192b4285",
+ "utc": "2026-10-21T06:08:22Z",
+ "wall_seconds": {
+  "full": [
+   49.730085611343384,
+   50.40322971343994
+  ],
+  "lean": [
+   44.53372621536255,
+   44.833226680755615
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+[    0.0s] protocol hash OK c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4
+[    0.1s] G1 pass=True chosen surface MAE 7.210064432 (csv 7.210064432); eligible 12
+[    0.1s] point flag (arm used at the adopted point although its own pick differs): [{'arm': 'log_c_plain_unweighted', 'own_pick': (3.0, 1.0), 'used': (100.0, 1.0)}, {'arm': 'log_c_plain_gls', 'own_pick': (3.0, 1.0), 'used': (100.0, 1.0)}, {'arm': 'log_c_corrector_unweighted', 'own_pick': (3.0, 1.0), 'used': (100.0, 1.0)}, {'arm': 'log_c_corrector_gls', 'own_pick': (3.0, 1.0), 'used': (100.0, 1.0)}]
+[    0.3s] test rows 2312; finite C 2312, finite T 2312, all arms finite 2312
+[    0.3s] alarm: gap surface 0.340565, gap test 1.461480, ratio 4.2913 -> fires True; per year {2016: 9.724276301950999, 2017: 1.3107490574708454, 2018: 0.23101017899505552, 2019: 1.367463050513379}
+[    0.3s] M4 equal-weight 12 arms: surface MAE 7.451288 (beside)
+[    0.3s] sites 1421; fold sizes [403, 422, 379, 449, 393]; placebo moves 2046 of 2046 rows
+[    0.7s] M5: CF-MAE 7.210064 vs chosen 7.210064 -> gate False; weights {'arcsine_corrector_gls': 1.0}
+[    0.9s] M5 placebo: CF-MAE 10.419720 vs chosen-on-y_placebo 10.984843 -> gate True; weights {'log_c_plain_gls': 1.0}
+[    1.4s] G3 {'surface_joined': 1.0, 'test_joined': 1.0, 'pass': True}; features 68 (63 tree + 5 context)
+[    1.6s] M6: non-tie 2007 (twin wins 969), CF ACC 0.6288 (base 0.4828) AUC 0.6589 -> APPLIED; test switched 0.272 mean p 0.364
+[    1.9s] M6 placebo: CF ACC 0.4968 AUC 0.4835 -> FALLBACK:ACC; test switched 0.340 mean p 0.460

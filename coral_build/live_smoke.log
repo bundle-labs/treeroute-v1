@@ -1,0 +1,100 @@
+﻿[02:16:19] package coral_draft version 0.1.0-draft, fingerprint dfa07650a6ed3ad0 | DRAFT: DRAFT -- percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by ecoregion; hand-built SST, marine-heatwave, cyclone and ENSO/IOD features that end before each issue date (leads 0, 183, 365 days); neighbour router; every fact unverified, nothing signed (input: table)
+[02:16:19] feature lineage: vouched by the package owner (U2)
+[02:16:19] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[02:16:19] groups: 94 in the data, 37 after exclusions; this run: 4 (smoke)
+[02:16:19] preflight: table rows per lead {0: 13694, 183: 13686, 365: 13686}, 85 columns; RAM estimate 0.026 GiB: go
+[02:16:19] table read: 217 rows of 130 package units in 3 lead files (lead 0: 217 rows, lead 183: 217 rows, lead 365: 217 rows) in 0.3 s
+[02:16:19] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Austral Islands, French Polynesia', 'Bay of Campeche, Yucatan, Gulf of Mexico', 'Bermuda', 'Birds Head Peninsula, Papua', 'Bismarck Sea, New Guinea', 'Brazil', 'Caroline Islands, Micronesia', 'Cenderawasih Bay, Papua', 'Chagos Archipelago', 'Christmas Island, Indian Ocean', 'Cocos Keeling Atolls, Indian Ocean', 'Cook Islands, south-west Pacific', 'Coral Sea', 'Costa Rica and Panama, Pacific coast', 'Cuba and Cayman Islands', 'Eastern coast South Africa', 'Flower Garden Banks, Gulf of Mexico', 'Gilbert Islands, west Kiribati', 'Gulf of Aden', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Gulf of Thailand', 'Gulf of Tomini, Indonesia', 'Hong Kong', 'Honshu, Japan', 'Houtman Abrolhos Islands, west Australia', 'Johnston Atoll, north central Pacific', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'Marianas', 'Marshall Islands', 'Milne Bay, Papua New Guinea', 'New Caledonia', 'North Mozambique coast', 'North Myanmar and Bangladesh', 'North Sri Lanka and east India', 'North Vietnam', 'North-west Arabian Sea', 'Northern Seychelles', 'Ogasawara Islands, Japan', 'Palau', 'Phoenix Islands, central Kiribati', 'Pohnpei and Kosrae, Micronesia', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'Samoa, Tuvalu and Tonga', 'Shikoku, Japan', 'Socotra Archipelago', 'South China Sea', 'South Mozambique coast', 'South Red Sea', 'South Ryukyu Islands, Japan', 'South Vietnam', 'Southern Seychelles', 'Vanuatu', 'West Sumatra', 'Western Tuamotu Archipelago, central Pacific']; seen_during_design groups not read ['Belize and west Caribbean', 'Celebes Sea', 'Central and northern Great Barrier Reef', 'Eastern Hawaii', 'Fiji', 'Gulf of Oman', 'Hispaniola, Puerto Rico and Lesser Antilles', 'Jamaica', 'Java Sea', 'Kenya and Tanzania coast', 'Lakshadweep Islands', 'Lesser Sunda Islands and Savu Sea', 'Makassar Strait, Indonesia', 'Maldive Islands', 'Mascarene Islands', 'Mayotte and Comoros', 'Moreton Bay, eastern Australia', 'Netherlands Antilles and south Caribbean', 'Ningaloo Reef and coastal north-west Australia', 'North Madagascar', 'North Philippines', 'North Ryukyu Islands, Japan', 'North and central Red Sea', 'Persian Gulf', 'Society Islands, French Polynesia', 'Solomon Islands and Bougainville', 'South Madagascar', 'South-east Philippines', 'Southern Great Barrier Reef', 'Strait of Malacca', 'Sulu Sea', 'Sunda Shelf, south-east Asia', 'Taiwan and coastal China']
+[02:16:19] derive_all_table: 41 entries in 0.0 s; router neighbour; overlap blocks 4 for 4 groups; leads [183, 365] days
+[02:16:21] run folder D:\treeroute\coral_build\runs_live_smoke\coral_draft\smoke\20261020_4ba5d8fb (new)
+[02:16:25] preflight: temp disk for the table run 0.000 GiB at its peak (two pools, two banks' tables): go
+[02:16:25] pool: 217 table rows, 63 tree columns, 5 context columns (lead 0)
+[02:16:25] fits: bank at the fit cut 735963: 4 groups x 12 trees
+[02:16:25] checkpoint: bank key 38c2f2a373f4d03d: no earlier checkpoint of this step; computing
+[02:16:26] checkpoint: bank fit-cut (cut 735963, lead 0): 0 of 4 groups loaded, 4 fitted (folder bank-38c2f2a373f4d03d)
+[02:16:26] fit-cut bank: 48 trees, fingerprint 9d89628a28bb613c, rows at or before 735963 (max label step 735888)
+[02:16:26] fit-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:26] fits: GLS weight model (R25) at the guard cut 734868
+[02:16:26] GLS weight model (R25): memory given back before the donor matrix (gc: 116 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\tmp\treeroute_run_4ba5d8fb_21116
+[02:16:26] GLS weight model (R25): memory given back before the forest's fit (gc: 23 objects; working-set trim ran)
+[02:16:26] fits: bank refit at the inner cut 734868 (L6 b)
+[02:16:26] checkpoint: bank key bd3c4051cbd64a49: no earlier checkpoint of this step; computing
+[02:16:26] checkpoint: bank inner-cut (cut 734868, lead 0): 0 of 4 groups loaded, 4 fitted (folder bank-bd3c4051cbd64a49)
+[02:16:26] inner-cut bank: 48 trees, fingerprint e39f5e66e79f0971, rows at or before 734868 (max label step 734788)
+[02:16:26] inner-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:26] fits: GLS weight models of the 4 decision-surface folds (R13, R25)
+[02:16:26] GLS weight model (R25) of fold 0 (Andaman Islands): 110 donor rows outside its block ['Andaman Islands']
+[02:16:26] GLS weight model (R25) of fold 1 (Andaman Sea): 61 donor rows outside its block ['Andaman Sea']
+[02:16:26] GLS weight model (R25) of fold 2 (Bahamas and Florida Keys): 79 donor rows outside its block ['Bahamas and Florida Keys']
+[02:16:26] GLS weight model (R25) of fold 3 (Banda Sea and Molucca Islands): 86 donor rows outside its block ['Banda Sea and Molucca Islands']
+[02:16:27] decision surface (D67, R13): 26 train rows dated 734869..735963; 26 with a valid label: 26 rows scored
+[02:16:27] decision: neighbour router: 12 tree arms on the decision surface (3 folds)
+decision surface: 26 rows, 424 candidates, legal range [0.0, 100.0], surface SHA-256 daff503630bd9ae2
+  identity_plain_unweighted          MAE 7.550690 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 251 below, 0 above of 910 | corr2 0.7495 (beside)
+  identity_plain_gls                 MAE 7.563728 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 241 below, 0 above of 910 | corr2 0.7150 (beside)
+  identity_corrector_unweighted      MAE 7.550690 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 251 below, 0 above of 910 | corr2 0.7495 (beside)
+  identity_corrector_gls             MAE 7.563728 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 241 below, 0 above of 910 | corr2 0.7150 (beside)
+  log_c_plain_unweighted             MAE 8.394721 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 219 below, 0 above of 910 | corr2 0.7800 (beside)
+  log_c_plain_gls                    MAE 8.530875 at level 0.1 ratio 1.0 | EDGE PICK: level bottom, ratio top | pre-clip 222 below, 0 above of 910 | corr2 0.7373 (beside)
+  log_c_corrector_unweighted         MAE 8.394721 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 219 below, 0 above of 910 | corr2 0.7800 (beside)
+  log_c_corrector_gls                MAE 8.530875 at level 0.1 ratio 1.0 | EDGE PICK: level bottom, ratio top | pre-clip 222 below, 0 above of 910 | corr2 0.7373 (beside)
+  arcsine_plain_unweighted           MAE 7.776140 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 0 below, 0 above of 910 | corr2 0.7336 (beside)
+  arcsine_plain_gls                  MAE 7.859474 at level 0.1 ratio 1.0 | EDGE PICK: level bottom, ratio top | pre-clip 0 below, 0 above of 910 | corr2 0.7517 (beside)
+  arcsine_corrector_unweighted       MAE 7.776140 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 0 below, 0 above of 910 | corr2 0.7336 (beside)
+  arcsine_corrector_gls              MAE 7.859474 at level 0.1 ratio 1.0 | EDGE PICK: level bottom, ratio top | pre-clip 0 below, 0 above of 910 | corr2 0.7517 (beside)
+  identity_trees_off_unweighted      MAE 7.737045 at no grid | pre-clip 13 below, 0 above of 26 | corr2 0.7120 (beside)
+  log_c_trees_off_unweighted         MAE 8.456735 at no grid | pre-clip 11 below, 0 above of 26 | corr2 0.7107 (beside)
+  arcsine_trees_off_unweighted       MAE 7.888578 at no grid | pre-clip 0 below, 0 above of 26 | corr2 0.7314 (beside)
+  predict-zero MAE 10.120577 (beside, never used)
+  decline baseline base__donor_median MAE 11.197500: N2 compares every arm with it and a decline falls back to it (owner ruling V1)
+  => ADOPTED identity_plain_unweighted at level 3.0 ratio 1.0 (12 of 12 tree arms eligible)
+adoption locked: lead 0, adoption.json, SHA-256 4c723083bb2d8b0258c472c33c4527e08765d81df8c63833d39b10ecdd3acf93
+pre-lock test-window reads (asof_rows, D54 a): 0 rows over 0 reads, 0 before any lock
+[02:16:29] test pass: 79 test rows (79 with a label); tree arms at level 3.0 ratio 1.0 (the adopted penalty)
+[02:16:32] verdict: cannot_tell adopted identity_plain_unweighted vs base__donor_median: contrast 7.24077 [-3.50683, 17.9884], band 0.681143, pooled MAE 7.46087 vs 9.20497
+[02:16:32] released the nowcast's inner-cut bank (48 trees, fingerprint e39f5e66e79f0971) and its tables: the nowcast's decision is locked and its test pass is done; the ladder never reads the inner-cut bank
+[02:16:32] ladder: lead-0 contract: the ladder's lead path at lead 0 against the nowcast
+[02:16:32] ladder: lead-0 contract holds (18 saved columns of 79 rows) in 0.2 s
+[02:16:33] released the nowcast's fit-cut bank (48 trees, fingerprint 9d89628a28bb613c) and its tables: the lead-0 contract is done; leads of one day or more fit their own banks
+[02:16:33] ladder: lead 183: lagtrain bank at the lead's fit cut 735781 (4 groups x 12 trees)
+[02:16:33] checkpoint: bank key 59c10ee0c88d0e78: no earlier checkpoint of this step; computing
+[02:16:33] checkpoint: bank lead-183 (cut 735781, lead 183): 0 of 4 groups loaded, 4 fitted (folder bank-59c10ee0c88d0e78)
+[02:16:33] lead-183 bank: 48 trees, fingerprint 4ac9a1703d9f4af9, rows at or before 735781 (max label step 735721)
+[02:16:33] lead-183 bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:34] ladder: lead 183: guard bank refit at the lead's guard cut 734686 (owner ruling H2)
+[02:16:34] checkpoint: bank key 5b1365d7887c95e0: no earlier checkpoint of this step; computing
+[02:16:34] checkpoint: bank lead-183 guard-cut (cut 734686, lead 183): 0 of 4 groups loaded, 4 fitted (folder bank-5b1365d7887c95e0)
+[02:16:34] lead-183 guard-cut bank: 48 trees, fingerprint 7e54f66f6660f4a7, rows at or before 734686 (max label step 734555)
+[02:16:34] lead-183 guard-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:34] ladder: lead 183 guard: identity_plain_unweighted MAE 7.81021 vs the donor-row median 0 (MAE 4.30421; V1) on 19 rows; its trees-off 8.22516 beside -> FAILS: the lead adopts the donor-row median (D86, V1)
+adoption locked: lead 183, adoption_lead_183.json, SHA-256 2fb5e99f44363600200da48f5f576b9b6d23937ce06fcb9ccbf66163b93f7bff
+[02:16:34] lead 183 test pass: H4: every test row is in the lead's file; none left out
+[02:16:35] ladder: lead 183 done in 2.0 s: the donor-row median (V1) adopted
+[02:16:35] ladder: lead 365: lagtrain bank at the lead's fit cut 735599 (4 groups x 12 trees)
+[02:16:35] checkpoint: bank key 943e2d0414aa6b42: no earlier checkpoint of this step; computing
+[02:16:36] checkpoint: bank lead-365 (cut 735599, lead 365): 0 of 4 groups loaded, 4 fitted (folder bank-943e2d0414aa6b42)
+[02:16:36] lead-365 bank: 48 trees, fingerprint 3e5300fb53369b00, rows at or before 735599 (max label step 735485)
+[02:16:36] lead-365 bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:36] ladder: lead 365: guard bank refit at the lead's guard cut 734504 (owner ruling H2)
+[02:16:36] checkpoint: bank key 3e7eac9e0aaeed18: no earlier checkpoint of this step; computing
+[02:16:36] checkpoint: bank lead-365 guard-cut (cut 734504, lead 365): 0 of 4 groups loaded, 4 fitted (folder bank-3e7eac9e0aaeed18)
+[02:16:36] lead-365 guard-cut bank: 48 trees, fingerprint 520ad85db0b643ba, rows at or before 734504 (max label step 734410)
+[02:16:36] lead-365 guard-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[02:16:36] ladder: lead 365 guard: identity_plain_unweighted MAE 11.7061 vs the donor-row median 0 (MAE 5.60929; V1) on 14 rows; its trees-off 8.65562 beside -> FAILS: the lead adopts the donor-row median (D86, V1)
+adoption locked: lead 365, adoption_lead_365.json, SHA-256 476d99bc44bd79e0fcb53e00cffc7d5b4baa172373d51626d0fb3e58dbfe5874
+[02:16:37] lead 365 test pass: H4: every test row is in the lead's file; none left out
+[02:16:37] ladder: lead 365 done in 2.3 s: the donor-row median (V1) adopted
+py : C:\Users\<user>\Desktop\data set for reserch paper\engine\treeroute\pipeline\passes.py:362: FutureWarning: 
+The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no 
+longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the 
+relevant entries before the concat operation.
+At line:1 char:397
++ ... 0=Get-Date; py -3.9 -u -m treeroute smoke datasets/coral_draft --run- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\<user> th...ncat operation.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  _write_parquet_once(pd.concat(parts, ignore_index=True), path)
+[02:16:38] finished: {"verdict": "cannot_tell", "adopted": "identity_plain_unweighted", "band": 0.681143383510483, "pooled_mae_adopted": 7.460870762784871, "pooled_mae_reference": 9.20496835443038, "draft": true, "test_rows": 79, "ladder": {"leads": [183, 365], "common_rows": 79, "verdicts": {"0": "cannot_tell", "183": "declined", "365": "declined"}}}
+[02:16:38] checkpoint: the run finished; removed its 6 checkpoint folder(s) (0.000 GiB): bank-38c2f2a373f4d03d, bank-bd3c4051cbd64a49, bank-59c10ee0c88d0e78, bank-5b1365d7887c95e0, bank-943e2d0414aa6b42, bank-3e7eac9e0aaeed18
+smoke finished: D:\treeroute\coral_build\runs_live_smoke\coral_draft\smoke\20261020_4ba5d8fb

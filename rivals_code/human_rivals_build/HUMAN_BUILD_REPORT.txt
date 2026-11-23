@@ -1,0 +1,70 @@
+HUMAN RIVALS PART A: REVIEW FIXES DONE (2026-10-22)
+
+**ATTENTION**
+- Nothing ran on real data. The pm25 rival export (PID 18812) was using the PC the whole time. The coral DRY pass
+  was not run either, because it needs a pass over the 0.93 GB SST file.
+- Before you sign Part A you have 6 decisions to make (Part draft section 11):
+  1. EAC4: either download D1 with your ADS key, or choose plan R2 (MERRA-2 becomes the parity row).
+  2. NDVI H1 `standardize`. It is still false. The review recommends true, because the unscaled fit changes with
+     the units precipitation is stored in.
+  3. The H1 rule for missing climate values.
+  4. The coral BAA alert rule.
+  5. The VT0007 class edges and water-filling wording.
+  6. The BoM ACCESS-S archive check.
+- Do NOT `init` the pm25 human board before D1 is on disk. Init now refuses while eac4_lag1 is waiting. The other
+  route is `--allow-waiting` plus `lock --without ... --decision`.
+- Copy before delete: make the human `slim` copy of the coral export (still on disk) and of every later common
+  export before you delete that export.
+
+RESULT
+- Every valid issue from both reviews is fixed, under D:\treeroute\human_rivals_build only. LIVE and rivals_build
+  are untouched, nothing was downloaded, and no new __pycache__ was written.
+- Tests on the final code (tool hash 8f66da6a...), run once after the last edit:
+  - Build suites: 224 passed, 4 skipped (real-data checks), 0 failed (pt\integrate\final01.log).
+  - Real-data registry checks (HUMAN_REAL=1): 11 passed.
+  - review_tests: 60 passed. All 12 strict xfails now pass, and their markers are replaced by "FIXED" comments.
+- Fixes (file:line):
+  1. Defo VT0007 lead 1 was refused at the T1 timing rule. info_end is now 2000, from the registry option
+     driver_info_end (treecover2000 / datamask). The loss years stay on target_obs_end, so the T2 rule still guards
+     them. adapters/defo_vt0007.py:321-330 and registry/defo.yaml.
+     New test: a toy whose R8 has a steps-1 entry passes leads 0 and 1, and reading the target year still breaks T2
+     (tests_builder_b/test_integrate_equal_leads.py).
+  2. Labels reach a runner only inside its fit, and only for the set being fitted. The slim reader is now private.
+     index.py:188-257, methods.py:40-52.
+  3. slim_extra_columns may not be y, a history column, an h__/ngd__/nfit__ column, or anything that is not x__/c__.
+     slim.py:108-128, called from slim() and board.py:63.
+  4. NDVI scaling is left to you (decision 2 above).
+  5. F4 now takes its isotonic direction from the anomaly pair. maps.py:298-303 (spearman_sign(xa, t) at :302); spec 1.6 updated.
+  6. The coral Outlook at 365 d (scored without the safety net) keeps its row when its guard cannot be fitted. It is
+     refit, scored raw, and flagged "guard not run". board.py:958-994, 1034-1080, 1258.
+  7. The run ledger is now <index_root>/_ledger, shared by every out_root (lockfile.py:58-78). New `init --dry`:
+     DRY boards refuse refit, refs and score (lockfile.py:128-139).
+  8. Defo coverage is now {time_min: 2011} (board.py:236-262). The wrong comment is fixed.
+  9. Disclosures added: H1 reads target-month climate; MERRA-2 and Hansen t-1 may be published after the issue date;
+     GADM treated as fixed geography. These are in the registries and Part section 10.
+  B. Joiner and board:
+     - `join --pending` for fire.
+     - Placebos are no longer called "extension".
+     - print_beside order is applied.
+     - The no-published-forecast line is always printed, NDVI 6/12 are added, and there is a label column.
+     - Reference groups are an explicit map (config.REFERENCE_GROUP).
+     - "Baseline to beat" is printed only for pm25 (nowcast_baseline_note).
+     - The joint claim can now print NOT DECIDABLE.
+     - Common rows show anomaly R2 and guess-normal MAE.
+     - rows_covered is shown in the table.
+     - The L1 row of an F0 pick has its own label.
+  B. Prep: the Kraft prep resumes region by region, with a sha check per region (adapters/ndvi_kraft_prep.py).
+- Added: human\human_rivals_DRY.DRAFT.yaml, with the optional config key product_manifest_root.
+- Backups: _moved\20261022_review_fixes_before (copies). The superseded builder-A draft is in _moved\20261022_superseded.
+
+FILES
+- D:\treeroute\human_rivals_build\PREREGISTRATION_DRAFT_human_partA.txt: DRAFT, unsigned. All code and registry
+  hashes are filled in. Product manifests are marked TO FILL until your manifest commands run.
+- D:\treeroute\human_rivals_build\HUMAN_OWNER_COMMANDS.txt: the PowerShell steps, fitted around the common runs,
+  with time, RAM and disk.
+  - First gap after the pm25 export: coral slim, manifests, adapt, DRY pass.
+  - Then: pm25 slim and MERRA-2.
+  - Then: the defo prep, on a night alone.
+  - Then: NDVI slim, one lead at a time.
+  - Then: sign Part A, then the boards, then the join.
+  - Disk: free about 5-8 GB (fire and, once scored, pm25 exports) before the defo common export.

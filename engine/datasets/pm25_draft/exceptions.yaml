@@ -1,0 +1,76 @@
+# exceptions.yaml -- PM2.5 (APP_PLAN.md 1.2): provenance flags, disclosed defects and test-exposure disclosures
+# only. A disclosure only discloses: it cannot relax a time rule, hold a timing value or set a derived value.
+# The entries below are the disclosures the plan names for this package (plan 1.2 row 'exceptions.yaml'; plan
+# 7.2 row "PM2.5's GFED burn block"). Wording drafted by the agent on 2026-09-28; the owner confirms it.
+# Every 'owner' field reads 'UNSIGNED -- basis: ...': the entry is NOT signed; it names the ruling or plan row
+# behind it. 'date' is the date of that basis, not a signature date. The owner signs by replacing 'UNSIGNED'.
+entries:
+  - kind: test_exposure
+    column: burn_frac
+    decision: 'disclose (Q25 b: no special control arm on one problem; disclose)'
+    reason: "PM2.5's GFED burn block (BURN_COLS = burn_frac, burn_lag1; pm25_architecture.py:81) entered the model through a 2020-23 test-window screen (HEADLINE_QUESTIONS_AND_FIXES.md:218-221; APP_PLAN.md 7.2)"
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling Q25 b (HEADLINE_QUESTIONS_AND_FIXES.md:46)'
+    date: '2026-09-27'
+  - kind: test_exposure
+    column: burn_lag1
+    decision: 'disclose (Q25 b: no special control arm on one problem; disclose)'
+    reason: "PM2.5's GFED burn block (BURN_COLS = burn_frac, burn_lag1; pm25_architecture.py:81) entered the model through a 2020-23 test-window screen (HEADLINE_QUESTIONS_AND_FIXES.md:218-221; APP_PLAN.md 7.2)"
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling Q25 b (HEADLINE_QUESTIONS_AND_FIXES.md:46)'
+    date: '2026-09-27'
+  # ---- added 2026-10-05 with the ban-list install (ruling J, OWNER_RULINGS_2026-10-05.md), revised the same day for
+  # the AMENDED J3 (aglw_* watch) and for epo (kept once the last-value rule was wired). Disclosures only: the lags
+  # and bounds they mention are store facts (marked assumed where a ruling set them) and R8 rules, never set here.
+  - kind: provenance_flag
+    column: deeprec_twsa
+    decision: 'disclose (ruling J2 b: kept at an assumed lag-3 bound)'
+    reason: 'DeepRec is a CNN+LSTM reconstruction whose input time window is not documented (NetCDF attributes, provider pages and the EGU25-17055 abstract are silent; doi 10.1029/2025JH000889 unread, HTTP 403): the lag-3 bound is the owner''s assumed bound, not a provider fact. The model was also fitted on CSR GRACE/GRACE-FO months that include the 2020-23 test years (a driver product, not the target)'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J2 b (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: epo
+    decision: 'disclose (ruling J2 d: kept through the last-value rule; its window awaits the owner''s signature)'
+    reason: 'CPC issues no December EPO (INDEX_WINDOW_AUDIT.md:75; 22 of 264 panel months, every December). The engine''s last-value rule (ruling J2 d; treeroute/io/lastvalue.py, called by treeroute/pipeline/data.py:724-728) gives each December the same unit''s November value and counts the fills per column. December 2023 lies after the record''s last value (a tail, which the rule leaves to R30), so the nowcast''s 2023-12 test rows read FitContext''s 0-fill there: a month key on 1 of the 48 test months. Whether an interior December is filled depends on the next January being PRESENT, never on its size (lastvalue.py:32-34; the owner confirms this reading). The column has no store window yet, so G-LAG refuses it until the owner signs one (proposed {1, month, centred})'
+    owner: 'UNSIGNED -- basis: ruling J2 d (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    check: 'J2 a: spei_01m_lag12, spei_03m_lag12, spei_06m_lag12, V06_spei_12m_lag12, spei_24m_lag12, amo_lag12'
+    decision: 'disclose (ruling J2 a: kept through lag-12 columns, parents banned incomplete)'
+    reason: 'The SPEI block ends 2022-12 and the AMO source (amon.us.data) ends 2023-01, so the raw columns vanish in the 2023 test year. They enter only through their values 12 months earlier, built by the package feature script; the same-month SPEI and AMO signal is not used. The 12-month lag does NOT remove what the parents already hold from later years: SPEIbase is standardised over its whole record (review/v2/evidence/monthly_panel_v170_evidence.yaml:963, calibration period not recorded), and PSL''s AMO is detrended over its whole record (INDEX_WINDOW_AUDIT.md:56), so every lag-12 value still depends on data up to the end of each product''s record'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J2 a (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_cattle
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied the 2021 layer by INDIA''s FAOSTAT cattle head-count ratio (x1.0039 for 2022) and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_buffalo
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied the 2021 layer by INDIA''s FAOSTAT buffalo head-count ratio (x1.0027 for 2022) and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_horse
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied the 2021 layer by INDIA''s FAOSTAT horse head-count ratio (x0.7657 for 2022) and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_sheep
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied the 2021 layer by INDIA''s FAOSTAT sheep head-count ratio (x1.0596 for 2022) and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_goats
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied the 2021 layer by INDIA''s FAOSTAT goats head-count ratio (x1.1081 for 2022) and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: aglw_total_lsu
+    decision: 'disclose (ruling J3 as amended: watch, a lagged annual driver); the data fix is an OWNER DECISION'
+    reason: 'The Gridded Livestock 2022 and 2023 layers in the panel are not observations: fetch_livestock_extend.py (:49-50, :96-97) multiplied each species'' 2021 layer by INDIA''s FAOSTAT ratio (2022: horse x0.7657, goats x1.1081, sheep x1.0596, cattle x1.0039, buffalo x1.0027), so this LSU-weighted total shifts by their mix and wrote the result for EVERY region, not each country''s own ratio (the ruling''s ''national FAOSTAT ratios''). At the one-year lag the extended 2022 layer IS read: by every 2023 test row of the nowcast (a quarter of its test months) and by lead 6''s July-December 2023 targets (issue months January-June 2023); lead 12 and every fit and guard cut (at or before 2019) read only the real 2002-2021 layers, and the 2023 layer is never read. Options for the owner: (a) rebuild 2022-23 with each country''s own FAOSTAT ratio, (b) carry the real 2021 layer forward into 2022-23, (c) keep the data and this disclosure. The layers also use a year-matched optical land-cover mask (defo_ban.py:93-97), one year old at this lag'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended (OWNER_RULINGS_2026-10-05.md)'
+    date: '2026-10-05'

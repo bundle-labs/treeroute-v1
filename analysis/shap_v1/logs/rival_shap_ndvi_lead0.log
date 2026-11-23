@@ -1,0 +1,20 @@
+[2026-11-15 17:03:09 +    0.1s] rival SHAP ndvi lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-15 17:03:09 +    0.1s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-15 17:03:18 +    9.4s] test set: 95184 rows x 507 features (D:\treeroute\rival_export\ndvi\20261016_d1de3158\lead_0), read and hash-checked in 6.7 s
+[2026-11-15 17:03:48 +   39.0s] sample: 1000 explained rows, 15291 distinct background rows (per row: min 16, median 17, max 17)
+[2026-11-15 17:03:48 +   39.0s] exact duplicate columns merged into one player: {'c__ctx:top5:sph_kgkg_lag6': 'x__sph_kgkg_lag6', 'c__ctx:top5:era5l_slhf_lag1': 'x__era5l_slhf_lag1', 'c__ctx:top5:V07_total_ref_ET_mm_lag1': 'x__V07_total_ref_ET_mm_lag1', 'c__ctx:top5:era5l_d2m': 'x__era5l_d2m', 'c__ctx:top5:V01_mean_temp_C': 'x__V01_mean_temp_C'}
+[2026-11-15 17:03:50 +   40.8s] ridge: 730 design columns; saved predictions reproduced on 17451 of 95184 test rows (max |diff| 8.88e-16): FAIL
+[2026-11-15 17:03:50 +   40.8s] STOP S-EXACT: ridge does not reproduce its saved predictions; no SHAP value
+[2026-11-15 17:03:58 +   49.2s] lgbm: 1600 trees; saved predictions reproduced on 95184 of 95184 test rows (max |diff| 0): PASS
+[2026-11-15 17:09:09 +  360.4s] lgbm: interventional TreeSHAP over 1600 trees on 1000 rows (2 levels) in 307.7 s
+[2026-11-15 17:09:10 +  361.4s] rival_lgbm: 1000 rows, 503 players (477 nonzero), 117 variables (94 nonzero); additivity max 3.61e-16 / 3.61e-16; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-15 17:10:27 +  437.5s] rf: refit set 2680841 rows x 507 features read in 75.5 s (memmap)
+[2026-11-15 18:11:50 + 4120.9s] rf: rebuilt 300 trees in 3758.9 s; draws equal to the board's: True; saved predictions reproduced on 95184 of 95184 test rows (max |diff| 0): PASS
+[2026-11-15 18:15:40 + 4351.0s] rf: SHAP tree 50 of 300 (229.3 s)
+[2026-11-15 18:19:28 + 4579.4s] rf: SHAP tree 100 of 300 (457.7 s)
+[2026-11-15 18:23:15 + 4806.0s] rf: SHAP tree 150 of 300 (684.3 s)
+[2026-11-15 18:27:09 + 5040.2s] rf: SHAP tree 200 of 300 (918.5 s)
+[2026-11-15 18:30:57 + 5268.0s] rf: SHAP tree 250 of 300 (1146.3 s)
+[2026-11-15 18:34:51 + 5502.4s] rf: SHAP tree 300 of 300 (1380.7 s)
+[2026-11-15 18:34:52 + 5503.4s] rival_rf: 1000 rows, 503 players (477 nonzero), 117 variables (94 nonzero); additivity max 3.33e-16 / 3.33e-16; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-15 18:34:53 + 5503.5s] summary: {'ridge': 'stopped (a stop rule)', 'lgbm': 'done', 'rf': 'done'}

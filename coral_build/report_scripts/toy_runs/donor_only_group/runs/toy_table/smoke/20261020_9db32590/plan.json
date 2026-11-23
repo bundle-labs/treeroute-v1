@@ -1,0 +1,109 @@
+{
+ "bank_rows": {
+  "g_a": 36,
+  "g_b": 43,
+  "g_c": 43,
+  "g_d": 43
+ },
+ "context": [
+  "c_season",
+  "c_aux"
+ ],
+ "donor_only_groups": [
+  "g_a"
+ ],
+ "draft": {
+  "is_draft": false,
+  "stamp": "",
+  "stamped_verdicts": 0,
+  "where": []
+ },
+ "feature_lineage": {},
+ "feature_lineage_note": "vouched by the package owner (U2)",
+ "groups": 4,
+ "input": "table",
+ "kind": "smoke",
+ "lead_unit": "days",
+ "leads": [
+  183,
+  365
+ ],
+ "limits": [
+  "Type 3 (plan 4.1 step 10) is not built",
+  "table features are vouched by the package owner (owner ruling U2): the engine recomputes none of them and checks only the declared feature-end day (T-FEATEND); the G-DERIVED recompute and the look-ahead canary are not run on tables",
+  "the table option builds the neighbour router kind only (U3); per-unit and region tables are refused (O16)",
+  "the scored rows are the package's test marks (U1), not R18 (2)'s stride pick",
+  "the continuity row (continuity.csv), nearest-donor distances and distance bands, report.html and part_draft.md are not built (treeroute_report)",
+  "the band is derived from this run's own contrasts; registry/bands.csv and registry/index.csv are not written",
+  "'freeze' verdicts are refused: per-cut frozen pools are not built",
+  "a time-varying report stratum is reported per row (a string stratum per value, a numeric one by quartiles)"
+ ],
+ "links": [
+  "identity",
+  "log_c",
+  "arcsine"
+ ],
+ "listed_in_reports": [],
+ "max_feature_end_minus_issue_day": {
+  "0": -1,
+  "183": -1,
+  "365": -1
+ },
+ "not_headline_reasons": [
+  "smoke run: plumbing only (R21), smoke deltas carry no sign information"
+ ],
+ "overlap_blocks": [],
+ "package": "toy_table",
+ "phases": [
+  "plan",
+  "decision",
+  "test_pass",
+  "report",
+  "ladder_contract",
+  "ladder_lead_183",
+  "ladder_lead_365",
+  "ladder"
+ ],
+ "router_kind": "neighbour",
+ "scored_rows": {
+  "g_a": 0,
+  "g_b": 13,
+  "g_c": 15,
+  "g_d": 14
+ },
+ "strata": [
+  "source"
+ ],
+ "tree_features": 6,
+ "trees_per_group": 12,
+ "u2_vouched": [
+  "U2: features vouched by the package owner (owner ruling U2); the engine recomputes none of them",
+  "1. every feature and context value of a lead-L row uses only content dated strictly before its issue date, in the source's own day convention (publication delay disclosed per source in exceptions.yaml)",
+  "2. no feature reads the row's own label, a label of any test row, or any label dated on or after the issue date",
+  "3. the issue date equals the target date minus L days (checked by the engine: T-ISSUE)",
+  "4. the same row id means the same sample, with the same label, in every lead file (checked: T-LEADSET)",
+  "5. the target date is the label's last content day",
+  "6. key_feature_end is the last content day any of the row's feature windows may read; the engine checks that it is before the issue day on every row (T-FEATEND) but cannot check that the declaration is true",
+  "the G-DERIVED recompute and the look-ahead canary are not run on tables (U2)"
+ ],
+ "windows": {
+  "inner_fit": [
+   2000,
+   2004
+  ],
+  "inner_score": [
+   2005,
+   2006,
+   2007
+  ],
+  "test_years": [
+   2008,
+   2009,
+   2010,
+   2011
+  ],
+  "train_end": 2007,
+  "y0": 2000,
+  "y_end": 2011
+ }
+}

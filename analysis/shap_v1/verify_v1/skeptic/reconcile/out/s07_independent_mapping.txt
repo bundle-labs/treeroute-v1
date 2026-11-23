@@ -1,0 +1,259 @@
+﻿coral duplicates: {'importance': 0, 'families': 0, 'pairs': 0, 'pairs_order_ok': True}
+defo duplicates: {'importance': 0, 'families': 0, 'pairs': 0, 'pairs_order_ok': True}
+fire duplicates: {'importance': 0, 'families': 0, 'pairs': 0, 'pairs_order_ok': True}
+pm25 duplicates: {'importance': 0, 'families': 0, 'pairs': 0, 'pairs_order_ok': True}
+ndvi duplicates: {'importance': 0, 'families': 0, 'pairs': 0, 'pairs_order_ok': True}
+
+J | A | ok                                                   10
+J | B | ok                                                   10
+W | A | null-both                                            2
+W | B | null-both                                            2
+W/ci_high | A | ok                                           8
+W/ci_high | B | ok                                           8
+W/ci_low | A | ok                                            8
+W/ci_low | B | ok                                            8
+W/n_finite | A | ok                                          8
+W/n_finite | B | ok                                          8
+W/value | A | ok                                             8
+W/value | B | ok                                             8
+fam_share | A | null/absent official=0.0                     11
+fam_share | A | ok                                           114
+fam_share | B | ok                                           125
+imp/I | A | ok                                               7121
+imp/I | B | ok                                               7121
+imp/share | A | ok                                           7121
+imp/share | B | ok                                           7121
+imp/sign_determined | A | ok                                 7121
+imp/sign_determined | B | ok                                 7121
+imp/signed_mean | A | ok                                     7121
+imp/signed_mean | B | ok                                     7121
+imp_inactive_present_in_A |  | False                         898
+imp_inactive_present_in_B |  | False                         898
+item8 J == allv - structural zeros | A | True                5
+item8 J == allv - structural zeros | B | True                5
+item8 models_covered | A | ok                                5
+item8 models_covered | B | ok                                5
+item8 rows | A | ok                                          5
+item8 rows | B | ok                                          5
+item8 top10 names | A | ok                                   5
+item8 top10 names | B | ok                                   5
+item8 top10 share | A | ok                                   50
+item8 top10 share | B | ok                                   50
+main (no rival) keys | A | level,main_set,own_history_share_treeroute,rivals,treeroute_top3 1
+main (no rival) keys | B | level,main_set,own_history_share_treeroute,rivals,treeroute_top3 1
+main W | A | null-both                                       1
+main W | B | null-both                                       1
+main W/ci_high | A | ok                                      4
+main W/ci_high | B | ok                                      4
+main W/ci_low | A | ok                                       4
+main W/ci_low | B | ok                                       4
+main W/n_finite | A | ok                                     4
+main W/n_finite | B | ok                                     4
+main W/value | A | ok                                        4
+main W/value | B | ok                                        4
+main cons top3 | A | ok                                      4
+main cons top3 | B | ok                                      4
+main median rho/ci_high | A | ok                             4
+main median rho/ci_high | B | ok                             4
+main median rho/ci_low | A | ok                              4
+main median rho/ci_low | B | ok                              4
+main median rho/n_finite | A | ok                            4
+main median rho/n_finite | B | ok                            4
+main median rho/value | A | ok                               4
+main median rho/value | B | ok                               4
+main own_history_share_median_rival | A | absent             1
+main own_history_share_median_rival/ci_high | A | ok         3
+main own_history_share_median_rival/ci_high | B | ok         4
+main own_history_share_median_rival/ci_low | A | ok          3
+main own_history_share_median_rival/ci_low | B | ok          4
+main own_history_share_median_rival/n_finite | A | ok        3
+main own_history_share_median_rival/n_finite | B | ok        4
+main own_history_share_median_rival/value | A | ok           3
+main own_history_share_median_rival/value | B | ok           4
+main own_history_share_treeroute | A | absent                1
+main own_history_share_treeroute/ci_high | A | ok            3
+main own_history_share_treeroute/ci_high | B | ok            4
+main own_history_share_treeroute/ci_low | A | ok             3
+main own_history_share_treeroute/ci_low | B | ok             4
+main own_history_share_treeroute/n_finite | A | ok           3
+main own_history_share_treeroute/n_finite | B | ok           4
+main own_history_share_treeroute/value | A | ok              3
+main own_history_share_treeroute/value | B | ok              4
+main range max | A | ok                                      4
+main range max | B | ok                                      4
+main range min | A | ok                                      4
+main range min | B | ok                                      4
+main rbo/ci_high | A | ok                                    4
+main rbo/ci_high | B | ok                                    4
+main rbo/ci_low | A | ok                                     4
+main rbo/ci_low | B | ok                                     4
+main rbo/n_finite | A | ok                                   4
+main rbo/n_finite | B | ok                                   4
+main rbo/value | A | ok                                      4
+main rbo/value | B | ok                                      4
+main tr top3 | A | ok                                        4
+main tr top3 | B | ok                                        4
+mean_rho | A | null-both                                     2
+mean_rho | B | null-both                                     2
+mean_rho/ci_high | A | ok                                    8
+mean_rho/ci_high | B | ok                                    8
+mean_rho/ci_low | A | ok                                     8
+mean_rho/ci_low | B | ok                                     8
+mean_rho/n_finite | A | ok                                   8
+mean_rho/n_finite | B | ok                                   8
+mean_rho/value | A | ok                                      8
+mean_rho/value | B | ok                                      8
+n_nonzero | A | ok                                           50
+n_nonzero | B | ok                                           50
+pairs/jaccard_top10/ci_high | A | ok                         102
+pairs/jaccard_top10/ci_high | B | ok                         102
+pairs/jaccard_top10/ci_low | A | ok                          102
+pairs/jaccard_top10/ci_low | B | ok                          102
+pairs/jaccard_top10/n_finite | A | ok                        102
+pairs/jaccard_top10/n_finite | B | ok                        102
+pairs/jaccard_top10/value | A | ok                           102
+pairs/jaccard_top10/value | B | ok                           102
+pairs/jaccard_top20/ci_high | A | ok                         20
+pairs/jaccard_top20/ci_high | B | ok                         20
+pairs/jaccard_top20/ci_low | A | ok                          20
+pairs/jaccard_top20/ci_low | B | ok                          20
+pairs/jaccard_top20/n_finite | A | ok                        20
+pairs/jaccard_top20/n_finite | B | ok                        20
+pairs/jaccard_top20/value | A | ok                           20
+pairs/jaccard_top20/value | B | ok                           20
+pairs/jaccard_top5/ci_high | A | ok                          102
+pairs/jaccard_top5/ci_high | B | ok                          102
+pairs/jaccard_top5/ci_low | A | ok                           102
+pairs/jaccard_top5/ci_low | B | ok                           102
+pairs/jaccard_top5/n_finite | A | ok                         102
+pairs/jaccard_top5/n_finite | B | ok                         102
+pairs/jaccard_top5/value | A | ok                            102
+pairs/jaccard_top5/value | B | ok                            102
+pairs/kendall_tau_b/ci_high | A | ok                         102
+pairs/kendall_tau_b/ci_high | B | ok                         102
+pairs/kendall_tau_b/ci_low | A | ok                          102
+pairs/kendall_tau_b/ci_low | B | ok                          102
+pairs/kendall_tau_b/n_finite | A | ok                        102
+pairs/kendall_tau_b/n_finite | B | ok                        102
+pairs/kendall_tau_b/value | A | ok                           102
+pairs/kendall_tau_b/value | B | ok                           102
+pairs/rbo_p0.9/ci_high | A | ok                              102
+pairs/rbo_p0.9/ci_high | B | ok                              102
+pairs/rbo_p0.9/ci_low | A | ok                               102
+pairs/rbo_p0.9/ci_low | B | ok                               102
+pairs/rbo_p0.9/n_finite | A | ok                             102
+pairs/rbo_p0.9/n_finite | B | ok                             102
+pairs/rbo_p0.9/value | A | ok                                102
+pairs/rbo_p0.9/value | B | ok                                102
+pairs/rbo_p0.95/ci_high | A | ok                             102
+pairs/rbo_p0.95/ci_high | B | ok                             102
+pairs/rbo_p0.95/ci_low | A | ok                              102
+pairs/rbo_p0.95/ci_low | B | ok                              102
+pairs/rbo_p0.95/n_finite | A | ok                            102
+pairs/rbo_p0.95/n_finite | B | ok                            102
+pairs/rbo_p0.95/value | A | ok                               102
+pairs/rbo_p0.95/value | B | ok                               102
+pairs/sign_agreement_top10/ci_high | A | DIFF                95
+pairs/sign_agreement_top10/ci_high | A | ok                  7
+pairs/sign_agreement_top10/ci_high | B | DIFF                95
+pairs/sign_agreement_top10/ci_high | B | ok                  7
+pairs/sign_agreement_top10/ci_low | A | DIFF                 95
+pairs/sign_agreement_top10/ci_low | A | ok                   7
+pairs/sign_agreement_top10/ci_low | B | DIFF                 95
+pairs/sign_agreement_top10/ci_low | B | ok                   7
+pairs/sign_agreement_top10/n_finite | A | DIFF               95
+pairs/sign_agreement_top10/n_finite | A | ok                 7
+pairs/sign_agreement_top10/n_finite | B | DIFF               95
+pairs/sign_agreement_top10/n_finite | B | ok                 7
+pairs/sign_agreement_top10/value | A | ok                    102
+pairs/sign_agreement_top10/value | B | ok                    102
+pairs/sign_n_determined | A | ok                             102
+pairs/sign_n_determined | B | ok                             102
+pairs/spearman/ci_high | A | ok                              102
+pairs/spearman/ci_high | B | ok                              102
+pairs/spearman/ci_low | A | ok                               102
+pairs/spearman/ci_low | B | ok                               102
+pairs/spearman/n_finite | A | ok                             102
+pairs/spearman/n_finite | B | ok                             102
+pairs/spearman/value | A | ok                                102
+pairs/spearman/value | B | ok                                102
+pairs/spearman_top20_union/ci_high | A | ok                  102
+pairs/spearman_top20_union/ci_high | B | ok                  102
+pairs/spearman_top20_union/ci_low | A | ok                   102
+pairs/spearman_top20_union/ci_low | B | ok                   102
+pairs/spearman_top20_union/n_finite | A | ok                 102
+pairs/spearman_top20_union/n_finite | B | ok                 102
+pairs/spearman_top20_union/value | A | ok                    102
+pairs/spearman_top20_union/value | B | ok                    102
+pairs/tvd/ci_high | A | ok                                   102
+pairs/tvd/ci_high | B | ok                                   102
+pairs/tvd/ci_low | A | ok                                    102
+pairs/tvd/ci_low | B | ok                                    102
+pairs/tvd/n_finite | A | ok                                  102
+pairs/tvd/n_finite | B | ok                                  102
+pairs/tvd/value | A | ok                                     102
+pairs/tvd/value | B | ok                                     102
+pairs/tvd_family/ci_high | A | ok                            51
+pairs/tvd_family/ci_high | B | ok                            51
+pairs/tvd_family/ci_low | A | ok                             51
+pairs/tvd_family/ci_low | B | ok                             51
+pairs/tvd_family/n_finite | A | ok                           51
+pairs/tvd_family/n_finite | B | ok                           51
+pairs/tvd_family/value | A | ok                              51
+pairs/tvd_family/value | B | ok                              51
+stability | A | ok                                           50
+stability | B | ok                                           50
+structural_zeros | A | ok                                    10
+structural_zeros | B | ok                                    10
+bad (first 40): 572
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.9)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.9)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.7)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.8339285714285682)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.7777777777777778)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.8753472222222203)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.9972222222222223)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.7142857142857143)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.8)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.7777777777777778)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.8888888888888888)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 1.0)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.5714285714285714)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.75)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.7777777777777778)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.875)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.5714285714285714)
+    ('pairs/sign_agreement_top10/ci_high', 'A', nan, 0.7777777777777778)
+    ('pairs/sign_agreement_top10/n_finite', 'A', 0, 2000)
+    ('pairs/sign_agreement_top10/ci_low', 'A', nan, 0.875)
+
+('coral', 'feature') {'n_structural_zero': 1, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('coral', 'variable') {'n_structural_zero': 1, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('defo', 'feature') {'n_structural_zero': 29, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('defo', 'variable') {'n_structural_zero': 22, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('fire', 'feature') {'n_structural_zero': 23, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('fire', 'variable') {'n_structural_zero': 23, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('pm25', 'feature') {'n_structural_zero': 22, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('pm25', 'variable') {'n_structural_zero': 22, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('ndvi', 'feature') {'n_structural_zero': 24, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}
+('ndvi', 'variable') {'n_structural_zero': 21, 'max_abs_phi_on_any_row': 0.0, 'AW3_header_truncated_at_30': False}

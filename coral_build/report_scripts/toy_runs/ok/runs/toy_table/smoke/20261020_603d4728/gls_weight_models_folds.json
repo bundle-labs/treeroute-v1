@@ -1,0 +1,286 @@
+{
+ "R25:fold=g_a": {
+  "flags": [],
+  "input_hashes": {
+   "answers_bank": "e78283650841aaa408da325acf3be8b26681be354cf2b5bdc6c0fe4396d7aa70",
+   "answers_bank_cut": "268f0588b1e43fcd43036b8241f13984b34ffebaacad94f0755e0fe8157cd3a8",
+   "blocks": "bbb01d7e8357b20682fee26f92aa441f434d253248a3d6c18b9632194bd019c8",
+   "blocks_sha256": "467d2654f72be526bdb786172b8c336588def8c72870584091c1f1f104910e0e",
+   "clip_high": "40e6e4e58d0ef6e62b4827e7f0984822e47bd6cdf8118d1f5aa1fcf731bfc97b",
+   "clip_low": "b1ba099c3a0b77fa37e6109e0007ee22bb0aff8c94a0ef3562bb307f1f90c939",
+   "constants": "4088bf894ad71a67beb9f849012581fa469c5f099a5bd414b5e6e650eceefb54",
+   "cut": "08103202cf42e3a6f06ead35f9a9bf11a077d0eff1e8170ce73f0f5f19ded4f7",
+   "donor_row_key_hash": "1364539861d803375c6bd2a18b07b41710aac2f25576428d0c7c980bd07eeed1",
+   "donor_rows": "2fca346db656187102ce806ac732e06a62df0dbb2829e511a770556d398e1a6e",
+   "fit_warnings": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "fold": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "implementation": "7ad33632645bd294afb9c6b71c0b7a4a23d44642ed5592afecd634f912c8e891",
+   "lead": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "sigma_floor": "8f8277c9908fcbb095c422c72cc4d9814d3b8125a6a7946285fba1d7a5be84c1",
+   "sigma_served": "f98fedfc81e82a417c62512283ef6104496a47ee3c1a74060d1f2d388e718ac8",
+   "trees": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+  },
+  "inputs": {
+   "answers_bank": "the tree answers of the GLS target come from the bank of fit_ctx's cut (approved contract); at lead 0 the decision surface's GLS target therefore reads the FIT-cut bank, not the L6 b inner-cut bank (owner ruling pending)",
+   "answers_bank_cut": 733041,
+   "blocks": [
+    [
+     "g_b"
+    ],
+    [
+     "g_c"
+    ],
+    [
+     "g_d"
+    ]
+   ],
+   "blocks_sha256": "bbb01d7e8357b20682fee26f92aa441f434d253248a3d6c18b9632194bd019c8",
+   "clip_high": 31.279567146301268,
+   "clip_low": 18.281443309783935,
+   "constants": {
+    "C13.gls_bootstrap": true,
+    "C13.gls_clip_quantiles": [
+     0.05,
+     0.95
+    ],
+    "C13.gls_max_depth": 8,
+    "C13.gls_max_features": 1.0,
+    "C13.gls_min_leaf": 20,
+    "C13.gls_random_state": 0,
+    "C13.gls_sigma_floor_share": 0.01,
+    "C13.gls_threads": 4,
+    "C13.gls_trees": 120,
+    "C13.gls_weight_ratio_cap": 100.0
+   },
+   "cut": 731946,
+   "donor_rows": 54,
+   "fit_warnings": [],
+   "fold": 0,
+   "implementation": "sklearnex.ensemble._forest.RandomForestRegressor",
+   "lead": 0,
+   "sigma_floor": 0.29562375866156887,
+   "sigma_served": "out-of-bag on the fitted donor rows, the whole forest elsewhere (L5 c)",
+   "trees": 120
+  },
+  "margins": {},
+  "rule_id": "R25",
+  "value": {
+   "clip_high": 31.279567146301268,
+   "clip_low": 18.281443309783935,
+   "sigma_floor": 0.29562375866156887
+  }
+ },
+ "R25:fold=g_b": {
+  "flags": [],
+  "input_hashes": {
+   "answers_bank": "e78283650841aaa408da325acf3be8b26681be354cf2b5bdc6c0fe4396d7aa70",
+   "answers_bank_cut": "268f0588b1e43fcd43036b8241f13984b34ffebaacad94f0755e0fe8157cd3a8",
+   "blocks": "ed6e7cad7ebc8816f2e4554760de028d15075406fb8bf32491d76e448d30c041",
+   "blocks_sha256": "f8a986d373bce79d8fc83232ed303b8e46b35ce482267de35e99eb240c6f711f",
+   "clip_high": "5b810c3e2a2343c8d32b00d784f8d5e690240fbca488dcd4bc5e01407230d62f",
+   "clip_low": "d57f5181c98406f3a2e76c4fb0578d1d60edca34a8fb4f684a240e22ea7985d2",
+   "constants": "4088bf894ad71a67beb9f849012581fa469c5f099a5bd414b5e6e650eceefb54",
+   "cut": "08103202cf42e3a6f06ead35f9a9bf11a077d0eff1e8170ce73f0f5f19ded4f7",
+   "donor_row_key_hash": "e63d6235b3ef46ca8dd2e141aeecca98b74b309af2374fd7ae2b4fe812f4c33c",
+   "donor_rows": "2fca346db656187102ce806ac732e06a62df0dbb2829e511a770556d398e1a6e",
+   "fit_warnings": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "fold": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+   "implementation": "7ad33632645bd294afb9c6b71c0b7a4a23d44642ed5592afecd634f912c8e891",
+   "lead": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "sigma_floor": "08ebec30c6579f4f51c80e8043d1f4816cf36d603c56572a4aa2c2cdcddb1cf6",
+   "sigma_served": "f98fedfc81e82a417c62512283ef6104496a47ee3c1a74060d1f2d388e718ac8",
+   "trees": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+  },
+  "inputs": {
+   "answers_bank": "the tree answers of the GLS target come from the bank of fit_ctx's cut (approved contract); at lead 0 the decision surface's GLS target therefore reads the FIT-cut bank, not the L6 b inner-cut bank (owner ruling pending)",
+   "answers_bank_cut": 733041,
+   "blocks": [
+    [
+     "g_a"
+    ],
+    [
+     "g_c"
+    ],
+    [
+     "g_d"
+    ]
+   ],
+   "blocks_sha256": "ed6e7cad7ebc8816f2e4554760de028d15075406fb8bf32491d76e448d30c041",
+   "clip_high": 32.69568271636963,
+   "clip_low": 19.752697658538818,
+   "constants": {
+    "C13.gls_bootstrap": true,
+    "C13.gls_clip_quantiles": [
+     0.05,
+     0.95
+    ],
+    "C13.gls_max_depth": 8,
+    "C13.gls_max_features": 1.0,
+    "C13.gls_min_leaf": 20,
+    "C13.gls_random_state": 0,
+    "C13.gls_sigma_floor_share": 0.01,
+    "C13.gls_threads": 4,
+    "C13.gls_trees": 120,
+    "C13.gls_weight_ratio_cap": 100.0
+   },
+   "cut": 731946,
+   "donor_rows": 54,
+   "fit_warnings": [],
+   "fold": 1,
+   "implementation": "sklearnex.ensemble._forest.RandomForestRegressor",
+   "lead": 0,
+   "sigma_floor": 0.2921263700276482,
+   "sigma_served": "out-of-bag on the fitted donor rows, the whole forest elsewhere (L5 c)",
+   "trees": 120
+  },
+  "margins": {},
+  "rule_id": "R25",
+  "value": {
+   "clip_high": 32.69568271636963,
+   "clip_low": 19.752697658538818,
+   "sigma_floor": 0.2921263700276482
+  }
+ },
+ "R25:fold=g_c": {
+  "flags": [],
+  "input_hashes": {
+   "answers_bank": "e78283650841aaa408da325acf3be8b26681be354cf2b5bdc6c0fe4396d7aa70",
+   "answers_bank_cut": "268f0588b1e43fcd43036b8241f13984b34ffebaacad94f0755e0fe8157cd3a8",
+   "blocks": "71aef56befebb11648f8c2946ce500e1aa951c3b361f9efdf0085ca57542a0db",
+   "blocks_sha256": "5dc178254fdf488ffd8d846d99fa57dc5149b9f1de6f4d2cee0d2bd2285cf0fb",
+   "clip_high": "f34ad9f5682498bb9075092b221b9c26d9a27ce47a17cfffb91dca3d53613160",
+   "clip_low": "a404452ca9cfd2f5cdc513ceafbdb06e57b77fb9d1fecd5c365df9a1b87981b7",
+   "constants": "4088bf894ad71a67beb9f849012581fa469c5f099a5bd414b5e6e650eceefb54",
+   "cut": "08103202cf42e3a6f06ead35f9a9bf11a077d0eff1e8170ce73f0f5f19ded4f7",
+   "donor_row_key_hash": "0d348c3b29e4a1afe2936e20e4c2bd5c726bee5408669747935071887d3a071b",
+   "donor_rows": "7688b6ef52555962d008fff894223582c484517cea7da49ee67800adc7fc8866",
+   "fit_warnings": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "fold": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+   "implementation": "7ad33632645bd294afb9c6b71c0b7a4a23d44642ed5592afecd634f912c8e891",
+   "lead": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "sigma_floor": "1f0a28813cbd25fc96674f1b872290cda3ed67fdacf9fff3e25168a5c4c1d903",
+   "sigma_served": "f98fedfc81e82a417c62512283ef6104496a47ee3c1a74060d1f2d388e718ac8",
+   "trees": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+  },
+  "inputs": {
+   "answers_bank": "the tree answers of the GLS target come from the bank of fit_ctx's cut (approved contract); at lead 0 the decision surface's GLS target therefore reads the FIT-cut bank, not the L6 b inner-cut bank (owner ruling pending)",
+   "answers_bank_cut": 733041,
+   "blocks": [
+    [
+     "g_a"
+    ],
+    [
+     "g_b"
+    ],
+    [
+     "g_d"
+    ]
+   ],
+   "blocks_sha256": "71aef56befebb11648f8c2946ce500e1aa951c3b361f9efdf0085ca57542a0db",
+   "clip_high": 32.912901878356934,
+   "clip_low": 20.08178424835205,
+   "constants": {
+    "C13.gls_bootstrap": true,
+    "C13.gls_clip_quantiles": [
+     0.05,
+     0.95
+    ],
+    "C13.gls_max_depth": 8,
+    "C13.gls_max_features": 1.0,
+    "C13.gls_min_leaf": 20,
+    "C13.gls_random_state": 0,
+    "C13.gls_sigma_floor_share": 0.01,
+    "C13.gls_threads": 4,
+    "C13.gls_trees": 120,
+    "C13.gls_weight_ratio_cap": 100.0
+   },
+   "cut": 731946,
+   "donor_rows": 56,
+   "fit_warnings": [],
+   "fold": 2,
+   "implementation": "sklearnex.ensemble._forest.RandomForestRegressor",
+   "lead": 0,
+   "sigma_floor": 0.2926662889235767,
+   "sigma_served": "out-of-bag on the fitted donor rows, the whole forest elsewhere (L5 c)",
+   "trees": 120
+  },
+  "margins": {},
+  "rule_id": "R25",
+  "value": {
+   "clip_high": 32.912901878356934,
+   "clip_low": 20.08178424835205,
+   "sigma_floor": 0.2926662889235767
+  }
+ },
+ "R25:fold=g_d": {
+  "flags": [],
+  "input_hashes": {
+   "answers_bank": "e78283650841aaa408da325acf3be8b26681be354cf2b5bdc6c0fe4396d7aa70",
+   "answers_bank_cut": "268f0588b1e43fcd43036b8241f13984b34ffebaacad94f0755e0fe8157cd3a8",
+   "blocks": "a285a1376ab8ee1880c0c08070a35d71a9f912062e6de09df4eef97ced386d0f",
+   "blocks_sha256": "6846f0383ed334de5fb0bf3b1720142f4557b24e6ad2224909780d1201bcd212",
+   "clip_high": "4538288dc3bcc8311c651aabc0997337f757d23e4acfb33224dc314715d456bc",
+   "clip_low": "bd4484209e7896c743720b1c8ef3b373c59f562c1b63e8ae84ccedb36df31c88",
+   "constants": "4088bf894ad71a67beb9f849012581fa469c5f099a5bd414b5e6e650eceefb54",
+   "cut": "08103202cf42e3a6f06ead35f9a9bf11a077d0eff1e8170ce73f0f5f19ded4f7",
+   "donor_row_key_hash": "e063c3c659dce10c7838df1251b77c3969f0ed37ebfd948cc3773456048ab55b",
+   "donor_rows": "02d20bbd7e394ad5999a4cebabac9619732c343a4cac99470c03e23ba2bdc2bc",
+   "fit_warnings": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "fold": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+   "implementation": "7ad33632645bd294afb9c6b71c0b7a4a23d44642ed5592afecd634f912c8e891",
+   "lead": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "sigma_floor": "f456ba48930077792a43dc06860b09fd335c00d1f00c14ba2ef47141fb471c4b",
+   "sigma_served": "f98fedfc81e82a417c62512283ef6104496a47ee3c1a74060d1f2d388e718ac8",
+   "trees": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+  },
+  "inputs": {
+   "answers_bank": "the tree answers of the GLS target come from the bank of fit_ctx's cut (approved contract); at lead 0 the decision surface's GLS target therefore reads the FIT-cut bank, not the L6 b inner-cut bank (owner ruling pending)",
+   "answers_bank_cut": 733041,
+   "blocks": [
+    [
+     "g_a"
+    ],
+    [
+     "g_b"
+    ],
+    [
+     "g_c"
+    ]
+   ],
+   "blocks_sha256": "a285a1376ab8ee1880c0c08070a35d71a9f912062e6de09df4eef97ced386d0f",
+   "clip_high": 30.695503425598144,
+   "clip_low": 18.996076583862305,
+   "constants": {
+    "C13.gls_bootstrap": true,
+    "C13.gls_clip_quantiles": [
+     0.05,
+     0.95
+    ],
+    "C13.gls_max_depth": 8,
+    "C13.gls_max_features": 1.0,
+    "C13.gls_min_leaf": 20,
+    "C13.gls_random_state": 0,
+    "C13.gls_sigma_floor_share": 0.01,
+    "C13.gls_threads": 4,
+    "C13.gls_trees": 120,
+    "C13.gls_weight_ratio_cap": 100.0
+   },
+   "cut": 731946,
+   "donor_rows": 55,
+   "fit_warnings": [],
+   "fold": 3,
+   "implementation": "sklearnex.ensemble._forest.RandomForestRegressor",
+   "lead": 0,
+   "sigma_floor": 0.2834201364971426,
+   "sigma_served": "out-of-bag on the fitted donor rows, the whole forest elsewhere (L5 c)",
+   "trees": 120
+  },
+  "margins": {},
+  "rule_id": "R25",
+  "value": {
+   "clip_high": 30.695503425598144,
+   "clip_low": 18.996076583862305,
+   "sigma_floor": 0.2834201364971426
+  }
+ }
+}

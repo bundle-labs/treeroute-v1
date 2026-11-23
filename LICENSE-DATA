@@ -1,0 +1,32 @@
+Data licence: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Mohammed Nadir Benkaddour
+
+The archive's own data files are released under the Creative Commons
+Attribution 4.0 International licence (CC BY 4.0). Its legal code:
+https://creativecommons.org/licenses/by/4.0/legalcode [verify at packaging]
+
+This licence covers:
+
+- records/ (the frozen fact sheet, the registry records, the project
+  documents, the earlier-run records and the outputs of the paper checks),
+  except its scripts;
+- runs/;
+- rival_boards/;
+- evidence/;
+- the data files in analysis/ (every file there except its scripts);
+- rebuild/inputs/;
+- the data and record files in coral_build/, the record files of the coral
+  table builds among them.
+
+The code is under the MIT licence (LICENSE): engine/ (with its own copy,
+engine/LICENSE), versions/, rivals_code/, environment/, the scripts in
+coral_build/, rebuild/ except rebuild/inputs/, and the scripts in analysis/
+and records/.
+
+Third-party values inside these data files (the labels inside the row-level
+predictions, the MERRA-2 values of the PM2.5 published rivals, the sample
+events of the Global Coral Bleaching Database in the coral rebuild table, and
+the per-region tree-cover statistics in the forest-loss census) keep their
+providers' terms. THIRD_PARTY_NOTICES.md lists them with the credit each
+provider asks for.

@@ -1,0 +1,529 @@
+{
+ "adopted_arm": "arcsine_corrector_gls",
+ "adopted_column": "arm__arcsine_corrector_gls",
+ "adoption_file": "adoption.json",
+ "adoption_sha256": "2106a36efee4f9fc0650ed7c821a6f8f73c3fdd10c21674f7c8a24b27d80da2f",
+ "alarm_origin": "owner ruling AE3: the twin-disagreement alarm was designed AFTER the engine v1 headline runs, from the diagnosis of Parts 601-604. Its effect on any engine v1 run is a POST-HOC replay, labelled post-hoc. Only runs on new data under engine v2 count as pre-registered for the alarm.",
+ "batch_rule": "AE1 amendment: a batch is the rows sharing the issue calendar month (a grid step of one month or more: the issue step itself; a finer step or a day-dated row: the calendar month of the issue's first day); a batch below A8.alarm_min_batch_rows rows is not tested",
+ "batches": [
+  {
+   "batch": "2016-01",
+   "fired": true,
+   "gap": 0.7674046436250255,
+   "ratio": 2.253329351092099,
+   "rows": 31,
+   "tested": true
+  },
+  {
+   "batch": "2016-02",
+   "fired": true,
+   "gap": 1.2261366047435578,
+   "ratio": 3.600303468149318,
+   "rows": 45,
+   "tested": true
+  },
+  {
+   "batch": "2016-03",
+   "fired": true,
+   "gap": 1.7208184418140853,
+   "ratio": 5.052837163616298,
+   "rows": 96,
+   "tested": true
+  },
+  {
+   "batch": "2016-04",
+   "fired": true,
+   "gap": 7.1812957737293015,
+   "ratio": 21.086430321009047,
+   "rows": 107,
+   "tested": true
+  },
+  {
+   "batch": "2016-05",
+   "fired": true,
+   "gap": 5.894119103250215,
+   "ratio": 17.306894979744214,
+   "rows": 177,
+   "tested": true
+  },
+  {
+   "batch": "2016-06",
+   "fired": true,
+   "gap": 9.91241670782592,
+   "ratio": 29.105817502602708,
+   "rows": 51,
+   "tested": true
+  },
+  {
+   "batch": "2016-07",
+   "fired": false,
+   "gap": 8.694501734683346,
+   "ratio": 25.529655201638473,
+   "rows": 16,
+   "tested": false
+  },
+  {
+   "batch": "2016-08",
+   "fired": true,
+   "gap": 1.252091232594229,
+   "ratio": 3.6765140113333215,
+   "rows": 38,
+   "tested": true
+  },
+  {
+   "batch": "2016-09",
+   "fired": false,
+   "gap": 0.515291631910405,
+   "ratio": 1.5130502117774736,
+   "rows": 198,
+   "tested": true
+  },
+  {
+   "batch": "2016-10",
+   "fired": false,
+   "gap": 0.23015180439661453,
+   "ratio": 0.675794472136534,
+   "rows": 54,
+   "tested": true
+  },
+  {
+   "batch": "2016-11",
+   "fired": false,
+   "gap": 0.6063503870241632,
+   "ratio": 1.7804259271529963,
+   "rows": 41,
+   "tested": true
+  },
+  {
+   "batch": "2016-12",
+   "fired": false,
+   "gap": 0.19954421548584267,
+   "ratio": 0.5859214448728322,
+   "rows": 19,
+   "tested": false
+  },
+  {
+   "batch": "2017-01",
+   "fired": false,
+   "gap": 0.14085232850651824,
+   "ratio": 0.4135845262730617,
+   "rows": 17,
+   "tested": false
+  },
+  {
+   "batch": "2017-02",
+   "fired": false,
+   "gap": 1.2917950696922191,
+   "ratio": 3.793096341433992,
+   "rows": 27,
+   "tested": false
+  },
+  {
+   "batch": "2017-03",
+   "fired": true,
+   "gap": 1.2821988416796517,
+   "ratio": 3.7649189484248144,
+   "rows": 38,
+   "tested": true
+  },
+  {
+   "batch": "2017-04",
+   "fired": false,
+   "gap": 0.4034938986906849,
+   "ratio": 1.1847786594194287,
+   "rows": 42,
+   "tested": true
+  },
+  {
+   "batch": "2017-05",
+   "fired": false,
+   "gap": 0.3668735537035515,
+   "ratio": 1.0772503835715874,
+   "rows": 88,
+   "tested": true
+  },
+  {
+   "batch": "2017-06",
+   "fired": false,
+   "gap": 0.2723196995814882,
+   "ratio": 0.7996120130951205,
+   "rows": 67,
+   "tested": true
+  },
+  {
+   "batch": "2017-07",
+   "fired": false,
+   "gap": 0.06390677907813329,
+   "ratio": 0.1876494001264865,
+   "rows": 66,
+   "tested": true
+  },
+  {
+   "batch": "2017-08",
+   "fired": false,
+   "gap": 0.18458134310110058,
+   "ratio": 0.5419859803154149,
+   "rows": 33,
+   "tested": true
+  },
+  {
+   "batch": "2017-09",
+   "fired": false,
+   "gap": 0.13612654181675563,
+   "ratio": 0.3997082043827738,
+   "rows": 31,
+   "tested": true
+  },
+  {
+   "batch": "2017-10",
+   "fired": false,
+   "gap": 0.3103058592580743,
+   "ratio": 0.9111507290067051,
+   "rows": 44,
+   "tested": true
+  },
+  {
+   "batch": "2017-11",
+   "fired": false,
+   "gap": 0.12070341670471349,
+   "ratio": 0.3544213002843519,
+   "rows": 70,
+   "tested": true
+  },
+  {
+   "batch": "2017-12",
+   "fired": true,
+   "gap": 1.4787610493696275,
+   "ratio": 4.342084327319376,
+   "rows": 42,
+   "tested": true
+  },
+  {
+   "batch": "2018-01",
+   "fired": false,
+   "gap": 0.04246530454908144,
+   "ratio": 0.12469082372436871,
+   "rows": 16,
+   "tested": false
+  },
+  {
+   "batch": "2018-02",
+   "fired": false,
+   "gap": 0.032722802428263066,
+   "ratio": 0.09608392622344099,
+   "rows": 17,
+   "tested": false
+  },
+  {
+   "batch": "2018-03",
+   "fired": false,
+   "gap": 0.18402212458484699,
+   "ratio": 0.5403439476448852,
+   "rows": 21,
+   "tested": false
+  },
+  {
+   "batch": "2018-04",
+   "fired": false,
+   "gap": 0.037063993037665124,
+   "ratio": 0.10883095909601097,
+   "rows": 43,
+   "tested": true
+  },
+  {
+   "batch": "2018-05",
+   "fired": false,
+   "gap": 0.14400467492371513,
+   "ratio": 0.4228407573444893,
+   "rows": 81,
+   "tested": true
+  },
+  {
+   "batch": "2018-06",
+   "fired": false,
+   "gap": 0.2133097787665038,
+   "ratio": 0.6263412521183377,
+   "rows": 18,
+   "tested": false
+  },
+  {
+   "batch": "2018-07",
+   "fired": false,
+   "gap": 0.03607659970070333,
+   "ratio": 0.10593167720381547,
+   "rows": 63,
+   "tested": true
+  },
+  {
+   "batch": "2018-08",
+   "fired": false,
+   "gap": 0.08715200796287194,
+   "ratio": 0.2559043383184286,
+   "rows": 44,
+   "tested": true
+  },
+  {
+   "batch": "2018-09",
+   "fired": false,
+   "gap": 0.020944343237739114,
+   "ratio": 0.06149885037704485,
+   "rows": 51,
+   "tested": true
+  },
+  {
+   "batch": "2018-10",
+   "fired": false,
+   "gap": 0.08157199957659803,
+   "ratio": 0.2395197662669271,
+   "rows": 42,
+   "tested": true
+  },
+  {
+   "batch": "2018-11",
+   "fired": false,
+   "gap": 0.04386856570665425,
+   "ratio": 0.12881121780834212,
+   "rows": 31,
+   "tested": true
+  },
+  {
+   "batch": "2018-12",
+   "fired": false,
+   "gap": 0.04331399862777589,
+   "ratio": 0.12718284314789818,
+   "rows": 16,
+   "tested": false
+  },
+  {
+   "batch": "2019-01",
+   "fired": false,
+   "gap": 0.086330060910259,
+   "ratio": 0.2534908561560749,
+   "rows": 5,
+   "tested": false
+  },
+  {
+   "batch": "2019-02",
+   "fired": false,
+   "gap": 0.7847251672234178,
+   "ratio": 2.304187584130901,
+   "rows": 20,
+   "tested": false
+  },
+  {
+   "batch": "2019-03",
+   "fired": false,
+   "gap": 0.12176001272865866,
+   "ratio": 0.35752378194481765,
+   "rows": 26,
+   "tested": false
+  },
+  {
+   "batch": "2019-04",
+   "fired": false,
+   "gap": 0.19731665462214454,
+   "ratio": 0.579380660532768,
+   "rows": 42,
+   "tested": true
+  },
+  {
+   "batch": "2019-05",
+   "fired": true,
+   "gap": 0.8094658937477364,
+   "ratio": 2.376833750280282,
+   "rows": 36,
+   "tested": true
+  },
+  {
+   "batch": "2019-06",
+   "fired": true,
+   "gap": 1.44580120915371,
+   "ratio": 4.24530438731927,
+   "rows": 76,
+   "tested": true
+  },
+  {
+   "batch": "2019-07",
+   "fired": false,
+   "gap": 0.13098094961610696,
+   "ratio": 0.384599208065392,
+   "rows": 64,
+   "tested": true
+  },
+  {
+   "batch": "2019-08",
+   "fired": false,
+   "gap": 0.04543327160538431,
+   "ratio": 0.13340566189559758,
+   "rows": 16,
+   "tested": false
+  },
+  {
+   "batch": "2019-09",
+   "fired": false,
+   "gap": 0.14158148892980146,
+   "ratio": 0.4157255591650149,
+   "rows": 52,
+   "tested": true
+  },
+  {
+   "batch": "2019-10",
+   "fired": false,
+   "gap": 0.20277714272605077,
+   "ratio": 0.5954142853199453,
+   "rows": 53,
+   "tested": true
+  },
+  {
+   "batch": "2019-11",
+   "fired": false,
+   "gap": 0.02502542289902553,
+   "ratio": 0.07348211977906727,
+   "rows": 20,
+   "tested": false
+  },
+  {
+   "batch": "2019-12",
+   "fired": false,
+   "gap": 0.30478028434614685,
+   "ratio": 0.8949259899018058,
+   "rows": 21,
+   "tested": false
+  }
+ ],
+ "batches_fired": 11,
+ "batches_tested": 33,
+ "constants": {
+  "A8.alarm_min_batch_rows": 30,
+  "A8.alarm_ratio_threshold": 2.0
+ },
+ "eligibility_basis": {
+  "baseline": "base__donor_median",
+  "baseline_mae": 9.74151323420556,
+  "basis": "owner ruling AF2: the twin's decision-surface MAE at the ADOPTED penalty point, strictly below the decline baseline (base__donor_median, owner ruling V1)",
+  "eligible": true,
+  "in_adoption_eligible_list": true,
+  "in_adoption_eligible_list_note": "the twin's own best point (N2 in select_adoption); information only, not used since AF2",
+  "point": {
+   "level": 100.0,
+   "ratio": 1.0
+  },
+  "ruling": "AF2",
+  "twin_key": "arcsine_corrector_unweighted@level=100.0,ratio=1.0",
+  "twin_mae": 7.287182963109116
+ },
+ "lead": 0,
+ "leads": "not replayable (twin not saved in v1): a v1 lead routed only its pinned arm; routing the twin is a re-run",
+ "package": "coral",
+ "pass": "nowcast test pass (POST-HOC replay of a saved v1 run)",
+ "post_hoc": true,
+ "reference": {
+  "columns": [
+   "arcsine_corrector_gls@level=100.0,ratio=1.0",
+   "arcsine_corrector_unweighted@level=100.0,ratio=1.0"
+  ],
+  "file": "inner_preds.parquet",
+  "gap": 0.34056479282671,
+  "point": {
+   "level": 100.0,
+   "ratio": 1.0
+  },
+  "rows": 2046,
+  "surface": "decision surface",
+  "surface_sha256": "589fc270bfa62b4957b1502ceff9031b9bca10f143881a7f3e5cf611a85f0c8d"
+ },
+ "rows_switched": 737,
+ "rule": "owner ruling AE1 with the AE1 amendment (the owner rulings file, section AE): per issue batch, the mean absolute gap between the adopted arm and its twin on the test rows, over the same gap on the pass's reference surface at the adopted point; above the threshold, and only when the twin is the simpler arm and was eligible on the surface at the adopted point (AF2), the batch's rows take the twin; a zero reference gap is not tested (AF1); recorded and locked before the pass's test labels open",
+ "rulings": {
+  "AE1": "the rule (with the AE1 amendment: batches are issue calendar months, at least A8.alarm_min_batch_rows rows)",
+  "AF1": "owner ruling AF1 (the owner rulings file, section AF): if the adopted arm and its twin agree exactly on the reference surface (reference gap 0, or not finite), the pass is recorded 'not tested' and the adopted arm stands",
+  "AF2": "owner ruling AF2 (the owner rulings file, section AF): the twin's eligibility is judged at the point the alarm uses: at the nowcast, the ADOPTED penalty point (the twin's decision-surface MAE there strictly below its own link's trees-off MAE, or the donor-row median's under ruling V1), not the twin's own best point; at a lead, the pinned point on the lead's guard surface",
+  "AF3": "the alarm (AE, the AE1 amendment, AF1-AF2) is part of the architecture from engine v2 on"
+ },
+ "run_folder": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+ "run_id": "20261020_f3b8e3da",
+ "scores": {
+  "band": 0.9175581931137083,
+  "blocked_jackknife_with": {
+   "flag": false,
+   "high": 13.68017417555021,
+   "low": 2.3522839485988065,
+   "mean": 8.016229062074508,
+   "n_blocks": 35,
+   "se": 2.8897679150386235
+  },
+  "pooled_mae_reference": 8.294498353993655,
+  "pooled_mae_with": 6.119956002798195,
+  "pooled_mae_without": 6.69798924506233,
+  "verdict_with": {
+   "band": 0.9175581931137083,
+   "contrast": {
+    "high": 13.34086551048398,
+    "low": 2.405477799042173,
+    "mean": 7.873171654763077,
+    "n_groups": 37,
+    "se": 2.7896397223065836
+   },
+   "groups_better": 23,
+   "pooled_contrast": 2.17454235119546,
+   "reference": "donor_row_median",
+   "sign_flip_groups": [
+    "Banda Sea and Molucca Islands",
+    "Belize and west Caribbean",
+    "Central and northern Great Barrier Reef",
+    "Eastern Hawaii",
+    "Hispaniola, Puerto Rico and Lesser Antilles",
+    "Jamaica",
+    "Mayotte and Comoros",
+    "Netherlands Antilles and south Caribbean",
+    "Persian Gulf",
+    "South-east Philippines",
+    "Southern Great Barrier Reef",
+    "Sulu Sea",
+    "Sunda Shelf, south-east Asia",
+    "Taiwan and coastal China"
+   ],
+   "tag": "helps"
+  },
+  "verdict_without": {
+   "band": 0.9175581931137083,
+   "contrast": {
+    "high": 8.441338900886581,
+    "low": 1.9722236985140444,
+    "mean": 5.206781299700313,
+    "n_groups": 37,
+    "se": 1.6502844904011573
+   },
+   "groups_better": 23,
+   "pooled_contrast": 1.5965091089313246,
+   "reference": "donor_row_median",
+   "sign_flip_groups": [
+    "Banda Sea and Molucca Islands",
+    "Belize and west Caribbean",
+    "Central and northern Great Barrier Reef",
+    "Eastern Hawaii",
+    "Hispaniola, Puerto Rico and Lesser Antilles",
+    "Jamaica",
+    "Mayotte and Comoros",
+    "Netherlands Antilles and south Caribbean",
+    "Persian Gulf",
+    "South-east Philippines",
+    "Southern Great Barrier Reef",
+    "Sulu Sea",
+    "Sunda Shelf, south-east Asia",
+    "Taiwan and coastal China"
+   ],
+   "tag": "helps"
+  }
+ },
+ "scores_file": "alarm_replay_scores.csv",
+ "scores_sha256": "4845a5c73f7938623c3891b04a38f775bec355ab491d162b16a28160cabb1ad7",
+ "status": "active",
+ "tag": "POST-HOC (AE3)",
+ "test_rows": 2312,
+ "twin_arm": "arcsine_corrector_unweighted",
+ "twin_eligible": true,
+ "twin_kind": "weighting",
+ "twin_routed": true,
+ "twin_simpler": true
+}

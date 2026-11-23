@@ -1,0 +1,76 @@
+[    0.1 s] run facts: links ['identity', 'log_c'] c 1.5 legal (0.0, inf) band 0.04621194665693497
+[    5.7 s] index tables: 2681720 rows, 12700 units
+[   19.7 s] product table built: 252 months x 12700 units
+[   21.2 s] gate 0a merra2_lag1: {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 2669020, 'bit_exact': True, 'product_cell_equal': True, 'rows': 2681720, 'rows_finite': 2669020, 'passed': True}
+[   22.0 s] gate 0a merra2_same: {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 2681720, 'bit_exact': True, 'product_cell_equal': True, 'rows': 2681720, 'rows_finite': 2681720, 'passed': True}
+[   22.7 s] gate 0a merra2_lag1_placebo: {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 2059464, 'bit_exact': True, 'product_cell_equal': True, 'rows': 2681720, 'rows_finite': 2059464, 'passed': True}
+[   27.9 s] slim sets: {'refit': 2590280, 'tune': 2133214, 'inner': 68559, 'test_slim': 91440}
+[   28.5 s] test rows 91440; inner_preds rows 68559
+[   28.6 s] gate 0b: merra2_lag1 locked, all 11 candidates
+[   28.6 s]   trial pm25__F0__native       inner MAE 11.65206439264445 (0.0 s)
+[   28.7 s]   trial pm25__F1__identity     inner MAE 10.34602002917019 (0.0 s)
+[   28.8 s]   trial pm25__F1__log_c        inner MAE 9.076705380967281 (0.1 s)
+[   30.8 s]   trial pm25__F2__identity     inner MAE 9.492221811349893 (2.1 s)
+[   32.1 s]   trial pm25__F2__log_c        inner MAE 8.820440633960612 (1.3 s)
+[   32.4 s]   trial pm25__F3__identity     inner MAE 3.711509698786565 (0.3 s)
+[   32.8 s]   trial pm25__F3__log_c        inner MAE 3.542457307930805 (0.4 s)
+[   34.4 s]   trial pm25__F4__identity     inner MAE 3.719568089171839 (1.6 s)
+[   36.0 s]   trial pm25__F4__log_c        inner MAE 3.546243732130479 (1.6 s)
+[   36.6 s]   trial pm25__F5__identity     inner MAE 3.646052495948501 (0.6 s)
+[   37.3 s]   trial pm25__F5__log_c        inner MAE 3.520894581942906 (0.7 s)
+[   39.1 s] gate 0b: passed=True pick pm25__F5__log_c guard 3.5208945819429056 vs 3.5256518387286944; preds guarded {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 91440, 'bit_exact': True}
+[   39.3 s] gate 0c: max abs diff 1.7763568394002505e-15 passed=True
+[   39.4 s] extra check: merra2_same locked, all candidates
+[   39.4 s]   trial pm25__F0__native       inner MAE 10.64670022611821 (0.0 s)
+[   39.5 s]   trial pm25__F1__identity     inner MAE 9.619399052017235 (0.1 s)
+[   39.6 s]   trial pm25__F1__log_c        inner MAE 8.521834334197562 (0.1 s)
+[   40.6 s]   trial pm25__F2__identity     inner MAE 8.853721011355052 (1.0 s)
+[   41.8 s]   trial pm25__F2__log_c        inner MAE 8.319655342384934 (1.2 s)
+[   42.1 s]   trial pm25__F3__identity     inner MAE 3.428750961476338 (0.3 s)
+[   42.5 s]   trial pm25__F3__log_c        inner MAE 3.479026376337405 (0.4 s)
+[   44.0 s]   trial pm25__F4__identity     inner MAE 3.480118513366737 (1.5 s)
+[   45.5 s]   trial pm25__F4__log_c        inner MAE 3.374390538119692 (1.5 s)
+[   46.2 s]   trial pm25__F5__identity     inner MAE 3.285555572063017 (0.6 s)
+[   46.8 s]   trial pm25__F5__log_c        inner MAE 16.30042898320585 (0.6 s)
+[   48.4 s] extra merra2_same: {'picked': 'pm25__F5__identity', 'trials_max_abs_diff': 0.0, 'trials_all_bit_exact': True, 'guard': [3.2855555720630174, 3.2855555720630174, 3.652063664702441, 3.652063664702441], 'guarded_vs_preds_file': {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 91440, 'bit_exact': True}}
+[   49.7 s] extra placebo: {'pick_from_parent': 'pm25__F5__log_c', 'guard': [4.866805733494373, 4.866805733494373, 3.5256518387286944, 3.5256518387286944, False, False], 'raw_vs_preds_file': {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 91440, 'bit_exact': True}, 'guarded_vs_preds_file': {'nan_pattern_equal': True, 'max_abs_diff': 0.0, 'max_rel_diff': 0.0, 'rows_compared': 91440, 'bit_exact': True}}
+[   50.2 s] x change (test rows, oc1): {'rows': 91440, 'ratio_median': 0.9285757903263192, 'ratio_p99': 0.9986159400959765, 'ratio_p01': 0.7483276588980611, 'ratio_min': 0.7237220984304706, 'ratio_max': 0.9996561910823005, 'share_moved_more_than_10pct': 0.33904199475065616, 'rows_moved_more_than_10pct': 31002}
+[   50.2 s] step 2(i): merra2_lag1 corrected input, all candidates
+[   50.2 s]   trial pm25__F0__native       inner MAE 11.48757569476164 (0.0 s)
+[   50.3 s]   trial pm25__F1__identity     inner MAE 10.43279240651593 (0.0 s)
+[   50.4 s]   trial pm25__F1__log_c        inner MAE 9.144304311753411 (0.1 s)
+[   51.5 s]   trial pm25__F2__identity     inner MAE 9.573156244540273 (1.1 s)
+[   52.6 s]   trial pm25__F2__log_c        inner MAE 8.880823296465433 (1.1 s)
+[   52.9 s]   trial pm25__F3__identity     inner MAE 3.71502570879905 (0.4 s)
+[   53.3 s]   trial pm25__F3__log_c        inner MAE 3.551861063223996 (0.4 s)
+[   54.9 s]   trial pm25__F4__identity     inner MAE 3.71210362623463 (1.6 s)
+[   56.5 s]   trial pm25__F4__log_c        inner MAE 3.546820630957649 (1.6 s)
+[   57.1 s]   trial pm25__F5__identity     inner MAE 3.646540418241076 (0.6 s)
+[   57.9 s]   trial pm25__F5__log_c        inner MAE 3.518367003083942 (0.7 s)
+[   59.7 s]   (i) pick pm25__F5__log_c guard {'rows': 68559, 'rival_mae': 3.5183670030839416, 'comparator': 'log_c_trees_off_unweighted', 'comparator_mae': 3.5256518387286944, 'passed': True, 'rival_corr2': 0.8631076613403197, 'rival_calibration_ratio': 1.0097503037316375}
+[   61.6 s]   (ii) forced F5 log_c guard {'rows': 68559, 'rival_mae': 3.5183670030839416, 'comparator': 'log_c_trees_off_unweighted', 'comparator_mae': 3.5256518387286944, 'passed': True, 'rival_corr2': 0.8631076613403197, 'rival_calibration_ratio': 1.0097503037316375}
+[   61.6 s] step 3: merra2_same corrected input, all candidates
+[   61.7 s]   trial pm25__F0__native       inner MAE 10.60411266058793 (0.0 s)
+[   61.8 s]   trial pm25__F1__identity     inner MAE 9.764969633700955 (0.0 s)
+[   61.8 s]   trial pm25__F1__log_c        inner MAE 8.624717644205242 (0.1 s)
+[   63.0 s]   trial pm25__F2__identity     inner MAE 8.979772385198135 (1.1 s)
+[   64.1 s]   trial pm25__F2__log_c        inner MAE 8.417552689026639 (1.1 s)
+[   64.4 s]   trial pm25__F3__identity     inner MAE 3.453659568586462 (0.3 s)
+[   64.8 s]   trial pm25__F3__log_c        inner MAE 3.429998291351721 (0.4 s)
+[   66.3 s]   trial pm25__F4__identity     inner MAE 3.485013180775448 (1.5 s)
+[   67.9 s]   trial pm25__F4__log_c        inner MAE 3.393253552837021 (1.6 s)
+[   68.5 s]   trial pm25__F5__identity     inner MAE 3.294110631749477 (0.6 s)
+[   69.2 s]   trial pm25__F5__log_c        inner MAE 15.26127136515749 (0.7 s)
+[   71.0 s]   same pick pm25__F5__identity guard {'rows': 68559, 'rival_mae': 3.294110631749477, 'comparator': 'identity_trees_off_unweighted', 'comparator_mae': 3.652063664702441, 'passed': True, 'rival_corr2': 0.9066245714738929, 'rival_calibration_ratio': 1.0379555097546598}
+[   72.4 s]   placebo guard {'rows': 68559, 'rival_mae': 3.8148265910861228, 'comparator': 'log_c_trees_off_unweighted', 'comparator_mae': 3.5256518387286944, 'passed': False, 'rival_corr2': 0.02939890804455309, 'rival_calibration_ratio': 1.033777785045511}
+
+==== SUMMARY (post hoc; locked verdicts unchanged) ====
+gate 0a max rel diff: {'merra2_lag1': 0.0, 'merra2_same': 0.0, 'merra2_lag1_placebo': 0.0}
+gate 0b passed: True (trials bit-exact True, guarded max abs diff 0.0)
+gate 0c passed: True (max abs diff 1.7763568394002505e-15)
+merra2_lag1__oc1_full                      F5 log_c | guard 3.518367 vs 3.525652 PASS | test rival 8.199033 ours 3.588091 | d +4.610353 [-3.951925, +13.172631] CANNOT TELL | max 397947.05, >1000: 4
+merra2_lag1__oc1_forcedF5logc              F5 log_c | guard 3.518367 vs 3.525652 PASS | test rival 8.199033 ours 3.588091 | d +4.610353 [-3.951925, +13.172631] CANNOT TELL | max 397947.05, >1000: 4
+merra2_same__oc1_full                      F5 identity | guard 3.294111 vs 3.652064 PASS | test rival 3.450619 ours 3.588091 | d -0.137398 [-0.249893, -0.024903] LOSES | max 567.80, >1000: 0
+merra2_lag1_placebo__oc1_full              F5 log_c | guard 3.814827 vs 3.525652 FAIL | test rival 4.031611 ours 3.588091 | d +0.443505 [+0.294313, +0.592698] BEATS | max 162.19, >1000: 0
+merra2_lag1__oc1_so4gmao_forcedF5logc      F5 log_c | guard 3.518363 vs 3.525652 PASS | test rival 8.198903 ours 3.588091 | d +4.610224 [-3.951818, +13.172265] CANNOT TELL | max 397936.03, >1000: 4
+result: D:\treeroute\analysis\paper_posthoc\merra2_formula\B\result_B.json

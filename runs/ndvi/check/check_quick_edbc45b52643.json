@@ -1,0 +1,93 @@
+{
+ "engine_code_sha256": "65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff",
+ "finished": "2026-10-16T12:01:11+03:00",
+ "green": true,
+ "guards": [
+  {
+   "columns": [],
+   "id": "G-SPLIT",
+   "message": "[G-SPLIT] 133 groups in the data, 0 excluded, 133 after exclusions (every one trained and tested); seen_during_design: 2",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "V06_spei_12m_lag12",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "amo_lag12",
+    "spei_01m_lag12",
+    "spei_03m_lag12",
+    "spei_06m_lag12",
+    "spei_24m_lag12"
+   ],
+   "id": "G-LINEAGE",
+   "message": "[G-LINEAGE] 12 entering columns carry a lineage flag: V06_spei_12m_lag12 (derived from V06_spei_12m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_buffalo_hold2021 (derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_cattle_hold2021 (derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_goats_hold2021 (derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)) ... (12 in all) Columns: V06_spei_12m_lag12, aglw_buffalo_hold2021, aglw_cattle_hold2021, aglw_goats_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_total_lsu_hold2021, amo_lag12, spei_01m_lag12, spei_03m_lag12, spei_06m_lag12, spei_24m_lag12. Fix: confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only)).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-CLOSED",
+   "message": "[G-CLOSED] every one of the 562 non-key columns has facts and one verdict; keep_unreviewed (listed in every report): none",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-KEYS",
+   "message": "[G-KEYS] no key or key-derived column is a tree feature (492 tree features, 9 router context columns)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-LAG",
+   "message": "[G-LAG] 482 entering time-varying columns have R8's computed lag (by steps: 0: 416, 1: 48, 2: 15, 3: 3)",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "irrigation_pct_gmia",
+    "travel_time"
+   ],
+   "id": "G-EPOCH",
+   "message": "[G-EPOCH] 2 entering columns carry an observation epoch that was not compared with a cut (no cut known to this check): irrigation_pct_gmia (content_epoch 2005), travel_time (content_epoch 2015) Columns: irrigation_pct_gmia, travel_time. Fix: run check --deep (it derives the windows and R11's cuts) or plan (derived.json R11).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-HIST",
+   "message": "[G-HIST] no dataset column is declared as a look-back of the own target",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-SUPPORT",
+   "message": "[G-SUPPORT] 133 groups; donor labels not judged here (check --deep reads them); census not judged here (check --deep reads it)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-FACTS",
+   "message": "[G-FACTS] every kept column's timing facts are verified or signed; co-measured answers and the target's legal-range source are present",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-MISSING",
+   "message": "[G-MISSING] R30's missing-value flags are not available to the quick check (they come from the data); not evaluated Fix: run check --deep (or plan: derived.json R30).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-DERIVED",
+   "message": "[G-DERIVED] the feature script fits no model (static scan)",
+   "status": "pass"
+  }
+ ],
+ "mode": "quick",
+ "package": "ndvi",
+ "package_fingerprint": "edbc45b52643dcddc8ddb3928b3f955ad1a404e227051532f00734a3e01227bf",
+ "started": "2026-10-16T12:00:59+03:00"
+}

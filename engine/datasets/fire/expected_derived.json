@@ -1,0 +1,283 @@
+{
+  "_about": "Acceptance values from APP_PLAN.md Section 3.2 (the table at lines 277-304, revised 2026-09-28). Tests only: never read by a run (plan 1.1; load.py does not fingerprint this file). Milestone M1's gate: derive/ reproduces these from the real data; a value that comes out differently is corrected HERE and flagged, never patched in engine code (plan 3.2, last paragraph). status '=' means unchanged from the shipped run; 'CHANGES' marks a setting that moves beyond the owner's rulings (plan 3.3).",
+  "_field_names": "Structured values follow the PROPOSED signatures in engine/treeroute/_proposed/common.py (Windows, SeasonKeySpec, LeadPlan, RouterDesign, HistorySpec) and their enum values; they change if the owner edits those signatures. Free-text 'plan_3_2' fields quote the plan's cell.",
+  "_drafted": "2026-09-28 by the agent; unsigned",
+  "_revised": "2026-09-28 night by the agent (loro build), unsigned: leave one region out (owner rulings D, E: L1 K = 20, L2 rules 1-5, L7 b), the index lags of rulings R-A (a), R-B, R-C (a) and F4, fire's history offset (R-D b), R3 over all groups (C3). A value marked 'provisional' waits on a merge or on M1 (the field says which).",
+  "_revised_2026-10-06": "by agent C1, unsigned: the windows, Y0 (2003), the R12 rows and the leads (6 and 12 months, owner ruling I1) already hold the ruled values and are unchanged; ADDED R8_feature_lags.l_state_lags, the lags the J2 / L rulings set on this package's kept columns (OWNER_RULINGS_2026-10-05.md sections J and L, 2026-10-06), each re-checked from the facts by a test",
+  "R1_cadence": {
+    "kind": "regular",
+    "length": 1,
+    "unit": "month",
+    "plan_3_2": "monthly"
+  },
+  "R2_season_key": {
+    "kind": "month_of_year",
+    "steps_per_year": 12
+  },
+  "R3_R7_windows": {
+    "y0": 2003,
+    "y_end": 2022,
+    "test_years": [
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "train_end": 2018,
+    "inner_fit": [
+      2003,
+      2015
+    ],
+    "inner_score": [
+      2016,
+      2017,
+      2018
+    ]
+  },
+  "R12_valid_rows_per_unit": {
+    "inner_fit": 156,
+    "test_cut": 192,
+    "note": "every group's candidate units (LORO: every group is tested; plan 3.2)"
+  },
+  "R10_leads": {
+    "requested_months": [
+      6,
+      12
+    ],
+    "leads": [
+      6,
+      12
+    ],
+    "lead_unit": "steps",
+    "merged": {},
+    "not_supplied": [],
+    "contract_lead_zero": true
+  },
+  "R3_R7_status": {
+    "coverage": "CHANGES (shipped 2002-2022, fire_architecture.py:123; 2002 has no lag source for annual columns, Q3 a)",
+    "test_window": "= Q10 a",
+    "train_end": "=",
+    "inner_score": "CHANGES (shipped 2017-18, adaptation.py:2185)",
+    "coverage_groups": "C3 under LORO: half of ALL groups (every group is tested); F2: counted over rows with a valid label AND the kept drivers"
+  },
+  "R12_valid_rows_note": "was 180 / 204 in the shipped run",
+  "R12_router_kind": {
+    "value": "per_unit",
+    "status": "=",
+    "note": "h is the median valid rows per candidate unit over EVERY group (D9 under LORO)"
+  },
+  "LORO_groups": {
+    "n_groups": 40,
+    "all_trained_and_tested": true,
+    "excluded": [],
+    "old_split": {
+      "donor": 30,
+      "test": 10
+    },
+    "old_lists": "legacy_harness/shipped_splits.yaml (moved from split.yaml, owner rulings E L7 b)",
+    "plan_3_2": "40 (was 30 donor / 10 test)"
+  },
+  "R12_short_history_fallback": {
+    "plan_3_3_flag_9": "counted on fire, whose unmapped labels are now NaN"
+  },
+  "R13_decision_surface": {
+    "value": "inner_window"
+  },
+  "R14_router_design": {
+    "kind": "per_unit",
+    "columns": [
+      "intercept",
+      "normal",
+      "context",
+      "trees"
+    ],
+    "unpenalised": [
+      "normal"
+    ],
+    "centre": [
+      0.5,
+      0.25
+    ],
+    "grid_points": 35,
+    "levels": 7,
+    "ratios": 5,
+    "fit_row_cap": null,
+    "plan_3_2": "35 points"
+  },
+  "R14_overlap_blocks": {
+    "link_rule": "spacing",
+    "n_blocks": 39,
+    "linked_pairs": [
+      [
+        "angola_zambia_fire_belt",
+        "miombo_woodland_zambia",
+        62
+      ]
+    ],
+    "linked_pairs_note": "[group, group, units of the smaller group linked to the other (same cell or one of its 8 neighbours; spacing rule on fire)]",
+    "shared_cells": {
+      "angola_zambia_fire_belt+miombo_woodland_zambia": 30
+    },
+    "pairs_that_only_touch": [],
+    "measured": "2026-09-28 night by D:/treeroute/loro_build/measure_blocks.py with treeroute.split.derive_overlap_blocks, READ-ONLY, on every (lat, lon) unit of D:/fire/target/*_2018.parquet (the fire target has no grid indices, so the spacing rule ran)",
+    "status": "provisional: M1 re-derives the blocks from the package's static table over the candidate units (a valid label at or before the train end); the store's units stand in for them here. The linked-unit count (62) is also noisy: the spacing rule compares diagonal neighbours exactly at sqrt(2) x the median nearest spacing, with no tolerance, and about half of the real diagonal neighbours fall just outside it (alaska_interior_taiga: threshold 2.427 km, diagonals about 2.30-2.56 km; miombo_woodland_zambia: threshold 5.494 km, diagonals about 5.46-5.53 km; measured READ-ONLY on 2026-09-28 by D:/treeroute/loro_fix/check_diagonals.py). Shared cells are always linked, so the blocks are not affected today (no pair only touches). Owner ruling pending: a small relative tolerance, or grid indices in fire's static table at M1"
+  },
+  "R14_tree_columns": {
+    "bank_trees": 4000,
+    "one_group_block": 3900,
+    "two_group_block": 3800,
+    "groups_in_two_group_blocks": 2,
+    "was": 3000,
+    "plan_3_2": "3,900 (4,000); was 3,000. 100 fewer per other group in the router's block"
+  },
+  "R15_R16_normal": {
+    "plan_3_2": "unit x month, fit rows (D4)",
+    "per": "unit x season key"
+  },
+  "R34_verdict_reference": {
+    "plan_3_2": "own link-matched normal; arithmetic normal beside"
+  },
+  "R22_links": {
+    "value": [
+      "identity",
+      "log_c",
+      "arcsine"
+    ]
+  },
+  "R8_feature_lags": {
+    "plan_3_2": "annual columns at year -1 (Q3 a); same-month cloud lag 1 (co-measured, Q3 a); the 15 index columns as ruled: oni 3, tni 3, nino* and sst_anom_* 2, co2 1 (R-A a, R-B, R-C a)",
+    "oni_steps": 3,
+    "tni_steps": 3,
+    "nino_steps": 2,
+    "sst_anom_steps": 2,
+    "co2_steps": 1,
+    "index_lags_steps": {
+      "nino12": 2,
+      "nino3": 2,
+      "nino4": 2,
+      "nino34": 2,
+      "sst_anom_atl3": 2,
+      "sst_anom_iod_west": 2,
+      "sst_anom_iod_east": 2,
+      "sst_anom_subpolar_north_atlantic": 2,
+      "sst_anom_coral_sea": 2,
+      "sst_anom_mediterranean": 2,
+      "sst_anom_global_tropical_mean": 2,
+      "sst_anom_nino34": 2,
+      "oni": 3,
+      "tni": 3,
+      "co2": 1
+    },
+    "annual_columns_steps": 1,
+    "cloud_frequency_pct_steps": 1,
+    "rulings": "OWNER_RULINGS_2026-09-28.md part B: R-A (a) nino* and sst_anom_* lag 2, oni 3, all 13 lag 1 year as annual aggregates; R-B tni signed {7, month, centred}: lag 3; R-C (a) co2 {3, month, centred} assumed: lag 1, and 1 year as an annual aggregate. Part F4: the stamp is merged with the ruled window for co2 and the 8 sst_anom_* so these come out right.",
+    "status": "reproduced on the merged shared store catalog (monthly_panel_v170_schema_catalog.yaml: F4 and rulings R-A a, R-B, R-C a merged 2026-09-28 night): timing.compute_lag gives these lags on this package's target (tests/test_catalog_timing_facts.py::test_ruled_monthly_lag_on_each_monthly_package; this file's values are re-checked by tests/test_packages_declarative.py). Still provisional in two ways: the merged facts are unsigned ('unverified' / 'assumed' until the owner signs the timing facts), and derive's R8 over the whole package waits on M1 (R4 is refused today by other columns, tests/test_derive_acceptance.py)",
+    "l_state_lags": {
+      "note": "ADDED 2026-10-06 by agent C1 (unsigned): R8's lag in the column's own steps (months for monthly columns, years for annual ones) of every KEPT column the J2 / L rulings touched, computed by timing.compute_lag from the package's facts with the feature script's output facts added (as the pipeline does); re-checked by tests/test_packages_declarative.py::test_expected_l_state_lags_come_out_of_the_timing_rules",
+      "rulings": "OWNER_RULINGS_2026-10-05.md section L (2026-10-06): L1 (b) signs the 13 index windows {3, month, centred} (lag 1 month on a monthly target; epo and grace_lwe filled by the J2 d last-value rule where kept); L1 (a) signs deeprec_twsa's 3-month reach (lag 3), tni {7, month, centred} (lag 3, ruling R-B) and burn_frac's 1-month reach (lag 1); L3 keeps the yearly livestock through the six aglw_*_hold2021 columns (annual: year -1); J2 (a) lag-12 columns already hold month t-12 (lag 0); J2 (c) snow_duration_days annual (year -1)",
+      "steps": {
+        "soi": 1,
+        "tna": 1,
+        "tsa": 1,
+        "iod": 1,
+        "ao": 1,
+        "nao": 1,
+        "pna": 1,
+        "wp": 1,
+        "sam": 1,
+        "noi": 1,
+        "pdo": 2,
+        "epo": 1,
+        "grace_lwe": 1,
+        "deeprec_twsa": 3,
+        "tni": 3,
+        "snow_duration_days": 1,
+        "aglw_cattle_hold2021": 1,
+        "aglw_buffalo_hold2021": 1,
+        "aglw_horse_hold2021": 1,
+        "aglw_sheep_hold2021": 1,
+        "aglw_goats_hold2021": 1,
+        "aglw_total_lsu_hold2021": 1,
+        "spei_01m_lag12": 0,
+        "spei_03m_lag12": 0,
+        "spei_06m_lag12": 0,
+        "V06_spei_12m_lag12": 0,
+        "spei_24m_lag12": 0,
+        "amo_lag12": 0
+      },
+      "not_kept": {
+        "burn_frac": null,
+        "burn_lag1": null,
+        "phenology_sos_doy": "conditional"
+      }
+    }
+  },
+  "R17_history": {
+    "n_columns": 6,
+    "last_values": 3,
+    "trailing_steps": [
+      12,
+      60
+    ],
+    "all_history_mean": true,
+    "start_offset_steps": 1,
+    "plan_3_2": "6 columns; starts one step earlier: ruling R-D (b), the MCD64A1 detection window reaches past the month end, so R17 starts fire's history block at t-2, as for NDVI",
+    "status": "reproduced from the target's window fact (catalog.yaml burned_frac: reach_after_max 1 month, assumed; ruling R-D b) by timing.target_reach_offset_steps (tests/test_catalog_timing_facts.py::test_r17_offsets_from_the_target_windows; re-checked against this file by tests/test_packages_declarative.py). Still provisional: the fact is unsigned, and R17 itself is not built yet (M1)"
+  },
+  "R10_status": "= owner ruling I1 (2026-10-05): 6 and 12 months plus the nowcast (lead 0, the contract); replaces Q41 a's 1/3/6/12",
+  "R18_units_per_group": {
+    "bank": 100,
+    "scored": 50,
+    "rule": "bank = the pre-LORO R18 count (C7), capped at the units available; scored = max(10, floor(K x n / G)) with K = 20 (C16, owner rulings E L1), capped at the bank count, then the event floor; the scored units are an evenly spaced subset of the bank units (split.evenly_spaced_subset)",
+    "k_group_equivalents": 20,
+    "n_groups": 40,
+    "scored_total": 2000,
+    "old_test_units": 1000,
+    "old_test_units_note": "10 groups x 100 by the rule (shipped 1,250: 125 cells from default_rng(7))",
+    "ratio_to_old": 2.0,
+    "event_floor": "does not bind at a donor event rate near 10%: it asks ceil(10 / (48 test rows x rate)) units per group; derive's R18 records it (M1)",
+    "bank_status": "CHANGES (shipped 125 test cells from default_rng(7), fire_evt_arch.py:69, 74 / adaptation.py:2297; donor rows from a positive/negative sample over all donor cells)",
+    "plan_3_2": "bank 100 by stride; scored 50 = floor(20 x 100 / 40): 2,000 units against the old 1,000 (x2.0)"
+  },
+  "R30_missing_flags": {
+    "plan_3_2": "none known",
+    "day1_review_csv": [
+      "aridity_index_p_pet",
+      "snow_onset_doy",
+      "snow_disappearance_doy",
+      "snow_max_doy",
+      "esacci_sm",
+      "lgt_density",
+      "lgt_is_zero",
+      "vod_lag2",
+      "vod_d1",
+      "vod_anom",
+      "agb_lag1y",
+      "agb_contrast"
+    ],
+    "note": "The day-1 review sheet flags these 12 (25% donor threshold and the PROPOSED 90% vanish threshold); 8 of them are kept on the sheet today (lightning, VOD, biomass, aridity), so each needs keep-with-evidence or ban in the Q34 review. The plan's 'none known' predates the sheet."
+  },
+  "R32_hit_tolerance": {
+    "rule": "mean-based D9",
+    "approx": 0.002,
+    "plan_3_2": "mean-based D9, about 0.002 (the median version is 0: 93% of rows sit exactly on their normal)"
+  },
+  "R35_band": {
+    "plan_3_2": "from its first run, used at every lead",
+    "groups": 40,
+    "note": "derived on 'all' (40 groups, every one tested) and judges every reporting row"
+  },
+  "R34_continuity_row": {
+    "groups": 10,
+    "scored_units": 500,
+    "label": "continuity, not a replication",
+    "source": "treeroute_report/continuity_groups.yaml (the old test groups; owner ruling D, rulings E L7 b)",
+    "plan_3_2": "10 groups, 500 units"
+  },
+  "type3": {
+    "plan_3_2": "cascade budget gate; its whole-window ranking is stamped look-ahead unless rewritten per issue month"
+  },
+  "report_strata": {
+    "plan_3_2": "none"
+  }
+}

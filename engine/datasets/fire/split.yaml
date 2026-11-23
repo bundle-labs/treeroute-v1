@@ -1,0 +1,16 @@
+# split.yaml -- fire (APP_PLAN.md 1.2).
+# Leave-one-region-out (owner ruling D, 2026-09-28 night; owner rulings E, L7 b): this file holds ONLY the
+# exclusions {group: reason} and the optional seen_during_design groups (APP_PLAN.md 1.2). There is no donor or
+# test list: every group in the target data that is not excluded trains its own specialist trees and is tested,
+# and a unit's router never uses the trees of its own overlap block (R14, R18-R20). The groups, their bank and
+# scored units and the overlap blocks are derived from the data by plan (treeroute/split.py). A donor_groups or
+# test_groups key is refused (G-NOKNOB: "derived: every group is tested").
+# The shipped hard split (30 donor / 10 test groups: the 30 largest complete groups by panel cells were the donors,
+# fire_evt_arch.py:157-161 = adaptation.py:2192-2196, :2770-2774; sha256 region_sizes.csv
+# 5997f2c50e1b8080633c75ee1a92697d5ce2806f1fb0a2b23de0d60a16626031, fire_evt_arch.py
+# 806deb2f687980c89f79262ba62f70a29a0774024f531ebfa7db3e9b05e46dd9) moved to legacy_harness/shipped_splits.yaml, with
+# this file's former provenance comments verbatim; its 10 test groups are the continuity row
+# (treeroute_report/continuity_groups.yaml). With 40 groups all tested, fire is no longer flagged 'few groups'
+# (G-SUPPORT counts groups under LORO: refuse under 3, flag under 14).
+# excluded: none. D:/fire/target holds exactly 40 groups, 2002-2022 each (840 files): all 40 are trained and tested.
+excluded: {}

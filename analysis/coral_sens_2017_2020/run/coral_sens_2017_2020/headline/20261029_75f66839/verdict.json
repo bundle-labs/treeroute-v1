@@ -1,0 +1,398 @@
+{
+ "DRAFT": "DRAFT: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline -- never a headline number",
+ "adopted": "arcsine_corrector_unweighted",
+ "adopted_column": "arm__arcsine_corrector_unweighted",
+ "adoption_sha256": "41f8a35b65deddcfc00c5d15f8e42207e02982ad45683d1e6ba715ab729bbf48",
+ "band": 0.16642942452726842,
+ "band_pairs": [
+  {
+   "arm": "arm__identity_plain_unweighted",
+   "high": 1.7236773341801632,
+   "identical": false,
+   "low": -1.6971936624944128,
+   "mean": 0.013241835842875176,
+   "n_groups": 26,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.8726711726210653,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_unweighted",
+   "high": 1.7732483916582151,
+   "identical": false,
+   "low": -1.6300342367884182,
+   "mean": 0.0716070774348985,
+   "n_groups": 26,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.8681843439914881,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_unweighted",
+   "high": 0.09526133696201222,
+   "identical": false,
+   "low": -0.028054640324138305,
+   "mean": 0.03360334831893696,
+   "n_groups": 26,
+   "reference": "placebo__identity_placebo_corrector_unweighted",
+   "se": 0.03145815747095677,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__identity_plain_gls",
+   "high": 1.7922372528552708,
+   "identical": false,
+   "low": -1.5419168534176777,
+   "mean": 0.12516019971879658,
+   "n_groups": 26,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.8505495169063644,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_gls",
+   "high": 1.8340903495398004,
+   "identical": false,
+   "low": -1.490885377084496,
+   "mean": 0.17160248622765206,
+   "n_groups": 26,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.8482080935266063,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_gls",
+   "high": 0.08946292390054576,
+   "identical": false,
+   "low": -0.02027417084436378,
+   "mean": 0.03459437652809099,
+   "n_groups": 26,
+   "reference": "placebo__identity_placebo_corrector_gls",
+   "se": 0.027994156822681006,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__log_c_plain_unweighted",
+   "high": 0.27307938692305145,
+   "identical": false,
+   "low": -0.37836180021040366,
+   "mean": -0.052641206643676094,
+   "n_groups": 26,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.1661839763095549,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_unweighted",
+   "high": 0.2991398422685239,
+   "identical": false,
+   "low": -0.3542256588918053,
+   "mean": -0.027542908311640694,
+   "n_groups": 26,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.16667487274498194,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_unweighted",
+   "high": 0.017615151845075595,
+   "identical": false,
+   "low": -0.007216442730726496,
+   "mean": 0.00519935455717455,
+   "n_groups": 26,
+   "reference": "placebo__log_c_placebo_corrector_unweighted",
+   "se": 0.006334590453010738,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__log_c_plain_gls",
+   "high": 0.2260255796151362,
+   "identical": false,
+   "low": -0.3934385221332309,
+   "mean": -0.08370647125904733,
+   "n_groups": 26,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.15802655656846099,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_gls",
+   "high": 0.2462187162811637,
+   "identical": false,
+   "low": -0.35911697496764655,
+   "mean": -0.05644912934324143,
+   "n_groups": 26,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.15442237021653324,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_gls",
+   "high": 0.022231858793983372,
+   "identical": false,
+   "low": -0.006037657989280094,
+   "mean": 0.00809710040235164,
+   "n_groups": 26,
+   "reference": "placebo__log_c_placebo_corrector_gls",
+   "se": 0.007211611424301905,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__arcsine_plain_unweighted",
+   "high": 1.1146470897627285,
+   "identical": false,
+   "low": -1.2876809937430664,
+   "mean": -0.08651695199016905,
+   "n_groups": 26,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.6128387968127028,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_unweighted",
+   "high": 1.1426663355409457,
+   "identical": false,
+   "low": -1.221532393946828,
+   "mean": -0.039433029202941235,
+   "n_groups": 26,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.6031119207876974,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_unweighted",
+   "high": 0.058734215490760765,
+   "identical": false,
+   "low": -0.0036928927091754715,
+   "mean": 0.027520661390792647,
+   "n_groups": 26,
+   "reference": "placebo__arcsine_placebo_corrector_unweighted",
+   "se": 0.015925282704065367,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__arcsine_plain_gls",
+   "high": 1.1020402131099651,
+   "identical": false,
+   "low": -1.094812399647729,
+   "mean": 0.003613906731118117,
+   "n_groups": 26,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.5604215848871669,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_gls",
+   "high": 1.1334069905772275,
+   "identical": false,
+   "low": -1.0426551700241762,
+   "mean": 0.045375910276525586,
+   "n_groups": 26,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.555117898112603,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_gls",
+   "high": 0.04953684714454894,
+   "identical": false,
+   "low": -0.005201554797441776,
+   "mean": 0.02216764617355358,
+   "n_groups": 26,
+   "reference": "placebo__arcsine_placebo_corrector_gls",
+   "se": 0.013963878046426202,
+   "tag": "does_not_help_equivalent"
+  }
+ ],
+ "band_source": "this run's own D75 contrasts (each tree arm vs its own trees-off, each corrector vs its placebo; R35 derives the band from the package's first headline run)",
+ "beside": {
+  "adopted_link_neighbour_trees_off_mae": 3.411581035467641,
+  "base__donor_median_mae@all": 3.153149920712534,
+  "base__predict_zero_mae@all": 2.6661507152588557,
+  "identity_trees_off_mae": 4.35312118372694
+ },
+ "best_tree_arm": "arcsine_corrector_unweighted",
+ "best_tree_penalty": {
+  "level": 30.0,
+  "ratio": 1.0
+ },
+ "blocked_jackknife": {
+  "flag": false,
+  "high": 0.34066812151937714,
+  "low": -1.2611674450173513,
+  "mean": -0.4602496617489871,
+  "n_blocks": 24,
+  "se": 0.4086315220756961
+ },
+ "decline_rule": "owner ruling V1 (the owner rulings file, section V): for the neighbour kind, every decline (nowcast and every lead) falls back to the donor-row median (R34), and every guard or decline comparison uses that same donor-row median as its baseline, so the check and the fallback are one object",
+ "decline_target": "base__donor_median",
+ "declined": false,
+ "donor_only_groups": {
+  "count": 57,
+  "groups": [
+   "Andaman Islands",
+   "Austral Islands, French Polynesia",
+   "Bay of Campeche, Yucatan, Gulf of Mexico",
+   "Bermuda",
+   "Bismarck Sea, New Guinea",
+   "Brazil",
+   "Caroline Islands, Micronesia",
+   "Cenderawasih Bay, Papua",
+   "Chagos Archipelago",
+   "Christmas Island, Indian Ocean",
+   "Cocos Keeling Atolls, Indian Ocean",
+   "Cook Islands, south-west Pacific",
+   "Coral Sea",
+   "Costa Rica and Panama, Pacific coast",
+   "Cuba and Cayman Islands",
+   "Eastern coast South Africa",
+   "Flower Garden Banks, Gulf of Mexico",
+   "Gilbert Islands, west Kiribati",
+   "Gulf of Aden",
+   "Gulf of Thailand",
+   "Gulf of Tomini, Indonesia",
+   "Hong Kong",
+   "Honshu, Japan",
+   "Java Sea",
+   "Johnston Atoll, north central Pacific",
+   "Kenya and Tanzania coast",
+   "Lakshadweep Islands",
+   "Makassar Strait, Indonesia",
+   "Marianas",
+   "Marshall Islands",
+   "Mascarene Islands",
+   "Milne Bay, Papua New Guinea",
+   "New Caledonia",
+   "Ningaloo Reef and coastal north-west Australia",
+   "North Mozambique coast",
+   "North Myanmar and Bangladesh",
+   "North Ryukyu Islands, Japan",
+   "North Sri Lanka and east India",
+   "North Vietnam",
+   "Northern Seychelles",
+   "Ogasawara Islands, Japan",
+   "Palau",
+   "Phoenix Islands, central Kiribati",
+   "Pohnpei and Kosrae, Micronesia",
+   "Samoa, Tuvalu and Tonga",
+   "Shikoku, Japan",
+   "Socotra Archipelago",
+   "Solomon Islands and Bougainville",
+   "South Madagascar",
+   "South Mozambique coast",
+   "South Red Sea",
+   "South Ryukyu Islands, Japan",
+   "South Vietnam",
+   "Strait of Malacca",
+   "Vanuatu",
+   "West Sumatra",
+   "Western Tuamotu Archipelago, central Pacific"
+  ],
+  "rule": "V6 b (PLAN_V6B.md 2): a run group that has rows but no test-marked row is donor-only: its rows are bank rows (its trees enter every bank), its train rows are donor rows (every pool, c, median, tolerance and GLS model) and its inner-score rows are decision-surface rows of its own fold (R13); nothing is scored or reported for it",
+  "surface_rows": 197,
+  "train_rows": 2446
+ },
+ "draft": {
+  "is_draft": true,
+  "stamp": "DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline",
+  "stamped_verdicts": 0,
+  "where": [
+   "dataset.yaml description"
+  ]
+ },
+ "gls_arms": {
+  "kernel": "route.solve solve_grid_weighted / solve_point_weighted (NEW formula, owner review): the weighted primal is solve_local with the weights; the weighted shared-Gram solve is grid_dual on rows scaled by sqrt(w)",
+  "routed": true,
+  "weights": "fit.weights.weights_for_rows on the router's fit rows (R25; out-of-bag sigma on the weight model's own donor rows, L5 c); trees-off unweighted"
+ },
+ "groups_trained": 83,
+ "headline_eligible": false,
+ "hit_tolerance": 5.3703811427322385,
+ "input": "table",
+ "kind": "headline",
+ "listed_in_reports": [
+  "n_dhw_ge8_before",
+  "days_since_dhw4",
+  "mhw_thr_gap"
+ ],
+ "measurement_error_floor": null,
+ "n_groups": 26,
+ "not_headline_reasons": [
+  "DRAFT package: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline"
+ ],
+ "package": "coral_sens_2017_2020",
+ "penalty": {
+  "level": 30.0,
+  "ratio": 1.0
+ },
+ "pooled_mae_adopted": 3.4829170913429484,
+ "pooled_mae_reference": 3.153149920712534,
+ "reference": "base__donor_median",
+ "reference_rule": "donor_row_median",
+ "router_kind": "neighbour",
+ "run_fingerprint": "75f668391407a2fc73196ff20bf0bf74a7b07e94970744c536c5b593230f3394",
+ "scored_units": 1468,
+ "strata": {
+  "programme": {
+   "kind": "string: scored per value (O18)",
+   "test_rows": 1468,
+   "test_rows_without_value": 0,
+   "values": [
+    "Reef_Check"
+   ]
+  }
+ },
+ "test_rows": 1468,
+ "timings_seconds": {
+  "decision": 896.63,
+  "fits": 146.66,
+  "pool": 0.09,
+  "report": 0.67,
+  "test_pass": 382.05
+ },
+ "tolerances": {
+  "floor": 9e-07,
+  "floor_rule": "owner ruling O4 (owner rulings, section O): the R36 tolerance is max(k x s, C9.k_min_multiple_of_arith_error x C9.measured_arith_error); the floor (10 x 9e-8 = 9e-7) keeps a small s from pushing k x s below the measured rounding error",
+  "k": 5.230771281733543e-08,
+  "s": {
+   "arcsine": 0.301582248742144,
+   "identity": 20.058421824982858,
+   "log_c": 2.3143640724292487
+  },
+  "standin": false,
+  "tolerance": {
+   "arcsine": 9e-07,
+   "identity": 1.0492101683901765e-06,
+   "log_c": 9e-07
+  }
+ },
+ "verdict": {
+  "band": 0.16642942452726842,
+  "contrast": {
+   "high": 0.5430886373276913,
+   "low": -1.9430109522054304,
+   "mean": -0.6999611574388696,
+   "n_groups": 26,
+   "se": 0.6342090789625311
+  },
+  "groups_better": 13,
+  "pooled_contrast": -0.32976717063041416,
+  "reference": "donor_row_median",
+  "sign_flip_groups": [
+   "Bahamas and Florida Keys",
+   "Celebes Sea",
+   "Central and northern Great Barrier Reef",
+   "Eastern Hawaii",
+   "Gulf of Oman",
+   "Jamaica",
+   "Mayotte and Comoros",
+   "Moreton Bay, eastern Australia",
+   "North Philippines",
+   "North and central Red Sea",
+   "Society Islands, French Polynesia",
+   "Sunda Shelf, south-east Asia",
+   "Taiwan and coastal China"
+  ],
+  "tag": "cannot_tell"
+ }
+}

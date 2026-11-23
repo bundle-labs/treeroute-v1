@@ -1,0 +1,345 @@
+{
+ "declined_by_guard": [
+  "rival_ridge"
+ ],
+ "draws": 2000,
+ "draws_sha256": "7a6d40f33aae611be5f76efb8b77e49d324ea95b277dd815fe7c15c1808a4b6a",
+ "families": {
+  "CTI": "local drivers",
+  "aet_total_mm": "local drivers",
+  "aglw_buffalo_hold2021": "local drivers",
+  "aglw_cattle_hold2021": "local drivers",
+  "aglw_goats_hold2021": "local drivers",
+  "aglw_horse_hold2021": "local drivers",
+  "aglw_sheep_hold2021": "local drivers",
+  "aglw_total_lsu_hold2021": "local drivers",
+  "amo": "global indices",
+  "ao": "global indices",
+  "awc_cm3cm3": "local drivers",
+  "bulk_density_gcm3": "local drivers",
+  "burn_rate": "local drivers",
+  "calendar": "context and calendar",
+  "cec_cmolkg": "local drivers",
+  "clay_pct": "local drivers",
+  "climate_water_deficit_mm": "local drivers",
+  "cloud_frequency_pct": "local drivers",
+  "coarse_fragments_pct": "local drivers",
+  "conflict_deaths": "local drivers",
+  "conflict_events": "local drivers",
+  "ctx:lat": "context and calendar",
+  "deeprec_twsa": "local drivers",
+  "dist_to_coast_km": "local drivers",
+  "diurnal_temp_range_C": "local drivers",
+  "elevation_m": "local drivers",
+  "epo": "global indices",
+  "era5l_d2m": "local drivers",
+  "era5l_pev": "local drivers",
+  "era5l_slhf": "local drivers",
+  "era5l_smlt": "local drivers",
+  "era5l_sro": "local drivers",
+  "era5l_sshf": "local drivers",
+  "era5l_ssr": "local drivers",
+  "era5l_ssro": "local drivers",
+  "era5l_stl1": "local drivers",
+  "era5l_str": "local drivers",
+  "fert_n": "local drivers",
+  "fert_p": "local drivers",
+  "frost_days": "local drivers",
+  "gdd5_degC_days": "local drivers",
+  "grace_lwe": "local drivers",
+  "hand_m": "local drivers",
+  "hdi": "local drivers",
+  "heatwave_days_gt35C": "local drivers",
+  "hist_last": "own history",
+  "hist_mean": "own history",
+  "iod": "global indices",
+  "irrigation_pct_gmia": "local drivers",
+  "luh2_cropland": "local drivers",
+  "luh2_forest": "local drivers",
+  "luh2_pasture": "local drivers",
+  "luh2_range": "local drivers",
+  "luh2_secondary": "local drivers",
+  "luh2_urban": "local drivers",
+  "max_daily_precip_mm": "local drivers",
+  "mean_temp_C": "local drivers",
+  "mean_vpd_kPa": "local drivers",
+  "mean_wind_ms": "local drivers",
+  "n_burns": "local drivers",
+  "nao": "global indices",
+  "nbr25km": "local drivers",
+  "nbr75km": "local drivers",
+  "nino12": "global indices",
+  "nino3": "global indices",
+  "nino34": "global indices",
+  "nino4": "global indices",
+  "nitrogen_gkg": "local drivers",
+  "noi": "global indices",
+  "normal": "seasonal normal",
+  "ntl": "local drivers",
+  "oni": "global indices",
+  "pdo": "global indices",
+  "pna": "global indices",
+  "precip_intensity_mm": "local drivers",
+  "precip_seasonality": "local drivers",
+  "rmin_pct": "local drivers",
+  "sam": "global indices",
+  "sand_pct": "local drivers",
+  "silt_pct": "local drivers",
+  "slope_deg": "local drivers",
+  "snow_duration_days": "local drivers",
+  "soi": "global indices",
+  "soil_moisture_pct": "local drivers",
+  "soil_organic_carbon_gkg": "local drivers",
+  "soil_ph": "local drivers",
+  "soil_water_tc_mm": "local drivers",
+  "solar_radiation_Wm2": "local drivers",
+  "southness": "local drivers",
+  "spei": "local drivers",
+  "sph_kgkg": "local drivers",
+  "spi": "local drivers",
+  "sst_anom_atl3": "global indices",
+  "sst_anom_coral_sea": "global indices",
+  "sst_anom_global_tropical": "global indices",
+  "sst_anom_iod_east": "global indices",
+  "sst_anom_iod_west": "global indices",
+  "sst_anom_mediterranean": "global indices",
+  "sst_anom_nino34": "global indices",
+  "sst_anom_subpolar_north_atlantic": "global indices",
+  "swe_mean_mm": "local drivers",
+  "tc_vapor_pressure": "local drivers",
+  "tna": "global indices",
+  "tni": "global indices",
+  "total_precip_mm": "local drivers",
+  "total_ref_ET_mm": "local drivers",
+  "tsa": "global indices",
+  "tslf_censored": "local drivers",
+  "tslf_months": "local drivers",
+  "upstream_area_km2": "local drivers",
+  "vpd_days_gt_2kpa": "local drivers",
+  "vpd_max_daily": "local drivers",
+  "vpd_warm_season": "local drivers",
+  "wbal": "local drivers",
+  "wbal_mm": "local drivers",
+  "wet_day_count": "local drivers",
+  "wp": "global indices"
+ },
+ "feature": {
+  "active": 111,
+  "kendall_w_main_set": {
+   "ci": [
+    NaN,
+    NaN
+   ],
+   "finite_replicates": 0,
+   "value": NaN
+  },
+  "mean_pairwise_spearman_main_set": {
+   "ci": [
+    NaN,
+    NaN
+   ],
+   "finite_replicates": 0,
+   "value": NaN
+  },
+  "nonzero_players": {
+   "rival_lgbm": 103,
+   "rival_lgbm_tweedie": 111,
+   "rival_rf": 111,
+   "rival_ridge": 111,
+   "treeroute": 111
+  },
+  "players": 134,
+  "stability_under_region_resampling": {
+   "rival_lgbm": 0.969531541956072,
+   "rival_lgbm_tweedie": 0.9902746095121094,
+   "rival_rf": 0.9853100693225693,
+   "rival_ridge": 0.9948624034749034,
+   "treeroute": 0.9482594375219375
+  },
+  "structural_zero": [
+   "c__ctx:lat",
+   "c__ctx:month",
+   "normal",
+   "x__V25_elevation_m",
+   "x__V26_slope_deg",
+   "x__V27_southness",
+   "x__V28_CTI",
+   "x__awc_cm3cm3",
+   "x__bulk_density_gcm3",
+   "x__cec_cmolkg",
+   "x__clay_pct",
+   "x__coarse_fragments_pct",
+   "x__conflict_deaths",
+   "x__conflict_events",
+   "x__dist_to_coast_km",
+   "x__hand_m",
+   "x__irrigation_pct_gmia",
+   "x__nitrogen_gkg",
+   "x__sand_pct",
+   "x__silt_pct",
+   "x__soil_organic_carbon_gkg",
+   "x__soil_ph",
+   "x__upstream_area_km2"
+  ]
+ },
+ "global_columns": [
+  "x__amo_lag12",
+  "x__ao",
+  "x__epo",
+  "x__iod",
+  "x__nao",
+  "x__nino12",
+  "x__nino3",
+  "x__nino34",
+  "x__nino4",
+  "x__noi",
+  "x__oni",
+  "x__pdo",
+  "x__pna",
+  "x__sam",
+  "x__soi",
+  "x__sst_anom_atl3",
+  "x__sst_anom_coral_sea",
+  "x__sst_anom_global_tropical_mean",
+  "x__sst_anom_iod_east",
+  "x__sst_anom_iod_west",
+  "x__sst_anom_mediterranean",
+  "x__sst_anom_nino34",
+  "x__sst_anom_subpolar_north_atlantic",
+  "x__tna",
+  "x__tni",
+  "x__tsa",
+  "x__wp"
+ ],
+ "j_rule": "player active when some model gives it > 1e-12 of its total",
+ "lead": 0,
+ "links": {
+  "rival_lgbm": "log_c|c=0.012987012987|ub=1",
+  "rival_lgbm_tweedie": "log_mu|c=0.012987012987|ub=1",
+  "rival_rf": "log_c|c=0.012987012987|ub=1",
+  "rival_ridge": "log_c|c=0.012987012987|ub=1",
+  "treeroute": "arcsine|c=0.012987012987|ub=1"
+ },
+ "main_set": [
+  "treeroute"
+ ],
+ "models": [
+  "rival_lgbm",
+  "rival_lgbm_tweedie",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "nonzero_forecast_rows": {
+  "treeroute": {
+   "rows": 226,
+   "top10": [
+    [
+     "hist_mean",
+     0.04052918721205889
+    ],
+    [
+     "spei",
+     0.03362831849949745
+    ],
+    [
+     "spi",
+     0.033004018499220904
+    ],
+    [
+     "deeprec_twsa",
+     0.03218361829592968
+    ],
+    [
+     "era5l_str",
+     0.030619982377590914
+    ],
+    [
+     "tslf_months",
+     0.029441214159219985
+    ],
+    [
+     "wbal",
+     0.025037882178186525
+    ],
+    [
+     "rmin_pct",
+     0.022145376246476202
+    ],
+    [
+     "ao",
+     0.021523016636642474
+    ],
+    [
+     "grace_lwe",
+     0.017379353388722478
+    ]
+   ]
+  }
+ },
+ "problem": "fire",
+ "reference_link": "arcsine|c=0.012987012987|ub=1",
+ "regions": 40,
+ "rows": 1000,
+ "salt": "shap_v1|AW4|fire|0",
+ "sample_sha256": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+ "variable": {
+  "active": 94,
+  "kendall_w_main_set": {
+   "ci": [
+    NaN,
+    NaN
+   ],
+   "finite_replicates": 0,
+   "value": NaN
+  },
+  "mean_pairwise_spearman_main_set": {
+   "ci": [
+    NaN,
+    NaN
+   ],
+   "finite_replicates": 0,
+   "value": NaN
+  },
+  "nonzero_players": {
+   "rival_lgbm": 87,
+   "rival_lgbm_tweedie": 94,
+   "rival_rf": 94,
+   "rival_ridge": 94,
+   "treeroute": 94
+  },
+  "players": 117,
+  "stability_under_region_resampling": {
+   "rival_lgbm": 0.9751756936590743,
+   "rival_lgbm_tweedie": 0.9899733049163747,
+   "rival_rf": 0.9839971318137485,
+   "rival_ridge": 0.9949556550951847,
+   "treeroute": 0.9650678900408192
+  },
+  "structural_zero": [
+   "CTI",
+   "awc_cm3cm3",
+   "bulk_density_gcm3",
+   "calendar",
+   "cec_cmolkg",
+   "clay_pct",
+   "coarse_fragments_pct",
+   "conflict_deaths",
+   "conflict_events",
+   "ctx:lat",
+   "dist_to_coast_km",
+   "elevation_m",
+   "hand_m",
+   "irrigation_pct_gmia",
+   "nitrogen_gkg",
+   "normal",
+   "sand_pct",
+   "silt_pct",
+   "slope_deg",
+   "soil_organic_carbon_gkg",
+   "soil_ph",
+   "southness",
+   "upstream_area_km2"
+  ]
+ }
+}

@@ -1,0 +1,187 @@
+====================================================================================================
+pm25 D:/treeroute/runs/pm25/headline/20261007_74e67609
+derived.json sha256 3e2d692b
+R12 value per_unit | h 168.0 | units 2028667 | units_scope every candidate unit of every group (D9, LORO) | fallback_units 0 | fallback_share 0.0 | flags []
+R20:fallback_rows value {} | groups_with_fallback 0 | extra_rows 0 | short_at_cuts {} | router_cuts [24193, 24199, 24204, 24229, 24235, 24240]
+   rule: a scored unit falls back at any router cut (every lead's fit and guard cut) with fewer fit rows than the minimum; the tables hold every bank unit's rows at or before the cut for each listed group (L2 rule 3)
+decision_checks.json sha ca13ac30 hits:
+    /fallback = null
+    /fallback_gls_note = null
+    /fallback_levels = {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /fallback_levels/identity|corrector/fallback_units_scored = 0
+    /fallback_levels/identity|plain/fallback_units_scored = 0
+    /fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /fallback_levels/log_c|plain/fallback_units_scored = 0
+test_pass_router.json sha 756337cc hits:
+guard_report.json sha 202a2c06 hits:
+    /ran/R12/fallback_decision_surface = null
+    /ran/R12/fallback_levels = {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /ran/R12/fallback_levels/identity|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/identity|plain/fallback_units_scored = 0
+    /ran/R12/fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/log_c|plain/fallback_units_scored = 0
+    /ran/R12/fallback_test_pass = null
+ladder\lead_12\lead.json hits:
+    /fallback_levels = {"levels": {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /fallback_levels/levels/log_c|corrector/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /guard/fallback_levels/levels/log_c|corrector/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+ladder\lead_6\lead.json hits:
+    /fallback_levels = {"levels": {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /fallback_levels/levels/log_c|corrector/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /guard/fallback_levels/levels/log_c|corrector/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+  text decision_checks.json short_units: 0 fallback-key: 1 fallback_units_scored entries: 4 nonzero: []
+  text guard_report.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 4 nonzero: []
+  text ladder\lead_12\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 3 nonzero: []
+  text ladder\lead_6\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 3 nonzero: []
+  parquet test_preds.parquet ncols 41 router-ish cols: []
+  parquet ladder\lead_12\guard_preds.parquet ncols 11 router-ish cols: []
+  parquet ladder\lead_12\test_preds.parquet ncols 23 router-ish cols: []
+  parquet ladder\lead_6\guard_preds.parquet ncols 11 router-ish cols: []
+  parquet ladder\lead_6\test_preds.parquet ncols 21 router-ish cols: []
+====================================================================================================
+ndvi D:/treeroute/runs/ndvi/headline/20261016_d1de3158
+derived.json sha256 8ecc92b5
+R12 value per_unit | h 168.0 | units 2289116 | units_scope every candidate unit of every group (D9, LORO) | fallback_units 75 | fallback_share 3.27637393648902e-05 | flags []
+R20:fallback_rows value {} | groups_with_fallback 0 | extra_rows 0 | short_at_cuts {} | router_cuts [24193, 24199, 24204, 24229, 24235, 24240]
+   rule: a scored unit falls back at any router cut (every lead's fit and guard cut) with fewer fit rows than the minimum; the tables hold every bank unit's rows at or before the cut for each listed group (L2 rule 3)
+decision_checks.json sha 292552ed hits:
+    /fallback = null
+    /fallback_gls_note = null
+    /fallback_levels = {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /fallback_levels/identity|corrector/fallback_units_scored = 0
+    /fallback_levels/identity|plain/fallback_units_scored = 0
+test_pass_router.json sha 6db07968 hits:
+guard_report.json sha b908fdef hits:
+    /ran/R12/fallback_decision_surface = null
+    /ran/R12/fallback_levels = {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /ran/R12/fallback_levels/identity|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/identity|plain/fallback_units_scored = 0
+    /ran/R12/fallback_test_pass = null
+ladder\lead_12\lead.json hits:
+    /fallback_levels = {"levels": {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surfac...(654 chars)
+    /fallback_levels/levels/identity|corrector/fallback_units_scored = 0
+    /fallback_levels/levels/identity|plain/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surfac...(612 chars)
+    /guard/fallback_levels/levels/identity|corrector/fallback_units_scored = 0
+    /guard/fallback_levels/levels/identity|plain/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/identity|corrector/fallback_units_scored = 0
+    /guard/router/fallback_levels/identity|plain/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+ladder\lead_6\lead.json hits:
+    /fallback_levels = {"levels": {"identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /fallback_levels/levels/identity|plain/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /guard/fallback_levels/levels/identity|plain/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/identity|plain/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+  text decision_checks.json short_units: 0 fallback-key: 1 fallback_units_scored entries: 2 nonzero: []
+  text guard_report.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 2 nonzero: []
+  text ladder\lead_12\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 6 nonzero: []
+  text ladder\lead_6\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 3 nonzero: []
+  parquet test_preds.parquet ncols 27 router-ish cols: []
+  parquet ladder\lead_12\guard_preds.parquet ncols 9 router-ish cols: []
+  parquet ladder\lead_12\test_preds.parquet ncols 21 router-ish cols: []
+  parquet ladder\lead_6\guard_preds.parquet ncols 9 router-ish cols: []
+  parquet ladder\lead_6\test_preds.parquet ncols 19 router-ish cols: []
+====================================================================================================
+fire D:/treeroute/runs/fire/headline/20261017_869d1f38
+derived.json sha256 9255562c
+R12 value per_unit | h 156.0 | units 925710 | units_scope every candidate unit of every group (D9, LORO) | fallback_units 317 | fallback_share 0.0003424398569746465 | flags []
+R20:fallback_rows value {} | groups_with_fallback 0 | extra_rows 0 | short_at_cuts {} | router_cuts [24181, 24187, 24192, 24217, 24223, 24228]
+   rule: a scored unit falls back at any router cut (every lead's fit and guard cut) with fewer fit rows than the minimum; the tables hold every bank unit's rows at or before the cut for each listed group (L2 rule 3)
+decision_checks.json sha 37cb5b05 hits:
+    /fallback = null
+    /fallback_gls_note = null
+    /fallback_levels = {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "arcsine|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|plain": {"fallback_u...(682 chars)
+    /fallback_levels/arcsine|corrector/fallback_units_scored = 0
+    /fallback_levels/arcsine|plain/fallback_units_scored = 0
+    /fallback_levels/identity|corrector/fallback_units_scored = 0
+    /fallback_levels/identity|plain/fallback_units_scored = 0
+    /fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /fallback_levels/log_c|plain/fallback_units_scored = 0
+test_pass_router.json sha 0fc515c0 hits:
+guard_report.json sha ad85f55b hits:
+    /ran/R12/fallback_decision_surface = null
+    /ran/R12/fallback_levels = {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "arcsine|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "identity|plain": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}, "log_c|plain": {"fallback_u...(682 chars)
+    /ran/R12/fallback_levels/arcsine|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/arcsine|plain/fallback_units_scored = 0
+    /ran/R12/fallback_levels/identity|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/identity|plain/fallback_units_scored = 0
+    /ran/R12/fallback_levels/log_c|corrector/fallback_units_scored = 0
+    /ran/R12/fallback_levels/log_c|plain/fallback_units_scored = 0
+    /ran/R12/fallback_test_pass = null
+ladder\lead_12\lead.json hits:
+    /fallback_levels = {"levels": {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /fallback_levels/levels/arcsine|corrector/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /guard/fallback_levels/levels/arcsine|corrector/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/arcsine|corrector/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+ladder\lead_6\lead.json hits:
+    /fallback_levels = {"levels": {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /fallback_levels/levels/arcsine|corrector/fallback_units_scored = 0
+    /guard/fallback_levels = {"levels": {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /guard/fallback_levels/levels/arcsine|corrector/fallback_units_scored = 0
+    /guard/router/fallback_levels = {"arcsine|corrector": {"fallback_units_scored": 0, "level": 1.0, "surface_mae_by_level": null, "used_centre": true}}
+    /guard/router/fallback_levels/arcsine|corrector/fallback_units_scored = 0
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+  text decision_checks.json short_units: 0 fallback-key: 1 fallback_units_scored entries: 6 nonzero: []
+  text guard_report.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 6 nonzero: []
+  text ladder\lead_12\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 3 nonzero: []
+  text ladder\lead_6\lead.json short_units: 0 fallback-key: 0 fallback_units_scored entries: 3 nonzero: []
+  parquet test_preds.parquet ncols 55 router-ish cols: []
+  parquet ladder\lead_12\guard_preds.parquet ncols 11 router-ish cols: []
+  parquet ladder\lead_12\test_preds.parquet ncols 23 router-ish cols: []
+  parquet ladder\lead_6\guard_preds.parquet ncols 11 router-ish cols: []
+  parquet ladder\lead_6\test_preds.parquet ncols 21 router-ish cols: []
+====================================================================================================
+defo D:/treeroute/runs/defo/headline/20261017_d71c61f4
+derived.json sha256 e17b92cf
+R12 value region | h 13.0 | units 580134 | units_scope every candidate unit of every group (D9, LORO) | fallback_units None | fallback_share None | flags []
+R20:fallback_rows value {} | groups_with_fallback 0 | extra_rows 0 | short_at_cuts {} | router_cuts [2016, 2019]
+   rule: a scored unit falls back at any router cut (every lead's fit and guard cut) with fewer fit rows than the minimum; the tables hold every bank unit's rows at or before the cut for each listed group (L2 rule 3)
+decision_checks.json sha 14027c46 hits:
+    /fallback = null
+    /fallback_gls_note = null
+    /fallback_levels = {}
+test_pass_router.json sha a8e3e843 hits:
+guard_report.json sha 2a483197 hits:
+    /ran/R12/fallback_decision_surface = null
+    /ran/R12/fallback_levels = {}
+    /ran/R12/fallback_test_pass = null
+ladder\lead_1\lead.json hits:
+    /fallback_levels = {"levels": {}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels", "source": "the lead's own guard surface"}
+    /guard/fallback_levels = {"levels": {}, "rule": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels"}
+    /test/fallback_levels = "the lead's own guard surface's (owner ruling H5)"
+  text decision_checks.json short_units: 0 fallback-key: 1 fallback_units_scored entries: 0 nonzero: []
+  parquet test_preds.parquet ncols 37 router-ish cols: []
+  parquet ladder\lead_1\guard_preds.parquet ncols 11 router-ish cols: []
+  parquet ladder\lead_1\test_preds.parquet ncols 23 router-ish cols: []
+====================================================================================================
+coral D:/treeroute/runs/coral/headline/20261020_f3b8e3da
+derived.json sha256 5fd02863
+R12 value neighbour | h 1.0 | units 7348 | units_scope every candidate unit of every group (D9, LORO) | fallback_units None | fallback_share None | flags []
+decision_checks.json sha 676d20e2 hits:
+test_pass_router.json sha abafb260 hits:
+guard_report.json sha 40df305b hits:
+    /ran/R12/fallback_decision_surface = null
+    /ran/R12/fallback_levels = null
+    /ran/R12/fallback_test_pass = null
+ladder\lead_183\lead.json hits:
+ladder\lead_365\lead.json hits:
+  parquet test_preds.parquet ncols 56 router-ish cols: []
+  parquet ladder\lead_183\guard_preds.parquet ncols 12 router-ish cols: []
+  parquet ladder\lead_183\test_preds.parquet ncols 22 router-ish cols: []
+  parquet ladder\lead_365\guard_preds.parquet ncols 12 router-ish cols: []
+  parquet ladder\lead_365\test_preds.parquet ncols 24 router-ish cols: []

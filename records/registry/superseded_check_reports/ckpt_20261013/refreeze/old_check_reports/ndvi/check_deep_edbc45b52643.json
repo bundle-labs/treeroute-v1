@@ -1,0 +1,205 @@
+{
+ "checked_groups": {
+  "constants": {
+   "C13.smoke_groups": 4,
+   "C15.min_groups": 3
+  },
+  "data_groups": 133,
+  "groups": [
+   "alaska_interior_taiga",
+   "alaska_north_slope",
+   "amazon_basin_brazil",
+   "anatolian_plateau"
+  ],
+  "package_groups": 133,
+  "refused": null,
+  "rule": "R21",
+  "selection": "R21 smoke groups, ruling M2"
+ },
+ "engine_code_sha256": "7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb",
+ "finished": "2026-10-07T16:19:22+03:00",
+ "green": true,
+ "guards": [
+  {
+   "columns": [],
+   "id": "G-SPLIT",
+   "message": "[G-SPLIT] 133 groups in the data, 0 excluded, 133 after exclusions (every one trained and tested); seen_during_design: 2",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "V06_spei_12m_lag12",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "amo_lag12",
+    "spei_01m_lag12",
+    "spei_03m_lag12",
+    "spei_06m_lag12",
+    "spei_24m_lag12"
+   ],
+   "id": "G-LINEAGE",
+   "message": "[G-LINEAGE] 12 entering columns carry a lineage flag: V06_spei_12m_lag12 (derived from V06_spei_12m, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_buffalo_hold2021 (derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_cattle_hold2021 (derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)), aglw_goats_hold2021 (derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)) ... (12 in all) Columns: V06_spei_12m_lag12, aglw_buffalo_hold2021, aglw_cattle_hold2021, aglw_goats_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_total_lsu_hold2021, amo_lag12, spei_01m_lag12, spei_03m_lag12, spei_06m_lag12, spei_24m_lag12. Fix: confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only)).",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-CLOSED",
+   "message": "[G-CLOSED] every one of the 562 non-key columns has facts and one verdict; keep_unreviewed (listed in every report): none",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-KEYS",
+   "message": "[G-KEYS] no key or key-derived column is a tree feature (492 tree features, 9 router context columns)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-LAG",
+   "message": "[G-LAG] 482 entering time-varying columns have R8's computed lag (by steps: 0: 416, 1: 48, 2: 15, 3: 3)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-HIST",
+   "message": "[G-HIST] no dataset column is declared as a look-back of the own target",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-SUPPORT",
+   "message": "[G-SUPPORT] 133 groups; donor labels not judged here (check --deep reads them); census not judged here (check --deep reads it)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-FACTS",
+   "message": "[G-FACTS] every kept column's timing facts are verified or signed; co-measured answers and the target's legal-range source are present",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "deep groups (ruling M2)",
+   "message": "[R21] ruling-M2 subset (R21 smoke groups, ruling M2; the first 4 groups in sorted order, C13.smoke_groups): 4 of the package's 133 groups after split.yaml's exclusions (133 in the target store): alaska_interior_taiga, alaska_north_slope, amazon_basin_brazil, anatolian_plateau; the quick checks above cover the whole package",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-MISSING (files)",
+   "message": "[G-MISSING] every driver store holds a file for every checked group and every target year inside its record (D:/gfed_burn/{group}_burn_{year}.parquet: 1 (group, period) pairs declared absent)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "windows (R3-R11)",
+   "message": "[R3-R11] Y0 2003 (R4), Y_end 2023 (R3 on the joined rows of 4 groups), test years [2020, 2021, 2022, 2023] (R5), train end 2019 (R6), inner fit 2003-2016 and inner score [2017, 2018, 2019] (R7), leads [0, 6, 12] (R10), 6 cuts (R11: every lead's fit and guard cut), the earliest 2016-01-31; derived on the deep pass's rows (derived.json is the authority)",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "wbal_roll12",
+    "wbal_roll24",
+    "wbal_roll6"
+   ],
+   "id": "G-SENTINEL (deep)",
+   "message": "[G-SENTINEL] 3 columns hold known fill codes they do not declare, or near-sentinel magnitudes (report only; the read-time mask removes declared codes and abs >= 1e30 only): wbal_roll12 (code -999.0 x 82), wbal_roll24 (code -999.0 x 209), wbal_roll6 (code -999.0 x 5) Columns: wbal_roll12, wbal_roll24, wbal_roll6. Fix: declare the provider's fill codes in the store catalog (fill_values), or opt the column out of the near-sentinel flag when such magnitudes are real.",
+   "status": "flag"
+  },
+  {
+   "columns": [
+    "luh2_forest"
+   ],
+   "id": "G-RANGE",
+   "message": "[G-RANGE] 1 columns hold values outside their legal range at or under 0.1% (report only): luh2_forest (13104 of 25593480 outside: 0 below, 13104 above); not built here: D96's UDUNITS dimension test (unit strings of sum groups and single-parent copies only) and the per-arm pre-clip rate and calibration ratio (run outputs); target: donor years 2003-2019 (Y0 to the train end, R4-R6 on the deep pass's rows; derived.json is the authority) Columns: luh2_forest.",
+   "status": "flag"
+  },
+  {
+   "columns": [
+    "burn_npix"
+   ],
+   "id": "G-CADENCE",
+   "message": "[G-CADENCE] 1 columns are fake-fine (constant within every unit x next-coarser period): burn_npix (varies in 0 of 1351812 unit x coarser periods); none of these columns enters a run (report only until a verdict lets one in; a reading for the owner to confirm: the approved contract refuses on any column) Columns: burn_npix. Fix: correct the column's cadence fact (declare the coarser step it really has), or rebuild the column at the declared step. (Part 549)",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-JOIN",
+   "message": "[G-JOIN] 154 joins were 1:1 with unchanged row counts (0 target rows had no driver row inside a store file and 9371736 more lie in years or groups a store holds no file for (store D:/gfed_burn/{group}_burn_{year}.parquet (groups its store facts declare absent, F8): 9371736): NaN, then R30); 2 tables match their catalogs",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "V06_spei_12m",
+    "snow_disappearance_doy",
+    "snow_max_doy",
+    "snow_onset_doy",
+    "spei_01m",
+    "spei_03m",
+    "spei_06m",
+    "spei_24m",
+    "wbal_roll24"
+   ],
+   "id": "G-MISSING (deep)",
+   "message": "[G-MISSING] columns all missing in a group-year (inside files that exist, or in a year inside the store's record that has no file, which G-MISSING (files) refuses) (report only; R30 and the Q34 review rule them): V06_spei_12m all missing in 4 group-years (e.g. alaska_interior_taiga/2023, alaska_north_slope/2023, amazon_basin_brazil/2023 ... (4 in all)); snow_disappearance_doy all missing in 22 group-years (e.g. amazon_basin_brazil/2002, amazon_basin_brazil/2003, amazon_basin_brazil/2004 ... (22 in all)); snow_max_doy all missing in 22 group-years (e.g. amazon_basin_brazil/2002, amazon_basin_brazil/2003, amazon_basin_brazil/2004 ... (22 in all)); snow_onset_doy all missing in 22 group-years (e.g. amazon_basin_brazil/2002, amazon_basin_brazil/2003, amazon_basin_brazil/2004 ... (22 in all)); spei_01m all missing in 4 group-years (e.g. alaska_interior_taiga/2023, alaska_north_slope/2023, amazon_basin_brazil/2023 ... (4 in all)); spei_03m all missing in 4 group-years (e.g. alaska_interior_taiga/2023, alaska_north_slope/2023, amazon_basin_brazil/2023 ... (4 in all)); spei_06m all missing in 4 group-years (e.g. alaska_interior_taiga/2023, alaska_north_slope/2023, amazon_basin_brazil/2023 ... (4 in all)); spei_24m all missing in 4 group-years (e.g. alaska_interior_taiga/2023, alaska_north_slope/2023, amazon_basin_brazil/2023 ... (4 in all)) ... (9 columns in all) Columns: V06_spei_12m, snow_disappearance_doy, snow_max_doy, snow_onset_doy, spei_01m, spei_03m, spei_06m, spei_24m, wbal_roll24.",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-SUPPORT (deep)",
+   "message": "[G-SUPPORT] no unit's labels are all zero (the unit set is declared in AUDIT_CHECKLIST) (report only) donor years 2003-2019 (Y0 to the train end, R4-R6 on the deep pass's rows; derived.json is the authority)",
+   "status": "flag"
+  },
+  {
+   "columns": [
+    "burn_frac"
+   ],
+   "id": "G-MISSING",
+   "message": "[G-MISSING] 1 R30-flagged columns, each ruled (report only): burn_frac (R30's rule on the deep pass's shares of the stored kept tree features, unlagged, every checked unit; feature-script outputs are not measured here; derived.json R30 is the authority; donor years 2003-2019 (Y0 to the train end, R4-R6 on the deep pass's rows; derived.json is the authority); test years [2020, 2021, 2022, 2023]) Columns: burn_frac.",
+   "status": "flag"
+  },
+  {
+   "columns": [],
+   "id": "G-EPOCH",
+   "message": "[G-EPOCH] no entering column is observed after a cut (content_epoch on every kind, observed_through of a static or epoch column; 6 cuts (R11: every lead's fit and guard cut), the earliest 2016-01-31); 15 regular or composite columns declare observed_through: their record end, never compared with a cut (owner ruling N S23); cuts: R11 (timing.cuts_for_leads) of the windows line, each as its last day (derive.rules.cut_days); train end 2019 (R6)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-CALENDAR",
+   "message": "[G-CALENDAR] lags [1, 2, 3]: every predecessor read of 1000 sample rows is in its own unit and exactly k steps back (the engine's lookup; package content is checked by the G-DERIVED recompute)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-DERIVED (recompute)",
+   "message": "[G-DERIVED] 394 engineered columns match their declaration on 1000 stride-sampled rows",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-HIST (sample)",
+   "message": "[G-HIST] no dataset column matches a look-back of the own target on 820 sample rows (820 sample rows at or before the train end 2019)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-LINEAGE (deep)",
+   "message": "[G-LINEAGE] no banned sum-group member can be rebuilt from kept members on the sample",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-DERIVED",
+   "message": "[G-DERIVED] the feature script fits no model (static scan)",
+   "status": "pass"
+  }
+ ],
+ "mode": "deep",
+ "package": "ndvi",
+ "package_fingerprint": "edbc45b52643dcddc8ddb3928b3f955ad1a404e227051532f00734a3e01227bf",
+ "started": "2026-10-07T16:12:58+03:00"
+}

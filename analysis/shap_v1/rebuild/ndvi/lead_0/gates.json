@@ -1,0 +1,185 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": false
+   }
+  },
+  "E10_exported_trees": {
+   "pass": true,
+   "values": {
+    "rows_x_trees": [
+     251,
+     13200
+    ],
+    "unit": "alaska_interior_taiga_-4065_2380"
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "13838e41843cf1ec",
+    "engine_root": "D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc",
+    "manifest": "13838e41843cf1ec"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3_inputs": {
+   "pass": true,
+   "values": {
+    "config_keys_differing": [],
+    "derived": "e2836c5eda7ac7ae",
+    "fingerprint": "d1de3158cad5ab44",
+    "manifest_fingerprint": "d1de3158cad5ab44",
+    "package": "edbc45b52643dcdd"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [
+     "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/ndvi/data/static/part-0.parquet"
+    ],
+    "path_map": true,
+    "static_files_sha256": [
+     "7fdfb7af6c86f610",
+     "7fdfb7af6c86f610"
+    ],
+    "target_files_sha256": [
+     "dad0555d713b1c31",
+     "dad0555d713b1c31"
+    ]
+   }
+  },
+  "E3m_recorded_path_map": {
+   "pass": true,
+   "values": {
+    "files": [
+     {
+      "equal": true,
+      "lock_records": 4,
+      "locks": [
+       "FREEZE_20261007T132431Z.lock.json",
+       "FREEZE_20261013T103700Z.lock.json",
+       "FREEZE_20261016T012320Z.lock.json",
+       "FREEZE_20261016T090651Z.lock.json"
+      ],
+      "recorded": "C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/ndvi/data/static/part-0.parquet",
+      "sha256": "16e89f9aca6bc4aaa9fde246f20f92b379ce0a67461539005cd917eb14bcc2b3",
+      "size": 10793989,
+      "today": "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/ndvi/data/static/part-0.parquet"
+     }
+    ],
+    "rule": "content SHA-256, size and mtime equal every freeze-lock record of the recorded path"
+   }
+  },
+  "E4_donor_rows": {
+   "pass": true,
+   "values": {
+    "row_key_hash": [
+     "0e4c12a0915a6f62",
+     "0e4c12a0915a6f62"
+    ],
+    "rows": [
+     2680841,
+     2680841
+    ]
+   }
+  },
+  "E5_bank_fingerprint": {
+   "pass": false,
+   "values": {
+    "rebuilt": "f30115fdca3bbd297f2043f73bf8352d4fa26490a404d8e3f5b5d0e218fa5420",
+    "role": "informational, cause not established (answers decide: E5a, E8, E10)",
+    "run": "21e1d2a839c2a215b43acf95f1a54aab6cfcb8b7eed2e39b7e80ff83680c9207",
+    "trees": 13300
+   }
+  },
+  "E6_c_and_tolerances": {
+   "pass": true,
+   "values": {
+    "c": [
+     null,
+     null
+    ]
+   }
+  },
+  "E8_predictions": {
+   "pass": true,
+   "values": {
+    "arm": "identity_plain_unweighted",
+    "arm_bit_equal": 12768,
+    "bit_identical": true,
+    "d8_licence": null,
+    "max_abs_pre": 0.0,
+    "max_rel_arm": 0.0,
+    "max_rel_pre": 0.0,
+    "max_ulps_arm": 0,
+    "max_ulps_pre": 0,
+    "pre_bit_equal": 12768,
+    "rows_checked": 12768,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "tolerance_rule": "bit identity",
+    "units": 266,
+    "within_relative_tolerance": true
+   }
+  },
+  "E9_coefficients_reproduce_the_kernel": {
+   "pass": true,
+   "values": {
+    "fits_captured": 266,
+    "fits_whose_X_b_differs_from_the_kernel": 0,
+    "region_proof": null
+   }
+  }
+ },
+ "peak_gb": 8.29,
+ "result": {
+  "arm": "identity_plain_unweighted",
+  "c": null,
+  "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\ndvi\\headline\\20261115_d1de3158",
+  "kind": "per_unit",
+  "legal": [
+   -0.2,
+   1.0
+  ],
+  "link": "identity",
+  "point": {
+   "level": 1.0,
+   "ratio": 0.0625
+  },
+  "rows_checked": 12768,
+  "table_kind": "plain",
+  "ub": 1.0,
+  "weighted": false
+ },
+ "seconds": 8237.0,
+ "stopped_at": null
+}

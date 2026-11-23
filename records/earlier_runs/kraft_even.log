@@ -1,0 +1,115 @@
+[19:24:29] ========================================================================================================
+[19:24:29] KRAFT RIVAL | building donor sequences | 89 donor regions | 25 cells each | seq 12
+[19:24:29]   dynamic: V01_mean_temp_C, V02_total_precip_mm, V05_mean_vpd_kPa, V30_soil_moisture_pct, solar_radiation_Wm2, V09_mean_wind_ms
+[19:24:29]   static : soil_organic_carbon_gkg, soil_ph, sand_pct, clay_pct, awc_cm3cm3, V25_elevation_m   (LAND COVER DROPPED -- banned proxy)
+[19:26:18]   15/89 donor regions | 93,767 sequences | 1.8 min
+[19:28:28]   30/89 donor regions | 187,917 sequences | 4.0 min
+[19:30:12]   45/89 donor regions | 281,223 sequences | 5.7 min
+[19:31:39]   60/89 donor regions | 374,833 sequences | 7.2 min
+[19:32:11]   reached the 400,000-sequence cap at donor region 64 -- stopping collection
+[19:32:11]   training cells recorded -> D:\run89full\kraft\train_cells.csv (1,600 cells, fixed)
+[19:32:11]   training set: 400,125 sequences x 12 months x 6 vars + 6 statics
+[19:32:14]   training on cuda | 8 epochs | batch 4096 | hidden 64
+[19:32:15]     epoch 1/8  train MAE 0.14527
+[19:32:16]     epoch 2/8  train MAE 0.10113
+[19:32:17]     epoch 3/8  train MAE 0.08864
+[19:32:18]     epoch 4/8  train MAE 0.08075
+[19:32:18]     epoch 5/8  train MAE 0.07460
+[19:32:19]     epoch 6/8  train MAE 0.07074
+[19:32:20]     epoch 7/8  train MAE 0.06850
+[19:32:21]     epoch 8/8  train MAE 0.06725
+[19:32:21] TRAIN DONE | 7.9 min | model -> D:\run89full\kraft\kraft_lstm.pt
+[19:32:24] ========================================================================================================
+[19:32:24] KRAFT PREDICT | 44 held-out regions | seq 12 | device cuda
+[19:33:01]   alaska_interior_taiga              241,164 rows | 1/44 | 0.6 min | ~26 min left
+[19:33:38]   alaska_north_slope                 319,500 rows | 2/44 | 1.2 min | ~26 min left
+[19:34:02]   anatolian_plateau                  135,468 rows | 3/44 | 1.6 min | ~22 min left
+[19:34:11]   atacama_desert                      72,000 rows | 4/44 | 1.8 min | ~18 min left
+[19:34:26]   borneo_peat_fires                   72,000 rows | 5/44 | 2.0 min | ~16 min left
+[19:34:34]   borneo_rainforest                   71,892 rows | 6/44 | 2.2 min | ~14 min left
+[19:34:50]   brittany_france                     72,000 rows | 7/44 | 2.4 min | ~13 min left
+[19:35:01]   central_india_dry_forest            92,628 rows | 8/44 | 2.6 min | ~12 min left
+[19:35:16]   costa_rica                          71,928 rows | 9/44 | 2.9 min | ~11 min left
+[19:35:32]   drakensberg_lesotho                 72,000 rows | 10/44 | 3.1 min | ~11 min left
+[19:35:48]   east_african_savanna               141,120 rows | 11/44 | 3.4 min | ~10 min left
+[19:36:14]   gobi_desert                        144,144 rows | 12/44 | 3.8 min | ~10 min left
+[19:36:30]   greece_mainland                     71,964 rows | 13/44 | 4.1 min | ~10 min left
+[19:36:49]   hulunbuir_grassland                157,752 rows | 14/44 | 4.4 min | ~9 min left
+[19:36:59]   hungarian_puszta                    84,204 rows | 15/44 | 4.6 min | ~9 min left
+[19:37:08]   iberian_wildfire                    72,000 rows | 16/44 | 4.7 min | ~8 min left
+[19:37:27]   indian_acacia_babool                91,368 rows | 17/44 | 5.0 min | ~8 min left
+[19:37:43]   japan_central_honshu                76,104 rows | 18/44 | 5.3 min | ~8 min left
+[19:37:55]   karoo                               98,748 rows | 19/44 | 5.5 min | ~7 min left
+[19:38:23]   llanos_venezuela                   170,856 rows | 20/44 | 6.0 min | ~7 min left
+[19:38:39]   madagascar_spiny_thicket            72,000 rows | 21/44 | 6.2 min | ~7 min left
+[19:38:55]   madagascar_western_dry              71,784 rows | 22/44 | 6.5 min | ~7 min left
+[19:39:03]   mediterranean_andalusia             72,000 rows | 23/44 | 6.6 min | ~6 min left
+[19:39:20]   mesopotamia                         76,500 rows | 24/44 | 6.9 min | ~6 min left
+[19:39:43]   mexican_altiplano                  124,200 rows | 25/44 | 7.3 min | ~6 min left
+[19:39:53]   mopane_woodland                     86,688 rows | 26/44 | 7.5 min | ~5 min left
+[19:39:57]   namib_desert                        34,956 rows | 27/44 | 7.6 min | ~5 min left
+[19:40:06]   new_zealand_north_island            71,676 rows | 28/44 | 7.7 min | ~4 min left
+[19:40:22]   nile_valley_delta                   73,080 rows | 29/44 | 8.0 min | ~4 min left
+[19:40:35]   okavango_delta                      62,496 rows | 30/44 | 8.2 min | ~4 min left
+[19:40:51]   pamir_plateau                       72,000 rows | 31/44 | 8.4 min | ~4 min left
+[19:41:05]   pearl_river_delta                   71,928 rows | 32/44 | 8.7 min | ~3 min left
+[19:41:51]   scandinavian_taiga                 314,208 rows | 33/44 | 9.4 min | ~3 min left
+[19:42:04]   sundarbans                          72,000 rows | 34/44 | 9.7 min | ~3 min left
+[19:42:19]   tasmania_western                    71,712 rows | 35/44 | 9.9 min | ~3 min left
+[19:42:34]   thar_desert                         72,000 rows | 36/44 | 10.2 min | ~2 min left
+[19:42:49]   tierra_del_fuego                    71,820 rows | 37/44 | 10.4 min | ~2 min left
+[19:43:04]   tongass_alaska                      72,000 rows | 38/44 | 10.7 min | ~2 min left
+[19:43:22]   tuva_steppe                         89,964 rows | 39/44 | 11.0 min | ~1 min left
+[19:43:39]   uk_midlands                         72,000 rows | 40/44 | 11.2 min | ~1 min left
+[19:44:01]   uruguay                            118,296 rows | 41/44 | 11.6 min | ~1 min left
+[19:44:17]   vietnam_central_highlands           72,000 rows | 42/44 | 11.9 min | ~1 min left
+[19:44:45]   western_europe_temperate           168,984 rows | 43/44 | 12.3 min | ~0 min left
+[19:45:01]   yucatan_peninsula                   71,928 rows | 44/44 | 12.6 min | ~0 min left
+[19:45:01] PREDICT DONE | 44 regions | 12.6 min
+[19:45:05] ========================================================================================================
+[19:45:05] KRAFT CALIBRATION | per-cell linear fit on 2017-2019 | 44 regions | device cuda
+[19:45:14]   alaska_interior_taiga                6699 cells calibrated | 1/44 | 0.2 min | ~7 min left
+[19:45:30]   alaska_north_slope                   8874 cells calibrated | 2/44 | 0.4 min | ~9 min left
+[19:45:36]   anatolian_plateau                    3763 cells calibrated | 3/44 | 0.5 min | ~7 min left
+[19:45:40]   atacama_desert                       2000 cells calibrated | 4/44 | 0.6 min | ~6 min left
+[19:45:43]   borneo_peat_fires                    2000 cells calibrated | 5/44 | 0.6 min | ~5 min left
+[19:45:47]   borneo_rainforest                    1983 cells calibrated | 6/44 | 0.7 min | ~4 min left
+[19:45:50]   brittany_france                      1970 cells calibrated | 7/44 | 0.8 min | ~4 min left
+[19:45:55]   central_india_dry_forest             2573 cells calibrated | 8/44 | 0.8 min | ~4 min left
+[19:45:59]   costa_rica                           1992 cells calibrated | 9/44 | 0.9 min | ~4 min left
+[19:46:02]   drakensberg_lesotho                  2000 cells calibrated | 10/44 | 1.0 min | ~3 min left
+[19:46:09]   east_african_savanna                 3920 cells calibrated | 11/44 | 1.1 min | ~3 min left
+[19:46:16]   gobi_desert                          4004 cells calibrated | 12/44 | 1.2 min | ~3 min left
+[19:46:19]   greece_mainland                      1987 cells calibrated | 13/44 | 1.2 min | ~3 min left
+[19:46:27]   hulunbuir_grassland                  4382 cells calibrated | 14/44 | 1.4 min | ~3 min left
+[19:46:31]   hungarian_puszta                     2339 cells calibrated | 15/44 | 1.4 min | ~3 min left
+[19:46:34]   iberian_wildfire                     2000 cells calibrated | 16/44 | 1.5 min | ~3 min left
+[19:46:39]   indian_acacia_babool                 2538 cells calibrated | 17/44 | 1.6 min | ~2 min left
+[19:46:43]   japan_central_honshu                 2104 cells calibrated | 18/44 | 1.6 min | ~2 min left
+[19:46:47]   karoo                                2743 cells calibrated | 19/44 | 1.7 min | ~2 min left
+[19:46:55]   llanos_venezuela                     4746 cells calibrated | 20/44 | 1.8 min | ~2 min left
+[19:46:59]   madagascar_spiny_thicket             2000 cells calibrated | 21/44 | 1.9 min | ~2 min left
+[19:47:03]   madagascar_western_dry               1980 cells calibrated | 22/44 | 2.0 min | ~2 min left
+[19:47:06]   mediterranean_andalusia              1997 cells calibrated | 23/44 | 2.0 min | ~2 min left
+[19:47:10]   mesopotamia                          2125 cells calibrated | 24/44 | 2.1 min | ~2 min left
+[19:47:16]   mexican_altiplano                    3450 cells calibrated | 25/44 | 2.2 min | ~2 min left
+[19:47:20]   mopane_woodland                      2408 cells calibrated | 26/44 | 2.3 min | ~2 min left
+[19:47:22]   namib_desert                          967 cells calibrated | 27/44 | 2.3 min | ~1 min left
+[19:47:26]   new_zealand_north_island             1963 cells calibrated | 28/44 | 2.4 min | ~1 min left
+[19:47:29]   nile_valley_delta                    2019 cells calibrated | 29/44 | 2.4 min | ~1 min left
+[19:47:32]   okavango_delta                       1736 cells calibrated | 30/44 | 2.5 min | ~1 min left
+[19:47:36]   pamir_plateau                        2000 cells calibrated | 31/44 | 2.5 min | ~1 min left
+[19:47:39]   pearl_river_delta                    1985 cells calibrated | 32/44 | 2.6 min | ~1 min left
+[19:47:54]   scandinavian_taiga                   8674 cells calibrated | 33/44 | 2.8 min | ~1 min left
+[19:47:58]   sundarbans                           1982 cells calibrated | 34/44 | 2.9 min | ~1 min left
+[19:48:01]   tasmania_western                     1959 cells calibrated | 35/44 | 2.9 min | ~1 min left
+[19:48:05]   thar_desert                          2000 cells calibrated | 36/44 | 3.0 min | ~1 min left
+[19:48:08]   tierra_del_fuego                     1982 cells calibrated | 37/44 | 3.1 min | ~1 min left
+[19:48:12]   tongass_alaska                       2000 cells calibrated | 38/44 | 3.1 min | ~0 min left
+[19:48:16]   tuva_steppe                          2499 cells calibrated | 39/44 | 3.2 min | ~0 min left
+[19:48:20]   uk_midlands                          2000 cells calibrated | 40/44 | 3.3 min | ~0 min left
+[19:48:25]   uruguay                              3286 cells calibrated | 41/44 | 3.3 min | ~0 min left
+[19:48:29]   vietnam_central_highlands            2000 cells calibrated | 42/44 | 3.4 min | ~0 min left
+[19:48:37]   western_europe_temperate             4694 cells calibrated | 43/44 | 3.5 min | ~0 min left
+[19:48:41]   yucatan_peninsula                    1960 cells calibrated | 44/44 | 3.6 min | ~0 min left
+[19:48:41] CALIB DONE | 44 regions | 3.6 min

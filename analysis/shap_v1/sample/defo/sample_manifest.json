@@ -1,0 +1,63 @@
+{
+ "background_keys_removed_missing_context": {
+  "0": 0,
+  "1": 0
+ },
+ "background_rows": {
+  "0": {
+   "max": 16,
+   "median": 16.0,
+   "min": 16
+  },
+  "1": {
+   "max": 16,
+   "median": 16.0,
+   "min": 16
+  }
+ },
+ "defo_regions": 0,
+ "excluded_no_background": [],
+ "excluded_sentinel_or_no_background": [],
+ "frame_rows": 369096,
+ "leads": [
+  0,
+  1
+ ],
+ "models_in_frame": {
+  "0": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie"
+  ],
+  "1": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie"
+  ]
+ },
+ "n": 1000,
+ "n_asked": 1000,
+ "problem": "defo",
+ "regions_in_sample": 42,
+ "rows_per_year": {
+  "2020": 249,
+  "2021": 249,
+  "2022": 252,
+  "2023": 250
+ },
+ "rule": "PROTOCOL.md section 3 (v3)",
+ "selection": {
+  "regions": 42,
+  "units_per_region": 6,
+  "years": 4
+ },
+ "sha256": {
+  "background_lead_0.parquet": "82db940dbf3a98e887a449ba4e94f0a1ac21428f4ab460090da0cce1b7690a0d",
+  "background_lead_1.parquet": "82db940dbf3a98e887a449ba4e94f0a1ac21428f4ab460090da0cce1b7690a0d",
+  "sample.parquet": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615"
+ },
+ "tag": "v1",
+ "units_in_sample": 252
+}

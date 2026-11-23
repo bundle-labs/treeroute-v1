@@ -1,0 +1,140 @@
+CORAL 2017-2020 SENSITIVITY ROW -- RUN COMMANDS FOR THE OWNER (prepared 2026-10-28 under ruling AN3; NOT run)
+==========================================================================================================
+
+What this is
+------------
+The coral sensitivity row that ruling V3 declared, run "as declared" under ruling AN3 ("run now, as declared, and
+reported whatever it shows (post hoc in timing, labelled so). It runs from a copy of the settings; no LIVE engine file
+is edited."). Declaration: engine/PREREGISTRATION_DRAFT_coral.md section 4.2 and engine/datasets/coral/ingest/README.md
+("The 2017-2020 sensitivity row"). Log: PENDING_PARTS Part 627 (PREPARED).
+
+Read first. Settle the owner items in Part 627 BEFORE step 1. In short:
+  (a) the declared "check --deep" and "smoke" REFUSE by construction for this window (the four R21 groups hold no
+      2020 visit). Step 6 runs a full-size deep check instead (side record, ruling M2), and the smoke is skipped;
+  (b) the not-headline mark is the DRAFT stamp, with SENS_LOCK_PREPARED.json as the lock written outside the
+      freeze tool;
+  (c) everything sits under D:\treeroute\analysis\coral_sens_2017_2020, not under coral_build\coral_data\sens_2017_2020.
+
+Already done by the agent (2026-10-28, validation only; no model was fitted and no test score was read)
+-----------------------------------------------------------------------------------------------------
+  - Stage 1 (seconds): builder\build_visits.py --test-years 2017-2020 -> coral_data\visits.parquet (+ census, month
+    list). It is the same 14,839 visits as the headline stage 1. Only `mark` differs: 942 visits of 2016 go from test
+    to train, and 38 visits of 2020 go from unused to test (validate\compare_stage1.log). Do NOT re-run it.
+  - split.yaml written and checked (builder\make_split.py; CHECK PASS).
+  - Validation tiny build (176 visits), its checker (RESULT: PASS, 52 checks), and a bit-for-bit feature comparison
+    with the headline tables (0 differing cells).
+  - Engine `check` (quick) and `plan` (dry run) on a VALIDATION PREVIEW copy (validate\preview_*). Both GREEN.
+    R3 2020, R5 2017-2020, R6 2016, R7 inner fit 1994-2013 and inner score 2014-2016, 26 scored + 57 donor-only
+    groups, 1,468 test rows. The engine and launch are the headline's (validate\compare_plan.log).
+
+Before you start
+----------------
+  - One heavy job at a time. Nothing else may use the engine (D:\treeroute\tmp\treeroute_heavy_job.lock must not
+    exist). No rival or human-rival board, and no other long job. Close games and big programs. Free RAM was 3.9-4.4 GB
+    when this was prepared; the headline's safe runner waits for 7 GB. D: had 40 GB free (the run needs about 2.5 GB of
+    temp disk in D:\treeroute\tmp).
+  - Keep Windows awake for about 75 minutes. This sequence does not use runner\run_headline.py, which is hard-wired to
+    D:\treeroute\runs, so nothing here keeps the PC awake for you.
+  - Use your own PowerShell window (Windows PowerShell 5.1 is fine). Paste one block at a time.
+    `2>&1 | Tee-Object` may print a red "NativeCommandError" line for text that Python writes to stderr. It is
+    cosmetic: the log gets every line.
+
+  $S = 'D:\treeroute\analysis\coral_sens_2017_2020'
+  Set-Location $S
+
+Step 1 - stage 2, the three lead tables (about 26 min; headline build 26.4 min, peak 1.39 GB)
+  py -3.9 -I -B -u "$S\builder\build_tables.py" --build full --visits-dir "$S\coral_data" 2>&1 | Tee-Object -FilePath "$S\logs\stage2_full_build.log"
+  Expect the last lines:
+    wrote lead_0.parquet: {'rows': 13723, 'train': 12230, 'test': 1493, ...}
+    wrote lead_183.parquet / lead_365.parquet: {'rows': 13715, 'train': 12222, 'test': 1493, ...}
+    manifest written | total ~26 min
+  (These are the stage-1 census counts. Stage 2 drops rows only by the per-lead SST-history rule, as the headline
+  build did.)
+
+Step 2 - the independent checker (about 6-10 min)
+  py -3.9 -I -B -u "$S\builder\check_tables.py" --build full --visits-dir "$S\coral_data" 2>&1 | Tee-Object -FilePath "$S\logs\stage2_full_check.log"
+  Expect: RESULT: PASS (52 checks ok, 0 failed)
+
+Step 3 - split check against the built tables (seconds)
+  py -3.9 -I -B -u "$S\builder\make_split.py" --lead-dir "$S\coral_data\full" --split "$S\package\coral_sens_2017_2020\split.yaml" --check 2>&1 | Tee-Object -FilePath "$S\logs\split_check_full.log"
+  Expect: CHECK PASS
+
+Step 4 - same features as the headline tables, bit for bit (seconds)
+  python -I -B "$S\tools\compare_features.py" "$S\coral_data\full" 2>&1 | Tee-Object -FilePath "$S\logs\compare_features_full.log"
+  Expect for each lead: cells differing (non-mark) 0; mark changes only in 2016; rows only in sens: 29, years [2020];
+  headline rows missing 0. Last line: RESULT: PASS. If this FAILS, stop: the build differs from the headline's
+  features.
+
+Step 5 - engine check, quick (seconds)
+  py -3.9 -I -B -u "$S\tools\launch_engine.py" check "$S\package\coral_sens_2017_2020" --run-root "$S\run" 2>&1 | Tee-Object -FilePath "$S\logs\engine_check_quick.log"
+  Expect: G-SPLIT pass (94 groups, 11 excluded, 83 kept, 57 donor-only); U1 pass (13679 rows); last line
+  "check quick: green".
+
+Step 6 - full-size deep check, a side record (ruling M2) in place of the R21 deep check (owner item (a); seconds)
+  py -3.9 -I -B -u "$S\tools\full_deep_check.py" "$S\package\coral_sens_2017_2020" 2>&1 | Tee-Object -FilePath "$S\logs\engine_full_deep_check.log"
+  Expect: FULL-SIZE DEEP CHECK (side record, ruling M2): GREEN (83 groups; 0 refusals)
+  (`treeroute check --deep` and `treeroute smoke` refuse with "[R5] T-MARK ... test years [2016, 2017, 2018, 2019]".
+  Shown on the preview copy: validate\preview_check_deep.log and validate\probe_smoke_fulldeep.log.)
+
+Step 7 - engine plan, the dry run (seconds), then read it
+  py -3.9 -I -B -W "ignore:DataFrame is highly fragmented" -u "$S\tools\launch_engine.py" plan "$S\package\coral_sens_2017_2020" --run-root "$S\run" 2>&1 | Tee-Object -FilePath "$S\logs\engine_plan.log"
+  $P = (Get-ChildItem "$S\run\coral_sens_2017_2020\headline" -Directory | Sort-Object LastWriteTime | Select-Object -Last 1).FullName
+  python -I -B "$S\tools\compare_plan.py" $P
+  Expect: R3 2020; R5 test_years [2017, 2018, 2019, 2020]; R6 2016; R7 inner_fit [1994, 2013], inner_score [2014,
+  2015, 2016]; T-MARK test_rows 1468, train_rows 12211; plan.not_headline_reasons = ["DRAFT package: DRAFT --
+  declared coral 2017-2020 sensitivity row ..."]; scored rows 26 groups, 1468 rows. The plan's derived.json is
+  expected to equal the preview's (derived_sha256 574d0805...; manifest.json config.derived_sha256).
+
+Step 8 - THE RUN (about 35 min: the headline run took 35.7 min, 13:16:13-13:51:57 in its run.log; this window
+         has about 8% more train rows and about 37% fewer test rows, not measured)
+  py -3.9 -I -B -W "ignore:DataFrame is highly fragmented" -u "$S\tools\launch_engine.py" run "$S\package\coral_sens_2017_2020" --run-root "$S\run" 2>&1 | Tee-Object -FilePath "$S\logs\engine_run.log"
+  Expect the last line: run finished: D:\treeroute\analysis\coral_sens_2017_2020\run\coral_sens_2017_2020\headline\<date>_<fp>
+  Progress, from a second window:
+  py -3.9 -I -B "$S\tools\launch_engine.py" status "$S\package\coral_sens_2017_2020" --run-root "$S\run"
+
+Step 9 - the check afterwards (seconds)
+  python -I -B "$S\tools\check_after_run.py" 2>&1 | Tee-Object -FilePath "$S\logs\check_after_run.log"
+  Expect: "PREPARED-AS-DECLARED CHECKS: PASS". This means the same engine and launch as the headline, the prepared
+  package fingerprint 6a8509e3..., the data = the step-1 build, the window 2017-2020, and the DRAFT not-headline mark.
+  Then the numbers, sensitivity row beside the headline: verdict tag, contrast and CI, band, pooled MAE vs the
+  donor-row median, predict-zero, trees-off, and the 183/365-day ladder.
+  python -I -B "$S\tools\hash_tree.py" "$S\logs\hash_after_run.json"
+  python -I -B "$S\tools\compare_hashes.py" "$S\validate\hash_after.json" "$S\logs\hash_after_run.json"
+  Expect: RESULT: UNCHANGED (the LIVE engine tree, the signed coral package, the builder originals, the headline
+  store and the headline run folder were not touched).
+
+Expected outputs
+----------------
+  coral_data\full\           lead_0/183/365.parquet, build_manifest.json, rows_audit.parquet, dropped_rows.csv,
+                             build.log, check_report.json
+  run\coral_sens_2017_2020\check\check_quick_6a8509e323a7.json (+ _details.json)
+  run\coral_sens_2017_2020\headline\<date>_<fp>\   the same file set as the headline run folder: plan.json,
+                             derived.json, manifest.json, run_record.json (draft true, headline_eligible false),
+                             run.log, adoption.json (+ lock), decision_checks.json, verdict.json (DRAFT-stamped),
+                             test_preds.parquet, per_group.csv, per_year.csv, per_stratum.csv, score_pooled.csv,
+                             jackknife.csv, guard_report.json, ladder\ (ladder.json, lead_183\, lead_365\),
+                             adoption_lead_183/365.json, test_labels_opened_lead_*.json, DONE.json
+  logs\                      the console logs above
+  Not produced: the engine's headline table and coral_report.py. Both refuse a run that is not headline-eligible
+  (the DRAFT mark). Per programme is moot here: every one of the 1,468 test visits is Reef Check.
+
+If it stops (resume)
+--------------------
+  - Step 1 cannot resume part-way. It computes every site, then writes the three files at the end. Re-run the same
+    command. Any partial files are moved to coral_data\_moved\<stamp>\full first (nothing is deleted). It says
+    "nothing to rebuild" when all three files match their manifest.
+  - Steps 2-7 take seconds to minutes: re-run the same command.
+  - Step 8: re-run EXACTLY the same `run` command. The engine resumes the unfinished run of the same fingerprint from
+    its saved phases (phases\<name>\DONE and its bank checkpoints) and does not redo finished phases. A finished run
+    is refused. (`treeroute resume` is not built; re-running `run` is the resume.)
+  - "stale heavy-job lock ... from dead pid" or "orphan engine temp file(s)": first check in Task Manager that no
+    engine python runs. Then move (do not delete) D:\treeroute\tmp\treeroute_heavy_job.lock and the named temp files
+    to D:\treeroute\runner_logs\stale_locks\, and re-run the same command.
+  - A RAM or disk refusal: close programs or free space, then re-run the same command.
+
+Never
+-----
+  - Do not run anything here from the engine folder with `-m treeroute` and the coral package. That would be the
+    signed headline package.
+  - Do not write under D:\treeroute\runs or coral_build. Do not edit any file under engine\treeroute.
+  - Do not re-run make_split.py --write or build_visits.py. Their outputs are pinned in SENS_LOCK_PREPARED.json.

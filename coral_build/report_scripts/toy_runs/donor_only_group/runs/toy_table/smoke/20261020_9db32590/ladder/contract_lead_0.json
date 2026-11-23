@@ -1,0 +1,219 @@
+{
+ "bank": "the lead-0 contract runs the lead path at lead 0 (the lead pool, FitContext(lead 0) and its donor rows, c, tolerances, donor-row means, the GLS refit when the pin is weighted, the route and the row assembly) and proves the bank's inputs (donor row keys, grid rows, features, labels) equal the nowcast bank's byte for byte; the bank itself is not refitted (deterministic name seeds on the same inputs give the same fit). The guard (and its guard-cut bank) and persistence have no lead-0 counterpart and are not covered",
+ "columns_identical": [
+  "unit",
+  "group",
+  "time",
+  "year",
+  "site",
+  "source",
+  "lead",
+  "issue",
+  "y",
+  "normal",
+  "legal_min",
+  "legal_max",
+  "arm__identity_plain_gls",
+  "pre__identity_plain_gls",
+  "arm__identity_trees_off_unweighted",
+  "pre__identity_trees_off_unweighted",
+  "base__donor_median",
+  "base__predict_zero"
+ ],
+ "fits_identical": [
+  "X",
+  "c",
+  "gls_weight_model",
+  "grid_rows",
+  "median",
+  "row_key_hash",
+  "times",
+  "tolerances",
+  "y"
+ ],
+ "lead": 0,
+ "penalty": {
+  "level": 3.0,
+  "ratio": 0.0625
+ },
+ "pinned": "identity_plain_gls",
+ "pool_identical": true,
+ "pool_rows_compared": 165,
+ "router": {
+  "context_missing": {
+   "by_column": {
+    "c_aux": 3
+   },
+   "by_step": {
+    "730160": 1,
+    "730722": 1,
+    "730732": 1
+   },
+   "by_unit": {
+    "r0000": {
+     "fit_rows": 1,
+     "flagged": true,
+     "left_out": 1,
+     "share": 1.0
+    },
+    "r0002": {
+     "fit_rows": 1,
+     "flagged": true,
+     "left_out": 1,
+     "share": 1.0
+    },
+    "r0008": {
+     "fit_rows": 1,
+     "flagged": true,
+     "left_out": 1,
+     "share": 1.0
+    }
+   },
+   "context_columns": 2,
+   "fit_rows": 123,
+   "flag_share": 0.05,
+   "flag_share_constant": "C10.context_missing_flag_share",
+   "flagged_units": [
+    "r0000",
+    "r0002",
+    "r0008"
+   ],
+   "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+   "rows_file": "context_missing/lead_0_contract.parquet",
+   "rows_left_out": 3,
+   "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+   "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+   "units_in_fit": 123,
+   "units_with_rows_left_out": 3
+  },
+  "neighbour": {
+   "arms": {
+    "identity_plain_gls": {
+     "all": {
+      "cut": 733041,
+      "drop_set_size": {
+       "max": 4,
+       "median": 4.0,
+       "min": 3
+      },
+      "grid_points": 1,
+      "groups_per_pool": {
+       "max": 4,
+       "median": 4.0,
+       "min": 3
+      },
+      "kept_trees": {
+       "max": 12,
+       "median": 12.0,
+       "min": 12
+      },
+      "kind": "neighbour",
+      "lead": 0,
+      "max_pool_day_minus_issue_day": -39,
+      "n_bank_trees": 48,
+      "n_candidates": 120,
+      "n_rows": 42,
+      "n_rows_no_tree": 25,
+      "n_rows_pool": 42,
+      "n_rows_pool_fallback": 0,
+      "pool_size": {
+       "max": 50,
+       "median": 50.0,
+       "min": 50
+      },
+      "pools_fingerprint": "4a28c211b7c6a5322c5c4a6c9fa95d5ba8d769c53cbf0ee6f768938f0231705f",
+      "sweep": false,
+      "tolerance": 1.423652182053863e-06,
+      "verified_rows": 0,
+      "weighted": true
+     }
+    }
+   },
+   "constants": {
+    "candidates": 120,
+    "context_scalers": {
+     "mean": [
+      -0.028322579665109517,
+      1.1505952386806408
+     ],
+     "rows": 120,
+     "sd": [
+      0.692860821546922,
+      0.6425128599968611
+     ]
+    },
+    "cut": 733041,
+    "earliest_scored_issue_day": 733058,
+    "lead": 0,
+    "newest_candidate_day": 733019,
+    "parts": {
+     "all": {
+      "c": 16.36124501,
+      "fallback_newest_day": 733019,
+      "fallback_rows": 123,
+      "fold": null,
+      "gls_model_cut": 731946,
+      "median": 28.198289
+     }
+    },
+    "z_constant_columns": 0,
+    "z_rows": 120
+   },
+   "g1": {
+    "by_column": {
+     "c_aux": 3
+    },
+    "by_step": {
+     "730160": 1,
+     "730722": 1,
+     "730732": 1
+    },
+    "by_unit": {
+     "r0000": {
+      "fit_rows": 1,
+      "flagged": true,
+      "left_out": 1,
+      "share": 1.0
+     },
+     "r0002": {
+      "fit_rows": 1,
+      "flagged": true,
+      "left_out": 1,
+      "share": 1.0
+     },
+     "r0008": {
+      "fit_rows": 1,
+      "flagged": true,
+      "left_out": 1,
+      "share": 1.0
+     }
+    },
+    "context_columns": 2,
+    "fit_rows": 123,
+    "flag_share": 0.05,
+    "flag_share_constant": "C10.context_missing_flag_share",
+    "flagged_units": [
+     "r0000",
+     "r0002",
+     "r0008"
+    ],
+    "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+    "rows_file": "context_missing/lead_0_contract.parquet",
+    "rows_left_out": 3,
+    "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+    "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+    "units_in_fit": 123,
+    "units_with_rows_left_out": 3
+   },
+   "pass": "lead 0 contract",
+   "pools": {
+    "drop_set_size_median": 4.0,
+    "pool_size_median": 50.0,
+    "rows": 42,
+    "rows_pool_fallback": 0,
+    "rows_with_pool": 42
+   }
+  }
+ },
+ "rows": 42
+}

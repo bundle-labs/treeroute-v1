@@ -1,0 +1,100 @@
+BUILD_NOTES_B_coral_defo.txt - Builder B (coral + defo adapters). Written 2026-10-22. Toy tests only; nothing was run
+on real products except one read-only check of the coral store's 7 key columns (section 4). No download, no heavy job.
+
+1. FILES (all under D:\treeroute\human_rivals_build\human; layout of BUILD_NOTES_shared.txt: adapters\ is a namespace
+   package, no __init__.py)
+  adapters\coral_crw.py      crw_dhw: NOAA CRW DHW / BAA7d at d*, NOAA MMM; D6 check; replay check (build :575)
+  adapters\coral_outlook.py  crw_outlook: Week_20 BAA of the 060 file + mean of 4 percentiles, ring rule (build :127)
+  adapters\defo_prep.py      VT0007 prep: distance maps -> count tables, staged, parity, divisions (run_stage :569,
+                             registry prep entry prep :717, worker map_pass :276)
+  adapters\defo_vt0007.py    vt0007_shipped / vt0007_cal / vt0007_frozen2019 index tables (build :254, method
+                             vt0007_region :191)
+  registry\coral.yaml, registry\defo.yaml   validated with rivals_human/config.py load_registry + check_rival (pass)
+  tests_builder_b\conftest.py, test_coral_adapters.py (16 tests), test_defo_adapters.py (14 tests)
+     (Builder D owns rivals_human\tests; these are B's own toy tests, like tests_builder_c. D may import or move them.)
+
+2. TESTS (py -3.9 -B, PYTHONDONTWRITEBYTECODE=1, -p no:cacheprovider, basetemp under
+   D:\treeroute\human_rivals_build\pt\B_coral_defo\<fresh>; run from ...\human):
+     py -3.9 -B -m pytest tests_builder_b -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\B_coral_defo\<fresh>
+   Result: 30 passed (~50 s). Covers SPEC 7 T-H16 and T-H17:
+   coral: DHW/BAA hand computation, window ends at d*, missing day -> NaN, HotSpot < 1 never accumulates, both alert
+     rules, MMM ring (nearest valid within 3; none -> NaN), store reader refuses the label column, d* for day / month /
+     first-of-month / second-of-month rows and refusal, end-to-end build with D6 pass and replay pass, D6 mismatch
+     refuses, replay mismatch refuses, lead 183 reads old heat, Outlook Week_20 window + ring max + mean of 4 +
+     info_end = icwk (> issue: tier A breaks T1), window attribute check refuses, staged call refuses.
+   defo: fine bins, lossyear guard, stage plan never reads past t-1, class edges and the capped quantity scale,
+     divisions (overlap / nearest within half a cell / none / level-1 fallback), one map pass equals a brute-force
+     per-pixel reference (forest(T) and loss counts by cell x distance bin x year, parity counts), block size does not
+     change counts, loss years past ymax refuse, a missing lossyear granule reads 0 loss, stage train then build
+     equals a per-pixel brute-force VT0007 (issue years 2013, 2019; test stage 2020, 2023; frozen form), quantity
+     allocated = Q, lead 1 = lead 0 values, vt0007_cal reads the same prep, resume skips finished maps, stage test
+     refuses without the lock (both prep and build), stage train refuses a row after the fit cut, parity mismatch
+     stops the prep, 2 workers give byte-equal files to 1 worker.
+
+3. INTERFACES USED (BUILD_NOTES_shared.txt contract): ctx.keys("stage"|"train"|"test"), ctx.extras("train"),
+   ctx.open_product, ctx.product_files, ctx.product_root, ctx.work_dir, ctx.write_bytes, ctx.log, ctx.run (cuts, plan,
+   fingerprint), ctx.stage, ctx._token via lockfile.require_token (stage test). Each frame has exactly the 1.4 columns;
+   x__ float64, info_end int64, target_obs_end float64, product_cell / src str; every covered row's src names only files
+   opened through ctx.open_product (check_frame, rivals_human/index.py:418-437).
+   Requests to A appended to BUILD_NOTES_shared.txt ([B -> A] B1 product defo_vt0007_prep; B2 prep --stage test).
+
+4. READ-ONLY REAL CHECK (key columns only: unit_id, lat, lon, target_date, issue_date, feature_end, mark of
+   D:/treeroute/coral_build/coral_store/20261020_014201/lead_{0,183,365}.parquet; label never read):
+   derive_dstar (coral_crw.py:343) proves the store's feature_end on EVERY row: lead 0 13,694 rows (11,566 day, 2,128
+   month), 183 and 365 13,686 rows (11,566 day, 2,120 month); d* - issue in [-32, -2]. d* differs from feature_end on
+   2,469 / 742 / 2,288 rows (see deviation V1).
+
+5. DEVIATIONS (each is a pre-registration item for the Part A draft)
+  V1 coral d* = C - g - 1 (last SST day of our own windows; research_coral.md:83; SPEC_CORAL_TABLES.md:163-168), NOT
+     the store's feature_end as SPEC 2 says: feature_end is the max of ALL window ends incl. index months
+     (build_tables.py:184-190), so it is C - 1 when C is the 1st of a month and ~T - 31 on month rows. Row kind from the
+     gap issue - feature_end (1..g+1 day, >= 28 month; fetch_products.py:900-910 generalised to leads: C = first day of
+     the target month - L), then PROVED by recomputing feature_end from the store's build_manifest params (refuse
+     otherwise). Same d* as the D6 site-days.
+  V2 BAA alert levels: option baa_alert_needs_hotspot = true (NOAA methodology page: Warning and Alerts need
+     HotSpot >= 1). SPEC 2's literal list (alerts from DHW alone) is the other rule. The D6 check reports agreement
+     under both rules and DECIDES on the registered one; if D6 fails only on BAA and the other rule matches 300/300,
+     the owner flips the option before the lock (recorded).
+  V3 Replay (SPEC 2 "Checks"): the package rule (last 84 VALUES before C - g, build_tables.py:273-292) with c__ctx_mmm
+     must equal x__dhw_84 / x__hs_max_84 to rel 1e-9 on every slim TRAIN row (test extras need the lock, A2); and the
+     adapter's calendar-window DHW must equal it on every row whose 84 calendar days are complete. A rival row with a
+     missing SST day is NaN (not covered; counted), as SPEC 2 says.
+  V4 D6 site-day list: read from the D6 product manifest's `requests` block (sha-checked product), not from
+     D:/treeroute/human_tools/d6_sitedays_v2.csv (same content). Option d6_max_not_comparable = 0.
+  V5 MMM pixel: the SST cache's own pixel (sst_pixel, coral_crw.py:106; fetch_products.py:884-897 rule), so MMM and
+     SST share one 5 km pixel (SPEC 2 says "the pixel holding (lat, lon)"; identical except on exact edges).
+  V6 defo distances are binned on a fixed log grid (n_bins 512, 1 m .. d_max 20 km, one overflow bin) so one pass per
+     map suffices; the NRT is snapped UP to a fine-bin edge (~2%); class k of a fine bin = the class of its upper edge.
+     Class edges e_k = e0 (NRT/e0)^(k/29), k = 1..29, e0 = min(30 m, NRT/2); class 30 beyond the NRT. An NRT past
+     d_max refuses (raise d_max_m before the lock).
+  V7 anisotropic spacing per BLOCK (dx = dy cos latitude of the block centre, block 4000 px ~1 deg) rather than per
+     10-degree tile (SPEC 3 "per-tile"): more accurate, same idea; disclosed in the registry.
+  V8 Pixel cap: exact water-filling (the group total equals Q exactly with every pixel <= 1); Q above the pixels that
+     can carry loss -> all such pixels 1 (flagged all_capped).
+  V9 (division, class) with no forest(T1) pixel -> the group's pooled class frequency (counted as fallback_px).
+  V10 prep stage test = 6 map passes (T1 maps 2010-2012 recounted for loss years to 2022, T3 maps 2020-2022), not the
+     3 of SPEC 8 O11; maps fully covered by stage train (2009, 2019) are reused. Stage train = 20 maps (2000-2019).
+  V11 defo coverage registered as the label-free rule {issue_min: 2010} (covers issue year t >= 2011 at both leads:
+     lead 1 issue = t - 1). forest2000_px > 0 holds on every export row (the target exists only there); the adapter
+     returns NaN where it does not and the board refuses a covered row without a value. coverage_note states the rule.
+  V12 Outlook rows with no issue on disk carry info_end = our issue day (they read nothing; it breaks T1, so they can
+     never pass as P) and src "".
+  V13 crw_dhw families include F5 (SPEC 2); with units = visits it falls back to pooled F3 (disclosed). crw_outlook
+     omits F5 (SPEC 2).
+  V14 prep outputs are read as a product (option prep_product: defo_vt0007_prep), because check_frame verifies every
+     src through ctx.open_product. The owner hashes them after each prep stage (request B1).
+
+6. OPEN ITEMS (owner / other builders)
+  a  D6 and replay checks run only inside `adapt crw_dhw` (O7, an SST pass): not run now (hard rule). If D6 fails,
+     read report.d6 (baa_equal_other_rule, hs_max_abs_diff) before anything else.
+  b  VT0007 5.3.1 class-edge wording (geometric start e0, 29 + 1 classes) and the NRT definition: confirm against the
+     methodology text before signing (V6 is my pre-registration proposal).
+  c  Real prep (O10) never run. Expected per worker: window <= (4000 + 2 x ~1440)^2 at 60 deg ~ 37-47 Mpx -> EDT
+     ~0.6-0.9 GB + reads; registry prep_workers 3. Outputs are small sparse count tables. Resumable per region x map.
+  d  Requests to A: B1 product defo_vt0007_prep (+ re-hash after each stage); B2 `prep --stage test` with the lock
+     token (until then stage test refuses, fail loud). Requests to D: none required; tests_builder_b may be adopted.
+  e  Not verified now (need an SST/Outlook pass or the export): crw_outlook fit-row counts 239/22 and 38/11
+     (R-COR:136-138), crw_dhw covered share, the land / ring counts of the Outlook.
+  f  Coral tune-only dry pass not run (A6). BoM ACCESS-S archive check (PLAN R15) not done.
+  g  Leads 0 and 1 of defo are identical by construction (value depends on cell and target year only); the tool's
+     `check` should assert it per (unit, time) as SPEC 3 says.

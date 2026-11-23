@@ -1,0 +1,231 @@
+BUILD_NOTES_fire.txt - the human-rival tool, Part B (fire): the build's notes. Skeleton written 2026-10-25 by builder
+B4_prereg (SPEC_HUMAN_PARTB.txt sections 6-7); sections 2 and 3 are filled by the FINAL INTEGRATION STAGE (spec 7),
+which merges BUILD_NOTES_fire_B1.txt, BUILD_NOTES_fire_B2.txt and BUILD_NOTES_fire_B3.txt into section 2.
+
+=====================================================================================================================
+0. PURPOSE AND RULES
+=====================================================================================================================
+Part B adds fire to the human-rival tool (spec 0), plug and predict: fire facts live only in registry/fire.yaml (data)
+and adapters/fire_*.py.
+  - adapters/fire_geff.py (B1): D2 GEFF-ERA5 / D3 GEFF-SEAS5 daily FWI -> index x__fwi_mean, x__fwi_pct
+    (rivals geff_era5 lead 0, geff_seas5 lead 6); reads exactly the frozen fetcher's layout and manifest.
+  - adapters/fire_refs_prep.py (B1): the refs label store (2018 training labels through the fire package's reader).
+  - adapters/fire_enso.py, fire_turco.py [, fire_lag_common.py] (B2): the ENSO-lag and Turco SPI-lag runners.
+  - registry/fire.yaml (B1, new) and the fire block of registry/_products.yaml (B1, append-only).
+  - rivals_human/maps.py F6 (B2): the ONE shared code edit (section 1).
+  - tests_fire\ T-F01..T-F19 (B3).
+  - PREREGISTRATION_DRAFT_human_partB.txt, HUMAN_OWNER_COMMANDS_partB.txt, PART_LOG_DRAFT_partB.txt, this file (B4).
+Hard rules of the build: write only under D:\treeroute\human_rivals_build; never delete (retire a file to
+_moved\<utc stamp>_<reason>\); no network, no download, no key file; no fire test label read and no rival score (Part
+B is unsigned); Part A unchanged (no Part A pick, registry, adapter or F1-F5 behaviour; the re-join must still accept
+the coral/defo/pm25 boards of tool 32ec5df0 and the NDVI board of cd956f1d); any shared rivals_human/*.py edit minimal
+and justified here; one fixed random_state; row-level predictions saved as the tool does; relevant tests while
+building, the ONE full suite only in the final stage.
+
+=====================================================================================================================
+1. SHARED rivals_human/*.py EDITS (hard rule: minimal, justified here): ONE, rivals_human/maps.py
+=====================================================================================================================
+SHARED EDIT 1: rivals_human/maps.py (builder B2; spec 4.4; owner decision OD-14)
+  baseline       sha256 f38d7ce78ede1b101b5fba89fb4aa89559171e63e1532e60d58bd030acb91a59 (Part A / tool cd956f1d),
+                 copied BEFORE the edit to _moved\20261025T194657Z_partB_baseline\rivals_human\maps.py (T-F10 and
+                 T-F15 read it).
+  new sha        TO FILL by the integration stage (B2's build step:
+                 6b4bb0642612c59bb2cbffa34faa808f7b995d7becaa367a35bcf24be28eb406).
+  lines          Baseline numbering: module docstring :1-21 (the F6 lines :13-15 and the "No weights." sentence :19;
+                 F6 only); Iso.fit :104-109 (gains the optional argument weights=None, passed to sklearn as
+                 sample_weight; with None the old call runs literally); class F6PctRatio :382-419 (fit rewritten;
+                 predict unchanged; to_json unchanged apart from the info; a class docstring added); new module
+                 constants F6_NORMAL_TOL = 1e-12 and F6_MAX_INCOMPLETE_SHARE = 0.05 (just above the class).
+                 New numbering (B2's diff hunks): docstring @@ -10,15 +10,21 @@; Iso.fit @@ -102,10 +108,17 @@;
+                 constants + class docstring @@ -379,7 +392,18 @@; F6 fit @@ -387,21 +411,57 @@. Every other
+                 top-level node and every other Iso method unchanged (T-F15 e).
+  what           F6 fitted as research C-A states it: cells (unit, season key) of the passed fit rows; the slim
+                 normal must be the in-sample cell mean (F6_NORMAL_TOL; rows of other cells dropped and counted, above
+                 F6_MAX_INCOMPLETE_SHARE of the rows -> refuse); leave-year-out normal N_loo = (S_c - y) / (n_c - 1)
+                 from the cell SUM; one-row cells and N_loo <= 0 dropped and counted; ratio y / N_loo fitted isotonic
+                 with weights N_loo^2 (= argmin sum (y - N_loo r(x))^2, squared error on the burned fraction);
+                 prediction = the scored rows' own slim normal x ratio(x).
+  reason         Research C-A as approved (research_fire.md:64; PLAN :69 "research C-A": "For train rows, N is the
+                 same normal formula computed leaving that year out") and PLAN rule 5 (:114-115: maps use squared
+                 error on the target). Review issues R-1 and R-2 (spec section 12), measured on lead-0 refit rows of
+                 all 40 groups (TRAINING labels only): the slim normal on fit rows is the in-sample unit-month mean
+                 (max abs difference 1.1e-16), so the old F6 fitted level is 1.0 by construction against 0.846 out of
+                 sample (+18%); 2,192 of 14,834 burned rows are the only burn of their cell (in-sample ratio up to 16,
+                 out-of-sample normal 0); the old unweighted isotonic loss is squared error of the RATIO, so tiny-N
+                 rows rule the curve (unweighted leave-year-out mean ratio 1.58, max 1,080, against the
+                 target-optimal 0.846). N_loo comes from the cell sum: (n N - y) / (n - 1) leaves ~1e-17 residues
+                 (ratios up to ~1e17). Without the edit F6 would likely lose the inner / guard pick for an
+                 implementation reason (the straw-man risk Q19 removes).
+  Part A effect  None. No Part A registry lists F6 (coral, defo, pm25, ndvi families checked); Iso.fit with weights
+                 None is the old call (F2 / F4 knots byte-equal); no Part A pick, board or score changes. The
+                 coral/defo/pm25 boards (tool 32ec5df0) and the NDVI board (cd956f1d) refuse load_board under the new
+                 tool hash and need no further command; join never calls load_board and never compares tool hashes
+                 (T-F15 d proves the re-join).
+  tests          T-F10 (F6 after the edit; Iso.fit default path byte-equal to the baseline module; F2 / F4 to_json
+                 byte-equal); T-F15 a (tool hash with the baseline maps.py and without adapters/fire_*.py ==
+                 cd956f1d); T-F15 e (ast diff limited to the docstring, Iso.fit, F6PctRatio, F6_*; no Part A registry
+                 lists F6); T-F16 (test_h20 problem-name scan incl. maps.py; R02). B2 also ran
+                 rivals_human\tests\test_h08_maps.py, review_tests\test_r05_maps.py and test_r02 after the edit
+                 (BUILD_NOTES_fire_B2.txt section 4).
+  logged         Part <TO FILL> (PART_LOG_DRAFT_partB.txt; appended to PENDING_PARTS.md by the main session); Part B
+                 section 1.
+  if declined    OD-14 (b): the edited maps.py moves to _moved\<utc>_OD14_declined\ and the baseline bytes are restored
+                 BEFORE F7 (T-F15 a then holds with the file itself); Part B section 10 carries the measured effect.
+
+FURTHER shared rivals_human/*.py edits: NONE allowed by the spec. Any found by the integration stage gets an entry in
+the same form as SHARED EDIT 1 (file; lines; what; reason; Part A effect; tests; builder) and is a deviation to justify:
+  (none)
+
+Shared NON-code files edited: registry/_products.yaml (B1; the fire block appended; baseline copy
+_moved\20261025T194657Z_partB_baseline\registry\_products.yaml, sha 4e4797597c0a...; Part A entries unchanged: T-F15 c).
+NOT edited: registry/_schema.yaml, the Part A registries, the Part A adapters, the configs, existing tests, SPEC_HUMAN.txt,
+the Part A draft.
+
+=====================================================================================================================
+2. MERGE POINTS (the integration stage merges each builder's notes here: summary + the file's sha256)
+=====================================================================================================================
+2.1 BUILD_NOTES_fire_B1.txt (B1_product: registry/fire.yaml, _products.yaml fire block, adapters/fire_geff.py,
+    adapters/fire_refs_prep.py): TO MERGE. Check: availability() requires "complete": true (spec 3.1); the UNSET_OD6
+    placeholders (spec 2.7); the module surface of 3.1; the R02 / test_h20 runs on the adapters; anything left open.
+2.2 BUILD_NOTES_fire_B2.txt (B2_runners: fire_enso.py, fire_turco.py, fire_lag_common.py, the maps.py edit): TO MERGE.
+    Present at B4's writing. It requests NO fire.yaml option change (its section 1). New constant for Part B section 8:
+    SINGULAR_TOL 1e-10 (T3) - already added to the Part B draft by B4. Its notes for B3 (T-F12 / T-F13: the timing
+    refusal case is "fit on the steps-3 run, predict on a steps-4 run") belong to the B3 merge.
+2.3 BUILD_NOTES_fire_B3.txt (B3_tests: tests_fire\ T-F01..T-F19): TO MERGE. List any test that failed until another
+    builder finished, and whether it passes in the final suite.
+2.4 B4_prereg: section 5 below.
+2.5 Integration log: fire.yaml option changes applied on B2's request (spec 7 step 1): none (BUILD_NOTES_fire_B2.txt
+    section 1: "fire.yaml OPTION REQUESTS: NONE").
+    Integration run 2026-10-25 (20:26-20:37Z; the basetemp names carry a nominal stamp): relevant tests only, NOT the
+    ONE full suite; PYTHONDONTWRITEBYTECODE=1, py -3.9 -B, -p no:cacheprovider, fresh basetemps under pt\tests\:
+      tests_fire (HUMAN_REAL unset): 136 passed, 6 skipped (realdata), 0 failed (int_fire_20261025T2040Z_a).
+      rivals_human\tests test_h01, test_h05, test_h08, test_h09, test_h20, test_h21 + tests_builder_c\
+        test_integrate_products: 45 passed, 4 skipped (test_h20 realdata), 0 failed (int_shared_20261025T2045Z_a).
+      review_tests test_r02, test_r03, test_r05 (-c ..\review_tests\pytest.ini): 15 passed, 0 failed
+        (int_review_20261025T2050Z_a).
+      B1's reported T-F02 failure (variable `e` re-bound in the loop) is already fixed in tests_fire\test_f02 (`e` is
+      recomputed for greece_mainland_syn_sea before the product_cell assertion); B2/B3 T-F12/T-F13 timing and T-F14
+      "N <= 0" readings agree (tests pass; a residue normal below 0 predicts N <= 0, 0 after clip_to_legal).
+    Checks: config.load_registry(cfg, "fire") loads (4 rivals: geff_era5, geff_seas5, enso_lag, turco_spi) under
+      human_rivals.yaml, human_rivals_DRY.yaml, human_rivals_production.yaml and both .DRAFT configs, and coral / defo /
+      pm25 / ndvi still load; config.load_products gives 21 products incl. the 5 fire ids; `py -3.9 -B -m
+      rivals_human.cli --help` exit 0 (15 commands); `cli shas --run D:/treeroute/runs/fire/headline/20261017_869d1f38
+      --config human_rivals_production.yaml` exit 0 (harness b6ea97b7, common board b9f59f9e under 71457aa9 accepted
+      by AG, tool 16a2d736, fire.yaml bf0b8e55, _products.yaml 6d97a17b; all five fire products NO MANIFEST yet).
+    Hashes at integration (the final stage re-prints them):
+      tool code 16a2d7362b83d7d8ddf539a5fe4b75f8166fa56976be3f13d88770fbfd68f591; maps.py 6b4bb064;
+      fire_geff.py 33fd951a; fire_refs_prep.py 98fad293; fire_enso.py 7ba939c8; fire_turco.py 7dfe5835;
+      fire_lag_common.py 718a68e6; fire.yaml bf0b8e55; _products.yaml 6d97a17b.
+    Outside the build folder: a read-only mtime/ctime scan (cut-off 2026-10-25T19:40Z, before the baseline copy at
+      19:46:57Z) of D:\treeroute (minus this folder), D:\fire, the engine folder, the research folder, D:\adaptation,
+      D:\pm25_adapt, D:\pm25_forecast, D:\pm25_rivals, D:\run89full, D:\defo_corrector, D:\defo_tier2 and D:\env_noauth
+      found only the owner's D0' probe (human_tools\reports\run_D0p.log, human_tools\locks, human_products\
+      cems_fire_seasonal_probe\geff_seas5_r5_fwi_box04_2016\; fetcher run 19:34-19:44:33Z, before the build). The
+      scan ran after all integration tests and cli runs (D:\treeroute, D:\fire and the engine also before them: same
+      list). No new __pycache__ in the build (only rivals_human\__pycache__ of 2026-10-22).
+    Integration fix 1 (text, no code): PREREGISTRATION_DRAFT_human_partB.txt :315, :463, :493, :562 said "86%" /
+      "86-90%" of test rows with a zero normal; the spec's own counts (86,304 / 86,388 / 86,464 of 96,000 at leads
+      0 / 6 / 12) are 89.9% / 90.0% / 90.1%, so the four lines now say 90% (B1's request, BUILD_NOTES_fire_B1.txt D1;
+      fire.yaml already says 90%). No test covers the text. No code, test or registry file was changed.
+
+=====================================================================================================================
+3. FINAL-STAGE RESULTS (filled by the integration stage; copied into Part B section 14 and PART_LOG_DRAFT_partB.txt)
+=====================================================================================================================
+3.1 The ONE full suite (the only full run of this build; every realdata test SKIPS in it). As Part A's last run
+    (rivals_build/follow_hboard_ndvi.ps1:63-65), from D:\treeroute\human_rivals_build\human with
+    $env:PYTHONDONTWRITEBYTECODE = "1":
+      py -3.9 -B -m pytest rivals_human\tests tests_builder_b tests_builder_c tests_fire -q -p no:cacheprovider -ra --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH>
+      py -3.9 -B -m pytest -c ..\review_tests\pytest.ini ..\review_tests -q -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH2>
+    (or the integration stage's single equivalent call; the parent pt\tests exists, each <FRESH> name must not)
+    FINAL STAGE, run 2026-10-25 (UTC; written 2026-10-26 local +03:00). Both commands as above (HUMAN_REAL unset,
+    PYTHONDONTWRITEBYTECODE=1, py -3.9 -B; the review call also had -ra, which its pytest.ini adds anyway); code
+    frozen: the tool hash was computed before the first call (20:56Z) and after the second (21:06Z): equal.
+    tool code hash at the run: 16a2d7362b83d7d8ddf539a5fe4b75f8166fa56976be3f13d88770fbfd68f591 (16a2d736; common.
+      tool_code_sha over config.code_files() = rivals_human/*.py then adapters/*.py; same as at integration)
+    result: 376 passed, 10 skipped (realdata), 0 failed, 0 xfailed; time 439.79 s (0:07:19), 20:57:10Z-21:04:32Z, exit 0;
+      pytest line "376 passed, 10 skipped, 16 warnings in 439.79s (0:07:19)"; skips: test_h20_nonames.py:97 [4],
+      test_f11_registry.py:115 [1], :129 [3], test_f15_part_a_nonregression.py:150 [1], test_f18_refs_early_check.py:26
+      [1], all "real-data test: set HUMAN_REAL=1"; warnings = library deprecation / FutureWarning only.
+      log pt\tests\final_full_20261025T2057Z.log; basetemp pt\tests\final_full_20261025T2057Z.
+    review_tests: 60 passed, 0 failed (0 xfailed, 0 skipped); "60 passed, 15 warnings in 112.78s (0:01:52)", exit 0;
+      log pt\tests\final_review_20261025T2105Z.log; basetemp pt\tests\final_review_20261025T2105Z.
+    No setup error, no low-RAM failure (8.8 GB free at the start), nothing re-run. No new __pycache__ (only
+    rivals_human\__pycache__ of 2026-10-22 and the one already under _moved\).
+3.2 The separate realdata command (spec section 5; HUMAN_REAL=1 for this command ONLY, never over the whole suite):
+      $env:HUMAN_REAL = '1'
+      py -3.9 -B -m pytest tests_fire -m realdata -q -p no:cacheprovider -ra --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH3>
+      Remove-Item Env:HUMAN_REAL
+    result: TO FILL passed, TO FILL skipped, TO FILL failed; log TO FILL
+      T-F11 (fire.yaml against the run; slim extras + history columns in EXP lead_0/6/12 train and test schemas): TO FILL
+      T-F15 d (`join --runs CORAL DEFO PM NDVI --pending FIRE` byte-equal to D:/treeroute/rivals_table/
+              20261025T162302876402Z/RIVALS_TABLE.csv, sha256 1ccac0e7eb9defc089c31ce382e8a5aa7783a0b12da531813023f19afacc78ba,
+              --part read from that csv's part column): TO FILL
+      T-F18 (expected: SKIPPED until owner command F3 has written and hashed the refs store): TO FILL
+3.3 Hashes after the build (py -3.9 -B: common.tool_code_sha and sha256 of the files; `cli shas --run <fire run>` once
+    fire.yaml loads) -> Part B section 1 and PART_LOG_DRAFT_partB.txt:
+      FINAL STAGE 2026-10-25 21:06Z (written 2026-10-26 local), py -3.9 -B, after both suite runs:
+      tool code 16a2d7362b83d7d8ddf539a5fe4b75f8166fa56976be3f13d88770fbfd68f591;
+      rivals_human/maps.py 6b4bb0642612c59bb2cbffa34faa808f7b995d7becaa367a35bcf24be28eb406;
+      adapters/fire_geff.py 33fd951adab3f4f834e405e33a87536d9f2d52c19dc8a0bd15b2d6b3fd253e82;
+      adapters/fire_refs_prep.py 98fad2937f5cc07f42373232162b95fe1a0a276965b9b357e7f9fc79b134e457;
+      adapters/fire_enso.py 7ba939c86ffd17213e9f09a880586a0bb7cfebbc9bace4eaf3a1374b780bd612;
+      adapters/fire_turco.py 7dfe58354d064a4c83108b66dadba018a4d52e77aa644a49921220cc40e84f44;
+      adapters/fire_lag_common.py 718a68e6cc975870f3eab073fb2f391e3b76d473cdc7bccefc172f97d2413283;
+      registry/fire.yaml bf0b8e55f043b07e85bf85909e7138a34ba1be9da7e517e5cd681475a7336561;
+      registry/_products.yaml 6d97a17bec32fff9c659111b264eb0d2c8f27f3430ab6f35f6028822a617b303;
+      (`cli shas` not re-run in this stage; integration's run gave the same tool / fire.yaml / _products.yaml values.)
+      every other tool file and registry = its Part 618
+      value (T-F15 a, b; the list in Part B section 1).
+
+=====================================================================================================================
+4. OPEN ITEMS (for the owner; the integration stage adds its own)
+=====================================================================================================================
+- Owner decisions OD-1 .. OD-14 (spec 9; Part B section 11), with the B9 rule: all but OD-11 ruled and WRITTEN before
+  the F7 DRY pass. The build ships the RECOMMENDED values.
+- OD-1: the Turco SPI-lag form is not verified against the paper (no network); check before signing.
+- OD-8 note (B4): the plan's fire row (:69) names families "F0-F6"; fire.yaml (spec 2.2) registers F2-F6, as coral's
+  I-kind crw_dhw (plan "F0-F5", registry F2-F5): F0 / F1 would read FWI (0 to ~220) as a burned fraction. Flagged for
+  the owner's confirmation, not changed.
+- R10 years of Part 491, Part 501 and fire_danger / fire_danger_local (old 30/10 split): TO CONFIRM before signing
+  (Part B section 9).
+- ~/.ewdsapirc is missing: D0', D2, D3 cannot start; the lead-6 cut-off is 18 Nov (24 days on 2026-10-25).
+- HUMAN_OWNER_COMMANDS.txt:16 ("delete the scored fire export") is stale (spec B1). It is a Part A file, so B4 did not
+  edit it; HUMAN_OWNER_COMMANDS_partB.txt section 0 says so and F1 refuses if the export is gone.
+- C: is nearly full (Part 620): every Part B command writes to D: only.
+- The Part number of the tool-change log and of Part B itself: assigned by the main session.
+
+=====================================================================================================================
+5. B4_prereg: THIS BUILDER'S FILES (2026-10-25)
+=====================================================================================================================
+- PREREGISTRATION_DRAFT_human_partB.txt: the Part B draft, mirroring the signed Part A section by section, fire only;
+  TO FILL wherever a hash or result does not exist yet. Header: signed when D2/D3 are hashed, or on D2 alone only
+  under OD-4.1 (an amendment of Q22 a). Section 1 lists maps.py as the 4.4 shared edit (baseline f38d7ce7) and every
+  unchanged tool file / registry with its Part 618 sha; its shas must equal the F7 DRY board's. Section 2 states the
+  OD-4.2 lead-6 options (a / b). Section 3 the 4.4 F6 fit rule (and the F0 / F1 note). Section 4 the guard-cut,
+  own-month-out percentile rule and its asserts. Section 7 the DRY registry shas, pins and picks (TO FILL). Section 8
+  the constants incl. T_ref per lead, the F6_* constants and B2's SINGULAR_TOL. Section 9 the R10 text with the C-A /
+  F6 / x__fwi_pct sentence. Section 11 every OD with options and the recommendation, the B9 rule, and what each owner
+  command records. Section 13 the OD-4.1 / OD-4.2 tick boxes. Section 14 TO FILL from 3.1 and 3.2 above.
+- HUMAN_OWNER_COMMANDS_partB.txt: F1-F10 in the PowerShell style of HUMAN_OWNER_COMMANDS.txt, as Verb-Noun functions
+  that stop the step at the first failure (throw "STOP: ..."), count the commands that ran, and check after the setup
+  block that every name resolves to its function (the H / R / RV alias lesson). Includes F3 + the T-F18 early byte
+  check (stops on a fail OR a skip), the F4b placeholder replacement (Set-FireProductFolder: keeps a copy in _moved,
+  changes only that product's manifest line, refuses after any fire init), F6b at the cut-off, the F7 DRY timing
+  (refuses unless -DecisionsWritten and the D3 outcome is final; a call after an interruption resumes the same pass,
+  never a second DRY board), the F8 / F9 stops (registry, tool, pins, slims and
+  index equal to the DRY board's; picks content equal; lead_<L>\refs.json "parity proof passed"), and the B8 rule
+  (Assert-FetcherRerunAllowed; never re-run the fetcher after the first init).
+- PART_LOG_DRAFT_partB.txt: the Part A section-12 log entry of this build for PENDING_PARTS.md (tool cd956f1d -> new,
+  _products.yaml 4e479759 -> new, no Part A re-run, the T-F15 proofs); TO FILL lines for the integration stage.
+- How B4 checked its files (no tool test applies to text files; no test file is owned by B4):
+  * the setup block of HUMAN_OWNER_COMMANDS_partB.txt parsed with the PowerShell 5.1 parser: 0 errors; 26 functions
+    resolve as functions; the file is ASCII only;
+  * its four Python helpers compile under py -3.9 and were exercised READ-ONLY (copies in the session scratchpad):
+    the manifest reader on a missing / a complete (D6) / an unknown product; the F4b edit on a scratch copy of B1's
+    _products.yaml (only the two manifest lines changed; wrong suffix, second call and missing folder refuse); the
+    board record on the finished coral DRY board (reproduces its picks content ebef5359, Part 617); the refs check on
+    the finished NDVI board (leads 12, 6, 0 "parity proof passed"); the picks / board / shas checks give EQUAL on
+    identical boards and STOP on different ones; the cli wrapper on the read-only `shas` command (exit 0 captured;
+    a refused run throws). No __pycache__ was written (checked).
+- Snapshot of B1/B2 files when B4 finished (they may still change; the integration stage re-prints): maps.py 6b4bb064,
+  _products.yaml 6d97a17b, fire.yaml bf0b8e55; tool code (all current files) 1401e76f.

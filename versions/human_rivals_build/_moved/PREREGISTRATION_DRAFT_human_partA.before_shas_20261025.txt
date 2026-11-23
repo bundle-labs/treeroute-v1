@@ -1,0 +1,357 @@
+PRE-REGISTRATION PART: THE HUMAN RIVALS, PART A (coral, defo, PM2.5, NDVI)
+=====================================================================================================================
+STATUS: DRAFT, UNSIGNED. Written 2026-10-22 from RIVALS_PLAN_HUMAN.md (rival table section 2, protocol section 3,
+downloads section 4), owner ruling AB (OWNER_RULINGS_2026-10-06.md section AB: every recommended answer Q1-Q24 and
+Q2.HQ1-HQ11), the protocol notes D:/treeroute/rivals_plan_human/protocol.md and research_<pkg>.md, SPEC_HUMAN.txt,
+the registries (D:/treeroute/human_rivals_build/human/registry/<pkg>.yaml, _products.yaml, _schema.yaml), the tool
+code, and the two reviews of 2026-10-22 (date safety; plan conformance), whose fixes are in the code (change notes at
+the end). It replaces builder A's draft (human/PREREGISTRATION_DRAFT_human_partA.txt, now out of date). Where this
+text and a ruling differ, the ruling wins.
+
+What it covers: the human rivals (type 2) of four finished headline runs. Fire is Part B (ruling Q22 a), signed when
+its downloads D2/D3 are hashed; until then fire is joined as "human rivals: pending" (Q24, cut-off 18 Nov).
+It is signed BEFORE any human test score (PROT H16). No human test score exists today; no human command has run on
+real data. Only the coral DRY pass (tune and lock, no test row; HUMAN_OWNER_COMMANDS.txt step 2) may run before the
+signature, and its picks are copied into section 7 when it has run.
+
+---------------------------------------------------------------------------------------------------------------------
+1. THE FROZEN STATE (hashes at writing, 2026-10-22; re-printed by `py -3.9 -B -m rivals_human.cli shas --run <run>
+   --config <production yaml>` at signing; any later change makes every board refuse)
+---------------------------------------------------------------------------------------------------------------------
+- Common harness, pinned: b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2 (Part 608 fix of the signed
+  Part 598 harness). Common boards made under the older 71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97
+  (coral 20261020_f3b8e3da, fire 20261017_869d1f38) are accepted through config common_harness_accepted_boards (ruling
+  AG5, Part 613); the human board records the accepted reason.
+- Human tool code hash (rivals_human/*.py + adapters/*.py, tests excluded; common.tool_code_sha):
+    8f66da6ade0f7e64078c200d66a5851b9721d6a78a5dbabeea41fe3906c1406e  (tests and suites in section 14)
+- Per file (SHA-256 of the bytes):
+    rivals_human/__init__.py   71ccd57e96be5e1b784e6a251aa0e82eaa9f0704142df4302e17f0d0abb9c637
+    rivals_human/board.py      00ba00a8cd4c02c3a02a506c43482887110a4bc97097eeb7eac236c3bca32035
+    rivals_human/cli.py        7bfbf60efd6cb10e2114fc59928f6f235973e7581ea63c1b968d2f67c40aded0
+    rivals_human/common.py     c768f0a03241ffa2a3c539a6f682292ed6f5e4d4de7c22eda1d2e76546126c25
+    rivals_human/config.py     5fa8f97327449abc8c668257ab0a6f976aeef64e8640691608ff58d791b837ec
+    rivals_human/index.py      05298c24b99d31bfc069bdd155e5fdabef0ad14f865aaf24b04bfd6e15a02337
+    rivals_human/join.py       769571203ac3f9eb922476a90fa1921f20b9ed313021eb04c4c19620233917dc
+    rivals_human/lockfile.py   d53d58892391c57a51487aa10b5cb3ad6e3d65f01e6086af68f28c5f46e22f8d
+    rivals_human/manifest.py   51ef2be655e3771263b59274ad5d0d046dab13b5f2b696424ae54f24e7ca2fcc
+    rivals_human/maps.py       f38d7ce78ede1b101b5fba89fb4aa89559171e63e1532e60d58bd030acb91a59
+    rivals_human/methods.py    3ccfc62767a5710f82e9a93406f49459606bffcb6d2b3700e25613663e5c3ed4
+    rivals_human/refs.py       f610c65f8dc77797084a45cfd3ce27254454172e16687eaffbc804ed7956f0ee
+    rivals_human/slim.py       cb0639925d2c01b829c3dac724411bb8ca9073a24e99c7de9a648e336afae237
+    adapters/coral_crw.py      6c65fbbc7f2155f9cacd875b02747517991f9dee05abefb43c540b02ba0767c7
+    adapters/coral_outlook.py  f86534bab973dd4d147fd72b3b082671fc4fe71033434dae14e6d67883a63a7f
+    adapters/defo_prep.py      95ab2f2eca7c2280e7a51749a0825c05402c6ed981d8bc61c21289b637f8c19d
+    adapters/defo_vt0007.py    265251dfd91169373b70ccc521b606e17663bf13c752b053cc79c0a65ec2cbad
+    adapters/ndvi_bardl.py     3683c8ce96de89a0d217098b4a1626e66fc14ef70e38e51319fa79968b45eb49
+    adapters/ndvi_kraft.py     2efa664cab5b2b6da4c2194c97a04b7b9a8f0319d1ec81d96f7661c98eaf4a53
+    adapters/ndvi_kraft_prep.py fb244f5f272fd81895eb6554c345eb0def52ce50645836795d5dc959508bd118
+    adapters/pm25_reanalysis.py b5163d3f6262b5ab5893997bddb4bc8836cd47a463b1de8ed65cf2081c80c1fd
+- Registries:
+    registry/_schema.yaml   a3cda6238677d3f13fd4a324e43dfc4b982a26d999f80baf200b9f4e49a33c61
+    registry/_products.yaml 4e4797597c0a7c76815159d7ce5fa3cf723d2b996d1e3b67a05968136bcb5d1f
+    registry/coral.yaml     e52f712f86279259ef944c18e9cef3ab6d9d910cfd4852a061482fbac3ef7814
+    registry/defo.yaml      fc0ceefb438534df56636d792869a492c79a74ef44838be39660ac687f91b750
+    registry/pm25.yaml      5fe8e221190674e5b2d8c972b46acfca819678795d8e48c6600eaf67a3322e2f
+    registry/ndvi.yaml      96c42b3c6edefd429d6888eac4218366b66c9f4b61d5a68cb67af1549843d8ee
+    (a decision of section 11 that edits a registry, e.g. ndvi.yaml standardize, changes its line: re-print at signing)
+- LIVE engine 930d961c (read-only); each human board pins it at init.
+- Configs: production = human/human_rivals_production.DRAFT.yaml copied by the owner to human_rivals_production.yaml
+  (engine machine file, so the engine's heavy-job lock; boards D:/treeroute/rivals_human/<pkg>/<run>, slim
+  D:/treeroute/rivals_human, index D:/treeroute/human_index, table D:/treeroute/rivals_table). DRY pass =
+  human_rivals_DRY.DRAFT.yaml (own out root D:/treeroute/rivals_human_dry; the production slim, index and product
+  manifests). Staged product paths are written {index_root}/... and follow the config (config.load_products).
+- Product manifests (SHA-256 of product_manifest.json):
+    gadm36_defo42 (D4, on disk)              fa1508866de13c418af6cd9386e07643ff3f2a08c1189c1b1da15660e6185ba3
+    noaa_crw_dhw_sitedays (D6, on disk)      9aa8ae53b61f733dc2d18d63cad2bbcfcae9e41851ca1f6ac62a271d4664ec6d
+    cams_eac4_monthly_pm2p5 (D1)             NOT ON DISK (owner's ADS key; section 11 item 1)
+    coral_sst_npz, crw_climatology, crw_outlook, coral_store_20261020          TO FILL (owner command step 2, O4)
+    merra2_aer_monthly, pm25_static_cells, ndvi_static_cells                   TO FILL (step 2, O5)
+    hansen_gfc_v1_13, defo_target, defo_static                                 TO FILL (step 4, O6)
+    defo_vt0007_prep (staged: files hashed after the stage-train prep; stage-test files are added after the lock;
+      a file already hashed never changes, the board checks each)                                     TO FILL
+    monthly_panel, ndvi_kraft_store (Kraft only, optional)                                            TO FILL
+- Slim manifests per run x lead, index tables (stage train or all), coverage masks, picks: recorded in each board's
+  human_board.json and human_picks.json, with their SHA-256; listed from those files when the boards are made.
+
+---------------------------------------------------------------------------------------------------------------------
+2. THE RIVALS PER PROBLEM AND LEAD (registries; P and L decide, A and X never; "none" = no human rival at that lead)
+---------------------------------------------------------------------------------------------------------------------
+CORAL (run 20261020_f3b8e3da; leads 0, 183, 365 days; table package; groups = programme regions)
+  crw_dhw      I  lead 0 P; 183 L and 365 L, labelled "NOAA's nowcast rule fed old heat". NOAA CRW 5 km v3.1 DHW and
+                  7-day-max alert level (5 levels of 2016-19, Q13), NOAA's official MMM (Q11), recomputed from our
+                  CoralTemp SST file, read at d* = C - g - 1 = issue - 2 (the last SST day of our own features).
+                  Stats x__dhw, x__baa7d. Families F2, F3, F4, F5 x links identity, log_c, arcsine. Picked on the
+                  lead-0 inner rows, pinned at every lead.
+  crw_outlook  I  lead 0 none ("the observed product is strictly better at the nowcast"); 183 A and 365 A,
+                  "advantaged horizon" (available 49-56 / ~232 days after our issue date: each file's `time` is its icwk + 7 days,
+                  verified on all 1,984 files on 2026-10-23, and the issue counts as available from that `time`; ruling Q12 b amends C11 c).
+                  Stats x__baa060_w20, x__baa4p_w20; families F2, F3, F4. A forecast-only product: picked on the
+                  guard rows of its lowest covered lead (183), pinned. 365 is scored WITHOUT the safety net (Q12 b).
+  No human forecast reaches 183 / 365 d: "no forecast with a public 2016-19 archive covering our sites reaches 183 d
+  or 365 d" (printed at both leads even though they have L and A rows; BoM ACCESS-S check, section 11 item 6).
+DEFO (run 20261017_d71c61f4; leads 0, 1 year; grid; groups = regions)
+  vt0007_shipped     M  P at both leads: Verra VT0007 "UDef-A" allocation (30 distance-to-forest-edge classes x GADM
+                        3.6 level 2 divisions, frequency from the HRP t-10..t-1, VMD0055 quantity = HRP loss / 10,
+                        water-filled with a pixel cap at 1), as shipped (F0).
+  vt0007_cal         M  P at both leads: the same index, isotonic-calibrated (F2, F4 x 3 links), picked on inner MAE.
+  vt0007_frozen2019  M  optional, P, own verdict, NOT in the joint claim: HRP 2010-2019, map at the end of 2019, held.
+  Joint claim (Q14 a): "ours beats VT0007" = YES only if ours BEATS both vt0007_shipped and vt0007_cal (guarded vs
+  headline); NO prints each verdict; NOT DECIDABLE when a form has no deciding row (e.g. not calibratable).
+  Leads 0 and 1 carry identical index values per (unit, year) (`check` asserts it: equal_value_leads [0, 1]).
+PM2.5 (run 20261007_74e67609; leads 0, 6, 12 months)
+  eac4_lag1          N  lead 0 P, "the operational product at parity": CAMS EAC4 monthly pm2p5 of month t-1. Waiting
+                        for D1 (section 11 item 1).
+  eac4_same          N  lead 0 A "real practice" (month t; reads the target month's AOD), printed right beside eac4_lag1.
+  merra2_lag1        N  optional, lead 0 P (the P row if D1 never lands, PLAN R2); merra2_same A, printed beside it.
+  eac4_lag1_placebo, merra2_lag1_placebo  placebos: the parent's pinned pick fed the same calendar month 4 years
+                        earlier; a check that the guard declines them, printed only, never a rival.
+  Families F0-F5 x links identity, log_c; stat x__pm25; each P / A pair picked separately on inner MAE.
+  Leads 6 and 12: "no human rival: no operational 6-12 month PM2.5 forecast exists" (Q1, Q21 a).
+  Reference: persistence and damped persistence at lead 0 are flagged "the human baseline to beat" (Q4; PM2.5 only).
+NDVI (run 20261016_d1de3158; leads 0, 6, 12 months)
+  bardl_h1     M  lead 0 P; leads 6 and 12 X, "labelled statistical extension". Per-unit Bayesian ARDL on the NDVI
+                  anomaly (BARDL / AstroCast family): NDVI lags (history to t-2) + precipitation and soil moisture at
+                  the issue step and 1-2 months before (published inputs only, Q9). One configuration (F0).
+  kraft_lstm   M  optional, lead 0 P only (Kraft et al. 2019 LSTM, re-run on CPU, one fixed torch seed; Q10).
+  Leads 6 and 12: "no published NDVI forecast reaches 6 / 12 months; H1-direct is printed only as a labelled
+  statistical extension" (Q8 a; printed at both leads).
+Reference rows at every problem and lead (never decide): own history = persistence, damped persistence (nowcast:
+the human tool's rows, Q4), coral last visit at the site (Q23), guess-normal, last-5 normal; other reference =
+predict-zero, donor median (coral).
+
+---------------------------------------------------------------------------------------------------------------------
+3. CALIBRATION MAPS AND THE PICK (SPEC_HUMAN 1.6; PROT H6; Q19 a; Q2.HQ6 a)
+---------------------------------------------------------------------------------------------------------------------
+  F0 pred = x | F1 link(y) = a + b link(x) (x put in the link domain first) | F2 link(y) = iso(x) |
+  F3 link(y) - z0 = a + b (x - xbar) | F4 link(y) - z0 = iso(x - xbar) | F5 per unit: link(y) - z0 = a_u + b_u
+  (x - xbar), shrunk to the pooled F3 with SHRINK_K = 10 rows: s* = (n_u s_u + K s_pool) / (n_u + K); a unit with
+  < 3 covered fit rows (or unseen) takes the pooled map; a unit with no x spread keeps the pooled slope (counted).
+  z0 = the row's link-space normal (guard-cut on tune / inner / guard-fit / guard rows; fit-cut on refit and test
+  rows). xbar = the index mean per unit x season key on the same fit rows (< 3 rows: pooled key mean; unseen key:
+  pooled mean).
+  Isotonic direction = the sign of Spearman of the PAIR THE MAP FITS on its fit rows: F2 x vs y; F4 (and the
+  anomaly L1 map) x - xbar vs link(y) - z0 (undefined -> increasing). (Fixed 2026-10-22: F4 took the raw pair.)
+  sklearn IsotonicRegression (clip out of bounds), squared error, knots kept. No weights. Back-transform with
+  link_inverse, no smearing; clip to the legal range, pre-clip kept.
+  Minimum to fit a map: >= 100 covered labelled rows in >= 3 groups, else "not calibratable at this lead" (no row,
+  disclosed) - except on a lead scored without the safety net (section 5).
+  Candidates = stats (<= 3) x families x the run's R22 links, fixed order (stat, F0..F6, link). Pick = the lowest
+  MAE of the clipped prediction on the pick rows covered by every stat; ties by the fixed order. Nowcast rivals:
+  fit on tune rows, picked on lead-0 inner rows. Forecast-only products: fit on guard-fit rows, picked on the guard
+  rows of their lowest covered lead. One pick per rival, pinned at every lead, refit per lead on the lead's refit
+  rows. Runners (bardl_h1, kraft_lstm) have one configuration, no pick. corr2, calibration ratio and predict-zero
+  MAE are logged beside every candidate (trials.csv).
+  L1 print (Q13): where the run's legal minimum is 0 and the lead-0 refit zero share is >= 0.20 (data rule; coral
+  and defo), the pick's L1 isotonic map is refit and printed beside (l1_raw_vs_raw), never decides. For an F0 pick
+  (vt0007_shipped, vt0007_frozen2019) it is labelled "L1 isotonic calibration of the as-shipped index".
+
+---------------------------------------------------------------------------------------------------------------------
+4. TIMING (information parity; read from the run, recorded per rival and lead in the lock)
+---------------------------------------------------------------------------------------------------------------------
+  T1 driver inputs: info_end <= issue - S (grids; S = max R8 `steps` over the rival's t1_kind_columns, every R8
+  entry when it names none) or <= issue + plan.json max_feature_end_minus_issue_day (tables: issue - 1).
+  T2 target observations: target_obs_end <= latest_label_step(t, L) - R17 offset (grids; t-1 at lead 0, t-L at lead
+  L) or strictly before the issue day (tables). P, L and X rows must pass both on every covered row; an A row must
+  break one on every covered row. Runners are checked the same way on every predicted row.
+  Per rival (checked on the real runs' plan.json / derived.json, review 2026-10-22):
+  - coral crw_dhw: d* = issue - 2 on every day row at 0 / 183 / 365; passes T1 (issue - 1). crw_outlook breaks T1
+    (issued after our issue date), as tier A must.
+  - defo VT0007: info_end = 2000 (treecover2000 / datamask, the newest NON-label input; registry option
+    driver_info_end); the loss years t-10..t-1 and the forest map at the end of t-1 are target observations,
+    target_obs_end = t-1, guarded by T2 (labels to t-1 at both leads). The defo R8 has steps-1 entries, so S = 1.
+    (Fixed 2026-10-22: info_end was t-1, which T1 = issue - 1 = t-2 refused on every lead-1 row.) Loss years past a
+    prep stage's last year are zeroed; stage train reads loss <= 2019 only.
+  - PM2.5: the t-1 rows and placebos pass T1 (burn_frac steps 1) and T2; same-month rows break both.
+  - NDVI bardl_h1: info_end = issue (its six climate columns have R8 steps 0); target_obs_end = the T2 step; one step
+    later on either refuses. kraft_lstm: window end = issue - S.
+
+---------------------------------------------------------------------------------------------------------------------
+5. COVERAGE, SAFETY NET, VERDICTS, PRINT ORDER
+---------------------------------------------------------------------------------------------------------------------
+  Coverage (HQ3 a): the test rows the pick covers, fixed at the lock and hashed: finite picked stat in the index
+  (one-go index tables) or a label-free registry rule (staged tables and runners): coral x_finite; defo
+  {time_min: 2011} (target year >= first loss year + HRP = the adapter's own rule at every lead; fixed 2026-10-22,
+  was issue_min 2010); PM2.5 x_finite; NDVI H1 {units_column_true: is_scored}; Kraft is_scored + a label-free window
+  function. A staged index must later cover every locked row, else refit refuses.
+  Safety net (HQ2 a): lead 0 guard = the pick fitted on tune rows, scored on its covered inner rows (and checked to
+  reproduce its tuning predictions byte for byte); lead L = fitted on covered guard-fit rows, scored on covered guard
+  rows. Comparator on the same rows: the run's saved <link>_trees_off_unweighted of the pick's link (F0 and runners:
+  identity), or the donor median (neighbour kind, V1). Passed iff MAE(rival) < MAE(comparator) strictly. Guarded =
+  raw if passed, else the run's decline target. Both raw and guarded are scored; guarded decides.
+  Leads scored without the safety net (coral crw_outlook at 365, Q12 b): guarded = raw, flagged "no safety net";
+  if the guard map cannot even be fitted there (expected: ~38 guard-fit rows / 11 groups), the guard is NOT RUN,
+  flagged, and the lead is still refit on its refit rows and scored raw. (Fixed 2026-10-22: such a lead lost its
+  row.)
+  Deciding contrast: covered rows of groups with >= 10 covered test rows, ours on the same rows; d_g = MAE_rival(g) -
+  MAE_ours(g); the engine's contrast_tag with the run's nowcast band at every lead: BEATS / LOSES / EQUIVALENT /
+  CANNOT TELL; blocked jackknife beside; timid flag. guarded_vs_headline decides (P, L); raw_vs_raw printed.
+  Beside each row: rows covered of all rows ("on the k% of rows the product covers", k = rows_covered / rows_total),
+  deciding rows, groups, years, our all-row MAE, the guess-normal MAE on the same rows, anomaly R2, corr2, hit rate,
+  a "filled" line (never decides), per-stratum and unseen-unit tables, resolution-matched tables for coarse products.
+  Wording: a tier-L BEATS is worded with its label ("beats NOAA's nowcast rule fed old heat"), never "beats NOAA".
+  A tier-X row that is not a placebo is a "labelled statistical extension"; a placebo is a guard check, never a
+  rival.
+  Print order per problem and lead (PLAN 3.14): ours, common rivals, the package's "no published forecast" line, P/L
+  rows, X rows, placebos, A rows - each A row with print_beside right after its parity row (eac4_same after
+  eac4_lag1, merra2_same after merra2_lag1) - then own-history rows, then other reference rows. No "best rival" line.
+
+---------------------------------------------------------------------------------------------------------------------
+6. LOCK, LEDGER, DRY PASS, LABEL ACCESS (PROT H8, H16)
+---------------------------------------------------------------------------------------------------------------------
+  - Picks, coverage masks and every hash are written once (human_picks.json + its lock) before any test file is
+    read; tune and lock refuse once any test-side trace exists. Test labels are read only by score, after the lock.
+  - The run ledger is <index_root>/_ledger/<run fingerprint>.jsonl, shared by every board that uses the run's index
+    tables, whatever its out root; a lock whose picks differ from picks under which test labels were opened is
+    refused in ANY board. (Fixed 2026-10-22: it was per out root.)
+  - A DRY board (init --dry) is marked in human_board.json; refit, refs, score, stage-test adapt / prep refuse it.
+  - init refuses while a non-optional parity rival is waiting (its product or index table missing), because
+    human_board.json is written once; `--allow-waiting` plus `lock --without ... --decision` records an owner
+    decision instead (section 11 item 1).
+  - Labels reach a runner only inside its fit, and only of the set being fitted (fit_labels refuses any other set
+    and any call outside a fit); the slim reader is private to the tool. Adapters (I, N, M index) never get a label.
+    (Fixed 2026-10-22.)
+  - slim_extra_columns are refused if they are y, a history column of the run, an h__ / ngd__ / nfit__ block, or not
+    an x__ / c__ column (their test values are read without the lock). (Fixed 2026-10-22; today's registries were
+    already clean.)
+
+---------------------------------------------------------------------------------------------------------------------
+7. THE CORAL DRY PASS (tune and lock only; DRY, not a result)
+---------------------------------------------------------------------------------------------------------------------
+  NOT RUN YET (it needs a pass over the 0.93 GB SST file, which was not allowed while the pm25 rival export used the
+  PC). Owner command step 2 (O9). Filled here when it has run: the picks content hash, each rival's pick and inner
+  MAE, and the crw_outlook fit-row counts at 183 and 365. The real coral lock must reproduce the DRY picks content.
+
+---------------------------------------------------------------------------------------------------------------------
+8. CONSTANTS
+---------------------------------------------------------------------------------------------------------------------
+  SHRINK_K 10; MIN_FIT_ROWS 100; MIN_FIT_GROUPS 3; MIN_UNIT_ROWS 3; MIN_GROUP_TEST_ROWS 10; MAX_STATS 3;
+  L1_MAX_BLOCKS 20000; threads 8; no seed varied (Kraft: one fixed torch seed 0, CPU, 8 threads).
+  NDVI H1: min_fit_rows 36 per unit (fewer: the unit predicts its normal, counted); standardize: see section 11.
+
+---------------------------------------------------------------------------------------------------------------------
+9. NOT BLIND (PLAN R10; years to confirm before signing)
+---------------------------------------------------------------------------------------------------------------------
+  coral   stats x__baa060_w20, x__baa4p_w20 chosen after CRW Parts 456-457 (same test years 2016-2019).
+  PM2.5   F5 per-unit MOS (old Board C, per-cell log MOS on same-month MERRA-2, MAE 3.926; years TO CONFIRM).
+  NDVI    Kraft LSTM run before (Parts 417-426, old hard split); BARDL chosen with that history (years TO CONFIRM).
+  defo    the frozen-2019 form follows the old udef_a run (defo_papers.py; years TO CONFIRM).
+
+---------------------------------------------------------------------------------------------------------------------
+10. DISCLOSURES (from the registries; the 2026-10-22 additions marked NEW)
+---------------------------------------------------------------------------------------------------------------------
+  General: human rivals sit on the same saved test rows, cuts, normals and metrics as the common board; all fits on
+  train rows only; nothing is added after a human test score.
+  Coral: the rival is a subset of our inputs (same CoralTemp SST, NOAA's MMM): it measures what the model adds over
+  NOAA's rule; MMM content runs to 2012; CoralTemp is a reanalysis to Oct 2016, NRT after; the v3.1 suite (2018) is
+  later than the 2016-17 issue dates; 5 alert levels (later levels 5-7 merged into 4); d* = C - g - 1; units are
+  visits, so F5 falls back to the pooled map (counted). Outlook: experimental; the files are a 2019 v5 reissue;
+  0.5 deg cells, a land cell takes the MAXIMUM alert of the nearest ocean ring (favours the Outlook); train coverage
+  from 2011-11-14; 365 d has no safety net (Q12 b) and, if its guard map cannot be fitted, no guard at all (NEW).
+  Defo: the rival sees the 30 m forest map (treecover2000 + past loss) our model does not (Q15); quantity from
+  wall-to-wall Hansen counts; annual rolling use of a certified frozen method is our adaptation; anisotropic pixel
+  spacing per block; a fixed 512-bin log distance grid (NRT snapped up ~2%); GADM 3.6 level 2 (content 2018), IRL
+  and HKG level 1, cell -> unit by largest overlap; GFC pre-2011 regime break and reprocessing look-ahead (shared
+  with the target); the calibration map is fitted on train rows only. NEW: info_end = 2000 and GADM is treated as
+  fixed geography (section 4); Hansen loss of year t-1 is usually published in the spring of year t+1, after the
+  issue date: generous to the rival, as our own t-1 labels are.
+  PM2.5: EAC4 is published 4-6 months late (t-1 is generous); EAC4 and MERRA-2 assimilate AOD, the target's own
+  source, so the P rows are lagged to t-1; EAC4 holds no nitrate (verify); MERRA-2's formula has no nitrate; 5
+  MERRA-2 test months are the reprocessed MERRA2_401 stream; same-month rows break T1/T2 by design (tier A). NEW:
+  MERRA-2 of month t-1 may not be published at the issue date (generous to the rival).
+  NDVI: H1 works on the NDVI anomaly (normal = the engine's identity normal), not VCI; BARDL is published for 6-10
+  weeks, piloted in 7 Kenyan counties, so leads 6/12 are an extension; BayesianRidge defaults; missing NDVI lags or
+  climate values at prediction set to anomaly 0, counted. NEW: at lead 0 H1 reads the TARGET month's precipitation
+  and soil moisture (R8 steps 0; our model reads them too: parity, not a leak), so "only past rain" is not literally
+  true. Kraft: research model, not operational; reads no NDVI; land cover dropped (banned proxy).
+
+---------------------------------------------------------------------------------------------------------------------
+11. OPEN BEFORE SIGNING (owner decisions and owner commands; nothing below is decided by the build)
+---------------------------------------------------------------------------------------------------------------------
+  1. D1 (CAMS EAC4): put it on disk (your ADS key + licence click, then the download, manifest --verify and adapt),
+     OR decide PLAN R2 (MERRA-2 becomes the P row; init --allow-waiting; lock --without eac4_lag1 eac4_same
+     eac4_lag1_placebo --decision "<text>"). Record the choice here.
+  2. NDVI H1 predictor scaling (registry ndvi.yaml options.standardize; DECIDED true, ruling AG2). BayesianRidge has one shared
+     prior, so the unscaled fit depends on the units precipitation is stored in (toy inner MAE 0.01922 in mm,
+     0.01921 in metres, 0.01916 standardized). Options: (a) keep false, the spec's literal "BayesianRidge defaults";
+     (b) true, z-score each predictor per unit on its fit rows (unit-free; recommended by the review); (c) register
+     both and pick on inner MAE (makes H1 a two-candidate rival). A change edits only the registry.
+  3. NDVI H1 climate gap rule (C O-C2): a missing climate value at prediction is set to anomaly 0 and counted; at fit
+     such rows are dropped. Confirm.
+  4. Coral BAA alert rule (B V2): baa_alert_needs_hotspot true (NOAA methodology: Warning / Alert need HotSpot >= 1)
+     vs the spec's literal DHW-only list. The D6 check reports both and decides on the registered one; if D6 fails
+     only on BAA and the other rule matches 300/300, flip the option before the lock (recorded).
+  5. VT0007 details (B V6) and the quantity reading (D3): class edges e_k = e0 (NRT/e0)^(k/29), e0 = min(30 m,
+     NRT/2), NRT snapped up to the fine grid; quantity water-filled exactly to Q with the pixel cap (vs "scale, then
+     cap"). Confirm the wording.
+  6. BoM ACCESS-S archive check (PLAN R15): if a public 2016-19 archive covering our sites exists, add or reject it in
+     writing before signing.
+  7. Owner commands of HUMAN_OWNER_COMMANDS.txt steps 1-5, then `cli shas` per run to fill every TO FILL line of
+     section 1; the D6 and replay results (O7) and the DRY pass (section 7) recorded here; the R10 years (section 9).
+  8. The persistence rows' wording (SPEC 1.10, O-2): persistence = the float64 label at the T2 step; coral last
+     visit by the package unit (site). Confirm.
+
+  DECISIONS (owner ruling AG, 2026-10-22; the owner chose MERRA-2 in place of EAC4 for item 1 and the recommended answer for items 2 to 5:
+  NDVI H1 standardised, the rest confirmed as drafted, the human steps after the defo board, the old boards accepted):
+  1 -> PLAN R2. MERRA-2 (merra2_lag1) is the P row of the PM2.5 human board; CAMS EAC4 (D1) is not obtained. Step 7 uses
+       `init --allow-waiting` and `lock --without eac4_lag1 eac4_same eac4_lag1_placebo --decision "ruling AG1: MERRA-2 is
+       the P row (PLAN R2); EAC4 not obtained"`. The paper says EAC4 was not used, and why.
+  2 -> standardize: true (registry/ndvi.yaml edited 2026-10-22; its hash in section 1 is re-printed at signing).
+  3 -> confirmed: a missing climate value is anomaly 0 at prediction (counted) and the row is dropped at fit.
+  4 -> confirmed: baa_alert_needs_hotspot true (NOAA methodology; the registry value).
+  5 -> confirmed as worded above.
+  6 -> REJECTED. The agent's search (2026-10-22) found no public archive of BoM ACCESS-S coral/SST outlooks issued in
+       2016-19. The Bureau has issued ACCESS-S seasonal SST products for coral since 2019 (IMOS news, "A new tool to help
+       predict bleaching risk for coral reefs around Australia"). They cover Australian waters only. The published ACCESS-S1
+       hindcasts span 1990-2012 and are re-runs, not issued forecasts. The bom.gov.au outlook page refused automated
+       access (HTTP 403), so it was not read directly.
+  7 -> pending: owner commands steps 1-5 (run after the defo common board, ruling AG4), then `cli shas` and the TO FILL
+       lines. The human tool code hash changed on 2026-10-22 (ruling AG5, Part 613): re-print it at signing.
+  8 -> confirmed as worded above.
+  D6 (ruling AH, 2026-10-23): the crw_dhw HotSpot is computed in NOAA's 2-decimal arithmetic (AH1). D6 passes when BAA7d and
+       the d* HotSpot equal NOAA's on every compared site-day and DHW on >= 97% (registry d6_min_dhw_equal_share 0.97).
+       Measured on the real D6 product: BAA7d 300/300, HotSpot 300/300, DHW 292/300. The 8 DHW differences are listed in
+       Part 613's addendum and disclosed (the most likely cause is NOAA's archive using an earlier SST record; an inference).
+
+---------------------------------------------------------------------------------------------------------------------
+12. WHAT COUNTS AS A BUG FIX AFTER SIGNING
+---------------------------------------------------------------------------------------------------------------------
+  Any change to a file of section 1 changes the tool code hash; every board refuses it and a new board must be
+  initialised and re-tuned. A fix is allowed only if it changes no pick (the shared ledger refuses other picks once
+  a test label was opened), or the owner rules on it in writing before any further test label is opened. Each fix is
+  logged as a new Part with the old and new hashes, the reason and the diff.
+
+---------------------------------------------------------------------------------------------------------------------
+13. SIGNATURE
+---------------------------------------------------------------------------------------------------------------------
+  Signed by: ____________________ (owner)          Date: ____________________
+  Human tool code hash at signing (section 1): ________________________________________________________________
+  Common harness hash pinned: b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2 (accepted older: 71457aa9, AG5)
+  SHA-256 of this file: written into the Part log by the owner after signing.
+  Part number: the next free number after the common rival Part (598) when signed.
+
+---------------------------------------------------------------------------------------------------------------------
+CHANGE NOTES
+---------------------------------------------------------------------------------------------------------------------
+2026-10-22 (the two reviews of 2026-10-22; all valid items applied under D:/treeroute/human_rivals_build only):
+  Date-safety review: 1 defo info_end -> 2000 (adapters/defo_vt0007.py, registry driver_info_end); 2 runner label
+  scope + private slim reader (index.AdapterCtx, methods.run_fit); 3 slim extra column check (slim.check_extra_columns,
+  called by slim and board.check_registry_against_run); 4 H1 scaling -> owner (section 11 item 2); 5 F4 direction
+  from the anomaly pair (maps.F4IsoAnom); 6 no-net lead keeps its row when the guard cannot fit (board._refit_one);
+  7 ledger under index_root + DRY boards (lockfile.ledger_path, verify_lock, board.init --dry); 8 coverage time_min
+  (board.coverage_rule_mask, defo.yaml); 9 disclosures (section 10, registries).
+  Plan-conformance review: joiner --pending (Part B fire); placebo wording; print_beside order; the package's
+  no-published-forecast line always printed (NDVI 6/12 added) and a label column; explicit reference groups;
+  "the human baseline to beat" only where a registry asks (pm25 nowcast_baseline_note); init refuses a waiting
+  non-optional P rival unless --allow-waiting; joint claim NOT DECIDABLE; common rows' anomaly R2 and guess-normal
+  MAE in the table; Kraft prep resumes per region; rows_covered carried; L1 label for F0 picks; defo toy with a
+  steps-1 R8 and the no-net toy added; this draft rewritten. Also: optional config key product_manifest_root (the
+  DRY config reads the production product manifests).
+
+---------------------------------------------------------------------------------------------------------------------
+14. TESTS ON THIS CODE (tool hash 8f66da6a..., 2026-10-22; toy data and run JSON only)
+---------------------------------------------------------------------------------------------------------------------
+  Build suites together: 224 passed, 4 skipped (the real-data registry checks), 0 failed, 10 min 30 s
+  (pt\integrate\final01.log). Those real-data checks with HUMAN_REAL=1 (run JSON only): 11 passed. The review
+  folder review_tests: 60 passed, 0 failed, no xfail left (all 12 strict xfails of the review now pass).
+  Not run (forbidden while the pm25 rival export used the PC): the coral DRY pass, D6 / replay, the defo and Kraft
+  preps, every manifest of an on-disk product.

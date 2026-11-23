@@ -1,0 +1,8 @@
+POST HOC reconciliation of the engine-v2 alarm replay (ruling AN2, part 3); coral is also CIRCULAR.
+1 provenance: 57 output files hashed; 108 of 108 inputs re-hashed now, 0 mismatches
+2 gates: {'G0': (True, True), 'G1': (True, True), 'G2': (True, True), 'G3': (True, True), 'G4': (True, True), 'G5': (True, True), 'G6': (True, True), 'G7': (True, True), 'G8': (True, True), 'G9': (True, True)}
+3 leaves: matched 5270; differing numbers/codes 0; within 1e-12 0; wording 220; only A 485; only B 1777; cross pairs 183 (0 differ)
+4 row files: 12 of 12 identical; max abs diff 0.0
+5 recompute: 5280 values; vs A 4036 compared, 0 differ, 3 within tol; vs B 5016 compared, 0 differ, 0 within tol
+one-sided leaves: A 485 (0 numbers/flags unconfirmed); B 1777 (0 unconfirmed)
+VERDICT: AGREE. checks 850 (0 failed); matched leaves max abs diff 0.0; row files max abs diff 0.0; recompute max abs diff 8.881784197001252e-16

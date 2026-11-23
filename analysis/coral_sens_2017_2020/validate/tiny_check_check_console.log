@@ -1,0 +1,56 @@
+Part A: table contract
+  ok   T-FILES files ['lead_0.parquet', 'lead_183.parquet', 'lead_365.parquet']
+  ok   T-COLUMNS lead 0: 85 columns in columns.py order
+  ok   T-COLUMNS lead 0 dtypes (strings / date32 / float64); wrong: []
+  ok   T-ROWID lead 0: 167 unique non-empty ids
+  ok   T-ROWID lead 0 rows sorted by row id (code points)
+  ok   T-ROWID lead 0 row_id = unit_id|target_date
+  ok   T-UNITTIME lead 0 (unit, date) unique
+  ok   T-ISSUE lead 0 issue = target - 0
+  ok   T-FEATEND lead 0 feature_end < issue on every row (max gap -1 days)
+  ok   T-RANGE lead 0 labels finite in [0, 100]
+  ok   T-FINITE lead 0: no inf, nothing at the sentinel size (74 numeric columns; NaN cells 0)
+  ok   T-UNIT lead 0 lat/lon finite, in range
+  ok   T-MARK lead 0 marks ['test', 'train']
+  ok   T-MARK lead 0 train rows before 2017-01-01
+  ok   T-MARK lead 0 test rows inside 2017-2020
+  ok   T-MARK lead 0 mark = test exactly when the year is in the window
+  ok   T-COLUMNS lead 183: 85 columns in columns.py order
+  ok   T-COLUMNS lead 183 dtypes (strings / date32 / float64); wrong: []
+  ok   T-ROWID lead 183: 167 unique non-empty ids
+  ok   T-ROWID lead 183 rows sorted by row id (code points)
+  ok   T-ROWID lead 183 row_id = unit_id|target_date
+  ok   T-UNITTIME lead 183 (unit, date) unique
+  ok   T-ISSUE lead 183 issue = target - 183
+  ok   T-FEATEND lead 183 feature_end < issue on every row (max gap -1 days)
+  ok   T-RANGE lead 183 labels finite in [0, 100]
+  ok   T-FINITE lead 183: no inf, nothing at the sentinel size (74 numeric columns; NaN cells 0)
+  ok   T-UNIT lead 183 lat/lon finite, in range
+  ok   T-MARK lead 183 marks ['test', 'train']
+  ok   T-MARK lead 183 train rows before 2017-01-01
+  ok   T-MARK lead 183 test rows inside 2017-2020
+  ok   T-MARK lead 183 mark = test exactly when the year is in the window
+  ok   T-COLUMNS lead 365: 85 columns in columns.py order
+  ok   T-COLUMNS lead 365 dtypes (strings / date32 / float64); wrong: []
+  ok   T-ROWID lead 365: 167 unique non-empty ids
+  ok   T-ROWID lead 365 rows sorted by row id (code points)
+  ok   T-ROWID lead 365 row_id = unit_id|target_date
+  ok   T-UNITTIME lead 365 (unit, date) unique
+  ok   T-ISSUE lead 365 issue = target - 365
+  ok   T-FEATEND lead 365 feature_end < issue on every row (max gap -1 days)
+  ok   T-RANGE lead 365 labels finite in [0, 100]
+  ok   T-FINITE lead 365: no inf, nothing at the sentinel size (74 numeric columns; NaN cells 0)
+  ok   T-UNIT lead 365 lat/lon finite, in range
+  ok   T-MARK lead 365 marks ['test', 'train']
+  ok   T-MARK lead 365 train rows before 2017-01-01
+  ok   T-MARK lead 365 test rows inside 2017-2020
+  ok   T-MARK lead 365 mark = test exactly when the year is in the window
+  ok   T-UNIT a unit has one group and one (lat, lon) in every file (159 units)
+  ok   T-LEADSET lead 183: 167 ids in lead 0, same keys, mark, stratum, label bytes
+  ok   T-LEADSET lead 365: 167 ids in lead 0, same keys, mark, stratum, label bytes
+  ok   T-NAMES unit and stratum names ['unit_id', 'programme'] not reserved
+Part B: no feature input after the issue date (independent recompute)
+  ok   LOOKAHEAD-BOUND C - g - 1 <= feature_end < issue and C <= issue on 501 row-leads (fails 0)
+  ok   LOOKAHEAD-RECOMPUTE 501 row-leads x 53 columns recomputed from data cut at C - g (SST, cyclones) / C (nino34a): 0 cells differ; max relative diff 2.09e-08 (cyc_mindist_30)
+    MMM max |own - table| 1.23e-06 C (allowed 1e-04); cells differing by column: none
+RESULT: PASS (52 checks ok, 0 failed)

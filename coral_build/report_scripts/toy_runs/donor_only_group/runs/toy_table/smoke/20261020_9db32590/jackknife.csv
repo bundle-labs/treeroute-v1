@@ -1,0 +1,21 @@
+reference,arm,mean,se,low,high,n_groups,identical,tag,kind
+arm__identity_trees_off_unweighted,arm__identity_plain_unweighted,0.012238290752800177,0.06343786170412254,-0.11209991818727999,0.13657649969288035,3,False,does_not_help_equivalent,band_pair
+arm__identity_trees_off_unweighted,arm__identity_corrector_unweighted,0.012238290752800177,0.06343786170412254,-0.11209991818727999,0.13657649969288035,3,False,does_not_help_equivalent,band_pair
+placebo__identity_placebo_corrector_unweighted,arm__identity_corrector_unweighted,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+arm__identity_trees_off_unweighted,arm__identity_plain_gls,-0.4691141260891527,0.5915606125640331,-1.6285729267146576,0.6903446745363522,3,False,cannot_tell,band_pair
+arm__identity_trees_off_unweighted,arm__identity_corrector_gls,-0.4691141260891527,0.5915606125640331,-1.6285729267146576,0.6903446745363522,3,False,cannot_tell,band_pair
+placebo__identity_placebo_corrector_gls,arm__identity_corrector_gls,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_plain_unweighted,0.00637691688450559,0.1045225344561867,-0.19848725064962033,0.21124108441863151,3,False,does_not_help_equivalent,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_corrector_unweighted,0.00637691688450559,0.1045225344561867,-0.19848725064962033,0.21124108441863151,3,False,does_not_help_equivalent,band_pair
+placebo__log_c_placebo_corrector_unweighted,arm__log_c_corrector_unweighted,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_plain_gls,-0.30175362547290163,0.4653638548270904,-1.2138667809339987,0.6103595299881955,3,False,cannot_tell,band_pair
+arm__log_c_trees_off_unweighted,arm__log_c_corrector_gls,-0.30175362547290163,0.4653638548270904,-1.2138667809339987,0.6103595299881955,3,False,cannot_tell,band_pair
+placebo__log_c_placebo_corrector_gls,arm__log_c_corrector_gls,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_plain_unweighted,-0.018222841674653267,0.13813482168406613,-0.2889670921754229,0.25252140882611634,3,False,does_not_help_equivalent,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_corrector_unweighted,-0.018222841674653267,0.13813482168406613,-0.2889670921754229,0.25252140882611634,3,False,does_not_help_equivalent,band_pair
+placebo__arcsine_placebo_corrector_unweighted,arm__arcsine_corrector_unweighted,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_plain_gls,-0.46495794259127504,0.6450539481332949,-1.729263680932533,0.7993477957499828,3,False,cannot_tell,band_pair
+arm__arcsine_trees_off_unweighted,arm__arcsine_corrector_gls,-0.46495794259127504,0.6450539481332949,-1.729263680932533,0.7993477957499828,3,False,cannot_tell,band_pair
+placebo__arcsine_placebo_corrector_gls,arm__arcsine_corrector_gls,0.0,0.0,0.0,0.0,3,True,identical,band_pair
+base__donor_median,arm__identity_plain_gls,-1.1443337079869913,1.2489571517211862,-3.592289725360516,1.3036223093865336,3,,cannot_tell,single_verdict
+base__donor_median,arm__identity_plain_gls,-1.1443337079869913,1.2489571517211862,-3.592289725360516,1.3036223093865336,3,,,blocked_jackknife (report only)

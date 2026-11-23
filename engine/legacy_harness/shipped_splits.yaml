@@ -1,0 +1,459 @@
+# legacy_harness/shipped_splits.yaml -- the shipped HARD donor/test splits of the four headline packages.
+#
+# Moved here on 2026-09-28 (night) from datasets/<package>/split.yaml by owner rulings E, L7 (b): under
+# leave-one-region-out (owner ruling D) split.yaml holds only excluded and seen_during_design, and every
+# group in the data is trained and tested. The old lists are kept, exactly, for two uses only:
+#   - the legacy harness (APP_PLAN.md 4.4) rebuilds each shipped hand split from them to replay the shipped
+#     runs (it holds the exact shipped lists instead of inferring the donors);
+#   - treeroute_report/continuity_groups.yaml reports the old TEST groups alone, from the same LORO run
+#     (the continuity row, R34, 7.1); it must equal test_groups below (tests/test_packages_declarative.py).
+# The engine never reads this file (G-IMPORT, G-NONAMES); it may name problems and regions. Nothing here
+# changes a fit, a pick or a decision.
+#
+# Each package block keeps, verbatim, the provenance comments its split.yaml carried (the '|' lines), then
+# the lists as they stood. Written by a one-off generator from those files, so no list was re-typed.
+# tests/test_packages_declarative.py re-checks every list as a SET against its shipped source (skipped
+# where the source is not on the machine; a failure if the source's sha256 changed).
+
+pm25:
+  # | split.yaml -- PM2.5 (APP_PLAN.md 1.2). SETS: order carries no meaning; the engine sorts group names (plan 1.2,
+  # | R13, R19). Written in sorted order.
+  # | Transcribed EXACTLY from the frozen, owner-ruled split pm25_split.py (v3, 2026-09-24, Part 554; rulings N1, Q1,
+  # | G4.2, Q6; sha256 5507ff59ca7a9083e5bf1004879ec452f93661e68e916eb223d12f5f5e41e18a):
+  # |   test_groups  = TEST    pm25_split.py:55-76   (20 groups)
+  # |   donor_groups = DONORS  pm25_split.py:78-186  (107 groups)
+  # | Both shipped lists are already alphabetical, so the engine's sort changes nothing (plan 1.2).
+  # | excluded: none. The target store D:/pm25_acag holds exactly these 127 groups, 22 years each (directory listing
+  # | 2026-09-28), so the data's groups equal the split's groups. The 6 panel groups with no ACAG file
+  # | (alaska_north_slope, canadian_arctic_nunavut, finnish_lapland, taimyr_peninsula, tierra_del_fuego,
+  # | yamal_peninsula) are not in this package's target data at all.
+  source: "pm25_split.py v3 (2026-09-24, Part 554): TEST = lines 55-76 (20), DONORS = lines 78-186 (107)"
+  source_sha256:
+    "pm25_split.py (research folder)": 5507ff59ca7a9083e5bf1004879ec452f93661e68e916eb223d12f5f5e41e18a
+  n_donor_groups: 107
+  n_test_groups: 20
+  donor_groups:
+    - amazon_basin_brazil
+    - anatolian_plateau
+    - andes_puna
+    - angola_zambia_fire_belt
+    - arabian_peninsula
+    - argentine_monte
+    - atacama_desert
+    - australian_bushfire_belt
+    - australian_mulga
+    - bc_inland_rainforest
+    - borneo_peat_fires
+    - borneo_rainforest
+    - brigalow_belt
+    - caatinga
+    - california_chaparral
+    - canadian_prairies
+    - canadian_taiga
+    - cape_floristic_region
+    - caucasus_highlands
+    - central_asia_amu_darya
+    - central_chile
+    - central_india_dry_forest
+    - cerrado
+    - coastal_norway
+    - columbia_plateau
+    - congo_basin_drc
+    - drakensberg_lesotho
+    - east_african_savanna
+    - eastern_us_deciduous
+    - ethiopian_highlands
+    - eurasian_steppe
+    - falkland_islands
+    - florida_everglades
+    - ganges_plain
+    - gobi_desert
+    - gran_chaco
+    - great_basin_sagebrush
+    - great_plains
+    - great_sandy_desert_au
+    - greece_mainland
+    - greenland_west_coast
+    - hungarian_puszta
+    - iberian_wildfire
+    - idaho_montana_wildfire
+    - indian_acacia_babool
+    - indus_basin
+    - iranian_plateau
+    - ireland
+    - japan_central_honshu
+    - kalahari_woodland
+    - karoo
+    - llanos_venezuela
+    - madagascar_spiny_thicket
+    - mediterranean_andalusia
+    - mekong_delta_vietnam
+    - mesopotamia
+    - mexican_altiplano
+    - mojave_desert
+    - mongolian_steppe
+    - mopane_woodland
+    - myanmar_dry_zone
+    - new_guinea_papua
+    - new_zealand_fiordland
+    - new_zealand_north_island
+    - niger_delta
+    - north_algeria_tell_atlas
+    - north_china_plain
+    - northeast_china_broadleaf
+    - northern_australia_monsoon
+    - northern_australia_woodland
+    - northern_thailand
+    - okavango_delta
+    - pamir_plateau
+    - pampas
+    - pantanal
+    - patagonian_steppe
+    - pearl_river_delta
+    - poland_central
+    - rub_al_khali
+    - russian_far_east_primorye
+    - sahara_eastern
+    - sahel
+    - scandinavian_taiga
+    - siberian_taiga
+    - sierra_nevada_foothills
+    - southern_african_savanna
+    - southern_chile_rainforest
+    - spanish_meseta
+    - sudanian_acacia
+    - sundarbans
+    - sw_australia_kwongan
+    - tanezrouft
+    - tasmania_western
+    - thar_desert
+    - tibetan_plateau
+    - tongass_alaska
+    - trans_baikal_steppe
+    - tuva_steppe
+    - uk_midlands
+    - uruguay
+    - us_corn_belt
+    - vietnam_central_highlands
+    - west_africa_cocoa_belt
+    - west_africa_monsoon_guinea
+    - western_europe_farmlands
+    - western_scotland
+    - yucatan_peninsula
+  test_groups:
+    - alaska_interior_taiga
+    - atlantic_forest_brazil
+    - bolivia_beni_savanna
+    - brittany_france
+    - california_central_valley
+    - chihuahuan_desert
+    - costa_rica
+    - hulunbuir_grassland
+    - kazakh_steppe
+    - madagascar_western_dry
+    - miombo_woodland_zambia
+    - namib_desert
+    - nile_valley_delta
+    - ordos_plateau
+    - pacific_nw_coast
+    - taklamakan_desert
+    - western_europe_temperate
+    - western_ghats
+    - western_sahara_coastal
+    - yakutia_larch
+  excluded: {}
+  seen_during_design: []
+
+fire:
+  # | split.yaml -- fire (APP_PLAN.md 1.2). SETS: order carries no meaning; the engine sorts group names. Written in
+  # | sorted order. Transcribed EXACTLY from the split the shipped fire run used:
+  # |   fire_evt_arch.py:157-161, the same block as adaptation.py:2192-2196 (run_fire) and :2770-2774:
+  # |     regs   = complete_regions()   fire_architecture.py:236-246 -- groups whose D:/fire/target files cover every
+  # |                                   year in YEARS = 2002..2022 (fire_architecture.py:123)
+  # |     size   = D:/fire/region_sizes.csv, restricted to regs, sorted by panel_cells, descending
+  # |     donors = the first N_DONORS = 30 (fire_evt_arch.py:66);  tests = the rest
+  # |   Re-derived read-only on 2026-09-28 with the same pandas calls (pandas 2.3.3): 40 complete groups; no tie in
+  # |   panel_cells (30th = 10,323, 31st = 9,632; a stable sort gives the same sets). The shipped log agrees on the
+  # |   counts: D:/adaptation/fire_strict/_adaptation.log:17 and :62 ('fire | 30 donors | 10 tests').
+  # |   sha256: region_sizes.csv 5997f2c50e1b8080633c75ee1a92697d5ce2806f1fb0a2b23de0d60a16626031,
+  # |           fire_evt_arch.py 806deb2f687980c89f79262ba62f70a29a0774024f531ebfa7db3e9b05e46dd9
+  # | Donors are the 30 LARGEST groups by panel cells, not a designed split (no stratification). 10 test groups is under
+  # | G-SUPPORT's 14, so fire is flagged 'few groups' (plan 5, G-SUPPORT; report only).
+  # | excluded: none. D:/fire/target holds exactly these 40 groups, 2002-2022 each (840 files).
+  source: "fire_evt_arch.py:157-161 (= adaptation.py:2192-2196, :2770-2774): complete groups by panel_cells descending; the first 30 donors, the rest tests"
+  source_sha256:
+    "D:/fire/region_sizes.csv": 5997f2c50e1b8080633c75ee1a92697d5ce2806f1fb0a2b23de0d60a16626031
+    "fire_evt_arch.py (research folder)": 806deb2f687980c89f79262ba62f70a29a0774024f531ebfa7db3e9b05e46dd9
+  n_donor_groups: 30
+  n_test_groups: 10
+  donor_groups:
+    - alaska_interior_taiga
+    - amazon_basin_brazil
+    - angola_zambia_fire_belt
+    - australian_bushfire_belt
+    - california_chaparral
+    - canadian_prairies
+    - canadian_taiga
+    - cerrado
+    - congo_basin_drc
+    - east_african_savanna
+    - eurasian_steppe
+    - finnish_lapland
+    - gobi_desert
+    - gran_chaco
+    - great_plains
+    - hulunbuir_grassland
+    - kalahari_woodland
+    - kazakh_steppe
+    - llanos_venezuela
+    - miombo_woodland_zambia
+    - mongolian_steppe
+    - new_guinea_papua
+    - northern_australia_woodland
+    - russian_far_east_primorye
+    - sahel
+    - scandinavian_taiga
+    - siberian_taiga
+    - southern_african_savanna
+    - sudanian_acacia
+    - yakutia_larch
+  test_groups:
+    - borneo_peat_fires
+    - cape_floristic_region
+    - central_chile
+    - greece_mainland
+    - iberian_wildfire
+    - mediterranean_andalusia
+    - mopane_woodland
+    - north_algeria_tell_atlas
+    - northern_australia_monsoon
+    - thar_desert
+  excluded: {}
+  seen_during_design: []
+
+defo:
+  # | split.yaml -- defo (APP_PLAN.md 1.2). SETS: order carries no meaning; the engine sorts group names. Written in
+  # | sorted order. Transcribed EXACTLY from the split the shipped defo run used (adaptation.py's run_defo was READ,
+  # | never run):
+  # |   adaptation.py:1215-1219 (run_defo):
+  # |     donors, tests = defo_train.load_split()   defo_train.py:93-103, reading D:/run89full/ndvi_split.txt
+  # |                                               (defo_train.py:56)
+  # |     forested = D:/run89full/forest_census.csv rows with frac_tc30 >= 0.25, sorted by cells
+  # |     donors = [r for r in forested if r in donors][:NDON]              NDON  = 25  (defo_corrector.py:73)
+  # |     tests  = [r for r in forested if r in tests][FROM:FROM + NTEST]    NTEST = 17, FROM = 0  (defo_corrector.py:74-75)
+  # |   The same block is defo_corrector.py:395-399 and adaptation.py:1049-1053 (run_defo_forecast).
+  # |   Re-derived read-only on 2026-09-28: 42 forested groups = 25 forested NDVI donors + 17 forested NDVI tests, so
+  # |   both slices take every forested group and no sort order can change the sets (no tie in cells either).
+  # |   Shipped outputs agree: D:/adaptation/defo/_adaptation.log:109 and :265 ('defo | 25 donors | 17 tests | cells
+  # |   4000'), and the 17 test groups are exactly the 17 group-named files D:/adaptation/defo/<group>_c4000.npz (the
+  # |   folder holds 18 *_c4000.npz files; the 18th is _rival_L0_c4000.npz, which names no group).
+  # |   sha256: forest_census.csv ca79ffe48f9438828ef3aae54013bc54d297ca3c7f573af7f9f5432d32a0eeb1,
+  # |           ndvi_split.txt 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b
+  # | Every defo donor is an NDVI donor and every defo test is an NDVI test (the tests file checks this).
+  # | excluded: none. D:/defo_target and D:/defo_matrix hold exactly these 42 groups.
+  source: "adaptation.py:1215-1219 (run_defo, read, never run): forested groups (forest_census frac_tc30 >= 0.25) x ndvi_split.txt; NDON = 25, NTEST = 17, FROM = 0"
+  source_sha256:
+    "D:/run89full/forest_census.csv": ca79ffe48f9438828ef3aae54013bc54d297ca3c7f573af7f9f5432d32a0eeb1
+    "D:/run89full/ndvi_split.txt": 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b
+  n_donor_groups: 25
+  n_test_groups: 17
+  donor_groups:
+    - amazon_basin_brazil
+    - andes_puna
+    - angola_zambia_fire_belt
+    - atlantic_forest_brazil
+    - australian_bushfire_belt
+    - bc_inland_rainforest
+    - bolivia_beni_savanna
+    - borneo_rainforest
+    - canadian_taiga
+    - caucasus_highlands
+    - congo_basin_drc
+    - eastern_us_deciduous
+    - ireland
+    - miombo_woodland_zambia
+    - new_zealand_fiordland
+    - new_zealand_north_island
+    - northeast_china_broadleaf
+    - northern_thailand
+    - pacific_nw_coast
+    - pearl_river_delta
+    - russian_far_east_primorye
+    - siberian_taiga
+    - southern_chile_rainforest
+    - west_africa_monsoon_guinea
+    - western_europe_temperate
+  test_groups:
+    - borneo_peat_fires
+    - costa_rica
+    - gran_chaco
+    - greece_mainland
+    - idaho_montana_wildfire
+    - japan_central_honshu
+    - llanos_venezuela
+    - new_guinea_papua
+    - pantanal
+    - poland_central
+    - tasmania_western
+    - tierra_del_fuego
+    - tongass_alaska
+    - trans_baikal_steppe
+    - vietnam_central_highlands
+    - western_scotland
+    - yucatan_peninsula
+  excluded: {}
+  seen_during_design: []
+
+ndvi:
+  # | split.yaml -- NDVI (APP_PLAN.md 1.2). SETS: order carries no meaning; the engine sorts group names. Written in
+  # | sorted order. Transcribed EXACTLY from D:/run89full/ndvi_split.txt (HEADLINE_RUN_PLAN.md:107-108 option a;
+  # | ruling Q1 a): donors = lines 2-90 (89 groups), tests = lines 92-135 (44 groups).
+  # |   sha256 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b. D:/run89full/forest_census.csv's
+  # |   split column agrees for all 133 groups (checked 2026-09-28).
+  # | seen_during_design: thar_desert and greece_mainland were used to pick the NDVI design, and both are test groups.
+  # |   The report adds a row without them (Q49 yes, owner 2026-09-27; HEADLINE_QUESTIONS_AND_FIXES.md:51, 341-344).
+  # | excluded: none. The panel holds exactly these 133 groups.
+  source: "D:/run89full/ndvi_split.txt: donors = lines 2-90 (89), tests = lines 92-135 (44) (Q1 a)"
+  source_sha256:
+    "D:/run89full/ndvi_split.txt": 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b
+  n_donor_groups: 89
+  n_test_groups: 44
+  donor_groups:
+    - alaska_north_slope
+    - amazon_basin_brazil
+    - andes_puna
+    - angola_zambia_fire_belt
+    - arabian_peninsula
+    - atacama_desert
+    - atlantic_forest_brazil
+    - australian_bushfire_belt
+    - australian_mulga
+    - bc_inland_rainforest
+    - bolivia_beni_savanna
+    - borneo_rainforest
+    - caatinga
+    - california_central_valley
+    - california_chaparral
+    - canadian_arctic_nunavut
+    - canadian_prairies
+    - canadian_taiga
+    - cape_floristic_region
+    - caucasus_highlands
+    - central_asia_amu_darya
+    - central_chile
+    - central_india_dry_forest
+    - cerrado
+    - chihuahuan_desert
+    - coastal_norway
+    - columbia_plateau
+    - congo_basin_drc
+    - east_african_savanna
+    - eastern_us_deciduous
+    - ethiopian_highlands
+    - falkland_islands
+    - finnish_lapland
+    - florida_everglades
+    - great_basin_sagebrush
+    - great_plains
+    - great_sandy_desert_au
+    - greenland_west_coast
+    - hulunbuir_grassland
+    - hungarian_puszta
+    - iberian_wildfire
+    - indus_basin
+    - iranian_plateau
+    - ireland
+    - kalahari_woodland
+    - karoo
+    - kazakh_steppe
+    - mediterranean_andalusia
+    - mekong_delta_vietnam
+    - miombo_woodland_zambia
+    - mojave_desert
+    - mongolian_steppe
+    - mopane_woodland
+    - myanmar_dry_zone
+    - namib_desert
+    - new_zealand_fiordland
+    - new_zealand_north_island
+    - niger_delta
+    - north_china_plain
+    - northeast_china_broadleaf
+    - northern_australia_monsoon
+    - northern_australia_woodland
+    - northern_thailand
+    - pacific_nw_coast
+    - patagonian_steppe
+    - pearl_river_delta
+    - russian_far_east_primorye
+    - sahara_eastern
+    - sahel
+    - scandinavian_taiga
+    - siberian_taiga
+    - sierra_nevada_foothills
+    - southern_chile_rainforest
+    - spanish_meseta
+    - sudanian_acacia
+    - sundarbans
+    - sw_australia_kwongan
+    - taklamakan_desert
+    - tibetan_plateau
+    - tuva_steppe
+    - uruguay
+    - us_corn_belt
+    - west_africa_cocoa_belt
+    - west_africa_monsoon_guinea
+    - western_europe_farmlands
+    - western_europe_temperate
+    - western_ghats
+    - western_sahara_coastal
+    - yamal_peninsula
+  test_groups:
+    - alaska_interior_taiga
+    - anatolian_plateau
+    - argentine_monte
+    - borneo_peat_fires
+    - brigalow_belt
+    - brittany_france
+    - costa_rica
+    - drakensberg_lesotho
+    - eurasian_steppe
+    - ganges_plain
+    - gobi_desert
+    - gran_chaco
+    - greece_mainland
+    - idaho_montana_wildfire
+    - indian_acacia_babool
+    - japan_central_honshu
+    - llanos_venezuela
+    - madagascar_spiny_thicket
+    - madagascar_western_dry
+    - mesopotamia
+    - mexican_altiplano
+    - new_guinea_papua
+    - nile_valley_delta
+    - north_algeria_tell_atlas
+    - okavango_delta
+    - ordos_plateau
+    - pamir_plateau
+    - pampas
+    - pantanal
+    - poland_central
+    - rub_al_khali
+    - southern_african_savanna
+    - taimyr_peninsula
+    - tanezrouft
+    - tasmania_western
+    - thar_desert
+    - tierra_del_fuego
+    - tongass_alaska
+    - trans_baikal_steppe
+    - uk_midlands
+    - vietnam_central_highlands
+    - western_scotland
+    - yakutia_larch
+    - yucatan_peninsula
+  excluded: {}
+  seen_during_design:
+    - greece_mainland
+    - thar_desert

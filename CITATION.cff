@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Please cite the paper and this archive."
+title: "treeroute v1: engine, rival tools and scripts for five environmental forecasting problems"
+version: "1.0.0"   # engine code 930d961c
+doi: "[OWNER: reserved Zenodo DOI of the code record]"
+date-released: "[OWNER: publication date, at submission]"
+license: MIT                       # data files: CC-BY-4.0, see LICENSE-DATA
+repository-code: "[OWNER: GitHub URL]"
+authors:
+  - &author
+    family-names: "Benkaddour"
+    given-names: "Mohammed Nadir"
+    orcid: "https://orcid.org/0009-0005-3521-4599"
+    affiliation: "Independent researcher"
+references:
+  - type: data
+    title: "treeroute v1: run records and row-level predictions for five environmental forecasting problems"
+    authors:
+      - *author
+    doi: "[OWNER: DOI of the data record]"
+    license: CC-BY-4.0
+  - type: article
+    title: "Ridge weighting of other regions' regression trees, anchored to the seasonal normal: a temporal hold-out test on five environmental forecasting problems"
+    authors:
+      - *author
+    status: "[OWNER: the paper's status at the release]"

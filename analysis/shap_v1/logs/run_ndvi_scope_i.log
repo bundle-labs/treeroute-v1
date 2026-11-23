@@ -1,0 +1,17 @@
+[2026-11-14 14:35:26 +    0.0s] problem ndvi, scope (i): leads (0,); N 1000; arcsine tolerance 0; recorded path map True; with pinned False
+[2026-11-14 14:35:26 +    0.0s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem ndvi --n 1000 --defo-regions 0
+[2026-11-14 14:37:52 +  145.8s] STEP sample: done in 145.8 s
+[2026-11-14 14:37:52 +  145.8s] STEP treeroute rebuild leads [0] (pre-check only): D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem ndvi --leads 0 --arcsine-tolerance 0.0 --recorded-path-map --precheck-only
+[2026-11-14 14:41:19 +  353.0s] STEP treeroute rebuild leads [0] (pre-check only): done in 207.2 s
+[2026-11-14 14:41:19 +  353.0s] pre-check finished: [["sample", "done"], ["treeroute rebuild leads [0] (pre-check only)", "done"]]
+[2026-11-14 16:29:50 +    0.0s] problem ndvi, scope (i): leads (0,); N 1000; arcsine tolerance 0; recorded path map True; with pinned False
+[2026-11-14 16:29:50 +    0.1s] sample: registered sample found (f2bb2a7912e595ea), N 1000, defo regions all
+[2026-11-14 16:29:50 +    0.1s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem ndvi --leads 0 --arcsine-tolerance 0.0 --recorded-path-map --ignore-ram-warning
+[2026-11-15 16:42:50 +87180.4s] STEP treeroute rebuild leads [0]: done in 87180.3 s
+[2026-11-15 16:42:51 +87180.5s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem ndvi --lead 0
+[2026-11-15 17:03:08 +88398.3s] STEP treeroute SHAP lead 0: done in 1217.8 s
+[2026-11-15 17:03:08 +88398.3s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem ndvi --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-15 18:34:53 +93902.9s] STEP rivals lead 0: stopped at a gate (a stop rule) in 5504.6 s
+[2026-11-15 18:34:53 +93902.9s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem ndvi --lead 0 --draws 2000
+[2026-11-15 18:35:27 +93937.4s] STEP compare lead 0: done in 34.5 s
+[2026-11-15 18:35:27 +93937.4s] runner finished: [["treeroute rebuild leads [0]", "done"], ["treeroute SHAP lead 0", "done"], ["rivals lead 0", "stopped at a gate (a stop rule)"], ["compare lead 0", "done"]]

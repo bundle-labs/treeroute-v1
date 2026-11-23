@@ -1,0 +1,51 @@
+R3 (Y_end)                 headline:    2019
+                           sensitivity: 2020
+R4 (Y0)                    headline:    1994
+                           sensitivity: 1994
+R5 (test window)           headline:    {"inner_score_years": 3, "ladder_steps": [], "test_years": [2016, 2017, 2018, 2019]}
+                           sensitivity: {"inner_score_years": 3, "ladder_steps": [], "test_years": [2017, 2018, 2019, 2020]}
+R6 (train end)             headline:    2015
+                           sensitivity: 2016
+R7 (inner windows)         headline:    {"inner_fit": [1994, 2012], "inner_score": [2013, 2014, 2015], "test_years": [2016, 2017, 2018, 2019], "train_end": 2015, "y0": 1994, "y_end": 2019}
+                           sensitivity: {"inner_fit": [1994, 2013], "inner_score": [2014, 2015, 2016], "test_years": [2017, 2018, 2019, 2020], "train_end": 2016, "y0": 1994, "y_end": 2020}
+R5:marks (T-MARK)          headline:    {"rule": "T-MARK: marks equal the derived window (O1)", "test_rows": 2312, "test_years": [2016, 2017, 2018, 2019], "train_end": 2015, "train_rows": 11338}
+                           sensitivity: {"rule": "T-MARK: marks equal the derived window (O1)", "test_rows": 1468, "test_years": [2017, 2018, 2019, 2020], "train_end": 2016, "train_rows": 12211}
+R10 (leads)                headline:    {"contract_lead_zero": true, "lead_unit": "days", "leads": [183, 365], "merged": {}, "not_supplied": [], "requested_months": [6, 12]}
+                           sensitivity: {"contract_lead_zero": true, "lead_unit": "days", "leads": [183, 365], "merged": {}, "not_supplied": [], "requested_months": [6, 12]}
+R12 (router)               headline:    "neighbour"
+                           sensitivity: "neighbour"
+R19 cut                    headline:    {"bag_size": {"Andaman Islands": 30, "Andaman Sea": 68, "Austral Islands, French Polynesia": 30, "Bahamas and Florida Keys": 1461, "Banda Sea and Molucca Islands": 45, "Bay of Campeche, Yucatan, Gulf of Mexico": 30, "Belize and west Caribbean": 523, "Bermuda": 30, "Bismarck Sea, New Guinea": 30, "Brazil": 73, "Caroline Islands, Micronesia": 30, "Celebes Sea": 30, "Cenderawasih Bay, Papua": 30, "Central and northern Great Barrier Reef": 175, "Chagos Archipelago": 30, "Christmas Island, Indian Ocean": 30, "Cocos Keeling Atolls, Indian Ocean": 30, "Cook Islands, south-west Pacific": 30, "Coral Sea": 30, "Costa Rica and Panama, Pacific coast": 30, "Cuba and Cayman Islands": 144, "Eastern Hawaii": 30, "Eastern coast South Africa": 30, "Fiji": 187, "Flower Garden Banks, Gulf of Mexico": 30, "Gilbert Islands, west Kiribati": 30, "Gulf of Aden": 30, "Gulf of Oman": 42, "Gulf of Thailand": 76, "G
+                           sensitivity: {"bag_size": {"Andaman Islands": 30, "Andaman Sea": 75, "Austral Islands, French Polynesia": 30, "Bahamas and Florida Keys": 1559, "Banda Sea and Molucca Islands": 50, "Bay of Campeche, Yucatan, Gulf of Mexico": 30, "Belize and west Caribbean": 526, "Bermuda": 30, "Bismarck Sea, New Guinea": 30, "Brazil": 73, "Caroline Islands, Micronesia": 30, "Celebes Sea": 30, "Cenderawasih Bay, Papua": 30, "Central and northern Great Barrier Reef": 185, "Chagos Archipelago": 30, "Christmas Island, Indian Ocean": 30, "Cocos Keeling Atolls, Indian Ocean": 30, "Cook Islands, south-west Pacific": 30, "Coral Sea": 30, "Costa Rica and Panama, Pacific coast": 30, "Cuba and Cayman Islands": 144, "Eastern Hawaii": 30, "Eastern coast South Africa": 30, "Fiji": 192, "Flower Garden Banks, Gulf of Mexico": 30, "Gilbert Islands, west Kiribati": 30, "Gulf of Aden": 30, "Gulf of Oman": 46, "Gulf of Thailand": 76, "G
+R19:inner_cut cut          headline:    {"bag_size": {"Andaman Islands": 30, "Andaman Sea": 48, "Austral Islands, French Polynesia": 30, "Bahamas and Florida Keys": 1150, "Banda Sea and Molucca Islands": 42, "Bay of Campeche, Yucatan, Gulf of Mexico": 30, "Belize and west Caribbean": 522, "Bermuda": 30, "Bismarck Sea, New Guinea": 30, "Brazil": 73, "Caroline Islands, Micronesia": 30, "Celebes Sea": 30, "Cenderawasih Bay, Papua": 30, "Central and northern Great Barrier Reef": 155, "Chagos Archipelago": 30, "Christmas Island, Indian Ocean": 30, "Cocos Keeling Atolls, Indian Ocean": 30, "Cook Islands, south-west Pacific": 30, "Coral Sea": 30, "Costa Rica and Panama, Pacific coast": 30, "Cuba and Cayman Islands": 144, "Eastern Hawaii": 30, "Eastern coast South Africa": 30, "Fiji": 172, "Flower Garden Banks, Gulf of Mexico": 30, "Gilbert Islands, west Kiribati": 30, "Gulf of Aden": 30, "Gulf of Oman": 30, "Gulf of Thailand": 56, "G
+                           sensitivity: {"bag_size": {"Andaman Islands": 30, "Andaman Sea": 56, "Austral Islands, French Polynesia": 30, "Bahamas and Florida Keys": 1222, "Banda Sea and Molucca Islands": 42, "Bay of Campeche, Yucatan, Gulf of Mexico": 30, "Belize and west Caribbean": 522, "Bermuda": 30, "Bismarck Sea, New Guinea": 30, "Brazil": 73, "Caroline Islands, Micronesia": 30, "Celebes Sea": 30, "Cenderawasih Bay, Papua": 30, "Central and northern Great Barrier Reef": 161, "Chagos Archipelago": 30, "Christmas Island, Indian Ocean": 30, "Cocos Keeling Atolls, Indian Ocean": 30, "Cook Islands, south-west Pacific": 30, "Coral Sea": 30, "Costa Rica and Panama, Pacific coast": 30, "Cuba and Cayman Islands": 144, "Eastern Hawaii": 30, "Eastern coast South Africa": 30, "Fiji": 180, "Flower Garden Banks, Gulf of Mexico": 30, "Gilbert Islands, west Kiribati": 30, "Gulf of Aden": 30, "Gulf of Oman": 36, "Gulf of Thailand": 76, "G
+R19:lead=183:fit cut       headline:    "735781 (2015-07-02)"
+                           sensitivity: "736147 (2016-07-02)"
+R19:lead=183:guard cut     headline:    "734686 (2012-07-02)"
+                           sensitivity: "735051 (2013-07-02)"
+R19:lead=365:fit cut       headline:    "735599 (2015-01-01)"
+                           sensitivity: "735965 (2016-01-02)"
+R19:lead=365:guard cut     headline:    "734504 (2012-01-02)"
+                           sensitivity: "734869 (2013-01-01)"
+plan.groups                headline: 83
+                           sensitivity: 83
+plan.donor_only_groups     headline: 46 items | sensitivity: 57 items
+plan.windows               headline: {"inner_fit": [1994, 2012], "inner_score": [2013, 2014, 2015], "test_years": [2016, 2017, 2018, 2019], "train_end": 2015, "y0": 1994, "y_end": 2019}
+                           sensitivity: {"inner_fit": [1994, 2013], "inner_score": [2014, 2015, 2016], "test_years": [2017, 2018, 2019, 2020], "train_end": 2016, "y0": 1994, "y_end": 2020}
+plan.not_headline_reasons  headline: []
+                           sensitivity: ["DRAFT package: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline"]
+plan.draft                 headline: {"is_draft": false, "stamp": "", "stamped_verdicts": 0, "where": []}
+                           sensitivity: {"is_draft": true, "stamp": "DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline", "stamped_verdicts": 0, "where": ["dataset.yaml description"]}
+plan.kind                  headline: "headline"
+                           sensitivity: "headline"
+plan.leads                 headline: [183, 365]
+                           sensitivity: [183, 365]
+plan.router_kind           headline: "neighbour"
+                           sensitivity: "neighbour"
+plan.trees_per_group       headline: 100
+                           sensitivity: 100
+plan.scored_rows: headline 37 groups, 2312 rows | sensitivity 26 groups, 1468 rows
+  scored groups (sensitivity): ['Andaman Sea', 'Bahamas and Florida Keys', 'Banda Sea and Molucca Islands', 'Belize and west Caribbean', 'Celebes Sea', 'Central and northern Great Barrier Reef', 'Eastern Hawaii', 'Fiji', 'Gulf of Oman', 'Hispaniola, Puerto Rico and Lesser Antilles', 'Jamaica', 'Lesser Sunda Islands and Savu Sea', 'Maldive Islands', 'Mayotte and Comoros', 'Moreton Bay, eastern Australia', 'Netherlands Antilles and south Caribbean', 'North Madagascar', 'North Philippines', 'North and central Red Sea', 'Persian Gulf', 'Society Islands, French Polynesia', 'South-east Philippines', 'Southern Great Barrier Reef', 'Sulu Sea', 'Sunda Shelf, south-east Asia', 'Taiwan and coastal China']
+R21 smoke groups: headline {"groups": ["Andaman Islands", "Andaman Sea", "Austral Islands, French Polynesia", "Bahamas and Florida Keys"], "scored_per_group": 40, "trees_per_group": 12, "units_per_group": 40} | sensitivity {"groups": ["Andaman Islands", "Andaman Sea", "Austral Islands, French Polynesia", "Bahamas and Florida Keys"], "scored_per_group": 40, "trees_per_group": 12, "units_per_group": 40}
+derived entries: headline 120, sensitivity 120; only headline []; only sensitivity []
+entries with the SAME value (99): ['R1', 'R10', 'R12', 'R13', 'R14', 'R14:overlap_blocks', 'R17', 'R18:groups', 'R2', 'R20', 'R21', 'R22', 'R28', 'R30', 'R4', 'R8', 'R9', 'U2:vouched', 'R23:fold=* x81']
+entries whose value DIFFERS (21): ['R11', 'R18:donor_only', 'R18:split_view', 'R18:units', 'R19', 'R19:inner_cut', 'R19:lead=183:fit', 'R19:lead=183:guard', 'R19:lead=365:fit', 'R19:lead=365:guard', 'R23:lead=0', 'R23:lead=183', 'R23:lead=365', 'R3', 'R5', 'R5:marks', 'R6', 'R7', 'U1:table', 'R23:fold=* x2']

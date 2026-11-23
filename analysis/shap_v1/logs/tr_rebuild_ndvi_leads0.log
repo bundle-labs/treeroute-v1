@@ -1,0 +1,278 @@
+[2026-11-12 21:35:50 +    2.3s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-12 21:35:51 +    3.8s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 21:35:51 +    3.8s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 21:35:51 +    3.9s] decision at lead 0 (read from the run): identity_plain_unweighted at level 1.0 ratio 0.0625; kept value is this arm
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] package ndvi version 0.1.0, fingerprint edbc45b52643dcdd
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] listed in every report (keep_unreviewed / watch): snow_cover_fraction, sst_anom_atl3, sst_anom_coral_sea, tsa, grace_lwe, spi_24m, sst_anom_atl3_lag1, sst_anom_coral_sea_lag1, tsa_lag1, grace_lwe_lag1, spi_24m_lag1, sst_anom_atl3_lag2, sst_anom_coral_sea_lag2, tsa_lag2, grace_lwe_lag2, spi_24m_lag2, sst_anom_atl3_lag3, sst_anom_coral_sea_lag3, tsa_lag3, grace_lwe_lag3, spi_24m_lag3, sst_anom_atl3_lag6, sst_anom_coral_sea_lag6, tsa_lag6, grace_lwe_lag6, spi_24m_lag6, sst_anom_atl3_lag12, sst_anom_coral_sea_lag12, tsa_lag12, grace_lwe_lag12, spi_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 21:35:53 +    5.9s] engine| [21:35:53] groups: 133 in the data, 133 after exclusions; this run: 133 (headline)
+[2026-11-12 21:39:07 +  199.3s] engine| [21:39:07] preflight: 604358304 target rows in 2926 files, streamed (one file of at most 1010160 rows at once, ~2289236 units x 264 steps of counters); census RAM estimate 4.02 GiB: go
+[2026-11-12 21:39:07 +  199.4s] engine| [21:39:07] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 13300 units x 264 steps: 0.39 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 264 steps, 899 frame columns, beside the biggest driver file of the biggest group in flight: 1.74 GiB) beside the census (4.02 GiB): 6.15 GiB in all, 6.29 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 21:39:07 +  199.4s] engine steps load..preflight in 195.3 s
+[2026-11-12 21:39:07 +  199.4s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['7fdfb7af6c86f610', '7fdfb7af6c86f610'], 'target_files_sha256': ['dad0555d713b1c31', 'dad0555d713b1c31'], 'p
+[2026-11-12 21:39:07 +  199.7s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/ndvi/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/ndvi/data/static/part-0.parquet', 'sha256': '16e89f9aca6bc4aaa9fde246f20f92b379ce0a67461539005cd917eb14bcc2b3', 'size': 10793989, 'lock_records': 4, 'locks': ['FREEZE_20261007T132431Z.lo
+[2026-11-12 21:39:07 +  199.7s] precheck only: E3a passed in 195.6 s; stopping before the read
+[2026-11-12 21:39:07 +  199.7s] rebuild ndvi leads [0] finished in 197.5 s (peak 0.59 GB)
+[2026-11-14 14:37:59 +    6.6s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-14 14:38:01 +    9.1s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-14 14:38:01 +    9.1s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-14 14:38:01 +    9.2s] decision at lead 0 (read from the run): identity_plain_unweighted at level 1.0 ratio 0.0625; kept value is this arm
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] package ndvi version 0.1.0, fingerprint edbc45b52643dcdd
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-14 14:38:04 +   11.7s] engine| [14:38:04] listed in every report (keep_unreviewed / watch): snow_cover_fraction, sst_anom_atl3, sst_anom_coral_sea, tsa, grace_lwe, spi_24m, sst_anom_atl3_lag1, sst_anom_coral_sea_lag1, tsa_lag1, grace_lwe_lag1, spi_24m_lag1, sst_anom_atl3_lag2, sst_anom_coral_sea_lag2, tsa_lag2, grace_lwe_lag2, spi_24m_lag2, sst_anom_atl3_lag3, sst_anom_coral_sea_lag3, tsa_lag3, grace_lwe_lag3, spi_24m_lag3, sst_anom_atl3_lag6, sst_anom_coral_sea_lag6, tsa_lag6, grace_lwe_lag6, spi_24m_lag6, sst_anom_atl3_lag12, sst_anom_coral_sea_lag12, tsa_lag12, grace_lwe_lag12, spi_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-14 14:38:04 +   11.9s] engine| [14:38:04] groups: 133 in the data, 133 after exclusions; this run: 133 (headline)
+[2026-11-14 14:41:17 +  205.2s] engine| [14:41:17] preflight: 604358304 target rows in 2926 files, streamed (one file of at most 1010160 rows at once, ~2289236 units x 264 steps of counters); census RAM estimate 4.02 GiB: go
+[2026-11-14 14:41:18 +  205.9s] engine| [14:41:18] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 13300 units x 264 steps: 0.39 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 264 steps, 899 frame columns, beside the biggest driver file of the biggest group in flight: 1.74 GiB) beside the census (4.02 GiB): 6.15 GiB in all, 8.58 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-14 14:41:18 +  205.9s] engine steps load..preflight in 195.8 s
+[2026-11-14 14:41:18 +  205.9s] gate E0_ram_preflight: PASS {'engine_warning': [], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning'}
+[2026-11-14 14:41:18 +  206.0s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['7fdfb7af6c86f610', '7fdfb7af6c86f610'], 'target_files_sha256': ['dad0555d713b1c31', 'dad0555d713b1c31'], 'p
+[2026-11-14 14:41:19 +  206.8s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/ndvi/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/ndvi/data/static/part-0.parquet', 'sha256': '16e89f9aca6bc4aaa9fde246f20f92b379ce0a67461539005cd917eb14bcc2b3', 'size': 10793989, 'lock_records': 4, 'locks': ['FREEZE_20261007T132431Z.lo
+[2026-11-14 14:41:19 +  206.8s] precheck only: E3a passed in 196.6 s; stopping before the read
+[2026-11-14 14:41:19 +  206.8s] rebuild ndvi leads [0] finished in 200.3 s (peak 0.61 GB)
+[2026-11-14 16:29:56 +    6.0s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-14 16:29:59 +    8.2s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-14 16:29:59 +    8.3s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-14 16:29:59 +    8.3s] decision at lead 0 (read from the run): identity_plain_unweighted at level 1.0 ratio 0.0625; kept value is this arm
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] package ndvi version 0.1.0, fingerprint edbc45b52643dcdd
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-14 16:30:08 +   17.9s] engine| [16:30:08] listed in every report (keep_unreviewed / watch): snow_cover_fraction, sst_anom_atl3, sst_anom_coral_sea, tsa, grace_lwe, spi_24m, sst_anom_atl3_lag1, sst_anom_coral_sea_lag1, tsa_lag1, grace_lwe_lag1, spi_24m_lag1, sst_anom_atl3_lag2, sst_anom_coral_sea_lag2, tsa_lag2, grace_lwe_lag2, spi_24m_lag2, sst_anom_atl3_lag3, sst_anom_coral_sea_lag3, tsa_lag3, grace_lwe_lag3, spi_24m_lag3, sst_anom_atl3_lag6, sst_anom_coral_sea_lag6, tsa_lag6, grace_lwe_lag6, spi_24m_lag6, sst_anom_atl3_lag12, sst_anom_coral_sea_lag12, tsa_lag12, grace_lwe_lag12, spi_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-14 16:30:09 +   18.3s] engine| [16:30:09] groups: 133 in the data, 133 after exclusions; this run: 133 (headline)
+[2026-11-14 16:31:40 +  110.1s] engine| [16:31:40] preflight: 604358304 target rows in 2926 files, streamed (one file of at most 1010160 rows at once, ~2289236 units x 264 steps of counters); census RAM estimate 4.02 GiB: go
+[2026-11-14 16:31:41 +  110.6s] engine| [16:31:41] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 13300 units x 264 steps: 0.39 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 264 steps, 899 frame columns, beside the biggest driver file of the biggest group in flight: 1.74 GiB) beside the census (4.02 GiB): 6.15 GiB in all, 8.15 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-14 16:31:41 +  110.6s] engine steps load..preflight in 94.6 s
+[2026-11-14 16:31:41 +  110.6s] gate E0_ram_preflight: PASS {'engine_warning': [], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning'}
+[2026-11-14 16:31:41 +  110.6s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['7fdfb7af6c86f610', '7fdfb7af6c86f610'], 'target_files_sha256': ['dad0555d713b1c31', 'dad0555d713b1c31'], 'p
+[2026-11-14 16:31:42 +  111.3s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/ndvi/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/ndvi/data/static/part-0.parquet', 'sha256': '16e89f9aca6bc4aaa9fde246f20f92b379ce0a67461539005cd917eb14bcc2b3', 'size': 10793989, 'lock_records': 4, 'locks': ['FREEZE_20261007T132431Z.lo
+[2026-11-14 16:31:44 +  113.6s] engine| [16:31:44] checkpoint: census key 8a7a74de8a1ae608: no earlier checkpoint of this step; computing
+[2026-11-14 16:31:44 +  113.6s] engine| [16:31:44] preflight: checkpoints of the census (2289236 units x 264 steps, estimated) and R30 (133 groups, two derive passes) need about 0.650 GiB under D:\treeroute\analysis\shap_v1\engine_runs\ndvi\_checkpoints (140.90 GiB free; 0.000 GiB held there now): go
+[2026-11-14 16:34:16 +  265.6s] engine| [16:34:16] census: 200 of 2926 files, 49555824 rows, 194386 units
+[2026-11-14 16:36:06 +  375.3s] engine| [16:36:06] census: 400 of 2926 files, 82038144 rows, 348994 units
+[2026-11-14 16:39:21 +  571.1s] engine| [16:39:21] census: 600 of 2926 files, 151661784 rows, 579539 units
+[2026-11-14 16:41:27 +  696.7s] engine| [16:41:27] census: 800 of 2926 files, 192248088 rows, 738190 units
+[2026-11-14 16:43:31 +  820.9s] engine| [16:43:31] census: 1000 of 2926 files, 234562272 rows, 899948 units
+[2026-11-14 16:45:46 +  955.5s] engine| [16:45:46] census: 1200 of 2926 files, 278433816 rows, 1060804 units
+[2026-11-14 16:47:39 + 1068.4s] engine| [16:47:39] census: 1400 of 2926 files, 316166856 rows, 1204505 units
+[2026-11-14 16:49:05 + 1155.1s] engine| [16:49:05] census: 1600 of 2926 files, 342110616 rows, 1307144 units
+[2026-11-14 16:50:09 + 1218.5s] engine| [16:50:09] census: 1800 of 2926 files, 360970152 rows, 1368821 units
+[2026-11-14 16:51:46 + 1315.3s] engine| [16:51:46] census: 2000 of 2926 files, 391100208 rows, 1481997 units
+[2026-11-14 16:54:11 + 1460.7s] engine| [16:54:11] census: 2200 of 2926 files, 440653488 rows, 1669142 units
+[2026-11-14 16:56:53 + 1623.0s] engine| [16:56:53] census: 2400 of 2926 files, 493476696 rows, 1937189 units
+[2026-11-14 16:58:45 + 1734.2s] engine| [16:58:45] census: 2600 of 2926 files, 535157640 rows, 2035290 units
+[2026-11-14 17:00:15 + 1824.4s] engine| [17:00:15] census: 2800 of 2926 files, 563368032 rows, 2139940 units
+[2026-11-14 17:02:06 + 1935.3s] engine| [17:02:06] checkpoint: census saved through file 2926 of 2926 (98 chunk(s) saved by this process, 98 in all)
+[2026-11-14 17:02:06 + 1935.5s] engine| [17:02:06] census: 604358304 rows, 2289236 units, 133 groups, 264 calendar steps (2926 files)
+[2026-11-14 17:02:38 + 1968.1s] engine| [17:02:38] census: 604358304 rows, 2289236 units in 1856.7 s (driver key files read 5720)
+[2026-11-14 17:21:07 + 3077.0s] engine| [17:21:07] per-group path: the feature script is group-separable on the sample (4 groups, 42240 rows, 394 feature outputs, 37804800 values compared)
+[2026-11-14 17:21:10 + 3080.1s] engine| [17:21:10] checkpoint: r30 key 88f43acd72810892: no earlier checkpoint of this step; computing
+[2026-11-14 17:42:54 + 4383.9s] engine| [17:42:54] R30 test-year shares: group alaska_interior_taiga counted (26795 units with a test-year row, 106 blocks)
+[2026-11-14 18:05:21 + 5730.6s] engine| [18:05:21] R30 test-year shares: group alaska_north_slope counted (35499 units with a test-year row, 82 blocks)
+[2026-11-14 18:15:40 + 6349.7s] engine| [18:15:40] R30 test-year shares: group amazon_basin_brazil counted (19600 units with a test-year row, 38 blocks)
+[2026-11-14 18:22:33 + 6762.3s] engine| [18:22:33] R30 test-year shares: group anatolian_plateau counted (15051 units with a test-year row, 29 blocks)
+[2026-11-14 18:26:19 + 6988.6s] engine| [18:26:19] R30 test-year shares: group andes_puna counted (9944 units with a test-year row, 19 blocks)
+[2026-11-14 18:32:48 + 7377.5s] engine| [18:32:48] R30 test-year shares: group angola_zambia_fire_belt counted (16087 units with a test-year row, 36 blocks)
+[2026-11-14 19:04:12 + 9261.6s] engine| [19:04:12] R30 test-year shares: group arabian_peninsula counted (47864 units with a test-year row, 105 blocks)
+[2026-11-14 19:07:58 + 9487.7s] engine| [19:07:58] R30 test-year shares: group argentine_monte counted (11020 units with a test-year row, 25 blocks)
+[2026-11-14 19:09:31 + 9580.3s] engine| [19:09:31] R30 test-year shares: group atacama_desert counted (5184 units with a test-year row, 12 blocks)
+[2026-11-14 19:12:00 + 9729.9s] engine| [19:12:00] R30 test-year shares: group atlantic_forest_brazil counted (7342 units with a test-year row, 17 blocks)
+[2026-11-14 19:15:48 + 9958.1s] engine| [19:15:48] R30 test-year shares: group australian_bushfire_belt counted (10323 units with a test-year row, 24 blocks)
+[2026-11-14 19:50:45 +12055.0s] engine| [19:50:45] R30 test-year shares: group australian_mulga counted (49968 units with a test-year row, 119 blocks)
+[2026-11-14 19:52:36 +12165.8s] engine| [19:52:36] R30 test-year shares: group bc_inland_rainforest counted (6353 units with a test-year row, 15 blocks)
+[2026-11-14 19:54:49 +12298.2s] engine| [19:54:49] R30 test-year shares: group bolivia_beni_savanna counted (7308 units with a test-year row, 17 blocks)
+[2026-11-14 19:56:08 +12378.1s] engine| [19:56:08] R30 test-year shares: group borneo_peat_fires counted (4845 units with a test-year row, 11 blocks)
+[2026-11-14 19:58:27 +12516.8s] engine| [19:58:27] R30 test-year shares: group borneo_rainforest counted (7841 units with a test-year row, 18 blocks)
+[2026-11-14 20:04:33 +12882.3s] engine| [20:04:33] R30 test-year shares: group brigalow_belt counted (16912 units with a test-year row, 39 blocks)
+[2026-11-14 20:05:44 +12953.4s] engine| [20:05:44] R30 test-year shares: group brittany_france counted (4316 units with a test-year row, 10 blocks)
+[2026-11-14 20:33:06 +14596.1s] engine| [20:33:06] R30 test-year shares: group caatinga counted (46742 units with a test-year row, 104 blocks)
+[2026-11-14 20:35:51 +14760.2s] engine| [20:35:51] R30 test-year shares: group california_central_valley counted (8518 units with a test-year row, 20 blocks)
+[2026-11-14 20:40:26 +15035.3s] engine| [20:40:26] R30 test-year shares: group california_chaparral counted (12987 units with a test-year row, 30 blocks)
+[2026-11-14 21:43:34 +18823.7s] engine| [21:43:34] R30 test-year shares: group canadian_arctic_nunavut counted (68008 units with a test-year row, 158 blocks)
+[2026-11-14 21:59:54 +19804.1s] engine| [21:59:54] R30 test-year shares: group canadian_prairies counted (29908 units with a test-year row, 69 blocks)
+[2026-11-14 23:08:08 +23897.9s] engine| [23:08:08] R30 test-year shares: group canadian_taiga counted (72880 units with a test-year row, 168 blocks)
+[2026-11-14 23:10:24 +24033.5s] engine| [23:10:24] R30 test-year shares: group cape_floristic_region counted (7028 units with a test-year row, 17 blocks)
+[2026-11-14 23:13:32 +24222.1s] engine| [23:13:32] R30 test-year shares: group caucasus_highlands counted (8730 units with a test-year row, 22 blocks)
+[2026-11-14 23:19:59 +24608.4s] engine| [23:19:59] R30 test-year shares: group central_asia_amu_darya counted (15525 units with a test-year row, 38 blocks)
+[2026-11-14 23:22:14 +24743.6s] engine| [23:22:14] R30 test-year shares: group central_chile counted (6961 units with a test-year row, 16 blocks)
+[2026-11-14 23:25:54 +24964.1s] engine| [23:25:54] R30 test-year shares: group central_india_dry_forest counted (10293 units with a test-year row, 23 blocks)
+[2026-11-14 23:49:01 +26350.4s] engine| [23:49:01] R30 test-year shares: group cerrado counted (38844 units with a test-year row, 102 blocks)
+[2026-11-15 00:04:03 +27252.5s] engine| [00:04:03] R30 test-year shares: group chihuahuan_desert counted (28043 units with a test-year row, 74 blocks)
+[2026-11-15 00:09:22 +27571.7s] engine| [00:09:22] R30 test-year shares: group coastal_norway counted (14649 units with a test-year row, 35 blocks)
+[2026-11-15 00:22:59 +28388.8s] engine| [00:22:59] R30 test-year shares: group columbia_plateau counted (27477 units with a test-year row, 65 blocks)
+[2026-11-15 00:28:59 +28748.3s] engine| [00:28:59] R30 test-year shares: group congo_basin_drc counted (15680 units with a test-year row, 39 blocks)
+[2026-11-15 00:29:45 +28794.5s] engine| [00:29:45] R30 test-year shares: group costa_rica counted (2544 units with a test-year row, 7 blocks)
+[2026-11-15 00:31:22 +28891.8s] engine| [00:31:22] R30 test-year shares: group drakensberg_lesotho counted (5442 units with a test-year row, 14 blocks)
+[2026-11-15 00:37:34 +29263.7s] engine| [00:37:34] R30 test-year shares: group east_african_savanna counted (15679 units with a test-year row, 39 blocks)
+[2026-11-15 00:49:53 +30002.8s] engine| [00:49:53] R30 test-year shares: group eastern_us_deciduous counted (24744 units with a test-year row, 60 blocks)
+[2026-11-15 00:55:20 +30329.2s] engine| [00:55:20] R30 test-year shares: group ethiopian_highlands counted (12876 units with a test-year row, 41 blocks)
+[2026-11-15 01:19:13 +31762.2s] engine| [01:19:13] R30 test-year shares: group eurasian_steppe counted (34854 units with a test-year row, 109 blocks)
+[2026-11-15 01:19:44 +31793.3s] engine| [01:19:44] R30 test-year shares: group falkland_islands counted (1733 units with a test-year row, 5 blocks)
+[2026-11-15 01:38:21 +32910.4s] engine| [01:38:21] R30 test-year shares: group finnish_lapland counted (32310 units with a test-year row, 93 blocks)
+[2026-11-15 01:39:03 +32952.4s] engine| [01:39:03] R30 test-year shares: group florida_everglades counted (2338 units with a test-year row, 6 blocks)
+[2026-11-15 01:45:04 +33313.6s] engine| [01:45:04] R30 test-year shares: group ganges_plain counted (15889 units with a test-year row, 41 blocks)
+[2026-11-15 01:51:20 +33689.2s] engine| [01:51:20] R30 test-year shares: group gobi_desert counted (16014 units with a test-year row, 42 blocks)
+[2026-11-15 02:01:14 +34283.3s] engine| [02:01:14] R30 test-year shares: group gran_chaco counted (21000 units with a test-year row, 55 blocks)
+[2026-11-15 02:08:39 +34728.6s] engine| [02:08:39] R30 test-year shares: group great_basin_sagebrush counted (15689 units with a test-year row, 41 blocks)
+[2026-11-15 03:00:48 +37857.3s] engine| [03:00:48] R30 test-year shares: group great_plains counted (56536 units with a test-year row, 152 blocks)
+[2026-11-15 03:10:45 +38455.1s] engine| [03:10:45] R30 test-year shares: group great_sandy_desert_au counted (20416 units with a test-year row, 60 blocks)
+[2026-11-15 03:12:36 +38565.9s] engine| [03:12:36] R30 test-year shares: group greece_mainland counted (5997 units with a test-year row, 16 blocks)
+[2026-11-15 03:19:03 +38953.1s] engine| [03:19:03] R30 test-year shares: group greenland_west_coast counted (15830 units with a test-year row, 41 blocks)
+[2026-11-15 03:26:29 +39399.1s] engine| [03:26:29] R30 test-year shares: group hulunbuir_grassland counted (17530 units with a test-year row, 45 blocks)
+[2026-11-15 03:29:37 +39586.5s] engine| [03:29:37] R30 test-year shares: group hungarian_puszta counted (9355 units with a test-year row, 24 blocks)
+[2026-11-15 03:31:29 +39698.5s] engine| [03:31:29] R30 test-year shares: group iberian_wildfire counted (6016 units with a test-year row, 16 blocks)
+[2026-11-15 03:37:00 +40030.0s] engine| [03:37:00] R30 test-year shares: group idaho_montana_wildfire counted (13487 units with a test-year row, 37 blocks)
+[2026-11-15 03:40:47 +40256.5s] engine| [03:40:47] R30 test-year shares: group indian_acacia_babool counted (10154 units with a test-year row, 28 blocks)
+[2026-11-15 03:48:16 +40706.1s] engine| [03:48:16] R30 test-year shares: group indus_basin counted (17504 units with a test-year row, 49 blocks)
+[2026-11-15 04:06:44 +41813.6s] engine| [04:06:44] R30 test-year shares: group iranian_plateau counted (31860 units with a test-year row, 86 blocks)
+[2026-11-15 04:10:00 +42009.3s] engine| [04:10:00] R30 test-year shares: group ireland counted (9666 units with a test-year row, 27 blocks)
+[2026-11-15 04:13:01 +42190.9s] engine| [04:13:01] R30 test-year shares: group japan_central_honshu counted (8461 units with a test-year row, 24 blocks)
+[2026-11-15 04:18:39 +42528.2s] engine| [04:18:39] R30 test-year shares: group kalahari_woodland counted (13871 units with a test-year row, 38 blocks)
+[2026-11-15 04:22:25 +42755.1s] engine| [04:22:25] R30 test-year shares: group karoo counted (10971 units with a test-year row, 30 blocks)
+[2026-11-15 04:32:50 +43379.8s] engine| [04:32:50] R30 test-year shares: group kazakh_steppe counted (22230 units with a test-year row, 62 blocks)
+[2026-11-15 04:40:41 +43850.4s] engine| [04:40:41] R30 test-year shares: group llanos_venezuela counted (18984 units with a test-year row, 43 blocks)
+[2026-11-15 04:42:13 +43942.4s] engine| [04:42:13] R30 test-year shares: group madagascar_spiny_thicket counted (5100 units with a test-year row, 11 blocks)
+[2026-11-15 04:44:15 +44064.4s] engine| [04:44:15] R30 test-year shares: group madagascar_western_dry counted (6581 units with a test-year row, 15 blocks)
+[2026-11-15 04:46:22 +44192.1s] engine| [04:46:22] R30 test-year shares: group mediterranean_andalusia counted (6746 units with a test-year row, 15 blocks)
+[2026-11-15 04:47:07 +44237.0s] engine| [04:47:07] R30 test-year shares: group mekong_delta_vietnam counted (2487 units with a test-year row, 6 blocks)
+[2026-11-15 04:49:43 +44392.2s] engine| [04:49:43] R30 test-year shares: group mesopotamia counted (8500 units with a test-year row, 18 blocks)
+[2026-11-15 04:54:47 +44696.2s] engine| [04:54:47] R30 test-year shares: group mexican_altiplano counted (13798 units with a test-year row, 29 blocks)
+[2026-11-15 04:59:17 +44967.0s] engine| [04:59:17] R30 test-year shares: group miombo_woodland_zambia counted (12180 units with a test-year row, 27 blocks)
+[2026-11-15 05:01:01 +45070.9s] engine| [05:01:01] R30 test-year shares: group mojave_desert counted (5922 units with a test-year row, 13 blocks)
+[2026-11-15 05:26:28 +46597.5s] engine| [05:26:28] R30 test-year shares: group mongolian_steppe counted (41325 units with a test-year row, 88 blocks)
+[2026-11-15 05:29:31 +46780.7s] engine| [05:29:31] R30 test-year shares: group mopane_woodland counted (9632 units with a test-year row, 21 blocks)
+[2026-11-15 05:31:54 +46923.5s] engine| [05:31:54] R30 test-year shares: group myanmar_dry_zone counted (7644 units with a test-year row, 17 blocks)
+[2026-11-15 05:32:14 +46943.3s] engine| [05:32:14] R30 test-year shares: group namib_desert counted (974 units with a test-year row, 3 blocks)
+[2026-11-15 05:36:06 +47175.3s] engine| [05:36:06] R30 test-year shares: group new_guinea_papua counted (11097 units with a test-year row, 24 blocks)
+[2026-11-15 05:37:54 +47283.8s] engine| [05:37:54] R30 test-year shares: group new_zealand_fiordland counted (5812 units with a test-year row, 13 blocks)
+[2026-11-15 05:39:13 +47363.0s] engine| [05:39:13] R30 test-year shares: group new_zealand_north_island counted (4369 units with a test-year row, 10 blocks)
+[2026-11-15 05:40:56 +47466.2s] engine| [05:40:56] R30 test-year shares: group niger_delta counted (5726 units with a test-year row, 13 blocks)
+[2026-11-15 05:43:31 +47621.0s] engine| [05:43:31] R30 test-year shares: group nile_valley_delta counted (8119 units with a test-year row, 18 blocks)
+[2026-11-15 05:46:15 +47784.3s] engine| [05:46:15] R30 test-year shares: group north_algeria_tell_atlas counted (8304 units with a test-year row, 18 blocks)
+[2026-11-15 05:57:28 +48457.7s] engine| [05:57:28] R30 test-year shares: group north_china_plain counted (24088 units with a test-year row, 53 blocks)
+[2026-11-15 06:07:40 +49069.9s] engine| [06:07:40] R30 test-year shares: group northeast_china_broadleaf counted (21247 units with a test-year row, 47 blocks)
+[2026-11-15 06:10:26 +49235.7s] engine| [06:10:26] R30 test-year shares: group northern_australia_monsoon counted (8085 units with a test-year row, 18 blocks)
+[2026-11-15 06:15:22 +49531.6s] engine| [06:15:22] R30 test-year shares: group northern_australia_woodland counted (12882 units with a test-year row, 29 blocks)
+[2026-11-15 06:18:46 +49735.9s] engine| [06:18:46] R30 test-year shares: group northern_thailand counted (10076 units with a test-year row, 22 blocks)
+[2026-11-15 06:19:17 +49766.8s] engine| [06:19:17] R30 test-year shares: group okavango_delta counted (1736 units with a test-year row, 4 blocks)
+[2026-11-15 06:27:22 +50251.9s] engine| [06:27:22] R30 test-year shares: group ordos_plateau counted (20083 units with a test-year row, 43 blocks)
+[2026-11-15 06:30:16 +50425.8s] engine| [06:30:16] R30 test-year shares: group pacific_nw_coast counted (8854 units with a test-year row, 19 blocks)
+[2026-11-15 06:32:07 +50537.1s] engine| [06:32:07] R30 test-year shares: group pamir_plateau counted (6125 units with a test-year row, 14 blocks)
+[2026-11-15 06:37:30 +50859.8s] engine| [06:37:30] R30 test-year shares: group pampas counted (15079 units with a test-year row, 33 blocks)
+[2026-11-15 06:38:50 +50939.8s] engine| [06:38:50] R30 test-year shares: group pantanal counted (4592 units with a test-year row, 10 blocks)
+[2026-11-15 06:46:32 +51401.8s] engine| [06:46:32] R30 test-year shares: group patagonian_steppe counted (18747 units with a test-year row, 41 blocks)
+[2026-11-15 06:47:23 +51452.9s] engine| [06:47:23] R30 test-year shares: group pearl_river_delta counted (2737 units with a test-year row, 6 blocks)
+[2026-11-15 06:59:32 +52181.9s] engine| [06:59:32] R30 test-year shares: group poland_central counted (25483 units with a test-year row, 59 blocks)
+[2026-11-15 07:05:35 +52544.3s] engine| [07:05:35] R30 test-year shares: group rub_al_khali counted (16424 units with a test-year row, 35 blocks)
+[2026-11-15 07:15:41 +53150.9s] engine| [07:15:41] R30 test-year shares: group russian_far_east_primorye counted (21999 units with a test-year row, 47 blocks)
+[2026-11-15 07:50:58 +55268.2s] engine| [07:50:58] R30 test-year shares: group sahara_eastern counted (52711 units with a test-year row, 111 blocks)
+[2026-11-15 08:02:23 +55952.9s] engine| [08:02:23] R30 test-year shares: group sahel counted (29373 units with a test-year row, 52 blocks)
+[2026-11-15 08:18:23 +56912.2s] engine| [08:18:23] R30 test-year shares: group scandinavian_taiga counted (34928 units with a test-year row, 60 blocks)
+[2026-11-15 09:16:07 +60376.5s] engine| [09:16:07] R30 test-year shares: group siberian_taiga counted (79399 units with a test-year row, 134 blocks)
+[2026-11-15 09:18:55 +60544.8s] engine| [09:18:55] R30 test-year shares: group sierra_nevada_foothills counted (9086 units with a test-year row, 16 blocks)
+[2026-11-15 09:29:43 +61192.5s] engine| [09:29:43] R30 test-year shares: group southern_african_savanna counted (25511 units with a test-year row, 45 blocks)
+[2026-11-15 09:32:56 +61385.2s] engine| [09:32:56] R30 test-year shares: group southern_chile_rainforest counted (10093 units with a test-year row, 18 blocks)
+[2026-11-15 09:35:08 +61518.0s] engine| [09:35:08] R30 test-year shares: group spanish_meseta counted (7820 units with a test-year row, 14 blocks)
+[2026-11-15 09:40:22 +61831.8s] engine| [09:40:22] R30 test-year shares: group sudanian_acacia counted (15960 units with a test-year row, 28 blocks)
+[2026-11-15 09:40:56 +61865.9s] engine| [09:40:56] R30 test-year shares: group sundarbans counted (2095 units with a test-year row, 4 blocks)
+[2026-11-15 09:43:26 +62015.8s] engine| [09:43:26] R30 test-year shares: group sw_australia_kwongan counted (8400 units with a test-year row, 15 blocks)
+[2026-11-15 10:35:21 +65130.8s] engine| [10:35:21] R30 test-year shares: group taimyr_peninsula counted (74755 units with a test-year row, 131 blocks)
+[2026-11-15 10:40:25 +65435.0s] engine| [10:40:25] R30 test-year shares: group taklamakan_desert counted (15099 units with a test-year row, 27 blocks)
+[2026-11-15 10:46:05 +65774.6s] engine| [10:46:05] R30 test-year shares: group tanezrouft counted (17214 units with a test-year row, 30 blocks)
+[2026-11-15 10:47:11 +65841.0s] engine| [10:47:11] R30 test-year shares: group tasmania_western counted (4029 units with a test-year row, 7 blocks)
+[2026-11-15 10:48:32 +65921.9s] engine| [10:48:32] R30 test-year shares: group thar_desert counted (4973 units with a test-year row, 9 blocks)
+[2026-11-15 10:53:08 +66197.7s] engine| [10:53:08] R30 test-year shares: group tibetan_plateau counted (14334 units with a test-year row, 25 blocks)
+[2026-11-15 10:54:46 +66296.0s] engine| [10:54:46] R30 test-year shares: group tierra_del_fuego counted (5589 units with a test-year row, 10 blocks)
+[2026-11-15 10:56:07 +66376.2s] engine| [10:56:07] R30 test-year shares: group tongass_alaska counted (4146 units with a test-year row, 8 blocks)
+[2026-11-15 11:05:28 +66937.7s] engine| [11:05:28] R30 test-year shares: group trans_baikal_steppe counted (22722 units with a test-year row, 42 blocks)
+[2026-11-15 11:08:44 +67133.2s] engine| [11:08:44] R30 test-year shares: group tuva_steppe counted (9995 units with a test-year row, 19 blocks)
+[2026-11-15 11:11:06 +67275.8s] engine| [11:11:06] R30 test-year shares: group uk_midlands counted (7450 units with a test-year row, 14 blocks)
+[2026-11-15 11:15:34 +67543.4s] engine| [11:15:34] R30 test-year shares: group uruguay counted (13146 units with a test-year row, 24 blocks)
+[2026-11-15 11:23:37 +68026.3s] engine| [11:23:37] R30 test-year shares: group us_corn_belt counted (20802 units with a test-year row, 39 blocks)
+[2026-11-15 11:25:50 +68160.0s] engine| [11:25:50] R30 test-year shares: group vietnam_central_highlands counted (6753 units with a test-year row, 13 blocks)
+[2026-11-15 11:30:28 +68437.2s] engine| [11:30:28] R30 test-year shares: group west_africa_cocoa_belt counted (12922 units with a test-year row, 24 blocks)
+[2026-11-15 11:32:42 +68571.9s] engine| [11:32:42] R30 test-year shares: group west_africa_monsoon_guinea counted (6791 units with a test-year row, 13 blocks)
+[2026-11-15 11:35:58 +68767.2s] engine| [11:35:58] R30 test-year shares: group western_europe_farmlands counted (9799 units with a test-year row, 18 blocks)
+[2026-11-15 11:43:33 +69222.4s] engine| [11:43:33] R30 test-year shares: group western_europe_temperate counted (18778 units with a test-year row, 35 blocks)
+[2026-11-15 11:46:05 +69374.7s] engine| [11:46:05] R30 test-year shares: group western_ghats counted (8209 units with a test-year row, 16 blocks)
+[2026-11-15 11:50:57 +69666.4s] engine| [11:50:57] R30 test-year shares: group western_sahara_coastal counted (13766 units with a test-year row, 26 blocks)
+[2026-11-15 11:53:26 +69815.9s] engine| [11:53:26] R30 test-year shares: group western_scotland counted (7834 units with a test-year row, 15 blocks)
+[2026-11-15 13:01:17 +73886.9s] engine| [13:01:17] R30 test-year shares: group yakutia_larch counted (84180 units with a test-year row, 153 blocks)
+[2026-11-15 13:20:12 +75022.1s] engine| [13:20:12] R30 test-year shares: group yamal_peninsula counted (38103 units with a test-year row, 74 blocks)
+[2026-11-15 13:21:47 +75116.3s] engine| [13:21:47] R30 test-year shares: group yucatan_peninsula counted (5413 units with a test-year row, 11 blocks)
+[2026-11-15 13:21:47 +75116.7s] engine| [13:21:47] checkpoint: R30: 0 of 133 groups loaded from checkpoint, 133 counted and saved (r30 key 88f43acd72810892)
+[2026-11-15 13:21:47 +75116.8s] engine| [13:21:47] R30 test-year shares: {'first_test_step': 24241, 's_fill': 24238, 'first_step': 23973, 'binding': ['api_precip', 'api_soilmoist', 'consec_dry_months', 'months_since_sig_rain'], 'first_year': 1997, 'min_coord': None, 'seconds': 72038.4, 'blocks': 5152, 'units': 2289236, 'rows_read': 604358304, 'target_files_read': 113344, 'driver_files_read': 214632, 'checked_rows': 638400}
+[2026-11-15 13:40:37 +76247.0s] engine| [13:40:37] checkpoint: r30 key 2b304d9f3ec781a7: no earlier checkpoint of this step; computing
+[2026-11-15 13:54:48 +77098.1s] engine| [13:54:48] checkpoint: R30: 0 of 133 groups loaded from checkpoint, 133 counted and saved (r30 key 2b304d9f3ec781a7)
+[2026-11-15 13:54:49 +77098.5s] engine| [13:54:49] per-group column readers: 133 groups, the largest yucatan_peninsula with 26400 picked rows (1.74 GiB at its reader's peak); feature script: group-separable on the sample
+[2026-11-15 13:54:49 +77098.5s] engine| [13:54:49] picked units' rows read again: 3511200 rows of 13300 units (of 604358304 census rows); R30 test-year shares: the count already made for this lag map and these test years (same rows) {'first_test_step': 24241, 's_fill': 24238, 'first_step': 23973, 'binding': ['api_precip', 'api_soilmoist', 'consec_dry_months', 'months_since_sig_rain'], 'first_year': 1997, 'min_coord': None, 'seconds': 72038.4, 'blocks': 5152, 'units': 2289236, 'rows_read': 604358304, 'target_files_read': 113344, 'driver_files_read': 214632, 'checked_rows': 638400}
+[2026-11-15 13:54:56 +77106.1s] engine| [13:54:56] last value (J2d, C18.last_value_max_months = 2 months = 2 steps), 3511200 rows, 492 tree features: 3705370 rows filled in 59 columns (most: grace_lwe 319200, grace_lwe_lag1 319200, grace_lwe_lag12 319200, grace_lwe_lag2 319200, grace_lwe_lag3 319200); left to R30: 909418 in gaps longer than the maximum, 32404308 before a unit's first value, 15339 after its last
+[2026-11-15 13:54:56 +77106.1s] engine| [13:54:56] derive_all: 30 entries in 75138.0 s; router per_unit; overlap blocks 125 for 133 groups
+[2026-11-15 13:55:00 +77109.5s] engine| [13:55:00] plan check: no plan folder of this package; this run's derived.json is its own
+[2026-11-15 13:55:00 +77109.5s] engine| [13:55:00] run folder D:\treeroute\analysis\shap_v1\engine_runs\ndvi\headline\20261115_d1de3158 (new)
+[2026-11-15 13:55:04 +77113.2s] engine| [13:55:04] census released after derive (604358304 rows, 2289236 units): the per-group run reads the picked rows only
+[2026-11-15 13:55:04 +77113.2s] engine| [13:55:04] preflight: temp disk under the per-group schedule 15.29 GiB at its peak (pools 6.41 GiB; one lead's pools 6.41 GiB; the largest group yucatan_peninsula's tables 1.24 GiB a kind: 3.72 GiB in the nowcast, 2.48 GiB at a lead): go
+[2026-11-15 13:55:04 +77113.2s] engine steps load..temp in 77097.2 s; rebuild run folder D:\treeroute\analysis\shap_v1\engine_runs\ndvi\headline\20261115_d1de3158
+[2026-11-15 13:55:04 +77113.2s] gate E3_inputs: PASS {'package': 'edbc45b52643dcdd', 'derived': 'e2836c5eda7ac7ae', 'fingerprint': 'd1de3158cad5ab44', 'manifest_fingerprint': 'd1de3158cad5ab44', 'config_keys_differing': []}
+[2026-11-15 14:06:29 +77798.9s] engine| [14:06:29] pool: 3351600 grid rows (13300 units x 252 steps), 498 tree columns (6 history), 9 context
+[2026-11-15 14:23:03 +78792.5s] engine| [14:23:03] [waiting] room: one group's picked-unit column reader (26400 target rows, 899 frame columns, a column reader at its peak, beside one driver file of 1.06 GiB in flight; plan R20: one group's reader at a time): room after the memory release (gc, working-set trim) (2 checks, 1 s; working-set trim ran): continuing
+[2026-11-15 14:25:31 +78940.3s] engine| [14:25:31] pool: 3351600 rows x 498 tree columns, 9 context columns (filled group by group: 133 groups)
+[2026-11-15 14:25:31 +78940.4s] pool built in 1827.1 s
+[2026-11-15 14:25:32 +78941.2s] engine| [14:25:32] checkpoint: bank key 3f36bfca2ccdca48: no earlier checkpoint of this step; computing
+[2026-11-15 16:36:34 +86803.3s] engine| [16:36:34] checkpoint: bank fit-cut (cut 24240, lead 0): 0 of 133 groups loaded, 133 fitted (folder bank-3f36bfca2ccdca48)
+[2026-11-15 16:36:34 +86803.3s] engine| [16:36:34] fit-cut bank: 13300 trees, fingerprint f30115fdca3bbd29, rows at or before 24240 (max label step 24239)
+[2026-11-15 16:36:35 +86804.3s] bank and fits of lead 0 in 7864.0 s
+[2026-11-15 16:36:35 +86804.8s] gate E4_donor_rows: PASS {'rows': [2680841, 2680841], 'row_key_hash': ['0e4c12a0915a6f62', '0e4c12a0915a6f62']}
+[2026-11-15 16:36:35 +86804.8s] gate E5_bank_fingerprint: FAIL {'rebuilt': 'f30115fdca3bbd297f2043f73bf8352d4fa26490a404d8e3f5b5d0e218fa5420', 'run': '21e1d2a839c2a215b43acf95f1a54aab6cfcb8b7eed2e39b7e80ff83680c9207', 'trees': 13300, 'role': 'informational, cause not established (answers decide: E5a, E8, E10)'}
+[2026-11-15 16:36:35 +86804.8s] gate E6_c_and_tolerances: PASS {'c': [None, None]}
+[2026-11-15 16:36:36 +86806.0s] bank exported: 13300 trees, 0 correctors (plain), 1.3 s
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 left 2136 of 401977 router fit rows out (router context missing or non-finite; nothing filled): 12 of 1995 units, 74 to 203 rows each (largest share 100.0%), steps 24037..24239, by column {'ctx:top5:era5l_slhf_lag1': 1622, 'ctx:top5:V07_total_ref_ET_mm_lag1': 790, 'ctx:top5:era5l_d2m': 1622, 'ctx:top5:V01_mean_temp_C': 790}; flagged above 5% of a unit's fit rows: 12 units; rows saved in context_missing/test_pass.parquet
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit atlantic_forest_brazil_-1149_-633: 202 of 202 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit cape_floristic_region_500_-966: 203 of 203 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit florida_everglades_-2228_761: 74 of 74 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit florida_everglades_-2246_723: 134 of 134 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit namib_desert_396_-628: 203 of 203 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit namib_desert_402_-655: 158 of 158 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit new_zealand_fiordland_4647_-1411: 203 of 203 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit new_zealand_north_island_4836_-1076: 203 of 203 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit niger_delta_139_162: 198 of 198 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit northern_australia_monsoon_3651_-315: 202 of 202 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit western_ghats_2047_449: 203 of 203 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:36:49 +86818.8s] engine| [16:36:49] test pass: G1 unit yamal_peninsula_2026_2834: 153 of 153 fit rows left out (100.0%) FLAGGED
+[2026-11-15 16:42:45 +87174.9s] per_unit pass: 95184 score rows, 266 units / 0 regions solved in 368.4 s
+[2026-11-15 16:42:45 +87175.0s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 266, 'fits_whose_X_b_differs_from_the_kernel': 0, 'region_proof': None}
+[2026-11-15 16:42:45 +87175.0s] gate E8_predictions: PASS {'arm': 'identity_plain_unweighted', 'rows_checked': 12768, 'units': 266, 'pre_bit_equal': 12768, 'arm_bit_equal': 12768, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'max_rel_arm': 0.0, 'max_ulps_pre': 0, 'max_ulps_arm': 0, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': True, 'tolerance_rule': 'bit identity', 'd8_licence': None}
+[2026-11-15 16:42:47 +87176.8s] gate E10_exported_trees: PASS {'unit': 'alaska_interior_taiga_-4065_2380', 'rows_x_trees': [251, 13200]}
+[2026-11-15 16:42:47 +87177.1s] routers saved: 266 units, 66425 rows (fit and test), 11 linear columns
+[2026-11-15 16:42:48 +87177.4s] lead 0 rebuilt in 8237.0 s (peak 8.29 GB)
+[2026-11-15 16:42:50 +87179.5s] rebuild ndvi leads [0] finished in 87173.6 s (peak 8.29 GB)

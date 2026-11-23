@@ -1,0 +1,213 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [
+     " GiB) beside the census (3.03 GiB): 8.35 GiB in all, 8.11 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"
+    ],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": true
+   }
+  },
+  "E10_exported_trees": {
+   "pass": true,
+   "values": {
+    "rows_x_trees": [
+     215,
+     3900
+    ],
+    "unit": "alaska_interior_taiga_-4036_2275"
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "13838e41843cf1ec",
+    "engine_root": "D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc",
+    "manifest": "13838e41843cf1ec"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3_inputs": {
+   "pass": true,
+   "values": {
+    "config_keys_differing": [],
+    "derived": "57475923290ae19c",
+    "fingerprint": "869d1f38524d4b4c",
+    "manifest_fingerprint": "869d1f38524d4b4c",
+    "package": "18c7bbb8634cf591"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [
+     "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet"
+    ],
+    "path_map": true,
+    "static_files_sha256": [
+     "30b298a937307eba",
+     "30b298a937307eba"
+    ],
+    "target_files_sha256": [
+     "8f67233c6628cc8c",
+     "8f67233c6628cc8c"
+    ]
+   }
+  },
+  "E3m_recorded_path_map": {
+   "pass": true,
+   "values": {
+    "files": [
+     {
+      "equal": true,
+      "lock_records": 4,
+      "locks": [
+       "FREEZE_20261007T130812Z.lock.json",
+       "FREEZE_20261013T102938Z.lock.json",
+       "FREEZE_20261016T012828Z.lock.json",
+       "FREEZE_20261016T091126Z.lock.json"
+      ],
+      "recorded": "C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet",
+      "sha256": "c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb",
+      "size": 4300416,
+      "today": "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet"
+     }
+    ],
+    "rule": "content SHA-256, size and mtime equal every freeze-lock record of the recorded path"
+   }
+  },
+  "E4_donor_rows": {
+   "pass": true,
+   "values": {
+    "row_key_hash": [
+     "90c216b4d73c575d",
+     "90c216b4d73c575d"
+    ],
+    "rows": [
+     751508,
+     751508
+    ]
+   }
+  },
+  "E5_bank_fingerprint": {
+   "pass": false,
+   "values": {
+    "rebuilt": "3a61b08172eb9ca8a7476b5c18b7c8bd76b1dc291289a89133f5ea36c65b368d",
+    "role": "informational, cause not established (answers decide: E5a, E8, E10)",
+    "run": "1c960dc06e125612fbf5f15272313680f7829b67785cdd29b3a8f87cf87e8014",
+    "trees": 4000
+   }
+  },
+  "E5a_identity_twin": {
+   "pass": true,
+   "values": {
+    "arm": "identity_corrector_gls",
+    "arm_bit_equal": 13440,
+    "bit_identical": true,
+    "max_abs_pre": 0.0,
+    "max_rel_arm": 0.0,
+    "max_rel_pre": 0.0,
+    "max_ulps_arm": 0,
+    "max_ulps_pre": 0,
+    "pre_bit_equal": 13440,
+    "rows_checked": 13440,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "units": 280,
+    "within_relative_tolerance": true
+   }
+  },
+  "E6_c_and_tolerances": {
+   "pass": true,
+   "values": {
+    "c": [
+     0.012987012987012988,
+     0.012987012987012988
+    ]
+   }
+  },
+  "E7_gls_weight_model": {
+   "pass": true,
+   "values": {
+    "rebuilt": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\fire\\headline\\20261113_869d1f38\\gls_weight_model.json",
+    "run": "D:\\treeroute\\runs\\fire\\headline\\20261017_869d1f38\\gls_weight_model.json"
+   }
+  },
+  "E8_predictions": {
+   "pass": true,
+   "values": {
+    "arm": "arcsine_corrector_gls",
+    "arm_bit_equal": 13056,
+    "bit_identical": false,
+    "d8_licence": "E5a at this lead (the arm's identity-link twin, bit-identical)",
+    "max_abs_pre": 4.996003610813204e-16,
+    "max_rel_arm": 2.3560131176637307e-13,
+    "max_rel_pre": 2.3560131176637307e-13,
+    "max_ulps_arm": 1679,
+    "max_ulps_pre": 1679,
+    "pre_bit_equal": 13056,
+    "rows_checked": 13440,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "tolerance_rule": "relative 1e-12 (|rebuilt - saved| <= 1e-12 |saved|, exact where saved is 0) on an arcsine arm (owner decision D8), licensed by: E5a at this lead (the arm's identity-link twin, bit-identical)",
+    "units": 280,
+    "within_relative_tolerance": true
+   }
+  },
+  "E9_coefficients_reproduce_the_kernel": {
+   "pass": true,
+   "values": {
+    "fits_captured": 280,
+    "fits_whose_X_b_differs_from_the_kernel": 0,
+    "region_proof": null
+   }
+  }
+ },
+ "peak_gb": 8.47,
+ "result": {
+  "arm": "arcsine_corrector_gls",
+  "c": 0.012987012987012988,
+  "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\fire\\headline\\20261113_869d1f38",
+  "kind": "per_unit",
+  "legal": [
+   0.0,
+   1.0
+  ],
+  "link": "arcsine",
+  "point": {
+   "level": 100.0,
+   "ratio": 1.0
+  },
+  "rows_checked": 13440,
+  "table_kind": "corrector",
+  "ub": 1.0,
+  "weighted": true
+ },
+ "seconds": 810.2,
+ "stopped_at": null
+}

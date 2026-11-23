@@ -1,0 +1,689 @@
+{
+ "protocol_sha256": "c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4",
+ "problem": "coral",
+ "original": {
+  "arm": "arcsine_corrector_gls",
+  "mae": 6.69798924506233,
+  "band": 0.9175581931137083
+ },
+ "gates": {
+  "G2": {
+   "mae": 6.69798924506233,
+   "verdict": 6.69798924506233,
+   "rel": 0.0,
+   "n_scored": 2312,
+   "pass": true
+  }
+ },
+ "subsets": {
+  "all": 2312,
+  "bleached_y_gt_0": 1024,
+  "severe_y_gt_50": 135,
+  "original_bleached_mae": 13.370101628934457,
+  "original_severe_mae": 53.528817060852326
+ },
+ "methods": {
+  "C": {
+   "mae": 6.69798924506233,
+   "delta": 0.0,
+   "delta_over_band": 0.0,
+   "call": "SAME",
+   "rows_differing_from_chosen": 0,
+   "bleached_mae": 13.370101628934457,
+   "severe_mae": 53.528817060852326,
+   "per_year": {
+    "2016": 12.406328256098309,
+    "2017": 3.5692507744181308,
+    "2018": 1.280418254929322,
+    "2019": 4.805509495430039
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.659652365514182
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 35.05979452499404
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.829490304207522
+    }
+   }
+  },
+  "T": {
+   "mae": 6.14748576299595,
+   "delta": -0.5505034820663806,
+   "delta_over_band": -0.5999657418983555,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 11.835317359961106,
+   "severe_mae": 40.520039882228865,
+   "per_year": {
+    "2016": 10.652121787011055,
+    "2017": 3.797839129653183,
+    "2018": 1.2900448616776252,
+    "2019": 5.096092301644425
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 0.8690803622182504
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.736388261777524
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 26.299208600123325
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 4.022595138987255
+    }
+   }
+  },
+  "M1": {
+   "mae": 6.14748576299595,
+   "delta": -0.5505034820663806,
+   "delta_over_band": -0.5999657418983555,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 11.835317359961106,
+   "severe_mae": 40.520039882228865,
+   "per_year": {
+    "2016": 10.652121787011055,
+    "2017": 3.797839129653183,
+    "2018": 1.2900448616776252,
+    "2019": 5.096092301644425
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 0.8690803622182504
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.736388261777524
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 26.299208600123325
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 4.022595138987255
+    }
+   }
+  },
+  "M2": {
+   "mae": 6.393951387338696,
+   "delta": -0.30403785772363445,
+   "delta_over_band": -0.3313553952277298,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 12.537715840357635,
+   "severe_mae": 46.85185764052293,
+   "per_year": {
+    "2016": 11.461108493237862,
+    "2017": 3.672317827452727,
+    "2018": 1.2852015265560948,
+    "2019": 4.949104510801086
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 3.2049162729115697
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.697076980211298
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 30.393268644136466
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.9196885565591155
+    }
+   }
+  },
+  "M3": {
+   "mae": 6.393951387338696,
+   "delta": -0.30403785772363445,
+   "delta_over_band": -0.3313553952277298,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 12.537715840357635,
+   "severe_mae": 46.85185764052293,
+   "per_year": {
+    "2016": 11.461108493237862,
+    "2017": 3.672317827452727,
+    "2018": 1.2852015265560948,
+    "2019": 4.949104510801086
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 3.2049162729115697
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.697076980211298
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 30.393268644136466
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.9196885565591155
+    }
+   }
+  },
+  "M4": {
+   "mae": 6.642940135493637,
+   "delta": -0.05504910956869313,
+   "delta_over_band": -0.05999522426134685,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2275,
+   "bleached_mae": 12.814109226112766,
+   "severe_mae": 49.48269066764589,
+   "per_year": {
+    "2016": 11.927410688978693,
+    "2017": 3.7570378615751054,
+    "2018": 1.4415749949424161,
+    "2019": 5.068454633952356
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 3.5986086219203646
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.669260960298715
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 32.23602289111189
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 4.039912565094445
+    }
+   }
+  },
+  "M5": {
+   "mae": 6.69798924506233,
+   "delta": 0.0,
+   "delta_over_band": 0.0,
+   "call": "SAME",
+   "rows_differing_from_chosen": 0,
+   "bleached_mae": 13.370101628934457,
+   "severe_mae": 53.528817060852326,
+   "per_year": {
+    "2016": 12.406328256098309,
+    "2017": 3.5692507744181308,
+    "2018": 1.280418254929322,
+    "2019": 4.805509495430039
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.659652365514182
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 35.05979452499404
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.829490304207522
+    }
+   }
+  },
+  "M5raw": {
+   "mae": 6.69798924506233,
+   "delta": 0.0,
+   "delta_over_band": 0.0,
+   "call": "SAME",
+   "rows_differing_from_chosen": 0,
+   "bleached_mae": 13.370101628934457,
+   "severe_mae": 53.528817060852326,
+   "per_year": {
+    "2016": 12.406328256098309,
+    "2017": 3.5692507744181308,
+    "2018": 1.280418254929322,
+    "2019": 4.805509495430039
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.659652365514182
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 35.05979452499404
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.829490304207522
+    }
+   }
+  },
+  "M5_placebo": {
+   "mae": 7.033586763053691,
+   "delta": 0.33559751799136084,
+   "delta_over_band": 0.3657506635655663,
+   "call": "HURTS",
+   "rows_differing_from_chosen": 2259,
+   "bleached_mae": 15.136348315811325,
+   "severe_mae": 63.616429676807066,
+   "per_year": {
+    "2016": 13.996780249852819,
+    "2017": 3.111916359126179,
+    "2018": 0.9935618576201511,
+    "2019": 4.278614367115096
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 9.207969273049276
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 8.023674860104208
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 43.87561447023963
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.3309809878944083
+    }
+   }
+  },
+  "M5_placebo_gated": {
+   "mae": 7.033586763053691,
+   "delta": 0.33559751799136084,
+   "delta_over_band": 0.3657506635655663,
+   "call": "HURTS",
+   "rows_differing_from_chosen": 2259,
+   "bleached_mae": 15.136348315811325,
+   "severe_mae": 63.616429676807066,
+   "per_year": {
+    "2016": 13.996780249852819,
+    "2017": 3.111916359126179,
+    "2018": 0.9935618576201511,
+    "2019": 4.278614367115096
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 9.207969273049276
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 8.023674860104208
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 43.87561447023963
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.3309809878944083
+    }
+   }
+  },
+  "M6": {
+   "mae": 6.686036922575148,
+   "delta": -0.01195232248718181,
+   "delta_over_band": -0.013026228283812643,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 602,
+   "bleached_mae": 13.293306107954065,
+   "severe_mae": 52.639640944718536,
+   "per_year": {
+    "2016": 12.279602363425477,
+    "2017": 3.7154126798770997,
+    "2018": 1.282902663789425,
+    "2019": 4.803922175252959
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.653901030375229
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 34.505256921230924
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.870000962177122
+    }
+   }
+  },
+  "M6s": {
+   "mae": 6.582382483645349,
+   "delta": -0.11560676141698156,
+   "delta_over_band": -0.12599392854274802,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 13.032093294091618,
+   "severe_mae": 50.702577881834024,
+   "per_year": {
+    "2016": 11.988728708057934,
+    "2017": 3.684845846103087,
+    "2018": 1.2868397381877725,
+    "2019": 4.873086387443252
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 4.892824104836842
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.663940524624849
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 33.074380631068045
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.885284078225998
+    }
+   }
+  },
+  "M6raw": {
+   "mae": 6.686036922575148,
+   "delta": -0.01195232248718181,
+   "delta_over_band": -0.013026228283812643,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 602,
+   "bleached_mae": 13.293306107954065,
+   "severe_mae": 52.639640944718536,
+   "per_year": {
+    "2016": 12.279602363425477,
+    "2017": 3.7154126798770997,
+    "2018": 1.282902663789425,
+    "2019": 4.803922175252959
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.653901030375229
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 34.505256921230924
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.870000962177122
+    }
+   }
+  },
+  "M6sraw": {
+   "mae": 6.582382483645349,
+   "delta": -0.11560676141698156,
+   "delta_over_band": -0.12599392854274802,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 13.032093294091618,
+   "severe_mae": 50.702577881834024,
+   "per_year": {
+    "2016": 11.988728708057934,
+    "2017": 3.684845846103087,
+    "2018": 1.2868397381877725,
+    "2019": 4.873086387443252
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 4.892824104836842
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.663940524624849
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 33.074380631068045
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.885284078225998
+    }
+   }
+  },
+  "M6_placebo": {
+   "mae": 6.604234751750147,
+   "delta": -0.09375449331218277,
+   "delta_over_band": -0.1021782531242291,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 762,
+   "bleached_mae": 13.039003853732227,
+   "severe_mae": 50.49704066283081,
+   "per_year": {
+    "2016": 11.996413643623429,
+    "2017": 3.7167013425617537,
+    "2018": 1.2808298490942274,
+    "2019": 4.939159520804993
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.726059368132035
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 32.89914919586263
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.922132254606424
+    }
+   }
+  },
+  "M6s_placebo": {
+   "mae": 6.419423443091031,
+   "delta": -0.27856580197129954,
+   "delta_over_band": -0.30359469738479933,
+   "call": "HELPS",
+   "rows_differing_from_chosen": 2240,
+   "bleached_mae": 12.611743003260656,
+   "severe_mae": 47.437035246470856,
+   "per_year": {
+    "2016": 11.543277325405452,
+    "2017": 3.6634604873220673,
+    "2018": 1.2851871269001767,
+    "2019": 4.930934623651412
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 3.7657925263352805
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.703923804563838
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 30.77190700089763
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.912166284608358
+    }
+   }
+  },
+  "M6_placebo_gated": {
+   "mae": 6.69798924506233,
+   "delta": 0.0,
+   "delta_over_band": 0.0,
+   "call": "SAME",
+   "rows_differing_from_chosen": 0,
+   "bleached_mae": 13.370101628934457,
+   "severe_mae": 53.528817060852326,
+   "per_year": {
+    "2016": 12.406328256098309,
+    "2017": 3.5692507744181308,
+    "2018": 1.280418254929322,
+    "2019": 4.805509495430039
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.659652365514182
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 35.05979452499404
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.829490304207522
+    }
+   }
+  },
+  "M6s_placebo_gated": {
+   "mae": 6.69798924506233,
+   "delta": 0.0,
+   "delta_over_band": 0.0,
+   "call": "SAME",
+   "rows_differing_from_chosen": 0,
+   "bleached_mae": 13.370101628934457,
+   "severe_mae": 53.528817060852326,
+   "per_year": {
+    "2016": 12.406328256098309,
+    "2017": 3.5692507744181308,
+    "2018": 1.280418254929322,
+    "2019": 4.805509495430039
+   },
+   "per_programme": {
+    "AGRRA": {
+     "n": 1,
+     "mae": 5.540752183604888
+    },
+    "FRRP": {
+     "n": 190,
+     "mae": 7.659652365514182
+    },
+    "McClanahan": {
+     "n": 189,
+     "mae": 35.05979452499404
+    },
+    "Reef_Check": {
+     "n": 1932,
+     "mae": 3.829490304207522
+    }
+   }
+  }
+ },
+ "success_items": {
+  "M1": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": "N/A",
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "coral items PASS (S2 pending); CIRCULAR-ON-CORAL"
+  },
+  "M2": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": "N/A",
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "coral items PASS (S2 pending); CIRCULAR-ON-CORAL"
+  },
+  "M3": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": "N/A",
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "coral items PASS (S2 pending); CIRCULAR-ON-CORAL"
+  },
+  "M4": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": "N/A",
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "coral items PASS (S2 pending)"
+  },
+  "M5": {
+   "S1_coral_improves": false,
+   "S3_beats_placebo": true,
+   "S4_not_noop": false,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "FAILS S1_coral_improves, S4_not_noop"
+  },
+  "M6": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": false,
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "FAILS S3_beats_placebo"
+  },
+  "M6s": {
+   "S1_coral_improves": true,
+   "S3_beats_placebo": false,
+   "S4_not_noop": true,
+   "S2_no_harm_elsewhere": "PENDING (pm25, ndvi, fire, defo)",
+   "coral_items_verdict": "FAILS S3_beats_placebo"
+  }
+ },
+ "sanity_part603": {
+  "alarm_ratio": {
+   "now": 4.2913410523963345,
+   "part603": 4.29
+  },
+  "M3_mae": {
+   "now": 6.393951387338696,
+   "part603": 6.394
+  },
+  "M1_mae": {
+   "now": 6.14748576299595,
+   "part603": 6.147
+  },
+  "match": true
+ },
+ "stage_b_seconds": 0.06,
+ "stage_b_peak_ram_mb": 92.2
+}

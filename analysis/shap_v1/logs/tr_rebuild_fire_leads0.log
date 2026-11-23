@@ -1,0 +1,298 @@
+[2026-11-12 21:32:12 +    5.7s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 21:32:12 +    5.7s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 21:32:12 +    5.8s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 21:32:18 +   11.7s] engine| [21:32:18] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 21:32:19 +   12.0s] engine| [21:32:19] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-12 21:32:42 +   35.6s] engine| [21:32:42] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-12 21:32:43 +   36.9s] engine| [21:32:43] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.32 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 21:32:43 +   36.9s] engine steps load..preflight in 26.2 s
+[2026-11-12 21:32:43 +   36.9s] gate E3a_inputs_before_read: FAIL {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': ['static_files_sha256'], 'not_before_read': [], 'static_files_sha256': ['e883c9d91f731ed7', '30b298a937307eba'], 'target_files_sha256': ['8f67233c6628cc8c', '8
+[2026-11-12 21:32:43 +   36.9s] STOP S-EXACT at gate E3a_inputs_before_read: no SHAP value for fire leads [0]
+[2026-11-12 21:32:46 +    2.4s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-12 21:32:48 +    4.1s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 21:32:48 +    4.1s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 21:32:48 +    4.1s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 21:32:49 +    5.3s] engine| [21:32:49] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-12 21:32:57 +   13.1s] engine| [21:32:57] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-12 21:32:57 +   13.2s] engine| [21:32:57] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.25 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 21:32:57 +   13.2s] engine steps load..preflight in 8.8 s
+[2026-11-12 21:32:57 +   13.2s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['30b298a937307eba', '30b298a937307eba'], 'target_files_sha256': ['8f67233c6628cc8c', '8f67233c6628cc8c'], 'p
+[2026-11-12 21:32:58 +   13.8s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet', 'sha256': 'c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb', 'size': 4300416, 'lock_records': 4, 'locks': ['FREEZE_20261007T130812Z.loc
+[2026-11-12 21:32:58 +   13.8s] precheck only: E3a passed in 9.4 s; stopping before the read
+[2026-11-12 21:32:58 +   13.8s] rebuild fire leads [0] finished in 11.4 s (peak 0.75 GB)
+[2026-11-12 22:02:02 +    2.2s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-12 22:02:04 +    3.7s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 22:02:04 +    3.7s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 22:02:04 +    3.7s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 22:02:05 +    5.0s] engine| [22:02:05] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 22:02:05 +    5.1s] engine| [22:02:05] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-12 22:02:13 +   13.2s] engine| [22:02:13] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-12 22:02:13 +   13.2s] engine| [22:02:13] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.01 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 22:02:13 +   13.2s] engine steps load..preflight in 9.2 s
+[2026-11-12 22:02:13 +   13.2s] gate E0_ram_preflight: FAIL {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.01 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram
+[2026-11-12 22:02:13 +   13.2s] STOP S-EXACT at gate E0_ram_preflight: no SHAP value for fire leads [0]
+[2026-11-12 22:02:16 +    2.1s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-12 22:02:17 +    3.5s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 22:02:17 +    3.6s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 22:02:17 +    3.6s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 22:02:18 +    4.7s] engine| [22:02:18] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-12 22:02:25 +   11.8s] engine| [22:02:25] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-12 22:02:25 +   11.9s] engine| [22:02:25] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.15 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 22:02:25 +   11.9s] engine steps load..preflight in 8.1 s
+[2026-11-12 22:02:25 +   11.9s] gate E0_ram_preflight: PASS {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 6.15 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': True, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-
+[2026-11-12 22:02:25 +   11.9s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['30b298a937307eba', '30b298a937307eba'], 'target_files_sha256': ['8f67233c6628cc8c', '8f67233c6628cc8c'], 'p
+[2026-11-12 22:02:26 +   12.1s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet', 'sha256': 'c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb', 'size': 4300416, 'lock_records': 4, 'locks': ['FREEZE_20261007T130812Z.loc
+[2026-11-12 22:02:26 +   12.2s] precheck only: E3a passed in 8.4 s; stopping before the read
+[2026-11-12 22:02:26 +   12.2s] rebuild fire leads [0] finished in 10.1 s (peak 0.72 GB)
+[2026-11-13 17:23:24 +    7.3s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-13 17:23:26 +   10.1s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-13 17:23:26 +   10.3s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-13 17:23:27 +   10.3s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-13 17:23:31 +   14.8s] engine| [17:23:31] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-13 17:23:31 +   15.0s] engine| [17:23:31] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-13 17:23:31 +   15.2s] engine| [17:23:31] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-13 17:23:55 +   39.2s] engine| [17:23:55] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-13 17:23:57 +   40.5s] engine| [17:23:57] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 4.87 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-13 17:23:57 +   40.5s] engine steps load..preflight in 26.6 s
+[2026-11-13 17:23:57 +   40.5s] gate E0_ram_preflight: PASS {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 4.87 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': True, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-
+[2026-11-13 17:23:57 +   40.6s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['30b298a937307eba', '30b298a937307eba'], 'target_files_sha256': ['8f67233c6628cc8c', '8f67233c6628cc8c'], 'p
+[2026-11-13 17:23:57 +   41.2s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet', 'sha256': 'c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb', 'size': 4300416, 'lock_records': 4, 'locks': ['FREEZE_20261007T130812Z.loc
+[2026-11-13 17:23:57 +   41.3s] precheck only: E3a passed in 27.4 s; stopping before the read
+[2026-11-13 17:23:57 +   41.3s] rebuild fire leads [0] finished in 34.1 s (peak 0.7 GB)
+[2026-11-13 18:12:28 +    1.6s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-13 18:12:29 +    3.0s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-13 18:12:29 +    3.0s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-13 18:12:29 +    3.0s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-13 18:12:31 +    4.3s] engine| [18:12:31] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-13 18:12:31 +    4.4s] engine| [18:12:31] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-13 18:12:38 +   11.8s] engine| [18:12:38] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-13 18:12:38 +   11.8s] engine| [18:12:38] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 5.22 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-13 18:12:38 +   11.8s] engine steps load..preflight in 8.6 s
+[2026-11-13 18:12:38 +   11.8s] gate E0_ram_preflight: FAIL {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 5.22 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram
+[2026-11-13 18:12:38 +   11.8s] STOP S-EXACT at gate E0_ram_preflight: no SHAP value for fire leads [0]
+[2026-11-13 18:46:39 +    1.6s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-13 18:46:41 +    3.0s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-13 18:46:41 +    3.0s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-13 18:46:41 +    3.0s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-13 18:46:42 +    4.1s] engine| [18:46:42] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-13 18:46:42 +    4.2s] engine| [18:46:42] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-13 18:46:50 +   12.1s] engine| [18:46:50] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-13 18:46:50 +   12.1s] engine| [18:46:50] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 7.53 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-13 18:46:50 +   12.1s] engine steps load..preflight in 8.8 s
+[2026-11-13 18:46:50 +   12.1s] gate E0_ram_preflight: FAIL {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 7.53 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram
+[2026-11-13 18:46:50 +   12.1s] STOP S-EXACT at gate E0_ram_preflight: no SHAP value for fire leads [0]
+[2026-11-13 19:00:33 +    1.7s] D14 (b) recorded path map ON: files under today's engine folder are hashed under the run's recorded engine folder (C:\Users\~\Desktop\data set for reserch paper\engine)
+[2026-11-13 19:00:35 +    3.1s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-13 19:00:35 +    3.3s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-13 19:00:35 +    3.3s] decision at lead 0 (read from the run): arcsine_corrector_gls at level 100.0 ratio 1.0; kept value is this arm
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] package fire version 0.1.0, fingerprint 18c7bbb8634cf591
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] listed in every report (keep_unreviewed / watch): grace_lwe, spi_12m, spi_24m, tslf_months, tslf_censored, n_burns_60mo, V06_spei_12m_lag12, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-13 19:00:36 +    4.4s] engine| [19:00:36] groups: 40 in the data, 40 after exclusions; this run: 40 (headline)
+[2026-11-13 19:00:43 +   11.7s] engine| [19:00:43] preflight: 236636220 target rows in 840 files, streamed (one file of at most 1033152 rows at once, ~925737 units x 252 steps of counters); census RAM estimate 3.03 GiB: go
+[2026-11-13 19:00:43 +   11.7s] engine| [19:00:43] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4000 units x 252 steps: 0.11 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 252 steps, 145 frame columns, beside the biggest driver file of the biggest group in flight: 5.21 GiB) beside the census (3.03 GiB): 8.35 GiB in all, 8.11 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-13 19:00:43 +   11.7s] engine steps load..preflight in 8.2 s
+[2026-11-13 19:00:43 +   11.7s] gate E0_ram_preflight: PASS {'engine_warning': [" GiB) beside the census (3.03 GiB): 8.35 GiB in all, 8.11 GiB available now; WARNING: at the per-unit kind this run will be refused after the census (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)"], 'ignored': True, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-
+[2026-11-13 19:00:43 +   11.7s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['30b298a937307eba', '30b298a937307eba'], 'target_files_sha256': ['8f67233c6628cc8c', '8f67233c6628cc8c'], 'p
+[2026-11-13 19:00:44 +   12.0s] gate E3m_recorded_path_map: PASS {'files': [{'today': 'C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/fire/data/static/part-0.parquet', 'recorded': 'C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/fire/data/static/part-0.parquet', 'sha256': 'c14b043e82b1afa5348adda1df530f3bc7808f87a72bb3a6e434041792e1badb', 'size': 4300416, 'lock_records': 4, 'locks': ['FREEZE_20261007T130812Z.loc
+[2026-11-13 19:00:44 +   12.3s] engine| [19:00:44] checkpoint: census key 27c3fc0934ffcbfd: no earlier checkpoint of this step; computing
+[2026-11-13 19:00:44 +   12.3s] engine| [19:00:44] preflight: checkpoints of the census (925737 units x 252 steps, estimated) and R30 (40 groups, two derive passes) need about 0.241 GiB under D:\treeroute\analysis\shap_v1\engine_runs\fire\_checkpoints (142.97 GiB free; 0.000 GiB held there now): go
+[2026-11-13 19:03:13 +  161.2s] engine| [19:03:13] census: 200 of 840 files, 50864100 rows, 205155 units
+[2026-11-13 19:05:59 +  327.2s] engine| [19:05:59] census: 400 of 840 files, 111468168 rows, 458974 units
+[2026-11-13 19:07:51 +  439.3s] engine| [19:07:51] census: 600 of 840 files, 150244308 rows, 600960 units
+[2026-11-13 19:10:43 +  611.9s] engine| [19:10:43] census: 800 of 840 files, 210955152 rows, 841623 units
+[2026-11-13 19:11:40 +  668.6s] engine| [19:11:40] checkpoint: census saved through file 840 of 840 (94 chunk(s) saved by this process, 94 in all)
+[2026-11-13 19:14:14 +  822.8s] engine| [19:14:14] census: 233285724 rows, 925737 units, 40 groups, 252 calendar steps (840 files)
+[2026-11-13 19:14:26 +  834.9s] engine| [19:14:26] census: 233285724 rows, 925737 units in 822.8 s (driver key files read 920)
+[2026-11-13 19:23:55 + 1403.1s] engine| [19:23:55] [waiting] room: the separability check's sample column reader (40320 target rows, 145 frame columns, a column reader at its peak, beside one driver file in flight): room after the memory release (gc, working-set trim) (2 checks, 1 s; working-set trim ran): continuing
+[2026-11-13 19:24:38 + 1446.3s] engine| [19:24:38] per-group path: the feature script is group-separable on the sample (4 groups, 40320 rows, 14 feature outputs, 5685120 values compared)
+[2026-11-13 19:24:39 + 1447.1s] engine| [19:24:39] checkpoint: r30 key 09c9a235367153bf: no earlier checkpoint of this step; computing
+[2026-11-13 19:26:20 + 1548.7s] engine| [19:26:20] R30 test-year shares: group alaska_interior_taiga counted (26794 units with a test-year row, 4 blocks)
+[2026-11-13 19:27:35 + 1623.9s] engine| [19:27:35] R30 test-year shares: group amazon_basin_brazil counted (19580 units with a test-year row, 4 blocks)
+[2026-11-13 19:28:35 + 1683.6s] engine| [19:28:35] R30 test-year shares: group angola_zambia_fire_belt counted (16087 units with a test-year row, 3 blocks)
+[2026-11-13 19:29:14 + 1722.8s] engine| [19:29:14] R30 test-year shares: group australian_bushfire_belt counted (10318 units with a test-year row, 2 blocks)
+[2026-11-13 19:29:39 + 1747.6s] engine| [19:29:39] R30 test-year shares: group borneo_peat_fires counted (4845 units with a test-year row, 1 blocks)
+[2026-11-13 19:30:38 + 1806.2s] engine| [19:30:38] R30 test-year shares: group california_chaparral counted (12969 units with a test-year row, 3 blocks)
+[2026-11-13 19:32:43 + 1931.4s] engine| [19:32:43] R30 test-year shares: group canadian_prairies counted (29860 units with a test-year row, 5 blocks)
+[2026-11-13 19:38:32 + 2280.8s] engine| [19:38:32] R30 test-year shares: group canadian_taiga counted (70720 units with a test-year row, 11 blocks)
+[2026-11-13 19:39:04 + 2313.0s] engine| [19:39:04] R30 test-year shares: group cape_floristic_region counted (7024 units with a test-year row, 2 blocks)
+[2026-11-13 19:39:37 + 2345.0s] engine| [19:39:37] R30 test-year shares: group central_chile counted (6958 units with a test-year row, 2 blocks)
+[2026-11-13 19:42:22 + 2511.0s] engine| [19:42:22] R30 test-year shares: group cerrado counted (38844 units with a test-year row, 6 blocks)
+[2026-11-13 19:43:29 + 2577.4s] engine| [19:43:29] R30 test-year shares: group congo_basin_drc counted (15680 units with a test-year row, 3 blocks)
+[2026-11-13 19:44:36 + 2644.9s] engine| [19:44:36] R30 test-year shares: group east_african_savanna counted (15664 units with a test-year row, 3 blocks)
+[2026-11-13 19:47:02 + 2790.5s] engine| [19:47:02] R30 test-year shares: group eurasian_steppe counted (34823 units with a test-year row, 6 blocks)
+[2026-11-13 19:49:14 + 2922.5s] engine| [19:49:14] R30 test-year shares: group finnish_lapland counted (31859 units with a test-year row, 6 blocks)
+[2026-11-13 19:50:21 + 2989.6s] engine| [19:50:21] R30 test-year shares: group gobi_desert counted (16014 units with a test-year row, 3 blocks)
+[2026-11-13 19:51:56 + 3084.7s] engine| [19:51:56] R30 test-year shares: group gran_chaco counted (20998 units with a test-year row, 4 blocks)
+[2026-11-13 19:57:10 + 3398.0s] engine| [19:57:10] R30 test-year shares: group great_plains counted (56536 units with a test-year row, 11 blocks)
+[2026-11-13 19:57:48 + 3437.0s] engine| [19:57:48] R30 test-year shares: group greece_mainland counted (5929 units with a test-year row, 2 blocks)
+[2026-11-13 19:59:18 + 3526.6s] engine| [19:59:18] R30 test-year shares: group hulunbuir_grassland counted (17472 units with a test-year row, 4 blocks)
+[2026-11-13 19:59:50 + 3558.3s] engine| [19:59:50] R30 test-year shares: group iberian_wildfire counted (6016 units with a test-year row, 2 blocks)
+[2026-11-13 20:01:01 + 3629.9s] engine| [20:01:01] R30 test-year shares: group kalahari_woodland counted (13871 units with a test-year row, 3 blocks)
+[2026-11-13 20:02:40 + 3728.7s] engine| [20:02:40] R30 test-year shares: group kazakh_steppe counted (22200 units with a test-year row, 5 blocks)
+[2026-11-13 20:04:12 + 3820.1s] engine| [20:04:12] R30 test-year shares: group llanos_venezuela counted (18983 units with a test-year row, 3 blocks)
+[2026-11-13 20:04:43 + 3851.9s] engine| [20:04:43] R30 test-year shares: group mediterranean_andalusia counted (6736 units with a test-year row, 2 blocks)
+[2026-11-13 20:05:35 + 3903.9s] engine| [20:05:35] R30 test-year shares: group miombo_woodland_zambia counted (12180 units with a test-year row, 2 blocks)
+[2026-11-13 20:08:31 + 4079.5s] engine| [20:08:31] R30 test-year shares: group mongolian_steppe counted (41325 units with a test-year row, 7 blocks)
+[2026-11-13 20:09:12 + 4120.9s] engine| [20:09:12] R30 test-year shares: group mopane_woodland counted (9586 units with a test-year row, 2 blocks)
+[2026-11-13 20:10:00 + 4168.4s] engine| [20:10:00] R30 test-year shares: group new_guinea_papua counted (11089 units with a test-year row, 2 blocks)
+[2026-11-13 20:10:37 + 4206.0s] engine| [20:10:37] R30 test-year shares: group north_algeria_tell_atlas counted (8294 units with a test-year row, 2 blocks)
+[2026-11-13 20:11:14 + 4242.4s] engine| [20:11:14] R30 test-year shares: group northern_australia_monsoon counted (8074 units with a test-year row, 2 blocks)
+[2026-11-13 20:12:09 + 4298.0s] engine| [20:12:09] R30 test-year shares: group northern_australia_woodland counted (12876 units with a test-year row, 2 blocks)
+[2026-11-13 20:13:43 + 4391.5s] engine| [20:13:43] R30 test-year shares: group russian_far_east_primorye counted (21951 units with a test-year row, 4 blocks)
+[2026-11-13 20:15:42 + 4510.7s] engine| [20:15:42] R30 test-year shares: group sahel counted (29373 units with a test-year row, 5 blocks)
+[2026-11-13 20:18:08 + 4656.2s] engine| [20:18:08] R30 test-year shares: group scandinavian_taiga counted (34373 units with a test-year row, 6 blocks)
+[2026-11-13 20:24:09 + 5017.3s] engine| [20:24:09] R30 test-year shares: group siberian_taiga counted (79278 units with a test-year row, 12 blocks)
+[2026-11-13 20:25:58 + 5126.8s] engine| [20:25:58] R30 test-year shares: group southern_african_savanna counted (25511 units with a test-year row, 4 blocks)
+[2026-11-13 20:27:05 + 5193.3s] engine| [20:27:05] R30 test-year shares: group sudanian_acacia counted (15960 units with a test-year row, 3 blocks)
+[2026-11-13 20:27:28 + 5216.3s] engine| [20:27:28] R30 test-year shares: group thar_desert counted (4973 units with a test-year row, 1 blocks)
+[2026-11-13 20:33:51 + 5599.5s] engine| [20:33:51] R30 test-year shares: group yakutia_larch counted (84114 units with a test-year row, 13 blocks)
+[2026-11-13 20:33:51 + 5599.9s] engine| [20:33:51] checkpoint: R30: 0 of 40 groups loaded from checkpoint, 40 counted and saved (r30 key 09c9a235367153bf)
+[2026-11-13 20:33:51 + 5599.9s] engine| [20:33:51] R30 test-year shares: {'first_test_step': 24229, 's_fill': 24226, 'first_step': 24189, 'binding': ['spei_24m_lag12'], 'first_year': 2015, 'min_coord': 24180, 'seconds': 4153.4, 'blocks': 167, 'units': 925737, 'rows_read': 88870752, 'target_files_read': 1336, 'driver_files_read': 1670, 'checked_rows': 192000}
+[2026-11-13 20:43:12 + 6160.9s] engine| [20:43:12] checkpoint: r30 key 59a43ee9173779c3: no earlier checkpoint of this step; computing
+[2026-11-13 20:50:56 + 6624.6s] engine| [20:50:56] checkpoint: R30: 0 of 40 groups loaded from checkpoint, 40 counted and saved (r30 key 59a43ee9173779c3)
+[2026-11-13 20:50:56 + 6624.8s] engine| [20:50:56] per-group column readers: 40 groups, the largest yakutia_larch with 25200 picked rows (5.21 GiB at its reader's peak); feature script: group-separable on the sample
+[2026-11-13 20:50:56 + 6624.8s] engine| [20:50:56] picked units' rows read again: 1008000 rows of 4000 units (of 233285724 census rows); R30 test-year shares: the count already made for this lag map and these test years (same rows) {'first_test_step': 24229, 's_fill': 24226, 'first_step': 24189, 'binding': ['spei_24m_lag12'], 'first_year': 2015, 'min_coord': 24180, 'seconds': 4153.4, 'blocks': 167, 'units': 925737, 'rows_read': 88870752, 'target_files_read': 1336, 'driver_files_read': 1670, 'checked_rows': 192000}
+[2026-11-13 20:50:59 + 6627.5s] engine| [20:50:59] last value (J2d, C18.last_value_max_months = 2 months = 2 steps), 1008000 rows, 125 tree features: 176926 rows filled in 9 columns (most: grace_lwe 96000, epo 80000, spi_01m 472, spi_03m 237, spei_01m_lag12 152); left to R30: 44000 in gaps longer than the maximum, 1502430 before a unit's first value, 106 after its last
+[2026-11-13 20:50:59 + 6627.5s] engine| [20:50:59] derive_all: 33 entries in 5792.7 s; router per_unit; overlap blocks 39 for 40 groups
+[2026-11-13 20:51:01 + 6629.9s] engine| [20:51:01] plan check: no plan folder of this package; this run's derived.json is its own
+[2026-11-13 20:51:01 + 6630.0s] engine| [20:51:01] run folder D:\treeroute\analysis\shap_v1\engine_runs\fire\headline\20261113_869d1f38 (new)
+[2026-11-13 20:51:05 + 6633.4s] engine| [20:51:05] census released after derive (233285724 rows, 925737 units): the per-group run reads the picked rows only
+[2026-11-13 20:51:05 + 6633.4s] engine| [20:51:05] preflight: temp disk under the per-group schedule 1.69 GiB at its peak (pools 0.50 GiB; one lead's pools 0.50 GiB; the largest group yakutia_larch's tables 0.35 GiB a kind: 1.05 GiB in the nowcast, 0.70 GiB at a lead): go
+[2026-11-13 20:51:05 + 6633.4s] engine steps load..temp in 6629.9 s; rebuild run folder D:\treeroute\analysis\shap_v1\engine_runs\fire\headline\20261113_869d1f38
+[2026-11-13 20:51:05 + 6633.4s] gate E3_inputs: PASS {'package': '18c7bbb8634cf591', 'derived': '57475923290ae19c', 'fingerprint': '869d1f38524d4b4c', 'manifest_fingerprint': '869d1f38524d4b4c', 'config_keys_differing': []}
+[2026-11-13 20:51:39 + 6667.8s] engine| [20:51:39] pool: 960000 grid rows (4000 units x 240 steps), 131 tree columns (6 history), 2 context
+[2026-11-13 20:59:33 + 7141.9s] engine| [20:59:33] pool: 960000 rows x 131 tree columns, 2 context columns (filled group by group: 40 groups)
+[2026-11-13 20:59:33 + 7141.9s] pool built in 508.5 s
+[2026-11-13 20:59:34 + 7142.1s] engine| [20:59:34] checkpoint: bank key f311a3963c880c62: no earlier checkpoint of this step; computing
+[2026-11-13 21:06:21 + 7549.2s] engine| [21:06:21] checkpoint: bank fit-cut (cut 24228, lead 0): 0 of 40 groups loaded, 40 fitted (folder bank-f311a3963c880c62)
+[2026-11-13 21:06:21 + 7549.2s] engine| [21:06:21] fit-cut bank: 4000 trees, fingerprint 3a61b08172eb9ca8, rows at or before 24228 (max label step 24227)
+[2026-11-13 21:06:21 + 7549.9s] engine| [21:06:21] GLS weight model (R25): memory given back before the donor matrix (gc: 50 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\analysis\shap_v1\engine_tmp\treeroute_run_869d1f38_20712
+[2026-11-13 21:09:13 + 7721.3s] engine| [21:09:13] GLS weight model (R25): memory given back before the forest's fit (gc: 0 objects; working-set trim ran)
+[2026-11-13 21:10:20 + 7788.8s] bank and fits of lead 0 in 646.9 s
+[2026-11-13 21:10:21 + 7789.1s] gate E4_donor_rows: PASS {'rows': [751508, 751508], 'row_key_hash': ['90c216b4d73c575d', '90c216b4d73c575d']}
+[2026-11-13 21:10:21 + 7789.1s] gate E5_bank_fingerprint: FAIL {'rebuilt': '3a61b08172eb9ca8a7476b5c18b7c8bd76b1dc291289a89133f5ea36c65b368d', 'run': '1c960dc06e125612fbf5f15272313680f7829b67785cdd29b3a8f87cf87e8014', 'trees': 4000, 'role': 'informational, cause not established (answers decide: E5a, E8, E10)'}
+[2026-11-13 21:10:21 + 7789.1s] gate E6_c_and_tolerances: PASS {'c': [0.012987012987012988, 0.012987012987012988]}
+[2026-11-13 21:10:21 + 7789.1s] gate E7_gls_weight_model: PASS {'rebuilt': 'D:\\treeroute\\analysis\\shap_v1\\engine_runs\\fire\\headline\\20261113_869d1f38\\gls_weight_model.json', 'run': 'D:\\treeroute\\runs\\fire\\headline\\20261017_869d1f38\\gls_weight_model.json'}
+[2026-11-13 21:10:21 + 7789.2s] bank exported: 4000 trees, 4000 correctors (corrector), 0.1 s
+[2026-11-13 21:10:21 + 7790.0s] engine| [21:10:21] test pass: G1: all 375775 router fit rows of 2000 units have their context; none left out
+[2026-11-13 21:11:43 + 7871.5s] per_unit pass: 96000 score rows, 280 units / 0 regions solved in 82.1 s
+[2026-11-13 21:11:43 + 7871.6s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 280, 'fits_whose_X_b_differs_from_the_kernel': 0, 'region_proof': None}
+[2026-11-13 21:11:44 + 7872.0s] engine| [21:11:44] test pass: G1: all 375775 router fit rows of 2000 units have their context; none left out
+[2026-11-13 21:13:03 + 7951.1s] gate E5a_identity_twin: PASS {'arm': 'identity_corrector_gls', 'rows_checked': 13440, 'units': 280, 'pre_bit_equal': 13440, 'arm_bit_equal': 13440, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'max_rel_arm': 0.0, 'max_ulps_pre': 0, 'max_ulps_arm': 0, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': True}
+[2026-11-13 21:13:03 + 7951.1s] gate E8_predictions: PASS {'arm': 'arcsine_corrector_gls', 'rows_checked': 13440, 'units': 280, 'pre_bit_equal': 13056, 'arm_bit_equal': 13056, 'same_nan': True, 'max_abs_pre': 4.996003610813204e-16, 'max_rel_pre': 2.3560131176637307e-13, 'max_rel_arm': 2.3560131176637307e-13, 'max_ulps_pre': 1679, 'max_ulps_arm': 1679, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': False, 'tolerance_rule'
+[2026-11-13 21:13:03 + 7951.8s] gate E10_exported_trees: PASS {'unit': 'alaska_interior_taiga_-4036_2275', 'rows_x_trees': [215, 3900]}
+[2026-11-13 21:13:03 + 7952.0s] routers saved: 280 units, 65849 rows (fit and test), 4 linear columns
+[2026-11-13 21:13:04 + 7952.1s] lead 0 rebuilt in 810.2 s (peak 8.47 GB)
+[2026-11-13 21:13:04 + 7952.3s] rebuild fire leads [0] finished in 7950.7 s (peak 8.47 GB)

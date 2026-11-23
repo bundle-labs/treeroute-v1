@@ -1,0 +1,20 @@
+G2 {'scored_rows': 94527, 'chosen_test_mae': 0.03146059686292063, 'verdict': 0.03146059686292064, 'rel_diff': 2.205582409685745e-16, 'pass': True}
+orig 0.0314606 band 0.000597471
+T                    0.0314830  d=+2.237e-05  d/band=+0.0374  HURTS    differ=94522
+M1                   0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M2                   0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M3                   0.0314608  d=+1.549e-07  d/band=+0.0003  HURTS    differ=94518
+M4                   0.0314445  d=-1.610e-05  d/band=-0.0270  HELPS    differ=94527
+M5raw                0.0314549  d=-5.733e-06  d/band=-0.0096  HELPS    differ=94527
+M5                   0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M5_placebo           0.0314830  d=+2.237e-05  d/band=+0.0374  HURTS    differ=94522
+M5_placebo_gated     0.0314830  d=+2.237e-05  d/band=+0.0374  HURTS    differ=94522
+M6_ungated           0.0314518  d=-8.804e-06  d/band=-0.0147  HELPS    differ=53548
+M6s_ungated          0.0314595  d=-1.096e-06  d/band=-0.0018  HELPS    differ=94518
+M6                   0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M6s                  0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M6_placebo           0.0314789  d=+1.832e-05  d/band=+0.0307  HURTS    differ=63580
+M6s_placebo          0.0314608  d=+2.081e-07  d/band=+0.0003  HURTS    differ=94519
+M6_placebo_gated     0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+M6s_placebo_gated    0.0314606  d=-6.939e-18  d/band=-0.0000  SAME     differ=0
+sanity {'alarm_ratio': 1.1944086219169325, 'alarm_ratio_part603': 1.19, 'M3_mae': 0.03146075173833092, 'M3_part603': 0.0314608} runtime 0.4s

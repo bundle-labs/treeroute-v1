@@ -1,0 +1,2138 @@
+{
+ "R1": {
+  "flags": [],
+  "input_hashes": {
+   "package_units": "a512db2741cd20693e4b16f19891e72b9ff12cead72761fc5e92d2aaf34740c1",
+   "repeat_visit_units": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+   "rows": "68519a9eca55c68c72658a2a1716aac3788c289859d46d6f5c3f14760fa37c9e",
+   "rule": "2866b09dadf3a1401e248eae16ed3f0b0cf8c5714035748fbc7f30236e7e4823"
+  },
+  "inputs": {
+   "package_units": 160,
+   "repeat_visit_units": 8,
+   "rows": 172,
+   "rule": "declared by the table option (ruling U1): a table's rows are events (irregular dates per unit)"
+  },
+  "margins": {},
+  "rule_id": "R1",
+  "value": {
+   "composite_days": null,
+   "composites_per_year": null,
+   "kind": "irregular",
+   "length": null,
+   "unit": null
+  }
+ },
+ "R10": {
+  "flags": [],
+  "input_hashes": {
+   "before_rounding": "40ed2527417b63f6f50b466da2bd7db0f11041a5234ca172c712d31c7a92a365",
+   "constants": "6db8f19fb2dc142c6a7a7b4ceb84b49ec999b0884cb9c9e68a09f8799aa825d9",
+   "is_events": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+   "season_key": "b0c58fe9dc54ab984cfb30f490fd0349df144b0da82f03e440ed629d208cc110",
+   "steps_per_year": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+  },
+  "inputs": {
+   "before_rounding": {
+    "12": "1461/4",
+    "6": "1461/8"
+   },
+   "constants": {
+    "C6.days_per_year": 365.25,
+    "C6.lead_months": [
+     6,
+     12
+    ],
+    "C6.lead_rounding": "half_up",
+    "C6.lead_zero_contract": true,
+    "C6.months_per_year": 12
+   },
+   "is_events": true,
+   "season_key": "event_month",
+   "steps_per_year": null
+  },
+  "margins": {},
+  "rule_id": "R10",
+  "value": {
+   "contract_lead_zero": true,
+   "lead_unit": "days",
+   "leads": [
+    183,
+    365
+   ],
+   "merged": {},
+   "not_supplied": [],
+   "requested_months": [
+    6,
+    12
+   ]
+  }
+ },
+ "R11": {
+  "flags": [],
+  "input_hashes": {
+   "lead_unit": "15ab0356a25e08eb0d93e4658961021125228d88b28c2fc71c97575f97d1f292",
+   "leads": "e60bd8d98bb8037198ee25482f45c99a9034f45c78ec51f8b2fc0cb3811c6faf",
+   "target_cadence": "836b872c7892b9607a1b08938947fbc5d5d6819f042b68a873337470eed8f5d4",
+   "windows": "4d41ac51a7e256647f00e715b7faa18ecca277e4ad28db0608df55c61943b369"
+  },
+  "inputs": {
+   "lead_unit": "days",
+   "leads": [
+    183,
+    365
+   ],
+   "target_cadence": {
+    "kind": "irregular"
+   },
+   "windows": {
+    "inner_fit": [
+     2000,
+     2004
+    ],
+    "inner_score": [
+     2005,
+     2006,
+     2007
+    ],
+    "test_years": [
+     2008,
+     2009,
+     2010,
+     2011
+    ],
+    "train_end": 2007,
+    "y0": 2000,
+    "y_end": 2011
+   }
+  },
+  "margins": {},
+  "rule_id": "R11",
+  "value": {
+   "0": {
+    "fit_cut": 733041,
+    "guard_cut": 731946,
+    "lead": 0,
+    "lead_unit": "days"
+   },
+   "183": {
+    "fit_cut": 732859,
+    "guard_cut": 731764,
+    "lead": 183,
+    "lead_unit": "days"
+   },
+   "365": {
+    "fit_cut": 732677,
+    "guard_cut": 731582,
+    "lead": 365,
+    "lead_unit": "days"
+   }
+  }
+ },
+ "R12": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "bd72609fd9f43fbc5ffceeb339db78a738ffefc92b2dc8669e10d0740f52e43a",
+   "count_quantiles": "1321b0cc73670034089d52d34ea6c1e410500ebf54c0c519ad0d133921d18454",
+   "fallback_share": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+   "fallback_units": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+   "h": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6",
+   "median_method": "4fe0de3381e4cabe9a271c8bf74fcd50eba9635ee4038e3cac94165e704995d5",
+   "units": "9bdb2af6799204a299c603994b8e400e4b1fd625efdb74066cc869fee42c9df3",
+   "units_scope": "23897f237fec72ff47f80c5a8982002b14e582db1a56f373b30a5e94f7335ec6",
+   "valid_rows_per_unit": "66cd3e11d05b20144d65757e9fb560c90eb299973e0a467d7396818df53fc592"
+  },
+  "inputs": {
+   "constants": {
+    "C10.fallback_flag_share": 0.05,
+    "C5.per_unit_min_valid_rows": 24,
+    "C5.region_min_valid_rows": 2
+   },
+   "count_quantiles": {
+    "max": 2.0,
+    "median": 1.0,
+    "min": 0.0,
+    "q25": 0.0,
+    "q75": 1.0
+   },
+   "fallback_share": null,
+   "fallback_units": null,
+   "h": 1.0,
+   "median_method": "numpy median (midpoint of an even count, D10)",
+   "units": 110,
+   "units_scope": "every candidate unit of every group (D9, LORO)"
+  },
+  "margins": {
+   "C5.per_unit_min_valid_rows": -23.0,
+   "C5.region_min_valid_rows": -1.0
+  },
+  "rule_id": "R12",
+  "value": "neighbour"
+ },
+ "R13": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "9efc4320c0edf96022a4f204eaf5cfd0de9453b3bd0fd9fce2896d5688ada1e1",
+   "groups": "a48c9c6746c54f59d4ace19e1252dc863f9fddf5ce8e1038ece1776506071628",
+   "kind": "9f09d881e05113da039a0c61fbfd2cc7ca46bc64b67faba640b003741e7395c3"
+  },
+  "inputs": {
+   "constants": {
+    "C15.min_groups": 3,
+    "C8.neighbour_folds_leave_one_group_out": true
+   },
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "kind": "neighbour"
+  },
+  "margins": {},
+  "rule_id": "R13",
+  "value": [
+   "leave_one_group_out",
+   [
+    [
+     "g_a"
+    ],
+    [
+     "g_b"
+    ],
+    [
+     "g_c"
+    ],
+    [
+     "g_d"
+    ]
+   ]
+  ]
+ },
+ "R14": {
+  "flags": [],
+  "input_hashes": {
+   "base_point": "017e9c1ad8711e88279cc95cc979ae39c5eaa5b492c4865cfe32e09831b6d7b4",
+   "constants": "eb01e13f1bb552182d8fc83530dbb186b28418a1b31c620af97bfb1bc9dd1768",
+   "context_columns": "b654872dcb4aabf48a504f1cb877931dc4727cd15639657a6faddc3ba67c42b6",
+   "grid_points": "9f14025af0065b30e47e23ebb3b491d39ae8ed17d33739e5ff3827ffb3634953",
+   "kind": "9f09d881e05113da039a0c61fbfd2cc7ca46bc64b67faba640b003741e7395c3"
+  },
+  "inputs": {
+   "base_point": {
+    "level": 1.0,
+    "ratio": 0.5
+   },
+   "constants": {
+    "C12.neighbour_context_centre": 0.25,
+    "C12.neighbour_trees_centre": 0.5,
+    "C12.penalty_levels": [
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     10.0,
+     30.0,
+     100.0
+    ],
+    "C12.penalty_ratios": [
+     0.0625,
+     0.125,
+     0.25,
+     0.5,
+     1.0
+    ]
+   },
+   "context_columns": [
+    "c_season",
+    "c_aux"
+   ],
+   "grid_points": 35,
+   "kind": "neighbour"
+  },
+  "margins": {},
+  "rule_id": "R14",
+  "value": {
+   "centre": [
+    0.5,
+    0.25
+   ],
+   "columns": [
+    "intercept",
+    "context",
+    "trees"
+   ],
+   "fit_row_cap": null,
+   "grid": [
+    {
+     "level": 0.1,
+     "ratio": 0.0625
+    },
+    {
+     "level": 0.1,
+     "ratio": 0.125
+    },
+    {
+     "level": 0.1,
+     "ratio": 0.25
+    },
+    {
+     "level": 0.1,
+     "ratio": 0.5
+    },
+    {
+     "level": 0.1,
+     "ratio": 1.0
+    },
+    {
+     "level": 0.3,
+     "ratio": 0.0625
+    },
+    {
+     "level": 0.3,
+     "ratio": 0.125
+    },
+    {
+     "level": 0.3,
+     "ratio": 0.25
+    },
+    {
+     "level": 0.3,
+     "ratio": 0.5
+    },
+    {
+     "level": 0.3,
+     "ratio": 1.0
+    },
+    {
+     "level": 1.0,
+     "ratio": 0.0625
+    },
+    {
+     "level": 1.0,
+     "ratio": 0.125
+    },
+    {
+     "level": 1.0,
+     "ratio": 0.25
+    },
+    {
+     "level": 1.0,
+     "ratio": 0.5
+    },
+    {
+     "level": 1.0,
+     "ratio": 1.0
+    },
+    {
+     "level": 3.0,
+     "ratio": 0.0625
+    },
+    {
+     "level": 3.0,
+     "ratio": 0.125
+    },
+    {
+     "level": 3.0,
+     "ratio": 0.25
+    },
+    {
+     "level": 3.0,
+     "ratio": 0.5
+    },
+    {
+     "level": 3.0,
+     "ratio": 1.0
+    },
+    {
+     "level": 10.0,
+     "ratio": 0.0625
+    },
+    {
+     "level": 10.0,
+     "ratio": 0.125
+    },
+    {
+     "level": 10.0,
+     "ratio": 0.25
+    },
+    {
+     "level": 10.0,
+     "ratio": 0.5
+    },
+    {
+     "level": 10.0,
+     "ratio": 1.0
+    },
+    {
+     "level": 30.0,
+     "ratio": 0.0625
+    },
+    {
+     "level": 30.0,
+     "ratio": 0.125
+    },
+    {
+     "level": 30.0,
+     "ratio": 0.25
+    },
+    {
+     "level": 30.0,
+     "ratio": 0.5
+    },
+    {
+     "level": 30.0,
+     "ratio": 1.0
+    },
+    {
+     "level": 100.0,
+     "ratio": 0.0625
+    },
+    {
+     "level": 100.0,
+     "ratio": 0.125
+    },
+    {
+     "level": 100.0,
+     "ratio": 0.25
+    },
+    {
+     "level": 100.0,
+     "ratio": 0.5
+    },
+    {
+     "level": 100.0,
+     "ratio": 1.0
+    }
+   ],
+   "kind": "neighbour",
+   "unpenalised": [
+    "intercept"
+   ]
+  }
+ },
+ "R14:overlap_blocks": {
+  "flags": [],
+  "input_hashes": {
+   "link_rule": "3631a7f3a1f9827cd06183e5987791a80b797dfe1a11b78cfb15471c833cb3f2",
+   "linked_pairs": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "n_blocks": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+   "n_units": "a512db2741cd20693e4b16f19891e72b9ff12cead72761fc5e92d2aaf34740c1",
+   "spacing_radians": "538bffebdec6e0289c2a35ebf1797437a9cd4f65a2fe9ce4a741b9bf00b9be44",
+   "unit_group": "89ed85feaa5740ae91b17531e6a1a8cf3d2a828d4251f47fc9300b608417d4d9",
+   "unit_lat": "1db110ec7d2323ac99dcc3af32ef211abdb4f597f28d293b7e379455c66817c0",
+   "unit_lon": "e32aaab1cafee7bf7c08f0ade0966bfd5fcd053252e35e83d8d2c920c51af370",
+   "units_by_group": "740467e03b505244fe08d884bbc470022d5be4f18e7e597e9c9fa40735918ae9"
+  },
+  "inputs": {
+   "link_rule": {
+    "linked_when": "great-circle distance at most sqrt(2) x the larger of the two groups' median nearest-unit spacing",
+    "rule": "spacing"
+   },
+   "linked_pairs": [],
+   "n_blocks": 4,
+   "n_units": 160,
+   "spacing_radians": {
+    "g_a": 0.0042849524485023705,
+    "g_b": 0.004284520827197835,
+    "g_c": 0.0032962781948129597,
+    "g_d": 0.003294780850231162
+   },
+   "units_by_group": {
+    "g_a": 40,
+    "g_b": 40,
+    "g_c": 40,
+    "g_d": 40
+   }
+  },
+  "margins": {},
+  "rule_id": "R14",
+  "value": {
+   "block_of_group": {
+    "g_a": 0,
+    "g_b": 1,
+    "g_c": 2,
+    "g_d": 3
+   },
+   "link_rule": "spacing",
+   "linked_pairs": [],
+   "members": [
+    [
+     "g_a"
+    ],
+    [
+     "g_b"
+    ],
+    [
+     "g_c"
+    ],
+    [
+     "g_d"
+    ]
+   ]
+  }
+ },
+ "R17": {
+  "flags": [],
+  "input_hashes": {
+   "kind": "9f09d881e05113da039a0c61fbfd2cc7ca46bc64b67faba640b003741e7395c3",
+   "rule": "13f60d44fe5be2ab7ad554c1a178742e916402b4b9c2ffc1ccb7ff8c0246fe05"
+  },
+  "inputs": {
+   "kind": "neighbour",
+   "rule": "empty for the neighbour kind"
+  },
+  "margins": {},
+  "rule_id": "R17",
+  "value": {
+   "all_history_mean": false,
+   "columns": [],
+   "dropped_duplicates": [],
+   "last_values": 0,
+   "start_offset_steps": 0,
+   "trailing_days": [],
+   "trailing_steps": []
+  }
+ },
+ "R18:donor_only": {
+  "flags": [],
+  "input_hashes": {
+   "count_rule": "a5128b006f6e91890afed7e3e3d8ee3c1d3d0f49bcc246bb9653aae8461f35df",
+   "donor_only_groups": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "groups": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+   "min_groups": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+   "rule": "db8fe1bedae427670bf92488a4510bbe4f90d0267c05570c6500d690c4ec616f",
+   "scored_groups": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+   "surface_rows": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "surface_window": "8156cd7c646f8cb504cabd6662c5d3b1f9977551a2700c6b32612d6fe7b67c12",
+   "train_rows": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  "inputs": {
+   "count_rule": "rows with a valid label; surface rows before owner ruling S1 (the run records S1 per pass)",
+   "donor_only_groups": 0,
+   "groups": 4,
+   "min_groups": 3,
+   "rule": "V6 b (PLAN_V6B.md 2): a run group that has rows but no test-marked row is donor-only: its rows are bank rows (its trees enter every bank), its train rows are donor rows (every pool, c, median, tolerance and GLS model) and its inner-score rows are decision-surface rows of its own fold (R13); nothing is scored or reported for it",
+   "scored_groups": 4,
+   "surface_rows": {},
+   "surface_window": [
+    731947,
+    733041
+   ],
+   "train_rows": {}
+  },
+  "margins": {},
+  "rule_id": "R18",
+  "value": []
+ },
+ "R18:groups": {
+  "flags": [],
+  "input_hashes": {
+   "data_groups": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+   "design": "31c42a8066fdcc835fa0b9c53610ccc3cd2ee7193f8fb2f4ee3ecf619fa5be80",
+   "excluded": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "seen_during_design": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "inputs": {
+   "data_groups": 4,
+   "design": "leave one region out: every group trains its own trees and is tested; a group with no test row trains and lends rows; nothing is scored for it",
+   "excluded": {},
+   "seen_during_design": []
+  },
+  "margins": {},
+  "rule_id": "R18",
+  "value": [
+   "g_a",
+   "g_b",
+   "g_c",
+   "g_d"
+  ]
+ },
+ "R18:units": {
+  "flags": [],
+  "input_hashes": {
+   "bank_units_hash": "46d2cebefb13b055d4324768d178cc6c7f60217765aa6fe496dfb2d4d368a7f1",
+   "rule": "329f16e0f4e44163428afff924f13243330311975e917ff40665dfcacb866c25",
+   "scored_units_hash": "4c10595cc114124723feb48070cfacf7fb85ce8c922641fa307ac76790d06132"
+  },
+  "inputs": {
+   "bank_units_hash": {
+    "g_a": "e016b7c95a8f7cc61c741a24e08caffb24c0189aaf414863927b9a8362a787ab",
+    "g_b": "e87a34157743580611961ef2bb695ce6b76cd8f277460973d4c9d0723c8f3e31",
+    "g_c": "7a0125eb7c1567171180a6c2b49b34c0e8e0c9f320b45ee03e818a667745ef52",
+    "g_d": "08c5635015598a45f1ddaebb7b8f0b8ee9c11946a7caa703d89dfc5a658e36d5"
+   },
+   "rule": "U1: the package marks train and test (bank = every row of the group, scored = its test-marked rows); a group with no test-marked row is donor-only: scored = ()",
+   "scored_units_hash": {
+    "g_a": "93739102d7e5e96a1f68b0d97dc6f867124eeee94b55cfbbcb2264789d95df71",
+    "g_b": "17e39ca33ad3c0376b176d47ce59172c9440954c042749200bf9c11163a49c42",
+    "g_c": "c8184f2a77deb5d618a077f2675d60fe7b722e3b5911dd9b67c68e3812e5bb74",
+    "g_d": "facef10197df85791eadb6170580b92f6c3c7dece3fe51d0805e13a8674e35f3"
+   }
+  },
+  "margins": {},
+  "rule_id": "R18",
+  "value": {
+   "bank": {
+    "g_a": [
+     "r0000",
+     "r0001",
+     "r0002",
+     "r0003",
+     "r0004",
+     "r0005",
+     "r0006",
+     "r0007",
+     "r0008",
+     "r0009",
+     "r0010",
+     "r0011",
+     "r0012",
+     "r0013",
+     "r0014",
+     "r0015",
+     "r0016",
+     "r0017",
+     "r0018",
+     "r0019",
+     "r0020",
+     "r0021",
+     "r0022",
+     "r0023",
+     "r0024",
+     "r0025",
+     "r0026",
+     "r0027",
+     "r0028",
+     "r0029",
+     "r0030",
+     "r0031",
+     "r0032",
+     "r0033",
+     "r0034",
+     "r0035",
+     "r0036",
+     "r0037",
+     "r0038",
+     "r0039",
+     "r0040",
+     "r0041",
+     "r0042"
+    ],
+    "g_b": [
+     "r0053",
+     "r0054",
+     "r0055",
+     "r0056",
+     "r0057",
+     "r0058",
+     "r0059",
+     "r0060",
+     "r0061",
+     "r0062",
+     "r0063",
+     "r0064",
+     "r0065",
+     "r0066",
+     "r0067",
+     "r0068",
+     "r0069",
+     "r0070",
+     "r0071",
+     "r0072",
+     "r0073",
+     "r0074",
+     "r0075",
+     "r0076",
+     "r0077",
+     "r0078",
+     "r0079",
+     "r0080",
+     "r0081",
+     "r0082",
+     "r0083",
+     "r0084",
+     "r0085",
+     "r0086",
+     "r0087",
+     "r0088",
+     "r0089",
+     "r0090",
+     "r0091",
+     "r0092",
+     "r0093",
+     "r0094",
+     "r0095"
+    ],
+    "g_c": [
+     "r0106",
+     "r0107",
+     "r0108",
+     "r0109",
+     "r0110",
+     "r0111",
+     "r0112",
+     "r0113",
+     "r0114",
+     "r0115",
+     "r0116",
+     "r0117",
+     "r0118",
+     "r0119",
+     "r0120",
+     "r0121",
+     "r0122",
+     "r0123",
+     "r0124",
+     "r0125",
+     "r0126",
+     "r0127",
+     "r0128",
+     "r0129",
+     "r0130",
+     "r0131",
+     "r0132",
+     "r0133",
+     "r0134",
+     "r0135",
+     "r0136",
+     "r0137",
+     "r0138",
+     "r0139",
+     "r0140",
+     "r0141",
+     "r0142",
+     "r0143",
+     "r0144",
+     "r0145",
+     "r0146",
+     "r0147",
+     "r0148"
+    ],
+    "g_d": [
+     "r0159",
+     "r0160",
+     "r0161",
+     "r0162",
+     "r0163",
+     "r0164",
+     "r0165",
+     "r0166",
+     "r0167",
+     "r0168",
+     "r0169",
+     "r0170",
+     "r0171",
+     "r0172",
+     "r0173",
+     "r0174",
+     "r0175",
+     "r0176",
+     "r0177",
+     "r0178",
+     "r0179",
+     "r0180",
+     "r0181",
+     "r0182",
+     "r0183",
+     "r0184",
+     "r0185",
+     "r0186",
+     "r0187",
+     "r0188",
+     "r0189",
+     "r0190",
+     "r0191",
+     "r0192",
+     "r0193",
+     "r0194",
+     "r0195",
+     "r0196",
+     "r0197",
+     "r0198",
+     "r0199",
+     "r0200",
+     "r0201"
+    ]
+   },
+   "scored": {
+    "g_a": [
+     "r0004",
+     "r0005",
+     "r0007",
+     "r0010",
+     "r0012",
+     "r0017",
+     "r0019",
+     "r0022",
+     "r0024",
+     "r0029",
+     "r0031",
+     "r0034",
+     "r0036",
+     "r0041"
+    ],
+    "g_b": [
+     "r0057",
+     "r0060",
+     "r0062",
+     "r0067",
+     "r0069",
+     "r0072",
+     "r0074",
+     "r0079",
+     "r0081",
+     "r0084",
+     "r0086",
+     "r0091",
+     "r0093"
+    ],
+    "g_c": [
+     "r0107",
+     "r0110",
+     "r0112",
+     "r0117",
+     "r0119",
+     "r0122",
+     "r0124",
+     "r0129",
+     "r0131",
+     "r0134",
+     "r0136",
+     "r0141",
+     "r0143",
+     "r0146",
+     "r0148"
+    ],
+    "g_d": [
+     "r0160",
+     "r0163",
+     "r0167",
+     "r0169",
+     "r0172",
+     "r0174",
+     "r0179",
+     "r0181",
+     "r0184",
+     "r0186",
+     "r0191",
+     "r0193",
+     "r0196",
+     "r0198"
+    ]
+   }
+  }
+ },
+ "R19": {
+  "flags": [],
+  "input_hashes": {
+   "bank": "ee354fd4c74f6ec18370c39242a2d463292b93aef505d5707ba897689e571ef9",
+   "constants": "4acfb7db744cc1c4e491afcf611c8169131acd66452e93e6f54810d1039e1cab",
+   "donor": "7bfdeb4b8aea2e01f71bc99e107a7e4366d7ad56d0bbb04e4c3e086dc9648047",
+   "donor_row_key_hash": "70f7fc71bccd5be52b522beb51986a754aa08914727a30efdb6ca91f64e1c01b",
+   "smoke": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+  },
+  "inputs": {
+   "bank": "the nowcast bank: rows at or before the train end",
+   "constants": {
+    "C13.bag_fraction": 0.5,
+    "C13.bag_min_rows": 30,
+    "C13.bag_with_replacement": true,
+    "C13.corrector_max_depth": 6,
+    "C13.corrector_min_leaf": 10,
+    "C13.corrector_min_oob_rows": 50,
+    "C13.tree_criterion": "squared_error",
+    "C13.tree_dtype": "float32",
+    "C13.tree_max_depth": 8,
+    "C13.tree_max_features": 0.1,
+    "C13.tree_min_leaf": 5,
+    "C13.trees_per_group": 100
+   },
+   "donor": {
+    "cut": 733041,
+    "cut_kind": "fit",
+    "groups": 4,
+    "lead": 0,
+    "rows": 116,
+    "unit_scope": "picked"
+   },
+   "smoke": false
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "bag_size": {
+    "g_a": 30,
+    "g_b": 30,
+    "g_c": 30,
+    "g_d": 30
+   },
+   "bank_trees": 400,
+   "corrector": {
+    "fit_on": "out-of-bag rows",
+    "max_depth": 6,
+    "min_leaf": 10,
+    "min_oob_rows": 50
+   },
+   "expected_oob_share": {
+    "g_a": 0.3489803736439956,
+    "g_b": 0.3616615134616106,
+    "g_c": 0.3358705956732117,
+    "g_d": 0.3489803736439956
+   },
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "rows_per_group": {
+    "g_a": 29,
+    "g_b": 30,
+    "g_c": 28,
+    "g_d": 29
+   },
+   "seed_formula": "first 4 bytes, big-endian, of SHA-256 of '<group>|<tree number>|<role>' with role bag, tree or corrector (D47; fit.bank.name_seed)",
+   "tree": {
+    "bag_fraction": 0.5,
+    "bag_min_rows": 30,
+    "bag_with_replacement": true,
+    "criterion": "squared_error",
+    "dtype": "float32",
+    "max_depth": 8,
+    "max_features": 0.1,
+    "min_leaf": 5
+   },
+   "trees_per_group": 100
+  }
+ },
+ "R19:inner_cut": {
+  "flags": [],
+  "input_hashes": {
+   "bank": "6fe748d258c8ea03d6fdcf1fbecced52a0d04a9f6d0d678c099f5a12733f7283",
+   "constants": "4f76c28d987c82f40d22fa7558ceb127177541b0efd29933f3c99bc8a9b7e7a8",
+   "donor": "a45b678c552342f06fa6d03df24af9378c641db50324ae43e3948f532d9d1d4a",
+   "donor_row_key_hash": "a0a99260a091f440e4831c9724e4b896b9c6087cb1008e251b4530017bd0cda7",
+   "smoke": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+  },
+  "inputs": {
+   "bank": "the inner-cut bank (L6 b): rows at or before the inner-fit end",
+   "constants": {
+    "A7.inner_cut_bank_refit": true,
+    "C13.bag_fraction": 0.5,
+    "C13.bag_min_rows": 30,
+    "C13.bag_with_replacement": true,
+    "C13.corrector_max_depth": 6,
+    "C13.corrector_min_leaf": 10,
+    "C13.corrector_min_oob_rows": 50,
+    "C13.tree_criterion": "squared_error",
+    "C13.tree_dtype": "float32",
+    "C13.tree_max_depth": 8,
+    "C13.tree_max_features": 0.1,
+    "C13.tree_min_leaf": 5,
+    "C13.trees_per_group": 100
+   },
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "groups": 4,
+    "lead": 0,
+    "rows": 73,
+    "unit_scope": "picked"
+   },
+   "smoke": false
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "bag_size": {
+    "g_a": 30,
+    "g_b": 30,
+    "g_c": 30,
+    "g_d": 30
+   },
+   "bank_trees": 400,
+   "corrector": {
+    "fit_on": "out-of-bag rows",
+    "max_depth": 6,
+    "min_leaf": 10,
+    "min_oob_rows": 50
+   },
+   "expected_oob_share": {
+    "g_a": 0.19750001116520646,
+    "g_b": 0.19750001116520646,
+    "g_c": 0.16223025033191749,
+    "g_d": 0.18000828251137385
+   },
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "rows_per_group": {
+    "g_a": 19,
+    "g_b": 19,
+    "g_c": 17,
+    "g_d": 18
+   },
+   "seed_formula": "first 4 bytes, big-endian, of SHA-256 of '<group>|<tree number>|<role>' with role bag, tree or corrector (D47; fit.bank.name_seed)",
+   "tree": {
+    "bag_fraction": 0.5,
+    "bag_min_rows": 30,
+    "bag_with_replacement": true,
+    "criterion": "squared_error",
+    "dtype": "float32",
+    "max_depth": 8,
+    "max_features": 0.1,
+    "min_leaf": 5
+   },
+   "trees_per_group": 100
+  }
+ },
+ "R19:inner_cut_smoke": {
+  "flags": [],
+  "input_hashes": {
+   "bank": "6fe748d258c8ea03d6fdcf1fbecced52a0d04a9f6d0d678c099f5a12733f7283",
+   "constants": "8981c3cfe4c892298f92585a3c15795d91847f47950266e43bd7b1c72a51b28c",
+   "donor": "a45b678c552342f06fa6d03df24af9378c641db50324ae43e3948f532d9d1d4a",
+   "donor_row_key_hash": "a0a99260a091f440e4831c9724e4b896b9c6087cb1008e251b4530017bd0cda7",
+   "smoke": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+  },
+  "inputs": {
+   "bank": "the inner-cut bank (L6 b): rows at or before the inner-fit end",
+   "constants": {
+    "A7.inner_cut_bank_refit": true,
+    "C13.bag_fraction": 0.5,
+    "C13.bag_min_rows": 30,
+    "C13.bag_with_replacement": true,
+    "C13.corrector_max_depth": 6,
+    "C13.corrector_min_leaf": 10,
+    "C13.corrector_min_oob_rows": 50,
+    "C13.smoke_trees_per_group": 12,
+    "C13.tree_criterion": "squared_error",
+    "C13.tree_dtype": "float32",
+    "C13.tree_max_depth": 8,
+    "C13.tree_max_features": 0.1,
+    "C13.tree_min_leaf": 5
+   },
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "groups": 4,
+    "lead": 0,
+    "rows": 73,
+    "unit_scope": "picked"
+   },
+   "smoke": true
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "bag_size": {
+    "g_a": 30,
+    "g_b": 30,
+    "g_c": 30,
+    "g_d": 30
+   },
+   "bank_trees": 48,
+   "corrector": {
+    "fit_on": "out-of-bag rows",
+    "max_depth": 6,
+    "min_leaf": 10,
+    "min_oob_rows": 50
+   },
+   "expected_oob_share": {
+    "g_a": 0.19750001116520646,
+    "g_b": 0.19750001116520646,
+    "g_c": 0.16223025033191749,
+    "g_d": 0.18000828251137385
+   },
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "rows_per_group": {
+    "g_a": 19,
+    "g_b": 19,
+    "g_c": 17,
+    "g_d": 18
+   },
+   "seed_formula": "first 4 bytes, big-endian, of SHA-256 of '<group>|<tree number>|<role>' with role bag, tree or corrector (D47; fit.bank.name_seed)",
+   "tree": {
+    "bag_fraction": 0.5,
+    "bag_min_rows": 30,
+    "bag_with_replacement": true,
+    "criterion": "squared_error",
+    "dtype": "float32",
+    "max_depth": 8,
+    "max_features": 0.1,
+    "min_leaf": 5
+   },
+   "trees_per_group": 12
+  }
+ },
+ "R19:lead=183:fit": {
+  "flags": [],
+  "input_hashes": {
+   "donor_row_key_hash": "be2fc57b8696dced8d95f0e8decfe3baa1a7bd5872d95e5cd148fa4270e26d24",
+   "rule": "459263ea536f5bbdba1e71f931c359dd5a67371f1896ff072a78b30946b46953"
+  },
+  "inputs": {
+   "rule": "R19's rows per group at this lead's fit cut, from the lead's own rows (O13)"
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "cut": 732859,
+   "cut_kind": "fit",
+   "lead": 183,
+   "rows_per_group": {
+    "g_a": 28,
+    "g_b": 27,
+    "g_c": 27,
+    "g_d": 27
+   }
+  }
+ },
+ "R19:lead=183:guard": {
+  "flags": [],
+  "input_hashes": {
+   "donor_row_key_hash": "beb5fc680eceaba839d78b12e389f421e2a8fa9ae4a9be7962a997d3d08c3173",
+   "rule": "10502a5d9d2e5abe4b7dd1eb3d3b35f3773ea70a194eb65810e6486183563e20"
+  },
+  "inputs": {
+   "rule": "R19's rows per group at this lead's guard cut, from the lead's own rows (O13)"
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "cut": 731764,
+   "cut_kind": "guard",
+   "lead": 183,
+   "rows_per_group": {
+    "g_a": 18,
+    "g_b": 16,
+    "g_c": 16,
+    "g_d": 16
+   }
+  }
+ },
+ "R19:lead=365:fit": {
+  "flags": [],
+  "input_hashes": {
+   "donor_row_key_hash": "c1a8197ef184a3f53756c5c1b73aad16e424916bed9b881ea5ae55901cd56fa3",
+   "rule": "459263ea536f5bbdba1e71f931c359dd5a67371f1896ff072a78b30946b46953"
+  },
+  "inputs": {
+   "rule": "R19's rows per group at this lead's fit cut, from the lead's own rows (O13)"
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "cut": 732677,
+   "cut_kind": "fit",
+   "lead": 365,
+   "rows_per_group": {
+    "g_a": 25,
+    "g_b": 25,
+    "g_c": 23,
+    "g_d": 24
+   }
+  }
+ },
+ "R19:lead=365:guard": {
+  "flags": [],
+  "input_hashes": {
+   "donor_row_key_hash": "dc8569a33ffad4eef23d13d6ef426bc397f5828492c65e3492d1409166f7cb5c",
+   "rule": "10502a5d9d2e5abe4b7dd1eb3d3b35f3773ea70a194eb65810e6486183563e20"
+  },
+  "inputs": {
+   "rule": "R19's rows per group at this lead's guard cut, from the lead's own rows (O13)"
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "cut": 731582,
+   "cut_kind": "guard",
+   "lead": 365,
+   "rows_per_group": {
+    "g_a": 14,
+    "g_b": 14,
+    "g_c": 12,
+    "g_d": 14
+   }
+  }
+ },
+ "R19:smoke": {
+  "flags": [],
+  "input_hashes": {
+   "bank": "ee354fd4c74f6ec18370c39242a2d463292b93aef505d5707ba897689e571ef9",
+   "constants": "a9967a09ece47f19acb642a44a80f6989e10ce502cdcd006e4a4a055eb43ec0b",
+   "donor": "7bfdeb4b8aea2e01f71bc99e107a7e4366d7ad56d0bbb04e4c3e086dc9648047",
+   "donor_row_key_hash": "70f7fc71bccd5be52b522beb51986a754aa08914727a30efdb6ca91f64e1c01b",
+   "smoke": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+  },
+  "inputs": {
+   "bank": "the nowcast bank: rows at or before the train end",
+   "constants": {
+    "C13.bag_fraction": 0.5,
+    "C13.bag_min_rows": 30,
+    "C13.bag_with_replacement": true,
+    "C13.corrector_max_depth": 6,
+    "C13.corrector_min_leaf": 10,
+    "C13.corrector_min_oob_rows": 50,
+    "C13.smoke_trees_per_group": 12,
+    "C13.tree_criterion": "squared_error",
+    "C13.tree_dtype": "float32",
+    "C13.tree_max_depth": 8,
+    "C13.tree_max_features": 0.1,
+    "C13.tree_min_leaf": 5
+   },
+   "donor": {
+    "cut": 733041,
+    "cut_kind": "fit",
+    "groups": 4,
+    "lead": 0,
+    "rows": 116,
+    "unit_scope": "picked"
+   },
+   "smoke": true
+  },
+  "margins": {},
+  "rule_id": "R19",
+  "value": {
+   "bag_size": {
+    "g_a": 30,
+    "g_b": 30,
+    "g_c": 30,
+    "g_d": 30
+   },
+   "bank_trees": 48,
+   "corrector": {
+    "fit_on": "out-of-bag rows",
+    "max_depth": 6,
+    "min_leaf": 10,
+    "min_oob_rows": 50
+   },
+   "expected_oob_share": {
+    "g_a": 0.3489803736439956,
+    "g_b": 0.3616615134616106,
+    "g_c": 0.3358705956732117,
+    "g_d": 0.3489803736439956
+   },
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "rows_per_group": {
+    "g_a": 29,
+    "g_b": 30,
+    "g_c": 28,
+    "g_d": 29
+   },
+   "seed_formula": "first 4 bytes, big-endian, of SHA-256 of '<group>|<tree number>|<role>' with role bag, tree or corrector (D47; fit.bank.name_seed)",
+   "tree": {
+    "bag_fraction": 0.5,
+    "bag_min_rows": 30,
+    "bag_with_replacement": true,
+    "criterion": "squared_error",
+    "dtype": "float32",
+    "max_depth": 8,
+    "max_features": 0.1,
+    "min_leaf": 5
+   },
+   "trees_per_group": 12
+  }
+ },
+ "R2": {
+  "flags": [],
+  "input_hashes": {
+   "cadence": "836b872c7892b9607a1b08938947fbc5d5d6819f042b68a873337470eed8f5d4"
+  },
+  "inputs": {
+   "cadence": {
+    "kind": "irregular"
+   }
+  },
+  "margins": {},
+  "rule_id": "R2",
+  "value": {
+   "kind": "event_month",
+   "steps_per_year": null
+  }
+ },
+ "R20": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "ec171de2a5bcb254bd8380a5ed6285b1ff3ca82722effbbc45dc1352448aad97",
+   "groups": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+   "is_events": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+  },
+  "inputs": {
+   "constants": {
+    "C14.table_row_block_rows": 12288
+   },
+   "groups": 4,
+   "is_events": true
+  },
+  "margins": {},
+  "rule_id": "R20",
+  "value": {
+   "batch_order": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "row_block_rows": 12288,
+   "row_key": [
+    "unit",
+    "event_date",
+    "issue_date"
+   ],
+   "tables": [
+    "plain",
+    "corrector",
+    "placebo"
+   ]
+  }
+ },
+ "R21": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "ea10187bb45de8f7ed48204f8c8271602e0b14ce63fbe4dc46a2d4187e79dc92",
+   "groups_available": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+  },
+  "inputs": {
+   "constants": {
+    "C13.smoke_groups": 4,
+    "C13.smoke_trees_per_group": 12,
+    "C13.smoke_units_per_group": 40,
+    "C15.min_groups": 3
+   },
+   "groups_available": 4
+  },
+  "margins": {},
+  "rule_id": "R21",
+  "value": {
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "scored_per_group": 40,
+   "trees_per_group": 12,
+   "units_per_group": 40
+  }
+ },
+ "R21:smoke_selection": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "ea10187bb45de8f7ed48204f8c8271602e0b14ce63fbe4dc46a2d4187e79dc92",
+   "groups_available": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+  },
+  "inputs": {
+   "constants": {
+    "C13.smoke_groups": 4,
+    "C13.smoke_trees_per_group": 12,
+    "C13.smoke_units_per_group": 40,
+    "C15.min_groups": 3
+   },
+   "groups_available": 5
+  },
+  "margins": {},
+  "rule_id": "R21",
+  "value": {
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "scored_per_group": 40,
+   "trees_per_group": 12,
+   "units_per_group": 40
+  }
+ },
+ "R22": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "3f3ffddfd5f84a61de527c2e429d823ac3248c65cc1131adab9040e9b0cc78af",
+   "donor": "b3354b461c080e8f57ad99316dae44c405d5e9d9506e0e3ec5fceb127763894d",
+   "donor_distinct_values": "3e1e967e9b793e908f8eae83c74dba9bcccce6a5535b4b462bd9994537bfe15c",
+   "donor_positive_rows": "6208ef0f7750c111548cf90b6ea1d0d0a66f6bff40dbef07cb45ec436263c7d6",
+   "donor_row_key_hash": "70f7fc71bccd5be52b522beb51986a754aa08914727a30efdb6ca91f64e1c01b",
+   "legal_range": "fab81b87324c8e9d6e4261296987f5557d7b6c64ee34c945487a588cb9068446"
+  },
+  "inputs": {
+   "constants": {
+    "S2.link_distinct_values_above": 2
+   },
+   "donor": {
+    "cut": 733041,
+    "cut_kind": "fit",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "rows": 116,
+    "unit_scope": "picked"
+   },
+   "donor_distinct_values": 59,
+   "donor_positive_rows": 58,
+   "legal_range": [
+    0.0,
+    100.0
+   ]
+  },
+  "margins": {
+   "S2.link_distinct_values_above": 57.0
+  },
+  "rule_id": "R22",
+  "value": [
+   "identity",
+   "log_c",
+   "arcsine"
+  ]
+ },
+ "R23:fold=g_a": {
+  "flags": [],
+  "input_hashes": {
+   "donor": "132222ec48e23c772440ccb738db06eb7cbfaf5647dea1afb2c27354f781fdec",
+   "donor_row_key_hash": "1364539861d803375c6bd2a18b07b41710aac2f25576428d0c7c980bd07eeed1",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf",
+   "rule": "a5ef570f89a28c6076b8512100e8e38846fd6ecf4b1a4f0fd533b414f83bc7cc"
+  },
+  "inputs": {
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "fold": 0,
+    "fold_group": "g_a",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "left_out_block": [
+     "g_a"
+    ],
+    "rows": 54,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 27,
+   "rule": "signed R13: fold g's c from the guard-cut donor rows outside g's block"
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 23.71836236
+ },
+ "R23:fold=g_b": {
+  "flags": [],
+  "input_hashes": {
+   "donor": "9a8ce986aa7ae1357cafa498eb6b21e3335a74ca180a20466d5d297b438d95fc",
+   "donor_row_key_hash": "e63d6235b3ef46ca8dd2e141aeecca98b74b309af2374fd7ae2b4fe812f4c33c",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a",
+   "rule": "a5ef570f89a28c6076b8512100e8e38846fd6ecf4b1a4f0fd533b414f83bc7cc"
+  },
+  "inputs": {
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "fold": 1,
+    "fold_group": "g_b",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "left_out_block": [
+     "g_b"
+    ],
+    "rows": 54,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 28,
+   "rule": "signed R13: fold g's c from the guard-cut donor rows outside g's block"
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 24.7719625
+ },
+ "R23:fold=g_c": {
+  "flags": [],
+  "input_hashes": {
+   "donor": "64007c3d186ae3f300506ebcaae12bab8003f7868d6f98e4e0e60fcfd5baece2",
+   "donor_row_key_hash": "0d348c3b29e4a1afe2936e20e4c2bd5c726bee5408669747935071887d3a071b",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a",
+   "rule": "a5ef570f89a28c6076b8512100e8e38846fd6ecf4b1a4f0fd533b414f83bc7cc"
+  },
+  "inputs": {
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "fold": 2,
+    "fold_group": "g_c",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "left_out_block": [
+     "g_c"
+    ],
+    "rows": 56,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 28,
+   "rule": "signed R13: fold g's c from the guard-cut donor rows outside g's block"
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 23.72529022
+ },
+ "R23:fold=g_d": {
+  "flags": [],
+  "input_hashes": {
+   "donor": "08b2302c1ecea9e6fddf9660ae3ca7f04420f32597e3aeb1c60b4a07ada5ddf5",
+   "donor_row_key_hash": "e063c3c659dce10c7838df1251b77c3969f0ed37ebfd948cc3773456048ab55b",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "b7a56873cd771f2c446d369b649430b65a756ba278ff97ec81bb6f55b2e73569",
+   "rule": "a5ef570f89a28c6076b8512100e8e38846fd6ecf4b1a4f0fd533b414f83bc7cc"
+  },
+  "inputs": {
+   "donor": {
+    "cut": 731946,
+    "cut_kind": "guard",
+    "fold": 3,
+    "fold_group": "g_d",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "left_out_block": [
+     "g_d"
+    ],
+    "rows": 55,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 25,
+   "rule": "signed R13: fold g's c from the guard-cut donor rows outside g's block"
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 25.16139936
+ },
+ "R23:lead=0": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "e163c52e128ca15d6d5feb9616bc798fc5b1adae50edfb9fd8f86e295b583e7f",
+   "donor": "b3354b461c080e8f57ad99316dae44c405d5e9d9506e0e3ec5fceb127763894d",
+   "donor_row_key_hash": "70f7fc71bccd5be52b522beb51986a754aa08914727a30efdb6ca91f64e1c01b",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "6208ef0f7750c111548cf90b6ea1d0d0a66f6bff40dbef07cb45ec436263c7d6"
+  },
+  "inputs": {
+   "constants": {
+    "S2.log_c_quantile": 0.01
+   },
+   "donor": {
+    "cut": 733041,
+    "cut_kind": "fit",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 0,
+    "rows": 116,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 58
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 20.60364567
+ },
+ "R23:lead=183": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "e163c52e128ca15d6d5feb9616bc798fc5b1adae50edfb9fd8f86e295b583e7f",
+   "donor": "40c794c3557c0b681f379b231135bfc2e4009e11940efba09f536c85080e4ede",
+   "donor_row_key_hash": "be2fc57b8696dced8d95f0e8decfe3baa1a7bd5872d95e5cd148fa4270e26d24",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "41cfc0d1f2d127b04555b7246d84019b4d27710a3f3aff6e7764375b1e06e05d"
+  },
+  "inputs": {
+   "constants": {
+    "S2.log_c_quantile": 0.01
+   },
+   "donor": {
+    "cut": 732859,
+    "cut_kind": "fit",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 183,
+    "rows": 109,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 52
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 20.37159981
+ },
+ "R23:lead=365": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "e163c52e128ca15d6d5feb9616bc798fc5b1adae50edfb9fd8f86e295b583e7f",
+   "donor": "9ff466c61bf129d19893bd73103073137985f647a7097c5c24903e87bd535e25",
+   "donor_row_key_hash": "c1a8197ef184a3f53756c5c1b73aad16e424916bed9b881ea5ae55901cd56fa3",
+   "percentile_method": "b61cbdeb3659423d33152fc972547ab8efc5658eab14c97b202e730b09bd7297",
+   "positive_rows": "71ee45a3c0db9a9865f7313dd3372cf60dca6479d46261f3542eb9346e4a04d6"
+  },
+  "inputs": {
+   "constants": {
+    "S2.log_c_quantile": 0.01
+   },
+   "donor": {
+    "cut": 732677,
+    "cut_kind": "fit",
+    "groups": [
+     "g_a",
+     "g_b",
+     "g_c",
+     "g_d"
+    ],
+    "lead": 365,
+    "rows": 97,
+    "unit_scope": "picked"
+   },
+   "percentile_method": "linear (numpy default, D62)",
+   "positive_rows": 44
+  },
+  "margins": {},
+  "rule_id": "R23",
+  "value": 20.06220533
+ },
+ "R28": {
+  "flags": [],
+  "input_hashes": {
+   "legal_range": "fab81b87324c8e9d6e4261296987f5557d7b6c64ee34c945487a588cb9068446",
+   "lower_unbounded": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa",
+   "upper_unbounded": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+  },
+  "inputs": {
+   "legal_range": [
+    0.0,
+    100.0
+   ],
+   "lower_unbounded": false,
+   "upper_unbounded": false
+  },
+  "margins": {},
+  "rule_id": "R28",
+  "value": [
+   0.0,
+   100.0
+  ]
+ },
+ "R3": {
+  "flags": [],
+  "input_hashes": {
+   "counted": "f7a0c33a9f052ea9e68aa5570559872c04ee0d1224e2e6f8b98e254d70341037",
+   "groups": "a48c9c6746c54f59d4ace19e1252dc863f9fddf5ce8e1038ece1776506071628",
+   "is_events": "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b",
+   "rows_per_group_year": "f648ae5aa9df70f5b2a3633d3e05cfbbf2b63bc1922232e9606655986ac55f96",
+   "rows_per_group_year_raw": "7ec14903766cbbf48ef76284805776cde5434035cb4e24719d2895cee8488c1b",
+   "rule": "bd92f560786e0a4b4d7211c24f3e63a3c3f70f9d90276ef7771d75c558886efd"
+  },
+  "inputs": {
+   "counted": "joined rows: a valid label (D6) and the kept drivers present (F2)",
+   "groups": [
+    "g_a",
+    "g_b",
+    "g_c",
+    "g_d"
+   ],
+   "is_events": true,
+   "rows_per_group_year": {
+    "g_a": {
+     "2000": 4,
+     "2001": 4,
+     "2002": 3,
+     "2003": 4,
+     "2004": 4,
+     "2005": 4,
+     "2006": 3,
+     "2007": 3,
+     "2008": 3,
+     "2009": 4,
+     "2010": 4,
+     "2011": 3
+    },
+    "g_b": {
+     "2000": 4,
+     "2001": 4,
+     "2002": 3,
+     "2003": 4,
+     "2004": 4,
+     "2005": 3,
+     "2006": 4,
+     "2007": 4,
+     "2008": 4,
+     "2009": 3,
+     "2010": 3,
+     "2011": 3
+    },
+    "g_c": {
+     "2000": 3,
+     "2001": 3,
+     "2002": 3,
+     "2003": 4,
+     "2004": 4,
+     "2005": 3,
+     "2006": 4,
+     "2007": 4,
+     "2008": 3,
+     "2009": 4,
+     "2010": 4,
+     "2011": 4
+    },
+    "g_d": {
+     "2000": 4,
+     "2001": 4,
+     "2002": 4,
+     "2003": 3,
+     "2004": 3,
+     "2005": 3,
+     "2006": 4,
+     "2007": 4,
+     "2008": 3,
+     "2009": 4,
+     "2010": 4,
+     "2011": 3
+    }
+   },
+   "rule": "events: the last year with any row"
+  },
+  "margins": {},
+  "rule_id": "R3",
+  "value": 2011
+ },
+ "R30": {
+  "flags": [],
+  "input_hashes": {
+   "absent_groups": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "columns": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+   "constants": "dcab9bf136d4c68bfadd44c39d8d6303681e7211f5f23cc5e044509ba4c623c2",
+   "donor_row_key_hash": "70f7fc71bccd5be52b522beb51986a754aa08914727a30efdb6ca91f64e1c01b",
+   "donor_unit_scope": "2420ebb37368914d67cdac9a94f170905625cc452eb0026ddcc59052a697cf43",
+   "filled_share": "06f8e6b8290472f7f98d90a4f6613adc0e995b27fcf281faa6fd73a9d6fb0df4",
+   "real_zero_share": "fedecff9789a0b9333c312634b133f5a3454ef2d6a966153d3a1f057326e03f1",
+   "test_year_missing_share": "64a4466bb8d1efac7e99f7bd1c806b9ca24ea34e213495e420793736eaaa1316",
+   "vanish_rule": "d03a1e81fd467fc4f3bc396c16cf4f08d281204100a34c6cb12ab1f2e90dd10d"
+  },
+  "inputs": {
+   "absent_groups": {},
+   "columns": 6,
+   "constants": {
+    "C15.missing_flag_share": 0.25
+   },
+   "donor_unit_scope": "picked",
+   "filled_share": {
+    "f1": 0.0,
+    "f2": 0.0,
+    "f3": 0.0,
+    "f4": 0.0,
+    "f5": 0.0,
+    "f6": 0.11206896551724138
+   },
+   "real_zero_share": {
+    "f1": 0.008620689655172414,
+    "f2": 0.0,
+    "f3": 0.034482758620689655,
+    "f4": 0.0,
+    "f5": 0.0,
+    "f6": 0.04310344827586207
+   },
+   "test_year_missing_share": {
+    "f1": {
+     "2008": 0.0,
+     "2009": 0.0,
+     "2010": 0.0,
+     "2011": 0.0
+    },
+    "f2": {
+     "2008": 0.0,
+     "2009": 0.0,
+     "2010": 0.0,
+     "2011": 0.0
+    },
+    "f3": {
+     "2008": 0.0,
+     "2009": 0.0,
+     "2010": 0.0,
+     "2011": 0.0
+    },
+    "f4": {
+     "2008": 0.0,
+     "2009": 0.0,
+     "2010": 0.0,
+     "2011": 0.0
+    },
+    "f5": {
+     "2008": 0.0,
+     "2009": 0.0,
+     "2010": 0.0,
+     "2011": 0.0
+    },
+    "f6": {
+     "2008": 0.23076923076923078,
+     "2009": 0.0,
+     "2010": 0.06666666666666667,
+     "2011": 0.0
+    }
+   },
+   "vanish_rule": "100% missing over every group's rows of the test year (D18)"
+  },
+  "margins": {
+   "f1": -0.25,
+   "f2": -0.25,
+   "f3": -0.25,
+   "f4": -0.25,
+   "f5": -0.25,
+   "f6": -0.13793103448275862
+  },
+  "rule_id": "R30",
+  "value": {}
+ },
+ "R4": {
+  "flags": [
+   "no_lag_sources"
+  ],
+  "input_hashes": {
+   "constants": "5b39ab91958a31c2ae40bd8bfd39235f6b738d42ccf9a892d580eff6753ca482",
+   "first_data_year": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+   "lags": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "largest_lag_years": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+   "set_by": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "inputs": {
+   "constants": {
+    "C4.first_year_from_lag_sources_only": true,
+    "C6.days_per_year": 365.25,
+    "C6.months_per_year": 12
+   },
+   "first_data_year": 2000,
+   "lags": {},
+   "largest_lag_years": 0,
+   "set_by": []
+  },
+  "margins": {},
+  "rule_id": "R4",
+  "value": 2000
+ },
+ "R5": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "57dfdb8958e6816bafb090cf6ea76c6a2f7c952ea1279609bb2b8de785434e88",
+   "y0": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+   "y_end": "72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8",
+   "years_available": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918",
+   "years_needed": "8e9e084f9a1dc2f088b92de4e227c02070e488f009d8695bdf82a8098a35ba06"
+  },
+  "inputs": {
+   "constants": {
+    "C1.test_years": 4,
+    "C1.test_years_short_record": 3,
+    "C2.inner_fit_min_years": 1,
+    "C2.inner_score_years": 3,
+    "C2.inner_score_years_short_record": 2
+   },
+   "y0": 2000,
+   "y_end": 2011,
+   "years_available": 12,
+   "years_needed": {
+    "full": 8,
+    "inner_score_short": 7,
+    "test_short": 6
+   }
+  },
+  "margins": {
+   "years_needed_full": 4.0,
+   "years_needed_inner_score_short": 5.0,
+   "years_needed_test_short": 6.0
+  },
+  "rule_id": "R5",
+  "value": {
+   "inner_score_years": 3,
+   "ladder_steps": [],
+   "test_years": [
+    2008,
+    2009,
+    2010,
+    2011
+   ]
+  }
+ },
+ "R5:marks": {
+  "flags": [],
+  "input_hashes": {
+   "rule": "139d38245a48a0dba2a66fa46c823673ba3f39d4ff67b165e360b0583ae67dcf"
+  },
+  "inputs": {
+   "rule": "T-MARK (SPEC_TABLE_MODE.md 2.1)"
+  },
+  "margins": {},
+  "rule_id": "R5",
+  "value": {
+   "rule": "T-MARK: marks equal the derived window (O1)",
+   "test_rows": 56,
+   "test_years": [
+    2008,
+    2009,
+    2010,
+    2011
+   ],
+   "train_end": 2007,
+   "train_rows": 116
+  }
+ },
+ "R6": {
+  "flags": [],
+  "input_hashes": {
+   "test_years": "c7c29c2d01e4c1b15c1201150b6effd8f84553a85795fe2aa1959fa8bdf8dbf3"
+  },
+  "inputs": {
+   "test_years": [
+    2008,
+    2009,
+    2010,
+    2011
+   ]
+  },
+  "margins": {},
+  "rule_id": "R6",
+  "value": 2007
+ },
+ "R7": {
+  "flags": [],
+  "input_hashes": {
+   "constants": "3f3946754849ba7e61f75ad21ed5cdd472457e16a97eca092d884326cc075a82",
+   "inner_score_years": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+   "test_years": "c7c29c2d01e4c1b15c1201150b6effd8f84553a85795fe2aa1959fa8bdf8dbf3",
+   "train_end": "f1cfa5ebb149e8099d561aae57beed6c68f990f45a910ea9d7b460dbcc5350be",
+   "y0": "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9",
+   "y_end": "72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8"
+  },
+  "inputs": {
+   "constants": {
+    "C2.inner_fit_min_years": 1
+   },
+   "inner_score_years": 3,
+   "test_years": [
+    2008,
+    2009,
+    2010,
+    2011
+   ],
+   "train_end": 2007,
+   "y0": 2000,
+   "y_end": 2011
+  },
+  "margins": {
+   "C2.inner_fit_min_years": 4.0
+  },
+  "rule_id": "R7",
+  "value": {
+   "inner_fit": [
+    2000,
+    2004
+   ],
+   "inner_score": [
+    2005,
+    2006,
+    2007
+   ],
+   "test_years": [
+    2008,
+    2009,
+    2010,
+    2011
+   ],
+   "train_end": 2007,
+   "y0": 2000,
+   "y_end": 2011
+  }
+ },
+ "R8": {
+  "flags": [],
+  "input_hashes": {
+   "rule": "89cf4ed2ba1c25d3b60e034ae3afa238882ec48591ce9be9eeb8c9369b7f454d"
+  },
+  "inputs": {
+   "rule": "ruling U1: no lag is computed for a table; each lead's file holds features that already end before the row's issue date (vouched by the package owner, U2)"
+  },
+  "margins": {},
+  "rule_id": "R8",
+  "value": {}
+ },
+ "R9": {
+  "flags": [
+   "no_freeze_columns"
+  ],
+  "input_hashes": {
+   "content_epochs": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+   "cut_days": "15330973eefeabc4c381598c60440e31def782a49f3dd59ea6b9ec3da07e7203",
+   "rule": "9e15430d642d5585899471aa02d2072557a9e6f80cb06c2ce425f0d8d6c33a8a"
+  },
+  "inputs": {
+   "content_epochs": {},
+   "cut_days": {
+    "0": {
+     "fit": 733041,
+     "guard": 731946
+    },
+    "183": {
+     "fit": 732859,
+     "guard": 731764
+    },
+    "365": {
+     "fit": 732677,
+     "guard": 731582
+    }
+   },
+   "rule": "latest content epoch at or before each cut's own last day (D19, D27)"
+  },
+  "margins": {},
+  "rule_id": "R9",
+  "value": {}
+ },
+ "U1:table": {
+  "flags": [],
+  "input_hashes": {
+   "excluded_groups": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "files": "9c3e9c9eb2922012d6e32de4d991601d59a6fc25142ca15cb7f9e7e40a68fe67",
+   "row_grid_hash": "30632d31afb72f485abb4b6182b842c2f3fc7e5b37448273671863990ebfb43c",
+   "rule": "a039ab7398c115c2d0de2f98c39f8eb8abfa25a7fe85753034730f816b152d47",
+   "run_rows": "68519a9eca55c68c72658a2a1716aac3788c289859d46d6f5c3f14760fa37c9e"
+  },
+  "inputs": {
+   "excluded_groups": [],
+   "files": [
+    {
+     "columns": 19,
+     "lead": 0,
+     "mtime_ns": 1792468015238490000,
+     "path": "D:/treeroute/coral_build/report_scripts/toy_runs/ok/pk/toy_table/data/lead_0.parquet",
+     "rows": 265,
+     "sha256": "5e0b0c6380f08b0b9f57e3ee9f4c1b88f40daea1ee3d8d34e36f753b93cfe4c8",
+     "size": 31819
+    },
+    {
+     "columns": 19,
+     "lead": 183,
+     "mtime_ns": 1792468015238490000,
+     "path": "D:/treeroute/coral_build/report_scripts/toy_runs/ok/pk/toy_table/data/lead_183.parquet",
+     "rows": 265,
+     "sha256": "9e2cc4c7a95f7ac2418f8ee1599237079fb8594fd2d956c46130d4ccdb48f941",
+     "size": 31356
+    },
+    {
+     "columns": 19,
+     "lead": 365,
+     "mtime_ns": 1792468015238490000,
+     "path": "D:/treeroute/coral_build/report_scripts/toy_runs/ok/pk/toy_table/data/lead_365.parquet",
+     "rows": 256,
+     "sha256": "a1fd4cc1831328c93b0c76ef83288ef5e45638897609bbce9681c1d4e78d049a",
+     "size": 31071
+    }
+   ],
+   "row_grid_hash": "de3aa11e25ed4edfe49a1240d1c91a34873001a7ae59c6b8444f3a3a39ee895f",
+   "rule": "owner ruling U1: the table option; the package supplies one row per sample in one table per lead, the engine computes no lag and runs no package code, and checks the dates it can check",
+   "run_rows": 172
+  },
+  "margins": {},
+  "rule_id": "U1",
+  "value": {
+   "max_feature_end_minus_issue_day": {
+    "0": -1,
+    "183": -1,
+    "365": -1
+   },
+   "rows_absent_per_lead": {
+    "0": {
+     "test": 0,
+     "train": 0
+    },
+    "183": {
+     "test": 0,
+     "train": 0
+    },
+    "365": {
+     "test": 4,
+     "train": 4
+    }
+   },
+   "rows_per_lead": {
+    "0": 172,
+    "183": 172,
+    "365": 164
+   }
+  }
+ },
+ "U2:vouched": {
+  "flags": [],
+  "input_hashes": {
+   "rule": "5b1354267823a986bfb9a25b0e226066a063d7423e962444717ad0a2631f718d"
+  },
+  "inputs": {
+   "rule": "owner ruling U2"
+  },
+  "margins": {},
+  "rule_id": "U2",
+  "value": [
+   "U2: features vouched by the package owner (owner ruling U2); the engine recomputes none of them",
+   "1. every feature and context value of a lead-L row uses only content dated strictly before its issue date, in the source's own day convention (publication delay disclosed per source in exceptions.yaml)",
+   "2. no feature reads the row's own label, a label of any test row, or any label dated on or after the issue date",
+   "3. the issue date equals the target date minus L days (checked by the engine: T-ISSUE)",
+   "4. the same row id means the same sample, with the same label, in every lead file (checked: T-LEADSET)",
+   "5. the target date is the label's last content day",
+   "6. key_feature_end is the last content day any of the row's feature windows may read; the engine checks that it is before the issue day on every row (T-FEATEND) but cannot check that the declaration is true",
+   "the G-DERIVED recompute and the look-ahead canary are not run on tables (U2)"
+  ]
+ }
+}

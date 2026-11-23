@@ -1,0 +1,12 @@
+[2026-11-12 23:49:34 +    0.0s] problem coral, scope (i): leads (0,); N 1000; arcsine tolerance 1e-12; recorded path map False; with pinned False
+[2026-11-12 23:49:35 +    0.0s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem coral --n 1000 --defo-regions 0
+[2026-11-12 23:49:45 +   10.5s] STEP sample: done in 10.5 s
+[2026-11-12 23:49:45 +   10.5s] STEP treeroute rebuild leads [0]: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem coral --leads 0 --arcsine-tolerance 1e-12
+[2026-11-12 23:53:56 +  261.1s] STEP treeroute rebuild leads [0]: done in 250.6 s
+[2026-11-12 23:53:56 +  261.1s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem coral --lead 0
+[2026-11-13 00:00:21 +  646.5s] STEP treeroute SHAP lead 0: done in 385.4 s
+[2026-11-13 00:00:21 +  646.5s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem coral --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-13 00:05:56 +  981.9s] STEP rivals lead 0: done in 335.4 s
+[2026-11-13 00:05:56 +  981.9s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem coral --lead 0 --draws 2000
+[2026-11-13 00:06:12 +  997.8s] STEP compare lead 0: done in 15.9 s
+[2026-11-13 00:06:12 +  997.8s] runner finished: [["sample", "done"], ["treeroute rebuild leads [0]", "done"], ["treeroute SHAP lead 0", "done"], ["rivals lead 0", "done"], ["compare lead 0", "done"]]

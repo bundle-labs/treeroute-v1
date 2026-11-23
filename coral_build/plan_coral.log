@@ -1,0 +1,11 @@
+﻿[13:08:43] package coral version 0.1.0, fingerprint 5b9383f0446df0f1 (input: table)
+[13:08:43] feature lineage: vouched by the package owner (U2)
+[13:08:43] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[13:08:43] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[13:08:43] preflight: table rows per lead {0: 13694, 183: 13686, 365: 13686}, 85 columns; RAM estimate 0.026 GiB: go
+[13:08:44] table read: 13650 rows of 8131 package units in 3 lead files (lead 0: 13650 rows, lead 183: 13642 rows, lead 365: 13642 rows) in 0.3 s
+[13:08:44] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[13:08:46] derive_all_table: 120 entries in 2.0 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[13:08:48] run folder D:\treeroute\runs\coral\headline\20261020_f3b8e3da (new)
+[13:08:51] plan written: D:\treeroute\runs\coral\headline\20261020_f3b8e3da\plan.json
+plan: D:\treeroute\runs\coral\headline\20261020_f3b8e3da

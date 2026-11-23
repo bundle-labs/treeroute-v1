@@ -1,0 +1,130 @@
+{
+ "results_path": "D:\\treeroute\\analysis\\shap_v1\\verify_v1\\A\\results.json",
+ "choices_path": "D:\\treeroute\\analysis\\shap_v1\\verify_v1\\A\\choices.md",
+ "readme_path": "D:\\treeroute\\analysis\\shap_v1\\verify_v1\\A\\README.md",
+ "schema_valid": true,
+ "problems": [
+  {
+   "problem": "coral",
+   "computed": "Items 1-8 at both levels for the 6 models of `models`: 15 pairs, 6 same-link (the arcsine models hgb_l1, lgbm, rf, treeroute) and 9 cross-link. J has 68 players at the feature level and 25 at the variable level; the only structural zero at both levels is `normal`. Global index: nino34a. Main row (variable level): W 0.7346 [0.6943, 0.7637]. Treeroute against its rivals, top-20-union Spearman: median 0.4843 [0.3852, 0.5513], range 0.4148 to 0.4930. RBO(p 0.9) against the consensus 0.6674 [0.6091, 0.7754]. Treeroute top 3: nino34a, hs, dhw; consensus top 3: n_above_mmm1, dhw, nino34a. Item 8 covers the 4 arcsine models on their pre > 0 rows (983, 995, 1000 and 973 rows, all 37 regions). Per-draw values are in V\\A\\draws\\coral.npz.",
+   "undefined_numbers": [
+    "main_row own_history_share_treeroute, own_history_share_median_rival, own_history_share_per_rival and median_rival_name: coral has no own-history (hist_*) variable.",
+    "levels.variable.models.<m>.family_shares.own_history for all 6 models: the problem has no variable of that family.",
+    "jaccard_top20 of all 15 pairs at both levels: J has 68 and 25 players, below 200.",
+    "tv_family_shares of the 15 feature-level pairs: family shares are formed from variable-level phi only (choice C15)."
+   ]
+  },
+  {
+   "problem": "defo",
+   "computed": "Items 1-8 at both levels for 5 models: 10 pairs, 6 same-link (log_c: lgbm, rf, ridge, treeroute) and 4 cross-link (the pairs with tweedie). J has 280 players at the feature level, so the top-20 Jaccard is computed there, and 99 at the variable level. 27 global indices. Main row: W 0.7958 [0.7789, 0.8080]. Top-20-union Spearman: median 0.1952 [0.1447, 0.2926], range 0.0065 to 0.4685. RBO against the consensus 0.6341 [0.6127, 0.7502]. Treeroute top 3: hist_last, h_nbr1, spei; consensus top 3: hist_last, hist_mean, spi. Own-history share: treeroute 0.2926 [0.2479, 0.3326]; median rival 0.3547 [0.3162, 0.3954] (rival_lgbm). No arcsine model, so item 8 is empty.",
+   "undefined_numbers": [
+    "levels.variable.models.<m>.family_shares.context_and_calendar for all 5 models: defo has no calendar or ctx:* variable.",
+    "jaccard_top20 of the 10 variable-level pairs: J has 99 players, below 200.",
+    "tv_family_shares of the 10 feature-level pairs: family shares are variable-level only (C15)."
+   ]
+  },
+  {
+   "problem": "fire",
+   "computed": "Items 1-8 at both levels for 5 models: 10 pairs. Only the 3 pairs among the log_c rivals (lgbm, rf, ridge) are same-link; the rest are cross-link. rival_ridge is labelled declined. The main set is treeroute alone. J has 111 players at the feature level and 94 at the variable level. Treeroute top 3 (variable level): hist_mean, spei, tslf_months. Treeroute own-history share 0.1358 [0.1082, 0.1647]. Item 8: treeroute on its 226 rows with pre > 0, in 27 of the 40 regions; its top 3 there are hist_mean, spei and spi.",
+   "undefined_numbers": [
+    "per_problem kendall_w, kendall_w_m, kendall_w_n and mean_pairwise_spearman at both levels: the main set holds one model.",
+    "main_row kendall_w; spearman_top20_union_median, _min, _max and _per_rival; rbo_p090_vs_consensus; consensus_shares; consensus_top3; own_history_share_median_rival; own_history_share_per_rival; median_rival_name: they need a same-link rival and there is none.",
+    "sign_agreement value of the 4 feature-level pairs with treeroute: no player of the top-10 union is determined in both models (n_finite 0).",
+    "sign_agreement value of variable-level rival_ridge|treeroute: same reason (64 finite draws).",
+    "jaccard_top20 at both levels (J below 200) and tv_family_shares of the feature-level pairs (C15)."
+   ]
+  },
+  {
+   "problem": "pm25",
+   "computed": "Items 1-8 at both levels for 4 models: 6 pairs, all same-link (log_c), all in the main set. J has 103 players at the feature level and 89 at the variable level. 27 global indices. Main row: W 0.8539 [0.8463, 0.8624]. Top-20-union Spearman: median -0.0189 [-0.0785, 0.0723], range -0.1214 to 0.0793. RBO against the consensus 0.3720 [0.3645, 0.5707]. Treeroute top 3: hist_last, spei, wbal; consensus top 3: spi, sst_anom_global_tropical, hist_last. Own-history share: treeroute 0.1853 [0.1622, 0.2080]; median rival 0.2977 [0.2755, 0.3200] (rival_lgbm). No arcsine model.",
+   "undefined_numbers": [
+    "jaccard_top20 of all 6 pairs at both levels: J has 103 and 89 players, below 200.",
+    "tv_family_shares of the 6 feature-level pairs: family shares are variable-level only (C15)."
+   ]
+  },
+  {
+   "problem": "ndvi",
+   "computed": "Items 1-8 at both levels for 5 models: 10 pairs, all same-link (identity), all in the main set (BARDL included). J has 479 players at the feature level, so the top-20 Jaccard is computed there, and 96 at the variable level. 26 global indices. Main row: W 0.6173 [0.6052, 0.6239]. Top-20-union Spearman: median 0.0699 [-0.0103, 0.1231] (the mean of the two middle of 4 rivals), range -0.4051 (ridge) to 0.3841 (bardl). RBO against the consensus 0.4029 [0.3756, 0.4259]. Treeroute top 3: hist_mean, hist_last, era5l_slhf; consensus top 3: soil_moisture_pct, spi, hist_last. Own-history share: treeroute 0.2445 [0.2168, 0.2719]; median rival 0.2560 [0.2357, 0.2757]. No arcsine model.",
+   "undefined_numbers": [
+    "main_row median_rival_name: with 4 rivals the median is the mean of two shares, so no single rival is the median one.",
+    "sign_agreement value of feature-level rival_bardl_h1|treeroute and of variable-level rival_bardl_h1|rival_lgbm and rival_bardl_h1|rival_rf: no player is determined in both (BARDL has 2 determined players at the feature level and 1 at the variable level); n_finite 0.",
+    "jaccard_top20 of the 10 variable-level pairs (J 96, below 200) and tv_family_shares of the feature-level pairs (C15)."
+   ]
+  }
+ ],
+ "defo_identity": {
+  "max_abs_phi": 0,
+  "max_abs_phiv": 0,
+  "same_rows_players_variables": true,
+  "note": "Rows were matched by `row` and columns by name. Both runs have 1000 rows, 309 players and 121 variables, and every cell differs by exactly 0. The B1 rows.parquet even has the same file SHA-256 as the main run's (both done.json `sha256` = 0ef09a4c...). Pairs: 16,000 in the log's set-up line (line 24) and in meta.json. Seconds: 465.9 total (log line 30 and done.json), 464.3 tree-SHAP (log and meta.json). The check was run first and alone (a20_b1.py --identity-only); only after it held were the fire, pm25 and ndvi B1 numbers computed."
+ },
+ "b1_status": [
+  {
+   "problem": "coral",
+   "status": "No treeroute_B1 folder, no done.json, no FAILED.json. B1 is not defined for coral (section 5) and tr_shap.py refuses the neighbour kind. numbers = none. The registered sample is 6159277a."
+  },
+  {
+   "problem": "defo",
+   "status": "Finished piece: rows.parquet.done.json present, no FAILED.json. meta: pass true; checks_passed S-ADD, S-EVAL, S-RESID and S-ZERO all true; rows 1000; background 'B1'; pairs 16000; trees_used 4200; sample_sha256 9989bd58... equals the registered one; duplicates_merged {}. numbers = identity: exactly 0, same rows, players and variables."
+  },
+  {
+   "problem": "fire",
+   "status": "Finished piece. pass true, all four checks true; rows 1000; background B1; pairs 187186; trees_used 4000; sample 1edbc3d1 registered; duplicates_merged {} as in the main run, so nothing was summed. numbers = full. The pair's J has 113 players at the feature level and 96 at the variable level. Spearman over J is 0.822 (feature) and 0.842 (variable). B1's top variable is normal (share 0.542); its seasonal-normal family share is 0.811 and its own-history share 0.0218 [0.0143, 0.0341]. Log lines 20 and 26; 2636.6 s total, 2631.6 s tree-SHAP."
+  },
+  {
+   "problem": "pm25",
+   "status": "Finished piece. pass true, checks true; background B1; pairs 203963; trees_used 12700; sample ccb17021 registered; duplicates_merged {}. numbers = full. The pair's J has 105 and 91 players; Spearman over J is 0.840 and 0.845. B1's top variable is normal (0.445); seasonal-normal share 0.703, own-history share 0.0586. Log lines 25 and 39; 17890.4 s total, 17883.2 s tree-SHAP."
+  },
+  {
+   "problem": "ndvi",
+   "status": "Finished piece. pass true, checks true; background B1; pairs 201768; trees_used 13300; sample f2bb2a79 registered. duplicates_merged has the same five c__ctx:top5 keys as the main run, so nothing was summed. numbers = full. The pair's J has 482 players at the feature level (top-20 Jaccard computed) and 96 at the variable level; Spearman over J is 0.873 and 0.844. B1's top variable is normal (0.321); seasonal-normal share 0.443, own-history share 0.0718. Log lines 17 and 32; 11883.1 s total, 11871.8 s tree-SHAP. per_lead.json's `models` lists treeroute_B1 in no problem."
+  }
+ ],
+ "ambiguities": [
+  "C07 (fixed or per draw): I fixed J and B1's pair J at the full sample; the top-k sets and their unions are found again on each draw; the determined signs come from the full bootstrap. Recomputed per draw, J would vary: defo feature 278-280, pm25 101-103 / 87-89, ndvi 477-479 / 94-96 (stored in active_set.extra). This changes the rank-statistic intervals.",
+  "C11 (top-20 union Spearman): I rank again within the union. This is often strongly negative because of the selection effect, while the full-sample value with ranks carried from J differs (stored in pairs.extra).",
+  "C15 (families): family shares exist only from variable-level phi, so the feature-level tv_family_shares is null. A family with no variable in the problem (coral own history, defo context and calendar) gets null rather than 0. Both are readings of 'the sum of its variables' (variable-level) phi'.",
+  "C16 (precedence): `calendar` passes the global-index data rule (the month is the same for every unit at a time step). Section 8 names calendar as context, and I gave the named families precedence.",
+  "C25: section 8 says 'For every arcsine-link model ... (fire)'. I covered coral's 4 arcsine models as well as fire's treeroute.",
+  "C22/C23 (median and range): ndvi has 4 rivals, so the median is the mean of the two middle values. I read 'the median rival' as the median of the rivals' own-history shares recomputed per draw, not as one fixed rival's share. The range ends get their own intervals.",
+  "C20: I read the stability as itself a mean over the draws, so it has no interval. C08: the counts recomputed per draw get intervals; n_J does not, because J is fixed.",
+  "C17: sign agreement is reported as the fraction n_agree / n_determined and is undefined when no player is determined in both models. C21: an interval is given whenever n_finite >= 1, which gives intervals from as few as 64 finite draws (fire ridge|treeroute).",
+  "I02: the protocol does not say which list of regions the draw integers index. I used sorted(group), which equals the first-appearance order in every problem; the integers themselves do not depend on region names.",
+  "I04: I took 'the lead's test set' to be the run's full lead-0 test export (all units and time steps) named in the rival SHAP log, not the 1,000 sampled rows."
+ ],
+ "surprises": [
+  "Each draw matrix is reproduced exactly, all 2000 x G entries in all 5 problems, as int.from_bytes(sha256('shap_v1|AW4|<p>|0|<b>|<k>')[:8], 'big') mod G. per_lead's draws_sha256 covers the whole .npy file (header and data), not the data bytes alone.",
+  "Defo's B1 rows.parquet has the same file SHA-256 as the main run's; the identity is bit-exact.",
+  "Spearman over the top-20 union is often negative even where the overall agreement is high. pm25 has W 0.854 but a median union Spearman of -0.019. NDVI's minimum is -0.405 (ridge). Many coral feature-level pairs are negative. In the paper this could be misread as disagreement.",
+  "Coral's only structural zero is `normal`. Section 8's smoke map also lists 'four constant cyclone columns', but no cyclone column is constant in the registered sample.",
+  "Fire treeroute has only 8 determined signs at the feature level and 9 at the variable level, so 5 fire sign agreements are undefined. BARDL causes 3 more in ndvi.",
+  "Under B1 the seasonal normal dominates (it is exactly 0 under B2): its family share is 0.811 (fire), 0.703 (pm25) and 0.443 (ndvi), `normal` is B1's top variable in all three, and the main-vs-B1 family-share TV is 0.81, 0.70 and 0.49. Players exactly 0 in the main run enter the pair's J, among them c__ctx:month, the ndvi harmonics and pm25's conflict_events.",
+  "Fire treeroute has pre > 0 on only 226 of 1000 sampled rows, in 27 of 40 regions (the protocol says 75.4% of rows are 0; the sample has 77.4%).",
+  "Several full-sample RBO values sit at the edge of their percentile interval, for example pm25 RBO vs consensus 0.372 [0.365, 0.571] and defo 0.634 [0.613, 0.750]: near-ties at the top ranks flip across draws.",
+  "No row of any piece is S-RESID-flagged. My nonzero counts equal every meta.json's players_nonzero and variables_nonzero, B1 included. ndvi's x__epo_lag12 is missing for every unit at one test time step.",
+  "BARDL's stability rounds to 1.0000 because 470 of its 479 feature-level J players tie at 0."
+ ],
+ "files_opened": [
+  "V\\_brief\\brief_verify.md",
+  "V\\spec\\SPEC.md",
+  "V\\spec\\results_schema.json",
+  "V\\spec\\tools\\validate_results.py (read, then run)",
+  "SHAP\\PROTOCOL.md (headings; sections 3, 5, 8, 9, 10, 14)",
+  "SHAP\\out\\<p>\\lead_0\\compare\\per_lead.json (5; structural keys only)",
+  "SHAP\\out\\<p>\\lead_0\\compare\\bootstrap_draws.npy (5)",
+  "compare folders: file names listed only",
+  "SHAP\\out\\<p>\\lead_0\\<piece>\\rows.parquet and meta.json (all 29 pieces, the 4 treeroute_B1 included)",
+  "SHAP\\out\\<p>\\lead_0\\{treeroute,treeroute_B1,rival_lgbm}\\rows.parquet.done.json",
+  "SHAP\\out\\fire\\lead_0\\treeroute\\background_keys.parquet (schema only)",
+  "SHAP\\SAMPLE_REGISTER.txt",
+  "SHAP\\RUN_COMMANDS.md (lines 1-60, 195-244)",
+  "SHAP\\machine_shap.yaml",
+  "SHAP\\sample\\fire\\sample_manifest.json; SHAP\\sample\\fire\\sample.parquet (schema)",
+  "SHAP\\rebuild\\fire\\lead_0\\gates.json, precheck.json, DONE.json; rows.parquet (schema)",
+  "SHAP\\logs\\tr_shap_{defo,fire,pm25,ndvi}_lead0.log",
+  "SHAP\\logs\\rival_shap_fire_lead0.log (first 30 lines); 'test set:' lines of SHAP\\logs\\rival_shap_<p>_lead0.log (5)",
+  "D:\\treeroute\\runs\\fire\\headline\\20261017_869d1f38\\ (file names); its test_preds.parquet (schema)",
+  "D:\\treeroute\\rival_export\\<p>\\<run>\\lead_0\\test\\<region>.parquet (all regions, 5 problems; columns unit, time and the players' feature columns); rival_export listings; defo units.parquet (schema)"
+ ],
+ "run_minutes": 31
+}

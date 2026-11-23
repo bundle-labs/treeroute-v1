@@ -1,0 +1,246 @@
+=== seg 0
+VIS: ## S3.13 SHAP comparison of treeroute v1 and its rivals at the nowcast (Part 628)
+
+**When and why.** The paper had left SHAP out of treeroute v1's results, offering a labelled post hoc analysis if a reviewer asked (outline decision O3; ruling AT17 (e)).
+TOKENS: ['628']
+COMMENT: ruling AW1 ("This amends outline decision O3 as confirmed by AT17 (e)")
+
+=== seg 1
+VIS: On 2026-11-12, after the locked results had been seen and the test labels opened, we decided that a SHAP analysis be run on treeroute v1's headline runs of all five problems and on every rival it can be run on; that the paper show how the models disagree, problem by problem, with several agreement statistics, Spearman's rank correlation among them, and their uncertainty from a bootstrap over regions; and that every model explain the same fixed sample of 1,000 test rows per problem (ruling AW).
+TOKENS: ['2026', '11', '12,', '1,000']
+COMMENT: A9, A10; rulings AW1-AW5
+
+=== seg 2
+VIS: The analysis protocol was first written before any SHAP value had been computed on a real data row, and its sections on the sample and the statistics were frozen when the first sample was registered, on 2026-11-12; smoke tests computed SHAP values on real rows only as plumbing (at most 250 coral bleaching rows before those sections were frozen and, later, rows of the comparison's samples in the checks of two loaders), and no agreement statistic was read from them.
+TOKENS: ['2026', '11', '12', '250']
+COMMENT: A9
+
+=== seg 3
+VIS: On 2026-11-13 we limited the analysis to the nowcast of each problem (ruling AY1), accepted a recorded path map for a dataset package file that had moved (gate E3m; AY2), and allowed treeroute v1's arcsine arms a relative difference of at most 10⁻¹² from their saved predictions (decision D8; AY3), with which the coral bleaching pilot had already run.
+TOKENS: ['2026', '11', '13', '10']
+COMMENT: A9, A10; ruling AY
+
+=== seg 4
+VIS: On 2026-11-14 we recorded that the burned-fraction comparison written on 2026-11-13, before Ridge was added, had not been read (ruling AZ1).
+TOKENS: ['2026', '11', '14', '2026', '11', '13,']
+COMMENT: A9; ruling AZ1
+
+=== seg 5
+VIS: On 2026-11-15, before any agreement statistic of the PM2.5, NDVI, burned-fraction or forest-loss comparisons had been read, we kept BARDL in the NDVI main set, as the frozen plan had it (ruling BA1), agreed that the comparison results be opened (BA2), and decided that treeroute v1's B1 sensitivity be run as planned (BA3).
+TOKENS: ['2026', '11', '15,']
+COMMENT: A9; ruling BA
+
+=== seg 6
+VIS: On 2026-11-16, after an independent re-computation of the comparison's numbers, we settled how this section and Table 9 present them (rulings BB1-BB6).
+TOKENS: ['2026', '11', '16,', '9']
+COMMENT: A9; ruling BB
+
+=== seg 7
+VIS: The runs went from 2026-11-12 to 2026-11-15, the B1 runs from 2026-11-15 to 2026-11-16, and the re-computation ran on 2026-11-16.
+TOKENS: ['2026', '11', '12', '2026', '11', '15,', '2026', '11', '15', '2026', '11', '16,', '2026', '11', '16']
+COMMENT: A9
+
+=== seg 9
+VIS: **Method.** Each model is explained in its own link space by SHAP values (Lundberg and Lee 2017), taken as interventional Shapley values (Janzing et al. 2020): a set of players is worth the mean, over the explained row's background rows, of the model's output with those players at the explained row's values and every other player at the background row's.
+TOKENS: ['2017', '2020']
+COMMENT: A10; SHAP protocol section 5 (value function, decision D3)
+
+=== seg 10
+VIS: Each explained row has its own background, chosen for this analysis and shared by every model. Under B2, the primary background, it is the same location's router fit rows at or before the cut with the explained row's season key (its calendar month; forest loss is annual, so all of them); on coral bleaching it is the survey visit's saved router fit rows, the neighbour router's pool of earlier nearby survey visits (Section 2.4).
+TOKENS: ['2.4']
+COMMENT: A10, A11
+
+=== seg 11
+VIS: On the gridded problems the SHAP values thus explain how a test-window forecast differs from the same location's forecasts for the same calendar month (forest loss: every year) in the training years: a column that takes the explained row's value on every background row, such as a static column, latitude, the month or the seasonal normal, gets exactly 0, and columns with a trend take credit for level shifts.
+TOKENS: ['0,']
+COMMENT: A10; SHAP protocol section 5 ("What B2 means")
+
+=== seg 12
+VIS: On coral bleaching most background survey visits are at other reef sites (of the 50,000, 980 are at the explained survey visit's own reef site, in 415 of the 1,000 sample rows, and none is dated on or after the explained survey visit), so static and calendar columns can carry attribution there.
+TOKENS: ['50,000,', '980', '415', '1,000']
+COMMENT: A11
+
+=== seg 14
+VIS: Tree models get exact interventional TreeSHAP values (Lundberg et al. 2020) from the project's own code, which walks every pair of an explained row and a background row exactly and was checked against brute-force Shapley values (no SHAP library is used); treeroute v1's trees, and on corrected-answer arms their correctors, enter weighted by the router's coefficients. Ridge, BARDL and treeroute v1's other router terms get exact linear SHAP values (Lundberg and Lee 2017): each coefficient times the mean, over the background rows, of the explained row's difference from the background row (a BARDL mean over months is split exactly over the months it averages).
+TOKENS: ['2020', '2017']
+COMMENT: A10; SHAP protocol section 5 (exact interventional TreeSHAP; linear terms; treeroute; rivals) and decision D2
+
+=== seg 16
+VIS: At the variable level, the level of Table 9, a player is a variable, the set of columns whose names agree once their lag, aggregate and window suffixes and their numbered code prefix (such as `V02_`) are stripped (own-history columns keep their stem, such as `hist_last`, and the month and its harmonics make up `calendar`), and its SHAP value is the exact Shapley value of the game with these grouped players.
+TOKENS: ['9,']
+COMMENT: A10; SHAP protocol sections 5 and 8 (players; the variable rule)
+
+=== seg 18
+VIS: A player's importance to a model, $I_m(j)$, is its mean absolute SHAP value over the sample rows, with each region weighted equally; a model's ranking orders the players by importance, ties broken by name. Two kinds of share are used. A player's share is its importance over the model's total importance over J, the base of every top-10 and top-3 share. A family's share is its mean absolute attribution, with each region weighted equally, over the sum of the five families' mean absolute attributions, a family's attribution on a row being the sum of its variables' SHAP values; the own-history share is thus a family share, not the sum of the own-history variables' shares. J, at each level, holds the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP value; every other player, a structural zero, is exactly 0 on every row of every model, so a plain mean would give the same J.
+TOKENS: ['10', '3', '10', '0']
+COMMENT: A10
+
+=== seg 19
+VIS: For every pair of models, at both levels and over J, we give Spearman's rank correlation over J and over the union of the two top-20 sets; Kendall's tau-b; the Jaccard similarity of the top-5 and top-10 sets, and of the top-20 sets where J has at least 200 players; rank-biased overlap (RBO; Webber et al. 2010) of the full rankings at p = 0.9 and 0.95; the share distance and the family-share distance, the total-variation distances between the two models' shares and between their family shares; and the sign agreement, the share of agreeing signs among the players in the union of the two top-10 sets whose sign is determined in both models (the bootstrap 95% interval of the player's signed mean SHAP value excludes 0).
+TOKENS: ['20', '5', '10', '20', '200', '2010', '0.9', '0.95', '10', '95%', '0']
+COMMENT: A10
+
+=== seg 20
+VIS: A pair is same-link when both models explain in the same link space, and cross-link otherwise; cross-link pairs are shown for completeness, labelled not comparable in scale or rank, and never pooled. The main set is treeroute v1 with its same-link rivals that passed their skill guard; a rival that failed its skill guard is explained raw, labelled and kept out of the main set (decision D6). Over the main set we give Kendall's W (Kendall and Babington Smith 1939), with the tie correction, and the mean pairwise Spearman correlation; for each model, its stability under region resampling, the mean Spearman correlation of its full-sample importances with those of its own bootstrap replicates, which is descriptive and no ceiling on the agreement between models. The main-text row gives, besides W, the median and the range of treeroute v1's top-20-union Spearman correlations with its same-link rivals, the RBO (p = 0.9) of treeroute v1's ranking with the rivals' consensus (the mean of their shares), the top 3 of treeroute v1 and of the consensus, and the own-history shares of treeroute v1 and of the median of the rivals.
+TOKENS: ['1939', '20', '0.9', '3']
+COMMENT: A10
+
+=== seg 21
+VIS: Unlike the rest of this supplement, the intervals here are percentile 95% intervals over 2,000 paired bootstrap draws of regions with replacement: the same draws for every model, made by a fixed hash generator (no seed is varied), with the importances, every statistic and every number of the main-text row recomputed on each draw; a statistic that is defined on only some draws is printed with that number of finite draws.
+TOKENS: ['95%', '2,000']
+COMMENT: A10
+
+=== seg 22
+VIS: With 37 to 133 regions per problem these intervals may under-cover; they are descriptive, no p-value is computed and none is corrected for multiplicity. All values are in link space; for each arcsine-link model the variable-level importances on its rows with a forecast above 0 are also given.
+TOKENS: ['37', '133', '0']
+COMMENT: A10, A14
+
+=== seg 25
+VIS: Table S3.18 b gives the rivals and naive baselines left out, with the reason: the one-input calibration maps of a product or index (MERRA-2 PM2.5 lagged one month, in the same month and as the placebo entry; VT0007, calibrated; NOAA Coral Reef Watch degree heating weeks), whose attribution would all fall on that one input; VT0007 as shipped and frozen, which are not functions of the rows' input columns; CAMS EAC4 and the burned-fraction published rivals, which were never run (rulings AG1 and AS); the LSTM of Kraft et al. (2019), which is not bit-reproducible without its original deep-learning library and stays out until decision D7 is ruled (its skill guard failed at the nowcast); and the naive baselines, which have no input feature. Rivals that run only at forecast leads are outside a comparison of the nowcast.
+TOKENS: ['2', '2019']
+COMMENT: SHAP protocol sections 7 and 12 (D7); engine/PENDING_PARTS.md Part 628 ("Left out, with the reasons the paper prints")
+
+=== seg 26
+VIS: [[TABLE S3.18]]
+
+**Samples and active sets.** Only the nowcast of each problem was explained (ruling AY1). Each problem's sample of 1,000 test rows was drawn from the labelled test rows that every compared model covers, stratified by region and test year with a fixed hash generator, and registered with its background rows; every SHAP script refuses a sample or background file that is not the registered one (Table S3.19).
+TOKENS: ['1,000']
+COMMENT: A14
+
+=== seg 27
+VIS: On the gridded problems a fixed number of locations is taken per region (two on PM2.5 and NDVI, seven on burned fraction, six on forest loss), with one row per location and test year, and the sample is trimmed to exactly 1,000 rows, so that the routers are rebuilt for few locations; on coral bleaching the survey visits are shared equally among the regions, capped by what each region holds, with each test year in turn.
+TOKENS: ['1,000']
+COMMENT: A14
+
+=== seg 29
+VIS: On every explained row, the SHAP values, the base value and the unattributed part add up to the model's link-space output within 10⁻⁹ at both levels (S-ADD); the evaluator equals the model (S-EVAL); the unattributed part stays small (S-RESID); and a player that equals the explained row on every background row gets exactly 0 (S-ZERO): all four passed for every model.
+TOKENS: ['10', '0']
+COMMENT: A10, A12
+
+=== seg 31
+VIS: Gate E3a compares the inputs with the run manifest's before the labels are read; on coral bleaching it compares no data file, as its static file list is empty and its label-file list cannot be read before the labels. Gate E8 compares the adopted arm's saved predictions on every test row of every sampled location, on coral bleaching on all 2,312 test survey visits, not only the 1,000 sampled; gate E10 compares the exported trees and evaluator with the engine's tree answers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled location (forest loss).
+TOKENS: ['2,312', '1,000']
+COMMENT: A12
+
+=== seg 32
+VIS: [[TABLE S3.20]]
+
+[[TABLE S3.21]]
+
+**Results.** Table 9 (Section 5.4) gives the main-text row of each problem; Table S3.22 repeats it with its components. Kendall's W of the main set is 0.85 [0.85, 0.86] on PM2.5, 0.80 [0.78, 0.81] on forest loss, 0.73 [0.69, 0.76] on coral bleaching and 0.62 [0.61, 0.62] on NDVI; on burned fraction, where the main set is treeroute v1 alone, it is undefined.
+TOKENS: ['9', '5.4', '0.85', '0.85', '0.86', '0.80', '0.78', '0.81', '0.73', '0.69', '0.76', '0.62', '0.61', '0.62']
+COMMENT: A16
+
+=== seg 33
+VIS: The median top-20-union Spearman correlation of treeroute v1 with its same-link rivals is −0.02 [−0.08, 0.07] on PM2.5 and 0.07 [−0.01, 0.12] on NDVI, both intervals including 0, 0.20 [0.14, 0.29] on forest loss and 0.48 [0.39, 0.55] on coral bleaching; W is taken over every variable of J and the whole main set, this correlation only over the variables in either model's top 20.
+TOKENS: ['20', '−0.02', '−0.08', '0.07', '0.07', '−0.01', '0.12', '0,', '0.20', '0.14', '0.29', '0.48', '0.39', '0.55', '20']
+COMMENT: A17; SHAP protocol section 8
+
+=== seg 34
+VIS: The RBO of treeroute v1's ranking with the rivals' consensus is 0.37 [0.36, 0.57] on PM2.5, 0.40 [0.38, 0.43] on NDVI, 0.63 [0.61, 0.75] on forest loss and 0.67 [0.61, 0.78] on coral bleaching.
+TOKENS: ['0.37', '0.36', '0.57', '0.40', '0.38', '0.43', '0.63', '0.61', '0.75', '0.67', '0.61', '0.78']
+COMMENT: A17
+
+=== seg 36
+VIS: treeroute v1's own-history share is 0.19 [0.16, 0.21] on PM2.5, 0.24 [0.22, 0.27] on NDVI and 0.29 [0.25, 0.33] on forest loss, against 0.30 [0.28, 0.32], 0.26 [0.24, 0.28] and 0.35 [0.32, 0.40] for the median of the rivals, and 0.14 [0.11, 0.16] on burned fraction; coral bleaching has no own-history input. Each interval is for one share, not for a difference between two.
+TOKENS: ['0.19', '0.16', '0.21', '0.24', '0.22', '0.27', '0.29', '0.25', '0.33', '0.30', '0.28', '0.32', '0.26', '0.24', '0.28', '0.35', '0.32', '0.40', '0.14', '0.11', '0.16']
+COMMENT: A18
+
+=== seg 37
+VIS: [[TABLE S3.22]]
+
+Table S3.23 (PM2.5), Table S3.24 (NDVI), Table S3.25 (burned fraction), Table S3.26 (forest loss) and Table S3.27 (coral bleaching) each give every pair at both levels, the main set's agreement with each model's stability, each model's top 10 at both levels and its family shares. On burned fraction every rival explains in another link, so treeroute v1's pairs with the rivals are all cross-link, and treeroute v1's forecast is above 0 on only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25 g).
+TOKENS: ['10', '0', '226', '1,000', '10']
+COMMENT: A19
+
+=== seg 38
+VIS: On NDVI, BARDL gives exactly 0 to 93 of the 96 variables of J, so the entries of its pairs that read that part of its ranking depend on the tie rule (Table S3.24, note ‡; ruling BB3, below).
+TOKENS: ['0', '93', '96']
+COMMENT: A15
+
+=== seg 39
+VIS: On coral bleaching, whose background is a pool of earlier nearby survey visits, the context-and-calendar family carries from 0.2% (treeroute v1) to 12.8% (LightGBM) of a main-set model's family attribution (Table S3.27 f).
+TOKENS: ['0.2%', '12.8%']
+COMMENT: A20
+
+=== seg 40
+VIS: [[TABLE S3.23]]
+
+[[TABLE S3.24]]
+
+[[TABLE S3.25]]
+
+[[TABLE S3.26]]
+
+[[TABLE S3.27]]
+
+**treeroute v1's B1 sensitivity (ruling BA3), kept apart from the main set.** B1 explains treeroute v1 on the same 1,000 sample rows against all of each location's router fit rows at or before the cut, not only those of the explained row's calendar month, so the month and the seasonal normal can take credit.
+TOKENS: ['1,000']
+COMMENT: A10; SHAP protocol section 5 (B1)
+
+=== seg 42
+VIS: Table S3.28 compares treeroute v1's main run with its B1 run under the pair statistics, over the pair's own J; Table S3.29 gives the B1 run's family shares with their intervals, its top 3 and own-history share, and its top 10 at both levels; Table S3.30 gives each B1 run's background pairs and seconds, and forest loss's identity check, which held exactly: the largest difference is 0 at both levels, with the same rows, players and variables, so the B1 numbers of PM2.5, NDVI and burned fraction are reported, as the plan required.
+TOKENS: ['3', '10', '0']
+COMMENT: A21
+
+=== seg 43
+VIS: Under B1 the seasonal normal takes 70.3% [67.4%, 73.1%] of the family attribution on PM2.5, 44.3% [40.5%, 48.0%] on NDVI and 81.1% [71.6%, 87.3%] on burned fraction, and `normal` is the top variable on all three; under B2 it is exactly 0 on these problems (Table S3.23 f, Table S3.24 f and Table S3.25 f).
+TOKENS: ['70.3%', '67.4%', '73.1%', '44.3%', '40.5%', '48.0%', '81.1%', '71.6%', '87.3%', '0']
+COMMENT: A22
+
+=== seg 44
+VIS: Every B1 player's importance, share and signed mean, each with its interval, is in the re-computation's results file (verify_v1/A/results.json, key b1); of B1's per-player numbers this section prints only its top 3 and top 10.
+TOKENS: ['3', '10']
+COMMENT: A22; SHAP protocol sections 9 and 10
+
+=== seg 45
+VIS: [[TABLE S3.28]]
+
+[[TABLE S3.29]]
+
+[[TABLE S3.30]]
+
+**Independent re-computation (ruling BA2).** Before any number of the comparison was used, two implementations, A and B, were written independently from the protocol, each blind to the comparison script and its outputs (they read only the structural fields of each problem's comparison record and its saved region draws). Each computed the comparison's numbers and the B1 sensitivity's from the SHAP values' row files and the runs' records, and a reconciliation compared A with B and both with the comparison's output files. Every number that the comparison's files hold and both implementations also hold agrees within 10⁻⁹, and so do the comparison's per-draw values on all 2,000 draws, except in three cases, each explained: a family with no variable, for which A gives no number and B and the comparison's files give the 0 of the sum rule; burned fraction's Kendall's W and mean pairwise Spearman correlation, which all three leave undefined (the comparison's files write them as not-a-number with 0 finite draws); and the sign agreement's intervals, which the comparison script does not compute (below).
+TOKENS: ['10', '2,000', '0', '0']
+COMMENT: A23
+
+=== seg 47
+VIS: **What the comparison script does not do (rulings BB1 and BB2).** The comparison script (`compare_shap.py`) departs from the protocol in three ways that bear on what is reported: it writes neither treeroute v1's top 3 nor its own-history share with its interval in burned fraction's main-text row, as it writes them only when treeroute v1 has a same-link rival; it evaluates the sign agreement on the full sample only, so its files hold no interval for it; and it gives no feature-level family-share distance.
+TOKENS: ['3']
+COMMENT: A23
+
+=== seg 48
+VIS: By ruling BB1, the two missing entries of burned fraction's main-text row and every sign-agreement interval are taken from the re-computation (A's numbers, equal to B's) and marked †, so in these entries the tables differ from the comparison's files; the three sign-agreement intervals that rest on fewer than 2,000 finite draws, all of burned fraction at the variable level and against treeroute v1, are printed with that number (Table S3.25 a).
+TOKENS: ['2,000']
+COMMENT: A24
+
+=== seg 49
+VIS: By ruling BB2, the feature-level family-share distance is the variable-level value repeated, marked §, because families are sums of variable-level attributions; it is given for B1 too, an exception to the rule that B1's numbers follow the comparison's choices. Two further departures, the tie rule of the top 10 on the arcsine-link models' rows with a forecast above 0 and a cap on the structural zeros that the script's printed tables list, had no effect here. No script of the analysis was changed or run again for this, and the comparison's files are unchanged.
+TOKENS: ['10', '0']
+COMMENT: A23
+
+=== seg 50
+VIS: **Presentation (rulings BB3 to BB6).** NDVI's pairs with BARDL are kept (BB3). BARDL gives exactly 0 to 93 of the 96 variables of J (470 of the 479 players at the feature level), so beyond its three variables (nine columns) its ranking, and with it its top-5, top-10 and top-20 sets where they reach that far, follows name order, the tie rule applied in code-point ascending order; note ‡ of Table S3.24 gives each statistic's largest spread across the tie orders tried, with an example.
+TOKENS: ['0', '93', '96', '470', '479', '5,', '10', '20']
+COMMENT: A15
+
+=== seg 51
+VIS: A family with no variable keeps its defined 0 with a label: coral bleaching's own-history shares "(no own-history input)" and forest loss's context-and-calendar shares "(no context or calendar input)". The median of the rivals' own-history shares has one label, "median of the rivals", in every row: on PM2.5 and forest loss it is LightGBM's share and on NDVI, with four rivals, the mean of the two middle shares. A note says that PM2.5's RBO with the consensus has an asymmetric interval because the consensus's top variable changes across the region draws (BB4).
+TOKENS: ['0']
+COMMENT: A18
+
+=== seg 52
+VIS: The main models' top-10 shares and family shares are given without intervals, as in the comparison's files, while B1's family shares keep theirs (BB5). Coral bleaching's table of the main-text statistics (`AW4_table.md`, written on 2026-11-13 at 00:06) was read on 2026-11-13 at about 15:31, before the independent re-computation; the re-computation's implementers A and B never opened it (BB6; Supplement S1.7 records who read it).
+TOKENS: ['10', '2026', '11', '13', '00', '06', '2026', '11', '13', '15', '31,']
+COMMENT: A25
+
+=== seg 53
+VIS: **Not claimed.** SHAP values show what a model uses to move its forecast away from its background, not what causes the outcome. Under B2 they describe how a test-window forecast differs from the same location's forecasts with the same season key in the training years: a column that equals the explained row on every background row is 0 by construction, not unused, and columns with a trend take credit for level shifts; on coral bleaching, whose background is a pool of earlier nearby survey visits, static and calendar columns can carry attribution. Agreement between rankings is not correctness: models that agree may lean on the same proxies. Cross-link pairs are not comparable in scale or rank, so no comparison is made across links. A zero does not mean that an input is irrelevant: correlated inputs split the attribution arbitrarily (the variable level reduces this), and the interventional values evaluate each model on rows that mix the explained row's values with a background row's, combinations that may never occur. BARDL reads nine columns by design, three lags of the location's own label and precipitation and soil moisture at the issue step and the two steps before (published inputs only; ruling AB), so its zeros elsewhere mean "not an input"; it counts in the NDVI main set, as the frozen plan has it (ruling BA1), its top-k sets follow name order beyond its inputs, and its per-location coefficients are not reported, as its map files stay out of the archive (ruling AV6).
+TOKENS: ['0']
+COMMENT: A15
+
+=== seg 54
+VIS: Burned fraction's link-space ranks do not describe its forecasts above 0, which are given apart. Own-history inputs stand for persistence, not for a driver; burned fraction's neighbourhood and burn columns mean contagion or co-occurrence; coral bleaching's columns may identify the survey programme. A router coefficient of one tree or of one region is not an explanation. Everything here is post hoc, on a sample of 1,000 rows per problem at the nowcast.
+TOKENS: ['0,', '1,000']
+COMMENT: A10, A15; SHAP protocol section 10 ("Not claimed"; its coral wording "other sites' visits" is inexact: A11)
+

@@ -1,0 +1,7 @@
+pass,lead,pools_file,pools,pools_holding_month_precision_row,share_pools_holding,distinct_month_precision_rows_in_pools,status
+decision_surface,0,pools_decision_surface.parquet,43,,,,not saved by the engine: no month-precision flag in the lead tables or the run records
+test_pass,0,pools_test_pass.parquet,56,,,,not saved by the engine: no month-precision flag in the lead tables or the run records
+guard,183,ladder/lead_183/pools_guard.parquet,36,,,,not saved by the engine: no month-precision flag in the lead tables or the run records
+test_pass,183,ladder/lead_183/pools_test_pass.parquet,56,,,,not saved by the engine: no month-precision flag in the lead tables or the run records
+guard,365,ladder/lead_365/pools_guard.parquet,28,,,,not saved by the engine: no month-precision flag in the lead tables or the run records
+test_pass,365,ladder/lead_365/pools_test_pass.parquet,52,,,,not saved by the engine: no month-precision flag in the lead tables or the run records

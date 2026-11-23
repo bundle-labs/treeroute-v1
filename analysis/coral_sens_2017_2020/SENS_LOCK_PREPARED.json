@@ -1,0 +1,119 @@
+{
+ "what": "coral 2017-2020 sensitivity row (declared by ruling V3; run under ruling AN3) -- PREPARED, not run",
+ "written_utc": "2026-10-28T11:53:33Z",
+ "binds_when": "the owner signs PENDING_PARTS Part 627 (lock written outside the freeze tool; F-DRAFT refuses a DRAFT package in treeroute_report.freeze)",
+ "engine": {
+  "engine_code_sha256": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+  "engine_code_hash": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678",
+  "headline_run_engine_code_hash": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678",
+  "install_engine_code_sha256": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814"
+ },
+ "package": {
+  "path": "D:\\treeroute\\analysis\\coral_sens_2017_2020\\package\\coral_sens_2017_2020",
+  "name": "coral_sens_2017_2020",
+  "fingerprint": "6a8509e323a7349f1f5e1d6e7861f8c96165af4bcd39e2a9caade425989d76c2",
+  "files": {
+   "AUDIT_CHECKLIST.md": "87b44d6dce5ad89c68bad009c17867fe047dc2221ccc587e30ecba739399382b",
+   "ban.yaml": "7a86de1c67249908223337799786c362518ed6dc04e924ca32b83d0ec4c52fd5",
+   "catalog.yaml": "6642ec45c3b9ccd4cf1d835b0ac152122c7778da08d19a47b4eefd5069623d60",
+   "dataset.yaml": "25969abe3daf32aff6a32bfa2a8ab966de8364d8264af1a600cf5665999d267e",
+   "exceptions.yaml": "a73d5bde0e5bf816d17ff9e1fcc7263efad5b0995707cc162aca18e6d7934e98",
+   "split.yaml": "beff073e4bdc8d654da115061d68861cc805df8317a1f690b25cabc4dabc2e62",
+   "ingest/README.md": "d8367c50fd709362c492b36c78032850244a0929b32173f32fc05b3c4dbf01e4"
+  },
+  "headline_package_fingerprint": "5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9"
+ },
+ "builder_copy": {
+  "build_tables.py": "a035122f3a492d1fe0dfdf4b9c9849946f25f101be7121c11682dddb9e276e62",
+  "build_visits.py": "95a079bc1e33f789f8f3ba3b6769a90669c94ca217dc12f1f41269efc7235f0a",
+  "check_tables.py": "5e909627165765fb3ebbd690bc5c3c1c9f7d1c2d180de0ff51bbe5f9bbb4cd30",
+  "columns.py": "0c4e198b840fc97fb5579f2adb76b95a07145560ef1948ccffdd90bba490227f",
+  "make_split.py": "760ef98d6595ccc8d889593ed163afeae7f6d1579ca62c5204edb6ace6d08918",
+  "npz_map.py": "dff13d7ff7ac92b9d500326ad7c3417c1a2bb8a64d8ddc82435c7d63e2e8656d"
+ },
+ "builder_originals": {
+  "D:/treeroute/coral_build/coral_tables/build_visits.py": "fede282d528fe764a94d5667cb908e75b44f97a104eae685d7f1657faa126b24",
+  "D:/treeroute/coral_build/coral_tables/build_tables.py": "b1f22ee74c6d9c9c937d7861594dbaa938029dbfad67b9a1b33601da72d559c3",
+  "D:/treeroute/coral_build/coral_tables/check_tables.py": "13756d9b7574dc0760ee022861cbe73a2c418986ee22c49f3be5cb646dbc7453",
+  "D:/treeroute/coral_build/coral_tables/columns.py": "0c4e198b840fc97fb5579f2adb76b95a07145560ef1948ccffdd90bba490227f",
+  "D:/treeroute/coral_build/coral_tables/npz_map.py": "dff13d7ff7ac92b9d500326ad7c3417c1a2bb8a64d8ddc82435c7d63e2e8656d",
+  "D:/treeroute/coral_build_v6b/coral_tables/make_split.py": "a69e1c8c553cc54cc4d83dcf73c2bcd741ef3210dcf6456dd6e953e291fe1857"
+ },
+ "builder_imports_project_root": {
+  "coral_safe.py": "1247938d1c2b6667322c833e39dd17975aa711a468ef4223e4539496f43792f6",
+  "coral_mhw_features.py": "a19826786226a6432a034e384206a9094364ed6b4e316841231cffce8197a438",
+  "coral_extra_drivers.py": "484cdba06a524a31b72afac41a941d6c30a69dab7f19b2de92515cc706680e05"
+ },
+ "stage1_outputs": {
+  "visits.parquet": "620affd33111a5a1315f6c25903b796b066aa7a902e145a2dbe89395b089ea93",
+  "visits_census.json": "3995e9a57e921761445e79200063330cfc2c6bc2c6c96edfb8649fb6db0251ee",
+  "month_precision_rows.csv": "cfa18268198ca9be48feb26f384287e7fe694c6f1ca7b221773af1994d838bf5"
+ },
+ "tools": {
+  "check_after_run.py": "853bc2a59ed498deae14ea77e891c9fa7db604941a2c1fb55a819dfe79e7130f",
+  "compare_features.py": "3a32aa593eab8235c5701e721d5a05eac4c2600b42181a45a40f174014b7a9bf",
+  "compare_hashes.py": "f43e3be514a5c65b6a2325fdb5827bd39cb533026f8bb7f85d178451e56f7ea3",
+  "compare_plan.py": "8bdd2603612875a32c7e70c9a8498409b826fd252ea63f8eaea6fca995441726",
+  "compare_stage1.py": "2b3e784788bfe24e11322f1529e5ae54f73d3ac8f079e6a97770f7ef91a59c4b",
+  "engine_hashes.py": "63563be479b67d8d480db84910818085077cee4303fa9344deaabc08e5764a65",
+  "full_deep_check.py": "7580de702aa59122e5818b3c378e41a260f406b86b0f4cf92f3d561b11bbd32d",
+  "hash_tree.py": "ba5055f91b8f418810964b1c473281a4e52cd8a2f70bc43622852e9c462e9b1b",
+  "launch_engine.py": "5fd839d91a3c47e5e611125b043794bd1be5d21e994f2cbfbd476c443594c044",
+  "load_check.py": "72c9cf5a094268348c333b6d2555de7c985f963a69f198f856f55a8ba269dd32",
+  "make_preview_tables.py": "da74da4bac456609d10fec9966b9485d0504909662f2adc85a1a0d84c37e70a6",
+  "make_tiny_check_visits.py": "816450404553ab6581a619dccfe6b179e07ed30a882de25e96f0138f3a7a58a5",
+  "probe_smoke_and_fulldeep.py": "a6b76b05bc83204fbf1ba003651b69d1860d0d9170ffb72af04f6faa6bd8f296",
+  "write_lock.py": "31e789588dab1c03864f90e5004bc0c35bfabd7c0a410e6c62d38ae78abbecdf"
+ },
+ "expected_after_stage2": {
+  "rows": {
+   "lead_0": 13723,
+   "lead_183": 13715,
+   "lead_365": 13715
+  },
+  "marks_lead_0": {
+   "train": 12230,
+   "test": 1493
+  },
+  "check": "tools/compare_features.py coral_data/full -> RESULT: PASS (every headline row bit-identical except mark; mark differs only for 2016 visits; extra rows only of 2020)",
+  "preview_plan_derived_sha256": "574d080559cee060db11c8d8ad2cdae5202b68d94398cababdb5a5e6b3c4a5f9",
+  "preview_plan_content_sha256": "ee0c7e46e5026b85cfde50f2b98d04369f1ae4b542f33aef0d105e4d816635ed"
+ },
+ "expected_windows": {
+  "R3": 2020,
+  "R4": 1994,
+  "R5": [
+   2017,
+   2018,
+   2019,
+   2020
+  ],
+  "R6": 2016,
+  "R7": {
+   "inner_fit": [
+    1994,
+    2013
+   ],
+   "inner_score": [
+    2014,
+    2015,
+    2016
+   ]
+  },
+  "R11_cuts": {
+   "0": [
+    "2016-12-31",
+    "2013-12-31"
+   ],
+   "183": [
+    "2016-07-02",
+    "2013-07-02"
+   ],
+   "365": [
+    "2016-01-02",
+    "2013-01-01"
+   ]
+  }
+ },
+ "run_root": "D:\\treeroute\\analysis\\coral_sens_2017_2020\\run"
+}

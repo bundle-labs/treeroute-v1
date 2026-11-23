@@ -1,0 +1,5020 @@
+{
+ "what": "POST HOC reconciliation of A and B of the engine-v2 alarm replay (owner ruling AN2, part 3); coral numbers are also CIRCULAR (fact A8); coral's 2016-2019 window was set by hand",
+ "verdict": "AGREE",
+ "environment": {
+  "python": "3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v.1929 64 bit (AMD64)]",
+  "executable": "C:\\Users\\moh the ghost\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "numpy": "2.0.2",
+  "pandas": "2.3.3",
+  "pyarrow": "21.0.0",
+  "flags": {
+   "isolated": true,
+   "dont_write_bytecode": true
+  },
+  "file_sha256": {
+   "SPEC.md": "9e6743133d75e94b0d3bc4dd1debb5b20f31615fb2c6188d59189abb6ec8d00e",
+   "INPUTS_SHA256.txt": "90deaa81977de57867560234975a0725ae3c7a1124b226cb9a629ff16bb7ba79",
+   "A/replay_A.py": "df5d0306879753fafb9c235fd006b9b9645fd39c616462ed5a860d11ceb41316",
+   "B/replay_B.py": "42a97b0fa9a8c47833d805e2fa44ef3aa86c352fa9819435a86953f5e9563924",
+   "A/result_A.json": "3d04553cf50e19c57f40eab66c9d223fe1fd21e91c48da939111ad216167d7e5",
+   "B/result_B.json": "258f5c1f7b2a1b7d28452a98b28d07bde4980b773213a92f3a945211ba775a5f",
+   "A/run1.log": "41ba90bf47e995bca3b34d95a86565fe1c4dc8637f496e1ee5fba476be1d451e",
+   "reconcile/reconcile_AB.py": "6f1fdd715354c377c6f3babc57f29af9cbd78d16b16faaa242287f3ff3fcd620",
+   "A/rows_pm25_lead_0.parquet": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+   "B/rows_pm25_lead_0.parquet": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+   "A/rows_pm25_lead_6.parquet": "8c550e1ac24b1e3fb207122a0ade547df3868a8b785abdc2f016e73e7f4b43da",
+   "B/rows_pm25_lead_6.parquet": "8c550e1ac24b1e3fb207122a0ade547df3868a8b785abdc2f016e73e7f4b43da",
+   "A/rows_pm25_lead_12.parquet": "581c3109170d86256959d55e031e55e0ab82ee0e3ff72c8812238445516bb8bf",
+   "B/rows_pm25_lead_12.parquet": "581c3109170d86256959d55e031e55e0ab82ee0e3ff72c8812238445516bb8bf",
+   "A/rows_ndvi_lead_0.parquet": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+   "B/rows_ndvi_lead_0.parquet": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+   "A/rows_ndvi_lead_6.parquet": "97fb271030b4460de60a4af78efb2b2b2c21122a4d1c5d71a333164d5c2245e8",
+   "B/rows_ndvi_lead_6.parquet": "97fb271030b4460de60a4af78efb2b2b2c21122a4d1c5d71a333164d5c2245e8",
+   "A/rows_ndvi_lead_12.parquet": "841a98355af39c9cdb4486f0c3dcbb78987044f31b4d352d873fcee0a17bdd64",
+   "B/rows_ndvi_lead_12.parquet": "841a98355af39c9cdb4486f0c3dcbb78987044f31b4d352d873fcee0a17bdd64",
+   "A/rows_fire_lead_0.parquet": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+   "B/rows_fire_lead_0.parquet": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+   "A/rows_fire_lead_6.parquet": "9807f74736eae58473534eee08bee96d07ea10a6f83a0cbc40aa3dec724180ba",
+   "B/rows_fire_lead_6.parquet": "9807f74736eae58473534eee08bee96d07ea10a6f83a0cbc40aa3dec724180ba",
+   "A/rows_fire_lead_12.parquet": "9a878766ebd0aad7962938dcd28adae0ca8a77299a31cd2734204ae4bd92afa0",
+   "B/rows_fire_lead_12.parquet": "9a878766ebd0aad7962938dcd28adae0ca8a77299a31cd2734204ae4bd92afa0",
+   "A/rows_defo_lead_0.parquet": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+   "B/rows_defo_lead_0.parquet": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+   "A/rows_coral_lead_0.parquet": "036f0c4f47c52d0ef2634ec4965d349c839e25c5ea878401dbde25bc2df4e7b6",
+   "B/rows_coral_lead_0.parquet": "036f0c4f47c52d0ef2634ec4965d349c839e25c5ea878401dbde25bc2df4e7b6",
+   "A/rows_coral_lead_365.parquet": "6683718798ee4b39a88a5c03ec9cae20450d4601ef8e63763870bef1fc643440",
+   "B/rows_coral_lead_365.parquet": "6683718798ee4b39a88a5c03ec9cae20450d4601ef8e63763870bef1fc643440",
+   "A/tool_rerun/WITH_WITHOUT.csv": "e25a210e139d96db0236572ba03307a587cbb0670769c3d8ff59bf3dab00056f",
+   "A/tool_rerun/coral/20261020_f3b8e3da/alarm_replay.json": "0f1f54a359ecf8e8896d29de8903eb7193f526679c9df99848def2110ff1a769",
+   "A/tool_rerun/coral/20261020_f3b8e3da/alarm_replay_scores.csv": "4845a5c73f7938623c3891b04a38f775bec355ab491d162b16a28160cabb1ad7",
+   "A/tool_rerun/defo/20261017_d71c61f4/alarm_replay.json": "a3578525d693dc4ad4e450d7e3ea5ad16df39f556f493f87476d84c09a5a953e",
+   "A/tool_rerun/defo/20261017_d71c61f4/alarm_replay_scores.csv": "6f64bf05b262be1176c41e0fa2568aeca4ed38b98700d8a3821b9771dc1fe615",
+   "A/tool_rerun/fire/20261017_869d1f38/alarm_replay.json": "85057566fcc8b417e1e04e8ad35f36fafe05a5ebbc2f091b5bf68674d5c52087",
+   "A/tool_rerun/fire/20261017_869d1f38/alarm_replay_scores.csv": "e9f235425e84a1a9623a0ed4cb12e8c32742123c9defb4167f89d3368b8f307a",
+   "A/tool_rerun/ndvi/20261016_d1de3158/alarm_replay.json": "dc98a0b90dad53d0a67c0967ed2e8480dc759c9f4af883167954e5df59179fbb",
+   "A/tool_rerun/ndvi/20261016_d1de3158/alarm_replay_scores.csv": "c89fdad4918f90f1eab09dfd18165a9cab57cb6150b3e497ded56421dd95bbbb",
+   "A/tool_rerun/pm25/20261007_74e67609/alarm_replay.json": "075a979cd51aea2aff03a7d7b0f34a2e713c510c3e97e25888b5da2daa0b1018",
+   "A/tool_rerun/pm25/20261007_74e67609/alarm_replay_scores.csv": "4af423db412a4c24cdec82a499f0ba7b9dd4f1edcbf554c822f403010c910eed",
+   "A/tool_rerun/rows/coral_20261020_f3b8e3da_lead_0.parquet": "c5de1d24b57e6d5b72f455f21cb2a865e84f2f048b7ea24d773974d78ab3eb43",
+   "A/tool_rerun/rows/coral_20261020_f3b8e3da_lead_183.parquet": "6a78062ed80270d73d198ade20d0130e21ccc7736dd140f61d7e57c4dab86d31",
+   "A/tool_rerun/rows/coral_20261020_f3b8e3da_lead_365.parquet": "bec2c42d119212a16b364480eaab2b800a5d5e91e05385e598e746bba9f0c6cf",
+   "A/tool_rerun/rows/defo_20261017_d71c61f4_lead_0.parquet": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+   "A/tool_rerun/rows/defo_20261017_d71c61f4_lead_1.parquet": "ad9ce18ca62addc2fd5eb40892780706b98739e44b9e5beff7f5ad5df02283ee",
+   "A/tool_rerun/rows/fire_20261017_869d1f38_lead_0.parquet": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+   "A/tool_rerun/rows/fire_20261017_869d1f38_lead_12.parquet": "b62223936e57dc1c57682a79ade4760ba8a608ba084b896285c4789d7fea8335",
+   "A/tool_rerun/rows/fire_20261017_869d1f38_lead_6.parquet": "5b1023aa43d529361861504e4a5f6148a87e026632b767ebc3d17d370257cb8f",
+   "A/tool_rerun/rows/ndvi_20261016_d1de3158_lead_0.parquet": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+   "A/tool_rerun/rows/ndvi_20261016_d1de3158_lead_12.parquet": "f377080e499674f9127628aef247571c4378125e2e1e213984e225ad90b65582",
+   "A/tool_rerun/rows/ndvi_20261016_d1de3158_lead_6.parquet": "6cec9ca5166704957aa2317f9f5a9d25adf65bd5387c6fe1721f794028092bc9",
+   "A/tool_rerun/rows/pm25_20261007_74e67609_lead_0.parquet": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+   "A/tool_rerun/rows/pm25_20261007_74e67609_lead_12.parquet": "01f8ff3182af7f7e9daab1bdcb950da5a2f989b9139d31f0bd37baf11a286610",
+   "A/tool_rerun/rows/pm25_20261007_74e67609_lead_6.parquet": "95570136cd99d1b0ce3b8980fce0cdc5330204b9d6ef0e572d682f9210bdf1ad"
+  },
+  "tool_rerun_vs_gate": {
+   "WITH_WITHOUT.csv": {
+    "tool_rerun_sha256": "e25a210e139d96db0236572ba03307a587cbb0670769c3d8ff59bf3dab00056f",
+    "gate_sha256": "e25a210e139d96db0236572ba03307a587cbb0670769c3d8ff59bf3dab00056f",
+    "byte_identical": true
+   },
+   "coral/20261020_f3b8e3da/alarm_replay.json": {
+    "tool_rerun_sha256": "0f1f54a359ecf8e8896d29de8903eb7193f526679c9df99848def2110ff1a769",
+    "gate_sha256": "0f1f54a359ecf8e8896d29de8903eb7193f526679c9df99848def2110ff1a769",
+    "byte_identical": true
+   },
+   "coral/20261020_f3b8e3da/alarm_replay_scores.csv": {
+    "tool_rerun_sha256": "4845a5c73f7938623c3891b04a38f775bec355ab491d162b16a28160cabb1ad7",
+    "gate_sha256": "4845a5c73f7938623c3891b04a38f775bec355ab491d162b16a28160cabb1ad7",
+    "byte_identical": true
+   },
+   "defo/20261017_d71c61f4/alarm_replay.json": {
+    "tool_rerun_sha256": "a3578525d693dc4ad4e450d7e3ea5ad16df39f556f493f87476d84c09a5a953e",
+    "gate_sha256": "a3578525d693dc4ad4e450d7e3ea5ad16df39f556f493f87476d84c09a5a953e",
+    "byte_identical": true
+   },
+   "defo/20261017_d71c61f4/alarm_replay_scores.csv": {
+    "tool_rerun_sha256": "6f64bf05b262be1176c41e0fa2568aeca4ed38b98700d8a3821b9771dc1fe615",
+    "gate_sha256": "6f64bf05b262be1176c41e0fa2568aeca4ed38b98700d8a3821b9771dc1fe615",
+    "byte_identical": true
+   },
+   "fire/20261017_869d1f38/alarm_replay.json": {
+    "tool_rerun_sha256": "85057566fcc8b417e1e04e8ad35f36fafe05a5ebbc2f091b5bf68674d5c52087",
+    "gate_sha256": "85057566fcc8b417e1e04e8ad35f36fafe05a5ebbc2f091b5bf68674d5c52087",
+    "byte_identical": true
+   },
+   "fire/20261017_869d1f38/alarm_replay_scores.csv": {
+    "tool_rerun_sha256": "e9f235425e84a1a9623a0ed4cb12e8c32742123c9defb4167f89d3368b8f307a",
+    "gate_sha256": "e9f235425e84a1a9623a0ed4cb12e8c32742123c9defb4167f89d3368b8f307a",
+    "byte_identical": true
+   },
+   "ndvi/20261016_d1de3158/alarm_replay.json": {
+    "tool_rerun_sha256": "dc98a0b90dad53d0a67c0967ed2e8480dc759c9f4af883167954e5df59179fbb",
+    "gate_sha256": "dc98a0b90dad53d0a67c0967ed2e8480dc759c9f4af883167954e5df59179fbb",
+    "byte_identical": true
+   },
+   "ndvi/20261016_d1de3158/alarm_replay_scores.csv": {
+    "tool_rerun_sha256": "c89fdad4918f90f1eab09dfd18165a9cab57cb6150b3e497ded56421dd95bbbb",
+    "gate_sha256": "c89fdad4918f90f1eab09dfd18165a9cab57cb6150b3e497ded56421dd95bbbb",
+    "byte_identical": true
+   },
+   "pm25/20261007_74e67609/alarm_replay.json": {
+    "tool_rerun_sha256": "075a979cd51aea2aff03a7d7b0f34a2e713c510c3e97e25888b5da2daa0b1018",
+    "gate_sha256": "075a979cd51aea2aff03a7d7b0f34a2e713c510c3e97e25888b5da2daa0b1018",
+    "byte_identical": true
+   },
+   "pm25/20261007_74e67609/alarm_replay_scores.csv": {
+    "tool_rerun_sha256": "4af423db412a4c24cdec82a499f0ba7b9dd4f1edcbf554c822f403010c910eed",
+    "gate_sha256": "4af423db412a4c24cdec82a499f0ba7b9dd4f1edcbf554c822f403010c910eed",
+    "byte_identical": true
+   },
+   "rows/coral_20261020_f3b8e3da_lead_0.parquet": {
+    "tool_rerun_sha256": "c5de1d24b57e6d5b72f455f21cb2a865e84f2f048b7ea24d773974d78ab3eb43",
+    "gate_sha256": "c5de1d24b57e6d5b72f455f21cb2a865e84f2f048b7ea24d773974d78ab3eb43",
+    "byte_identical": true
+   },
+   "rows/coral_20261020_f3b8e3da_lead_183.parquet": {
+    "tool_rerun_sha256": "6a78062ed80270d73d198ade20d0130e21ccc7736dd140f61d7e57c4dab86d31",
+    "gate_sha256": "6a78062ed80270d73d198ade20d0130e21ccc7736dd140f61d7e57c4dab86d31",
+    "byte_identical": true
+   },
+   "rows/coral_20261020_f3b8e3da_lead_365.parquet": {
+    "tool_rerun_sha256": "bec2c42d119212a16b364480eaab2b800a5d5e91e05385e598e746bba9f0c6cf",
+    "gate_sha256": "bec2c42d119212a16b364480eaab2b800a5d5e91e05385e598e746bba9f0c6cf",
+    "byte_identical": true
+   },
+   "rows/defo_20261017_d71c61f4_lead_0.parquet": {
+    "tool_rerun_sha256": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+    "gate_sha256": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+    "byte_identical": true
+   },
+   "rows/defo_20261017_d71c61f4_lead_1.parquet": {
+    "tool_rerun_sha256": "ad9ce18ca62addc2fd5eb40892780706b98739e44b9e5beff7f5ad5df02283ee",
+    "gate_sha256": "ad9ce18ca62addc2fd5eb40892780706b98739e44b9e5beff7f5ad5df02283ee",
+    "byte_identical": true
+   },
+   "rows/fire_20261017_869d1f38_lead_0.parquet": {
+    "tool_rerun_sha256": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+    "gate_sha256": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+    "byte_identical": true
+   },
+   "rows/fire_20261017_869d1f38_lead_12.parquet": {
+    "tool_rerun_sha256": "b62223936e57dc1c57682a79ade4760ba8a608ba084b896285c4789d7fea8335",
+    "gate_sha256": "b62223936e57dc1c57682a79ade4760ba8a608ba084b896285c4789d7fea8335",
+    "byte_identical": true
+   },
+   "rows/fire_20261017_869d1f38_lead_6.parquet": {
+    "tool_rerun_sha256": "5b1023aa43d529361861504e4a5f6148a87e026632b767ebc3d17d370257cb8f",
+    "gate_sha256": "5b1023aa43d529361861504e4a5f6148a87e026632b767ebc3d17d370257cb8f",
+    "byte_identical": true
+   },
+   "rows/ndvi_20261016_d1de3158_lead_0.parquet": {
+    "tool_rerun_sha256": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+    "gate_sha256": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+    "byte_identical": true
+   },
+   "rows/ndvi_20261016_d1de3158_lead_12.parquet": {
+    "tool_rerun_sha256": "f377080e499674f9127628aef247571c4378125e2e1e213984e225ad90b65582",
+    "gate_sha256": "f377080e499674f9127628aef247571c4378125e2e1e213984e225ad90b65582",
+    "byte_identical": true
+   },
+   "rows/ndvi_20261016_d1de3158_lead_6.parquet": {
+    "tool_rerun_sha256": "6cec9ca5166704957aa2317f9f5a9d25adf65bd5387c6fe1721f794028092bc9",
+    "gate_sha256": "6cec9ca5166704957aa2317f9f5a9d25adf65bd5387c6fe1721f794028092bc9",
+    "byte_identical": true
+   },
+   "rows/pm25_20261007_74e67609_lead_0.parquet": {
+    "tool_rerun_sha256": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+    "gate_sha256": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+    "byte_identical": true
+   },
+   "rows/pm25_20261007_74e67609_lead_12.parquet": {
+    "tool_rerun_sha256": "01f8ff3182af7f7e9daab1bdcb950da5a2f989b9139d31f0bd37baf11a286610",
+    "gate_sha256": "01f8ff3182af7f7e9daab1bdcb950da5a2f989b9139d31f0bd37baf11a286610",
+    "byte_identical": true
+   },
+   "rows/pm25_20261007_74e67609_lead_6.parquet": {
+    "tool_rerun_sha256": "95570136cd99d1b0ce3b8980fce0cdc5330204b9d6ef0e572d682f9210bdf1ad",
+    "gate_sha256": "95570136cd99d1b0ce3b8980fce0cdc5330204b9d6ef0e572d682f9210bdf1ad",
+    "byte_identical": true
+   }
+  }
+ },
+ "inputs": {
+  "listed": 108,
+  "A": {
+   "recorded": 108,
+   "in_list": 108,
+   "mismatch_vs_list": [],
+   "not_in_list": {},
+   "not_in_list_match_disk": {},
+   "listed_not_recorded": []
+  },
+  "B": {
+   "recorded": 93,
+   "in_list": 91,
+   "mismatch_vs_list": [],
+   "not_in_list": {
+    "D:/treeroute/analysis/paper_posthoc/v2_replay/SPEC.md": "9e6743133d75e94b0d3bc4dd1debb5b20f31615fb2c6188d59189abb6ec8d00e",
+    "D:/treeroute/analysis/paper_posthoc/v2_replay/INPUTS_SHA256.txt": "90deaa81977de57867560234975a0725ae3c7a1124b226cb9a629ff16bb7ba79"
+   },
+   "not_in_list_match_disk": {
+    "D:/treeroute/analysis/paper_posthoc/v2_replay/SPEC.md": true,
+    "D:/treeroute/analysis/paper_posthoc/v2_replay/INPUTS_SHA256.txt": true
+   },
+   "listed_not_recorded": [
+    "D:/treeroute/analysis/guidance/PROTOCOL.txt",
+    "D:/treeroute/analysis/guidance/RESULT.txt",
+    "D:/treeroute/engine_v2/ALARM_REPORT.txt",
+    "D:/treeroute/engine_v2/SPEC_ALARM.txt",
+    "D:/treeroute/engine_v2/engine/tools/alarm_replay.py",
+    "D:/treeroute/engine_v2/engine/tools/alarm_with_without.py",
+    "D:/treeroute/engine_v2/engine/treeroute/engine_constants.py",
+    "D:/treeroute/engine_v2/engine/treeroute/layer/alarm.py",
+    "D:/treeroute/engine_v2/engine/treeroute/pipeline/alarm_pass.py",
+    "D:/treeroute/engine_v2/engine/treeroute/report/metrics.py",
+    "D:/treeroute/engine_v2/replay_recheck_20261021/WITH_WITHOUT.csv",
+    "D:/treeroute/engine_v2/review_tests/indep_coral_replay.py",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/ladder/ladder_table.csv",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/ladder/ladder_table.csv",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/ladder/ladder_table.csv",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/ladder/ladder_table.csv",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/ladder/ladder_table.csv"
+   ]
+  },
+  "rehash_now": {
+   "files": 108,
+   "mismatches": {},
+   "seconds": 5.1
+  }
+ },
+ "gates": {
+  "G0": {
+   "A": true,
+   "B": true
+  },
+  "G1": {
+   "A": true,
+   "B": true
+  },
+  "G2": {
+   "A": true,
+   "B": true
+  },
+  "G3": {
+   "A": true,
+   "B": true
+  },
+  "G4": {
+   "A": true,
+   "B": true
+  },
+  "G5": {
+   "A": true,
+   "B": true
+  },
+  "G6": {
+   "A": true,
+   "B": true
+  },
+  "G7": {
+   "A": true,
+   "B": true
+  },
+  "G8": {
+   "A": true,
+   "B": true
+  },
+  "G9": {
+   "A": true,
+   "B": true
+  }
+ },
+ "checks": {
+  "total": 850,
+  "failed": []
+ },
+ "leaf_comparison": {
+  "canonicalisation": [
+   "B field names mapped onto A's (depth 2): {\"passes\": {\"batches_ge30_saved_rows\": \"batches_ge30\", \"saved_rows_in_batches_lt30\": \"saved_rows_in_small_batches\", \"twin_passes_skill_guard\": \"twin_guard\", \"reference_gap_rows\": \"reference_rows\"}, \"batches\": {\"small_batch_lt30\": \"small_batch\"}, \"by_year\": {\"saved_rows_switched\": \"rows_switched\"}, \"coral_programme\": {\"saved_rows_switched\": \"rows_switched\", \"switched_batches_holding_visits\": \"switched_batches_holding\"}, \"coral_programme_year\": {\"saved_rows_switched\": \"rows_switched\", \"switched_batches_holding_visits\": \"switched_batches_holding\"}, \"threshold_check\": {\"pooled_mae_with\": \"mae_with\", \"pooled_mae_without\": \"mae_without\", \"saved_rows_switched\": \"rows_switched\"}, \"silence\": {\"switched_any_batch\": \"switched_any\", \"kind\": \"class\", \"largest_ratio_computed_information\": \"largest_ratio_ge30_information\"}, \"small_batches\": {\"batches_lt30\": \"small_batches\", \"count_ratio_above_2\": \"above_threshold_count\", \"saved_rows_ratio_above_2\": \"above_threshold_saved_rows\", \"counterfactual_if_small_batches_above_2_also_switched\": \"counterfactual_info_only\", \"status\": \"pass_status\", \"count_lt30\": \"small_count\", \"saved_rows_lt30\": \"small_saved_rows\"}}",
+   "B contributions by_programme_residual / by_programme_year_residual -> residual_programme / residual_programme_year",
+   "B forms .../change -> change_vs_without; rows_differing/saved_rows -> rows_differing; rows_differing/labelled_rows -> rows_differing_labelled",
+   "B small_batches list items ratio_above_2 -> ratio_above_threshold; counterfactual saved_rows_switched -> rows_switched",
+   "B regions counts/<flag> -> <flag>; n_regions -> regions",
+   "B verdicts/<pkg>/{verdict_with, blocked_jackknife_with, verdict_without_locked, blocked_jackknife_without_locked, pooled_mae_*} -> A verdicts/<pkg>/0/{with/verdict, with/blocked_jackknife, without_locked/verdict, without_locked/blocked_jackknife, with/pooled_mae_*}; verdict_without_recomputed -> without_recomputed_B/verdict (B only; cross-checked against A without_locked)",
+   "B python_and_libraries flags_isolated / dont_write_bytecode -> flags/isolated, flags/dont_write_bytecode",
+   "values: a 'year' leaf held as int (B) is compared as its decimal text (A); B subsets 'edge' text ('y > 23.9575') is compared as its number (A holds the number); A silence switched_any 'yes'/'no' is compared as true/false (B)"
+  ],
+  "rel_tol": 1e-12,
+  "matched": 5270,
+  "bit_equal_floats": 1616,
+  "equal_other": 3434,
+  "within_tol": [],
+  "differ_numbers_or_codes": [],
+  "differ_wording": [
+   {
+    "path": "batches/coral/0/2016-01/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-02/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-03/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-04/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-05/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-06/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-07/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-08/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-09/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-10/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-11/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2016-12/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-01/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-02/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-03/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-04/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-05/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-06/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-07/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-08/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-09/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-10/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-11/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2017-12/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-01/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-02/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-03/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-04/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-05/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-06/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-07/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-08/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-09/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-10/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-11/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2018-12/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-01/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-02/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-03/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-04/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-05/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-06/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-07/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-08/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-09/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-10/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-11/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/coral/0/2019-12/note",
+    "A": "not tested: fewer than 30 saved rows",
+    "B": null
+   },
+   {
+    "path": "batches/defo/0/step:2020/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/defo/0/step:2021/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/defo/0/step:2022/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/defo/0/step:2023/note",
+    "A": "tested in the code's sense",
+    "B": null
+   },
+   {
+    "path": "batches/fire/0/step:24229/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24230/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24231/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24232/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24233/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24234/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24235/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24236/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24237/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24238/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24239/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24240/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24241/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24242/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24243/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24244/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24245/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24246/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24247/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24248/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24249/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24250/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24251/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24252/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24253/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24254/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24255/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24256/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24257/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24258/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24259/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24260/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24261/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24262/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24263/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24264/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24265/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24266/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24267/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24268/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24269/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24270/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24271/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24272/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24273/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24274/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24275/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/fire/0/step:24276/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24241/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24242/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24243/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24244/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24245/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24246/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24247/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24248/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24249/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24250/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24251/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24252/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24253/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24254/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24255/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24256/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24257/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24258/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24259/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24260/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24261/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24262/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24263/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24264/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24265/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24266/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24267/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24268/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24269/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24270/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24271/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24272/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24273/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24274/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24275/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24276/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24277/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24278/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24279/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24280/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24281/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24282/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24283/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24284/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24285/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24286/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24287/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/ndvi/0/step:24288/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24241/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24242/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24243/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24244/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24245/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24246/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24247/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24248/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24249/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24250/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24251/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24252/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24253/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24254/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24255/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24256/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24257/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24258/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24259/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24260/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24261/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24262/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24263/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24264/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24265/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24266/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24267/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24268/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24269/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24270/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24271/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24272/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24273/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24274/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24275/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24276/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24277/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24278/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24279/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24280/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24281/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24282/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24283/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24284/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24285/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24286/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24287/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "batches/pm25/0/step:24288/note",
+    "A": "not tested: the rule cannot act at this pass (ratio is information only)",
+    "B": "ratio computed; not tested: the rule cannot act on this pass"
+   },
+   {
+    "path": "contributions/formula",
+    "A": "contrib = (n_cell / N) x (MAE_with(cell) - MAE_without(cell)); share = contrib / pooled change",
+    "B": "contrib = (n_cell / N) x (MAE_with(cell) - MAE_without(cell)); share = contrib / (pooled MAE_with - pooled MAE_without)"
+   },
+   {
+    "path": "forms/F1/label",
+    "A": "per-batch switch: the fixed v2 rule (= the with-alarm column)",
+    "B": "per-batch switch: the fixed v2 rule (the with-alarm column)"
+   },
+   {
+    "path": "forms/F2/label",
+    "A": "per-batch even blend on the same 11 switched batches (INFORMATION ONLY, not the rule)",
+    "B": "per-batch even blend on the same 11 switched batches: INFORMATION ONLY, not the rule"
+   },
+   {
+    "path": "forms/F3/label",
+    "A": "whole-window switch, the twin on every row (Part 603/604 M1; cross-check only; not the alarm's value (C6))",
+    "B": "whole-window switch (twin on every row, Part 603 guard = Part 604 M1): cross-check only, not the alarm's value (C6)"
+   },
+   {
+    "path": "forms/F4/label",
+    "A": "whole-window even blend on every row (Part 603 blend = Part 604 M2 = M3; cross-check only)",
+    "B": "whole-window even blend (Part 603 blend = Part 604 M2 = M3): cross-check only"
+   },
+   {
+    "path": "regions/coral/0/note",
+    "A": "S5 use is an owner item (O2)",
+    "B": "information; whether S5 uses it is owner item O2; post hoc, circular"
+   },
+   {
+    "path": "subsets/coral/0/y_eq_0/label",
+    "A": "y == 0 (complement of y > 0)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/0/y_ge_50/label",
+    "A": "y >= 50",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/0/y_gt_0/label",
+    "A": "y > 0 (bleached)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/0/y_gt_q75/label",
+    "A": "y > 23.9575 (the lead's q75 of positive donor labels)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/0/y_le_q75/label",
+    "A": "y <= 23.9575 (complement)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/0/y_lt_50/label",
+    "A": "y < 50 (complement of y >= 50)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_eq_0/label",
+    "A": "y == 0 (complement of y > 0)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_ge_50/label",
+    "A": "y >= 50",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_gt_0/label",
+    "A": "y > 0 (bleached)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_gt_q75/label",
+    "A": "y > 22.22 (the lead's q75 of positive donor labels)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_le_q75/label",
+    "A": "y <= 22.22 (complement)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/183/y_lt_50/label",
+    "A": "y < 50 (complement of y >= 50)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_eq_0/label",
+    "A": "y == 0 (complement of y > 0)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_ge_50/label",
+    "A": "y >= 50",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_gt_0/label",
+    "A": "y > 0 (bleached)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_gt_q75/label",
+    "A": "y > 22.5 (the lead's q75 of positive donor labels)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_le_q75/label",
+    "A": "y <= 22.5 (complement)",
+    "B": "outcome-defined (selected on the test label)"
+   },
+   {
+    "path": "subsets/coral/365/y_lt_50/label",
+    "A": "y < 50 (complement of y >= 50)",
+    "B": "outcome-defined (selected on the test label)"
+   }
+  ],
+  "differ_expected_environment": [],
+  "only_A": [
+   "batches/coral/0/2016-01/n_scored",
+   "batches/coral/0/2016-02/n_scored",
+   "batches/coral/0/2016-03/n_scored",
+   "batches/coral/0/2016-04/n_scored",
+   "batches/coral/0/2016-05/n_scored",
+   "batches/coral/0/2016-06/n_scored",
+   "batches/coral/0/2016-07/n_scored",
+   "batches/coral/0/2016-08/n_scored",
+   "batches/coral/0/2016-09/n_scored",
+   "batches/coral/0/2016-10/n_scored",
+   "batches/coral/0/2016-11/n_scored",
+   "batches/coral/0/2016-12/n_scored",
+   "batches/coral/0/2017-01/n_scored",
+   "batches/coral/0/2017-02/n_scored",
+   "batches/coral/0/2017-03/n_scored",
+   "batches/coral/0/2017-04/n_scored",
+   "batches/coral/0/2017-05/n_scored",
+   "batches/coral/0/2017-06/n_scored",
+   "batches/coral/0/2017-07/n_scored",
+   "batches/coral/0/2017-08/n_scored",
+   "batches/coral/0/2017-09/n_scored",
+   "batches/coral/0/2017-10/n_scored",
+   "batches/coral/0/2017-11/n_scored",
+   "batches/coral/0/2017-12/n_scored",
+   "batches/coral/0/2018-01/n_scored",
+   "batches/coral/0/2018-02/n_scored",
+   "batches/coral/0/2018-03/n_scored",
+   "batches/coral/0/2018-04/n_scored",
+   "batches/coral/0/2018-05/n_scored",
+   "batches/coral/0/2018-06/n_scored",
+   "batches/coral/0/2018-07/n_scored",
+   "batches/coral/0/2018-08/n_scored",
+   "batches/coral/0/2018-09/n_scored",
+   "batches/coral/0/2018-10/n_scored",
+   "batches/coral/0/2018-11/n_scored",
+   "batches/coral/0/2018-12/n_scored",
+   "batches/coral/0/2019-01/n_scored",
+   "batches/coral/0/2019-02/n_scored",
+   "batches/coral/0/2019-03/n_scored",
+   "batches/coral/0/2019-04/n_scored",
+   "batches/coral/0/2019-05/n_scored",
+   "batches/coral/0/2019-06/n_scored",
+   "batches/coral/0/2019-07/n_scored",
+   "batches/coral/0/2019-08/n_scored",
+   "batches/coral/0/2019-09/n_scored",
+   "batches/coral/0/2019-10/n_scored",
+   "batches/coral/0/2019-11/n_scored",
+   "batches/coral/0/2019-12/n_scored",
+   "batches/defo/0/step:2020/n_scored",
+   "batches/defo/0/step:2021/n_scored",
+   "batches/defo/0/step:2022/n_scored",
+   "batches/defo/0/step:2023/n_scored",
+   "batches/fire/0/step:24229/n_scored",
+   "batches/fire/0/step:24230/n_scored",
+   "batches/fire/0/step:24231/n_scored",
+   "batches/fire/0/step:24232/n_scored",
+   "batches/fire/0/step:24233/n_scored",
+   "batches/fire/0/step:24234/n_scored",
+   "batches/fire/0/step:24235/n_scored",
+   "batches/fire/0/step:24236/n_scored",
+   "batches/fire/0/step:24237/n_scored",
+   "batches/fire/0/step:24238/n_scored",
+   "batches/fire/0/step:24239/n_scored",
+   "batches/fire/0/step:24240/n_scored",
+   "batches/fire/0/step:24241/n_scored",
+   "batches/fire/0/step:24242/n_scored",
+   "batches/fire/0/step:24243/n_scored",
+   "batches/fire/0/step:24244/n_scored",
+   "batches/fire/0/step:24245/n_scored",
+   "batches/fire/0/step:24246/n_scored",
+   "batches/fire/0/step:24247/n_scored",
+   "batches/fire/0/step:24248/n_scored",
+   "batches/fire/0/step:24249/n_scored",
+   "batches/fire/0/step:24250/n_scored",
+   "batches/fire/0/step:24251/n_scored",
+   "batches/fire/0/step:24252/n_scored",
+   "batches/fire/0/step:24253/n_scored",
+   "batches/fire/0/step:24254/n_scored",
+   "batches/fire/0/step:24255/n_scored",
+   "batches/fire/0/step:24256/n_scored",
+   "batches/fire/0/step:24257/n_scored",
+   "batches/fire/0/step:24258/n_scored",
+   "batches/fire/0/step:24259/n_scored",
+   "batches/fire/0/step:24260/n_scored",
+   "batches/fire/0/step:24261/n_scored",
+   "batches/fire/0/step:24262/n_scored",
+   "batches/fire/0/step:24263/n_scored",
+   "batches/fire/0/step:24264/n_scored",
+   "batches/fire/0/step:24265/n_scored",
+   "batches/fire/0/step:24266/n_scored",
+   "batches/fire/0/step:24267/n_scored",
+   "batches/fire/0/step:24268/n_scored",
+   "batches/fire/0/step:24269/n_scored",
+   "batches/fire/0/step:24270/n_scored",
+   "batches/fire/0/step:24271/n_scored",
+   "batches/fire/0/step:24272/n_scored",
+   "batches/fire/0/step:24273/n_scored",
+   "batches/fire/0/step:24274/n_scored",
+   "batches/fire/0/step:24275/n_scored",
+   "batches/fire/0/step:24276/n_scored",
+   "batches/ndvi/0/step:24241/n_scored",
+   "batches/ndvi/0/step:24242/n_scored",
+   "batches/ndvi/0/step:24243/n_scored",
+   "batches/ndvi/0/step:24244/n_scored",
+   "batches/ndvi/0/step:24245/n_scored",
+   "batches/ndvi/0/step:24246/n_scored",
+   "batches/ndvi/0/step:24247/n_scored",
+   "batches/ndvi/0/step:24248/n_scored",
+   "batches/ndvi/0/step:24249/n_scored",
+   "batches/ndvi/0/step:24250/n_scored",
+   "batches/ndvi/0/step:24251/n_scored",
+   "batches/ndvi/0/step:24252/n_scored",
+   "batches/ndvi/0/step:24253/n_scored",
+   "batches/ndvi/0/step:24254/n_scored",
+   "batches/ndvi/0/step:24255/n_scored",
+   "batches/ndvi/0/step:24256/n_scored",
+   "batches/ndvi/0/step:24257/n_scored",
+   "batches/ndvi/0/step:24258/n_scored",
+   "batches/ndvi/0/step:24259/n_scored",
+   "batches/ndvi/0/step:24260/n_scored",
+   "batches/ndvi/0/step:24261/n_scored",
+   "batches/ndvi/0/step:24262/n_scored",
+   "batches/ndvi/0/step:24263/n_scored",
+   "batches/ndvi/0/step:24264/n_scored",
+   "batches/ndvi/0/step:24265/n_scored",
+   "batches/ndvi/0/step:24266/n_scored",
+   "batches/ndvi/0/step:24267/n_scored",
+   "batches/ndvi/0/step:24268/n_scored",
+   "batches/ndvi/0/step:24269/n_scored",
+   "batches/ndvi/0/step:24270/n_scored",
+   "batches/ndvi/0/step:24271/n_scored",
+   "batches/ndvi/0/step:24272/n_scored",
+   "batches/ndvi/0/step:24273/n_scored",
+   "batches/ndvi/0/step:24274/n_scored",
+   "batches/ndvi/0/step:24275/n_scored",
+   "batches/ndvi/0/step:24276/n_scored",
+   "batches/ndvi/0/step:24277/n_scored",
+   "batches/ndvi/0/step:24278/n_scored",
+   "batches/ndvi/0/step:24279/n_scored",
+   "batches/ndvi/0/step:24280/n_scored",
+   "batches/ndvi/0/step:24281/n_scored",
+   "batches/ndvi/0/step:24282/n_scored",
+   "batches/ndvi/0/step:24283/n_scored",
+   "batches/ndvi/0/step:24284/n_scored",
+   "batches/ndvi/0/step:24285/n_scored",
+   "batches/ndvi/0/step:24286/n_scored",
+   "batches/ndvi/0/step:24287/n_scored",
+   "batches/ndvi/0/step:24288/n_scored",
+   "batches/pm25/0/step:24241/n_scored",
+   "batches/pm25/0/step:24242/n_scored",
+   "batches/pm25/0/step:24243/n_scored",
+   "batches/pm25/0/step:24244/n_scored",
+   "batches/pm25/0/step:24245/n_scored",
+   "batches/pm25/0/step:24246/n_scored",
+   "batches/pm25/0/step:24247/n_scored",
+   "batches/pm25/0/step:24248/n_scored",
+   "batches/pm25/0/step:24249/n_scored",
+   "batches/pm25/0/step:24250/n_scored",
+   "batches/pm25/0/step:24251/n_scored",
+   "batches/pm25/0/step:24252/n_scored",
+   "batches/pm25/0/step:24253/n_scored",
+   "batches/pm25/0/step:24254/n_scored",
+   "batches/pm25/0/step:24255/n_scored",
+   "batches/pm25/0/step:24256/n_scored",
+   "batches/pm25/0/step:24257/n_scored",
+   "batches/pm25/0/step:24258/n_scored",
+   "batches/pm25/0/step:24259/n_scored",
+   "batches/pm25/0/step:24260/n_scored",
+   "batches/pm25/0/step:24261/n_scored",
+   "batches/pm25/0/step:24262/n_scored",
+   "batches/pm25/0/step:24263/n_scored",
+   "batches/pm25/0/step:24264/n_scored",
+   "batches/pm25/0/step:24265/n_scored",
+   "batches/pm25/0/step:24266/n_scored",
+   "batches/pm25/0/step:24267/n_scored",
+   "batches/pm25/0/step:24268/n_scored",
+   "batches/pm25/0/step:24269/n_scored",
+   "batches/pm25/0/step:24270/n_scored",
+   "batches/pm25/0/step:24271/n_scored",
+   "batches/pm25/0/step:24272/n_scored",
+   "batches/pm25/0/step:24273/n_scored",
+   "batches/pm25/0/step:24274/n_scored",
+   "batches/pm25/0/step:24275/n_scored",
+   "batches/pm25/0/step:24276/n_scored",
+   "batches/pm25/0/step:24277/n_scored",
+   "batches/pm25/0/step:24278/n_scored",
+   "batches/pm25/0/step:24279/n_scored",
+   "batches/pm25/0/step:24280/n_scored",
+   "batches/pm25/0/step:24281/n_scored",
+   "batches/pm25/0/step:24282/n_scored",
+   "batches/pm25/0/step:24283/n_scored",
+   "batches/pm25/0/step:24284/n_scored",
+   "batches/pm25/0/step:24285/n_scored",
+   "batches/pm25/0/step:24286/n_scored",
+   "batches/pm25/0/step:24287/n_scored",
+   "batches/pm25/0/step:24288/n_scored",
+   "by_year/coral/0/2016/batches_rule",
+   "by_year/coral/0/2017/batches_rule",
+   "by_year/coral/0/2018/batches_rule",
+   "by_year/coral/0/2019/batches_rule",
+   "by_year/coral/365/2016/batches_rule",
+   "by_year/coral/365/2017/batches_rule",
+   "by_year/coral/365/2018/batches_rule",
+   "by_year/coral/365/2019/batches_rule",
+   "by_year/defo/0/2020/batches_rule",
+   "by_year/defo/0/2021/batches_rule",
+   "by_year/defo/0/2022/batches_rule",
+   "by_year/defo/0/2023/batches_rule",
+   "by_year/fire/0/2019/batches_rule",
+   "by_year/fire/0/2020/batches_rule",
+   "by_year/fire/0/2021/batches_rule",
+   "by_year/fire/0/2022/batches_rule",
+   "by_year/fire/12/2019/batches_rule",
+   "by_year/fire/12/2020/batches_rule",
+   "by_year/fire/12/2021/batches_rule",
+   "by_year/fire/12/2022/batches_rule",
+   "by_year/fire/6/2019/batches_rule",
+   "by_year/fire/6/2020/batches_rule",
+   "by_year/fire/6/2021/batches_rule",
+   "by_year/fire/6/2022/batches_rule",
+   "by_year/ndvi/0/2020/batches_rule",
+   "by_year/ndvi/0/2021/batches_rule",
+   "by_year/ndvi/0/2022/batches_rule",
+   "by_year/ndvi/0/2023/batches_rule",
+   "by_year/ndvi/12/2020/batches_rule",
+   "by_year/ndvi/12/2021/batches_rule",
+   "by_year/ndvi/12/2022/batches_rule",
+   "by_year/ndvi/12/2023/batches_rule",
+   "by_year/ndvi/6/2020/batches_rule",
+   "by_year/ndvi/6/2021/batches_rule",
+   "by_year/ndvi/6/2022/batches_rule",
+   "by_year/ndvi/6/2023/batches_rule",
+   "by_year/pm25/0/2020/batches_rule",
+   "by_year/pm25/0/2021/batches_rule",
+   "by_year/pm25/0/2022/batches_rule",
+   "by_year/pm25/0/2023/batches_rule",
+   "by_year/pm25/12/2020/batches_rule",
+   "by_year/pm25/12/2021/batches_rule",
+   "by_year/pm25/12/2022/batches_rule",
+   "by_year/pm25/12/2023/batches_rule",
+   "by_year/pm25/6/2020/batches_rule",
+   "by_year/pm25/6/2021/batches_rule",
+   "by_year/pm25/6/2022/batches_rule",
+   "by_year/pm25/6/2023/batches_rule",
+   "by_year_worse/[0]",
+   "by_year_worse/[1]",
+   "contributions/by_programme/AGRRA/change",
+   "contributions/by_programme/AGRRA/share_pct",
+   "contributions/by_programme/FRRP/change",
+   "contributions/by_programme/FRRP/share_pct",
+   "contributions/by_programme/McClanahan/change",
+   "contributions/by_programme/McClanahan/share_pct",
+   "contributions/by_programme/Reef_Check/change",
+   "contributions/by_programme/Reef_Check/share_pct",
+   "contributions/by_programme_year/AGRRA/2016/change",
+   "contributions/by_programme_year/AGRRA/2016/share_pct",
+   "contributions/by_programme_year/FRRP/2016/change",
+   "contributions/by_programme_year/FRRP/2016/share_pct",
+   "contributions/by_programme_year/McClanahan/2016/change",
+   "contributions/by_programme_year/McClanahan/2016/share_pct",
+   "contributions/by_programme_year/Reef_Check/2016/change",
+   "contributions/by_programme_year/Reef_Check/2016/share_pct",
+   "contributions/by_programme_year/Reef_Check/2017/change",
+   "contributions/by_programme_year/Reef_Check/2017/share_pct",
+   "contributions/by_programme_year/Reef_Check/2018/change",
+   "contributions/by_programme_year/Reef_Check/2018/share_pct",
+   "contributions/by_programme_year/Reef_Check/2019/change",
+   "contributions/by_programme_year/Reef_Check/2019/share_pct",
+   "contributions/sum_programme",
+   "contributions/sum_programme_year",
+   "coral_programme/AGRRA/circular",
+   "coral_programme/AGRRA/post_hoc",
+   "coral_programme/FRRP/circular",
+   "coral_programme/FRRP/note",
+   "coral_programme/FRRP/post_hoc",
+   "coral_programme/McClanahan/circular",
+   "coral_programme/McClanahan/note",
+   "coral_programme/McClanahan/post_hoc",
+   "coral_programme/Reef_Check/circular",
+   "coral_programme/Reef_Check/note",
+   "coral_programme/Reef_Check/post_hoc",
+   "coral_programme_year/AGRRA/2016/programme",
+   "coral_programme_year/AGRRA/2016/year",
+   "coral_programme_year/FRRP/2016/note",
+   "coral_programme_year/FRRP/2016/programme",
+   "coral_programme_year/FRRP/2016/year",
+   "coral_programme_year/McClanahan/2016/note",
+   "coral_programme_year/McClanahan/2016/programme",
+   "coral_programme_year/McClanahan/2016/year",
+   "coral_programme_year/Reef_Check/2016/note",
+   "coral_programme_year/Reef_Check/2016/programme",
+   "coral_programme_year/Reef_Check/2016/year",
+   "coral_programme_year/Reef_Check/2017/note",
+   "coral_programme_year/Reef_Check/2017/programme",
+   "coral_programme_year/Reef_Check/2017/year",
+   "coral_programme_year/Reef_Check/2018/note",
+   "coral_programme_year/Reef_Check/2018/programme",
+   "coral_programme_year/Reef_Check/2018/year",
+   "coral_programme_year/Reef_Check/2019/note",
+   "coral_programme_year/Reef_Check/2019/programme",
+   "coral_programme_year/Reef_Check/2019/year",
+   "forms/F1/column",
+   "forms/F1/defo_0_equals_without",
+   "forms/F1/subsets/all/selection",
+   "forms/F1/subsets/y_eq_0/selection",
+   "forms/F1/subsets/y_ge_50/selection",
+   "forms/F1/subsets/y_gt_0/selection",
+   "forms/F1/subsets/y_gt_q75/selection",
+   "forms/F1/subsets/y_le_q75/selection",
+   "forms/F1/subsets/y_lt_50/selection",
+   "forms/F2/column",
+   "forms/F2/defo_0_equals_without",
+   "forms/F2/subsets/all/selection",
+   "forms/F2/subsets/y_eq_0/selection",
+   "forms/F2/subsets/y_ge_50/selection",
+   "forms/F2/subsets/y_gt_0/selection",
+   "forms/F2/subsets/y_gt_q75/selection",
+   "forms/F2/subsets/y_le_q75/selection",
+   "forms/F2/subsets/y_lt_50/selection",
+   "forms/F3/column",
+   "forms/F3/equals_part604_M1",
+   "forms/F3/subsets/all/selection",
+   "forms/F3/subsets/y_eq_0/selection",
+   "forms/F3/subsets/y_ge_50/selection",
+   "forms/F3/subsets/y_gt_0/selection",
+   "forms/F3/subsets/y_gt_q75/selection",
+   "forms/F3/subsets/y_le_q75/selection",
+   "forms/F3/subsets/y_lt_50/selection",
+   "forms/F4/column",
+   "forms/F4/equals_part604_M2_M3",
+   "forms/F4/subsets/all/selection",
+   "forms/F4/subsets/y_eq_0/selection",
+   "forms/F4/subsets/y_ge_50/selection",
+   "forms/F4/subsets/y_gt_0/selection",
+   "forms/F4/subsets/y_gt_q75/selection",
+   "forms/F4/subsets/y_le_q75/selection",
+   "forms/F4/subsets/y_lt_50/selection",
+   "passes/coral/0/max_ratio_ge30_note",
+   "passes/coral/0/n_scored",
+   "passes/coral/183/max_ratio_ge30_note",
+   "passes/coral/183/n_scored",
+   "passes/coral/183/twin_guard_basis",
+   "passes/coral/365/max_ratio_ge30_note",
+   "passes/coral/365/n_scored",
+   "passes/coral/365/twin_guard_basis",
+   "passes/defo/0/max_ratio_ge30_note",
+   "passes/defo/0/n_scored",
+   "passes/defo/1/max_ratio_ge30_note",
+   "passes/defo/1/n_scored",
+   "passes/defo/1/twin_guard_basis",
+   "passes/fire/0/n_scored",
+   "passes/fire/12/max_ratio_ge30_note",
+   "passes/fire/12/n_scored",
+   "passes/fire/12/twin_guard_basis",
+   "passes/fire/6/max_ratio_ge30_note",
+   "passes/fire/6/n_scored",
+   "passes/fire/6/twin_guard_basis",
+   "passes/ndvi/0/n_scored",
+   "passes/ndvi/12/max_ratio_ge30_note",
+   "passes/ndvi/12/n_scored",
+   "passes/ndvi/12/twin_guard_basis",
+   "passes/ndvi/6/max_ratio_ge30_note",
+   "passes/ndvi/6/n_scored",
+   "passes/ndvi/6/twin_guard_basis",
+   "passes/pm25/0/n_scored",
+   "passes/pm25/12/max_ratio_ge30_note",
+   "passes/pm25/12/n_scored",
+   "passes/pm25/12/twin_guard_basis",
+   "passes/pm25/6/max_ratio_ge30_note",
+   "passes/pm25/6/n_scored",
+   "passes/pm25/6/twin_guard_basis",
+   "python_and_libraries/treeroute_imported_from",
+   "regions/coral/0/circular",
+   "regions/coral/0/lines/Andaman Islands/equals_gate_scores_line",
+   "regions/coral/0/lines/Andaman Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Bahamas and Florida Keys/equals_gate_scores_line",
+   "regions/coral/0/lines/Banda Sea and Molucca Islands/equals_gate_scores_line",
+   "regions/coral/0/lines/Belize and west Caribbean/equals_gate_scores_line",
+   "regions/coral/0/lines/Celebes Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Central and northern Great Barrier Reef/equals_gate_scores_line",
+   "regions/coral/0/lines/Eastern Hawaii/equals_gate_scores_line",
+   "regions/coral/0/lines/Fiji/equals_gate_scores_line",
+   "regions/coral/0/lines/Gulf of Oman/equals_gate_scores_line",
+   "regions/coral/0/lines/Hispaniola, Puerto Rico and Lesser Antilles/equals_gate_scores_line",
+   "regions/coral/0/lines/Jamaica/equals_gate_scores_line",
+   "regions/coral/0/lines/Java Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Kenya and Tanzania coast/equals_gate_scores_line",
+   "regions/coral/0/lines/Lakshadweep Islands/equals_gate_scores_line",
+   "regions/coral/0/lines/Lesser Sunda Islands and Savu Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Makassar Strait, Indonesia/equals_gate_scores_line",
+   "regions/coral/0/lines/Maldive Islands/equals_gate_scores_line",
+   "regions/coral/0/lines/Mascarene Islands/equals_gate_scores_line",
+   "regions/coral/0/lines/Mayotte and Comoros/equals_gate_scores_line",
+   "regions/coral/0/lines/Moreton Bay, eastern Australia/equals_gate_scores_line",
+   "regions/coral/0/lines/Netherlands Antilles and south Caribbean/equals_gate_scores_line",
+   "regions/coral/0/lines/Ningaloo Reef and coastal north-west Australia/equals_gate_scores_line",
+   "regions/coral/0/lines/North Madagascar/equals_gate_scores_line",
+   "regions/coral/0/lines/North Philippines/equals_gate_scores_line",
+   "regions/coral/0/lines/North Ryukyu Islands, Japan/equals_gate_scores_line",
+   "regions/coral/0/lines/North and central Red Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Persian Gulf/equals_gate_scores_line",
+   "regions/coral/0/lines/Society Islands, French Polynesia/equals_gate_scores_line",
+   "regions/coral/0/lines/Solomon Islands and Bougainville/equals_gate_scores_line",
+   "regions/coral/0/lines/South Madagascar/equals_gate_scores_line",
+   "regions/coral/0/lines/South-east Philippines/equals_gate_scores_line",
+   "regions/coral/0/lines/Southern Great Barrier Reef/equals_gate_scores_line",
+   "regions/coral/0/lines/Strait of Malacca/equals_gate_scores_line",
+   "regions/coral/0/lines/Sulu Sea/equals_gate_scores_line",
+   "regions/coral/0/lines/Sunda Shelf, south-east Asia/equals_gate_scores_line",
+   "regions/coral/0/lines/Taiwan and coastal China/equals_gate_scores_line",
+   "regions/coral/0/post_hoc",
+   "silence/coral/0/batches_tested",
+   "silence/coral/0/why",
+   "silence/defo/0/batches_tested",
+   "silence/defo/0/why",
+   "silence/fire/0/batches_tested",
+   "silence/fire/0/why",
+   "silence/ndvi/0/batches_tested",
+   "silence/ndvi/0/why",
+   "silence/pm25/0/batches_tested",
+   "silence/pm25/0/why",
+   "small_batches/coral/0/counterfactual_info_only/batches_switched",
+   "small_batches/coral/0/counterfactual_info_only/change_vs_rule",
+   "small_batches/coral/0/counterfactual_info_only/change_vs_without",
+   "small_batches/coral/0/counterfactual_info_only/label",
+   "small_batches/coral/0/information_only",
+   "small_batches/coral/0/pass_status",
+   "small_batches/defo/0/information_only",
+   "small_batches/defo/0/pass_status",
+   "small_batches/fire/0/information_only",
+   "small_batches/fire/0/pass_status",
+   "small_batches/ndvi/0/information_only",
+   "small_batches/ndvi/0/pass_status",
+   "small_batches/pm25/0/information_only",
+   "small_batches/pm25/0/pass_status",
+   "subsets/coral/0/all/outcome_defined",
+   "subsets/coral/0/all/selection",
+   "subsets/coral/0/y_eq_0/outcome_defined",
+   "subsets/coral/0/y_eq_0/selection",
+   "subsets/coral/0/y_ge_50/outcome_defined",
+   "subsets/coral/0/y_ge_50/selection",
+   "subsets/coral/0/y_gt_0/outcome_defined",
+   "subsets/coral/0/y_gt_0/selection",
+   "subsets/coral/0/y_gt_q75/outcome_defined",
+   "subsets/coral/0/y_gt_q75/selection",
+   "subsets/coral/0/y_le_q75/outcome_defined",
+   "subsets/coral/0/y_le_q75/selection",
+   "subsets/coral/0/y_lt_50/outcome_defined",
+   "subsets/coral/0/y_lt_50/selection",
+   "subsets/coral/183/all/outcome_defined",
+   "subsets/coral/183/all/selection",
+   "subsets/coral/183/y_eq_0/outcome_defined",
+   "subsets/coral/183/y_eq_0/selection",
+   "subsets/coral/183/y_ge_50/outcome_defined",
+   "subsets/coral/183/y_ge_50/selection",
+   "subsets/coral/183/y_gt_0/outcome_defined",
+   "subsets/coral/183/y_gt_0/selection",
+   "subsets/coral/183/y_gt_q75/outcome_defined",
+   "subsets/coral/183/y_gt_q75/selection",
+   "subsets/coral/183/y_le_q75/outcome_defined",
+   "subsets/coral/183/y_le_q75/selection",
+   "subsets/coral/183/y_lt_50/outcome_defined",
+   "subsets/coral/183/y_lt_50/selection",
+   "subsets/coral/365/all/outcome_defined",
+   "subsets/coral/365/all/selection",
+   "subsets/coral/365/y_eq_0/outcome_defined",
+   "subsets/coral/365/y_eq_0/selection",
+   "subsets/coral/365/y_ge_50/outcome_defined",
+   "subsets/coral/365/y_ge_50/selection",
+   "subsets/coral/365/y_gt_0/outcome_defined",
+   "subsets/coral/365/y_gt_0/selection",
+   "subsets/coral/365/y_gt_q75/outcome_defined",
+   "subsets/coral/365/y_gt_q75/selection",
+   "subsets/coral/365/y_le_q75/outcome_defined",
+   "subsets/coral/365/y_le_q75/selection",
+   "subsets/coral/365/y_lt_50/outcome_defined",
+   "subsets/coral/365/y_lt_50/selection",
+   "threshold_check/coral/0/1.5/note",
+   "threshold_check/coral/0/2.0/note",
+   "threshold_check/coral/0/2.5/note",
+   "threshold_check/coral/0/3.0/note",
+   "threshold_check/defo/0/1.5/note",
+   "threshold_check/defo/0/2.0/note",
+   "threshold_check/defo/0/2.5/note",
+   "threshold_check/defo/0/3.0/note"
+  ],
+  "only_B": [
+   "batches/coral/0/2016-01/change",
+   "batches/coral/0/2016-01/labelled_rows_switched",
+   "batches/coral/0/2016-01/rows_value_changed",
+   "batches/coral/0/2016-01/saved_rows_switched",
+   "batches/coral/0/2016-02/change",
+   "batches/coral/0/2016-02/labelled_rows_switched",
+   "batches/coral/0/2016-02/rows_value_changed",
+   "batches/coral/0/2016-02/saved_rows_switched",
+   "batches/coral/0/2016-03/change",
+   "batches/coral/0/2016-03/labelled_rows_switched",
+   "batches/coral/0/2016-03/rows_value_changed",
+   "batches/coral/0/2016-03/saved_rows_switched",
+   "batches/coral/0/2016-04/change",
+   "batches/coral/0/2016-04/labelled_rows_switched",
+   "batches/coral/0/2016-04/rows_value_changed",
+   "batches/coral/0/2016-04/saved_rows_switched",
+   "batches/coral/0/2016-05/change",
+   "batches/coral/0/2016-05/labelled_rows_switched",
+   "batches/coral/0/2016-05/rows_value_changed",
+   "batches/coral/0/2016-05/saved_rows_switched",
+   "batches/coral/0/2016-06/change",
+   "batches/coral/0/2016-06/labelled_rows_switched",
+   "batches/coral/0/2016-06/rows_value_changed",
+   "batches/coral/0/2016-06/saved_rows_switched",
+   "batches/coral/0/2016-07/change",
+   "batches/coral/0/2016-07/labelled_rows_switched",
+   "batches/coral/0/2016-07/rows_value_changed",
+   "batches/coral/0/2016-07/saved_rows_switched",
+   "batches/coral/0/2016-08/change",
+   "batches/coral/0/2016-08/labelled_rows_switched",
+   "batches/coral/0/2016-08/rows_value_changed",
+   "batches/coral/0/2016-08/saved_rows_switched",
+   "batches/coral/0/2016-09/change",
+   "batches/coral/0/2016-09/labelled_rows_switched",
+   "batches/coral/0/2016-09/rows_value_changed",
+   "batches/coral/0/2016-09/saved_rows_switched",
+   "batches/coral/0/2016-10/change",
+   "batches/coral/0/2016-10/labelled_rows_switched",
+   "batches/coral/0/2016-10/rows_value_changed",
+   "batches/coral/0/2016-10/saved_rows_switched",
+   "batches/coral/0/2016-11/change",
+   "batches/coral/0/2016-11/labelled_rows_switched",
+   "batches/coral/0/2016-11/rows_value_changed",
+   "batches/coral/0/2016-11/saved_rows_switched",
+   "batches/coral/0/2016-12/change",
+   "batches/coral/0/2016-12/labelled_rows_switched",
+   "batches/coral/0/2016-12/rows_value_changed",
+   "batches/coral/0/2016-12/saved_rows_switched",
+   "batches/coral/0/2017-01/change",
+   "batches/coral/0/2017-01/labelled_rows_switched",
+   "batches/coral/0/2017-01/rows_value_changed",
+   "batches/coral/0/2017-01/saved_rows_switched",
+   "batches/coral/0/2017-02/change",
+   "batches/coral/0/2017-02/labelled_rows_switched",
+   "batches/coral/0/2017-02/rows_value_changed",
+   "batches/coral/0/2017-02/saved_rows_switched",
+   "batches/coral/0/2017-03/change",
+   "batches/coral/0/2017-03/labelled_rows_switched",
+   "batches/coral/0/2017-03/rows_value_changed",
+   "batches/coral/0/2017-03/saved_rows_switched",
+   "batches/coral/0/2017-04/change",
+   "batches/coral/0/2017-04/labelled_rows_switched",
+   "batches/coral/0/2017-04/rows_value_changed",
+   "batches/coral/0/2017-04/saved_rows_switched",
+   "batches/coral/0/2017-05/change",
+   "batches/coral/0/2017-05/labelled_rows_switched",
+   "batches/coral/0/2017-05/rows_value_changed",
+   "batches/coral/0/2017-05/saved_rows_switched",
+   "batches/coral/0/2017-06/change",
+   "batches/coral/0/2017-06/labelled_rows_switched",
+   "batches/coral/0/2017-06/rows_value_changed",
+   "batches/coral/0/2017-06/saved_rows_switched",
+   "batches/coral/0/2017-07/change",
+   "batches/coral/0/2017-07/labelled_rows_switched",
+   "batches/coral/0/2017-07/rows_value_changed",
+   "batches/coral/0/2017-07/saved_rows_switched",
+   "batches/coral/0/2017-08/change",
+   "batches/coral/0/2017-08/labelled_rows_switched",
+   "batches/coral/0/2017-08/rows_value_changed",
+   "batches/coral/0/2017-08/saved_rows_switched",
+   "batches/coral/0/2017-09/change",
+   "batches/coral/0/2017-09/labelled_rows_switched",
+   "batches/coral/0/2017-09/rows_value_changed",
+   "batches/coral/0/2017-09/saved_rows_switched",
+   "batches/coral/0/2017-10/change",
+   "batches/coral/0/2017-10/labelled_rows_switched",
+   "batches/coral/0/2017-10/rows_value_changed",
+   "batches/coral/0/2017-10/saved_rows_switched",
+   "batches/coral/0/2017-11/change",
+   "batches/coral/0/2017-11/labelled_rows_switched",
+   "batches/coral/0/2017-11/rows_value_changed",
+   "batches/coral/0/2017-11/saved_rows_switched",
+   "batches/coral/0/2017-12/change",
+   "batches/coral/0/2017-12/labelled_rows_switched",
+   "batches/coral/0/2017-12/rows_value_changed",
+   "batches/coral/0/2017-12/saved_rows_switched",
+   "batches/coral/0/2018-01/change",
+   "batches/coral/0/2018-01/labelled_rows_switched",
+   "batches/coral/0/2018-01/rows_value_changed",
+   "batches/coral/0/2018-01/saved_rows_switched",
+   "batches/coral/0/2018-02/change",
+   "batches/coral/0/2018-02/labelled_rows_switched",
+   "batches/coral/0/2018-02/rows_value_changed",
+   "batches/coral/0/2018-02/saved_rows_switched",
+   "batches/coral/0/2018-03/change",
+   "batches/coral/0/2018-03/labelled_rows_switched",
+   "batches/coral/0/2018-03/rows_value_changed",
+   "batches/coral/0/2018-03/saved_rows_switched",
+   "batches/coral/0/2018-04/change",
+   "batches/coral/0/2018-04/labelled_rows_switched",
+   "batches/coral/0/2018-04/rows_value_changed",
+   "batches/coral/0/2018-04/saved_rows_switched",
+   "batches/coral/0/2018-05/change",
+   "batches/coral/0/2018-05/labelled_rows_switched",
+   "batches/coral/0/2018-05/rows_value_changed",
+   "batches/coral/0/2018-05/saved_rows_switched",
+   "batches/coral/0/2018-06/change",
+   "batches/coral/0/2018-06/labelled_rows_switched",
+   "batches/coral/0/2018-06/rows_value_changed",
+   "batches/coral/0/2018-06/saved_rows_switched",
+   "batches/coral/0/2018-07/change",
+   "batches/coral/0/2018-07/labelled_rows_switched",
+   "batches/coral/0/2018-07/rows_value_changed",
+   "batches/coral/0/2018-07/saved_rows_switched",
+   "batches/coral/0/2018-08/change",
+   "batches/coral/0/2018-08/labelled_rows_switched",
+   "batches/coral/0/2018-08/rows_value_changed",
+   "batches/coral/0/2018-08/saved_rows_switched",
+   "batches/coral/0/2018-09/change",
+   "batches/coral/0/2018-09/labelled_rows_switched",
+   "batches/coral/0/2018-09/rows_value_changed",
+   "batches/coral/0/2018-09/saved_rows_switched",
+   "batches/coral/0/2018-10/change",
+   "batches/coral/0/2018-10/labelled_rows_switched",
+   "batches/coral/0/2018-10/rows_value_changed",
+   "batches/coral/0/2018-10/saved_rows_switched",
+   "batches/coral/0/2018-11/change",
+   "batches/coral/0/2018-11/labelled_rows_switched",
+   "batches/coral/0/2018-11/rows_value_changed",
+   "batches/coral/0/2018-11/saved_rows_switched",
+   "batches/coral/0/2018-12/change",
+   "batches/coral/0/2018-12/labelled_rows_switched",
+   "batches/coral/0/2018-12/rows_value_changed",
+   "batches/coral/0/2018-12/saved_rows_switched",
+   "batches/coral/0/2019-01/change",
+   "batches/coral/0/2019-01/labelled_rows_switched",
+   "batches/coral/0/2019-01/rows_value_changed",
+   "batches/coral/0/2019-01/saved_rows_switched",
+   "batches/coral/0/2019-02/change",
+   "batches/coral/0/2019-02/labelled_rows_switched",
+   "batches/coral/0/2019-02/rows_value_changed",
+   "batches/coral/0/2019-02/saved_rows_switched",
+   "batches/coral/0/2019-03/change",
+   "batches/coral/0/2019-03/labelled_rows_switched",
+   "batches/coral/0/2019-03/rows_value_changed",
+   "batches/coral/0/2019-03/saved_rows_switched",
+   "batches/coral/0/2019-04/change",
+   "batches/coral/0/2019-04/labelled_rows_switched",
+   "batches/coral/0/2019-04/rows_value_changed",
+   "batches/coral/0/2019-04/saved_rows_switched",
+   "batches/coral/0/2019-05/change",
+   "batches/coral/0/2019-05/labelled_rows_switched",
+   "batches/coral/0/2019-05/rows_value_changed",
+   "batches/coral/0/2019-05/saved_rows_switched",
+   "batches/coral/0/2019-06/change",
+   "batches/coral/0/2019-06/labelled_rows_switched",
+   "batches/coral/0/2019-06/rows_value_changed",
+   "batches/coral/0/2019-06/saved_rows_switched",
+   "batches/coral/0/2019-07/change",
+   "batches/coral/0/2019-07/labelled_rows_switched",
+   "batches/coral/0/2019-07/rows_value_changed",
+   "batches/coral/0/2019-07/saved_rows_switched",
+   "batches/coral/0/2019-08/change",
+   "batches/coral/0/2019-08/labelled_rows_switched",
+   "batches/coral/0/2019-08/rows_value_changed",
+   "batches/coral/0/2019-08/saved_rows_switched",
+   "batches/coral/0/2019-09/change",
+   "batches/coral/0/2019-09/labelled_rows_switched",
+   "batches/coral/0/2019-09/rows_value_changed",
+   "batches/coral/0/2019-09/saved_rows_switched",
+   "batches/coral/0/2019-10/change",
+   "batches/coral/0/2019-10/labelled_rows_switched",
+   "batches/coral/0/2019-10/rows_value_changed",
+   "batches/coral/0/2019-10/saved_rows_switched",
+   "batches/coral/0/2019-11/change",
+   "batches/coral/0/2019-11/labelled_rows_switched",
+   "batches/coral/0/2019-11/rows_value_changed",
+   "batches/coral/0/2019-11/saved_rows_switched",
+   "batches/coral/0/2019-12/change",
+   "batches/coral/0/2019-12/labelled_rows_switched",
+   "batches/coral/0/2019-12/rows_value_changed",
+   "batches/coral/0/2019-12/saved_rows_switched",
+   "batches/defo/0/step:2020/change",
+   "batches/defo/0/step:2020/labelled_rows_switched",
+   "batches/defo/0/step:2020/rows_value_changed",
+   "batches/defo/0/step:2020/saved_rows_switched",
+   "batches/defo/0/step:2021/change",
+   "batches/defo/0/step:2021/labelled_rows_switched",
+   "batches/defo/0/step:2021/rows_value_changed",
+   "batches/defo/0/step:2021/saved_rows_switched",
+   "batches/defo/0/step:2022/change",
+   "batches/defo/0/step:2022/labelled_rows_switched",
+   "batches/defo/0/step:2022/rows_value_changed",
+   "batches/defo/0/step:2022/saved_rows_switched",
+   "batches/defo/0/step:2023/change",
+   "batches/defo/0/step:2023/labelled_rows_switched",
+   "batches/defo/0/step:2023/rows_value_changed",
+   "batches/defo/0/step:2023/saved_rows_switched",
+   "batches/fire/0/step:24229/change",
+   "batches/fire/0/step:24229/labelled_rows_switched",
+   "batches/fire/0/step:24229/rows_value_changed",
+   "batches/fire/0/step:24229/saved_rows_switched",
+   "batches/fire/0/step:24230/change",
+   "batches/fire/0/step:24230/labelled_rows_switched",
+   "batches/fire/0/step:24230/rows_value_changed",
+   "batches/fire/0/step:24230/saved_rows_switched",
+   "batches/fire/0/step:24231/change",
+   "batches/fire/0/step:24231/labelled_rows_switched",
+   "batches/fire/0/step:24231/rows_value_changed",
+   "batches/fire/0/step:24231/saved_rows_switched",
+   "batches/fire/0/step:24232/change",
+   "batches/fire/0/step:24232/labelled_rows_switched",
+   "batches/fire/0/step:24232/rows_value_changed",
+   "batches/fire/0/step:24232/saved_rows_switched",
+   "batches/fire/0/step:24233/change",
+   "batches/fire/0/step:24233/labelled_rows_switched",
+   "batches/fire/0/step:24233/rows_value_changed",
+   "batches/fire/0/step:24233/saved_rows_switched",
+   "batches/fire/0/step:24234/change",
+   "batches/fire/0/step:24234/labelled_rows_switched",
+   "batches/fire/0/step:24234/rows_value_changed",
+   "batches/fire/0/step:24234/saved_rows_switched",
+   "batches/fire/0/step:24235/change",
+   "batches/fire/0/step:24235/labelled_rows_switched",
+   "batches/fire/0/step:24235/rows_value_changed",
+   "batches/fire/0/step:24235/saved_rows_switched",
+   "batches/fire/0/step:24236/change",
+   "batches/fire/0/step:24236/labelled_rows_switched",
+   "batches/fire/0/step:24236/rows_value_changed",
+   "batches/fire/0/step:24236/saved_rows_switched",
+   "batches/fire/0/step:24237/change",
+   "batches/fire/0/step:24237/labelled_rows_switched",
+   "batches/fire/0/step:24237/rows_value_changed",
+   "batches/fire/0/step:24237/saved_rows_switched",
+   "batches/fire/0/step:24238/change",
+   "batches/fire/0/step:24238/labelled_rows_switched",
+   "batches/fire/0/step:24238/rows_value_changed",
+   "batches/fire/0/step:24238/saved_rows_switched",
+   "batches/fire/0/step:24239/change",
+   "batches/fire/0/step:24239/labelled_rows_switched",
+   "batches/fire/0/step:24239/rows_value_changed",
+   "batches/fire/0/step:24239/saved_rows_switched",
+   "batches/fire/0/step:24240/change",
+   "batches/fire/0/step:24240/labelled_rows_switched",
+   "batches/fire/0/step:24240/rows_value_changed",
+   "batches/fire/0/step:24240/saved_rows_switched",
+   "batches/fire/0/step:24241/change",
+   "batches/fire/0/step:24241/labelled_rows_switched",
+   "batches/fire/0/step:24241/rows_value_changed",
+   "batches/fire/0/step:24241/saved_rows_switched",
+   "batches/fire/0/step:24242/change",
+   "batches/fire/0/step:24242/labelled_rows_switched",
+   "batches/fire/0/step:24242/rows_value_changed",
+   "batches/fire/0/step:24242/saved_rows_switched",
+   "batches/fire/0/step:24243/change",
+   "batches/fire/0/step:24243/labelled_rows_switched",
+   "batches/fire/0/step:24243/rows_value_changed",
+   "batches/fire/0/step:24243/saved_rows_switched",
+   "batches/fire/0/step:24244/change",
+   "batches/fire/0/step:24244/labelled_rows_switched",
+   "batches/fire/0/step:24244/rows_value_changed",
+   "batches/fire/0/step:24244/saved_rows_switched",
+   "batches/fire/0/step:24245/change",
+   "batches/fire/0/step:24245/labelled_rows_switched",
+   "batches/fire/0/step:24245/rows_value_changed",
+   "batches/fire/0/step:24245/saved_rows_switched",
+   "batches/fire/0/step:24246/change",
+   "batches/fire/0/step:24246/labelled_rows_switched",
+   "batches/fire/0/step:24246/rows_value_changed",
+   "batches/fire/0/step:24246/saved_rows_switched",
+   "batches/fire/0/step:24247/change",
+   "batches/fire/0/step:24247/labelled_rows_switched",
+   "batches/fire/0/step:24247/rows_value_changed",
+   "batches/fire/0/step:24247/saved_rows_switched",
+   "batches/fire/0/step:24248/change",
+   "batches/fire/0/step:24248/labelled_rows_switched",
+   "batches/fire/0/step:24248/rows_value_changed",
+   "batches/fire/0/step:24248/saved_rows_switched",
+   "batches/fire/0/step:24249/change",
+   "batches/fire/0/step:24249/labelled_rows_switched",
+   "batches/fire/0/step:24249/rows_value_changed",
+   "batches/fire/0/step:24249/saved_rows_switched",
+   "batches/fire/0/step:24250/change",
+   "batches/fire/0/step:24250/labelled_rows_switched",
+   "batches/fire/0/step:24250/rows_value_changed",
+   "batches/fire/0/step:24250/saved_rows_switched",
+   "batches/fire/0/step:24251/change",
+   "batches/fire/0/step:24251/labelled_rows_switched",
+   "batches/fire/0/step:24251/rows_value_changed",
+   "batches/fire/0/step:24251/saved_rows_switched",
+   "batches/fire/0/step:24252/change",
+   "batches/fire/0/step:24252/labelled_rows_switched",
+   "batches/fire/0/step:24252/rows_value_changed",
+   "batches/fire/0/step:24252/saved_rows_switched",
+   "batches/fire/0/step:24253/change",
+   "batches/fire/0/step:24253/labelled_rows_switched",
+   "batches/fire/0/step:24253/rows_value_changed",
+   "batches/fire/0/step:24253/saved_rows_switched",
+   "batches/fire/0/step:24254/change",
+   "batches/fire/0/step:24254/labelled_rows_switched",
+   "batches/fire/0/step:24254/rows_value_changed",
+   "batches/fire/0/step:24254/saved_rows_switched",
+   "batches/fire/0/step:24255/change",
+   "batches/fire/0/step:24255/labelled_rows_switched",
+   "batches/fire/0/step:24255/rows_value_changed",
+   "batches/fire/0/step:24255/saved_rows_switched",
+   "batches/fire/0/step:24256/change",
+   "batches/fire/0/step:24256/labelled_rows_switched",
+   "batches/fire/0/step:24256/rows_value_changed",
+   "batches/fire/0/step:24256/saved_rows_switched",
+   "batches/fire/0/step:24257/change",
+   "batches/fire/0/step:24257/labelled_rows_switched",
+   "batches/fire/0/step:24257/rows_value_changed",
+   "batches/fire/0/step:24257/saved_rows_switched",
+   "batches/fire/0/step:24258/change",
+   "batches/fire/0/step:24258/labelled_rows_switched",
+   "batches/fire/0/step:24258/rows_value_changed",
+   "batches/fire/0/step:24258/saved_rows_switched",
+   "batches/fire/0/step:24259/change",
+   "batches/fire/0/step:24259/labelled_rows_switched",
+   "batches/fire/0/step:24259/rows_value_changed",
+   "batches/fire/0/step:24259/saved_rows_switched",
+   "batches/fire/0/step:24260/change",
+   "batches/fire/0/step:24260/labelled_rows_switched",
+   "batches/fire/0/step:24260/rows_value_changed",
+   "batches/fire/0/step:24260/saved_rows_switched",
+   "batches/fire/0/step:24261/change",
+   "batches/fire/0/step:24261/labelled_rows_switched",
+   "batches/fire/0/step:24261/rows_value_changed",
+   "batches/fire/0/step:24261/saved_rows_switched",
+   "batches/fire/0/step:24262/change",
+   "batches/fire/0/step:24262/labelled_rows_switched",
+   "batches/fire/0/step:24262/rows_value_changed",
+   "batches/fire/0/step:24262/saved_rows_switched",
+   "batches/fire/0/step:24263/change",
+   "batches/fire/0/step:24263/labelled_rows_switched",
+   "batches/fire/0/step:24263/rows_value_changed",
+   "batches/fire/0/step:24263/saved_rows_switched",
+   "batches/fire/0/step:24264/change",
+   "batches/fire/0/step:24264/labelled_rows_switched",
+   "batches/fire/0/step:24264/rows_value_changed",
+   "batches/fire/0/step:24264/saved_rows_switched",
+   "batches/fire/0/step:24265/change",
+   "batches/fire/0/step:24265/labelled_rows_switched",
+   "batches/fire/0/step:24265/rows_value_changed",
+   "batches/fire/0/step:24265/saved_rows_switched",
+   "batches/fire/0/step:24266/change",
+   "batches/fire/0/step:24266/labelled_rows_switched",
+   "batches/fire/0/step:24266/rows_value_changed",
+   "batches/fire/0/step:24266/saved_rows_switched",
+   "batches/fire/0/step:24267/change",
+   "batches/fire/0/step:24267/labelled_rows_switched",
+   "batches/fire/0/step:24267/rows_value_changed",
+   "batches/fire/0/step:24267/saved_rows_switched",
+   "batches/fire/0/step:24268/change",
+   "batches/fire/0/step:24268/labelled_rows_switched",
+   "batches/fire/0/step:24268/rows_value_changed",
+   "batches/fire/0/step:24268/saved_rows_switched",
+   "batches/fire/0/step:24269/change",
+   "batches/fire/0/step:24269/labelled_rows_switched",
+   "batches/fire/0/step:24269/rows_value_changed",
+   "batches/fire/0/step:24269/saved_rows_switched",
+   "batches/fire/0/step:24270/change",
+   "batches/fire/0/step:24270/labelled_rows_switched",
+   "batches/fire/0/step:24270/rows_value_changed",
+   "batches/fire/0/step:24270/saved_rows_switched",
+   "batches/fire/0/step:24271/change",
+   "batches/fire/0/step:24271/labelled_rows_switched",
+   "batches/fire/0/step:24271/rows_value_changed",
+   "batches/fire/0/step:24271/saved_rows_switched",
+   "batches/fire/0/step:24272/change",
+   "batches/fire/0/step:24272/labelled_rows_switched",
+   "batches/fire/0/step:24272/rows_value_changed",
+   "batches/fire/0/step:24272/saved_rows_switched",
+   "batches/fire/0/step:24273/change",
+   "batches/fire/0/step:24273/labelled_rows_switched",
+   "batches/fire/0/step:24273/rows_value_changed",
+   "batches/fire/0/step:24273/saved_rows_switched",
+   "batches/fire/0/step:24274/change",
+   "batches/fire/0/step:24274/labelled_rows_switched",
+   "batches/fire/0/step:24274/rows_value_changed",
+   "batches/fire/0/step:24274/saved_rows_switched",
+   "batches/fire/0/step:24275/change",
+   "batches/fire/0/step:24275/labelled_rows_switched",
+   "batches/fire/0/step:24275/rows_value_changed",
+   "batches/fire/0/step:24275/saved_rows_switched",
+   "batches/fire/0/step:24276/change",
+   "batches/fire/0/step:24276/labelled_rows_switched",
+   "batches/fire/0/step:24276/rows_value_changed",
+   "batches/fire/0/step:24276/saved_rows_switched",
+   "batches/ndvi/0/step:24241/change",
+   "batches/ndvi/0/step:24241/labelled_rows_switched",
+   "batches/ndvi/0/step:24241/rows_value_changed",
+   "batches/ndvi/0/step:24241/saved_rows_switched",
+   "batches/ndvi/0/step:24242/change",
+   "batches/ndvi/0/step:24242/labelled_rows_switched",
+   "batches/ndvi/0/step:24242/rows_value_changed",
+   "batches/ndvi/0/step:24242/saved_rows_switched",
+   "batches/ndvi/0/step:24243/change",
+   "batches/ndvi/0/step:24243/labelled_rows_switched",
+   "batches/ndvi/0/step:24243/rows_value_changed",
+   "batches/ndvi/0/step:24243/saved_rows_switched",
+   "batches/ndvi/0/step:24244/change",
+   "batches/ndvi/0/step:24244/labelled_rows_switched",
+   "batches/ndvi/0/step:24244/rows_value_changed",
+   "batches/ndvi/0/step:24244/saved_rows_switched",
+   "batches/ndvi/0/step:24245/change",
+   "batches/ndvi/0/step:24245/labelled_rows_switched",
+   "batches/ndvi/0/step:24245/rows_value_changed",
+   "batches/ndvi/0/step:24245/saved_rows_switched",
+   "batches/ndvi/0/step:24246/change",
+   "batches/ndvi/0/step:24246/labelled_rows_switched",
+   "batches/ndvi/0/step:24246/rows_value_changed",
+   "batches/ndvi/0/step:24246/saved_rows_switched",
+   "batches/ndvi/0/step:24247/change",
+   "batches/ndvi/0/step:24247/labelled_rows_switched",
+   "batches/ndvi/0/step:24247/rows_value_changed",
+   "batches/ndvi/0/step:24247/saved_rows_switched",
+   "batches/ndvi/0/step:24248/change",
+   "batches/ndvi/0/step:24248/labelled_rows_switched",
+   "batches/ndvi/0/step:24248/rows_value_changed",
+   "batches/ndvi/0/step:24248/saved_rows_switched",
+   "batches/ndvi/0/step:24249/change",
+   "batches/ndvi/0/step:24249/labelled_rows_switched",
+   "batches/ndvi/0/step:24249/rows_value_changed",
+   "batches/ndvi/0/step:24249/saved_rows_switched",
+   "batches/ndvi/0/step:24250/change",
+   "batches/ndvi/0/step:24250/labelled_rows_switched",
+   "batches/ndvi/0/step:24250/rows_value_changed",
+   "batches/ndvi/0/step:24250/saved_rows_switched",
+   "batches/ndvi/0/step:24251/change",
+   "batches/ndvi/0/step:24251/labelled_rows_switched",
+   "batches/ndvi/0/step:24251/rows_value_changed",
+   "batches/ndvi/0/step:24251/saved_rows_switched",
+   "batches/ndvi/0/step:24252/change",
+   "batches/ndvi/0/step:24252/labelled_rows_switched",
+   "batches/ndvi/0/step:24252/rows_value_changed",
+   "batches/ndvi/0/step:24252/saved_rows_switched",
+   "batches/ndvi/0/step:24253/change",
+   "batches/ndvi/0/step:24253/labelled_rows_switched",
+   "batches/ndvi/0/step:24253/rows_value_changed",
+   "batches/ndvi/0/step:24253/saved_rows_switched",
+   "batches/ndvi/0/step:24254/change",
+   "batches/ndvi/0/step:24254/labelled_rows_switched",
+   "batches/ndvi/0/step:24254/rows_value_changed",
+   "batches/ndvi/0/step:24254/saved_rows_switched",
+   "batches/ndvi/0/step:24255/change",
+   "batches/ndvi/0/step:24255/labelled_rows_switched",
+   "batches/ndvi/0/step:24255/rows_value_changed",
+   "batches/ndvi/0/step:24255/saved_rows_switched",
+   "batches/ndvi/0/step:24256/change",
+   "batches/ndvi/0/step:24256/labelled_rows_switched",
+   "batches/ndvi/0/step:24256/rows_value_changed",
+   "batches/ndvi/0/step:24256/saved_rows_switched",
+   "batches/ndvi/0/step:24257/change",
+   "batches/ndvi/0/step:24257/labelled_rows_switched",
+   "batches/ndvi/0/step:24257/rows_value_changed",
+   "batches/ndvi/0/step:24257/saved_rows_switched",
+   "batches/ndvi/0/step:24258/change",
+   "batches/ndvi/0/step:24258/labelled_rows_switched",
+   "batches/ndvi/0/step:24258/rows_value_changed",
+   "batches/ndvi/0/step:24258/saved_rows_switched",
+   "batches/ndvi/0/step:24259/change",
+   "batches/ndvi/0/step:24259/labelled_rows_switched",
+   "batches/ndvi/0/step:24259/rows_value_changed",
+   "batches/ndvi/0/step:24259/saved_rows_switched",
+   "batches/ndvi/0/step:24260/change",
+   "batches/ndvi/0/step:24260/labelled_rows_switched",
+   "batches/ndvi/0/step:24260/rows_value_changed",
+   "batches/ndvi/0/step:24260/saved_rows_switched",
+   "batches/ndvi/0/step:24261/change",
+   "batches/ndvi/0/step:24261/labelled_rows_switched",
+   "batches/ndvi/0/step:24261/rows_value_changed",
+   "batches/ndvi/0/step:24261/saved_rows_switched",
+   "batches/ndvi/0/step:24262/change",
+   "batches/ndvi/0/step:24262/labelled_rows_switched",
+   "batches/ndvi/0/step:24262/rows_value_changed",
+   "batches/ndvi/0/step:24262/saved_rows_switched",
+   "batches/ndvi/0/step:24263/change",
+   "batches/ndvi/0/step:24263/labelled_rows_switched",
+   "batches/ndvi/0/step:24263/rows_value_changed",
+   "batches/ndvi/0/step:24263/saved_rows_switched",
+   "batches/ndvi/0/step:24264/change",
+   "batches/ndvi/0/step:24264/labelled_rows_switched",
+   "batches/ndvi/0/step:24264/rows_value_changed",
+   "batches/ndvi/0/step:24264/saved_rows_switched",
+   "batches/ndvi/0/step:24265/change",
+   "batches/ndvi/0/step:24265/labelled_rows_switched",
+   "batches/ndvi/0/step:24265/rows_value_changed",
+   "batches/ndvi/0/step:24265/saved_rows_switched",
+   "batches/ndvi/0/step:24266/change",
+   "batches/ndvi/0/step:24266/labelled_rows_switched",
+   "batches/ndvi/0/step:24266/rows_value_changed",
+   "batches/ndvi/0/step:24266/saved_rows_switched",
+   "batches/ndvi/0/step:24267/change",
+   "batches/ndvi/0/step:24267/labelled_rows_switched",
+   "batches/ndvi/0/step:24267/rows_value_changed",
+   "batches/ndvi/0/step:24267/saved_rows_switched",
+   "batches/ndvi/0/step:24268/change",
+   "batches/ndvi/0/step:24268/labelled_rows_switched",
+   "batches/ndvi/0/step:24268/rows_value_changed",
+   "batches/ndvi/0/step:24268/saved_rows_switched",
+   "batches/ndvi/0/step:24269/change",
+   "batches/ndvi/0/step:24269/labelled_rows_switched",
+   "batches/ndvi/0/step:24269/rows_value_changed",
+   "batches/ndvi/0/step:24269/saved_rows_switched",
+   "batches/ndvi/0/step:24270/change",
+   "batches/ndvi/0/step:24270/labelled_rows_switched",
+   "batches/ndvi/0/step:24270/rows_value_changed",
+   "batches/ndvi/0/step:24270/saved_rows_switched",
+   "batches/ndvi/0/step:24271/change",
+   "batches/ndvi/0/step:24271/labelled_rows_switched",
+   "batches/ndvi/0/step:24271/rows_value_changed",
+   "batches/ndvi/0/step:24271/saved_rows_switched",
+   "batches/ndvi/0/step:24272/change",
+   "batches/ndvi/0/step:24272/labelled_rows_switched",
+   "batches/ndvi/0/step:24272/rows_value_changed",
+   "batches/ndvi/0/step:24272/saved_rows_switched",
+   "batches/ndvi/0/step:24273/change",
+   "batches/ndvi/0/step:24273/labelled_rows_switched",
+   "batches/ndvi/0/step:24273/rows_value_changed",
+   "batches/ndvi/0/step:24273/saved_rows_switched",
+   "batches/ndvi/0/step:24274/change",
+   "batches/ndvi/0/step:24274/labelled_rows_switched",
+   "batches/ndvi/0/step:24274/rows_value_changed",
+   "batches/ndvi/0/step:24274/saved_rows_switched",
+   "batches/ndvi/0/step:24275/change",
+   "batches/ndvi/0/step:24275/labelled_rows_switched",
+   "batches/ndvi/0/step:24275/rows_value_changed",
+   "batches/ndvi/0/step:24275/saved_rows_switched",
+   "batches/ndvi/0/step:24276/change",
+   "batches/ndvi/0/step:24276/labelled_rows_switched",
+   "batches/ndvi/0/step:24276/rows_value_changed",
+   "batches/ndvi/0/step:24276/saved_rows_switched",
+   "batches/ndvi/0/step:24277/change",
+   "batches/ndvi/0/step:24277/labelled_rows_switched",
+   "batches/ndvi/0/step:24277/rows_value_changed",
+   "batches/ndvi/0/step:24277/saved_rows_switched",
+   "batches/ndvi/0/step:24278/change",
+   "batches/ndvi/0/step:24278/labelled_rows_switched",
+   "batches/ndvi/0/step:24278/rows_value_changed",
+   "batches/ndvi/0/step:24278/saved_rows_switched",
+   "batches/ndvi/0/step:24279/change",
+   "batches/ndvi/0/step:24279/labelled_rows_switched",
+   "batches/ndvi/0/step:24279/rows_value_changed",
+   "batches/ndvi/0/step:24279/saved_rows_switched",
+   "batches/ndvi/0/step:24280/change",
+   "batches/ndvi/0/step:24280/labelled_rows_switched",
+   "batches/ndvi/0/step:24280/rows_value_changed",
+   "batches/ndvi/0/step:24280/saved_rows_switched",
+   "batches/ndvi/0/step:24281/change",
+   "batches/ndvi/0/step:24281/labelled_rows_switched",
+   "batches/ndvi/0/step:24281/rows_value_changed",
+   "batches/ndvi/0/step:24281/saved_rows_switched",
+   "batches/ndvi/0/step:24282/change",
+   "batches/ndvi/0/step:24282/labelled_rows_switched",
+   "batches/ndvi/0/step:24282/rows_value_changed",
+   "batches/ndvi/0/step:24282/saved_rows_switched",
+   "batches/ndvi/0/step:24283/change",
+   "batches/ndvi/0/step:24283/labelled_rows_switched",
+   "batches/ndvi/0/step:24283/rows_value_changed",
+   "batches/ndvi/0/step:24283/saved_rows_switched",
+   "batches/ndvi/0/step:24284/change",
+   "batches/ndvi/0/step:24284/labelled_rows_switched",
+   "batches/ndvi/0/step:24284/rows_value_changed",
+   "batches/ndvi/0/step:24284/saved_rows_switched",
+   "batches/ndvi/0/step:24285/change",
+   "batches/ndvi/0/step:24285/labelled_rows_switched",
+   "batches/ndvi/0/step:24285/rows_value_changed",
+   "batches/ndvi/0/step:24285/saved_rows_switched",
+   "batches/ndvi/0/step:24286/change",
+   "batches/ndvi/0/step:24286/labelled_rows_switched",
+   "batches/ndvi/0/step:24286/rows_value_changed",
+   "batches/ndvi/0/step:24286/saved_rows_switched",
+   "batches/ndvi/0/step:24287/change",
+   "batches/ndvi/0/step:24287/labelled_rows_switched",
+   "batches/ndvi/0/step:24287/rows_value_changed",
+   "batches/ndvi/0/step:24287/saved_rows_switched",
+   "batches/ndvi/0/step:24288/change",
+   "batches/ndvi/0/step:24288/labelled_rows_switched",
+   "batches/ndvi/0/step:24288/rows_value_changed",
+   "batches/ndvi/0/step:24288/saved_rows_switched",
+   "batches/pm25/0/step:24241/change",
+   "batches/pm25/0/step:24241/labelled_rows_switched",
+   "batches/pm25/0/step:24241/rows_value_changed",
+   "batches/pm25/0/step:24241/saved_rows_switched",
+   "batches/pm25/0/step:24242/change",
+   "batches/pm25/0/step:24242/labelled_rows_switched",
+   "batches/pm25/0/step:24242/rows_value_changed",
+   "batches/pm25/0/step:24242/saved_rows_switched",
+   "batches/pm25/0/step:24243/change",
+   "batches/pm25/0/step:24243/labelled_rows_switched",
+   "batches/pm25/0/step:24243/rows_value_changed",
+   "batches/pm25/0/step:24243/saved_rows_switched",
+   "batches/pm25/0/step:24244/change",
+   "batches/pm25/0/step:24244/labelled_rows_switched",
+   "batches/pm25/0/step:24244/rows_value_changed",
+   "batches/pm25/0/step:24244/saved_rows_switched",
+   "batches/pm25/0/step:24245/change",
+   "batches/pm25/0/step:24245/labelled_rows_switched",
+   "batches/pm25/0/step:24245/rows_value_changed",
+   "batches/pm25/0/step:24245/saved_rows_switched",
+   "batches/pm25/0/step:24246/change",
+   "batches/pm25/0/step:24246/labelled_rows_switched",
+   "batches/pm25/0/step:24246/rows_value_changed",
+   "batches/pm25/0/step:24246/saved_rows_switched",
+   "batches/pm25/0/step:24247/change",
+   "batches/pm25/0/step:24247/labelled_rows_switched",
+   "batches/pm25/0/step:24247/rows_value_changed",
+   "batches/pm25/0/step:24247/saved_rows_switched",
+   "batches/pm25/0/step:24248/change",
+   "batches/pm25/0/step:24248/labelled_rows_switched",
+   "batches/pm25/0/step:24248/rows_value_changed",
+   "batches/pm25/0/step:24248/saved_rows_switched",
+   "batches/pm25/0/step:24249/change",
+   "batches/pm25/0/step:24249/labelled_rows_switched",
+   "batches/pm25/0/step:24249/rows_value_changed",
+   "batches/pm25/0/step:24249/saved_rows_switched",
+   "batches/pm25/0/step:24250/change",
+   "batches/pm25/0/step:24250/labelled_rows_switched",
+   "batches/pm25/0/step:24250/rows_value_changed",
+   "batches/pm25/0/step:24250/saved_rows_switched",
+   "batches/pm25/0/step:24251/change",
+   "batches/pm25/0/step:24251/labelled_rows_switched",
+   "batches/pm25/0/step:24251/rows_value_changed",
+   "batches/pm25/0/step:24251/saved_rows_switched",
+   "batches/pm25/0/step:24252/change",
+   "batches/pm25/0/step:24252/labelled_rows_switched",
+   "batches/pm25/0/step:24252/rows_value_changed",
+   "batches/pm25/0/step:24252/saved_rows_switched",
+   "batches/pm25/0/step:24253/change",
+   "batches/pm25/0/step:24253/labelled_rows_switched",
+   "batches/pm25/0/step:24253/rows_value_changed",
+   "batches/pm25/0/step:24253/saved_rows_switched",
+   "batches/pm25/0/step:24254/change",
+   "batches/pm25/0/step:24254/labelled_rows_switched",
+   "batches/pm25/0/step:24254/rows_value_changed",
+   "batches/pm25/0/step:24254/saved_rows_switched",
+   "batches/pm25/0/step:24255/change",
+   "batches/pm25/0/step:24255/labelled_rows_switched",
+   "batches/pm25/0/step:24255/rows_value_changed",
+   "batches/pm25/0/step:24255/saved_rows_switched",
+   "batches/pm25/0/step:24256/change",
+   "batches/pm25/0/step:24256/labelled_rows_switched",
+   "batches/pm25/0/step:24256/rows_value_changed",
+   "batches/pm25/0/step:24256/saved_rows_switched",
+   "batches/pm25/0/step:24257/change",
+   "batches/pm25/0/step:24257/labelled_rows_switched",
+   "batches/pm25/0/step:24257/rows_value_changed",
+   "batches/pm25/0/step:24257/saved_rows_switched",
+   "batches/pm25/0/step:24258/change",
+   "batches/pm25/0/step:24258/labelled_rows_switched",
+   "batches/pm25/0/step:24258/rows_value_changed",
+   "batches/pm25/0/step:24258/saved_rows_switched",
+   "batches/pm25/0/step:24259/change",
+   "batches/pm25/0/step:24259/labelled_rows_switched",
+   "batches/pm25/0/step:24259/rows_value_changed",
+   "batches/pm25/0/step:24259/saved_rows_switched",
+   "batches/pm25/0/step:24260/change",
+   "batches/pm25/0/step:24260/labelled_rows_switched",
+   "batches/pm25/0/step:24260/rows_value_changed",
+   "batches/pm25/0/step:24260/saved_rows_switched",
+   "batches/pm25/0/step:24261/change",
+   "batches/pm25/0/step:24261/labelled_rows_switched",
+   "batches/pm25/0/step:24261/rows_value_changed",
+   "batches/pm25/0/step:24261/saved_rows_switched",
+   "batches/pm25/0/step:24262/change",
+   "batches/pm25/0/step:24262/labelled_rows_switched",
+   "batches/pm25/0/step:24262/rows_value_changed",
+   "batches/pm25/0/step:24262/saved_rows_switched",
+   "batches/pm25/0/step:24263/change",
+   "batches/pm25/0/step:24263/labelled_rows_switched",
+   "batches/pm25/0/step:24263/rows_value_changed",
+   "batches/pm25/0/step:24263/saved_rows_switched",
+   "batches/pm25/0/step:24264/change",
+   "batches/pm25/0/step:24264/labelled_rows_switched",
+   "batches/pm25/0/step:24264/rows_value_changed",
+   "batches/pm25/0/step:24264/saved_rows_switched",
+   "batches/pm25/0/step:24265/change",
+   "batches/pm25/0/step:24265/labelled_rows_switched",
+   "batches/pm25/0/step:24265/rows_value_changed",
+   "batches/pm25/0/step:24265/saved_rows_switched",
+   "batches/pm25/0/step:24266/change",
+   "batches/pm25/0/step:24266/labelled_rows_switched",
+   "batches/pm25/0/step:24266/rows_value_changed",
+   "batches/pm25/0/step:24266/saved_rows_switched",
+   "batches/pm25/0/step:24267/change",
+   "batches/pm25/0/step:24267/labelled_rows_switched",
+   "batches/pm25/0/step:24267/rows_value_changed",
+   "batches/pm25/0/step:24267/saved_rows_switched",
+   "batches/pm25/0/step:24268/change",
+   "batches/pm25/0/step:24268/labelled_rows_switched",
+   "batches/pm25/0/step:24268/rows_value_changed",
+   "batches/pm25/0/step:24268/saved_rows_switched",
+   "batches/pm25/0/step:24269/change",
+   "batches/pm25/0/step:24269/labelled_rows_switched",
+   "batches/pm25/0/step:24269/rows_value_changed",
+   "batches/pm25/0/step:24269/saved_rows_switched",
+   "batches/pm25/0/step:24270/change",
+   "batches/pm25/0/step:24270/labelled_rows_switched",
+   "batches/pm25/0/step:24270/rows_value_changed",
+   "batches/pm25/0/step:24270/saved_rows_switched",
+   "batches/pm25/0/step:24271/change",
+   "batches/pm25/0/step:24271/labelled_rows_switched",
+   "batches/pm25/0/step:24271/rows_value_changed",
+   "batches/pm25/0/step:24271/saved_rows_switched",
+   "batches/pm25/0/step:24272/change",
+   "batches/pm25/0/step:24272/labelled_rows_switched",
+   "batches/pm25/0/step:24272/rows_value_changed",
+   "batches/pm25/0/step:24272/saved_rows_switched",
+   "batches/pm25/0/step:24273/change",
+   "batches/pm25/0/step:24273/labelled_rows_switched",
+   "batches/pm25/0/step:24273/rows_value_changed",
+   "batches/pm25/0/step:24273/saved_rows_switched",
+   "batches/pm25/0/step:24274/change",
+   "batches/pm25/0/step:24274/labelled_rows_switched",
+   "batches/pm25/0/step:24274/rows_value_changed",
+   "batches/pm25/0/step:24274/saved_rows_switched",
+   "batches/pm25/0/step:24275/change",
+   "batches/pm25/0/step:24275/labelled_rows_switched",
+   "batches/pm25/0/step:24275/rows_value_changed",
+   "batches/pm25/0/step:24275/saved_rows_switched",
+   "batches/pm25/0/step:24276/change",
+   "batches/pm25/0/step:24276/labelled_rows_switched",
+   "batches/pm25/0/step:24276/rows_value_changed",
+   "batches/pm25/0/step:24276/saved_rows_switched",
+   "batches/pm25/0/step:24277/change",
+   "batches/pm25/0/step:24277/labelled_rows_switched",
+   "batches/pm25/0/step:24277/rows_value_changed",
+   "batches/pm25/0/step:24277/saved_rows_switched",
+   "batches/pm25/0/step:24278/change",
+   "batches/pm25/0/step:24278/labelled_rows_switched",
+   "batches/pm25/0/step:24278/rows_value_changed",
+   "batches/pm25/0/step:24278/saved_rows_switched",
+   "batches/pm25/0/step:24279/change",
+   "batches/pm25/0/step:24279/labelled_rows_switched",
+   "batches/pm25/0/step:24279/rows_value_changed",
+   "batches/pm25/0/step:24279/saved_rows_switched",
+   "batches/pm25/0/step:24280/change",
+   "batches/pm25/0/step:24280/labelled_rows_switched",
+   "batches/pm25/0/step:24280/rows_value_changed",
+   "batches/pm25/0/step:24280/saved_rows_switched",
+   "batches/pm25/0/step:24281/change",
+   "batches/pm25/0/step:24281/labelled_rows_switched",
+   "batches/pm25/0/step:24281/rows_value_changed",
+   "batches/pm25/0/step:24281/saved_rows_switched",
+   "batches/pm25/0/step:24282/change",
+   "batches/pm25/0/step:24282/labelled_rows_switched",
+   "batches/pm25/0/step:24282/rows_value_changed",
+   "batches/pm25/0/step:24282/saved_rows_switched",
+   "batches/pm25/0/step:24283/change",
+   "batches/pm25/0/step:24283/labelled_rows_switched",
+   "batches/pm25/0/step:24283/rows_value_changed",
+   "batches/pm25/0/step:24283/saved_rows_switched",
+   "batches/pm25/0/step:24284/change",
+   "batches/pm25/0/step:24284/labelled_rows_switched",
+   "batches/pm25/0/step:24284/rows_value_changed",
+   "batches/pm25/0/step:24284/saved_rows_switched",
+   "batches/pm25/0/step:24285/change",
+   "batches/pm25/0/step:24285/labelled_rows_switched",
+   "batches/pm25/0/step:24285/rows_value_changed",
+   "batches/pm25/0/step:24285/saved_rows_switched",
+   "batches/pm25/0/step:24286/change",
+   "batches/pm25/0/step:24286/labelled_rows_switched",
+   "batches/pm25/0/step:24286/rows_value_changed",
+   "batches/pm25/0/step:24286/saved_rows_switched",
+   "batches/pm25/0/step:24287/change",
+   "batches/pm25/0/step:24287/labelled_rows_switched",
+   "batches/pm25/0/step:24287/rows_value_changed",
+   "batches/pm25/0/step:24287/saved_rows_switched",
+   "batches/pm25/0/step:24288/change",
+   "batches/pm25/0/step:24288/labelled_rows_switched",
+   "batches/pm25/0/step:24288/rows_value_changed",
+   "batches/pm25/0/step:24288/saved_rows_switched",
+   "by_year/coral/0/2016/labelled_rows_switched",
+   "by_year/coral/0/2016/lead",
+   "by_year/coral/0/2016/package",
+   "by_year/coral/0/2016/saved_rows",
+   "by_year/coral/0/2016/year",
+   "by_year/coral/0/2017/labelled_rows_switched",
+   "by_year/coral/0/2017/lead",
+   "by_year/coral/0/2017/package",
+   "by_year/coral/0/2017/saved_rows",
+   "by_year/coral/0/2017/year",
+   "by_year/coral/0/2018/labelled_rows_switched",
+   "by_year/coral/0/2018/lead",
+   "by_year/coral/0/2018/package",
+   "by_year/coral/0/2018/saved_rows",
+   "by_year/coral/0/2018/year",
+   "by_year/coral/0/2019/labelled_rows_switched",
+   "by_year/coral/0/2019/lead",
+   "by_year/coral/0/2019/package",
+   "by_year/coral/0/2019/saved_rows",
+   "by_year/coral/0/2019/year",
+   "by_year/coral/365/2016/batches_spanning_two_years",
+   "by_year/coral/365/2016/labelled_rows_switched",
+   "by_year/coral/365/2016/lead",
+   "by_year/coral/365/2016/package",
+   "by_year/coral/365/2016/saved_rows",
+   "by_year/coral/365/2016/year",
+   "by_year/coral/365/2017/batches_spanning_two_years",
+   "by_year/coral/365/2017/labelled_rows_switched",
+   "by_year/coral/365/2017/lead",
+   "by_year/coral/365/2017/package",
+   "by_year/coral/365/2017/saved_rows",
+   "by_year/coral/365/2017/year",
+   "by_year/coral/365/2018/batches_spanning_two_years",
+   "by_year/coral/365/2018/labelled_rows_switched",
+   "by_year/coral/365/2018/lead",
+   "by_year/coral/365/2018/package",
+   "by_year/coral/365/2018/saved_rows",
+   "by_year/coral/365/2018/year",
+   "by_year/coral/365/2019/batches_spanning_two_years",
+   "by_year/coral/365/2019/labelled_rows_switched",
+   "by_year/coral/365/2019/lead",
+   "by_year/coral/365/2019/package",
+   "by_year/coral/365/2019/saved_rows",
+   "by_year/coral/365/2019/year",
+   "by_year/defo/0/2020/labelled_rows_switched",
+   "by_year/defo/0/2020/lead",
+   "by_year/defo/0/2020/package",
+   "by_year/defo/0/2020/saved_rows",
+   "by_year/defo/0/2020/year",
+   "by_year/defo/0/2021/labelled_rows_switched",
+   "by_year/defo/0/2021/lead",
+   "by_year/defo/0/2021/package",
+   "by_year/defo/0/2021/saved_rows",
+   "by_year/defo/0/2021/year",
+   "by_year/defo/0/2022/labelled_rows_switched",
+   "by_year/defo/0/2022/lead",
+   "by_year/defo/0/2022/package",
+   "by_year/defo/0/2022/saved_rows",
+   "by_year/defo/0/2022/year",
+   "by_year/defo/0/2023/labelled_rows_switched",
+   "by_year/defo/0/2023/lead",
+   "by_year/defo/0/2023/package",
+   "by_year/defo/0/2023/saved_rows",
+   "by_year/defo/0/2023/year",
+   "by_year/fire/0/2019/labelled_rows_switched",
+   "by_year/fire/0/2019/lead",
+   "by_year/fire/0/2019/package",
+   "by_year/fire/0/2019/saved_rows",
+   "by_year/fire/0/2019/year",
+   "by_year/fire/0/2020/labelled_rows_switched",
+   "by_year/fire/0/2020/lead",
+   "by_year/fire/0/2020/package",
+   "by_year/fire/0/2020/saved_rows",
+   "by_year/fire/0/2020/year",
+   "by_year/fire/0/2021/labelled_rows_switched",
+   "by_year/fire/0/2021/lead",
+   "by_year/fire/0/2021/package",
+   "by_year/fire/0/2021/saved_rows",
+   "by_year/fire/0/2021/year",
+   "by_year/fire/0/2022/labelled_rows_switched",
+   "by_year/fire/0/2022/lead",
+   "by_year/fire/0/2022/package",
+   "by_year/fire/0/2022/saved_rows",
+   "by_year/fire/0/2022/year",
+   "by_year/fire/12/2019/batches_spanning_two_years",
+   "by_year/fire/12/2019/labelled_rows_switched",
+   "by_year/fire/12/2019/lead",
+   "by_year/fire/12/2019/package",
+   "by_year/fire/12/2019/saved_rows",
+   "by_year/fire/12/2019/year",
+   "by_year/fire/12/2020/batches_spanning_two_years",
+   "by_year/fire/12/2020/labelled_rows_switched",
+   "by_year/fire/12/2020/lead",
+   "by_year/fire/12/2020/package",
+   "by_year/fire/12/2020/saved_rows",
+   "by_year/fire/12/2020/year",
+   "by_year/fire/12/2021/batches_spanning_two_years",
+   "by_year/fire/12/2021/labelled_rows_switched",
+   "by_year/fire/12/2021/lead",
+   "by_year/fire/12/2021/package",
+   "by_year/fire/12/2021/saved_rows",
+   "by_year/fire/12/2021/year",
+   "by_year/fire/12/2022/batches_spanning_two_years",
+   "by_year/fire/12/2022/labelled_rows_switched",
+   "by_year/fire/12/2022/lead",
+   "by_year/fire/12/2022/package",
+   "by_year/fire/12/2022/saved_rows",
+   "by_year/fire/12/2022/year",
+   "by_year/fire/6/2019/batches_spanning_two_years",
+   "by_year/fire/6/2019/labelled_rows_switched",
+   "by_year/fire/6/2019/lead",
+   "by_year/fire/6/2019/package",
+   "by_year/fire/6/2019/saved_rows",
+   "by_year/fire/6/2019/year",
+   "by_year/fire/6/2020/batches_spanning_two_years",
+   "by_year/fire/6/2020/labelled_rows_switched",
+   "by_year/fire/6/2020/lead",
+   "by_year/fire/6/2020/package",
+   "by_year/fire/6/2020/saved_rows",
+   "by_year/fire/6/2020/year",
+   "by_year/fire/6/2021/batches_spanning_two_years",
+   "by_year/fire/6/2021/labelled_rows_switched",
+   "by_year/fire/6/2021/lead",
+   "by_year/fire/6/2021/package",
+   "by_year/fire/6/2021/saved_rows",
+   "by_year/fire/6/2021/year",
+   "by_year/fire/6/2022/batches_spanning_two_years",
+   "by_year/fire/6/2022/labelled_rows_switched",
+   "by_year/fire/6/2022/lead",
+   "by_year/fire/6/2022/package",
+   "by_year/fire/6/2022/saved_rows",
+   "by_year/fire/6/2022/year",
+   "by_year/ndvi/0/2020/labelled_rows_switched",
+   "by_year/ndvi/0/2020/lead",
+   "by_year/ndvi/0/2020/package",
+   "by_year/ndvi/0/2020/saved_rows",
+   "by_year/ndvi/0/2020/year",
+   "by_year/ndvi/0/2021/labelled_rows_switched",
+   "by_year/ndvi/0/2021/lead",
+   "by_year/ndvi/0/2021/package",
+   "by_year/ndvi/0/2021/saved_rows",
+   "by_year/ndvi/0/2021/year",
+   "by_year/ndvi/0/2022/labelled_rows_switched",
+   "by_year/ndvi/0/2022/lead",
+   "by_year/ndvi/0/2022/package",
+   "by_year/ndvi/0/2022/saved_rows",
+   "by_year/ndvi/0/2022/year",
+   "by_year/ndvi/0/2023/labelled_rows_switched",
+   "by_year/ndvi/0/2023/lead",
+   "by_year/ndvi/0/2023/package",
+   "by_year/ndvi/0/2023/saved_rows",
+   "by_year/ndvi/0/2023/year",
+   "by_year/ndvi/12/2020/batches_spanning_two_years",
+   "by_year/ndvi/12/2020/labelled_rows_switched",
+   "by_year/ndvi/12/2020/lead",
+   "by_year/ndvi/12/2020/package",
+   "by_year/ndvi/12/2020/saved_rows",
+   "by_year/ndvi/12/2020/year",
+   "by_year/ndvi/12/2021/batches_spanning_two_years",
+   "by_year/ndvi/12/2021/labelled_rows_switched",
+   "by_year/ndvi/12/2021/lead",
+   "by_year/ndvi/12/2021/package",
+   "by_year/ndvi/12/2021/saved_rows",
+   "by_year/ndvi/12/2021/year",
+   "by_year/ndvi/12/2022/batches_spanning_two_years",
+   "by_year/ndvi/12/2022/labelled_rows_switched",
+   "by_year/ndvi/12/2022/lead",
+   "by_year/ndvi/12/2022/package",
+   "by_year/ndvi/12/2022/saved_rows",
+   "by_year/ndvi/12/2022/year",
+   "by_year/ndvi/12/2023/batches_spanning_two_years",
+   "by_year/ndvi/12/2023/labelled_rows_switched",
+   "by_year/ndvi/12/2023/lead",
+   "by_year/ndvi/12/2023/package",
+   "by_year/ndvi/12/2023/saved_rows",
+   "by_year/ndvi/12/2023/year",
+   "by_year/ndvi/6/2020/batches_spanning_two_years",
+   "by_year/ndvi/6/2020/labelled_rows_switched",
+   "by_year/ndvi/6/2020/lead",
+   "by_year/ndvi/6/2020/package",
+   "by_year/ndvi/6/2020/saved_rows",
+   "by_year/ndvi/6/2020/year",
+   "by_year/ndvi/6/2021/batches_spanning_two_years",
+   "by_year/ndvi/6/2021/labelled_rows_switched",
+   "by_year/ndvi/6/2021/lead",
+   "by_year/ndvi/6/2021/package",
+   "by_year/ndvi/6/2021/saved_rows",
+   "by_year/ndvi/6/2021/year",
+   "by_year/ndvi/6/2022/batches_spanning_two_years",
+   "by_year/ndvi/6/2022/labelled_rows_switched",
+   "by_year/ndvi/6/2022/lead",
+   "by_year/ndvi/6/2022/package",
+   "by_year/ndvi/6/2022/saved_rows",
+   "by_year/ndvi/6/2022/year",
+   "by_year/ndvi/6/2023/batches_spanning_two_years",
+   "by_year/ndvi/6/2023/labelled_rows_switched",
+   "by_year/ndvi/6/2023/lead",
+   "by_year/ndvi/6/2023/package",
+   "by_year/ndvi/6/2023/saved_rows",
+   "by_year/ndvi/6/2023/year",
+   "by_year/pm25/0/2020/labelled_rows_switched",
+   "by_year/pm25/0/2020/lead",
+   "by_year/pm25/0/2020/package",
+   "by_year/pm25/0/2020/saved_rows",
+   "by_year/pm25/0/2020/year",
+   "by_year/pm25/0/2021/labelled_rows_switched",
+   "by_year/pm25/0/2021/lead",
+   "by_year/pm25/0/2021/package",
+   "by_year/pm25/0/2021/saved_rows",
+   "by_year/pm25/0/2021/year",
+   "by_year/pm25/0/2022/labelled_rows_switched",
+   "by_year/pm25/0/2022/lead",
+   "by_year/pm25/0/2022/package",
+   "by_year/pm25/0/2022/saved_rows",
+   "by_year/pm25/0/2022/year",
+   "by_year/pm25/0/2023/labelled_rows_switched",
+   "by_year/pm25/0/2023/lead",
+   "by_year/pm25/0/2023/package",
+   "by_year/pm25/0/2023/saved_rows",
+   "by_year/pm25/0/2023/year",
+   "by_year/pm25/12/2020/batches_spanning_two_years",
+   "by_year/pm25/12/2020/labelled_rows_switched",
+   "by_year/pm25/12/2020/lead",
+   "by_year/pm25/12/2020/package",
+   "by_year/pm25/12/2020/saved_rows",
+   "by_year/pm25/12/2020/year",
+   "by_year/pm25/12/2021/batches_spanning_two_years",
+   "by_year/pm25/12/2021/labelled_rows_switched",
+   "by_year/pm25/12/2021/lead",
+   "by_year/pm25/12/2021/package",
+   "by_year/pm25/12/2021/saved_rows",
+   "by_year/pm25/12/2021/year",
+   "by_year/pm25/12/2022/batches_spanning_two_years",
+   "by_year/pm25/12/2022/labelled_rows_switched",
+   "by_year/pm25/12/2022/lead",
+   "by_year/pm25/12/2022/package",
+   "by_year/pm25/12/2022/saved_rows",
+   "by_year/pm25/12/2022/year",
+   "by_year/pm25/12/2023/batches_spanning_two_years",
+   "by_year/pm25/12/2023/labelled_rows_switched",
+   "by_year/pm25/12/2023/lead",
+   "by_year/pm25/12/2023/package",
+   "by_year/pm25/12/2023/saved_rows",
+   "by_year/pm25/12/2023/year",
+   "by_year/pm25/6/2020/batches_spanning_two_years",
+   "by_year/pm25/6/2020/labelled_rows_switched",
+   "by_year/pm25/6/2020/lead",
+   "by_year/pm25/6/2020/package",
+   "by_year/pm25/6/2020/saved_rows",
+   "by_year/pm25/6/2020/year",
+   "by_year/pm25/6/2021/batches_spanning_two_years",
+   "by_year/pm25/6/2021/labelled_rows_switched",
+   "by_year/pm25/6/2021/lead",
+   "by_year/pm25/6/2021/package",
+   "by_year/pm25/6/2021/saved_rows",
+   "by_year/pm25/6/2021/year",
+   "by_year/pm25/6/2022/batches_spanning_two_years",
+   "by_year/pm25/6/2022/labelled_rows_switched",
+   "by_year/pm25/6/2022/lead",
+   "by_year/pm25/6/2022/package",
+   "by_year/pm25/6/2022/saved_rows",
+   "by_year/pm25/6/2022/year",
+   "by_year/pm25/6/2023/batches_spanning_two_years",
+   "by_year/pm25/6/2023/labelled_rows_switched",
+   "by_year/pm25/6/2023/lead",
+   "by_year/pm25/6/2023/package",
+   "by_year/pm25/6/2023/saved_rows",
+   "by_year/pm25/6/2023/year",
+   "contributions/note",
+   "forms/F1/by_programme/AGRRA/mae_without",
+   "forms/F1/by_programme/FRRP/mae_without",
+   "forms/F1/by_programme/McClanahan/mae_without",
+   "forms/F1/by_programme/Reef_Check/mae_without",
+   "forms/F1/by_year/2016/mae_without",
+   "forms/F1/by_year/2017/mae_without",
+   "forms/F1/by_year/2018/mae_without",
+   "forms/F1/by_year/2019/mae_without",
+   "forms/F1/pooled/mae_without",
+   "forms/F1/rows_differing_labelled",
+   "forms/F1/subsets/all/edge",
+   "forms/F1/subsets/all/mae_without",
+   "forms/F1/subsets/all/outcome_defined",
+   "forms/F1/subsets/y_eq_0/edge",
+   "forms/F1/subsets/y_eq_0/mae_without",
+   "forms/F1/subsets/y_eq_0/outcome_defined",
+   "forms/F1/subsets/y_ge_50/edge",
+   "forms/F1/subsets/y_ge_50/mae_without",
+   "forms/F1/subsets/y_ge_50/outcome_defined",
+   "forms/F1/subsets/y_gt_0/edge",
+   "forms/F1/subsets/y_gt_0/mae_without",
+   "forms/F1/subsets/y_gt_0/outcome_defined",
+   "forms/F1/subsets/y_gt_q75/edge",
+   "forms/F1/subsets/y_gt_q75/mae_without",
+   "forms/F1/subsets/y_gt_q75/outcome_defined",
+   "forms/F1/subsets/y_le_q75/edge",
+   "forms/F1/subsets/y_le_q75/mae_without",
+   "forms/F1/subsets/y_le_q75/outcome_defined",
+   "forms/F1/subsets/y_lt_50/edge",
+   "forms/F1/subsets/y_lt_50/mae_without",
+   "forms/F1/subsets/y_lt_50/outcome_defined",
+   "forms/F2/by_programme/AGRRA/mae_without",
+   "forms/F2/by_programme/FRRP/mae_without",
+   "forms/F2/by_programme/McClanahan/mae_without",
+   "forms/F2/by_programme/Reef_Check/mae_without",
+   "forms/F2/by_year/2016/mae_without",
+   "forms/F2/by_year/2017/mae_without",
+   "forms/F2/by_year/2018/mae_without",
+   "forms/F2/by_year/2019/mae_without",
+   "forms/F2/pooled/mae_without",
+   "forms/F2/rows_differing_labelled",
+   "forms/F2/subsets/all/edge",
+   "forms/F2/subsets/all/mae_without",
+   "forms/F2/subsets/all/outcome_defined",
+   "forms/F2/subsets/y_eq_0/edge",
+   "forms/F2/subsets/y_eq_0/mae_without",
+   "forms/F2/subsets/y_eq_0/outcome_defined",
+   "forms/F2/subsets/y_ge_50/edge",
+   "forms/F2/subsets/y_ge_50/mae_without",
+   "forms/F2/subsets/y_ge_50/outcome_defined",
+   "forms/F2/subsets/y_gt_0/edge",
+   "forms/F2/subsets/y_gt_0/mae_without",
+   "forms/F2/subsets/y_gt_0/outcome_defined",
+   "forms/F2/subsets/y_gt_q75/edge",
+   "forms/F2/subsets/y_gt_q75/mae_without",
+   "forms/F2/subsets/y_gt_q75/outcome_defined",
+   "forms/F2/subsets/y_le_q75/edge",
+   "forms/F2/subsets/y_le_q75/mae_without",
+   "forms/F2/subsets/y_le_q75/outcome_defined",
+   "forms/F2/subsets/y_lt_50/edge",
+   "forms/F2/subsets/y_lt_50/mae_without",
+   "forms/F2/subsets/y_lt_50/outcome_defined",
+   "forms/F3/by_programme/AGRRA/mae_without",
+   "forms/F3/by_programme/FRRP/mae_without",
+   "forms/F3/by_programme/McClanahan/mae_without",
+   "forms/F3/by_programme/Reef_Check/mae_without",
+   "forms/F3/by_year/2016/mae_without",
+   "forms/F3/by_year/2017/mae_without",
+   "forms/F3/by_year/2018/mae_without",
+   "forms/F3/by_year/2019/mae_without",
+   "forms/F3/pooled/mae_without",
+   "forms/F3/rows_differing_labelled",
+   "forms/F3/subsets/all/edge",
+   "forms/F3/subsets/all/mae_without",
+   "forms/F3/subsets/all/outcome_defined",
+   "forms/F3/subsets/y_eq_0/edge",
+   "forms/F3/subsets/y_eq_0/mae_without",
+   "forms/F3/subsets/y_eq_0/outcome_defined",
+   "forms/F3/subsets/y_ge_50/edge",
+   "forms/F3/subsets/y_ge_50/mae_without",
+   "forms/F3/subsets/y_ge_50/outcome_defined",
+   "forms/F3/subsets/y_gt_0/edge",
+   "forms/F3/subsets/y_gt_0/mae_without",
+   "forms/F3/subsets/y_gt_0/outcome_defined",
+   "forms/F3/subsets/y_gt_q75/edge",
+   "forms/F3/subsets/y_gt_q75/mae_without",
+   "forms/F3/subsets/y_gt_q75/outcome_defined",
+   "forms/F3/subsets/y_le_q75/edge",
+   "forms/F3/subsets/y_le_q75/mae_without",
+   "forms/F3/subsets/y_le_q75/outcome_defined",
+   "forms/F3/subsets/y_lt_50/edge",
+   "forms/F3/subsets/y_lt_50/mae_without",
+   "forms/F3/subsets/y_lt_50/outcome_defined",
+   "forms/F4/by_programme/AGRRA/mae_without",
+   "forms/F4/by_programme/FRRP/mae_without",
+   "forms/F4/by_programme/McClanahan/mae_without",
+   "forms/F4/by_programme/Reef_Check/mae_without",
+   "forms/F4/by_year/2016/mae_without",
+   "forms/F4/by_year/2017/mae_without",
+   "forms/F4/by_year/2018/mae_without",
+   "forms/F4/by_year/2019/mae_without",
+   "forms/F4/pooled/mae_without",
+   "forms/F4/rows_differing_labelled",
+   "forms/F4/subsets/all/edge",
+   "forms/F4/subsets/all/mae_without",
+   "forms/F4/subsets/all/outcome_defined",
+   "forms/F4/subsets/y_eq_0/edge",
+   "forms/F4/subsets/y_eq_0/mae_without",
+   "forms/F4/subsets/y_eq_0/outcome_defined",
+   "forms/F4/subsets/y_ge_50/edge",
+   "forms/F4/subsets/y_ge_50/mae_without",
+   "forms/F4/subsets/y_ge_50/outcome_defined",
+   "forms/F4/subsets/y_gt_0/edge",
+   "forms/F4/subsets/y_gt_0/mae_without",
+   "forms/F4/subsets/y_gt_0/outcome_defined",
+   "forms/F4/subsets/y_gt_q75/edge",
+   "forms/F4/subsets/y_gt_q75/mae_without",
+   "forms/F4/subsets/y_gt_q75/outcome_defined",
+   "forms/F4/subsets/y_le_q75/edge",
+   "forms/F4/subsets/y_le_q75/mae_without",
+   "forms/F4/subsets/y_le_q75/outcome_defined",
+   "forms/F4/subsets/y_lt_50/edge",
+   "forms/F4/subsets/y_lt_50/mae_without",
+   "forms/F4/subsets/y_lt_50/outcome_defined",
+   "passes/coral/0/row_file",
+   "passes/coral/0/row_file_sha256",
+   "passes/coral/0/twin_guard_basis/eligible",
+   "passes/coral/0/twin_guard_basis/in_adoption_eligible_list",
+   "passes/coral/0/twin_guard_basis/point/level",
+   "passes/coral/0/twin_guard_basis/point/ratio",
+   "passes/coral/0/twin_saved",
+   "passes/coral/183/row_file",
+   "passes/coral/183/row_file_sha256",
+   "passes/coral/183/twin_saved",
+   "passes/coral/365/row_file",
+   "passes/coral/365/row_file_sha256",
+   "passes/coral/365/twin_saved",
+   "passes/defo/0/row_file",
+   "passes/defo/0/row_file_sha256",
+   "passes/defo/0/twin_guard_basis/eligible",
+   "passes/defo/0/twin_guard_basis/in_adoption_eligible_list",
+   "passes/defo/0/twin_guard_basis/point/level",
+   "passes/defo/0/twin_guard_basis/point/ratio",
+   "passes/defo/0/twin_saved",
+   "passes/defo/1/row_file",
+   "passes/defo/1/row_file_sha256",
+   "passes/defo/1/twin_saved",
+   "passes/fire/0/row_file",
+   "passes/fire/0/row_file_sha256",
+   "passes/fire/0/twin_guard_basis/eligible",
+   "passes/fire/0/twin_guard_basis/in_adoption_eligible_list",
+   "passes/fire/0/twin_guard_basis/point/level",
+   "passes/fire/0/twin_guard_basis/point/ratio",
+   "passes/fire/0/twin_saved",
+   "passes/fire/12/row_file",
+   "passes/fire/12/row_file_sha256",
+   "passes/fire/12/twin_saved",
+   "passes/fire/6/row_file",
+   "passes/fire/6/row_file_sha256",
+   "passes/fire/6/twin_saved",
+   "passes/ndvi/0/row_file",
+   "passes/ndvi/0/row_file_sha256",
+   "passes/ndvi/0/twin_guard_basis/eligible",
+   "passes/ndvi/0/twin_guard_basis/in_adoption_eligible_list",
+   "passes/ndvi/0/twin_guard_basis/point/level",
+   "passes/ndvi/0/twin_guard_basis/point/ratio",
+   "passes/ndvi/0/twin_saved",
+   "passes/ndvi/12/row_file",
+   "passes/ndvi/12/row_file_sha256",
+   "passes/ndvi/12/twin_saved",
+   "passes/ndvi/6/row_file",
+   "passes/ndvi/6/row_file_sha256",
+   "passes/ndvi/6/twin_saved",
+   "passes/pm25/0/row_file",
+   "passes/pm25/0/row_file_sha256",
+   "passes/pm25/0/twin_guard_basis/eligible",
+   "passes/pm25/0/twin_guard_basis/in_adoption_eligible_list",
+   "passes/pm25/0/twin_guard_basis/point/level",
+   "passes/pm25/0/twin_guard_basis/point/ratio",
+   "passes/pm25/0/twin_saved",
+   "passes/pm25/12/row_file",
+   "passes/pm25/12/row_file_sha256",
+   "passes/pm25/12/twin_saved",
+   "passes/pm25/6/row_file",
+   "passes/pm25/6/row_file_sha256",
+   "passes/pm25/6/twin_saved",
+   "python_and_libraries/script_path",
+   "regions/coral/0/blocked_jackknife_with/flag",
+   "regions/coral/0/blocked_jackknife_with/high",
+   "regions/coral/0/blocked_jackknife_with/low",
+   "regions/coral/0/blocked_jackknife_with/mean",
+   "regions/coral/0/blocked_jackknife_with/n_blocks",
+   "regions/coral/0/blocked_jackknife_with/se",
+   "regions/coral/0/lines/Andaman Islands/mae_reference",
+   "regions/coral/0/lines/Andaman Islands/saved_rows_switched",
+   "regions/coral/0/lines/Andaman Sea/mae_reference",
+   "regions/coral/0/lines/Andaman Sea/saved_rows_switched",
+   "regions/coral/0/lines/Bahamas and Florida Keys/mae_reference",
+   "regions/coral/0/lines/Bahamas and Florida Keys/saved_rows_switched",
+   "regions/coral/0/lines/Banda Sea and Molucca Islands/mae_reference",
+   "regions/coral/0/lines/Banda Sea and Molucca Islands/saved_rows_switched",
+   "regions/coral/0/lines/Belize and west Caribbean/mae_reference",
+   "regions/coral/0/lines/Belize and west Caribbean/saved_rows_switched",
+   "regions/coral/0/lines/Celebes Sea/mae_reference",
+   "regions/coral/0/lines/Celebes Sea/saved_rows_switched",
+   "regions/coral/0/lines/Central and northern Great Barrier Reef/mae_reference",
+   "regions/coral/0/lines/Central and northern Great Barrier Reef/saved_rows_switched",
+   "regions/coral/0/lines/Eastern Hawaii/mae_reference",
+   "regions/coral/0/lines/Eastern Hawaii/saved_rows_switched",
+   "regions/coral/0/lines/Fiji/mae_reference",
+   "regions/coral/0/lines/Fiji/saved_rows_switched",
+   "regions/coral/0/lines/Gulf of Oman/mae_reference",
+   "regions/coral/0/lines/Gulf of Oman/saved_rows_switched",
+   "regions/coral/0/lines/Hispaniola, Puerto Rico and Lesser Antilles/mae_reference",
+   "regions/coral/0/lines/Hispaniola, Puerto Rico and Lesser Antilles/saved_rows_switched",
+   "regions/coral/0/lines/Jamaica/mae_reference",
+   "regions/coral/0/lines/Jamaica/saved_rows_switched",
+   "regions/coral/0/lines/Java Sea/mae_reference",
+   "regions/coral/0/lines/Java Sea/saved_rows_switched",
+   "regions/coral/0/lines/Kenya and Tanzania coast/mae_reference",
+   "regions/coral/0/lines/Kenya and Tanzania coast/saved_rows_switched",
+   "regions/coral/0/lines/Lakshadweep Islands/mae_reference",
+   "regions/coral/0/lines/Lakshadweep Islands/saved_rows_switched",
+   "regions/coral/0/lines/Lesser Sunda Islands and Savu Sea/mae_reference",
+   "regions/coral/0/lines/Lesser Sunda Islands and Savu Sea/saved_rows_switched",
+   "regions/coral/0/lines/Makassar Strait, Indonesia/mae_reference",
+   "regions/coral/0/lines/Makassar Strait, Indonesia/saved_rows_switched",
+   "regions/coral/0/lines/Maldive Islands/mae_reference",
+   "regions/coral/0/lines/Maldive Islands/saved_rows_switched",
+   "regions/coral/0/lines/Mascarene Islands/mae_reference",
+   "regions/coral/0/lines/Mascarene Islands/saved_rows_switched",
+   "regions/coral/0/lines/Mayotte and Comoros/mae_reference",
+   "regions/coral/0/lines/Mayotte and Comoros/saved_rows_switched",
+   "regions/coral/0/lines/Moreton Bay, eastern Australia/mae_reference",
+   "regions/coral/0/lines/Moreton Bay, eastern Australia/saved_rows_switched",
+   "regions/coral/0/lines/Netherlands Antilles and south Caribbean/mae_reference",
+   "regions/coral/0/lines/Netherlands Antilles and south Caribbean/saved_rows_switched",
+   "regions/coral/0/lines/Ningaloo Reef and coastal north-west Australia/mae_reference",
+   "regions/coral/0/lines/Ningaloo Reef and coastal north-west Australia/saved_rows_switched",
+   "regions/coral/0/lines/North Madagascar/mae_reference",
+   "regions/coral/0/lines/North Madagascar/saved_rows_switched",
+   "regions/coral/0/lines/North Philippines/mae_reference",
+   "regions/coral/0/lines/North Philippines/saved_rows_switched",
+   "regions/coral/0/lines/North Ryukyu Islands, Japan/mae_reference",
+   "regions/coral/0/lines/North Ryukyu Islands, Japan/saved_rows_switched",
+   "regions/coral/0/lines/North and central Red Sea/mae_reference",
+   "regions/coral/0/lines/North and central Red Sea/saved_rows_switched",
+   "regions/coral/0/lines/Persian Gulf/mae_reference",
+   "regions/coral/0/lines/Persian Gulf/saved_rows_switched",
+   "regions/coral/0/lines/Society Islands, French Polynesia/mae_reference",
+   "regions/coral/0/lines/Society Islands, French Polynesia/saved_rows_switched",
+   "regions/coral/0/lines/Solomon Islands and Bougainville/mae_reference",
+   "regions/coral/0/lines/Solomon Islands and Bougainville/saved_rows_switched",
+   "regions/coral/0/lines/South Madagascar/mae_reference",
+   "regions/coral/0/lines/South Madagascar/saved_rows_switched",
+   "regions/coral/0/lines/South-east Philippines/mae_reference",
+   "regions/coral/0/lines/South-east Philippines/saved_rows_switched",
+   "regions/coral/0/lines/Southern Great Barrier Reef/mae_reference",
+   "regions/coral/0/lines/Southern Great Barrier Reef/saved_rows_switched",
+   "regions/coral/0/lines/Strait of Malacca/mae_reference",
+   "regions/coral/0/lines/Strait of Malacca/saved_rows_switched",
+   "regions/coral/0/lines/Sulu Sea/mae_reference",
+   "regions/coral/0/lines/Sulu Sea/saved_rows_switched",
+   "regions/coral/0/lines/Sunda Shelf, south-east Asia/mae_reference",
+   "regions/coral/0/lines/Sunda Shelf, south-east Asia/saved_rows_switched",
+   "regions/coral/0/lines/Taiwan and coastal China/mae_reference",
+   "regions/coral/0/lines/Taiwan and coastal China/saved_rows_switched",
+   "regions/coral/0/verdict_with/band",
+   "regions/coral/0/verdict_with/contrast/high",
+   "regions/coral/0/verdict_with/contrast/low",
+   "regions/coral/0/verdict_with/contrast/mean",
+   "regions/coral/0/verdict_with/contrast/n_groups",
+   "regions/coral/0/verdict_with/contrast/se",
+   "regions/coral/0/verdict_with/groups_better",
+   "regions/coral/0/verdict_with/pooled_contrast",
+   "regions/coral/0/verdict_with/reference",
+   "regions/coral/0/verdict_with/sign_flip_groups/[0]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[10]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[11]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[12]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[13]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[1]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[2]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[3]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[4]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[5]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[6]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[7]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[8]",
+   "regions/coral/0/verdict_with/sign_flip_groups/[9]",
+   "regions/coral/0/verdict_with/tag",
+   "silence/coral/0/batches_switched",
+   "silence/coral/0/package",
+   "silence/coral/0/why_not",
+   "silence/defo/0/batches_switched",
+   "silence/defo/0/package",
+   "silence/defo/0/why_not",
+   "silence/fire/0/batches_switched",
+   "silence/fire/0/package",
+   "silence/fire/0/why_not",
+   "silence/ndvi/0/batches_switched",
+   "silence/ndvi/0/package",
+   "silence/ndvi/0/why_not",
+   "silence/pm25/0/batches_switched",
+   "silence/pm25/0/package",
+   "silence/pm25/0/why_not",
+   "small_batches/coral/0/counterfactual_info_only/batches_added/[0]",
+   "small_batches/coral/0/counterfactual_info_only/batches_added/[1]",
+   "small_batches/coral/0/counterfactual_info_only/batches_added/[2]",
+   "small_batches/coral/0/counterfactual_info_only/information_only",
+   "small_batches/coral/0/counterfactual_info_only/pooled_mae_with_fixed_rule",
+   "small_batches/coral/0/counterfactual_info_only/pooled_mae_without",
+   "small_batches/coral/0/lead",
+   "small_batches/coral/0/note",
+   "small_batches/coral/0/package",
+   "small_batches/coral/0/small_batches/[0]/tested",
+   "small_batches/coral/0/small_batches/[10]/tested",
+   "small_batches/coral/0/small_batches/[11]/tested",
+   "small_batches/coral/0/small_batches/[12]/tested",
+   "small_batches/coral/0/small_batches/[13]/tested",
+   "small_batches/coral/0/small_batches/[14]/tested",
+   "small_batches/coral/0/small_batches/[1]/tested",
+   "small_batches/coral/0/small_batches/[2]/tested",
+   "small_batches/coral/0/small_batches/[3]/tested",
+   "small_batches/coral/0/small_batches/[4]/tested",
+   "small_batches/coral/0/small_batches/[5]/tested",
+   "small_batches/coral/0/small_batches/[6]/tested",
+   "small_batches/coral/0/small_batches/[7]/tested",
+   "small_batches/coral/0/small_batches/[8]/tested",
+   "small_batches/coral/0/small_batches/[9]/tested",
+   "small_batches/coral/183/lead",
+   "small_batches/coral/183/package",
+   "small_batches/coral/183/small_batches/[0]/batch",
+   "small_batches/coral/183/small_batches/[0]/saved_rows",
+   "small_batches/coral/183/small_batches/[10]/batch",
+   "small_batches/coral/183/small_batches/[10]/saved_rows",
+   "small_batches/coral/183/small_batches/[11]/batch",
+   "small_batches/coral/183/small_batches/[11]/saved_rows",
+   "small_batches/coral/183/small_batches/[12]/batch",
+   "small_batches/coral/183/small_batches/[12]/saved_rows",
+   "small_batches/coral/183/small_batches/[13]/batch",
+   "small_batches/coral/183/small_batches/[13]/saved_rows",
+   "small_batches/coral/183/small_batches/[14]/batch",
+   "small_batches/coral/183/small_batches/[14]/saved_rows",
+   "small_batches/coral/183/small_batches/[15]/batch",
+   "small_batches/coral/183/small_batches/[15]/saved_rows",
+   "small_batches/coral/183/small_batches/[16]/batch",
+   "small_batches/coral/183/small_batches/[16]/saved_rows",
+   "small_batches/coral/183/small_batches/[1]/batch",
+   "small_batches/coral/183/small_batches/[1]/saved_rows",
+   "small_batches/coral/183/small_batches/[2]/batch",
+   "small_batches/coral/183/small_batches/[2]/saved_rows",
+   "small_batches/coral/183/small_batches/[3]/batch",
+   "small_batches/coral/183/small_batches/[3]/saved_rows",
+   "small_batches/coral/183/small_batches/[4]/batch",
+   "small_batches/coral/183/small_batches/[4]/saved_rows",
+   "small_batches/coral/183/small_batches/[5]/batch",
+   "small_batches/coral/183/small_batches/[5]/saved_rows",
+   "small_batches/coral/183/small_batches/[6]/batch",
+   "small_batches/coral/183/small_batches/[6]/saved_rows",
+   "small_batches/coral/183/small_batches/[7]/batch",
+   "small_batches/coral/183/small_batches/[7]/saved_rows",
+   "small_batches/coral/183/small_batches/[8]/batch",
+   "small_batches/coral/183/small_batches/[8]/saved_rows",
+   "small_batches/coral/183/small_batches/[9]/batch",
+   "small_batches/coral/183/small_batches/[9]/saved_rows",
+   "small_batches/defo/0/lead",
+   "small_batches/defo/0/note",
+   "small_batches/defo/0/package",
+   "small_batches/defo/1/lead",
+   "small_batches/defo/1/package",
+   "small_batches/defo/1/small_batches",
+   "small_batches/fire/0/lead",
+   "small_batches/fire/0/note",
+   "small_batches/fire/0/package",
+   "small_batches/ndvi/0/lead",
+   "small_batches/ndvi/0/note",
+   "small_batches/ndvi/0/package",
+   "small_batches/pm25/0/lead",
+   "small_batches/pm25/0/note",
+   "small_batches/pm25/0/package",
+   "subsets/coral/0/all/change_F2",
+   "subsets/coral/0/all/change_F3",
+   "subsets/coral/0/all/change_F4",
+   "subsets/coral/0/all/change_pct",
+   "subsets/coral/0/all/lead",
+   "subsets/coral/0/all/mae_F2",
+   "subsets/coral/0/all/mae_F3",
+   "subsets/coral/0/all/mae_F4",
+   "subsets/coral/0/all/package",
+   "subsets/coral/0/all/q75_edge",
+   "subsets/coral/0/all/status",
+   "subsets/coral/0/all/subset",
+   "subsets/coral/0/y_eq_0/change_F2",
+   "subsets/coral/0/y_eq_0/change_F3",
+   "subsets/coral/0/y_eq_0/change_F4",
+   "subsets/coral/0/y_eq_0/change_pct",
+   "subsets/coral/0/y_eq_0/lead",
+   "subsets/coral/0/y_eq_0/mae_F2",
+   "subsets/coral/0/y_eq_0/mae_F3",
+   "subsets/coral/0/y_eq_0/mae_F4",
+   "subsets/coral/0/y_eq_0/package",
+   "subsets/coral/0/y_eq_0/q75_edge",
+   "subsets/coral/0/y_eq_0/status",
+   "subsets/coral/0/y_eq_0/subset",
+   "subsets/coral/0/y_ge_50/change_F2",
+   "subsets/coral/0/y_ge_50/change_F3",
+   "subsets/coral/0/y_ge_50/change_F4",
+   "subsets/coral/0/y_ge_50/change_pct",
+   "subsets/coral/0/y_ge_50/lead",
+   "subsets/coral/0/y_ge_50/mae_F2",
+   "subsets/coral/0/y_ge_50/mae_F3",
+   "subsets/coral/0/y_ge_50/mae_F4",
+   "subsets/coral/0/y_ge_50/package",
+   "subsets/coral/0/y_ge_50/q75_edge",
+   "subsets/coral/0/y_ge_50/status",
+   "subsets/coral/0/y_ge_50/subset",
+   "subsets/coral/0/y_gt_0/change_F2",
+   "subsets/coral/0/y_gt_0/change_F3",
+   "subsets/coral/0/y_gt_0/change_F4",
+   "subsets/coral/0/y_gt_0/change_pct",
+   "subsets/coral/0/y_gt_0/lead",
+   "subsets/coral/0/y_gt_0/mae_F2",
+   "subsets/coral/0/y_gt_0/mae_F3",
+   "subsets/coral/0/y_gt_0/mae_F4",
+   "subsets/coral/0/y_gt_0/package",
+   "subsets/coral/0/y_gt_0/q75_edge",
+   "subsets/coral/0/y_gt_0/status",
+   "subsets/coral/0/y_gt_0/subset",
+   "subsets/coral/0/y_gt_q75/change_F2",
+   "subsets/coral/0/y_gt_q75/change_F3",
+   "subsets/coral/0/y_gt_q75/change_F4",
+   "subsets/coral/0/y_gt_q75/change_pct",
+   "subsets/coral/0/y_gt_q75/lead",
+   "subsets/coral/0/y_gt_q75/mae_F2",
+   "subsets/coral/0/y_gt_q75/mae_F3",
+   "subsets/coral/0/y_gt_q75/mae_F4",
+   "subsets/coral/0/y_gt_q75/package",
+   "subsets/coral/0/y_gt_q75/q75_edge",
+   "subsets/coral/0/y_gt_q75/status",
+   "subsets/coral/0/y_gt_q75/subset",
+   "subsets/coral/0/y_le_q75/change_F2",
+   "subsets/coral/0/y_le_q75/change_F3",
+   "subsets/coral/0/y_le_q75/change_F4",
+   "subsets/coral/0/y_le_q75/change_pct",
+   "subsets/coral/0/y_le_q75/lead",
+   "subsets/coral/0/y_le_q75/mae_F2",
+   "subsets/coral/0/y_le_q75/mae_F3",
+   "subsets/coral/0/y_le_q75/mae_F4",
+   "subsets/coral/0/y_le_q75/package",
+   "subsets/coral/0/y_le_q75/q75_edge",
+   "subsets/coral/0/y_le_q75/status",
+   "subsets/coral/0/y_le_q75/subset",
+   "subsets/coral/0/y_lt_50/change_F2",
+   "subsets/coral/0/y_lt_50/change_F3",
+   "subsets/coral/0/y_lt_50/change_F4",
+   "subsets/coral/0/y_lt_50/change_pct",
+   "subsets/coral/0/y_lt_50/lead",
+   "subsets/coral/0/y_lt_50/mae_F2",
+   "subsets/coral/0/y_lt_50/mae_F3",
+   "subsets/coral/0/y_lt_50/mae_F4",
+   "subsets/coral/0/y_lt_50/package",
+   "subsets/coral/0/y_lt_50/q75_edge",
+   "subsets/coral/0/y_lt_50/status",
+   "subsets/coral/0/y_lt_50/subset",
+   "subsets/coral/183/all/change_pct",
+   "subsets/coral/183/all/lead",
+   "subsets/coral/183/all/package",
+   "subsets/coral/183/all/q75_edge",
+   "subsets/coral/183/all/status",
+   "subsets/coral/183/all/subset",
+   "subsets/coral/183/y_eq_0/change_pct",
+   "subsets/coral/183/y_eq_0/lead",
+   "subsets/coral/183/y_eq_0/package",
+   "subsets/coral/183/y_eq_0/q75_edge",
+   "subsets/coral/183/y_eq_0/status",
+   "subsets/coral/183/y_eq_0/subset",
+   "subsets/coral/183/y_ge_50/change_pct",
+   "subsets/coral/183/y_ge_50/lead",
+   "subsets/coral/183/y_ge_50/package",
+   "subsets/coral/183/y_ge_50/q75_edge",
+   "subsets/coral/183/y_ge_50/status",
+   "subsets/coral/183/y_ge_50/subset",
+   "subsets/coral/183/y_gt_0/change_pct",
+   "subsets/coral/183/y_gt_0/lead",
+   "subsets/coral/183/y_gt_0/package",
+   "subsets/coral/183/y_gt_0/q75_edge",
+   "subsets/coral/183/y_gt_0/status",
+   "subsets/coral/183/y_gt_0/subset",
+   "subsets/coral/183/y_gt_q75/change_pct",
+   "subsets/coral/183/y_gt_q75/lead",
+   "subsets/coral/183/y_gt_q75/package",
+   "subsets/coral/183/y_gt_q75/q75_edge",
+   "subsets/coral/183/y_gt_q75/status",
+   "subsets/coral/183/y_gt_q75/subset",
+   "subsets/coral/183/y_le_q75/change_pct",
+   "subsets/coral/183/y_le_q75/lead",
+   "subsets/coral/183/y_le_q75/package",
+   "subsets/coral/183/y_le_q75/q75_edge",
+   "subsets/coral/183/y_le_q75/status",
+   "subsets/coral/183/y_le_q75/subset",
+   "subsets/coral/183/y_lt_50/change_pct",
+   "subsets/coral/183/y_lt_50/lead",
+   "subsets/coral/183/y_lt_50/package",
+   "subsets/coral/183/y_lt_50/q75_edge",
+   "subsets/coral/183/y_lt_50/status",
+   "subsets/coral/183/y_lt_50/subset",
+   "subsets/coral/365/all/change_pct",
+   "subsets/coral/365/all/lead",
+   "subsets/coral/365/all/package",
+   "subsets/coral/365/all/q75_edge",
+   "subsets/coral/365/all/status",
+   "subsets/coral/365/all/subset",
+   "subsets/coral/365/y_eq_0/change_pct",
+   "subsets/coral/365/y_eq_0/lead",
+   "subsets/coral/365/y_eq_0/package",
+   "subsets/coral/365/y_eq_0/q75_edge",
+   "subsets/coral/365/y_eq_0/status",
+   "subsets/coral/365/y_eq_0/subset",
+   "subsets/coral/365/y_ge_50/change_pct",
+   "subsets/coral/365/y_ge_50/lead",
+   "subsets/coral/365/y_ge_50/package",
+   "subsets/coral/365/y_ge_50/q75_edge",
+   "subsets/coral/365/y_ge_50/status",
+   "subsets/coral/365/y_ge_50/subset",
+   "subsets/coral/365/y_gt_0/change_pct",
+   "subsets/coral/365/y_gt_0/lead",
+   "subsets/coral/365/y_gt_0/package",
+   "subsets/coral/365/y_gt_0/q75_edge",
+   "subsets/coral/365/y_gt_0/status",
+   "subsets/coral/365/y_gt_0/subset",
+   "subsets/coral/365/y_gt_q75/change_pct",
+   "subsets/coral/365/y_gt_q75/lead",
+   "subsets/coral/365/y_gt_q75/package",
+   "subsets/coral/365/y_gt_q75/q75_edge",
+   "subsets/coral/365/y_gt_q75/status",
+   "subsets/coral/365/y_gt_q75/subset",
+   "subsets/coral/365/y_le_q75/change_pct",
+   "subsets/coral/365/y_le_q75/lead",
+   "subsets/coral/365/y_le_q75/package",
+   "subsets/coral/365/y_le_q75/q75_edge",
+   "subsets/coral/365/y_le_q75/status",
+   "subsets/coral/365/y_le_q75/subset",
+   "subsets/coral/365/y_lt_50/change_pct",
+   "subsets/coral/365/y_lt_50/lead",
+   "subsets/coral/365/y_lt_50/package",
+   "subsets/coral/365/y_lt_50/q75_edge",
+   "subsets/coral/365/y_lt_50/status",
+   "subsets/coral/365/y_lt_50/subset",
+   "threshold_check/coral/0/1.5/batches_tested",
+   "threshold_check/coral/0/1.5/labelled_rows_switched",
+   "threshold_check/coral/0/1.5/lead",
+   "threshold_check/coral/0/1.5/package",
+   "threshold_check/coral/0/2.0/batches_tested",
+   "threshold_check/coral/0/2.0/labelled_rows_switched",
+   "threshold_check/coral/0/2.0/lead",
+   "threshold_check/coral/0/2.0/package",
+   "threshold_check/coral/0/2.5/batches_tested",
+   "threshold_check/coral/0/2.5/labelled_rows_switched",
+   "threshold_check/coral/0/2.5/lead",
+   "threshold_check/coral/0/2.5/package",
+   "threshold_check/coral/0/3.0/batches_tested",
+   "threshold_check/coral/0/3.0/labelled_rows_switched",
+   "threshold_check/coral/0/3.0/lead",
+   "threshold_check/coral/0/3.0/package",
+   "threshold_check/defo/0/1.5/batches_tested",
+   "threshold_check/defo/0/1.5/labelled_rows_switched",
+   "threshold_check/defo/0/1.5/lead",
+   "threshold_check/defo/0/1.5/package",
+   "threshold_check/defo/0/2.0/batches_tested",
+   "threshold_check/defo/0/2.0/labelled_rows_switched",
+   "threshold_check/defo/0/2.0/lead",
+   "threshold_check/defo/0/2.0/package",
+   "threshold_check/defo/0/2.5/batches_tested",
+   "threshold_check/defo/0/2.5/labelled_rows_switched",
+   "threshold_check/defo/0/2.5/lead",
+   "threshold_check/defo/0/2.5/package",
+   "threshold_check/defo/0/3.0/batches_tested",
+   "threshold_check/defo/0/3.0/labelled_rows_switched",
+   "threshold_check/defo/0/3.0/lead",
+   "threshold_check/defo/0/3.0/package",
+   "verdicts/coral/0/note",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/flag",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/high",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/low",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/mean",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/n_blocks",
+   "verdicts/coral/0/without_recomputed_B/blocked_jackknife/se",
+   "verdicts/coral/0/without_recomputed_B/verdict/band",
+   "verdicts/coral/0/without_recomputed_B/verdict/contrast/high",
+   "verdicts/coral/0/without_recomputed_B/verdict/contrast/low",
+   "verdicts/coral/0/without_recomputed_B/verdict/contrast/mean",
+   "verdicts/coral/0/without_recomputed_B/verdict/contrast/n_groups",
+   "verdicts/coral/0/without_recomputed_B/verdict/contrast/se",
+   "verdicts/coral/0/without_recomputed_B/verdict/groups_better",
+   "verdicts/coral/0/without_recomputed_B/verdict/pooled_contrast",
+   "verdicts/coral/0/without_recomputed_B/verdict/reference",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[0]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[10]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[11]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[12]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[13]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[1]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[2]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[3]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[4]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[5]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[6]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[7]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[8]",
+   "verdicts/coral/0/without_recomputed_B/verdict/sign_flip_groups/[9]",
+   "verdicts/coral/0/without_recomputed_B/verdict/tag",
+   "verdicts/defo/0/note",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/flag",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/high",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/low",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/mean",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/n_blocks",
+   "verdicts/defo/0/without_recomputed_B/blocked_jackknife/se",
+   "verdicts/defo/0/without_recomputed_B/verdict/band",
+   "verdicts/defo/0/without_recomputed_B/verdict/contrast/high",
+   "verdicts/defo/0/without_recomputed_B/verdict/contrast/low",
+   "verdicts/defo/0/without_recomputed_B/verdict/contrast/mean",
+   "verdicts/defo/0/without_recomputed_B/verdict/contrast/n_groups",
+   "verdicts/defo/0/without_recomputed_B/verdict/contrast/se",
+   "verdicts/defo/0/without_recomputed_B/verdict/groups_better",
+   "verdicts/defo/0/without_recomputed_B/verdict/pooled_contrast",
+   "verdicts/defo/0/without_recomputed_B/verdict/reference",
+   "verdicts/defo/0/without_recomputed_B/verdict/sign_flip_groups",
+   "verdicts/defo/0/without_recomputed_B/verdict/tag",
+   "verdicts/fire/0/note",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/flag",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/high",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/low",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/mean",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/n_blocks",
+   "verdicts/fire/0/without_recomputed_B/blocked_jackknife/se",
+   "verdicts/fire/0/without_recomputed_B/verdict/band",
+   "verdicts/fire/0/without_recomputed_B/verdict/contrast/high",
+   "verdicts/fire/0/without_recomputed_B/verdict/contrast/low",
+   "verdicts/fire/0/without_recomputed_B/verdict/contrast/mean",
+   "verdicts/fire/0/without_recomputed_B/verdict/contrast/n_groups",
+   "verdicts/fire/0/without_recomputed_B/verdict/contrast/se",
+   "verdicts/fire/0/without_recomputed_B/verdict/groups_better",
+   "verdicts/fire/0/without_recomputed_B/verdict/pooled_contrast",
+   "verdicts/fire/0/without_recomputed_B/verdict/reference",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[0]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[10]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[11]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[12]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[1]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[2]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[3]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[4]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[5]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[6]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[7]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[8]",
+   "verdicts/fire/0/without_recomputed_B/verdict/sign_flip_groups/[9]",
+   "verdicts/fire/0/without_recomputed_B/verdict/tag",
+   "verdicts/ndvi/0/note",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/flag",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/high",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/low",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/mean",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/n_blocks",
+   "verdicts/ndvi/0/without_recomputed_B/blocked_jackknife/se",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/band",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/contrast/high",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/contrast/low",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/contrast/mean",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/contrast/n_groups",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/contrast/se",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/groups_better",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/pooled_contrast",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/reference",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[0]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[10]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[1]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[2]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[3]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[4]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[5]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[6]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[7]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[8]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/sign_flip_groups/[9]",
+   "verdicts/ndvi/0/without_recomputed_B/verdict/tag",
+   "verdicts/pm25/0/note",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/flag",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/high",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/low",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/mean",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/n_blocks",
+   "verdicts/pm25/0/without_recomputed_B/blocked_jackknife/se",
+   "verdicts/pm25/0/without_recomputed_B/verdict/band",
+   "verdicts/pm25/0/without_recomputed_B/verdict/contrast/high",
+   "verdicts/pm25/0/without_recomputed_B/verdict/contrast/low",
+   "verdicts/pm25/0/without_recomputed_B/verdict/contrast/mean",
+   "verdicts/pm25/0/without_recomputed_B/verdict/contrast/n_groups",
+   "verdicts/pm25/0/without_recomputed_B/verdict/contrast/se",
+   "verdicts/pm25/0/without_recomputed_B/verdict/groups_better",
+   "verdicts/pm25/0/without_recomputed_B/verdict/pooled_contrast",
+   "verdicts/pm25/0/without_recomputed_B/verdict/reference",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[0]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[10]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[11]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[12]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[13]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[14]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[15]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[16]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[17]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[18]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[1]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[2]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[3]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[4]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[5]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[6]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[7]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[8]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/sign_flip_groups/[9]",
+   "verdicts/pm25/0/without_recomputed_B/verdict/tag"
+  ],
+  "per_section": {
+   "batches": {
+    "A_leaves": 3136,
+    "B_leaves": 3724,
+    "matched": 2940,
+    "same": 2744,
+    "differ": 0,
+    "wording": 196,
+    "only_A": 196,
+    "only_B": 784
+   },
+   "by_year": {
+    "A_leaves": 480,
+    "B_leaves": 700,
+    "matched": 432,
+    "same": 432,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 48,
+    "only_B": 268
+   },
+   "by_year_worse": {
+    "A_leaves": 2,
+    "B_leaves": 0,
+    "matched": 0,
+    "same": 0,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 2,
+    "only_B": 0
+   },
+   "contributions": {
+    "A_leaves": 64,
+    "B_leaves": 41,
+    "matched": 40,
+    "same": 39,
+    "differ": 0,
+    "wording": 1,
+    "only_A": 24,
+    "only_B": 1
+   },
+   "coral_programme": {
+    "A_leaves": 40,
+    "B_leaves": 29,
+    "matched": 29,
+    "same": 29,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 11,
+    "only_B": 0
+   },
+   "coral_programme_year": {
+    "A_leaves": 70,
+    "B_leaves": 50,
+    "matched": 50,
+    "same": 50,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 20,
+    "only_B": 0
+   },
+   "forms": {
+    "A_leaves": 276,
+    "B_leaves": 364,
+    "matched": 240,
+    "same": 236,
+    "differ": 0,
+    "wording": 4,
+    "only_A": 36,
+    "only_B": 124
+   },
+   "passes": {
+    "A_leaves": 557,
+    "B_leaves": 585,
+    "matched": 523,
+    "same": 523,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 34,
+    "only_B": 62
+   },
+   "python_and_libraries": {
+    "A_leaves": 9,
+    "B_leaves": 9,
+    "matched": 8,
+    "same": 8,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 1,
+    "only_B": 1
+   },
+   "regions": {
+    "A_leaves": 229,
+    "B_leaves": 294,
+    "matched": 190,
+    "same": 189,
+    "differ": 0,
+    "wording": 1,
+    "only_A": 39,
+    "only_B": 104
+   },
+   "silence": {
+    "A_leaves": 35,
+    "B_leaves": 40,
+    "matched": 25,
+    "same": 25,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 10,
+    "only_B": 15
+   },
+   "small_batches": {
+    "A_leaves": 130,
+    "B_leaves": 191,
+    "matched": 116,
+    "same": 116,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 14,
+    "only_B": 75
+   },
+   "subsets": {
+    "A_leaves": 231,
+    "B_leaves": 357,
+    "matched": 189,
+    "same": 171,
+    "differ": 0,
+    "wording": 18,
+    "only_A": 42,
+    "only_B": 168
+   },
+   "threshold_check": {
+    "A_leaves": 190,
+    "B_leaves": 214,
+    "matched": 182,
+    "same": 182,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 8,
+    "only_B": 32
+   },
+   "verdicts": {
+    "A_leaves": 306,
+    "B_leaves": 449,
+    "matched": 306,
+    "same": 306,
+    "differ": 0,
+    "wording": 0,
+    "only_A": 0,
+    "only_B": 143
+   }
+  },
+  "max_abs_diff_matched_numeric": 0.0,
+  "cross_pairs": {
+   "pairs": 183,
+   "same": 183,
+   "differ": []
+  },
+  "only_A_summary": {
+   "total": 485,
+   "numeric_or_flag": 244,
+   "confirmed_by_recompute": 244,
+   "recompute_differs": [],
+   "confirmed_by_cross_pair": 0,
+   "same_value_in_same_record_other_side": 0,
+   "identifiers": 19,
+   "label_flags": 77,
+   "text": 127,
+   "null": 18,
+   "unconfirmed": []
+  },
+  "only_B_summary": {
+   "total": 1777,
+   "numeric_or_flag": 1322,
+   "confirmed_by_recompute": 1224,
+   "recompute_differs": [],
+   "confirmed_by_cross_pair": 98,
+   "same_value_in_same_record_other_side": 0,
+   "identifiers": 271,
+   "label_flags": 34,
+   "text": 144,
+   "null": 6,
+   "unconfirmed": []
+  }
+ },
+ "row_files": {
+  "rows_pm25_lead_0.parquet": {
+   "sha256_A": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+   "sha256_B": "75a95cc667c086159aff6bdf91c788dd3ea4b4f2e1a88ba607634776a3de98ec",
+   "byte_identical": true,
+   "rows": [
+    91440,
+    91440
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "group": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "time": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "year": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "issue": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "y": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "adopted": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 91440,
+     "rows": 91440
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/pm25_20261007_74e67609_lead_0.parquet",
+    "rows": 91440,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "twin": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": []
+   }
+  },
+  "rows_pm25_lead_6.parquet": {
+   "sha256_A": "8c550e1ac24b1e3fb207122a0ade547df3868a8b785abdc2f016e73e7f4b43da",
+   "sha256_B": "8c550e1ac24b1e3fb207122a0ade547df3868a8b785abdc2f016e73e7f4b43da",
+   "byte_identical": true,
+   "rows": [
+    91440,
+    91440
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "group": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "time": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "year": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "issue": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "y": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "adopted": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 91440,
+     "rows": 91440
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/pm25_20261007_74e67609_lead_6.parquet",
+    "rows": 91440,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_pm25_lead_12.parquet": {
+   "sha256_A": "581c3109170d86256959d55e031e55e0ab82ee0e3ff72c8812238445516bb8bf",
+   "sha256_B": "581c3109170d86256959d55e031e55e0ab82ee0e3ff72c8812238445516bb8bf",
+   "byte_identical": true,
+   "rows": [
+    91440,
+    91440
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "group": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "time": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "year": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "issue": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "y": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 91440,
+     "rows": 91440
+    },
+    "adopted": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 91440,
+     "rows": 91440,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 91440,
+     "rows": 91440
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/pm25_20261007_74e67609_lead_12.parquet",
+    "rows": 91440,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_ndvi_lead_0.parquet": {
+   "sha256_A": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+   "sha256_B": "a27750f647271a1dfc4750a476ffdeeb5d9a2bc74bc35119174996c35d7349ab",
+   "byte_identical": true,
+   "rows": [
+    95184,
+    95184
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "group": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "time": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "year": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "issue": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "y": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "adopted": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 95184,
+     "rows": 95184
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/ndvi_20261016_d1de3158_lead_0.parquet",
+    "rows": 95184,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "twin": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": []
+   }
+  },
+  "rows_ndvi_lead_6.parquet": {
+   "sha256_A": "97fb271030b4460de60a4af78efb2b2b2c21122a4d1c5d71a333164d5c2245e8",
+   "sha256_B": "97fb271030b4460de60a4af78efb2b2b2c21122a4d1c5d71a333164d5c2245e8",
+   "byte_identical": true,
+   "rows": [
+    95184,
+    95184
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "group": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "time": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "year": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "issue": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "y": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "adopted": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 95184,
+     "rows": 95184
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/ndvi_20261016_d1de3158_lead_6.parquet",
+    "rows": 95184,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_ndvi_lead_12.parquet": {
+   "sha256_A": "841a98355af39c9cdb4486f0c3dcbb78987044f31b4d352d873fcee0a17bdd64",
+   "sha256_B": "841a98355af39c9cdb4486f0c3dcbb78987044f31b4d352d873fcee0a17bdd64",
+   "byte_identical": true,
+   "rows": [
+    95184,
+    95184
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "group": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "time": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "year": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "issue": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "y": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 95184,
+     "rows": 95184
+    },
+    "adopted": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 95184,
+     "rows": 95184,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 95184,
+     "rows": 95184
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/ndvi_20261016_d1de3158_lead_12.parquet",
+    "rows": 95184,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_fire_lead_0.parquet": {
+   "sha256_A": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+   "sha256_B": "4d039974a9ed629fd51561840dfca8abd665c84c83bf7184a884291be7ee2e3e",
+   "byte_identical": true,
+   "rows": [
+    96000,
+    96000
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "group": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "time": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "year": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "issue": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "y": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "adopted": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 96000,
+     "rows": 96000
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/fire_20261017_869d1f38_lead_0.parquet",
+    "rows": 96000,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "twin": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": []
+   }
+  },
+  "rows_fire_lead_6.parquet": {
+   "sha256_A": "9807f74736eae58473534eee08bee96d07ea10a6f83a0cbc40aa3dec724180ba",
+   "sha256_B": "9807f74736eae58473534eee08bee96d07ea10a6f83a0cbc40aa3dec724180ba",
+   "byte_identical": true,
+   "rows": [
+    96000,
+    96000
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "group": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "time": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "year": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "issue": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "y": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "adopted": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 96000,
+     "rows": 96000
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/fire_20261017_869d1f38_lead_6.parquet",
+    "rows": 96000,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_fire_lead_12.parquet": {
+   "sha256_A": "9a878766ebd0aad7962938dcd28adae0ca8a77299a31cd2734204ae4bd92afa0",
+   "sha256_B": "9a878766ebd0aad7962938dcd28adae0ca8a77299a31cd2734204ae4bd92afa0",
+   "byte_identical": true,
+   "rows": [
+    96000,
+    96000
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "group": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "time": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "year": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "issue": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "y": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 96000,
+     "rows": 96000
+    },
+    "adopted": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 96000,
+     "rows": 96000,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 96000,
+     "rows": 96000
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/fire_20261017_869d1f38_lead_12.parquet",
+    "rows": 96000,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  },
+  "rows_defo_lead_0.parquet": {
+   "sha256_A": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+   "sha256_B": "52c71652c52366acb820df8ce42af34456a66f7eb4ae4a1575aaf30fa18a7ea9",
+   "byte_identical": true,
+   "rows": [
+    369096,
+    369096
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "group": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "time": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "year": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "issue": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "y": {
+     "bitwise_equal_rows": 369096,
+     "rows": 369096,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 369096,
+     "rows": 369096
+    },
+    "adopted": {
+     "bitwise_equal_rows": 369096,
+     "rows": 369096,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 369096,
+     "rows": 369096,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 369096,
+     "rows": 369096,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 369096,
+     "rows": 369096
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/defo_20261017_d71c61f4_lead_0.parquet",
+    "rows": 369096,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "twin": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": []
+   }
+  },
+  "rows_coral_lead_0.parquet": {
+   "sha256_A": "036f0c4f47c52d0ef2634ec4965d349c839e25c5ea878401dbde25bc2df4e7b6",
+   "sha256_B": "036f0c4f47c52d0ef2634ec4965d349c839e25c5ea878401dbde25bc2df4e7b6",
+   "byte_identical": true,
+   "rows": [
+    2312,
+    2312
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "group": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "time": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "year": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "issue": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "y": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "adopted": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "programme": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "blend_batch": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin_all": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "blend_all": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/coral_20261020_f3b8e3da_lead_0.parquet",
+    "rows": 2312,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "twin": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "programme",
+     "blend_batch",
+     "twin_all",
+     "blend_all"
+    ]
+   }
+  },
+  "rows_coral_lead_365.parquet": {
+   "sha256_A": "6683718798ee4b39a88a5c03ec9cae20450d4601ef8e63763870bef1fc643440",
+   "sha256_B": "6683718798ee4b39a88a5c03ec9cae20450d4601ef8e63763870bef1fc643440",
+   "byte_identical": true,
+   "rows": [
+    2312,
+    2312
+   ],
+   "schema_equal": true,
+   "columns": {
+    "unit": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "group": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "time": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "year": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "issue": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "y": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "batch": {
+     "equal_rows": 2312,
+     "rows": 2312
+    },
+    "adopted": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "twin": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "with_alarm": {
+     "bitwise_equal_rows": 2312,
+     "rows": 2312,
+     "nan_mismatch": 0,
+     "max_abs_diff": 0.0
+    },
+    "fired": {
+     "equal_rows": 2312,
+     "rows": 2312
+    }
+   },
+   "all_columns_bitwise_equal": true,
+   "gate_file": {
+    "path": "D:/treeroute/engine_v2/replay_af2_20261021/rows/coral_20261020_f3b8e3da_lead_365.parquet",
+    "rows": 2312,
+    "shared_columns_bitwise_equal": {
+     "unit": true,
+     "group": true,
+     "time": true,
+     "year": true,
+     "issue": true,
+     "y": true,
+     "batch": true,
+     "adopted": true,
+     "with_alarm": true,
+     "fired": true
+    },
+    "columns_only_in_A_B_file": [
+     "twin"
+    ]
+   }
+  }
+ },
+ "row_files_max_abs_diff": 0.0,
+ "recompute": {
+  "values": 5280,
+  "A": {
+   "compared": 4036,
+   "bit_or_exact": 4033,
+   "within_tol": [
+    {
+     "path": "contributions/by_programme/FRRP/share_pct",
+     "recomputed": -0.895036569385612,
+     "A": -0.8950365693856122,
+     "abs": 1.1102230246251565e-16,
+     "rel": 1.2404219700064956e-16
+    },
+    {
+     "path": "contributions/by_programme_year/FRRP/2016/share_pct",
+     "recomputed": -0.895036569385612,
+     "A": -0.8950365693856122,
+     "abs": 1.1102230246251565e-16,
+     "rel": 1.2404219700064956e-16
+    },
+    {
+     "path": "contributions/by_programme_year/Reef_Check/2019/share_pct",
+     "recomputed": -7.679329886248726,
+     "A": -7.679329886248727,
+     "abs": 8.881784197001252e-16,
+     "rel": 1.156583234287896e-16
+    }
+   ],
+   "differ": [],
+   "absent": 1244
+  },
+  "B": {
+   "compared": 5016,
+   "bit_or_exact": 5016,
+   "within_tol": [],
+   "differ": [],
+   "absent": 264
+  },
+  "in_neither": [
+   "by_year/pm25/0/2020/batches_spanning_two_years",
+   "by_year/pm25/0/2021/batches_spanning_two_years",
+   "by_year/pm25/0/2022/batches_spanning_two_years",
+   "by_year/pm25/0/2023/batches_spanning_two_years",
+   "by_year/ndvi/0/2020/batches_spanning_two_years",
+   "by_year/ndvi/0/2021/batches_spanning_two_years",
+   "by_year/ndvi/0/2022/batches_spanning_two_years",
+   "by_year/ndvi/0/2023/batches_spanning_two_years",
+   "by_year/fire/0/2019/batches_spanning_two_years",
+   "by_year/fire/0/2020/batches_spanning_two_years",
+   "by_year/fire/0/2021/batches_spanning_two_years",
+   "by_year/fire/0/2022/batches_spanning_two_years",
+   "by_year/defo/0/2020/batches_spanning_two_years",
+   "by_year/defo/0/2021/batches_spanning_two_years",
+   "by_year/defo/0/2022/batches_spanning_two_years",
+   "by_year/defo/0/2023/batches_spanning_two_years",
+   "by_year/coral/0/2016/batches_spanning_two_years",
+   "by_year/coral/0/2017/batches_spanning_two_years",
+   "by_year/coral/0/2018/batches_spanning_two_years",
+   "by_year/coral/0/2019/batches_spanning_two_years"
+  ],
+  "max_abs_diff": 8.881784197001252e-16
+ },
+ "headline_from_A": {
+  "coral/0": {
+   "status": "active",
+   "batches": 48,
+   "batches_tested": 33,
+   "batches_switched": 11,
+   "saved_rows_switched": 737,
+   "mae_without": 6.69798924506233,
+   "mae_with": 6.119956002798195,
+   "max_ratio_tested": 29.105817502602708,
+   "max_ratio_ge30": 29.105817502602708
+  },
+  "defo/0": {
+   "status": "active",
+   "batches": 4,
+   "batches_tested": 4,
+   "batches_switched": 0,
+   "saved_rows_switched": 0,
+   "mae_without": 0.005415798421978487,
+   "mae_with": 0.005415798421978487,
+   "max_ratio_tested": 1.1659792695776747,
+   "max_ratio_ge30": 1.1659792695776747
+  },
+  "pm25/0": {
+   "status": "inert_twin_not_simpler",
+   "batches": 48,
+   "batches_tested": 0,
+   "batches_switched": 0,
+   "saved_rows_switched": 0,
+   "mae_without": 3.588091134093021,
+   "mae_with": 3.588091134093021,
+   "max_ratio_tested": null,
+   "max_ratio_ge30": 1.753861864808271
+  },
+  "ndvi/0": {
+   "status": "inert_twin_not_simpler",
+   "batches": 48,
+   "batches_tested": 0,
+   "batches_switched": 0,
+   "saved_rows_switched": 0,
+   "mae_without": 0.03146059686292064,
+   "mae_with": 0.03146059686292064,
+   "max_ratio_tested": null,
+   "max_ratio_ge30": 1.749949522314697
+  },
+  "fire/0": {
+   "status": "inert_twin_not_eligible",
+   "batches": 48,
+   "batches_tested": 0,
+   "batches_switched": 0,
+   "saved_rows_switched": 0,
+   "mae_without": 0.004385064558301006,
+   "mae_with": 0.004385064558301006,
+   "max_ratio_tested": null,
+   "max_ratio_ge30": 1.847279910383901
+  }
+ },
+ "elapsed_seconds": 7.9
+}

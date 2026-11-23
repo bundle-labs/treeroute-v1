@@ -1,0 +1,819 @@
+{
+ "shap": {
+  "listed_utc": [
+   "2026-11-17T09:34:20Z",
+   "2026-11-17T09:34:21Z"
+  ],
+  "groups": {
+   "A1 top-level records": {
+    "files": 4,
+    "bytes": 156335,
+    "ext": {
+     ".md": 2,
+     ".txt": 1,
+     ".yaml": 1
+    },
+    "github_files": 4,
+    "github_bytes": 156335,
+    "largest": [
+     [
+      122349,
+      "PROTOCOL.md"
+     ],
+     [
+      31470,
+      "RUN_COMMANDS.md"
+     ],
+     [
+      2022,
+      "SAMPLE_REGISTER.txt"
+     ]
+    ]
+   },
+   "A4 _snapshots": {
+    "files": 28,
+    "bytes": 1135671,
+    "ext": {
+     ".md": 11,
+     ".json": 9,
+     ".py": 8
+    },
+    "github_files": 28,
+    "github_bytes": 1135671,
+    "largest": [
+     [
+      103952,
+      "_snapshots/20261114T0146Z_ridge_v3/smoke_ridge.py"
+     ],
+     [
+      103233,
+      "_snapshots/20261114T0118Z_ridge_v2_rebuilt/smoke_ridge.py"
+     ],
+     [
+      99588,
+      "_snapshots/20261114T0043Z_ridge_lowfix2/smoke_ridge.py"
+     ]
+    ]
+   },
+   "K3 engine_runs": {
+    "files": 1994,
+    "bytes": 1515695471,
+    "ext": {
+     ".dat": 962,
+     ".json": 1016,
+     "(none)": 5,
+     ".parquet": 6,
+     ".log": 5
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      18171822,
+      "engine_runs/ndvi/_checkpoints/census-8a7a74de8a1ae608/chunk_000016.dat"
+     ],
+     [
+      13129082,
+      "engine_runs/ndvi/_checkpoints/census-8a7a74de8a1ae608/chunk_000074.dat"
+     ],
+     [
+      12517349,
+      "engine_runs/ndvi/_checkpoints/census-8a7a74de8a1ae608/chunk_000080.dat"
+     ]
+    ]
+   },
+   "A3 logs": {
+    "files": 50,
+    "bytes": 614971,
+    "ext": {
+     ".log": 50
+    },
+    "github_files": 50,
+    "github_bytes": 614971,
+    "largest": [
+     [
+      104883,
+      "logs/tr_rebuild_defo_leads0_smoke.log"
+     ],
+     [
+      53881,
+      "logs/tr_rebuild_fire_leads0.log"
+     ],
+     [
+      47331,
+      "logs/tr_rebuild_ndvi_leads0.log"
+     ]
+    ]
+   },
+   "A5 out run summaries": {
+    "files": 5,
+    "bytes": 2692,
+    "ext": {
+     ".json": 5
+    },
+    "github_files": 5,
+    "github_bytes": 2692,
+    "largest": [
+     [
+      583,
+      "out/coral/RUN_SUMMARY_scope_i.json"
+     ],
+     [
+      529,
+      "out/ndvi/RUN_SUMMARY_scope_i.json"
+     ],
+     [
+      528,
+      "out/pm25/RUN_SUMMARY_scope_i.json"
+     ]
+    ]
+   },
+   "A6 compare outputs": {
+    "files": 45,
+    "bytes": 6706556,
+    "ext": {
+     ".md": 10,
+     ".json": 15,
+     ".parquet": 20
+    },
+    "github_files": 25,
+    "github_bytes": 104349,
+    "largest": [
+     [
+      1646415,
+      "out/coral/lead_0/compare/bootstrap_stats.parquet"
+     ],
+     [
+      1334846,
+      "out/fire/lead_0/compare/bootstrap_stats.parquet"
+     ],
+     [
+      1285500,
+      "out/defo/lead_0/compare/bootstrap_stats.parquet"
+     ]
+    ]
+   },
+   "K5a compare bootstrap_draws.npy": {
+    "files": 5,
+    "bytes": 6064640,
+    "ext": {
+     ".npy": 5
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      2128128,
+      "out/ndvi/lead_0/compare/bootstrap_draws.npy"
+     ],
+     [
+      2032128,
+      "out/pm25/lead_0/compare/bootstrap_draws.npy"
+     ],
+     [
+      672128,
+      "out/defo/lead_0/compare/bootstrap_draws.npy"
+     ]
+    ]
+   },
+   "K1 coral row-level files": {
+    "files": 19,
+    "bytes": 6856651,
+    "ext": {
+     ".parquet": 18,
+     ".csv": 1
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      848963,
+      "out/coral/lead_0/treeroute/rows.parquet"
+     ],
+     [
+      817602,
+      "out/coral/lead_0/rival_rf/rows.parquet"
+     ],
+     [
+      812224,
+      "out/coral/lead_0/rival_hgb_l1/rows.parquet"
+     ]
+    ]
+   },
+   "A7 piece records": {
+    "files": 82,
+    "bytes": 663237,
+    "ext": {
+     ".json": 82
+    },
+    "github_files": 82,
+    "github_bytes": 663237,
+    "largest": [
+     [
+      62825,
+      "out/ndvi/lead_0/rival_ridge/meta.json"
+     ],
+     [
+      44958,
+      "out/defo/lead_0/rival_ridge/meta.json"
+     ],
+     [
+      36399,
+      "out/ndvi/lead_0/rival_rf/meta.json"
+     ]
+    ]
+   },
+   "A7b gridded background keys": {
+    "files": 23,
+    "bytes": 424276,
+    "ext": {
+     ".parquet": 23
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      28182,
+      "out/ndvi/lead_0/treeroute_B1/background_keys.parquet"
+     ],
+     [
+      28133,
+      "out/fire/lead_0/treeroute_B1/background_keys.parquet"
+     ],
+     [
+      27486,
+      "out/pm25/lead_0/treeroute_B1/background_keys.parquet"
+     ]
+    ]
+   },
+   "K2 gridded row-level SHAP values": {
+    "files": 23,
+    "bytes": 59524068,
+    "ext": {
+     ".parquet": 23
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      5594491,
+      "out/ndvi/lead_0/treeroute_B1/rows.parquet"
+     ],
+     [
+      5441935,
+      "out/ndvi/lead_0/rival_rf/rows.parquet"
+     ],
+     [
+      5438587,
+      "out/ndvi/lead_0/treeroute/rows.parquet"
+     ]
+    ]
+   },
+   "A9 rebuild records": {
+    "files": 14,
+    "bytes": 36583,
+    "ext": {
+     ".json": 14
+    },
+    "github_files": 14,
+    "github_bytes": 36583,
+    "largest": [
+     [
+      5693,
+      "rebuild/fire/lead_0/gates.json"
+     ],
+     [
+      4446,
+      "rebuild/coral/lead_0/gates.json"
+     ],
+     [
+      4361,
+      "rebuild/ndvi/lead_0/gates.json"
+     ]
+    ]
+   },
+   "K4a rebuilt banks and routers": {
+    "files": 10,
+    "bytes": 727824592,
+    "ext": {
+     ".npz": 10
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      166692202,
+      "rebuild/ndvi/lead_0/routers.npz"
+     ],
+     [
+      164178978,
+      "rebuild/pm25/lead_0/bank.npz"
+     ],
+     [
+      144429234,
+      "rebuild/ndvi/lead_0/bank.npz"
+     ]
+    ]
+   },
+   "A9b gridded rebuild check files": {
+    "files": 8,
+    "bytes": 6687598,
+    "ext": {
+     ".parquet": 8
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      3378054,
+      "rebuild/ndvi/lead_0/rows.parquet"
+     ],
+     [
+      1081032,
+      "rebuild/pm25/lead_0/rows.parquet"
+     ],
+     [
+      672016,
+      "rebuild/fire/lead_0/rows.parquet"
+     ]
+    ]
+   },
+   "A8b coral sample manifest": {
+    "files": 1,
+    "bytes": 2617,
+    "ext": {
+     ".json": 1
+    },
+    "github_files": 1,
+    "github_bytes": 2617,
+    "largest": [
+     [
+      2617,
+      "sample/coral/sample_manifest.json"
+     ]
+    ]
+   },
+   "A8 gridded samples": {
+    "files": 19,
+    "bytes": 262341,
+    "ext": {
+     ".parquet": 15,
+     ".json": 4
+    },
+    "github_files": 4,
+    "github_bytes": 5160,
+    "largest": [
+     [
+      18910,
+      "sample/ndvi/background_lead_0.parquet"
+     ],
+     [
+      18869,
+      "sample/ndvi/background_lead_6.parquet"
+     ],
+     [
+      18583,
+      "sample/ndvi/background_lead_12.parquet"
+     ]
+    ]
+   },
+   "A2 scripts": {
+    "files": 17,
+    "bytes": 602055,
+    "ext": {
+     ".py": 17
+    },
+    "github_files": 17,
+    "github_bytes": 602055,
+    "largest": [
+     [
+      103962,
+      "scripts/tests/smoke_ridge.py"
+     ],
+     [
+      80229,
+      "scripts/tests/smoke_bardl.py"
+     ],
+     [
+      77662,
+      "scripts/tr_rebuild.py"
+     ]
+    ]
+   },
+   "L1 smoke (appendix A)": {
+    "files": 6952,
+    "bytes": 1033307203,
+    "ext": {
+     ".json": 3179,
+     ".py": 19,
+     ".yaml": 26,
+     ".parquet": 1795,
+     ".log": 63,
+     ".md": 26,
+     ".npy": 13,
+     ".txt": 256,
+     ".dat": 278,
+     "(none)": 27,
+     ".npz": 1231,
+     ".csv": 30,
+     ".lock": 9
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      80497002,
+      "smoke/rebuild_coral_v3b/lead_0/routers.npz"
+     ],
+     [
+      80497002,
+      "smoke/rebuild_coral_v3/lead_0/routers.npz"
+     ],
+     [
+      80497002,
+      "smoke/rebuild_coral_l0_final/routers.npz"
+     ]
+    ]
+   },
+   "A10 verify_v1": {
+    "files": 279,
+    "bytes": 62653879,
+    "ext": {
+     ".md": 8,
+     ".json": 59,
+     ".py": 163,
+     ".txt": 39,
+     ".before_fix1": 1,
+     ".before_fix2": 1,
+     ".before_fix3": 1,
+     ".jsonl": 7
+    },
+    "github_files": 279,
+    "github_bytes": 62653879,
+    "largest": [
+     [
+      16321120,
+      "verify_v1/skeptic/reconcile/rerun/mismatches.json"
+     ],
+     [
+      16321120,
+      "verify_v1/reconcile/mismatches.json"
+     ],
+     [
+      6450817,
+      "verify_v1/B/results.json"
+     ]
+    ]
+   },
+   "K5b verify_v1 NumPy": {
+    "files": 17,
+    "bytes": 717718142,
+    "ext": {
+     ".npz": 17
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      107035131,
+      "verify_v1/A/draws/ndvi.npz"
+     ],
+     [
+      104997147,
+      "verify_v1/B/draws/ndvi.npz"
+     ],
+     [
+      88160162,
+      "verify_v1/A/draws/defo.npz"
+     ]
+    ]
+   },
+   "K5c verify_v1 compressed": {
+    "files": 1,
+    "bytes": 732,
+    "ext": {
+     ".gz": 1
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      732,
+      "verify_v1/reconcile/work/no_number_keys.json.gz"
+     ]
+    ]
+   },
+   "K4b rebuilt random forests (work)": {
+    "files": 1505,
+    "bytes": 1721464842,
+    "ext": {
+     ".npz": 1505
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      2953786,
+      "work/defo/lead_0/rf_trees/rf_checkpoint.npz"
+     ],
+     [
+      1942512,
+      "work/ndvi/lead_0/rf_trees/tree_022.npz"
+     ],
+     [
+      1941840,
+      "work/ndvi/lead_0/rf_trees/tree_079.npz"
+     ]
+    ]
+   }
+  },
+  "pruned_not_entered": [
+   "smoke/bardl_fix"
+  ],
+  "n_files": 11101,
+  "bytes": 5868405152,
+  "totals": {
+   "archived files": 575,
+   "archived bytes": 79948811,
+   "github files": 509,
+   "github bytes": 65977549,
+   "kept out files": 3574,
+   "kept out bytes": 4755149138,
+   "appendix A files": 6952,
+   "appendix A bytes": 1033307203
+  },
+  "archived_ext": {
+   ".before_fix1": [
+    1,
+    43582,
+    1
+   ],
+   ".before_fix2": [
+    1,
+    63078,
+    1
+   ],
+   ".before_fix3": [
+    1,
+    68782,
+    1
+   ],
+   ".json": [
+    189,
+    57975099,
+    189
+   ],
+   ".jsonl": [
+    7,
+    2053411,
+    7
+   ],
+   ".log": [
+    50,
+    614971,
+    50
+   ],
+   ".md": [
+    31,
+    890733,
+    31
+   ],
+   ".parquet": [
+    66,
+    13971262,
+    0
+   ],
+   ".py": [
+    188,
+    2056719,
+    188
+   ],
+   ".txt": [
+    40,
+    2210680,
+    40
+   ],
+   ".yaml": [
+    1,
+    494,
+    1
+   ]
+  }
+ },
+ "out": {
+  "listed_utc": [
+   "2026-11-17T09:34:21Z",
+   "2026-11-17T09:34:21Z"
+  ],
+  "groups": {
+   "O-A A": {
+    "files": 46,
+    "bytes": 11180070,
+    "ext": {
+     ".json": 5,
+     ".py": 36,
+     ".md": 5
+    },
+    "github_files": 46,
+    "github_bytes": 11180070,
+    "largest": [
+     [
+      1962643,
+      "A/cells_v4.json"
+     ],
+     [
+      1962643,
+      "A/cells_v3.json"
+     ],
+     [
+      1962643,
+      "A/cells.json"
+     ]
+    ]
+   },
+   "O-A B": {
+    "files": 28,
+    "bytes": 10557371,
+    "ext": {
+     ".json": 5,
+     ".py": 18,
+     ".md": 5
+    },
+    "github_files": 28,
+    "github_bytes": 10557371,
+    "largest": [
+     [
+      1962643,
+      "B/cells_v4.json"
+     ],
+     [
+      1962643,
+      "B/cells_v3.json"
+     ],
+     [
+      1962643,
+      "B/cells.json"
+     ]
+    ]
+   },
+   "O-A _brief": {
+    "files": 10,
+    "bytes": 76255,
+    "ext": {
+     ".md": 7,
+     ".py": 2,
+     ".txt": 1
+    },
+    "github_files": 10,
+    "github_bytes": 76255,
+    "largest": [
+     [
+      16138,
+      "_brief/brief_text.md"
+     ],
+     [
+      13908,
+      "_brief/fix_order_v3.md"
+     ],
+     [
+      10629,
+      "_brief/brief_tables.md"
+     ]
+    ]
+   },
+   "O-A reconcile": {
+    "files": 58,
+    "bytes": 8940650,
+    "ext": {
+     ".json": 4,
+     ".py": 49,
+     ".md": 5
+    },
+    "github_files": 58,
+    "github_bytes": 8940650,
+    "largest": [
+     [
+      1962643,
+      "reconcile/cells_v4.json"
+     ],
+     [
+      1962643,
+      "reconcile/cells_v3.json"
+     ],
+     [
+      1962643,
+      "reconcile/cells.json"
+     ]
+    ]
+   },
+   "O-A skeptic": {
+    "files": 50,
+    "bytes": 1084515,
+    "ext": {
+     ".py": 49,
+     ".json": 1
+    },
+    "github_files": 50,
+    "github_bytes": 1084515,
+    "largest": [
+     [
+      846313,
+      "skeptic/k01_checks.json"
+     ],
+     [
+      44673,
+      "skeptic/k01_rederive.py"
+     ],
+     [
+      11785,
+      "skeptic/k19_tokens_v3.py"
+     ]
+    ]
+   },
+   "O-A spec": {
+    "files": 34,
+    "bytes": 823092,
+    "ext": {
+     ".md": 9,
+     ".py": 25
+    },
+    "github_files": 34,
+    "github_bytes": 823092,
+    "largest": [
+     [
+      113789,
+      "spec/TABLE_SPEC.md"
+     ],
+     [
+      108764,
+      "spec/TABLE_SPEC_v4.md"
+     ],
+     [
+      103395,
+      "spec/TABLE_SPEC_v3.md"
+     ]
+    ]
+   },
+   "O-L stage (appendix A)": {
+    "files": 55,
+    "bytes": 2817928,
+    "ext": {
+     ".py": 34,
+     ".txt": 2,
+     ".base": 4,
+     ".json": 1,
+     ".md": 14
+    },
+    "github_files": 0,
+    "github_bytes": 0,
+    "largest": [
+     [
+      1235272,
+      "stage/_scripts/records/work/listing_shap.json"
+     ],
+     [
+      381200,
+      "stage/paper/PAPER_FACTS.md"
+     ],
+     [
+      356088,
+      "stage/_scripts/s3/work/paper__PAPER_FACTS.md.base"
+     ]
+    ]
+   }
+  },
+  "pruned_not_entered": [],
+  "n_files": 281,
+  "bytes": 35479881,
+  "totals": {
+   "archived files": 226,
+   "archived bytes": 32661953,
+   "github files": 226,
+   "github bytes": 32661953,
+   "appendix A files": 55,
+   "appendix A bytes": 2817928
+  },
+  "archived_ext": {
+   ".json": [
+    15,
+    28312747,
+    15
+   ],
+   ".md": [
+    31,
+    2272603,
+    31
+   ],
+   ".py": [
+    179,
+    2074548,
+    179
+   ],
+   ".txt": [
+    1,
+    2055,
+    1
+   ]
+  }
+ }
+}

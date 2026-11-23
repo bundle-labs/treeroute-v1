@@ -1,0 +1,69 @@
+{
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "spi",
+  "sst_anom_global_tropical",
+  "hist_last"
+ ],
+ "cross_link_models": [],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.8462979021782617,
+   0.8624363572439137,
+   2000
+  ],
+  "value": 0.8538894019807711
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_lgbm",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.2755374544620543,
+   0.3200435215354177,
+   2000
+  ],
+  "value": 0.2976934608647791
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.1621726634252737,
+   0.20803552560774272,
+   2000
+  ],
+  "value": 0.18525300420176635
+ },
+ "problem": "pm25",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.36454028257000826,
+   0.570712408927803,
+   2000
+  ],
+  "value": 0.37198695696450246
+ },
+ "reference_link": "log_c|c=1.5|ub=-",
+ "treeroute_top3": [
+  "hist_last",
+  "spei",
+  "wbal"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   -0.07853170189098999,
+   0.07226327312534202,
+   2000
+  ],
+  "range": [
+   -0.12137096774193548,
+   0.07931034482758621
+  ],
+  "value": -0.018909899888765295
+ }
+}

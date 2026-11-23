@@ -1,0 +1,119 @@
+# exceptions.yaml -- NDVI (APP_PLAN.md 1.2): provenance flags, disclosed defects and test-exposure disclosures
+# only. A disclosure only discloses: it cannot relax a time rule, hold a timing value or set a derived value.
+# Entries (wording drafted by the agent; the owner confirms it):
+#   - the five test_exposure entries the plan names for this package (plan 1.2 row 'exceptions.yaml': "a column
+#     list chosen with test data (NDVI's top-5 context list)"; plan 7.2), one per column, kept by owner ruling J1
+#     (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed"). Each names both exposures
+#     plan 1.3 refuses a data_selected list for: tested groups, and rows after the earliest fit cut;
+#   - (added 2026-10-05 with the J ban list) the gaps the J2 (d) last-value rule fills on two kept columns
+#     (snow_cover_fraction, epo), and the provenance the J1 base keeps 'with disclosure' (luh2_urban as a year
+#     clock, Q4; the Hansen treecover2000 lineage of hand_m and upstream_area_km2, Part 508);
+#   - (added 2026-10-05, fix round) the amended J3's livestock defect (one disclosed_defect per aglw_* column: the
+#     2022-23 rows are the 2021 layer rescaled), amo_lag12's whole-record detrending (INDEX_WINDOW_AUDIT.md row 9),
+#     and the corrected snow_cover_fraction disclosure (its polar-night gaps, measured, fall to R30).
+# The seen_during_design row (Q49) lives in split.yaml.
+# Every 'owner' field reads 'UNSIGNED -- basis: ...': the entry is NOT signed; it names the ruling or plan row
+# behind it. 'date' is the date of that basis, not a signature date. The owner signs by replacing 'UNSIGNED'.
+entries:
+  - kind: test_exposure
+    column: 'ctx:top5:sph_kgkg_lag6'
+    decision: 'disclose; owner ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed") keeps the frozen top-5 list with this disclosure'
+    reason: 'chosen by run89''s 89 helper forests (presplit_cc/cross_region_run89.py:887); all 89 are tested groups under leave one region out, 19 of which were NDVI''s old test groups: argentine_monte, brigalow_belt, eurasian_steppe, ganges_plain, gran_chaco, idaho_montana_wildfire, new_guinea_papua, north_algeria_tell_atlas, ordos_plateau, pampas, pantanal, poland_central, rub_al_khali, southern_african_savanna, taimyr_peninsula, tanezrouft, trans_baikal_steppe, western_scotland, yakutia_larch (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379; APP_PLAN.md 7.2). Second exposure (plan 1.3 refuses either): the selection rows are the helpers'' donor rows up to 2019-12 (data_selected.latest_date), which is after NDVI''s inner-fit end (2016, plan 3.2) and after every lead-12 fit cut (R11), so the list also read rows after the earliest fit cut.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: F15 (HEADLINE_QUESTIONS_AND_FIXES.md:379; blocking fix, waits on Q1, answered 2026-09-27), APP_PLAN.md 7.2 (NDVI''s top-5 context list) and ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default)'
+    date: '2026-10-05'
+  - kind: test_exposure
+    column: 'ctx:top5:era5l_slhf_lag1'
+    decision: 'disclose; owner ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed") keeps the frozen top-5 list with this disclosure'
+    reason: 'chosen by run89''s 89 helper forests (presplit_cc/cross_region_run89.py:887); all 89 are tested groups under leave one region out, 19 of which were NDVI''s old test groups: argentine_monte, brigalow_belt, eurasian_steppe, ganges_plain, gran_chaco, idaho_montana_wildfire, new_guinea_papua, north_algeria_tell_atlas, ordos_plateau, pampas, pantanal, poland_central, rub_al_khali, southern_african_savanna, taimyr_peninsula, tanezrouft, trans_baikal_steppe, western_scotland, yakutia_larch (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379; APP_PLAN.md 7.2). Second exposure (plan 1.3 refuses either): the selection rows are the helpers'' donor rows up to 2019-12 (data_selected.latest_date), which is after NDVI''s inner-fit end (2016, plan 3.2) and after every lead-12 fit cut (R11), so the list also read rows after the earliest fit cut.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: F15 (HEADLINE_QUESTIONS_AND_FIXES.md:379; blocking fix, waits on Q1, answered 2026-09-27), APP_PLAN.md 7.2 (NDVI''s top-5 context list) and ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default)'
+    date: '2026-10-05'
+  - kind: test_exposure
+    column: 'ctx:top5:V07_total_ref_ET_mm_lag1'
+    decision: 'disclose; owner ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed") keeps the frozen top-5 list with this disclosure'
+    reason: 'chosen by run89''s 89 helper forests (presplit_cc/cross_region_run89.py:887); all 89 are tested groups under leave one region out, 19 of which were NDVI''s old test groups: argentine_monte, brigalow_belt, eurasian_steppe, ganges_plain, gran_chaco, idaho_montana_wildfire, new_guinea_papua, north_algeria_tell_atlas, ordos_plateau, pampas, pantanal, poland_central, rub_al_khali, southern_african_savanna, taimyr_peninsula, tanezrouft, trans_baikal_steppe, western_scotland, yakutia_larch (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379; APP_PLAN.md 7.2). Second exposure (plan 1.3 refuses either): the selection rows are the helpers'' donor rows up to 2019-12 (data_selected.latest_date), which is after NDVI''s inner-fit end (2016, plan 3.2) and after every lead-12 fit cut (R11), so the list also read rows after the earliest fit cut.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: F15 (HEADLINE_QUESTIONS_AND_FIXES.md:379; blocking fix, waits on Q1, answered 2026-09-27), APP_PLAN.md 7.2 (NDVI''s top-5 context list) and ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default)'
+    date: '2026-10-05'
+  - kind: test_exposure
+    column: 'ctx:top5:era5l_d2m'
+    decision: 'disclose; owner ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed") keeps the frozen top-5 list with this disclosure'
+    reason: 'chosen by run89''s 89 helper forests (presplit_cc/cross_region_run89.py:887); all 89 are tested groups under leave one region out, 19 of which were NDVI''s old test groups: argentine_monte, brigalow_belt, eurasian_steppe, ganges_plain, gran_chaco, idaho_montana_wildfire, new_guinea_papua, north_algeria_tell_atlas, ordos_plateau, pampas, pantanal, poland_central, rub_al_khali, southern_african_savanna, taimyr_peninsula, tanezrouft, trans_baikal_steppe, western_scotland, yakutia_larch (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379; APP_PLAN.md 7.2). Second exposure (plan 1.3 refuses either): the selection rows are the helpers'' donor rows up to 2019-12 (data_selected.latest_date), which is after NDVI''s inner-fit end (2016, plan 3.2) and after every lead-12 fit cut (R11), so the list also read rows after the earliest fit cut.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: F15 (HEADLINE_QUESTIONS_AND_FIXES.md:379; blocking fix, waits on Q1, answered 2026-09-27), APP_PLAN.md 7.2 (NDVI''s top-5 context list) and ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default)'
+    date: '2026-10-05'
+  - kind: test_exposure
+    column: 'ctx:top5:V01_mean_temp_C'
+    decision: 'disclose; owner ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default: "NDVI top-5 router helpers disclosed") keeps the frozen top-5 list with this disclosure'
+    reason: 'chosen by run89''s 89 helper forests (presplit_cc/cross_region_run89.py:887); all 89 are tested groups under leave one region out, 19 of which were NDVI''s old test groups: argentine_monte, brigalow_belt, eurasian_steppe, ganges_plain, gran_chaco, idaho_montana_wildfire, new_guinea_papua, north_algeria_tell_atlas, ordos_plateau, pampas, pantanal, poland_central, rub_al_khali, southern_african_savanna, taimyr_peninsula, tanezrouft, trans_baikal_steppe, western_scotland, yakutia_larch (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379; APP_PLAN.md 7.2). Second exposure (plan 1.3 refuses either): the selection rows are the helpers'' donor rows up to 2019-12 (data_selected.latest_date), which is after NDVI''s inner-fit end (2016, plan 3.2) and after every lead-12 fit cut (R11), so the list also read rows after the earliest fit cut.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: F15 (HEADLINE_QUESTIONS_AND_FIXES.md:379; blocking fix, waits on Q1, answered 2026-09-27), APP_PLAN.md 7.2 (NDVI''s top-5 context list) and ruling J1 (OWNER_RULINGS_2026-10-05.md, Q9 default)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'snow_cover_fraction'
+    decision: 'disclose; kept (watch) at lag 1 as same-sensor co-measured, its short gaps filled by the engine''s last-value rule (owner ruling J2 d). OWNER DECISION OPEN on the polar-night gaps below: (a) keep watch with this disclosure (the current verdict), (b) ban on NDVI under J2 (d)''s long-seasonal-mask clause (as eddi and aridity_index), or (c) hold it conditional'
+    reason: 'Two kinds of gap. (1) MOD10CM October 2022 is absent: snow_cover_fraction is 100% missing in that month in all 133 regions (measured by the NDVI skeptic, 2026-10-05). It is a one-month gap INSIDE the record, so under J2 (d) the November 2022 rows (lag 1) read the unit''s most recent EARLIER value (September), not R30''s zero-fill (''no snow''). (2) Polar night: the earlier text said it blanks only December in two groups, filled from November. That is WRONG for five groups, where the winter gap is mostly longer than the 2-month maximum. Measured 2026-10-05 on D:/monthly_panel (read-only; the engine''s own io.lastvalue.fill_last_value run on the lag-1 column; labelled rows = V11_mean_ndvi present, 2003-2023; agent measurement, not signed). Per group: cells with at least one winter gap longer than the 2-month maximum / gap lengths in months (median, 90th percentile, longest) / labelled rows reading a missing lag-1 value before -> after the fill (test years 2020-23 after the fill): taimyr_peninsula 99.8% / 3, 4, 6 / 13.8% -> 13.4% (14.3%); finnish_lapland 97.5% / 2, 3, 5 / 14.7% -> 6.7% (8.5%); alaska_north_slope 99.6% / 3, 3, 5 / 12.0% -> 7.2% (9.8%); yamal_peninsula 98.6% / 2, 3, 23 / 13.9% -> 6.4% (6.7%); canadian_arctic_nunavut 87.2% / 2, 3, 7 / 16.3% -> 4.4% (6.6%); alaska_interior_taiga 3.4% / 1, 1, 5 / 9.8% -> 0.06% (0.17%: its one-month December gap IS filled). The other 127 groups were not measured. Under the rule''s per-gap reading (io/lastvalue.py) a gap longer than 2 months is left WHOLE to R30, which zero-fills it (''no snow''): mostly the February and March rows, the first labelled months after polar night. That is the seasonal-mask pattern J2 (d) keeps banned for eddi, eddi_observed and aridity_index (3-5 winter months); the owner''s J2 (d) decision on this column was made on the October-2022 premise only. The fill reads later PRESENCE, never a later value: October 2022 is filled because November 2022 holds a value; a real-time November 2022 issue would not know that, and its row would be a ''tail'' left to R30 (presence-only reading asked of the owner, io/lastvalue.py). Re-ingesting MOD10CM 2022-10 would remove the October fill.'
+    owner: 'UNSIGNED -- basis: ruling J2 (d) (OWNER_RULINGS_2026-10-05.md) and the J1 base (review/proposed/ndvi_ban_proposed.yaml reopen clause: ''then watch at lag 1, December mask disclosed''); the polar-night choice (a)/(b)/(c) is the owner''s'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'epo'
+    decision: 'disclose; kept, December filled from November by the engine''s last-value rule (owner ruling J2 d)'
+    reason: 'CPC never issues a December East Pacific Oscillation value (22 of the panel''s 264 months; INDEX_WINDOW_AUDIT.md:75). Under J2 (d) December takes November''s value (the most recent earlier value, 1 month back, counted per column), so R30''s zero-fill no longer marks December exactly (the month-key mechanism behind the J1 base''s structural ban). Its five lags carry the same fill one to twelve months later. The window is still unsigned (R8 refuses epo at lag 0, G-LAG, until the owner signs it). The fill never reads a later VALUE (io/lastvalue.py re-checks every fill: same unit, strictly earlier step, at most 2 steps back), but it reads later PRESENCE: a December is filled only because the January after it holds a value. In this backtest every December is filled; a real-time issue in December would not yet know January, and its row would be a ''tail'' left to R30. This presence-only reading is asked of the owner (io/lastvalue.py module docstring).'
+    owner: 'UNSIGNED -- basis: ruling J2 (d) (OWNER_RULINGS_2026-10-05.md: ''Fixes epo (December takes November)'')'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'luh2_urban'
+    decision: 'disclose; kept (lagged one year by R8) as one of the six LUH2 states'
+    reason: 'A year clock inside each region: measured by the NDVI skeptic (2026-10-05) on the group annual means at the 1-year lag, median r with the year 1.00, r > 0.9 in 59 of 62 groups, every test year above the group''s 2003-2019 maximum in 60. It is kept, unlike gdp_pc and population_density (banned as trend proxies, Q4 a), because the six LUH2 states are one sum group and luh2_* is ruled KEEP (Parts 306-312, reference_feature_hygiene_groups).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md; the J1 base discloses it under Q4)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'hand_m'
+    decision: 'disclose; kept as a static MERIT Hydro layer'
+    reason: 'Its MERIT Hydro lineage assimilates Hansen treecover2000, a static vegetation snapshot dated before the window (year 2000): admissible with disclosure (Part 508). G-LINEAGE checks the target family MOD13C2 only.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md; the J1 base keeps it with disclosure, Part 508)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'upstream_area_km2'
+    decision: 'disclose; kept as a static MERIT Hydro layer'
+    reason: 'Its MERIT Hydro lineage assimilates Hansen treecover2000, a static vegetation snapshot dated before the window (year 2000): admissible with disclosure (Part 508). G-LINEAGE checks the target family MOD13C2 only.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md; the J1 base keeps it with disclosure, Part 508)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_cattle'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for cattle (x1.0039 for 2022, x1.0057 for 2023) and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_cattle row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_buffalo'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for buffalo (x1.0027 for 2022, x1.0055 for 2023) and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_buffalo row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_horse'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for horse (x0.7657 for 2022, x0.6376 for 2023) and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_horse row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_sheep'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for sheep (x1.0596 for 2022, x1.1597 for 2023) and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_sheep row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_goats'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for goats (x1.1081 for 2022, x1.2141 for 2023) and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_goats row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: disclosed_defect
+    column: 'aglw_total_lsu'
+    decision: 'disclose; kept as watch, lagged one year by R8 (owner ruling J3 as amended 2026-10-05: the yearly AGLW series is a lagged annual driver on all four packages, verdict watch, post-2021 values disclosed)'
+    reason: 'The 2022 and 2023 rows are NOT observations. The real annual layers run 2002-2021 (observed_through 2021); fetch_livestock_extend.py:49-50 (India only) and :96-97 multiplied the 2021 layer by INDIA''s FAOSTAT head-count ratio for per-species ratios, so this LSU-weighted total moves by their mix and wrote the result for EVERY region, not only India (store provenance: monthly_panel_v170_schema_catalog.yaml, the aglw_total_lsu row). Rows affected at the one-year lag: every 2023 row (test year 2023 reads the rescaled 2022 layer), and the lead-6 issue months of 2023 (January to June 2023, scored on the July to December 2023 labels). The 2020-2022 test rows and every lead-12 feature row read real layers (2021 or earlier). Outside India the 2022 layer is the 2021 layer times India''s ratio, so its change carries no local information.'
+    owner: 'UNSIGNED -- basis: ruling J3 as amended 2026-10-05 (OWNER_RULINGS_2026-10-05.md) and the store provenance (fetch_livestock_extend.py:49-50, :96-97)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'amo_lag12'
+    decision: 'disclose; kept (owner ruling J2 a) as the engineered lag-12 column of the banned (incomplete) amo'
+    reason: 'PSL amon.us.data ("AMO unsmoothed, short") is detrended over its WHOLE record [S10], so every stored value depends on SST months after the row, up to the end of the record (January 2023): a whole-record dependency, disclosed like a base period (Q43 a), as INDEX_WINDOW_AUDIT.md row 9 asks (datasets/_stores/INDEX_WINDOW_AUDIT.md:56; source S10, https://psl.noaa.gov/data/timeseries/AMO/). The lag of 12 months does not remove it: the detrending is fixed when the series is published, not when the month is observed.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J2 (a) (OWNER_RULINGS_2026-10-05.md), INDEX_WINDOW_AUDIT.md row 9 and Q43 a (base periods are disclosed, not lagged)'
+    date: '2026-10-05'

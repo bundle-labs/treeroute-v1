@@ -1,0 +1,509 @@
+{
+ "adopted": "arcsine_corrector_unweighted",
+ "adoption_file": "adoption_lead_183.json",
+ "adoption_sha256": "30dd54fde5aecff0f82662e416bb128664cc2ea5d9b3f7015e43755cc19b5904",
+ "cuts": {
+  "fit_cut": 736147,
+  "guard_cut": 735051
+ },
+ "declined_at_lead": false,
+ "fits": {
+  "bank": {
+   "cut": 736147,
+   "donor_row_key_hash": "dce6fa25ed09200f54dbf2aa97c7ce3bb094b1e4467abb2ac982f0c0aec191bd",
+   "donor_rows": 11841,
+   "fingerprint": "a972d8ade73d5a18628ae49d2c4308bf62d1760ad04733839b68b1acc3963b32",
+   "max_label_time": 736147,
+   "trees": 8300
+  },
+  "c": 0.125,
+  "corrector_coverage": {
+   "groups": 83,
+   "groups_partly_without_corrector": [
+    "Gulf of Oman",
+    "Lesser Sunda Islands and Savu Sea",
+    "Mayotte and Comoros",
+    "South Vietnam"
+   ],
+   "groups_without_corrector": [
+    "Andaman Islands",
+    "Austral Islands, French Polynesia",
+    "Bay of Campeche, Yucatan, Gulf of Mexico",
+    "Bermuda",
+    "Bismarck Sea, New Guinea",
+    "Caroline Islands, Micronesia",
+    "Celebes Sea",
+    "Cenderawasih Bay, Papua",
+    "Chagos Archipelago",
+    "Christmas Island, Indian Ocean",
+    "Cocos Keeling Atolls, Indian Ocean",
+    "Cook Islands, south-west Pacific",
+    "Coral Sea",
+    "Costa Rica and Panama, Pacific coast",
+    "Eastern Hawaii",
+    "Eastern coast South Africa",
+    "Flower Garden Banks, Gulf of Mexico",
+    "Gilbert Islands, west Kiribati",
+    "Gulf of Aden",
+    "Gulf of Tomini, Indonesia",
+    "Honshu, Japan",
+    "Java Sea",
+    "Johnston Atoll, north central Pacific",
+    "Lakshadweep Islands",
+    "Makassar Strait, Indonesia",
+    "Marianas",
+    "Marshall Islands",
+    "Milne Bay, Papua New Guinea",
+    "Ningaloo Reef and coastal north-west Australia",
+    "North Madagascar",
+    "North Mozambique coast",
+    "North Myanmar and Bangladesh",
+    "North Philippines",
+    "North Ryukyu Islands, Japan",
+    "North Sri Lanka and east India",
+    "North Vietnam",
+    "Northern Seychelles",
+    "Ogasawara Islands, Japan",
+    "Palau",
+    "Persian Gulf",
+    "Phoenix Islands, central Kiribati",
+    "Pohnpei and Kosrae, Micronesia",
+    "Samoa, Tuvalu and Tonga",
+    "Shikoku, Japan",
+    "Socotra Archipelago",
+    "Solomon Islands and Bougainville",
+    "South Madagascar",
+    "South Mozambique coast",
+    "South Red Sea",
+    "South Ryukyu Islands, Japan",
+    "Southern Great Barrier Reef",
+    "Strait of Malacca",
+    "Taiwan and coastal China",
+    "West Sumatra",
+    "Western Tuamotu Archipelago, central Pacific"
+   ],
+   "min_oob_rows": 50,
+   "trees": 8300,
+   "trees_without_corrector": 5794
+  },
+  "donor_median": 1.0,
+  "gls_weight_model": "not refit (the pinned arm is unweighted, R25)",
+  "rows_absent_at_lead": 8,
+  "tolerances": {
+   "floor": 9e-07,
+   "floor_rule": "owner ruling O4 (owner rulings, section O): the R36 tolerance is max(k x s, C9.k_min_multiple_of_arith_error x C9.measured_arith_error); the floor (10 x 9e-8 = 9e-7) keeps a small s from pushing k x s below the measured rounding error",
+   "k": 5.230771281733543e-08,
+   "s": {
+    "arcsine": 0.3037539309499272,
+    "identity": 20.23633579844042,
+    "log_c": 2.318770386802936
+   },
+   "standin": false,
+   "tolerance": {
+    "arcsine": 9e-07,
+    "identity": 1.058516441419986e-06,
+    "log_c": 9e-07
+   }
+  }
+ },
+ "guard": {
+  "bank": "the lead's guard-cut bank (owner ruling H2)",
+  "bank_cut": 735051,
+  "bank_max_label_time": 735051,
+  "baseline_column": "base__donor_median",
+  "baseline_donor_rows": 9550,
+  "baseline_mae": 15.434208529538553,
+  "baseline_rule": "owner ruling V1 (the owner rulings file, section V): for the neighbour kind, every decline (nowcast and every lead) falls back to the donor-row median (R34), and every guard or decline comparison uses that same donor-row median as its baseline, so the check and the fallback are one object",
+  "baseline_value": 1.0,
+  "corrector_coverage": {
+   "groups": 83,
+   "groups_partly_without_corrector": [
+    "Banda Sea and Molucca Islands",
+    "Kenya and Tanzania coast",
+    "Maldive Islands",
+    "South Vietnam"
+   ],
+   "groups_without_corrector": [
+    "Andaman Islands",
+    "Austral Islands, French Polynesia",
+    "Bay of Campeche, Yucatan, Gulf of Mexico",
+    "Bermuda",
+    "Bismarck Sea, New Guinea",
+    "Caroline Islands, Micronesia",
+    "Celebes Sea",
+    "Cenderawasih Bay, Papua",
+    "Chagos Archipelago",
+    "Christmas Island, Indian Ocean",
+    "Cocos Keeling Atolls, Indian Ocean",
+    "Cook Islands, south-west Pacific",
+    "Coral Sea",
+    "Costa Rica and Panama, Pacific coast",
+    "Eastern Hawaii",
+    "Eastern coast South Africa",
+    "Flower Garden Banks, Gulf of Mexico",
+    "Gilbert Islands, west Kiribati",
+    "Gulf of Aden",
+    "Gulf of Oman",
+    "Gulf of Tomini, Indonesia",
+    "Honshu, Japan",
+    "Java Sea",
+    "Johnston Atoll, north central Pacific",
+    "Lakshadweep Islands",
+    "Lesser Sunda Islands and Savu Sea",
+    "Makassar Strait, Indonesia",
+    "Marianas",
+    "Marshall Islands",
+    "Mayotte and Comoros",
+    "Milne Bay, Papua New Guinea",
+    "Ningaloo Reef and coastal north-west Australia",
+    "North Madagascar",
+    "North Mozambique coast",
+    "North Myanmar and Bangladesh",
+    "North Philippines",
+    "North Ryukyu Islands, Japan",
+    "North Sri Lanka and east India",
+    "North Vietnam",
+    "Northern Seychelles",
+    "Ogasawara Islands, Japan",
+    "Palau",
+    "Persian Gulf",
+    "Phoenix Islands, central Kiribati",
+    "Pohnpei and Kosrae, Micronesia",
+    "Samoa, Tuvalu and Tonga",
+    "Shikoku, Japan",
+    "Socotra Archipelago",
+    "Solomon Islands and Bougainville",
+    "South Madagascar",
+    "South Mozambique coast",
+    "South Red Sea",
+    "South Ryukyu Islands, Japan",
+    "Southern Great Barrier Reef",
+    "Strait of Malacca",
+    "Taiwan and coastal China",
+    "Vanuatu",
+    "West Sumatra",
+    "Western Tuamotu Archipelago, central Pacific"
+   ],
+   "min_oob_rows": 50,
+   "trees": 8300,
+   "trees_without_corrector": 6077
+  },
+  "fallback_donor_rows": "the guard bank's donor rows (SPEC_TABLE_MODE.md 3.8 step 5)",
+  "fit_cut": 736147,
+  "guard_cut": 735051,
+  "guard_rows_in_bank_label_window": 0,
+  "own_trees_off_mae": 13.58475513349769,
+  "passed": true,
+  "pinned_mae": 13.814659361223724,
+  "pools_file": "ladder/lead_183/pools_guard.parquet",
+  "router": {
+   "context_missing": {
+    "by_column": {},
+    "by_step": {},
+    "by_unit": {},
+    "context_columns": 5,
+    "fit_rows": 9550,
+    "flag_share": 0.05,
+    "flag_share_constant": "C10.context_missing_flag_share",
+    "flagged_units": [],
+    "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+    "rows_left_out": 0,
+    "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+    "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+    "units_in_fit": 9550,
+    "units_with_rows_left_out": 0
+   },
+   "neighbour": {
+    "arms": {
+     "arcsine_corrector_unweighted": {
+      "all": {
+       "cut": 735051,
+       "drop_set_size": {
+        "max": 9,
+        "median": 1.0,
+        "min": 1
+       },
+       "grid_points": 1,
+       "groups_per_pool": {
+        "max": 8,
+        "median": 1.0,
+        "min": 1
+       },
+       "kept_trees": {
+        "max": 8200,
+        "median": 8200.0,
+        "min": 7400
+       },
+       "kind": "neighbour",
+       "lead": 183,
+       "max_pool_day_minus_issue_day": -35,
+       "n_bank_trees": 8300,
+       "n_candidates": 9550,
+       "n_rows": 1915,
+       "n_rows_no_tree": 0,
+       "n_rows_pool": 1915,
+       "n_rows_pool_fallback": 0,
+       "pool_size": {
+        "max": 50,
+        "median": 50.0,
+        "min": 50
+       },
+       "pools_fingerprint": "20edb6dab751a001dc400d2d010f0ecf42ccd1949a41c805e831a6a9d080e362",
+       "sweep": false,
+       "tolerance": 9e-07,
+       "verified_rows": 0,
+       "weighted": false
+      }
+     }
+    },
+    "constants": {
+     "candidates": 9550,
+     "context_scalers": {
+      "mean": [
+       5.6882722513089,
+       0.1859614893873539,
+       0.19510923543651174,
+       17.811032080403407,
+       28.993488419417936
+      ],
+      "rows": 9550,
+      "sd": [
+       3.6138330299986623,
+       0.7381419938075373,
+       0.6184635109876582,
+       7.030770270488823,
+       0.8207754159092063
+      ]
+     },
+     "cut": 735051,
+     "earliest_scored_issue_day": 735072,
+     "lead": 183,
+     "newest_candidate_day": 735051,
+     "parts": {
+      "all": {
+       "c": 0.125,
+       "fallback_newest_day": 735051,
+       "fallback_rows": 9550,
+       "fold": null,
+       "gls_model_cut": null,
+       "median": 1.0
+      }
+     },
+     "z_constant_columns": 0,
+     "z_rows": 9550
+    },
+    "g1": {
+     "by_column": {},
+     "by_step": {},
+     "by_unit": {},
+     "context_columns": 5,
+     "fit_rows": 9550,
+     "flag_share": 0.05,
+     "flag_share_constant": "C10.context_missing_flag_share",
+     "flagged_units": [],
+     "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+     "rows_left_out": 0,
+     "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+     "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+     "units_in_fit": 9550,
+     "units_with_rows_left_out": 0
+    },
+    "pass": "lead 183 guard",
+    "pools": {
+     "drop_set_size_median": 1.0,
+     "pool_size_median": 50.0,
+     "rows": 1915,
+     "rows_pool_fallback": 0,
+     "rows_with_pool": 1915
+    }
+   }
+  },
+  "score_days": [
+   735234,
+   736147
+  ],
+  "surface_rows": 1915,
+  "surface_sha256": "0ae1cab806fab6f3308e4c2fe52bfc7b1279c1a56506ba975ae17e646aa6abfd"
+ },
+ "issue_features_missing": {
+  "by_unit": {},
+  "reading": "a test row absent from the lead's file (owner item O15)",
+  "rows_file": null,
+  "rows_left_out": 0,
+  "rule": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+  "units_with_rows_left_out": 0
+ },
+ "lead": 183,
+ "longest_lead": 365,
+ "penalty": {
+  "level": 30.0,
+  "ratio": 1.0
+ },
+ "pinned": "arcsine_corrector_unweighted",
+ "placebo_built": false,
+ "rulings": {
+  "H2": "owner ruling H2 (L6 b at every lead): each lead refits its bank, correctors and placebo correctors at the lead's GUARD cut and builds its guard history block there (F1's fallbacks at the guard cut), as the nowcast's inner decision does at the inner cut, so no guard row sits inside a bank trained on its labels (asserted: guard_rows_in_bank_label_window is 0); one more bank per lead. The guard reads the lead's FIT-cut c and R36 tolerances, exactly as the nowcast's inner decision does: c by ruling D63 a (one c per lead, from its FIT cut, serves that lead's guard surface and its test pass; layer.c_for_cut refuses guard-cut donor rows); R36's tolerances are the identity-check tolerances, which move no prediction. A weighted pin's GLS weight model (R25 / D57: its donor rows at the lead's guard cut) reads its error target's tree answers from the lead's fit-cut bank, as the nowcast's does (fit.weights.L6_ANSWERS_DISCLOSURE; READINGS guard_gls_answers)",
+  "H3": "owner ruling H3: at a lead the router context moves to the issue step with the whole feature row (plan 1.5, io.apply.features_at_issue_step)",
+  "H4": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+  "H5": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels",
+  "I1": "owner ruling I1: the leads are 6 and 12 months (C6.lead_months), generic for every package, plus lead 0 (the contract); on annual data both round to 1 year and merge; the pinned placebo is built at the longest lead"
+ },
+ "test": {
+  "adopted_column": "arm__arcsine_corrector_unweighted",
+  "arms": [
+   "arcsine_corrector_unweighted",
+   "arcsine_trees_off_unweighted",
+   "identity_trees_off_unweighted"
+  ],
+  "damped_persistence": {
+   "normal": "damped persistence's normal (owner item O17; the neighbour kind has no normal, R15): the mean of the package unit's labels at or before the lead's fit cut in the row's event month, else the unit's all-season mean, else the donor-row mean (R15's fallback chain, used for this baseline only)",
+   "rule": "R31 events: phi per package unit from (visit, previous visit) pairs, the previous visit being the unit's newest visit dated before the visit's issue day, both labels at or before the lead's fit cut; the U-2 / D88 rule pair by pair on the event-month key (report.metrics PHI_SHARED_MIN_LABELS / PHI_SEPARATE_MIN_LABELS); phi = the through-origin slope clipped to [0, 1], 0 when undefined"
+  },
+  "decline_rule": "owner ruling V1 (the owner rulings file, section V): for the neighbour kind, every decline (nowcast and every lead) falls back to the donor-row median (R34), and every guard or decline comparison uses that same donor-row median as its baseline, so the check and the fallback are one object",
+  "decline_target": "base__donor_median",
+  "issue_features_missing": {
+   "by_unit": {},
+   "reading": "a test row absent from the lead's file (owner item O15)",
+   "rows_file": null,
+   "rows_left_out": 0,
+   "rule": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+   "units_with_rows_left_out": 0
+  },
+  "labelled_rows": 1468,
+  "own_trees_off_column": "arm__arcsine_trees_off_unweighted",
+  "persistence_reads_before_lock": {
+   "reads": 1,
+   "rows": 564,
+   "rows_before_any_lock": 0,
+   "rule": "D54 (a): each row's persistence reads the labels known at its issue date, served before the pass's lock"
+  },
+  "persistence_rows_with_issue_label": 1039,
+  "placebos": [],
+  "pools_file": "ladder/lead_183/pools_test_pass.parquet",
+  "reference_column": "base__donor_median",
+  "router": {
+   "context_missing": {
+    "by_column": {},
+    "by_step": {},
+    "by_unit": {},
+    "context_columns": 5,
+    "fit_rows": 11841,
+    "flag_share": 0.05,
+    "flag_share_constant": "C10.context_missing_flag_share",
+    "flagged_units": [],
+    "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+    "rows_left_out": 0,
+    "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+    "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+    "units_in_fit": 11841,
+    "units_with_rows_left_out": 0
+   },
+   "neighbour": {
+    "arms": {
+     "arcsine_corrector_unweighted": {
+      "all": {
+       "cut": 736147,
+       "drop_set_size": {
+        "max": 7,
+        "median": 1.0,
+        "min": 1
+       },
+       "grid_points": 1,
+       "groups_per_pool": {
+        "max": 7,
+        "median": 1.0,
+        "min": 1
+       },
+       "kept_trees": {
+        "max": 8200,
+        "median": 8200.0,
+        "min": 7600
+       },
+       "kind": "neighbour",
+       "lead": 183,
+       "max_pool_day_minus_issue_day": -43,
+       "n_bank_trees": 8300,
+       "n_candidates": 11841,
+       "n_rows": 1468,
+       "n_rows_no_tree": 0,
+       "n_rows_pool": 1468,
+       "n_rows_pool_fallback": 0,
+       "pool_size": {
+        "max": 50,
+        "median": 50.0,
+        "min": 50
+       },
+       "pools_fingerprint": "e118bbc0e359bbc914fcd9d77b24c601d7b95860cb06050e0ec49eb9a08adab4",
+       "sweep": false,
+       "tolerance": 9e-07,
+       "verified_rows": 0,
+       "weighted": false
+      }
+     }
+    },
+    "constants": {
+     "candidates": 11841,
+     "context_scalers": {
+      "mean": [
+       5.795794274132252,
+       0.17740846826217407,
+       0.1865145111354344,
+       17.45916666194278,
+       29.025015092844416
+      ],
+      "rows": 11841,
+      "sd": [
+       3.6148292038720076,
+       0.7473876211672652,
+       0.612495161737722,
+       7.454327540759001,
+       0.8440358042606276
+      ]
+     },
+     "cut": 736147,
+     "earliest_scored_issue_day": 736156,
+     "lead": 183,
+     "newest_candidate_day": 736147,
+     "parts": {
+      "all": {
+       "c": 0.125,
+       "fallback_newest_day": 736147,
+       "fallback_rows": 11841,
+       "fold": null,
+       "gls_model_cut": null,
+       "median": 1.0
+      }
+     },
+     "z_constant_columns": 0,
+     "z_rows": 11841
+    },
+    "g1": {
+     "by_column": {},
+     "by_step": {},
+     "by_unit": {},
+     "context_columns": 5,
+     "fit_rows": 11841,
+     "flag_share": 0.05,
+     "flag_share_constant": "C10.context_missing_flag_share",
+     "flagged_units": [],
+     "normal": "the router's normal (R15: the mean of link(y) over the unit's own fit rows) of a unit that lost rows is built from its kept fit rows (its FitContext unit history less the rows G1 left out), as for a row with a missing label, so trees-off still equals the normal (R16); the pass's score-row normal (guess-normal, the decline target, the saved normal column) and, at a lead's test pass, damped persistence's normal are that same normal, while damped persistence's phi is fitted on every label of the unit's history (two row sets in one baseline); owner ruling pending on this normal",
+     "rows_left_out": 0,
+     "rule": "owner ruling G1: a router fit row whose context (read at the pass's issue step) is missing or non-finite leaves the router fit, as a row with a missing label does (R30); nothing is filled; a scored row with missing context refuses; route.kinds' R20 refusal stays as the last guard",
+     "scope": "the per-unit router's fit rows (the scored units' own rows: the only router that reads context); the region kernels (the region kind and the R12 fallback) read no context, so their fit rows are not filtered",
+     "units_in_fit": 11841,
+     "units_with_rows_left_out": 0
+    },
+    "pass": "lead 183 test pass",
+    "pools": {
+     "drop_set_size_median": 1.0,
+     "pool_size_median": 50.0,
+     "rows": 1468,
+     "rows_pool_fallback": 0,
+     "rows_with_pool": 1468
+    }
+   }
+  },
+  "rows": 1468,
+  "test_rows": 1468
+ }
+}

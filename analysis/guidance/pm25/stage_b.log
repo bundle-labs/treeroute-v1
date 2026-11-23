@@ -1,0 +1,21 @@
+written 2026-10-21 16:22:17 UTC, before stage B
+G2 {'orig_recomputed': 3.5880911340930206, 'verdict': 3.588091134093021, 'rel': 1.2376753913256363e-16, 'scored_rows': 91428, 'PASS': True}
+original log_c_corrector_unweighted test MAE 3.588091 band 0.046212 (0.25 band 0.011553)
+T_twin               MAE 3.587480  delta -0.000611  /band -0.0132  HELPS   differs 1.0000  nonfinite 0
+M1                   MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M2                   MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M3                   MAE 3.584001  delta -0.004090  /band -0.0885  HELPS   differs 1.0000  nonfinite 0
+M4                   MAE 3.650372  delta +0.062281  /band +1.3477  HURTS   differs 1.0000  nonfinite 0
+M5raw                MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M5                   MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M5_placebo           MAE 3.597254  delta +0.009163  /band +0.1983  HURTS   differs 1.0000  nonfinite 0
+M5_placebo_gated     MAE 3.597254  delta +0.009163  /band +0.1983  HURTS   differs 1.0000  nonfinite 0
+M6raw                MAE 3.584507  delta -0.003585  /band -0.0776  HELPS   differs 0.8172  nonfinite 0
+M6sraw               MAE 3.583375  delta -0.004716  /band -0.1020  HELPS   differs 1.0000  nonfinite 0
+M6                   MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M6s                  MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M6_placebo           MAE 3.587561  delta -0.000531  /band -0.0115  HELPS   differs 0.3665  nonfinite 0
+M6s_placebo          MAE 3.584119  delta -0.003972  /band -0.0860  HELPS   differs 1.0000  nonfinite 0
+M6_placebo_gated     MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+M6s_placebo_gated    MAE 3.588091  delta +0.000000  /band +0.0000  SAME    differs 0.0000  nonfinite 0
+sanity {'alarm_ratio': 0.9968658824835042, 'alarm_ratio_part603': 1.0, 'M3_mae': 3.5840010903627793, 'M3_part603': 3.584, 'M3_matches_rounding': True, 'alarm_matches_rounding': True}

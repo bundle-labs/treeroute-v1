@@ -1,0 +1,27 @@
+== C:\Users\<user>\Desktop\data set for reserch paper\engine\datasets\coral
+name coral | version 0.1.0 | input table | fingerprint 5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9
+draft: is_draft=False stamp='' where=[] -> not-headline reason 'DRAFT package: '
+store template D:/treeroute/coral_build/coral_store/20261020_014201/lead_{lead}.parquet
+  lead 0: D:/treeroute/coral_build/coral_store/20261020_014201/lead_0.parquet exists=True
+  lead 0: D:/treeroute/coral_build/coral_store/20261020_014201/lead_0.parquet exists=True
+  lead 183: D:/treeroute/coral_build/coral_store/20261020_014201/lead_183.parquet exists=True
+  lead 365: D:/treeroute/coral_build/coral_store/20261020_014201/lead_365.parquet exists=True
+split: excluded 11 ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles'] | seen_during_design 83
+== D:\treeroute\analysis\coral_sens_2017_2020\package\coral_sens_2017_2020
+name coral_sens_2017_2020 | version 0.1.0 | input table | fingerprint 6a8509e323a7349f1f5e1d6e7861f8c96165af4bcd39e2a9caade425989d76c2
+draft: is_draft=True stamp='DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline' where=['dataset.yaml description'] -> not-headline reason 'DRAFT package: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline'
+store template D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_{lead}.parquet
+  lead 0: D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_0.parquet exists=False
+  lead 0: D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_0.parquet exists=False
+  lead 183: D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_183.parquet exists=False
+  lead 365: D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_365.parquet exists=False
+split: excluded 11 ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles'] | seen_during_design 83
+== D:\treeroute\analysis\coral_sens_2017_2020\validate\preview_package\coral_sens_2017_2020
+name coral_sens_2017_2020 | version 0.1.0 | input table | fingerprint 96f81747b491b36b28aa5cb143a2f4cb3c838a973433ae0a0cda9a37df42f8b5
+draft: is_draft=True stamp='DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline' where=['dataset.yaml description'] -> not-headline reason 'DRAFT package: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline'
+store template D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_{lead}.parquet
+  lead 0: D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_0.parquet exists=True
+  lead 0: D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_0.parquet exists=True
+  lead 183: D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_183.parquet exists=True
+  lead 365: D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_365.parquet exists=True
+split: excluded 11 ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles'] | seen_during_design 83

@@ -1,0 +1,384 @@
+{
+ "coral": {
+  "keys_equal_sample": {
+   "rival_hgb_l1": true,
+   "rival_lgbm": true,
+   "rival_lgbm_tweedie": true,
+   "rival_rf": true,
+   "rival_ridge": true,
+   "treeroute": true
+  },
+  "additivity": {
+   "rival_hgb_l1": {
+    "max_abs_sum_phi_minus_sum_phiv": 8.326672684688674e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 2.220446049250313e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.887379141862766e-15,
+    "max_abs_eta_minus_base": 0.7796819601691725,
+    "max_abs_phiv_minus_member_sum": 0.018112380583244853,
+    "at_variable": "mhw_days",
+    "columns_without_map": []
+   },
+   "rival_lgbm": {
+    "max_abs_sum_phi_minus_sum_phiv": 3.885780586188048e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 5.551115123125783e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 4.440892098500626e-16,
+    "max_abs_eta_minus_base": 0.6494193807878487,
+    "max_abs_phiv_minus_member_sum": 0.005457883033092054,
+    "at_variable": "dhw",
+    "columns_without_map": []
+   },
+   "rival_lgbm_tweedie": {
+    "max_abs_sum_phi_minus_sum_phiv": 2.6645352591003757e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 9.769962616701378e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 9.769962616701378e-15,
+    "max_abs_eta_minus_base": 4.08838019967936,
+    "max_abs_phiv_minus_member_sum": 0.04193787292824297,
+    "at_variable": "nino34a",
+    "columns_without_map": []
+   },
+   "rival_rf": {
+    "max_abs_sum_phi_minus_sum_phiv": 5.551115123125783e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.3306690738754696e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 3.3306690738754696e-16,
+    "max_abs_eta_minus_base": 0.6361487851861036,
+    "max_abs_phiv_minus_member_sum": 0.00835978228573099,
+    "at_variable": "nino34a",
+    "columns_without_map": []
+   },
+   "rival_ridge": {
+    "max_abs_sum_phi_minus_sum_phiv": 5.995204332975845e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 8.659739592076221e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 8.992806499463768e-15,
+    "max_abs_eta_minus_base": 5.3370554201919,
+    "max_abs_phiv_minus_member_sum": 3.552713678800501e-15,
+    "at_variable": "cool",
+    "columns_without_map": []
+   },
+   "treeroute": {
+    "max_abs_sum_phi_minus_sum_phiv": 6.661338147750939e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.6637359812630166e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 4.052314039881821e-15,
+    "max_abs_eta_minus_base": 0.5840087404658496,
+    "max_abs_phiv_minus_member_sum": 0.0008786413092535944,
+    "at_variable": "dhw",
+    "columns_without_map": []
+   }
+  },
+  "groups_without_export_file": [
+   "Hispaniola, Puerto Rico and Lesser Antilles",
+   "Makassar Strait, Indonesia",
+   "Moreton Bay, eastern Australia",
+   "North Ryukyu Islands, Japan",
+   "Society Islands, French Polynesia",
+   "Sunda Shelf, south-east Asia"
+  ],
+  "sample_rows_found_in_own_group_file": 815,
+  "sample_rows_not_found": 185,
+  "rows_per_region_min_max": [
+   1,
+   45
+  ],
+  "units_per_region_min_max": [
+   1,
+   45
+  ]
+ },
+ "defo": {
+  "keys_equal_sample": {
+   "rival_lgbm": true,
+   "rival_lgbm_tweedie": true,
+   "rival_rf": true,
+   "rival_ridge": true,
+   "treeroute": true,
+   "treeroute_B1": true
+  },
+  "additivity": {
+   "rival_lgbm": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.7763568394002505e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.552713678800501e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 3.400058012914542e-15,
+    "max_abs_eta_minus_base": 3.4895737177534354,
+    "max_abs_phiv_minus_member_sum": 0.08272090427117307,
+    "at_variable": "hist_mean",
+    "columns_without_map": []
+   },
+   "rival_lgbm_tweedie": {
+    "max_abs_sum_phi_minus_sum_phiv": 6.217248937900877e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 5.895284260759581e-14,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 5.92303983637521e-14,
+    "max_abs_eta_minus_base": 8.91793416998918,
+    "max_abs_phiv_minus_member_sum": 0.21790043879937038,
+    "at_variable": "hist_mean",
+    "columns_without_map": []
+   },
+   "rival_rf": {
+    "max_abs_sum_phi_minus_sum_phiv": 3.1086244689504383e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 5.10702591327572e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 4.884981308350689e-15,
+    "max_abs_eta_minus_base": 3.3006124969778234,
+    "max_abs_phiv_minus_member_sum": 0.03429086770233902,
+    "at_variable": "spei",
+    "columns_without_map": []
+   },
+   "rival_ridge": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.5543122344752192e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.9968028886505635e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 4.440892098500626e-15,
+    "max_abs_eta_minus_base": 7.451834613695228,
+    "max_abs_phiv_minus_member_sum": 1.6653345369377348e-16,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "treeroute": {
+    "max_abs_sum_phi_minus_sum_phiv": 7.549516567451064e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 9.103828801926284e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 8.881784197001252e-15,
+    "max_abs_eta_minus_base": 4.206348681969493,
+    "max_abs_phiv_minus_member_sum": 0.02150108030151643,
+    "at_variable": "wbal",
+    "columns_without_map": []
+   },
+   "treeroute_B1": {
+    "max_abs_sum_phi_minus_sum_phiv": 7.549516567451064e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 9.103828801926284e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 8.881784197001252e-15,
+    "max_abs_eta_minus_base": 4.206348681969493,
+    "max_abs_phiv_minus_member_sum": 0.02150108030151643,
+    "at_variable": "wbal",
+    "columns_without_map": []
+   }
+  },
+  "groups_without_export_file": [],
+  "sample_rows_found_in_own_group_file": 1000,
+  "sample_rows_not_found": 0,
+  "rows_per_region_min_max": [
+   23,
+   24
+  ],
+  "units_per_region_min_max": [
+   6,
+   6
+  ]
+ },
+ "fire": {
+  "keys_equal_sample": {
+   "rival_lgbm": true,
+   "rival_lgbm_tweedie": true,
+   "rival_rf": true,
+   "rival_ridge": true,
+   "treeroute": true,
+   "treeroute_B1": true
+  },
+  "additivity": {
+   "rival_lgbm": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.6653345369377348e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.8464776149057505e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.8465047199600626e-15,
+    "max_abs_eta_minus_base": 0.4320862131080121,
+    "max_abs_phiv_minus_member_sum": 0.006257993662658704,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "rival_lgbm_tweedie": {
+    "max_abs_sum_phi_minus_sum_phiv": 7.105427357601002e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 8.79296635503124e-14,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 8.79296635503124e-14,
+    "max_abs_eta_minus_base": 8.151916750780547,
+    "max_abs_phiv_minus_member_sum": 0.14505324657676355,
+    "at_variable": "spei",
+    "columns_without_map": []
+   },
+   "rival_rf": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.942890293094024e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.923374653989285e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.9230493933375392e-15,
+    "max_abs_eta_minus_base": 0.23060434879383118,
+    "max_abs_phiv_minus_member_sum": 0.003632804303748391,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "rival_ridge": {
+    "max_abs_sum_phi_minus_sum_phiv": 2.0816681711721685e-17,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.8283985436795547e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.824929096727601e-15,
+    "max_abs_eta_minus_base": 0.049471357923924764,
+    "max_abs_phiv_minus_member_sum": 1.0842021724855044e-19,
+    "at_variable": "wbal",
+    "columns_without_map": []
+   },
+   "treeroute": {
+    "max_abs_sum_phi_minus_sum_phiv": 3.469446951953614e-17,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.7780915628762273e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.8127860323957634e-16,
+    "max_abs_eta_minus_base": 0.06126740461922198,
+    "max_abs_phiv_minus_member_sum": 0.00023973829893034313,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "treeroute_B1": {
+    "max_abs_sum_phi_minus_sum_phiv": 2.220446049250313e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 2.6645352591003757e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 2.886579864025407e-15,
+    "max_abs_eta_minus_base": 1.219286466387831,
+    "max_abs_phiv_minus_member_sum": 0.00021361408200971715,
+    "at_variable": "spi",
+    "columns_without_map": []
+   }
+  },
+  "groups_without_export_file": [],
+  "sample_rows_found_in_own_group_file": 1000,
+  "sample_rows_not_found": 0,
+  "rows_per_region_min_max": [
+   21,
+   27
+  ],
+  "units_per_region_min_max": [
+   7,
+   7
+  ]
+ },
+ "pm25": {
+  "keys_equal_sample": {
+   "rival_lgbm": true,
+   "rival_rf": true,
+   "rival_ridge": true,
+   "treeroute": true,
+   "treeroute_B1": true
+  },
+  "additivity": {
+   "rival_lgbm": {
+    "max_abs_sum_phi_minus_sum_phiv": 6.661338147750939e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.9984014443252818e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.887379141862766e-15,
+    "max_abs_eta_minus_base": 0.8431110259215511,
+    "max_abs_phiv_minus_member_sum": 0.012534534750352794,
+    "at_variable": "hist_last",
+    "columns_without_map": []
+   },
+   "rival_rf": {
+    "max_abs_sum_phi_minus_sum_phiv": 6.661338147750939e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.457167719820518e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.4849232954361469e-15,
+    "max_abs_eta_minus_base": 0.6490503242945156,
+    "max_abs_phiv_minus_member_sum": 0.014834533380570447,
+    "at_variable": "hist_last",
+    "columns_without_map": []
+   },
+   "rival_ridge": {
+    "max_abs_sum_phi_minus_sum_phiv": 3.3306690738754696e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 1.887379141862766e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 1.887379141862766e-15,
+    "max_abs_eta_minus_base": 0.8368823589852983,
+    "max_abs_phiv_minus_member_sum": 6.938893903907228e-18,
+    "at_variable": "spei",
+    "columns_without_map": []
+   },
+   "treeroute": {
+    "max_abs_sum_phi_minus_sum_phiv": 9.992007221626409e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 6.106226635438361e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 6.2727600891321345e-15,
+    "max_abs_eta_minus_base": 0.6267646183843465,
+    "max_abs_phiv_minus_member_sum": 0.0015459039777111772,
+    "at_variable": "wbal",
+    "columns_without_map": []
+   },
+   "treeroute_B1": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.4432899320127035e-15,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 5.440092820663267e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 5.440092820663267e-15,
+    "max_abs_eta_minus_base": 1.3465135651185347,
+    "max_abs_phiv_minus_member_sum": 0.0018806864555566544,
+    "at_variable": "wbal",
+    "columns_without_map": []
+   }
+  },
+  "groups_without_export_file": [],
+  "sample_rows_found_in_own_group_file": 1000,
+  "sample_rows_not_found": 0,
+  "rows_per_region_min_max": [
+   7,
+   8
+  ],
+  "units_per_region_min_max": [
+   2,
+   2
+  ]
+ },
+ "ndvi": {
+  "keys_equal_sample": {
+   "rival_bardl_h1": true,
+   "rival_lgbm": true,
+   "rival_rf": true,
+   "rival_ridge": true,
+   "treeroute": true,
+   "treeroute_B1": true
+  },
+  "additivity": {
+   "rival_bardl_h1": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.1102230246251565e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.3133218391157016e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 3.3133218391157016e-16,
+    "max_abs_eta_minus_base": 0.2824631832403609,
+    "max_abs_phiv_minus_member_sum": 2.7755575615628914e-17,
+    "at_variable": "soil_moisture_pct",
+    "columns_without_map": []
+   },
+   "rival_lgbm": {
+    "max_abs_sum_phi_minus_sum_phiv": 1.6653345369377348e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 3.469446951953614e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 3.885780586188048e-16,
+    "max_abs_eta_minus_base": 0.15422836679616875,
+    "max_abs_phiv_minus_member_sum": 0.0038983546784717715,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "rival_rf": {
+    "max_abs_sum_phi_minus_sum_phiv": 2.220446049250313e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 2.8644621397067027e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 2.8536201179818477e-16,
+    "max_abs_eta_minus_base": 0.08352890987193018,
+    "max_abs_phiv_minus_member_sum": 0.005684032638404821,
+    "at_variable": "spi",
+    "columns_without_map": []
+   },
+   "rival_ridge": {
+    "max_abs_sum_phi_minus_sum_phiv": 2.3592239273284576e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 4.85722573273506e-16,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 3.885780586188048e-16,
+    "max_abs_eta_minus_base": 0.16117557828230555,
+    "max_abs_phiv_minus_member_sum": 1.3877787807814457e-17,
+    "at_variable": "era5l_pev",
+    "columns_without_map": []
+   },
+   "treeroute": {
+    "max_abs_sum_phi_minus_sum_phiv": 3.469446951953614e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 5.467848396278896e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 5.523359547510154e-15,
+    "max_abs_eta_minus_base": 0.19610019745624774,
+    "max_abs_phiv_minus_member_sum": 0.0007417349048988026,
+    "at_variable": "hist_last",
+    "columns_without_map": []
+   },
+   "treeroute_B1": {
+    "max_abs_sum_phi_minus_sum_phiv": 5.551115123125783e-16,
+    "max_abs_base_plus_phi_plus_resid_minus_eta": 7.320533068622126e-15,
+    "max_abs_base_plus_phiv_plus_resid_minus_eta": 7.369105325949477e-15,
+    "max_abs_eta_minus_base": 0.44897978711914455,
+    "max_abs_phiv_minus_member_sum": 0.0012548656052275425,
+    "at_variable": "mean_temp_C",
+    "columns_without_map": []
+   }
+  },
+  "groups_without_export_file": [],
+  "sample_rows_found_in_own_group_file": 1000,
+  "sample_rows_not_found": 0,
+  "rows_per_region_min_max": [
+   5,
+   8
+  ],
+  "units_per_region_min_max": [
+   2,
+   2
+  ]
+ }
+}

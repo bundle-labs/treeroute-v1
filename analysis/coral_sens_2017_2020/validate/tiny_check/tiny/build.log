@@ -1,0 +1,12 @@
+[14:46:57] sensitivity copy: visit table D:\treeroute\analysis\coral_sens_2017_2020\validate\tiny_check\visits.parquet; output D:\treeroute\analysis\coral_sens_2017_2020\validate\tiny_check\tiny
+[14:46:57] BUILD tiny | groups ['Andaman Islands', 'Andaman Sea', 'Bahamas and Florida Keys', 'Banda Sea and Molucca Islands', 'Belize and west Caribbean', 'Bermuda', 'Brazil', 'Celebes Sea', 'Central and northern Great Barrier Reef', 'Cook Islands, south-west Pacific', 'Cuba and Cayman Islands', 'Fiji', 'Gulf of Guinea to Sierra Leone', 'Gulf of Oman', 'Gulf of Thailand', 'Hispaniola, Puerto Rico and Lesser Antilles', 'Hong Kong', 'Jamaica', 'Java Sea', 'Kenya and Tanzania coast', 'Lesser Sunda Islands and Savu Sea', 'Makassar Strait, Indonesia', 'Maldive Islands', 'Mascarene Islands', 'Moreton Bay, eastern Australia', 'Netherlands Antilles and south Caribbean', 'New Caledonia', 'North Madagascar', 'North Ryukyu Islands, Japan', 'North and central Red Sea', 'Pohnpei and Kosrae, Micronesia', 'Samoa, Tuvalu and Tonga', 'Society Islands, French Polynesia', 'Solomon Islands and Bougainville', 'South Ryukyu Islands, Japan', 'South-east Philippines', 'Southern Great Barrier Reef', 'Strait of Malacca', 'Sulu Sea', 'Sunda Shelf, south-east Asia', 'Taiwan and coastal China', 'Vanuatu', 'Western Tuamotu Archipelago, central Pacific'] | g 1 | free 4.4/16.9 GB
+[14:47:05] visits 176 in scope, 167 candidate samples (43 groups, 159 sites) | free 4.5/16.9 GB
+[14:47:06] IBTrACS track points usable: 725,903 (1842-10-25 .. 2026-08-20)
+[14:47:37] features done: 159 sites in 0.5 min | asserts 501 | canary 501 rows | free 4.2/16.9 GB
+[14:47:37] replay lead 0: 120 rows x 68 columns, max rel diff 0 (dhw_30)
+[14:47:37] replay lead 365: 120 rows x 65 columns, max rel diff 0 (dhw_30)
+[14:47:37] wrote lead_0.parquet: {'rows': 167, 'train': 117, 'test': 50, 'groups': 43, 'units': 159}
+[14:47:37] wrote lead_183.parquet: {'rows': 167, 'train': 117, 'test': 50, 'groups': 43, 'units': 159}
+[14:47:37] wrote lead_365.parquet: {'rows': 167, 'train': 117, 'test': 50, 'groups': 43, 'units': 159}
+[14:47:37] manifest written | total 0.7 min | peak working set 0.45 GB
+[14:47:38] wrote the tiny smoke package D:\treeroute\analysis\coral_sens_2017_2020\validate\tiny_check\tiny\package (43 groups)

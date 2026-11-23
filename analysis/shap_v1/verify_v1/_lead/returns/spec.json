@@ -1,0 +1,130 @@
+{
+ "spec_path": "D:\\treeroute\\analysis\\shap_v1\\verify_v1\\spec\\SPEC.md",
+ "schema_path": "D:\\treeroute\\analysis\\shap_v1\\verify_v1\\spec\\results_schema.json",
+ "open_choices": [
+  "C01 Rows flagged by S-RESID: whether they enter the statistics (sections 8 and 10 do not mention them).",
+  "C02 Region weights: what 'each region weighs 1' means for the rows within a region, and how a region drawn more than once is weighted.",
+  "C03 The signed mean S_m(j): its weighting.",
+  "C04 The active-set threshold: which mean |phi| (for a player and for 'its total'), the comparison at exactly 1e-12, a model whose total is 0.",
+  "C05 Which models 'some model' ranges over when forming J (every model of models, cross-link and declined included, or another set), and whether one J per level serves every statistic.",
+  "C06 Players with no column in a model's row file (coral treeroute has no normal; NDVI BARDL has 10 phi__ and 4 phiv__ columns), and over which names the structural zeros are listed.",
+  "C07 Fixed at the full sample or found again on each draw: J (with the 200-player condition), the top-5/10/20 sets, the top-20 and top-10 unions, the determined signs, B1's pair J.",
+  "C08 Whether each count gets an interval (n_J, n_nonzero, B1's n_nonzero_before_merge, sign_n_determined, sign_n_agree).",
+  "C09 What makes a player nonzero (which quantity, compared with what) and among which players the count is taken.",
+  "C10 Ties and name order: exact or tolerance, read on I or on s; which name string (with or without prefixes), direction and collation; whether the same rule orders the top-10 and top-3 lists.",
+  "C11 Spearman's expression on average ranks when there are ties; over the top-20 union, whether ranks are taken within the union or carried from J.",
+  "C12 The top-k sets when J has fewer than k players; on which J the 'J has 200 or more players' condition is read.",
+  "C13 RBO's exact finite form (terms, depths summed over, normalisation) for eq. 32 on equal-length rankings.",
+  "C14 The total-variation distance: its expression (normalising factor) and the vectors it compares.",
+  "C15 Family attribution and shares: which variables are summed per row, how a family's importance is formed, the share denominator, a family with no variable, and whether there is a feature-level family distance (and from which phi).",
+  "C16 Family membership: precedence when a variable fits more than one description; the global-index rule ('one value per time step': equality or tolerance, missing values, time key, units missing a step, columns missing from the test-set records).",
+  "C17 Determined sign at the edge (an end exactly 0, zero-width interval, few finite replicates), which interval, what 'sign agreement' reports and its entry when the count is 0, and which signs are compared on a draw.",
+  "C18 Undefined statistics (all ties, empty set, zero total): reported as undefined or given a value, on the full sample and on a draw.",
+  "C19 Kendall's W and the mean pairwise Spearman: the player set, the tie-correction expression, which pairwise Spearman (over J or the top-20 union) the mean averages.",
+  "C20 Stability: the player set of its Spearman, how non-finite replicates enter the mean, whether it gets an interval and what its per-draw values are.",
+  "C21 Percentile intervals: the interpolation rule at 2.5% and 97.5%, whether non-finite replicates are left out, the fewest finite replicates for which an interval is given.",
+  "C22 Main row: the median of an even number of rivals, how the median's interval is formed, what the range reports and whether its ends get intervals.",
+  "C23 'The median rival': the median of the rivals' own-history shares, or one rival's share chosen by a rule (which rule); an even number of rivals.",
+  "C24 The own-history share: the own-history family's share, the sum of the hist_* variables' shares, or another reading.",
+  "C25 Item 8 (pre > 0 rows): which problems' arcsine models (coral's four and fire's treeroute), which numbers, the variables the shares are over, region weighting when a region has no such row, whether there are intervals.",
+  "I01 Identification, the region of a row: no row-file column is named 'region' (the columns are row, unit, group, time, year, base, eta, eta_model, pre, resid, gap, add_err, resid_flag).",
+  "I02 Identification, the draw matrix (2000 x k, int64): what each integer refers to (which regions, in which order) and how its rows and columns make the draws.",
+  "I03 Identification: which bytes per_lead.json's draws_sha256 covers.",
+  "I04 Identification: which records hold the lead's test set for the global-index rule, and which rows and columns are read.",
+  "I05 Identification: which entry of SHAP\\SAMPLE_REGISTER.txt is the registered sample for each problem's lead 0.",
+  "I06 Identification, the B1 log lines: how a line's time is known, which lines are B1's set-up and 'done in' lines, which numbers on them are the pairs, total seconds and tree-SHAP seconds."
+ ],
+ "problems": [
+  {
+   "problem": "coral",
+   "models": [
+    "rival_hgb_l1",
+    "rival_lgbm",
+    "rival_lgbm_tweedie",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "main_set": [
+    "rival_hgb_l1",
+    "rival_lgbm",
+    "rival_rf",
+    "treeroute"
+   ],
+   "declined": [],
+   "b1_piece": false
+  },
+  {
+   "problem": "defo",
+   "models": [
+    "rival_lgbm",
+    "rival_lgbm_tweedie",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "main_set": [
+    "rival_lgbm",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "declined": [],
+   "b1_piece": true
+  },
+  {
+   "problem": "fire",
+   "models": [
+    "rival_lgbm",
+    "rival_lgbm_tweedie",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "main_set": [
+    "treeroute"
+   ],
+   "declined": [
+    "rival_ridge"
+   ],
+   "b1_piece": true
+  },
+  {
+   "problem": "pm25",
+   "models": [
+    "rival_lgbm",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "main_set": [
+    "rival_lgbm",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "declined": [],
+   "b1_piece": true
+  },
+  {
+   "problem": "ndvi",
+   "models": [
+    "rival_bardl_h1",
+    "rival_lgbm",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "main_set": [
+    "rival_bardl_h1",
+    "rival_lgbm",
+    "rival_rf",
+    "rival_ridge",
+    "treeroute"
+   ],
+   "declined": [],
+   "b1_piece": true
+  }
+ ],
+ "notes": "Files written (all in D:\\treeroute\\analysis\\shap_v1\\verify_v1\\spec):\n- SPEC.md: inventory, results format, the 25 open choices and 6 identifications, and what each implementer also writes.\n- results_schema.json: JSON Schema draft-07 covering every number of brief items 1-9.\n- tools\\: inspect_structure.py and inspect_names.py (structure only, used to build the inventory), make_schema.py (writes the schema), check_schema.py (structural check of the schema: no problems), validate_results.py.\n\nValidator: the jsonschema package is not installed, so validate_results.py carries a small draft-07 checker. It also checks that every null has a _why, that list order and pair keys are right, that ci_low <= ci_high, the per_lead.json structural keys (--shap; it reads nothing else of per_lead.json) and the per-draw finite counts in the npz files (--draws). Its self-test passes: a synthetic file validates and all 19 kinds of seeded format error are caught.\n\nInventory facts the implementers should know:\n- The B1 pieces of defo, fire, pm25 and ndvi each hold rows.parquet.done.json and no FAILED.json. Coral has no treeroute_B1 folder.\n- per_lead.json has draws_sha256 as a top-level key. It holds no key whose name contains 'map'; the variable maps are in each piece's meta.json (variable_map).\n- No row file has a column named 'region' (recorded as identification I01, not interpreted).\n- Coral's treeroute row file has no phi__normal or phiv__normal. NDVI's rival_bardl_h1 has only 10 phi__ and 4 phiv__ columns.\n- The order of phi__ columns differs between treeroute and the rivals in fire, pm25 and ndvi, so players must be matched by name.\n- No row file has a phi__c__ctx:top5:* column. NDVI's main and B1 meta.json list the same five duplicates_merged keys; fire and pm25 list none.\n- Coral has no hist_* variable; defo has no calendar or ctx:* variable.\n\nFormat decisions to note (format only, no method):\n- Every number that may carry an interval uses the object {value, ci_low, ci_high, n_finite}. A null end needs its own _why string, so the format does not decide which numbers get intervals. value is the full-sample number.\n- Per-player keys are named I, share and signed_mean, which avoids two keys 's' and 'S' that differ only in case.\n- Diagnostic keys were added to help diagnose mismatches: rankings, the top-20 union, the sign sets and per-rival values.\n- npz entries are keyed by the JSON path joined with '/'; each players map is stored as (2000, n) arrays plus a names array.\n- Log lines are never copied into results (privacy); only line numbers and the parsed numbers are.\n\nFor the lead to confirm:\n(1) The b1 layout follows my reading of the brief's sentence: b1.<p>.run with sibling b1.<p>.feature and b1.<p>.variable. Defo's pairs and seconds sit inside b1.defo.identity. If the levels were meant to be nested under run, make_schema.py needs a small change.\n(2) The compare folder also holds pairs.parquet.done.json. The brief's list of files implementers must not read does not name it; the spec says so neutrally, and you may want the implementers' task to name it.\n(3) Per-draw files will be large. With per-player intervals, NDVI's feature level alone is about 120 MB uncompressed per implementer, and the total is roughly 300 MB per implementer on the D: hard drive.\n\nWhat I opened: the brief and PROTOCOL sections 5, 8, 9 and 10. I did not open the logs, SAMPLE_REGISTER.txt, RUN_COMMANDS.md, other protocol sections, or any compare file other than per_lead.json (structural keys only) and bootstrap_draws.npy (shape and dtype only)."
+}

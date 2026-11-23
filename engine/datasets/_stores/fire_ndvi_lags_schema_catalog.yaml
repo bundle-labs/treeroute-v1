@@ -1,0 +1,170 @@
+# fire_ndvi_lags -- shared STORE catalog in the engine schema (treeroute.package.schema.StoreCatalog), SEEDED 2026-09-28T13:18:10
+# by engine/datasets/_tools/export_review_csv_v2.py. Every fact is 'unverified'. Review aids (footer statistics, samples,
+# sources, notes): engine/datasets/review/v2/evidence/fire_ndvi_lags_evidence.yaml.
+# Conventions (APP_PLAN 1.3): the row key names a calendar month (or a calendar year for annual values).
+#   plain window    -> stamp period_end   + window {length, unit, align: backward}
+#   centred window  -> stamp period_centre + window {length, unit, align: centred}
+#   unknown window  -> stamp period_centre + window {unit, align: unknown} (no length until a max_length is signed)
+#   reach past the period edge (no schema field for it) -> a WIDER window that ends at or after the content's
+#   end; R8 reads only the forward edge, so the wider start never changes a lag.
+#   static column   -> cadence {kind: static}, no window; stamp period_end is a placeholder the schema requires.
+# index_facts.yaml (the F10/V11 audit) writes EVERY window as period_centre + centred; both describe the same
+# content. Its proposals are not merged here: M1 merges them by hand once signed.
+store: fire_ndvi_lags
+description: 'Lag-1 NDVI/EVI fuel features on the fire cells (fire_build_ndvi_lags.py), derived from V11_mean_ndvi
+  / V12_mean_evi of the monthly panel. One parquet per fire group: D:/fire/drivers/ndvi/{group}.parquet; keys lat,
+  lon, year, month. Seeded 2026-09-28T13:18:10 by engine/datasets/_tools/export_review_csv_v2.py; every fact unverified.
+  Review aids: engine/datasets/review/v2/evidence/fire_ndvi_lags_evidence.yaml.'
+columns:
+  ndvi_lag1_anom:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V11_mean_ndvi
+    operation: month t-1 minus the cell's <= 2018 mean for that calendar month
+    provenance: fire_build_ndvi_lags.py:17
+    fill_values: []
+    fact_status: unverified
+  ndvi_cure:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V11_mean_ndvi
+    operation: 1 - (t-1 value) / (max over the previous 12 months)
+    provenance: fire_build_ndvi_lags.py:21
+    fill_values: []
+    fact_status: unverified
+  ndvi_ratio_1_3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V11_mean_ndvi
+    operation: (t-1 value) / (t-3 value)
+    provenance: fire_build_ndvi_lags.py:24
+    fill_values: []
+    fact_status: unverified
+  ndvi_ratio_1_12:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V11_mean_ndvi
+    operation: (t-1 value) / (mean of the previous 12 months)
+    provenance: fire_build_ndvi_lags.py:25
+    fill_values: []
+    fact_status: unverified
+  evi_lag1_anom:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V12_mean_evi
+    operation: month t-1 minus the cell's <= 2018 mean for that calendar month
+    provenance: fire_build_ndvi_lags.py:17
+    fill_values: []
+    fact_status: unverified
+  evi_cure:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V12_mean_evi
+    operation: 1 - (t-1 value) / (max over the previous 12 months)
+    provenance: fire_build_ndvi_lags.py:21
+    fill_values: []
+    fact_status: unverified
+  evi_ratio_1_3:
+    scope: unit
+    dtype: float32
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V12_mean_evi
+    operation: (t-1 value) / (t-3 value)
+    provenance: fire_build_ndvi_lags.py:24
+    fill_values: []
+    fact_status: unverified
+  evi_ratio_1_12:
+    scope: unit
+    dtype: float64
+    units: '1'
+    cadence:
+      kind: regular
+      length: 1
+      unit: month
+    stamp: period_start
+    window:
+      unit: month
+      align: unknown
+    product_family: MODIS MOD13C2 derived
+    derived_from:
+    - V12_mean_evi
+    operation: (t-1 value) / (mean of the previous 12 months)
+    provenance: fire_build_ndvi_lags.py:25
+    fill_values: []
+    fact_status: unverified

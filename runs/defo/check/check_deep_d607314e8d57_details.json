@@ -1,0 +1,5915 @@
+{
+ "checked_groups": {
+  "constants": {
+   "C13.smoke_groups": 4,
+   "C15.min_groups": 3
+  },
+  "data_groups": 42,
+  "groups": [
+   "amazon_basin_brazil",
+   "andes_puna",
+   "angola_zambia_fire_belt",
+   "atlantic_forest_brazil"
+  ],
+  "package_groups": 42,
+  "refused": null,
+  "rule": "R21",
+  "selection": "R21 smoke groups, ruling M2"
+ },
+ "guards": [
+  {
+   "details": {
+    "data_groups": 42,
+    "excluded": 0,
+    "groups": 42,
+    "seen_during_design": 0
+   },
+   "fix": "",
+   "id": "G-SPLIT",
+   "part": null,
+   "rule": "G-SPLIT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "V06_spei_12m_max_lag1": "derived from V06_spei_12m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V06_spei_12m_mean_lag1": "derived from V06_spei_12m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V06_spei_12m_min_lag1": "derived from V06_spei_12m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "V15_bare_ground_pct_lag2": "derived from V15_bare_ground_pct, banned as 'coproduct', disclosed in a signed exceptions.yaml entry",
+     "V17_herb_cover_pct_lag2": "derived from V17_herb_cover_pct, banned as 'coproduct', disclosed in a signed exceptions.yaml entry",
+     "aglw_buffalo_hold2021": "derived from aglw_buffalo, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_cattle_hold2021": "derived from aglw_cattle, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_goats_hold2021": "derived from aglw_goats, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_horse_hold2021": "derived from aglw_horse, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_sheep_hold2021": "derived from aglw_sheep, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "aglw_total_lsu_hold2021": "derived from aglw_total_lsu, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_max_lag1": "derived from amo_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_mean_lag1": "derived from amo_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "amo_min_lag1": "derived from amo_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "phenology_sos_doy_lag2": "derived from phenology_sos_doy, which is conditional (\"out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task)\"): allowed only because \"out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task)\" is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_max_lag1": "derived from spei_01m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_mean_lag1": "derived from spei_01m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_01m_min_lag1": "derived from spei_01m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_max_lag1": "derived from spei_03m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_mean_lag1": "derived from spei_03m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_03m_min_lag1": "derived from spei_03m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_max_lag1": "derived from spei_06m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_mean_lag1": "derived from spei_06m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_06m_min_lag1": "derived from spei_06m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_max_lag1": "derived from spei_24m_max, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_mean_lag1": "derived from spei_24m_mean, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "spei_24m_min_lag1": "derived from spei_24m_min, which is ban ('incomplete'): allowed only because 'incomplete' is not a leak reason (a leak reason such as post_window_snapshot or coproduct would refuse it)",
+     "tree_cover_pct_lag2": "derived from tree_cover_pct, banned as 'coproduct', disclosed in a signed exceptions.yaml entry"
+    },
+    "leak_parent": {},
+    "sum_groups": {
+     "MOD44B_V15_V17_tree_cover": [
+      "V15_bare_ground_pct",
+      "V17_herb_cover_pct",
+      "tree_cover_pct"
+     ],
+     "MOD44B_V15_V17_tree_cover_lag2": [
+      "V15_bare_ground_pct_lag2",
+      "V17_herb_cover_pct_lag2",
+      "tree_cover_pct_lag2"
+     ]
+    }
+   },
+   "fix": "confirm the reason word on each source; for a column derived from a leak-banned parent, the owner rules whether it refuses, or signs an exceptions.yaml entry (an exceptions.yaml entry addresses a column when its 'column' field is the column, or its 'check' field is the rule id exactly (e.g. 'G-LINEAGE') or starts with the rule id and names the column (e.g. 'G-LINEAGE co-product (frac)'); it is signed when its owner field names the signer (a first word UNSIGNED, TBD, TODO, PENDING, AWAITING, PLACEHOLDER, NONE, N/A or ? discloses only))",
+   "id": "G-LINEAGE",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {
+    "data_columns": 404,
+    "declared_through": {
+     "V01_mean_temp_C": [
+      "V01_mean_temp_C_max",
+      "V01_mean_temp_C_mean",
+      "V01_mean_temp_C_min"
+     ],
+     "V02_total_precip_mm": [
+      "V02_total_precip_mm_max",
+      "V02_total_precip_mm_mean",
+      "V02_total_precip_mm_min",
+      "V04_precip_seasonality"
+     ],
+     "V03_max_daily_precip_mm": [
+      "V03_max_daily_precip_mm_max",
+      "V03_max_daily_precip_mm_mean",
+      "V03_max_daily_precip_mm_min"
+     ],
+     "V05_mean_vpd_kPa": [
+      "V05_mean_vpd_kPa_max",
+      "V05_mean_vpd_kPa_mean",
+      "V05_mean_vpd_kPa_min"
+     ],
+     "V06_spei_12m": [
+      "V06_spei_12m_max",
+      "V06_spei_12m_mean",
+      "V06_spei_12m_min"
+     ],
+     "V07_total_ref_ET_mm": [
+      "V07_total_ref_ET_mm_max",
+      "V07_total_ref_ET_mm_mean",
+      "V07_total_ref_ET_mm_min"
+     ],
+     "V09_mean_wind_ms": [
+      "V09_mean_wind_ms_max",
+      "V09_mean_wind_ms_mean",
+      "V09_mean_wind_ms_min"
+     ],
+     "V11_mean_ndvi": [
+      "V11_mean_ndvi_max",
+      "V11_mean_ndvi_mean",
+      "V11_mean_ndvi_min"
+     ],
+     "V12_mean_evi": [
+      "V12_mean_evi_max",
+      "V12_mean_evi_mean",
+      "V12_mean_evi_min"
+     ],
+     "V13_mean_lst_C": [
+      "V13_mean_lst_C_max",
+      "V13_mean_lst_C_mean",
+      "V13_mean_lst_C_min"
+     ],
+     "V14_mean_albedo": [
+      "V14_mean_albedo_max",
+      "V14_mean_albedo_mean",
+      "V14_mean_albedo_min"
+     ],
+     "V20_burned_binary": [
+      "V20_burned_binary_max",
+      "V20_burned_binary_mean",
+      "V20_burned_binary_min"
+     ],
+     "V30_soil_moisture_pct": [
+      "V30_soil_moisture_pct_max",
+      "V30_soil_moisture_pct_mean",
+      "V30_soil_moisture_pct_min"
+     ],
+     "aet_total_mm": [
+      "aet_total_mm_max",
+      "aet_total_mm_mean",
+      "aet_total_mm_min"
+     ],
+     "amo": [
+      "amo_max",
+      "amo_mean",
+      "amo_min"
+     ],
+     "ao": [
+      "ao_max",
+      "ao_mean",
+      "ao_min"
+     ],
+     "aridity_index_p_pet": [
+      "aridity_index_p_pet_max",
+      "aridity_index_p_pet_mean",
+      "aridity_index_p_pet_min"
+     ],
+     "climate_water_deficit_mm": [
+      "climate_water_deficit_mm_max",
+      "climate_water_deficit_mm_mean",
+      "climate_water_deficit_mm_min"
+     ],
+     "cloud_frequency_pct": [
+      "cloud_frequency_pct_max",
+      "cloud_frequency_pct_mean",
+      "cloud_frequency_pct_min"
+     ],
+     "co2": [
+      "co2_max",
+      "co2_mean",
+      "co2_min"
+     ],
+     "conflict_deaths": [
+      "conflict_deaths_max",
+      "conflict_deaths_mean",
+      "conflict_deaths_min"
+     ],
+     "conflict_events": [
+      "conflict_events_max",
+      "conflict_events_mean",
+      "conflict_events_min"
+     ],
+     "deeprec_twsa": [
+      "deeprec_twsa_k3_max",
+      "deeprec_twsa_k3_mean",
+      "deeprec_twsa_k3_min",
+      "deeprec_twsa_max",
+      "deeprec_twsa_mean",
+      "deeprec_twsa_min"
+     ],
+     "diurnal_temp_range_C": [
+      "diurnal_temp_range_C_max",
+      "diurnal_temp_range_C_mean",
+      "diurnal_temp_range_C_min"
+     ],
+     "eddi": [
+      "eddi_max",
+      "eddi_mean",
+      "eddi_min"
+     ],
+     "eddi_observed": [
+      "eddi_observed_max",
+      "eddi_observed_mean",
+      "eddi_observed_min"
+     ],
+     "epo": [
+      "epo_max",
+      "epo_mean",
+      "epo_min"
+     ],
+     "era5l_d2m": [
+      "era5l_d2m_max",
+      "era5l_d2m_mean",
+      "era5l_d2m_min"
+     ],
+     "era5l_pev": [
+      "era5l_pev_max",
+      "era5l_pev_mean",
+      "era5l_pev_min"
+     ],
+     "era5l_slhf": [
+      "era5l_slhf_max",
+      "era5l_slhf_mean",
+      "era5l_slhf_min"
+     ],
+     "era5l_smlt": [
+      "era5l_smlt_max",
+      "era5l_smlt_mean",
+      "era5l_smlt_min"
+     ],
+     "era5l_sro": [
+      "era5l_sro_max",
+      "era5l_sro_mean",
+      "era5l_sro_min"
+     ],
+     "era5l_sshf": [
+      "era5l_sshf_max",
+      "era5l_sshf_mean",
+      "era5l_sshf_min"
+     ],
+     "era5l_ssr": [
+      "era5l_ssr_max",
+      "era5l_ssr_mean",
+      "era5l_ssr_min"
+     ],
+     "era5l_ssro": [
+      "era5l_ssro_max",
+      "era5l_ssro_mean",
+      "era5l_ssro_min"
+     ],
+     "era5l_stl1": [
+      "era5l_stl1_max",
+      "era5l_stl1_mean",
+      "era5l_stl1_min"
+     ],
+     "era5l_str": [
+      "era5l_str_max",
+      "era5l_str_mean",
+      "era5l_str_min"
+     ],
+     "esacci_sm": [
+      "esacci_sm_max",
+      "esacci_sm_mean",
+      "esacci_sm_min"
+     ],
+     "food_cereals": [
+      "food_cereals_max",
+      "food_cereals_mean",
+      "food_cereals_min"
+     ],
+     "food_dairy": [
+      "food_dairy_max",
+      "food_dairy_mean",
+      "food_dairy_min"
+     ],
+     "food_meat": [
+      "food_meat_max",
+      "food_meat_mean",
+      "food_meat_min"
+     ],
+     "food_oils": [
+      "food_oils_max",
+      "food_oils_mean",
+      "food_oils_min"
+     ],
+     "food_price_index": [
+      "food_price_index_max",
+      "food_price_index_mean",
+      "food_price_index_min"
+     ],
+     "food_sugar": [
+      "food_sugar_max",
+      "food_sugar_mean",
+      "food_sugar_min"
+     ],
+     "frost_days": [
+      "frost_days_max",
+      "frost_days_mean",
+      "frost_days_min"
+     ],
+     "gdd5_degC_days": [
+      "gdd5_degC_days_max",
+      "gdd5_degC_days_mean",
+      "gdd5_degC_days_min"
+     ],
+     "gpp_kgC_m2": [
+      "gpp_kgC_m2_max",
+      "gpp_kgC_m2_mean",
+      "gpp_kgC_m2_min"
+     ],
+     "heatwave_days_gt35C": [
+      "heatwave_days_gt35C_max",
+      "heatwave_days_gt35C_mean",
+      "heatwave_days_gt35C_min"
+     ],
+     "iod": [
+      "iod_max",
+      "iod_mean",
+      "iod_min"
+     ],
+     "nao": [
+      "nao_max",
+      "nao_mean",
+      "nao_min"
+     ],
+     "nighttime_lst_C": [
+      "nighttime_lst_C_max",
+      "nighttime_lst_C_mean",
+      "nighttime_lst_C_min"
+     ],
+     "nino12": [
+      "nino12_max",
+      "nino12_mean",
+      "nino12_min"
+     ],
+     "nino3": [
+      "nino3_max",
+      "nino3_mean",
+      "nino3_min"
+     ],
+     "nino34": [
+      "nino34_max",
+      "nino34_mean",
+      "nino34_min"
+     ],
+     "nino4": [
+      "nino4_max",
+      "nino4_mean",
+      "nino4_min"
+     ],
+     "noi": [
+      "noi_max",
+      "noi_mean",
+      "noi_min"
+     ],
+     "oni": [
+      "oni_max",
+      "oni_mean",
+      "oni_min"
+     ],
+     "pdo": [
+      "pdo_max",
+      "pdo_mean",
+      "pdo_min"
+     ],
+     "pna": [
+      "pna_max",
+      "pna_mean",
+      "pna_min"
+     ],
+     "precip_intensity_mm": [
+      "precip_intensity_mm_max",
+      "precip_intensity_mm_mean",
+      "precip_intensity_mm_min"
+     ],
+     "rmin_pct": [
+      "rmin_pct_max",
+      "rmin_pct_mean",
+      "rmin_pct_min"
+     ],
+     "sam": [
+      "sam_max",
+      "sam_mean",
+      "sam_min"
+     ],
+     "scpdsi": [
+      "scpdsi_max",
+      "scpdsi_mean",
+      "scpdsi_min"
+     ],
+     "snow_cover_fraction": [
+      "snow_cover_fraction_max",
+      "snow_cover_fraction_mean",
+      "snow_cover_fraction_min"
+     ],
+     "soi": [
+      "soi_max",
+      "soi_mean",
+      "soi_min"
+     ],
+     "soil_water_tc_mm": [
+      "soil_water_tc_mm_max",
+      "soil_water_tc_mm_mean",
+      "soil_water_tc_mm_min"
+     ],
+     "solar_radiation_Wm2": [
+      "solar_radiation_Wm2_max",
+      "solar_radiation_Wm2_mean",
+      "solar_radiation_Wm2_min"
+     ],
+     "spei_01m": [
+      "spei_01m_max",
+      "spei_01m_mean",
+      "spei_01m_min"
+     ],
+     "spei_03m": [
+      "spei_03m_max",
+      "spei_03m_mean",
+      "spei_03m_min"
+     ],
+     "spei_06m": [
+      "spei_06m_max",
+      "spei_06m_mean",
+      "spei_06m_min"
+     ],
+     "spei_24m": [
+      "spei_24m_max",
+      "spei_24m_mean",
+      "spei_24m_min"
+     ],
+     "sph_kgkg": [
+      "sph_kgkg_max",
+      "sph_kgkg_mean",
+      "sph_kgkg_min"
+     ],
+     "spi_01m": [
+      "spi_01m_max",
+      "spi_01m_mean",
+      "spi_01m_min"
+     ],
+     "spi_03m": [
+      "spi_03m_max",
+      "spi_03m_mean",
+      "spi_03m_min"
+     ],
+     "spi_06m": [
+      "spi_06m_max",
+      "spi_06m_mean",
+      "spi_06m_min"
+     ],
+     "spi_12m": [
+      "spi_12m_max",
+      "spi_12m_mean",
+      "spi_12m_min"
+     ],
+     "spi_24m": [
+      "spi_24m_max",
+      "spi_24m_mean",
+      "spi_24m_min"
+     ],
+     "sst_anom_atl3": [
+      "sst_anom_atl3_max",
+      "sst_anom_atl3_mean",
+      "sst_anom_atl3_min"
+     ],
+     "sst_anom_coral_sea": [
+      "sst_anom_coral_sea_max",
+      "sst_anom_coral_sea_mean",
+      "sst_anom_coral_sea_min"
+     ],
+     "sst_anom_global_tropical_mean": [
+      "sst_anom_global_tropical_mean_max",
+      "sst_anom_global_tropical_mean_mean",
+      "sst_anom_global_tropical_mean_min"
+     ],
+     "sst_anom_iod_east": [
+      "sst_anom_iod_east_max",
+      "sst_anom_iod_east_mean",
+      "sst_anom_iod_east_min"
+     ],
+     "sst_anom_iod_west": [
+      "sst_anom_iod_west_max",
+      "sst_anom_iod_west_mean",
+      "sst_anom_iod_west_min"
+     ],
+     "sst_anom_mediterranean": [
+      "sst_anom_mediterranean_max",
+      "sst_anom_mediterranean_mean",
+      "sst_anom_mediterranean_min"
+     ],
+     "sst_anom_nino34": [
+      "sst_anom_nino34_max",
+      "sst_anom_nino34_mean",
+      "sst_anom_nino34_min"
+     ],
+     "sst_anom_subpolar_north_atlantic": [
+      "sst_anom_subpolar_north_atlantic_max",
+      "sst_anom_subpolar_north_atlantic_mean",
+      "sst_anom_subpolar_north_atlantic_min"
+     ],
+     "swe_mean_mm": [
+      "swe_mean_mm_max",
+      "swe_mean_mm_mean",
+      "swe_mean_mm_min"
+     ],
+     "tc_vapor_pressure": [
+      "tc_vapor_pressure_max",
+      "tc_vapor_pressure_mean",
+      "tc_vapor_pressure_min"
+     ],
+     "tna": [
+      "tna_max",
+      "tna_mean",
+      "tna_min"
+     ],
+     "tni": [
+      "tni_max",
+      "tni_mean",
+      "tni_min"
+     ],
+     "tsa": [
+      "tsa_max",
+      "tsa_mean",
+      "tsa_min"
+     ],
+     "vpd_days_gt_2kpa": [
+      "vpd_days_gt_2kpa_max",
+      "vpd_days_gt_2kpa_mean",
+      "vpd_days_gt_2kpa_min"
+     ],
+     "vpd_max_daily": [
+      "vpd_max_daily_max",
+      "vpd_max_daily_mean",
+      "vpd_max_daily_min"
+     ],
+     "vpd_warm_season_mean": [
+      "vpd_warm_season_mean_max",
+      "vpd_warm_season_mean_mean",
+      "vpd_warm_season_mean_min"
+     ],
+     "wbal_mm": [
+      "wbal_mm_max",
+      "wbal_mm_mean",
+      "wbal_mm_min"
+     ],
+     "wbal_roll12": [
+      "wbal_roll12_max",
+      "wbal_roll12_mean",
+      "wbal_roll12_min"
+     ],
+     "wbal_roll24": [
+      "wbal_roll24_max",
+      "wbal_roll24_mean",
+      "wbal_roll24_min"
+     ],
+     "wbal_roll3": [
+      "wbal_roll3_max",
+      "wbal_roll3_mean",
+      "wbal_roll3_min"
+     ],
+     "wbal_roll6": [
+      "wbal_roll6_max",
+      "wbal_roll6_mean",
+      "wbal_roll6_min"
+     ],
+     "wet_day_count": [
+      "wet_day_count_max",
+      "wet_day_count_mean",
+      "wet_day_count_min"
+     ],
+     "wp": [
+      "wp_max",
+      "wp_mean",
+      "wp_min"
+     ]
+    },
+    "keep_unreviewed": [],
+    "verdicts": 404
+   },
+   "fix": "",
+   "id": "G-CLOSED",
+   "part": null,
+   "rule": "G-CLOSED"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-KEYS",
+   "part": null,
+   "rule": "G-KEYS"
+  },
+  {
+   "details": {
+    "lags": {
+     "V01_mean_temp_C_max": 0,
+     "V01_mean_temp_C_mean": 0,
+     "V01_mean_temp_C_min": 0,
+     "V02_total_precip_mm_max": 0,
+     "V02_total_precip_mm_mean": 0,
+     "V02_total_precip_mm_min": 0,
+     "V03_max_daily_precip_mm_max": 0,
+     "V03_max_daily_precip_mm_mean": 0,
+     "V03_max_daily_precip_mm_min": 0,
+     "V04_precip_seasonality": 0,
+     "V05_mean_vpd_kPa_max": 0,
+     "V05_mean_vpd_kPa_mean": 0,
+     "V05_mean_vpd_kPa_min": 0,
+     "V06_spei_12m_max_lag1": 0,
+     "V06_spei_12m_mean_lag1": 0,
+     "V06_spei_12m_min_lag1": 0,
+     "V07_total_ref_ET_mm_max": 0,
+     "V07_total_ref_ET_mm_mean": 0,
+     "V07_total_ref_ET_mm_min": 0,
+     "V09_mean_wind_ms_max": 0,
+     "V09_mean_wind_ms_mean": 0,
+     "V09_mean_wind_ms_min": 0,
+     "V11_mean_ndvi_max": 1,
+     "V11_mean_ndvi_mean": 1,
+     "V11_mean_ndvi_min": 1,
+     "V12_mean_evi_max": 1,
+     "V12_mean_evi_mean": 1,
+     "V12_mean_evi_min": 1,
+     "V13_mean_lst_C_max": 1,
+     "V13_mean_lst_C_mean": 1,
+     "V13_mean_lst_C_min": 1,
+     "V14_mean_albedo_max": 1,
+     "V14_mean_albedo_mean": 1,
+     "V14_mean_albedo_min": 1,
+     "V15_bare_ground_pct_lag2": 0,
+     "V17_herb_cover_pct_lag2": 0,
+     "V20_burned_binary_max": 1,
+     "V20_burned_binary_mean": 1,
+     "V20_burned_binary_min": 1,
+     "V30_soil_moisture_pct_max": 0,
+     "V30_soil_moisture_pct_mean": 0,
+     "V30_soil_moisture_pct_min": 0,
+     "aet_total_mm_max": 0,
+     "aet_total_mm_mean": 0,
+     "aet_total_mm_min": 0,
+     "aglw_buffalo_hold2021": 1,
+     "aglw_cattle_hold2021": 1,
+     "aglw_goats_hold2021": 1,
+     "aglw_horse_hold2021": 1,
+     "aglw_sheep_hold2021": 1,
+     "aglw_total_lsu_hold2021": 1,
+     "amo_max_lag1": 0,
+     "amo_mean_lag1": 0,
+     "amo_min_lag1": 0,
+     "ao_max": 1,
+     "ao_mean": 1,
+     "ao_min": 1,
+     "burn_doy_mean": 1,
+     "burn_month_count": 1,
+     "climate_water_deficit_mm_max": 0,
+     "climate_water_deficit_mm_mean": 0,
+     "climate_water_deficit_mm_min": 0,
+     "cloud_frequency_pct_max": 1,
+     "cloud_frequency_pct_mean": 1,
+     "cloud_frequency_pct_min": 1,
+     "conflict_deaths_max": 0,
+     "conflict_deaths_mean": 0,
+     "conflict_deaths_min": 0,
+     "conflict_events_max": 0,
+     "conflict_events_mean": 0,
+     "conflict_events_min": 0,
+     "deeprec_twsa_k3_max": 1,
+     "deeprec_twsa_k3_mean": 1,
+     "deeprec_twsa_k3_min": 1,
+     "diurnal_temp_range_C_max": 0,
+     "diurnal_temp_range_C_mean": 0,
+     "diurnal_temp_range_C_min": 0,
+     "epo_max": 1,
+     "epo_mean": 1,
+     "epo_min": 1,
+     "era5l_d2m_max": 0,
+     "era5l_d2m_mean": 0,
+     "era5l_d2m_min": 0,
+     "era5l_pev_max": 0,
+     "era5l_pev_mean": 0,
+     "era5l_pev_min": 0,
+     "era5l_slhf_max": 0,
+     "era5l_slhf_mean": 0,
+     "era5l_slhf_min": 0,
+     "era5l_smlt_max": 0,
+     "era5l_smlt_mean": 0,
+     "era5l_smlt_min": 0,
+     "era5l_sro_max": 0,
+     "era5l_sro_mean": 0,
+     "era5l_sro_min": 0,
+     "era5l_sshf_max": 0,
+     "era5l_sshf_mean": 0,
+     "era5l_sshf_min": 0,
+     "era5l_ssr_max": 0,
+     "era5l_ssr_mean": 0,
+     "era5l_ssr_min": 0,
+     "era5l_ssro_max": 0,
+     "era5l_ssro_mean": 0,
+     "era5l_ssro_min": 0,
+     "era5l_stl1_max": 0,
+     "era5l_stl1_mean": 0,
+     "era5l_stl1_min": 0,
+     "era5l_str_max": 0,
+     "era5l_str_mean": 0,
+     "era5l_str_min": 0,
+     "fert_n": 0,
+     "fert_p": 0,
+     "frost_days_max": 0,
+     "frost_days_mean": 0,
+     "frost_days_min": 0,
+     "gdd5_degC_days_max": 0,
+     "gdd5_degC_days_mean": 0,
+     "gdd5_degC_days_min": 0,
+     "gpp_kgC_m2_max": 1,
+     "gpp_kgC_m2_mean": 1,
+     "gpp_kgC_m2_min": 1,
+     "h_nbr1": 0,
+     "h_nbr2": 0,
+     "h_nbr_cum": 0,
+     "h_yrs_since": 0,
+     "hdi": 0,
+     "heatwave_days_gt35C_max": 0,
+     "heatwave_days_gt35C_mean": 0,
+     "heatwave_days_gt35C_min": 0,
+     "iod_max": 1,
+     "iod_mean": 1,
+     "iod_min": 1,
+     "nao_max": 1,
+     "nao_mean": 1,
+     "nao_min": 1,
+     "nighttime_lst_C_max": 1,
+     "nighttime_lst_C_mean": 1,
+     "nighttime_lst_C_min": 1,
+     "nino12_max": 1,
+     "nino12_mean": 1,
+     "nino12_min": 1,
+     "nino34_max": 1,
+     "nino34_mean": 1,
+     "nino34_min": 1,
+     "nino3_max": 1,
+     "nino3_mean": 1,
+     "nino3_min": 1,
+     "nino4_max": 1,
+     "nino4_mean": 1,
+     "nino4_min": 1,
+     "noi_max": 1,
+     "noi_mean": 1,
+     "noi_min": 1,
+     "ntl": 1,
+     "oni_max": 1,
+     "oni_mean": 1,
+     "oni_min": 1,
+     "pdo_max": 1,
+     "pdo_mean": 1,
+     "pdo_min": 1,
+     "phenology_sos_doy_lag2": 0,
+     "pna_max": 1,
+     "pna_mean": 1,
+     "pna_min": 1,
+     "population_density": 1,
+     "precip_intensity_mm_max": 0,
+     "precip_intensity_mm_mean": 0,
+     "precip_intensity_mm_min": 0,
+     "rmin_pct_max": 0,
+     "rmin_pct_mean": 0,
+     "rmin_pct_min": 0,
+     "sam_max": 1,
+     "sam_mean": 1,
+     "sam_min": 1,
+     "snow_duration_days": 0,
+     "soi_max": 1,
+     "soi_mean": 1,
+     "soi_min": 1,
+     "soil_water_tc_mm_max": 0,
+     "soil_water_tc_mm_mean": 0,
+     "soil_water_tc_mm_min": 0,
+     "solar_radiation_Wm2_max": 0,
+     "solar_radiation_Wm2_mean": 0,
+     "solar_radiation_Wm2_min": 0,
+     "spei_01m_max_lag1": 0,
+     "spei_01m_mean_lag1": 0,
+     "spei_01m_min_lag1": 0,
+     "spei_03m_max_lag1": 0,
+     "spei_03m_mean_lag1": 0,
+     "spei_03m_min_lag1": 0,
+     "spei_06m_max_lag1": 0,
+     "spei_06m_mean_lag1": 0,
+     "spei_06m_min_lag1": 0,
+     "spei_24m_max_lag1": 0,
+     "spei_24m_mean_lag1": 0,
+     "spei_24m_min_lag1": 0,
+     "sph_kgkg_max": 0,
+     "sph_kgkg_mean": 0,
+     "sph_kgkg_min": 0,
+     "spi_01m_max": 0,
+     "spi_01m_mean": 0,
+     "spi_01m_min": 0,
+     "spi_03m_max": 0,
+     "spi_03m_mean": 0,
+     "spi_03m_min": 0,
+     "spi_06m_max": 0,
+     "spi_06m_mean": 0,
+     "spi_06m_min": 0,
+     "spi_12m_max": 0,
+     "spi_12m_mean": 0,
+     "spi_12m_min": 0,
+     "spi_24m_max": 0,
+     "spi_24m_mean": 0,
+     "spi_24m_min": 0,
+     "sst_anom_atl3_max": 1,
+     "sst_anom_atl3_mean": 1,
+     "sst_anom_atl3_min": 1,
+     "sst_anom_coral_sea_max": 1,
+     "sst_anom_coral_sea_mean": 1,
+     "sst_anom_coral_sea_min": 1,
+     "sst_anom_global_tropical_mean_max": 1,
+     "sst_anom_global_tropical_mean_mean": 1,
+     "sst_anom_global_tropical_mean_min": 1,
+     "sst_anom_iod_east_max": 1,
+     "sst_anom_iod_east_mean": 1,
+     "sst_anom_iod_east_min": 1,
+     "sst_anom_iod_west_max": 1,
+     "sst_anom_iod_west_mean": 1,
+     "sst_anom_iod_west_min": 1,
+     "sst_anom_mediterranean_max": 1,
+     "sst_anom_mediterranean_mean": 1,
+     "sst_anom_mediterranean_min": 1,
+     "sst_anom_nino34_max": 1,
+     "sst_anom_nino34_mean": 1,
+     "sst_anom_nino34_min": 1,
+     "sst_anom_subpolar_north_atlantic_max": 1,
+     "sst_anom_subpolar_north_atlantic_mean": 1,
+     "sst_anom_subpolar_north_atlantic_min": 1,
+     "swe_mean_mm_max": 0,
+     "swe_mean_mm_mean": 0,
+     "swe_mean_mm_min": 0,
+     "tc_vapor_pressure_max": 0,
+     "tc_vapor_pressure_mean": 0,
+     "tc_vapor_pressure_min": 0,
+     "tna_max": 1,
+     "tna_mean": 1,
+     "tna_min": 1,
+     "tni_max": 1,
+     "tni_mean": 1,
+     "tni_min": 1,
+     "tree_cover_pct_lag2": 0,
+     "tsa_max": 1,
+     "tsa_mean": 1,
+     "tsa_min": 1,
+     "vpd_days_gt_2kpa_max": 0,
+     "vpd_days_gt_2kpa_mean": 0,
+     "vpd_days_gt_2kpa_min": 0,
+     "vpd_max_daily_max": 0,
+     "vpd_max_daily_mean": 0,
+     "vpd_max_daily_min": 0,
+     "vpd_warm_season_mean_max": 0,
+     "vpd_warm_season_mean_mean": 0,
+     "vpd_warm_season_mean_min": 0,
+     "wbal_mm_max": 0,
+     "wbal_mm_mean": 0,
+     "wbal_mm_min": 0,
+     "wbal_roll12_max": 0,
+     "wbal_roll12_mean": 0,
+     "wbal_roll12_min": 0,
+     "wbal_roll24_max": 0,
+     "wbal_roll24_mean": 0,
+     "wbal_roll24_min": 0,
+     "wbal_roll3_max": 0,
+     "wbal_roll3_mean": 0,
+     "wbal_roll3_min": 0,
+     "wbal_roll6_max": 0,
+     "wbal_roll6_mean": 0,
+     "wbal_roll6_min": 0,
+     "wet_day_count_max": 0,
+     "wet_day_count_mean": 0,
+     "wet_day_count_min": 0,
+     "wp_max": 1,
+     "wp_mean": 1,
+     "wp_min": 1
+    },
+    "lags_by_steps": {
+     "0": 169,
+     "1": 115
+    },
+    "r4": {
+     "first_driver_year": 2002,
+     "first_year_estimate": 2004,
+     "largest_lookback_steps": 2,
+     "largest_r8_lag_steps": 1,
+     "set_by": [
+      "V15_bare_ground_pct_lag2",
+      "V17_herb_cover_pct_lag2",
+      "phenology_sos_doy_lag2",
+      "tree_cover_pct_lag2"
+     ],
+     "set_only_by_declared_lag_operations": true
+    },
+    "refused": {}
+   },
+   "fix": "confirm the engineered look-back (or shorten it) before the freeze",
+   "id": "G-LAG",
+   "part": null,
+   "rule": "G-LAG"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-HIST",
+   "part": null,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "groups": 42,
+    "notes": [
+     "donor labels not judged here (check --deep reads them)",
+     "census not judged here (check --deep reads it)"
+    ]
+   },
+   "fix": "",
+   "id": "G-SUPPORT",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "co_measured_candidates": [],
+    "co_measured_unanswered": [],
+    "headline": true,
+    "unsigned": []
+   },
+   "fix": "",
+   "id": "G-FACTS",
+   "part": null,
+   "rule": "G-FACTS"
+  },
+  {
+   "details": {
+    "constants": {
+     "C13.smoke_groups": 4,
+     "C15.min_groups": 3
+    },
+    "data_groups": 42,
+    "groups": [
+     "amazon_basin_brazil",
+     "andes_puna",
+     "angola_zambia_fire_belt",
+     "atlantic_forest_brazil"
+    ],
+    "package_groups": 42,
+    "refused": null,
+    "rule": "R21",
+    "selection": "R21 smoke groups, ruling M2"
+   },
+   "fix": "",
+   "id": "deep groups (ruling M2)",
+   "part": null,
+   "rule": "R21"
+  },
+  {
+   "details": {
+    "declared_absent": [],
+    "years_checked": true
+   },
+   "fix": "",
+   "id": "G-MISSING (files)",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "cuts": {
+     "0": {
+      "fit_cut_day": "2019-12-31",
+      "guard_cut_day": "2016-12-31"
+     },
+     "1": {
+      "fit_cut_day": "2019-12-31",
+      "guard_cut_day": "2016-12-31"
+     }
+    },
+    "groups": [
+     "amazon_basin_brazil",
+     "andes_puna",
+     "angola_zambia_fire_belt",
+     "atlantic_forest_brazil"
+    ],
+    "inner_fit": [
+     2004,
+     2016
+    ],
+    "inner_score": [
+     2017,
+     2018,
+     2019
+    ],
+    "joined_rows_per_group_year": {
+     "amazon_basin_brazil/2004": 19583,
+     "amazon_basin_brazil/2005": 19583,
+     "amazon_basin_brazil/2006": 19583,
+     "amazon_basin_brazil/2007": 19583,
+     "amazon_basin_brazil/2008": 19583,
+     "amazon_basin_brazil/2009": 19583,
+     "amazon_basin_brazil/2010": 19583,
+     "amazon_basin_brazil/2011": 19583,
+     "amazon_basin_brazil/2012": 19583,
+     "amazon_basin_brazil/2013": 19583,
+     "amazon_basin_brazil/2014": 19583,
+     "amazon_basin_brazil/2015": 19583,
+     "amazon_basin_brazil/2016": 19583,
+     "amazon_basin_brazil/2017": 19583,
+     "amazon_basin_brazil/2018": 19583,
+     "amazon_basin_brazil/2019": 19583,
+     "amazon_basin_brazil/2020": 19583,
+     "amazon_basin_brazil/2021": 19583,
+     "amazon_basin_brazil/2022": 19583,
+     "amazon_basin_brazil/2023": 19583,
+     "andes_puna/2004": 7618,
+     "andes_puna/2005": 7618,
+     "andes_puna/2006": 7618,
+     "andes_puna/2007": 7618,
+     "andes_puna/2008": 7618,
+     "andes_puna/2009": 7618,
+     "andes_puna/2010": 7618,
+     "andes_puna/2011": 7618,
+     "andes_puna/2012": 7618,
+     "andes_puna/2013": 7618,
+     "andes_puna/2014": 7618,
+     "andes_puna/2015": 7618,
+     "andes_puna/2016": 7618,
+     "andes_puna/2017": 7618,
+     "andes_puna/2018": 7618,
+     "andes_puna/2019": 7618,
+     "andes_puna/2020": 7618,
+     "andes_puna/2021": 7618,
+     "andes_puna/2022": 7618,
+     "andes_puna/2023": 7618,
+     "angola_zambia_fire_belt/2004": 15963,
+     "angola_zambia_fire_belt/2005": 15963,
+     "angola_zambia_fire_belt/2006": 15963,
+     "angola_zambia_fire_belt/2007": 15963,
+     "angola_zambia_fire_belt/2008": 15963,
+     "angola_zambia_fire_belt/2009": 15963,
+     "angola_zambia_fire_belt/2010": 15963,
+     "angola_zambia_fire_belt/2011": 15963,
+     "angola_zambia_fire_belt/2012": 15963,
+     "angola_zambia_fire_belt/2013": 15963,
+     "angola_zambia_fire_belt/2014": 15963,
+     "angola_zambia_fire_belt/2015": 15963,
+     "angola_zambia_fire_belt/2016": 15963,
+     "angola_zambia_fire_belt/2017": 15963,
+     "angola_zambia_fire_belt/2018": 15963,
+     "angola_zambia_fire_belt/2019": 15963,
+     "angola_zambia_fire_belt/2020": 15963,
+     "angola_zambia_fire_belt/2021": 15963,
+     "angola_zambia_fire_belt/2022": 15963,
+     "angola_zambia_fire_belt/2023": 15963,
+     "atlantic_forest_brazil/2004": 7330,
+     "atlantic_forest_brazil/2005": 7330,
+     "atlantic_forest_brazil/2006": 7330,
+     "atlantic_forest_brazil/2007": 7330,
+     "atlantic_forest_brazil/2008": 7330,
+     "atlantic_forest_brazil/2009": 7330,
+     "atlantic_forest_brazil/2010": 7330,
+     "atlantic_forest_brazil/2011": 7330,
+     "atlantic_forest_brazil/2012": 7330,
+     "atlantic_forest_brazil/2013": 7330,
+     "atlantic_forest_brazil/2014": 7330,
+     "atlantic_forest_brazil/2015": 7330,
+     "atlantic_forest_brazil/2016": 7330,
+     "atlantic_forest_brazil/2017": 7330,
+     "atlantic_forest_brazil/2018": 7330,
+     "atlantic_forest_brazil/2019": 7330,
+     "atlantic_forest_brazil/2020": 7330,
+     "atlantic_forest_brazil/2021": 7330,
+     "atlantic_forest_brazil/2022": 7330,
+     "atlantic_forest_brazil/2023": 7330
+    },
+    "leads": [
+     1
+    ],
+    "r3_first_pass": 2023,
+    "r3_margins": {
+     "C3.coverage_group_share": 0.5
+    },
+    "r4_driver_stores": {
+     "first_data_year": 2002,
+     "rule": "J5: R4 counts from the latest first year of the driver stores that hold a lag source (R4 lag above 0: R8's lag plus a counted lag operation's look-back, _r04_lags), measured on the target's rows outside declared-absent groups, in whole years; never before the target's first year",
+     "stores": [
+      {
+       "absent_groups": [],
+       "catalog": "",
+       "first_year": 2002,
+       "lag_sources": [
+        "V06_spei_12m_max_lag1",
+        "V06_spei_12m_mean_lag1",
+        "V06_spei_12m_min_lag1",
+        "aglw_buffalo_hold2021",
+        "aglw_cattle_hold2021",
+        "aglw_goats_hold2021",
+        "aglw_horse_hold2021",
+        "aglw_sheep_hold2021",
+        "aglw_total_lsu_hold2021",
+        "amo_max_lag1",
+        "amo_mean_lag1",
+        "amo_min_lag1",
+        "phenology_sos_doy_lag2",
+        "spei_01m_max_lag1",
+        "spei_01m_mean_lag1",
+        "spei_01m_min_lag1",
+        "spei_03m_max_lag1",
+        "spei_03m_mean_lag1",
+        "spei_03m_min_lag1",
+        "spei_06m_max_lag1",
+        "spei_06m_mean_lag1",
+        "spei_06m_min_lag1",
+        "spei_24m_max_lag1",
+        "spei_24m_mean_lag1",
+        "spei_24m_min_lag1"
+       ]
+      },
+      {
+       "absent_groups": [],
+       "catalog": "../_stores/monthly_panel_v170_schema_catalog.yaml",
+       "first_year": 2002,
+       "lag_sources": [
+        "burn_doy_mean",
+        "burn_month_count",
+        "ntl",
+        "population_density"
+       ]
+      },
+      {
+       "absent_groups": [],
+       "catalog": "features/defo_features_k_store_catalog.yaml",
+       "first_year": 2002,
+       "lag_sources": [
+        "V15_bare_ground_pct_lag2",
+        "V17_herb_cover_pct_lag2",
+        "ao_max",
+        "ao_mean",
+        "ao_min",
+        "deeprec_twsa_k3_max",
+        "deeprec_twsa_k3_mean",
+        "deeprec_twsa_k3_min",
+        "epo_max",
+        "epo_mean",
+        "epo_min",
+        "iod_max",
+        "iod_mean",
+        "iod_min",
+        "nao_max",
+        "nao_mean",
+        "nao_min",
+        "noi_max",
+        "noi_mean",
+        "noi_min",
+        "pdo_max",
+        "pdo_mean",
+        "pdo_min",
+        "pna_max",
+        "pna_mean",
+        "pna_min",
+        "sam_max",
+        "sam_mean",
+        "sam_min",
+        "soi_max",
+        "soi_mean",
+        "soi_min",
+        "tna_max",
+        "tna_mean",
+        "tna_min",
+        "tree_cover_pct_lag2",
+        "tsa_max",
+        "tsa_mean",
+        "tsa_min",
+        "wp_max",
+        "wp_mean",
+        "wp_min"
+       ]
+      },
+      {
+       "absent_groups": [],
+       "catalog": "features/defo_features_store_catalog.yaml",
+       "first_year": 2002,
+       "lag_sources": [
+        "V11_mean_ndvi_max",
+        "V11_mean_ndvi_mean",
+        "V11_mean_ndvi_min",
+        "V12_mean_evi_max",
+        "V12_mean_evi_mean",
+        "V12_mean_evi_min",
+        "V13_mean_lst_C_max",
+        "V13_mean_lst_C_mean",
+        "V13_mean_lst_C_min",
+        "V14_mean_albedo_max",
+        "V14_mean_albedo_mean",
+        "V14_mean_albedo_min",
+        "V20_burned_binary_max",
+        "V20_burned_binary_mean",
+        "V20_burned_binary_min",
+        "cloud_frequency_pct_max",
+        "cloud_frequency_pct_mean",
+        "cloud_frequency_pct_min",
+        "gpp_kgC_m2_max",
+        "gpp_kgC_m2_mean",
+        "gpp_kgC_m2_min",
+        "nighttime_lst_C_max",
+        "nighttime_lst_C_mean",
+        "nighttime_lst_C_min",
+        "nino12_max",
+        "nino12_mean",
+        "nino12_min",
+        "nino34_max",
+        "nino34_mean",
+        "nino34_min",
+        "nino3_max",
+        "nino3_mean",
+        "nino3_min",
+        "nino4_max",
+        "nino4_mean",
+        "nino4_min",
+        "oni_max",
+        "oni_mean",
+        "oni_min",
+        "sst_anom_atl3_max",
+        "sst_anom_atl3_mean",
+        "sst_anom_atl3_min",
+        "sst_anom_coral_sea_max",
+        "sst_anom_coral_sea_mean",
+        "sst_anom_coral_sea_min",
+        "sst_anom_global_tropical_mean_max",
+        "sst_anom_global_tropical_mean_mean",
+        "sst_anom_global_tropical_mean_min",
+        "sst_anom_iod_east_max",
+        "sst_anom_iod_east_mean",
+        "sst_anom_iod_east_min",
+        "sst_anom_iod_west_max",
+        "sst_anom_iod_west_mean",
+        "sst_anom_iod_west_min",
+        "sst_anom_mediterranean_max",
+        "sst_anom_mediterranean_mean",
+        "sst_anom_mediterranean_min",
+        "sst_anom_nino34_max",
+        "sst_anom_nino34_mean",
+        "sst_anom_nino34_min",
+        "sst_anom_subpolar_north_atlantic_max",
+        "sst_anom_subpolar_north_atlantic_mean",
+        "sst_anom_subpolar_north_atlantic_min",
+        "tni_max",
+        "tni_mean",
+        "tni_min"
+       ]
+      }
+     ],
+     "target_first_year": 2001
+    },
+    "r4_flags": [
+     "store_first_year_moved_y0"
+    ],
+    "r4_set_by": [
+     "V15_bare_ground_pct_lag2",
+     "V17_herb_cover_pct_lag2",
+     "phenology_sos_doy_lag2",
+     "tree_cover_pct_lag2"
+    ],
+    "test_years": [
+     2020,
+     2021,
+     2022,
+     2023
+    ],
+    "train_end": 2019,
+    "y0": 2004,
+    "y_end": 2023
+   },
+   "fix": "",
+   "id": "windows (R3-R11)",
+   "part": null,
+   "rule": "R3-R11"
+  },
+  {
+   "details": {
+    "counts": {
+     "wbal_roll12_max": {
+      "near_sentinel": 0,
+      "rows": 1165406,
+      "undeclared_codes": {
+       "-999.0": 3
+      }
+     },
+     "wbal_roll12_min": {
+      "near_sentinel": 0,
+      "rows": 1165406,
+      "undeclared_codes": {
+       "-999.0": 7
+      }
+     },
+     "wbal_roll24_max": {
+      "near_sentinel": 0,
+      "rows": 1165406,
+      "undeclared_codes": {
+       "-999.0": 7
+      }
+     },
+     "wbal_roll24_min": {
+      "near_sentinel": 0,
+      "rows": 1165406,
+      "undeclared_codes": {
+       "-999.0": 18
+      }
+     }
+    }
+   },
+   "fix": "declare the provider's fill codes in the store catalog (fill_values), or opt the column out of the near-sentinel flag when such magnitudes are real",
+   "id": "G-SENTINEL (deep)",
+   "part": null,
+   "rule": "G-SENTINEL"
+  },
+  {
+   "details": {
+    "counts": {
+     "V01_mean_temp_C_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V01_mean_temp_C_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V01_mean_temp_C_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V02_total_precip_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V02_total_precip_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V02_total_precip_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V03_max_daily_precip_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V03_max_daily_precip_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V03_max_daily_precip_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V04_precip_seasonality": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15148276
+     },
+     "V05_mean_vpd_kPa_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V05_mean_vpd_kPa_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V05_mean_vpd_kPa_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V06_spei_12m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "V06_spei_12m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "V06_spei_12m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "V07_total_ref_ET_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V07_total_ref_ET_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V07_total_ref_ET_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V09_mean_wind_ms_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V09_mean_wind_ms_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V09_mean_wind_ms_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "V11_mean_ndvi_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165066
+     },
+     "V11_mean_ndvi_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165066
+     },
+     "V11_mean_ndvi_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165066
+     },
+     "V12_mean_evi_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165068
+     },
+     "V12_mean_evi_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165068
+     },
+     "V12_mean_evi_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165068
+     },
+     "V13_mean_lst_C_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1125722
+     },
+     "V13_mean_lst_C_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1125722
+     },
+     "V13_mean_lst_C_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1125722
+     },
+     "V14_mean_albedo_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110465
+     },
+     "V14_mean_albedo_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110465
+     },
+     "V14_mean_albedo_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110465
+     },
+     "V15_bare_ground_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15125058
+     },
+     "V15_bare_ground_pct_lag2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1057698
+     },
+     "V17_herb_cover_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15125058
+     },
+     "V17_herb_cover_pct_lag2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1057698
+     },
+     "V20_burned_binary_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V20_burned_binary_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V20_burned_binary_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "V25_elevation_m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "V26_slope_deg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "V27_southness": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "V28_CTI": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "V30_soil_moisture_pct_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "V30_soil_moisture_pct_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "V30_soil_moisture_pct_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "aet_total_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "aet_total_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "aet_total_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "aglw_buffalo": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "aglw_cattle": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "aglw_goats": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "aglw_horse": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "aglw_sheep": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "aglw_total_lsu": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "amo_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "amo_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "amo_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "ao_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "ao_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "ao_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "aridity_index_p_pet_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165036
+     },
+     "aridity_index_p_pet_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165036
+     },
+     "aridity_index_p_pet_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165036
+     },
+     "awc_cm3cm3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "built_surface_fraction": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "bulk_density_gcm3": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "burn_doy_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "burn_month_count": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "cec_cmolkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "clay_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "clf_dry": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15146846
+     },
+     "clf_wet": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15146846
+     },
+     "climate_water_deficit_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "climate_water_deficit_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "climate_water_deficit_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "cloud_frequency_pct_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "cloud_frequency_pct_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "cloud_frequency_pct_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "co2_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "co2_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "co2_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "coarse_fragments_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "conflict_deaths_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "conflict_deaths_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "conflict_deaths_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "conflict_events_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "conflict_events_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "conflict_events_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "cropland_fraction": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "deeprec_twsa_k3_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "deeprec_twsa_k3_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "deeprec_twsa_k3_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "deeprec_twsa_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "deeprec_twsa_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "deeprec_twsa_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1162766
+     },
+     "dist_coal_mine": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_dam": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_oilgas_well": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_pa": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_powerplant": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_reservoir": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_thermal": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "dist_to_coast_km": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "diurnal_temp_range_C_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "diurnal_temp_range_C_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "diurnal_temp_range_C_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "eddi_observed_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "eddi_observed_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "eddi_observed_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "epo_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "epo_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "epo_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "era5l_d2m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_d2m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_d2m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_pev_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_pev_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_pev_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_slhf_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_slhf_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_slhf_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_smlt_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_smlt_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_smlt_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sro_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sro_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sro_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sshf_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sshf_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_sshf_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssr_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssr_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssr_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssro_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssro_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_ssro_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_stl1_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_stl1_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_stl1_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_str_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_str_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "era5l_str_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1164306
+     },
+     "esacci_sm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 514953
+     },
+     "esacci_sm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 514953
+     },
+     "esacci_sm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 514953
+     },
+     "fert_n": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15111954
+     },
+     "fert_p": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15111954
+     },
+     "food_cereals_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_cereals_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_cereals_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_dairy_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_dairy_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_dairy_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_meat_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_meat_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_meat_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_oils_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_oils_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_oils_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_price_index_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_price_index_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_price_index_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_sugar_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_sugar_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "food_sugar_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "frost_days_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "frost_days_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "frost_days_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "gdd5_degC_days_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "gdd5_degC_days_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "gdd5_degC_days_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "gdp_pc": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15149420
+     },
+     "gpp_kgC_m2_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "gpp_kgC_m2_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "gpp_kgC_m2_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1112433
+     },
+     "grace_lwe": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 11971898
+     },
+     "h_nbr1": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110318
+     },
+     "h_nbr2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1059849
+     },
+     "h_nbr_cum": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110868
+     },
+     "h_yrs_since": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110868
+     },
+     "hand_m": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15149420
+     },
+     "hdi": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "heatwave_days_gt35C_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "heatwave_days_gt35C_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "heatwave_days_gt35C_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "iod_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "iod_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "iod_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "irrigation_pct_gmia": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "lat": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "lon": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_cropland": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_forest": {
+      "above": 14196,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_pasture": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_range": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_secondary": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "luh2_urban": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "modis_landcover_annual": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "modis_landcover_class": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "nao_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nao_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nao_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nighttime_lst_C_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 535963
+     },
+     "nighttime_lst_C_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 535963
+     },
+     "nighttime_lst_C_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 535963
+     },
+     "nino12_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino12_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino12_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino34_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino34_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino34_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino3_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino3_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino3_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino4_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino4_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nino4_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "nitrogen_gkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "noi_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "noi_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "noi_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "ntl": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "oni_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "oni_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "oni_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "pdo_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "pdo_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "pdo_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "phenology_sos_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 14682005
+     },
+     "pna_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "pna_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "pna_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "population_density": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "precip_intensity_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "precip_intensity_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "precip_intensity_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "rmin_pct_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "rmin_pct_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "rmin_pct_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "road_density": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15133976
+     },
+     "sam_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sam_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sam_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sand_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "shrub_cover_pct_global": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "silt_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "snow_cover_fraction_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 760573
+     },
+     "snow_cover_fraction_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 760573
+     },
+     "snow_cover_fraction_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 760573
+     },
+     "snow_disappearance_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 98436
+     },
+     "snow_duration_days": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "snow_max_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 171977
+     },
+     "snow_onset_doy": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 104962
+     },
+     "soi_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "soi_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "soi_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "soil_organic_carbon_gkg": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "soil_ph": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15150278
+     },
+     "soil_water_tc_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "soil_water_tc_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "soil_water_tc_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "solar_radiation_Wm2_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "solar_radiation_Wm2_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "solar_radiation_Wm2_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "spei_01m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110613
+     },
+     "spei_01m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110613
+     },
+     "spei_01m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1110613
+     },
+     "spei_03m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111369
+     },
+     "spei_03m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111369
+     },
+     "spei_03m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111369
+     },
+     "spei_06m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "spei_06m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "spei_06m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "spei_24m_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "spei_24m_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "spei_24m_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1111803
+     },
+     "sph_kgkg_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sph_kgkg_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sph_kgkg_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_atl3_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_atl3_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_atl3_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_coral_sea_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_coral_sea_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_coral_sea_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_global_tropical_mean_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_global_tropical_mean_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_global_tropical_mean_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_east_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_east_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_east_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_west_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_west_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_iod_west_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_mediterranean_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_mediterranean_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_mediterranean_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_nino34_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_nino34_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_nino34_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_subpolar_north_atlantic_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_subpolar_north_atlantic_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "sst_anom_subpolar_north_atlantic_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "swe_mean_mm_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "swe_mean_mm_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "swe_mean_mm_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "tc_vapor_pressure_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "tc_vapor_pressure_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "tc_vapor_pressure_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165252
+     },
+     "tna_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tna_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tna_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tni_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tni_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tni_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "travel_time": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15138838
+     },
+     "tree_cover_pct": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15125058
+     },
+     "tree_cover_pct_lag2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1057698
+     },
+     "tsa_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tsa_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "tsa_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "upstream_area_km2": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 15149420
+     },
+     "vpd_days_gt_2kpa_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_days_gt_2kpa_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_days_gt_2kpa_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_max_daily_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_max_daily_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_max_daily_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_warm_season_mean_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_warm_season_mean_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "vpd_warm_season_mean_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wet_day_count_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wet_day_count_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wet_day_count_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wp_max": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wp_mean": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     },
+     "wp_min": {
+      "above": 0,
+      "below": 0,
+      "nonmissing": 1165406
+     }
+    },
+    "not_built": "not built: (1) D96's 'one unit per physical quantity by UDUNITS dimension equality': no units library is installed and the G-NONAMES scan forbids unit spellings in engine code, so one unit per quantity is checked only where the facts identify the quantity (one unit string per sum group; a copy, lag, hold or trailing mean carries its single parent's unit string); (2) the output-side pre-clip rate and calibration ratio per arm: both exist only after a run (R28, R34; layer/decide.py prints each arm's pre-clip counts), and check runs before any plan",
+    "refuse_share": 0.001,
+    "target": {
+     "above": 0,
+     "at_bounds": 432631,
+     "below": 0,
+     "name": "loss_frac",
+     "nonmissing": 807904
+    },
+    "units": []
+   },
+   "fix": "",
+   "id": "G-RANGE",
+   "part": null,
+   "rule": "G-RANGE"
+  },
+  {
+   "details": {
+    "counts": {
+     "V25_elevation_m": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V26_slope_deg": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V27_southness": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "V28_CTI": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "awc_cm3cm3": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "bulk_density_gcm3": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "cec_cmolkg": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "clay_pct": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "coarse_fragments_pct": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_coal_mine": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_dam": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_oilgas_well": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_pa": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_powerplant": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_reservoir": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_thermal": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "dist_to_coast_km": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "hand_m": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "irrigation_pct_gmia": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "lat": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "lon": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "nitrogen_gkg": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "road_density": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "sand_pct": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "silt_pct": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "soil_organic_carbon_gkg": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "soil_ph": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "travel_time": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     },
+     "upstream_area_km2": {
+      "judged": 0,
+      "judged_as": "static",
+      "varying": 0
+     }
+    },
+    "not_judged": [
+     "V25_elevation_m",
+     "V26_slope_deg",
+     "V27_southness",
+     "V28_CTI",
+     "awc_cm3cm3",
+     "bulk_density_gcm3",
+     "cec_cmolkg",
+     "clay_pct",
+     "coarse_fragments_pct",
+     "dist_coal_mine",
+     "dist_dam",
+     "dist_oilgas_well",
+     "dist_pa",
+     "dist_powerplant",
+     "dist_reservoir",
+     "dist_thermal",
+     "dist_to_coast_km",
+     "hand_m",
+     "irrigation_pct_gmia",
+     "lat",
+     "lon",
+     "nitrogen_gkg",
+     "road_density",
+     "sand_pct",
+     "silt_pct",
+     "soil_organic_carbon_gkg",
+     "soil_ph",
+     "travel_time",
+     "upstream_area_km2"
+    ],
+    "tolerance": 0.001
+   },
+   "fix": "",
+   "id": "G-CADENCE",
+   "part": null,
+   "rule": "G-CADENCE"
+  },
+  {
+   "details": {
+    "joins": 176,
+    "refusals": {},
+    "report_only": {
+     "column set of store D:/monthly_panel/{group}_monthly_{year}.parquet": "[G-JOIN] table D:/monthly_panel/{group}_monthly_{year}.parquet (../_stores/monthly_panel_v170_schema_catalog.yaml): the observed column set differs from its catalog: 1 columns in the files are not in the catalog: ['month'] Fix: declare every stored column in the catalog and remove listed columns the files do not hold",
+     "join store D:/monthly_panel/{group}_monthly_{year}.parquet": "[G-JOIN] store D:/monthly_panel/{group}_monthly_{year}.parquet file D:/monthly_panel/amazon_basin_brazil_monthly_2002.parquet onto the target of amazon_basin_brazil: 235200 rows on the right side share a key, e.g. [{'_unit_code': 19506, '_time': 2002}, {'_unit_code': 19506, '_time': 2002}, {'_unit_code': 19506, '_time': 2002}, {'_unit_code': 19506, '_time': 2002}, {'_unit_code': 19506, '_time': 2002}]"
+    },
+    "rows_without_file": {},
+    "tables": 2,
+    "unmatched_left_rows": 0
+   },
+   "fix": "remove an unused store from dataset.yaml, or give it the unit key and declare every column",
+   "id": "G-JOIN",
+   "part": 326,
+   "rule": "G-JOIN"
+  },
+  {
+   "details": {
+    "all_missing_group_years": {
+     "V06_spei_12m_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "V06_spei_12m_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "V06_spei_12m_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "V14_mean_albedo_max": [
+      "amazon_basin_brazil/2014",
+      "andes_puna/2014",
+      "angola_zambia_fire_belt/2014",
+      "atlantic_forest_brazil/2014"
+     ],
+     "V14_mean_albedo_mean": [
+      "amazon_basin_brazil/2014",
+      "andes_puna/2014",
+      "angola_zambia_fire_belt/2014",
+      "atlantic_forest_brazil/2014"
+     ],
+     "V14_mean_albedo_min": [
+      "amazon_basin_brazil/2014",
+      "andes_puna/2014",
+      "angola_zambia_fire_belt/2014",
+      "atlantic_forest_brazil/2014"
+     ],
+     "V15_bare_ground_pct_lag2": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "V17_herb_cover_pct_lag2": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "amo_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "amo_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "amo_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "epo_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "epo_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "epo_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "gpp_kgC_m2_max": [
+      "amazon_basin_brazil/2005",
+      "andes_puna/2005",
+      "angola_zambia_fire_belt/2005",
+      "atlantic_forest_brazil/2005"
+     ],
+     "gpp_kgC_m2_mean": [
+      "amazon_basin_brazil/2005",
+      "andes_puna/2005",
+      "angola_zambia_fire_belt/2005",
+      "atlantic_forest_brazil/2005"
+     ],
+     "gpp_kgC_m2_min": [
+      "amazon_basin_brazil/2005",
+      "andes_puna/2005",
+      "angola_zambia_fire_belt/2005",
+      "atlantic_forest_brazil/2005"
+     ],
+     "h_nbr2": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "snow_cover_fraction_max": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2022",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "andes_puna/2016",
+      "andes_puna/2022",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2022",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2022"
+     ],
+     "snow_cover_fraction_mean": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2022",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "andes_puna/2016",
+      "andes_puna/2022",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2022",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2022"
+     ],
+     "snow_cover_fraction_min": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2022",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "andes_puna/2016",
+      "andes_puna/2022",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2022",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2022"
+     ],
+     "snow_disappearance_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2004",
+      "angola_zambia_fire_belt/2005",
+      "angola_zambia_fire_belt/2006",
+      "angola_zambia_fire_belt/2007",
+      "angola_zambia_fire_belt/2008",
+      "angola_zambia_fire_belt/2009",
+      "angola_zambia_fire_belt/2010",
+      "angola_zambia_fire_belt/2011",
+      "angola_zambia_fire_belt/2012",
+      "angola_zambia_fire_belt/2013",
+      "angola_zambia_fire_belt/2014",
+      "angola_zambia_fire_belt/2015",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2017",
+      "angola_zambia_fire_belt/2018",
+      "angola_zambia_fire_belt/2019",
+      "angola_zambia_fire_belt/2020",
+      "angola_zambia_fire_belt/2021",
+      "angola_zambia_fire_belt/2022",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2004",
+      "atlantic_forest_brazil/2005",
+      "atlantic_forest_brazil/2006",
+      "atlantic_forest_brazil/2007",
+      "atlantic_forest_brazil/2008",
+      "atlantic_forest_brazil/2009",
+      "atlantic_forest_brazil/2010",
+      "atlantic_forest_brazil/2011",
+      "atlantic_forest_brazil/2012",
+      "atlantic_forest_brazil/2013",
+      "atlantic_forest_brazil/2014",
+      "atlantic_forest_brazil/2015",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2017",
+      "atlantic_forest_brazil/2018",
+      "atlantic_forest_brazil/2019",
+      "atlantic_forest_brazil/2020",
+      "atlantic_forest_brazil/2021",
+      "atlantic_forest_brazil/2022",
+      "atlantic_forest_brazil/2023"
+     ],
+     "snow_max_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2004",
+      "angola_zambia_fire_belt/2005",
+      "angola_zambia_fire_belt/2006",
+      "angola_zambia_fire_belt/2007",
+      "angola_zambia_fire_belt/2008",
+      "angola_zambia_fire_belt/2009",
+      "angola_zambia_fire_belt/2010",
+      "angola_zambia_fire_belt/2011",
+      "angola_zambia_fire_belt/2012",
+      "angola_zambia_fire_belt/2013",
+      "angola_zambia_fire_belt/2014",
+      "angola_zambia_fire_belt/2015",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2017",
+      "angola_zambia_fire_belt/2018",
+      "angola_zambia_fire_belt/2019",
+      "angola_zambia_fire_belt/2020",
+      "angola_zambia_fire_belt/2021",
+      "angola_zambia_fire_belt/2022",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2004",
+      "atlantic_forest_brazil/2005",
+      "atlantic_forest_brazil/2006",
+      "atlantic_forest_brazil/2007",
+      "atlantic_forest_brazil/2008",
+      "atlantic_forest_brazil/2009",
+      "atlantic_forest_brazil/2010",
+      "atlantic_forest_brazil/2011",
+      "atlantic_forest_brazil/2012",
+      "atlantic_forest_brazil/2013",
+      "atlantic_forest_brazil/2014",
+      "atlantic_forest_brazil/2015",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2017",
+      "atlantic_forest_brazil/2018",
+      "atlantic_forest_brazil/2019",
+      "atlantic_forest_brazil/2020",
+      "atlantic_forest_brazil/2021",
+      "atlantic_forest_brazil/2022",
+      "atlantic_forest_brazil/2023"
+     ],
+     "snow_onset_doy": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "amazon_basin_brazil/2004",
+      "amazon_basin_brazil/2005",
+      "amazon_basin_brazil/2006",
+      "amazon_basin_brazil/2007",
+      "amazon_basin_brazil/2008",
+      "amazon_basin_brazil/2009",
+      "amazon_basin_brazil/2010",
+      "amazon_basin_brazil/2011",
+      "amazon_basin_brazil/2012",
+      "amazon_basin_brazil/2013",
+      "amazon_basin_brazil/2014",
+      "amazon_basin_brazil/2015",
+      "amazon_basin_brazil/2016",
+      "amazon_basin_brazil/2017",
+      "amazon_basin_brazil/2018",
+      "amazon_basin_brazil/2019",
+      "amazon_basin_brazil/2020",
+      "amazon_basin_brazil/2021",
+      "amazon_basin_brazil/2022",
+      "amazon_basin_brazil/2023",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "angola_zambia_fire_belt/2004",
+      "angola_zambia_fire_belt/2005",
+      "angola_zambia_fire_belt/2006",
+      "angola_zambia_fire_belt/2007",
+      "angola_zambia_fire_belt/2008",
+      "angola_zambia_fire_belt/2009",
+      "angola_zambia_fire_belt/2010",
+      "angola_zambia_fire_belt/2011",
+      "angola_zambia_fire_belt/2012",
+      "angola_zambia_fire_belt/2013",
+      "angola_zambia_fire_belt/2014",
+      "angola_zambia_fire_belt/2015",
+      "angola_zambia_fire_belt/2016",
+      "angola_zambia_fire_belt/2017",
+      "angola_zambia_fire_belt/2018",
+      "angola_zambia_fire_belt/2019",
+      "angola_zambia_fire_belt/2020",
+      "angola_zambia_fire_belt/2021",
+      "angola_zambia_fire_belt/2022",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003",
+      "atlantic_forest_brazil/2004",
+      "atlantic_forest_brazil/2005",
+      "atlantic_forest_brazil/2006",
+      "atlantic_forest_brazil/2007",
+      "atlantic_forest_brazil/2008",
+      "atlantic_forest_brazil/2009",
+      "atlantic_forest_brazil/2010",
+      "atlantic_forest_brazil/2011",
+      "atlantic_forest_brazil/2012",
+      "atlantic_forest_brazil/2013",
+      "atlantic_forest_brazil/2014",
+      "atlantic_forest_brazil/2015",
+      "atlantic_forest_brazil/2016",
+      "atlantic_forest_brazil/2017",
+      "atlantic_forest_brazil/2018",
+      "atlantic_forest_brazil/2019",
+      "atlantic_forest_brazil/2020",
+      "atlantic_forest_brazil/2021",
+      "atlantic_forest_brazil/2022",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_01m_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_01m_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_01m_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_03m_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_03m_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_03m_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_06m_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_06m_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_06m_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_24m_max": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_24m_mean": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "spei_24m_min": [
+      "amazon_basin_brazil/2023",
+      "andes_puna/2023",
+      "angola_zambia_fire_belt/2023",
+      "atlantic_forest_brazil/2023"
+     ],
+     "tree_cover_pct_lag2": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "wbal_roll12_max": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll12_mean": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll12_min": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll24_max": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "wbal_roll24_mean": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "wbal_roll24_min": [
+      "amazon_basin_brazil/2002",
+      "amazon_basin_brazil/2003",
+      "andes_puna/2002",
+      "andes_puna/2003",
+      "angola_zambia_fire_belt/2002",
+      "angola_zambia_fire_belt/2003",
+      "atlantic_forest_brazil/2002",
+      "atlantic_forest_brazil/2003"
+     ],
+     "wbal_roll3_max": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll3_mean": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll3_min": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll6_max": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll6_mean": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ],
+     "wbal_roll6_min": [
+      "amazon_basin_brazil/2002",
+      "andes_puna/2002",
+      "angola_zambia_fire_belt/2002",
+      "atlantic_forest_brazil/2002"
+     ]
+    },
+    "declared_absent_group_years": {},
+    "summary": {
+     "V01_mean_temp_C_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V01_mean_temp_C_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V01_mean_temp_C_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V02_total_precip_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V02_total_precip_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V02_total_precip_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V03_max_daily_precip_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V03_max_daily_precip_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V03_max_daily_precip_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V04_precip_seasonality": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V05_mean_vpd_kPa_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V05_mean_vpd_kPa_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V05_mean_vpd_kPa_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V06_spei_12m_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "V06_spei_12m_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "V06_spei_12m_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "V07_total_ref_ET_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V07_total_ref_ET_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V07_total_ref_ET_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V09_mean_wind_ms_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V09_mean_wind_ms_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V09_mean_wind_ms_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "V11_mean_ndvi_max": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000525
+     },
+     "V11_mean_ndvi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000525
+     },
+     "V11_mean_ndvi_min": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000525
+     },
+     "V12_mean_evi_max": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000523
+     },
+     "V12_mean_evi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000523
+     },
+     "V12_mean_evi_min": {
+      "cells": 88,
+      "max_missing_share": 0.002452,
+      "mean_missing_share": 0.000523
+     },
+     "V13_mean_lst_C_max": {
+      "cells": 88,
+      "max_missing_share": 0.179184,
+      "mean_missing_share": 0.027881
+     },
+     "V13_mean_lst_C_mean": {
+      "cells": 88,
+      "max_missing_share": 0.179184,
+      "mean_missing_share": 0.027881
+     },
+     "V13_mean_lst_C_min": {
+      "cells": 88,
+      "max_missing_share": 0.179184,
+      "mean_missing_share": 0.027881
+     },
+     "V14_mean_albedo_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.047674
+     },
+     "V14_mean_albedo_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.047674
+     },
+     "V14_mean_albedo_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.047674
+     },
+     "V15_bare_ground_pct": {
+      "cells": 88,
+      "max_missing_share": 0.006335,
+      "mean_missing_share": 0.001945
+     },
+     "V15_bare_ground_pct_lag2": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.092678
+     },
+     "V17_herb_cover_pct": {
+      "cells": 88,
+      "max_missing_share": 0.006335,
+      "mean_missing_share": 0.001945
+     },
+     "V17_herb_cover_pct_lag2": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.092678
+     },
+     "V20_burned_binary_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V20_burned_binary_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V20_burned_binary_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V25_elevation_m": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V26_slope_deg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V27_southness": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V28_CTI": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "V30_soil_moisture_pct_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "V30_soil_moisture_pct_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "V30_soil_moisture_pct_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "aet_total_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "aet_total_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "aet_total_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "aglw_buffalo": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_cattle": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_goats": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_horse": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_sheep": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aglw_total_lsu": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "amo_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "amo_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "amo_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "ao_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "ao_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "ao_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "aridity_index_p_pet_max": {
+      "cells": 88,
+      "max_missing_share": 0.004525,
+      "mean_missing_share": 0.000485
+     },
+     "aridity_index_p_pet_mean": {
+      "cells": 88,
+      "max_missing_share": 0.004525,
+      "mean_missing_share": 0.000485
+     },
+     "aridity_index_p_pet_min": {
+      "cells": 88,
+      "max_missing_share": 0.004525,
+      "mean_missing_share": 0.000485
+     },
+     "awc_cm3cm3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "built_surface_fraction": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "bulk_density_gcm3": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "burn_doy_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "burn_month_count": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "cec_cmolkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "clay_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "clf_dry": {
+      "cells": 88,
+      "max_missing_share": 0.001634,
+      "mean_missing_share": 0.000409
+     },
+     "clf_wet": {
+      "cells": 88,
+      "max_missing_share": 0.001634,
+      "mean_missing_share": 0.000409
+     },
+     "climate_water_deficit_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "climate_water_deficit_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "climate_water_deficit_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "cloud_frequency_pct_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "cloud_frequency_pct_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "cloud_frequency_pct_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "co2_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "co2_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "co2_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "coarse_fragments_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_deaths_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_deaths_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_deaths_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_events_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_events_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "conflict_events_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "cropland_fraction": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "deeprec_twsa_k3_max": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "deeprec_twsa_k3_mean": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "deeprec_twsa_k3_min": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "deeprec_twsa_max": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "deeprec_twsa_mean": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "deeprec_twsa_min": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004086
+     },
+     "dist_coal_mine": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_dam": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_oilgas_well": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_pa": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_powerplant": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_reservoir": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_thermal": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "dist_to_coast_km": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "diurnal_temp_range_C_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "diurnal_temp_range_C_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "diurnal_temp_range_C_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "eddi_max": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 3.4e-05
+     },
+     "eddi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 3.4e-05
+     },
+     "eddi_min": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 3.4e-05
+     },
+     "eddi_observed_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "eddi_observed_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "eddi_observed_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "epo_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "epo_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "epo_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "era5l_d2m_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_d2m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_d2m_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_pev_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_pev_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_pev_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_slhf_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_slhf_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_slhf_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_smlt_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_smlt_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_smlt_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sro_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sro_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sro_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sshf_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sshf_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_sshf_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssr_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssr_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssr_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssro_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssro_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_ssro_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_stl1_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_stl1_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_stl1_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_str_max": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_str_mean": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "era5l_str_min": {
+      "cells": 88,
+      "max_missing_share": 0.00681,
+      "mean_missing_share": 0.001703
+     },
+     "esacci_sm_max": {
+      "cells": 88,
+      "max_missing_share": 0.739944,
+      "mean_missing_share": 0.515951
+     },
+     "esacci_sm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.739944,
+      "mean_missing_share": 0.515951
+     },
+     "esacci_sm_min": {
+      "cells": 88,
+      "max_missing_share": 0.739944,
+      "mean_missing_share": 0.515951
+     },
+     "fert_n": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004438
+     },
+     "fert_p": {
+      "cells": 88,
+      "max_missing_share": 0.016344,
+      "mean_missing_share": 0.004438
+     },
+     "food_cereals_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_cereals_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_cereals_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_dairy_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_dairy_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_dairy_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_meat_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_meat_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_meat_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_oils_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_oils_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_oils_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_price_index_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_price_index_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_price_index_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_sugar_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_sugar_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "food_sugar_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "frost_days_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "frost_days_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "frost_days_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdd5_degC_days_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdd5_degC_days_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdd5_degC_days_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "gdp_pc": {
+      "cells": 88,
+      "max_missing_share": 0.000409,
+      "mean_missing_share": 0.000102
+     },
+     "gpp_kgC_m2_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "gpp_kgC_m2_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "gpp_kgC_m2_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045455
+     },
+     "h_nbr1": {
+      "cells": 88,
+      "max_missing_share": 0.236223,
+      "mean_missing_share": 0.061639
+     },
+     "h_nbr2": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.104292
+     },
+     "h_nbr_cum": {
+      "cells": 88,
+      "max_missing_share": 0.23391,
+      "mean_missing_share": 0.06103
+     },
+     "h_yrs_since": {
+      "cells": 88,
+      "max_missing_share": 0.23391,
+      "mean_missing_share": 0.06103
+     },
+     "hand_m": {
+      "cells": 88,
+      "max_missing_share": 0.000409,
+      "mean_missing_share": 0.000102
+     },
+     "hdi": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "heatwave_days_gt35C_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "heatwave_days_gt35C_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "heatwave_days_gt35C_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "iod_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "iod_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "iod_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "irrigation_pct_gmia": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "lat": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "lon": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_cropland": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_forest": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_pasture": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_range": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_secondary": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "luh2_urban": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "modis_landcover_annual": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "modis_landcover_class": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nao_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nao_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nao_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nighttime_lst_C_max": {
+      "cells": 88,
+      "max_missing_share": 0.999082,
+      "mean_missing_share": 0.400873
+     },
+     "nighttime_lst_C_mean": {
+      "cells": 88,
+      "max_missing_share": 0.999082,
+      "mean_missing_share": 0.400873
+     },
+     "nighttime_lst_C_min": {
+      "cells": 88,
+      "max_missing_share": 0.999082,
+      "mean_missing_share": 0.400873
+     },
+     "nino12_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino12_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino12_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino34_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino34_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino34_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino3_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino3_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino3_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino4_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino4_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nino4_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "nitrogen_gkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "noi_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "noi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "noi_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "ntl": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "oni_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "oni_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "oni_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pdo_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pdo_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pdo_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "phenology_sos_doy": {
+      "cells": 88,
+      "max_missing_share": 0.117056,
+      "mean_missing_share": 0.030294
+     },
+     "pna_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pna_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "pna_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "population_density": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "precip_intensity_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "precip_intensity_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "precip_intensity_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "rmin_pct_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "rmin_pct_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "rmin_pct_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "road_density": {
+      "cells": 88,
+      "max_missing_share": 0.002296,
+      "mean_missing_share": 0.000874
+     },
+     "sam_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sam_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sam_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sand_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "scpdsi_max": {
+      "cells": 88,
+      "max_missing_share": 0.004086,
+      "mean_missing_share": 0.001373
+     },
+     "scpdsi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.004086,
+      "mean_missing_share": 0.001373
+     },
+     "scpdsi_min": {
+      "cells": 88,
+      "max_missing_share": 0.004086,
+      "mean_missing_share": 0.001373
+     },
+     "shrub_cover_pct_global": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "silt_pct": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "snow_cover_fraction_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.322464
+     },
+     "snow_cover_fraction_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.322464
+     },
+     "snow_cover_fraction_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.322464
+     },
+     "snow_disappearance_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.991347
+     },
+     "snow_duration_days": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "snow_max_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.984882
+     },
+     "snow_onset_doy": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.990773
+     },
+     "soi_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soi_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soi_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_organic_carbon_gkg": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_ph": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "soil_water_tc_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "soil_water_tc_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "soil_water_tc_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "solar_radiation_Wm2_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "solar_radiation_Wm2_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "solar_radiation_Wm2_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "spei_01m_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04727
+     },
+     "spei_01m_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04727
+     },
+     "spei_01m_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04727
+     },
+     "spei_03m_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.046736
+     },
+     "spei_03m_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.046736
+     },
+     "spei_03m_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.046736
+     },
+     "spei_06m_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "spei_06m_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "spei_06m_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "spei_24m_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "spei_24m_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "spei_24m_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.04643
+     },
+     "sph_kgkg_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sph_kgkg_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sph_kgkg_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "spi_01m_max": {
+      "cells": 88,
+      "max_missing_share": 0.145328,
+      "mean_missing_share": 0.003611
+     },
+     "spi_01m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.145328,
+      "mean_missing_share": 0.003611
+     },
+     "spi_01m_min": {
+      "cells": 88,
+      "max_missing_share": 0.145328,
+      "mean_missing_share": 0.003611
+     },
+     "spi_03m_max": {
+      "cells": 88,
+      "max_missing_share": 0.04,
+      "mean_missing_share": 0.000489
+     },
+     "spi_03m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.04,
+      "mean_missing_share": 0.000489
+     },
+     "spi_03m_min": {
+      "cells": 88,
+      "max_missing_share": 0.04,
+      "mean_missing_share": 0.000489
+     },
+     "spi_06m_max": {
+      "cells": 88,
+      "max_missing_share": 0.002916,
+      "mean_missing_share": 3.6e-05
+     },
+     "spi_06m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.002916,
+      "mean_missing_share": 3.6e-05
+     },
+     "spi_06m_min": {
+      "cells": 88,
+      "max_missing_share": 0.002916,
+      "mean_missing_share": 3.6e-05
+     },
+     "spi_12m_max": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 5e-06
+     },
+     "spi_12m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 5e-06
+     },
+     "spi_12m_min": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 5e-06
+     },
+     "spi_24m_max": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 6e-06
+     },
+     "spi_24m_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 6e-06
+     },
+     "spi_24m_min": {
+      "cells": 88,
+      "max_missing_share": 0.000136,
+      "mean_missing_share": 6e-06
+     },
+     "sst_anom_atl3_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_atl3_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_atl3_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_coral_sea_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_coral_sea_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_coral_sea_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_global_tropical_mean_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_global_tropical_mean_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_global_tropical_mean_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_east_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_east_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_east_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_west_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_west_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_iod_west_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_mediterranean_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_mediterranean_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_mediterranean_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_nino34_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_nino34_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_nino34_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_subpolar_north_atlantic_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_subpolar_north_atlantic_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "sst_anom_subpolar_north_atlantic_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "swe_mean_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "swe_mean_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "swe_mean_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "tc_vapor_pressure_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "tc_vapor_pressure_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "tc_vapor_pressure_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "tna_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tna_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tna_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tni_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tni_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tni_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "travel_time": {
+      "cells": 88,
+      "max_missing_share": 0.005448,
+      "mean_missing_share": 0.001362
+     },
+     "tree_cover_pct": {
+      "cells": 88,
+      "max_missing_share": 0.006335,
+      "mean_missing_share": 0.001945
+     },
+     "tree_cover_pct_lag2": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.092678
+     },
+     "tsa_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tsa_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "tsa_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "upstream_area_km2": {
+      "cells": 88,
+      "max_missing_share": 0.000409,
+      "mean_missing_share": 0.000102
+     },
+     "vpd_days_gt_2kpa_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_days_gt_2kpa_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_days_gt_2kpa_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_max_daily_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_max_daily_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_max_daily_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_warm_season_mean_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_warm_season_mean_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "vpd_warm_season_mean_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wbal_mm_max": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "wbal_mm_mean": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "wbal_mm_min": {
+      "cells": 88,
+      "max_missing_share": 0.000953,
+      "mean_missing_share": 0.000238
+     },
+     "wbal_roll12_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll12_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll12_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll24_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.091126
+     },
+     "wbal_roll24_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.091126
+     },
+     "wbal_roll24_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.091126
+     },
+     "wbal_roll3_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll3_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll3_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll6_max": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll6_mean": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wbal_roll6_min": {
+      "cells": 88,
+      "max_missing_share": 1.0,
+      "mean_missing_share": 0.045682
+     },
+     "wet_day_count_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wet_day_count_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wet_day_count_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wp_max": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wp_mean": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     },
+     "wp_min": {
+      "cells": 88,
+      "max_missing_share": 0.0,
+      "mean_missing_share": 0.0
+     }
+    }
+   },
+   "fix": "",
+   "id": "G-MISSING (deep)",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "all_zero_units": 7842,
+    "census": [
+     {
+      "count_max": 25,
+      "count_min": 25,
+      "duplicates": false,
+      "first_max": 2001,
+      "first_min": 2001,
+      "group": "amazon_basin_brazil",
+      "last_max": 2025,
+      "last_min": 2025,
+      "rows": 490000,
+      "units": 19600
+     },
+     {
+      "count_max": 25,
+      "count_min": 25,
+      "duplicates": false,
+      "first_max": 2001,
+      "first_min": 2001,
+      "group": "andes_puna",
+      "last_max": 2025,
+      "last_min": 2025,
+      "rows": 248600,
+      "units": 9944
+     },
+     {
+      "count_max": 25,
+      "count_min": 25,
+      "duplicates": false,
+      "first_max": 2001,
+      "first_min": 2001,
+      "group": "angola_zambia_fire_belt",
+      "last_max": 2025,
+      "last_min": 2025,
+      "rows": 402175,
+      "units": 16087
+     },
+     {
+      "count_max": 25,
+      "count_min": 25,
+      "duplicates": false,
+      "first_max": 2001,
+      "first_min": 2001,
+      "group": "atlantic_forest_brazil",
+      "last_max": 2025,
+      "last_min": 2025,
+      "rows": 183550,
+      "units": 7342
+     }
+    ],
+    "groups": 42,
+    "notes": [
+     "donor rows: 807904 valid labels, distinct values: >= 3"
+    ],
+    "train_end": 2019
+   },
+   "fix": "",
+   "id": "G-SUPPORT (deep)",
+   "part": null,
+   "rule": "G-SUPPORT"
+  },
+  {
+   "details": {
+    "flagged": {
+     "epo_max": [
+      "vanishes:2023"
+     ],
+     "epo_mean": [
+      "vanishes:2023"
+     ],
+     "epo_min": [
+      "vanishes:2023"
+     ],
+     "nighttime_lst_C_max": [
+      "over_threshold"
+     ],
+     "nighttime_lst_C_mean": [
+      "over_threshold"
+     ],
+     "nighttime_lst_C_min": [
+      "over_threshold"
+     ]
+    },
+    "ruled": [
+     "epo_max",
+     "epo_mean",
+     "epo_min",
+     "nighttime_lst_C_max",
+     "nighttime_lst_C_mean",
+     "nighttime_lst_C_min"
+    ]
+   },
+   "fix": "",
+   "id": "G-MISSING",
+   "part": null,
+   "rule": "G-MISSING"
+  },
+  {
+   "details": {
+    "baseline_disclosures": [],
+    "cuts": [
+     {
+      "cut": "lead 0 fit cut",
+      "day": "2019-12-31"
+     },
+     {
+      "cut": "lead 0 guard cut",
+      "day": "2016-12-31"
+     },
+     {
+      "cut": "lead 1 fit cut",
+      "day": "2019-12-31"
+     },
+     {
+      "cut": "lead 1 guard cut",
+      "day": "2016-12-31"
+     }
+    ],
+    "earliest_cut_day": 736329,
+    "never_used": "release_date, snapshot_date (plan 1.3)",
+    "not_compared": [],
+    "observed_through_record_end": [
+     "aglw_buffalo_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_cattle_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_goats_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_horse_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_sheep_hold2021 (observed_through 2021, regular cadence)",
+     "aglw_total_lsu_hold2021 (observed_through 2021, regular cadence)",
+     "fert_n (observed_through 2013, regular cadence)",
+     "fert_p (observed_through 2013, regular cadence)",
+     "hdi (observed_through 2015, regular cadence)",
+     "population_density (observed_through 2020, regular cadence)"
+    ],
+    "static_undated": []
+   },
+   "fix": "",
+   "id": "G-EPOCH",
+   "part": null,
+   "rule": "G-EPOCH"
+  },
+  {
+   "details": {
+    "lags": [
+     1
+    ],
+    "reads": 960
+   },
+   "fix": "",
+   "id": "G-CALENDAR",
+   "part": null,
+   "rule": "G-CALENDAR"
+  },
+  {
+   "details": {
+    "matched": {
+     "V06_spei_12m_max_lag1": 1000,
+     "V06_spei_12m_mean_lag1": 1000,
+     "V06_spei_12m_min_lag1": 1000,
+     "aglw_buffalo_hold2021": 1000,
+     "aglw_cattle_hold2021": 1000,
+     "aglw_goats_hold2021": 1000,
+     "aglw_horse_hold2021": 1000,
+     "aglw_sheep_hold2021": 1000,
+     "aglw_total_lsu_hold2021": 1000,
+     "amo_max_lag1": 1000,
+     "amo_mean_lag1": 1000,
+     "amo_min_lag1": 1000,
+     "phenology_sos_doy_lag2": 1000,
+     "spei_01m_max_lag1": 1000,
+     "spei_01m_mean_lag1": 1000,
+     "spei_01m_min_lag1": 1000,
+     "spei_03m_max_lag1": 1000,
+     "spei_03m_mean_lag1": 1000,
+     "spei_03m_min_lag1": 1000,
+     "spei_06m_max_lag1": 1000,
+     "spei_06m_mean_lag1": 1000,
+     "spei_06m_min_lag1": 1000,
+     "spei_24m_max_lag1": 1000,
+     "spei_24m_mean_lag1": 1000,
+     "spei_24m_min_lag1": 1000
+    },
+    "sample_rows": 1000,
+    "tolerance": 1e-09
+   },
+   "fix": "",
+   "id": "G-DERIVED (recompute)",
+   "part": null,
+   "rule": "G-DERIVED"
+  },
+  {
+   "details": {
+    "look_backs": [
+     "lag 0",
+     "lag 1",
+     "lag 2",
+     "lag 3",
+     "trailing mean 1",
+     "trailing mean 5"
+    ],
+    "sample_rows": 760
+   },
+   "fix": "",
+   "id": "G-HIST (sample)",
+   "part": null,
+   "rule": "G-HIST"
+  },
+  {
+   "details": {
+    "sum_groups": 2
+   },
+   "fix": "",
+   "id": "G-LINEAGE (deep)",
+   "part": null,
+   "rule": "G-LINEAGE"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-DERIVED",
+   "part": null,
+   "rule": "G-DERIVED"
+  }
+ ],
+ "mode": "deep",
+ "package": "defo",
+ "package_fingerprint": "d607314e8d571703e3e8dd44d15cb6da4f649e552328b077b38b0db8336f5996"
+}

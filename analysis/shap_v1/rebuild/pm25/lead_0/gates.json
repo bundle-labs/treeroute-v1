@@ -1,0 +1,182 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": false
+   }
+  },
+  "E10_exported_trees": {
+   "pass": true,
+   "values": {
+    "rows_x_trees": [
+     252,
+     12600
+    ],
+    "unit": "alaska_interior_taiga_-4105_2398"
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "6d19c3e20e8111b8",
+    "engine_root": "D:\\treeroute\\ckpt_20261013\\engine_before",
+    "manifest": "6d19c3e20e8111b8"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3_inputs": {
+   "pass": true,
+   "values": {
+    "config_keys_differing": [],
+    "derived": "5c5bdbbb8dd65384",
+    "fingerprint": "74e676096559d7c9",
+    "manifest_fingerprint": "74e676096559d7c9",
+    "package": "625f495161572b8b"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [
+     "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/pm25/data/static/part-0.parquet"
+    ],
+    "path_map": true,
+    "static_files_sha256": [
+     "3573202dbfaca883",
+     "3573202dbfaca883"
+    ],
+    "target_files_sha256": [
+     "ddfe76469a0b2ddc",
+     "ddfe76469a0b2ddc"
+    ]
+   }
+  },
+  "E3m_recorded_path_map": {
+   "pass": true,
+   "values": {
+    "files": [
+     {
+      "equal": true,
+      "lock_records": 1,
+      "locks": [
+       "FREEZE_20261006T203115Z.lock.json"
+      ],
+      "recorded": "C:\\Users\\~\\Desktop\\data set for reserch paper\\engine/datasets/pm25/data/static/part-0.parquet",
+      "sha256": "56d7e473e0107d4f0695fc9d0a163be99410427f3039666c04b35f459f261460",
+      "size": 9508244,
+      "today": "C:/Users/~/Downloads/claude things/data set for reserch paper/engine/datasets/pm25/data/static/part-0.parquet"
+     }
+    ],
+    "rule": "content SHA-256, size and mtime equal every freeze-lock record of the recorded path"
+   }
+  },
+  "E4_donor_rows": {
+   "pass": true,
+   "values": {
+    "row_key_hash": [
+     "70f0ed7daeeb983d",
+     "70f0ed7daeeb983d"
+    ],
+    "rows": [
+     2590280,
+     2590280
+    ]
+   }
+  },
+  "E5_bank_fingerprint": {
+   "pass": false,
+   "values": {
+    "rebuilt": "19f80801d682f4af57f211dd11ac2afde2f8c2f4786fae719234a0bd7654b8ec",
+    "role": "informational, cause not established (answers decide: E5a, E8, E10)",
+    "run": "4f51d2017cfe8ffc1039a410e2145e307659f774a9d4c90295dbd68a2e20b1ed",
+    "trees": 12700
+   }
+  },
+  "E6_c_and_tolerances": {
+   "pass": true,
+   "values": {
+    "c": [
+     1.5,
+     1.5
+    ]
+   }
+  },
+  "E8_predictions": {
+   "pass": true,
+   "values": {
+    "arm": "log_c_corrector_unweighted",
+    "arm_bit_equal": 12192,
+    "bit_identical": true,
+    "d8_licence": null,
+    "max_abs_pre": 0.0,
+    "max_rel_arm": 0.0,
+    "max_rel_pre": 0.0,
+    "max_ulps_arm": 0,
+    "max_ulps_pre": 0,
+    "pre_bit_equal": 12192,
+    "rows_checked": 12192,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "tolerance_rule": "bit identity",
+    "units": 254,
+    "within_relative_tolerance": true
+   }
+  },
+  "E9_coefficients_reproduce_the_kernel": {
+   "pass": true,
+   "values": {
+    "fits_captured": 254,
+    "fits_whose_X_b_differs_from_the_kernel": 0,
+    "region_proof": null
+   }
+  }
+ },
+ "peak_gb": 4.69,
+ "result": {
+  "arm": "log_c_corrector_unweighted",
+  "c": 1.5,
+  "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\pm25\\headline\\20261114_74e67609",
+  "kind": "per_unit",
+  "legal": [
+   0.0,
+   Infinity
+  ],
+  "link": "log_c",
+  "point": {
+   "level": 30.0,
+   "ratio": 1.0
+  },
+  "rows_checked": 12192,
+  "table_kind": "corrector",
+  "ub": null,
+  "weighted": false
+ },
+ "seconds": 2146.8,
+ "stopped_at": null
+}

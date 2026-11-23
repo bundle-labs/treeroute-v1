@@ -1,0 +1,181 @@
+{
+ "report_sha256_checked": "fce0330ffc82ff77e5e390940e6f65cd7bb6ffd3b4de7c8bb6a5bf9700cf2749",
+ "verdict": "not_ready",
+ "second_round": [
+  {
+   "checker": "numbers",
+   "number": 1,
+   "status": "answered",
+   "note": "A1 items 3 and 4 restore both dropped corrections. The re-read window is 18:34:26-18:49:41 (360 opens, plus 16 byte reads 18:43:43-18:49:41), confirmed in opened_official.jsonl. work\\tables.md was never written, confirmed absent. A7's completeness 5 and 11 rows now point to these items. The 'in six runs' added to item 3 is a new error, reported separately."
+  },
+  {
+   "checker": "numbers",
+   "number": 2,
+   "status": "answered",
+   "note": "The 1e-12 clause is replaced: no pair without BARDL has a tie-only member, and the collation moves only RBO, by at most 2.3e-5, with no digit change at 2 or 3 decimals. All of this checks against s41, whose maximum is 2.2477e-5. The skeptic's contrary sentence is now flagged."
+  },
+  {
+   "checker": "numbers",
+   "number": 3,
+   "status": "partly",
+   "note": "The bullets are now marked 'Examples:' and the largest move per statistic over all eight BARDL pair-levels is given, including RBO p 0.95 0.082 for bardl|ridge. One of the six maxima is rounded twice: Jaccard top 10 is 0.0585 -> printed 0.059, but one rounding gives 0.058 (major finding)."
+  },
+  {
+   "checker": "numbers",
+   "number": 4,
+   "status": "answered",
+   "note": "The lead's note now limits 'do not copy' to the section-6 pair table and says that section 3's main row and section 6's other tables stand. A6 says the status, identity, nonzero counts and run facts stand. It points the nonzero counts to b1/<p>/<level>/importance (n_nonzero, and n_nonzero_before_merge at the feature level), which matches both results.json files."
+  },
+  {
+   "checker": "numbers",
+   "number": 5,
+   "status": "answered",
+   "note": "All six items are fixed. (a) 'three of these digits'. (b) The right checker and file are named. (c) The pre column is added. (d) 'By its own listing ... at 18:33'. (e) '93 of the 96 variables of J (three variables, nine columns)': J is 96 and 479, BARDL has 3 and 9 nonzero. (f) 'Owner question C10 (not the spec's open choice C10)'."
+  },
+  {
+   "checker": "numbers",
+   "number": 6,
+   "status": "answered",
+   "note": "compare_b1_records.py and its output compare_b1_records.txt are saved and named in the introduction and A1 item 19. My own pass over summary.json gives the same 19 A/B field pairs, all equal, with no field on only one side."
+  },
+  {
+   "checker": "findings",
+   "number": 1,
+   "status": "answered",
+   "note": "Same as numbers 1. Both corrections are restored with correct content, and the lead's note's 'lists each one' now holds for the first two rounds. The new run count in item 3 is a separate finding."
+  },
+  {
+   "checker": "findings",
+   "number": 2,
+   "status": "answered",
+   "note": "The script and its output are saved and named, and 'stands in their place' is gone. The remaining wording 'checks the same equalities' is a little too wide (minor finding)."
+  },
+  {
+   "checker": "findings",
+   "number": 3,
+   "status": "answered",
+   "note": "(i) The 1e-12 statement is corrected and holds against s41. (ii) The list is marked 'Examples:', and A5 point 3's footnote now takes the per-statistic maxima over all eight BARDL pair-levels. One maximum is mis-rounded (see numbers 3 and the major finding)."
+  },
+  {
+   "checker": "findings",
+   "number": 4,
+   "status": "answered",
+   "note": "A5 point 3 now reads '93 of the 96 variables of J (it reads three variables, nine columns)'. This matches PROTOCOL.md lines 618-623 and A's J sizes and BARDL nonzero counts."
+  },
+  {
+   "checker": "findings",
+   "number": 5,
+   "status": "answered",
+   "note": "(1) Route (a) now adds the note under the main-text table and says the fire row differs from AW4_main_row.json, AW4_table.md and the AW3 tables. (2) 'fewer than 2,000' with 64, 1,140 and 1,380, the only such intervals in A and B. (3) percentile_ci (lines 259-266) gives an interval from one finite value on, and it produces every written official interval."
+  },
+  {
+   "checker": "findings",
+   "number": 6,
+   "status": "answered",
+   "note": "'every B1 table' is gone. The note and A6 say A6 replaces the section-6 pair table, and that section 3's main row and section 6's status, identity, nonzero-count, run-fact, top-3 and family parts stand."
+  },
+  {
+   "checker": "findings",
+   "number": 7,
+   "status": "answered",
+   "note": "'Owner question C10 (not the spec's open choice C10)' is used, with an alternative (leave it to the section 14 record) and the wording the note would carry. This matches PROTOCOL.md lines 938-939 and section 1. The spec's choice is now 'the spec's open choice C10' in A4 and A5 point 3."
+  },
+  {
+   "checker": "findings",
+   "number": 8,
+   "status": "answered",
+   "note": "Both consequences are stated: under (a) the family shares are asymmetric, under (b) the top-10 shares are asymmetric the other way. B1's 'none for the top-k lists' is quoted, which matches PROTOCOL.md lines 597-599."
+  },
+  {
+   "checker": "findings",
+   "number": 9,
+   "status": "answered",
+   "note": "(a) The 17:09 result is now credited to the skeptic's own listing at 18:33, and the transcripts are scoped (spec writer, A and B in full, reconciler to 18:33), as skeptic_blindness.json says. (b) The facts checker compared AW4_main_row.json and the completeness checker compared A's main row."
+  },
+  {
+   "checker": "findings",
+   "number": 10,
+   "status": "answered",
+   "note": "A1 item 1 now says per_lead.json holds statistics and was opened for structural keys only. A1 item 5 says the logs hold only files outside V (all 689 entries are SHAP paths) and that reads inside V are not logged, including those by reconcile.py. Item 1's list of statistics leaves out item 8 (minor finding)."
+  }
+ ],
+ "regressions": [
+  "A4, the numbers, item 1: the second version's correct example 'rival_bardl_h1|rival_lgbm, variable level: top-20-union Spearman 0.111 or 0.030' (s41: 0.1107 / 0.1107 / 0.0297) was dropped. First-round completeness finding 8 had named this move. The new per-statistic maxima do not include it (the top-20-union maximum is 0.128, feature bardl|treeroute), so the 0.081 move of this pair is now stated nowhere. Low impact, because the list is marked 'Examples:'.",
+  "A1 item 4 against the first version's A1 item 2: the first version said 'The tables are in sections 3 and 6 of this file'. The third says only 'The B1 tables are in section 6 and A6', so the main-row table that section 7 placed in tables.md (it is section 3's) no longer has a pointer. Trivial, because the lead's note names section 3's main-row table."
+ ],
+ "findings": [
+  {
+   "severity": "major",
+   "where": "report.md A4, the numbers, item 1, line 592 ('top 10 0.059 (variable, bardl|lgbm)'). It is carried into A5 point 3, line 662 ('the footnote gives the largest move of each statistic under other collations (A4)').",
+   "what": "One of the six new per-statistic maxima was rounded twice and is wrong in the third decimal. The largest Jaccard top-10 move over the BARDL pair-levels is 0.0584795 (= 1/9 - 1/19, ndvi variable bardl|lgbm, 0.052632 / 0.052632 / 0.111111), which rounds to 0.058, not 0.059. bardl_ties.txt prints it with %.3g as 0.0585, and the report rounded that again. A5 point 3 proposes this list as the footnote's content, so the wrong digit would reach the supplement. The same double rounding turns the RBO maximum for pairs without BARDL, 2.2477e-5, into '2.3e-5' (line 597); that one is harmless because it is stated as an upper bound.",
+   "evidence": "c03_s41_collation.py on V\\skeptic\\numbers\\work\\s41_tie_artifacts.json gives a jaccard_top10 largest spread of 0.0584795322 at ndvi/variable/rival_bardl_h1|rival_lgbm (runner-up 0.0526, bardl|ridge). One rounding step, half-even or half-up, gives 0.058. The other five maxima are right, each at the pair the report names: 0.1388889 -> 0.139, 0.0317460 -> 0.032, 0.1283024 -> 0.128, 0.0497081 -> 0.050 and 0.0815685 -> 0.082. V\\_lead\\outputs\\bardl_ties.txt line 60 reads 'jaccard_top10 0.0585'. The RBO p 0.95 maximum for pairs without BARDL is 0.0000224767 (bardl_ties.txt: 2.25e-05).",
+   "fix": "Write 'top 10 0.058 (variable, bardl|lgbm)'. Take every figure from the unrounded s41 spreads with one rounding step. Optionally write 'at most 2.25e-5' so the bound also gives the value."
+  },
+  {
+   "severity": "major",
+   "where": "report.md A1 item 3, lines 422-424 ('the runs of reconcile.py re-read the compare files from 18:34:26 to 18:49:41, in six runs, the final run included').",
+   "what": "The run count is new in this version, and the log it corrects from does not support it. opened_official.jsonl holds seven complete passes over all 50 compare files, each running coral to ndvi with 50 opens: 18:34:26, 18:40:21, 18:41:30, 18:41:47, 18:43:43, 18:46:03 and 18:49:41. It also holds one fire-only pass at 18:45:43 (fire's 10 files and 1 byte read). Each complete pass has its own full set of run-record reads in opened_other.jsonl. The final reconcile.py opens each compare file once per run: main() calls official(p) once per problem (lines 979-980). 'Six' is what you get by grouping the log at gaps over 20 s, which joins 18:41:30 with 18:41:47 (17 s apart) and 18:45:43 with 18:46:03 (20 s). The window, the 360 opens and the 16 byte reads are right. Section 1's record of reads is the kind of text the owner copies into PROTOCOL.md section 14.",
+   "evidence": "c02b_run_seconds.py counts reconcile.py's plain opens per second: 10+40 (18:34:26-27), 50 (18:40:21), 50 (18:41:30), 20+30 (18:41:47-48), 50 (18:43:43), 10 fire only (18:45:43), 50 (18:46:03), 50 (18:49:41). That is 7 x 50 + 10 = 360. The byte reads are 5 + 1 + 5 + 5 = 16, all of the five pairs.parquet files. opened_other.jsonl has 5+19 reads at 18:41:30-38, then 5+19 again at 18:41:47-55, 7 at 18:45:43 and 1+30+19 at 18:46:02-10. The '6 runs' in recheck_numbers.json (n04) and check_completeness.json comes from the same time grouping.",
+   "fix": "Drop 'in six runs', or write 'in seven passes over all 50 files (18:34:26, 18:40:21, 18:41:30, 18:41:47, 18:43:43, 18:46:03, 18:49:41) and one fire-only pass at 18:45:43 (10 opens, 1 byte read)'. If the reconciler's transcript shows six invocations, say that two of them read the files twice or read fire first."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md lead's note, lines 9-11 ('section 6's other tables (status, defo identity, nonzero counts, run facts, top 3 and family shares) were checked against the official files and results.json and stand').",
+   "what": "B1 has no official output (section 6's own heading says so). The status, defo identity and run facts were checked against the run records and summary.json, not against the official files. The run records are meta.json, the done records and the tr_shap logs. The claim that these parts stand is right, but its sources are misnamed.",
+   "evidence": "check_facts.json 'checked' says: 'B1 records read directly. Every meta.json has pass true ...'; 'tr_shap logs, line numbers and values ...'; 'Defo identity (summary.json, and A's and B's b1/defo/identity)'. Section 6's heading (line 297) says 'no official output'.",
+   "fix": "Write '... were checked against the official files (section 3), A's and B's results.json and the run records (meta.json, done records, logs) and stand'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md addendum introduction, lines 401-404 ('The lead's scripts are in V\\_lead\\scripts\\ and their saved outputs in V\\_lead\\outputs\\: recover_writes.py ..., tally.py (A2), scan_shap_mtimes.py ..., b1_tables.py (A6), bardl_ties.py ... and compare_b1_records.py').",
+   "what": "V\\_lead\\outputs holds only two outputs, bardl_ties.txt and compare_b1_records.txt. The sentence reads as if all six scripts had a saved output there, so a reader looking for the output of tally.py, scan_shap_mtimes.py, b1_tables.py or recover_writes.py finds none.",
+   "evidence": "The listing of V\\_lead\\outputs shows only bardl_ties.txt (4,675 bytes) and compare_b1_records.txt (1,642 bytes). All six named scripts exist in V\\_lead\\scripts, along with regression_check.py, which the report does not name.",
+   "fix": "Write '... and the saved outputs of bardl_ties.py and compare_b1_records.py (bardl_ties.txt, compare_b1_records.txt) in V\\_lead\\outputs\\'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A1 item 1, lines 412-413 ('per_lead.json, which also holds statistics (Kendall's W, the mean pairwise Spearman, stability, the nonzero counts)').",
+   "what": "The list leaves out item 8's statistics, which per_lead.json also holds: each arcsine-link model's nonzero-forecast rows and its top 10 with shares. A blindness statement copied from this item would understate what the file holds. The point that only its structural keys were read is unaffected.",
+   "evidence": "V\\reconcile\\mapping.md lines 62-64 map nonzero_forecast_rows, nonzero_forecast_rows.<m>.rows and nonzero_forecast_rows.<m>.top10 [[name, share], ...] to problems/<p>/nonzero_forecast/... check_facts.json says 'per_lead nonzero_forecast_rows are 983/995/1000/973 (coral) and 226 (fire)'.",
+   "fix": "Add 'and item 8's nonzero-forecast rows and top-10 shares', or mark the list as examples."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the reconciliation, lines 626-627 ('the lead's script compare_b1_records.py checks the same equalities (A1 item 19)').",
+   "what": "The claim is slightly too wide. The script compares A's 19 B1 fields with B's in code and prints A's defo identity next to the reconciler's. It does not compare A's and B's status and run records with the reconciler's own readings stored beside them, which the asserts the reconcile skeptic asked for would also cover. Those readings are meta, log, done_seconds and the nonzero counts in summary.json. That equality was checked by hand, by the skeptic and the first-round facts checker. A1 item 19 itself describes the script correctly.",
+   "evidence": "compare_b1_records.py lines 16-29 compare A_<x> with B_<x> only and print the identity records. Besides its A_ and B_ fields, summary.json b1.<p> holds meta, log, done_seconds, log_nonzero, meta_players_nonzero and identity_reconciler (c05). skeptic_reconcile.json's major finding says these records 'are stored next to the reconciler's own values'.",
+   "fix": "Write '... checks the A = B equalities in code and shows A's defo identity beside the reconciler's; that the records also equal the reconciler's own log and meta readings was checked by hand'."
+  },
+  {
+   "severity": "minor",
+   "where": "report.md A4, the numbers, item 1, line 594 ('A, B and the official files share these numbers.').",
+   "what": "The sentence now comes right after the new list of largest collation moves, which only the skeptic's s41 computed. A, B and the official files hold only the code-point (base) values. Read where it stands, the sentence attributes the moves to the official files.",
+   "evidence": "In the second version this sentence followed the example list (line 577). In this version it follows the maxima sentence (lines 590-594).",
+   "fix": "Write 'A, B and the official files share the base-collation values', or move the sentence before the maxima."
+  }
+ ],
+ "checked": [
+  "SHA-256 of report.md is fce0330f...00cf2749, 68,782 bytes, mtime 2026-11-16 20:30:24, as the task states. before_fix1 is 00aa4d54...5ef31e (43,582 bytes) and before_fix2 is 488814ed...b94151 (63,078 bytes).",
+  "c01_spans_format_privacy.py: the reconciler's text, from '# Round 14 reconciliation' up to '## Lead's addendum', is byte-identical in all three versions (31,044 bytes, SHA-256 prefix a0b1924cddfc982f).",
+  "c01: A2+A3, from '### A2.' up to '### A4.', is byte-identical in all three versions (3,348 bytes, a18da38776e7f3e1), and so are A2 and A3 taken separately. In every version the only text before the first heading is the blockquoted lead's note.",
+  "Format of the third version: no BOM, strict UTF-8 decode OK, 0 CR, 838 LF, ends with one LF, ASCII only, and no tab, NUL, other control byte or trailing space.",
+  "Privacy: the account, host, domain and user-folder names were read from the environment at run time and never printed; none occurs in the file. There is no e-mail, '@', UUID, wf_ id, 'workflow', 'session', agent id, C:\\ / Users\\ / AppData path or URL. 'transcript' occurs only as a word (lines 3 and 565). All 16 hex-like tokens are the four sample hashes, the five run-folder suffixes, the two earlier-version SHA-256 prefixes or digit-only dates.",
+  "c02_open_logs.py: opened_official.jsonl has 436 entries: r10 50 (18:24:54-55), reconcile.py 360 (18:34:26-18:49:41), 16 byte reads of the five pairs.parquet files (18:43:43-18:49:41) and r30 10 (18:42:42-55). opened_other.jsonl has 253 entries, all by reconcile.py (18:34:26-18:49:49). Every entry is a SHAP path outside V.",
+  "c02b_run_seconds.py: the per-second log shows seven complete 50-file passes and one fire-only 10-file pass at 18:45:43. The final reconcile.py main() opens each compare file once per run (lines 979-980).",
+  "c03_s41_collation.py: s41 has 30 pair-levels, 8 with BARDL and 22 without. Of the BARDL maxima, Jaccard top 5 0.139, top 20 0.032, top-20-union Spearman 0.128, RBO p 0.9 0.050 and p 0.95 0.082 are right at the named pairs. Jaccard top 10 is 0.05848 (printed 0.059, should be 0.058). bardl_ties.txt reproduces these exactly.",
+  "c03 for pairs without BARDL: Jaccard and top-20-union Spearman spreads are exactly 0 on all 22. The RBO p 0.95 maximum is 2.2477e-5 (fire variable lgbm|lgbm_tweedie) and p 0.9 is 3.6e-7. No digit moves at 2 or 3 decimals (four move at 4), and there is no tie-only member under any collation. 'At most 2.3e-5' holds as a bound.",
+  "s41_tie_artifacts.py: s41 scans all 102 pair-levels and lists one only when a statistic moves by more than 1e-12 or a tie-only member exists, so the 72 unlisted pair-levels without BARDL move by at most 1e-12. The smallest nonzero count of any model other than BARDL is 25 (c07b).",
+  "A4's example figures (0.25/0.111, 0.25/0.25, 0.365/0.325, 0.162/0.038, 0.241/0.322, 0.111/0.143, -0.064/-0.126/0.003, -0.471/-0.393/-0.362) equal s41 rounded once. skeptic_numbers.json says '... or any collation dependence above 1e-12 (script s41)'; the report's quoted 'no collation dependence above 1e-12' is a faithful paraphrase.",
+  "c04/c05: NDVI's J is 96 (variable) and 479 (feature), and BARDL's n_nonzero is 3 and 9. So BARDL has 93 and 470 zeros, and 'three variables, nine columns' and '93 of the 96 variables of J' are right.",
+  "c05 on summary.json b1: there are 19 A/B field pairs (coral 2, defo 5, fire, pm25 and ndvi 4 each), all equal, with no field on one side only. identity_reconciler is 0.0 over 309,000 phi values and 0.0 over 121,000 phiv values. A's and B's identities are 0.0/0.0 with 1,000 rows, 309 players and 121 variables. compare_b1_records.txt matches.",
+  "c04: the three thin fire variable-level sign-agreement intervals are the same in A and B: ridge|treeroute null [0, 1] n 64, lgbm|treeroute 1 [0, 1] n 1,140, rf|treeroute 1 [0, 1] n 1,380. These are the only intervals with 0 < n_finite < 2,000 in either file; 7 have n_finite 0.",
+  "c04: b1/<p>/<level>/importance holds n_nonzero at both levels and n_nonzero_before_merge at the feature level only, in both A and B: 113/113/96, 105/105/91, 482/482/96.",
+  "shapv1_stats.py lines 259-266 are percentile_ci, which returns NaN and 0 only when no value is finite, and otherwise an interval from one finite value on. compare_shap.py writes every official interval through it (lines 235, 243-244, 291 and 376). Its quantiles at lines 217-218 only fix the determined signs.",
+  "PROTOCOL.md lines 540-542, 553-556, 597-599, 605-607, 618-623 (D16/BA1 on line 621), 771-777, 829-831, 936-938, 938-939 and 941-946 were read. Each says what the report cites it for.",
+  "Every file the addendum names exists: the six lead scripts, compare_b1_records.txt and bardl_ties.txt, the four checker returns, V\\skeptic\\report_check, report_check2, reconcile\\rerun, s41_tie_artifacts.json, s92_final_lines.json, A's opened_items_<p>.json (5) and opened_b1.json, a04_checks.py and b_inspect3.py. V\\reconcile\\work holds no tables.md.",
+  "skeptic_blindness.json covers the spec writer (46 calls), A (102) and B (94) in full and the reconciler to 18:33 (46 calls). It lists SHAP outside V with os.scandir at 18:33 (10,801 files, none changed from 17:09). The new A4 blindness wording matches.",
+  "A7 lists all 24 first-round and 16 second-round findings, and its counts are right (2+10 and 3+9; 1+5 and 1+9; 22 and 23 of 24 answered). Every A1 item number cited in the note, A4, A5, A6 and A7 follows the new numbering, with items 3 and 4 inserted. The two SHA-256 prefixes and sizes quoted are right.",
+  "c06_addendum_diff.py compared the lead's text sentence by sentence (v2 to v3 and v1 to v3). Apart from the two regressions, every change is a requested fix or a renumbering. Not counted as regressions: A7 no longer gives the first checkers' start time (19:33) or their subfolder names, and the folder-level names it gives are correct.",
+  "Rules kept: read-only on existing files. Scripts c01-c07b and one diff printout were written only in V\\skeptic\\report_check3, and Python ran only as py -3.9 -I -B. smoke\\bardl_fix was not opened, and no SHAP\\scripts or V\\_lead\\scripts script was run (read only). Grep was used on single named files only, never with a *.md pattern over SHAP, and no report file was written."
+ ]
+}

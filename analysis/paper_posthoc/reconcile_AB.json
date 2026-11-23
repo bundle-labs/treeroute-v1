@@ -1,0 +1,3640 @@
+{
+ "script": "D:/treeroute/analysis/paper_posthoc/reconcile_AB.py",
+ "post_hoc": true,
+ "note": "POST HOC reconciliation; never changes a pre-registered verdict.",
+ "result_A_sha256": "7550f667311cc728b8b500cfbc47f7cccd2e3f800cb0a53cabc9841f883055f3",
+ "result_B_sha256": "1e616b11700b4d066a9466ee5fbff38e9ec7615157b2c02a580714297fbf0eb0",
+ "posthoc_A_sha256": "0cee249c0834dc2bbf0fe9ec458b200e20e096a4c5fc24e8d585a09584bab7c0",
+ "posthoc_B_sha256": "6b781c848bd84391da3bb71975135ebdcd806150ec45911d18e2c3f3f0db58ff",
+ "SPEC_sha256": "13fc0aaad163db0d3d3d659f381fb6ca84ef668a08b946be43d692972b7de032",
+ "A_failed_checks": 0,
+ "B_failed_checks": 0,
+ "items": {
+  "M34": {
+   "n_common_leaves": 80,
+   "n_numeric": 56,
+   "n_int": 20,
+   "n_float_bit_identical": 36,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [
+    "/defo/abs_rel_diff_below_1e-8",
+    "/defo/diff",
+    "/defo/max_abs_TO_minus_unclipped_normal",
+    "/defo/maxdev_rows_n",
+    "/defo/score_pooled_MAE_GN",
+    "/defo/score_pooled_MAE_TO",
+    "/defo/score_pooled_anom_r2_TO",
+    "/fire/abs_rel_diff_below_1e-8",
+    "/fire/diff",
+    "/fire/max_abs_TO_minus_unclipped_normal",
+    "/fire/maxdev_rows_n",
+    "/fire/score_pooled_MAE_GN",
+    "/fire/score_pooled_MAE_TO",
+    "/fire/score_pooled_anom_r2_TO",
+    "/ndvi/abs_rel_diff_below_1e-8",
+    "/ndvi/diff",
+    "/ndvi/max_abs_TO_minus_unclipped_normal",
+    "/ndvi/maxdev_rows_n",
+    "/ndvi/score_pooled_MAE_GN",
+    "/ndvi/score_pooled_MAE_TO",
+    "/ndvi/score_pooled_anom_r2_TO",
+    "/pm25/abs_rel_diff_below_1e-8",
+    "/pm25/diff",
+    "/pm25/max_abs_TO_minus_unclipped_normal",
+    "/pm25/maxdev_rows_n",
+    "/pm25/score_pooled_MAE_GN",
+    "/pm25/score_pooled_MAE_TO",
+    "/pm25/score_pooled_anom_r2_TO"
+   ],
+   "only_in_B": [
+    "/defo/rows_where_clip_changes_normal",
+    "/defo/tolerance_floor",
+    "/defo/tolerance_k",
+    "/defo/tolerance_s_identity",
+    "/fire/rows_where_clip_changes_normal",
+    "/fire/tolerance_floor",
+    "/fire/tolerance_k",
+    "/fire/tolerance_s_identity",
+    "/ndvi/rows_where_clip_changes_normal",
+    "/ndvi/tolerance_floor",
+    "/ndvi/tolerance_k",
+    "/ndvi/tolerance_s_identity",
+    "/pm25/rows_where_clip_changes_normal",
+    "/pm25/tolerance_floor",
+    "/pm25/tolerance_k",
+    "/pm25/tolerance_s_identity"
+   ],
+   "A_checks": {
+    "n": 49,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 36,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": "9e62fe4256c08c50",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": "87c0b1414af7e370",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": "3a002e9a9deb006a",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": "9e62fe4256c08c50",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": "87c0b1414af7e370",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": "3a002e9a9deb006a",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c"
+   }
+  },
+  "R12": {
+   "n_common_leaves": 90,
+   "n_numeric": 56,
+   "n_int": 4,
+   "n_float_bit_identical": 52,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 26,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 57,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703"
+   }
+  },
+  "R13": {
+   "n_common_leaves": 288,
+   "n_numeric": 225,
+   "n_int": 31,
+   "n_float_bit_identical": 194,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 146,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 257,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": "9e62fe4256c08c50",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_by_group.csv": "6fed1e7be9456655",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/jackknife.csv": "25624a91d0879ae2",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": "87c0b1414af7e370",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_by_group.csv": "be1381c5568d225e",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/jackknife.csv": "533c7dd30d5b5f5b",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": "3a002e9a9deb006a",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_by_group.csv": "d02e8f48ddef39ce",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/jackknife.csv": "aa7a8cd183eb5108",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_by_group.csv": "08dd01c06c8eedc2",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/jackknife.csv": "04178dc5d388f9f7",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": "b6408c90560b4585",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_by_group.csv": "6fed1e7be9456655",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/jackknife.csv": "25624a91d0879ae2",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": "d5ae6f1dd6728681",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_by_group.csv": "be1381c5568d225e",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/jackknife.csv": "533c7dd30d5b5f5b",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": "d8ebdd4cc458b276",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_by_group.csv": "d02e8f48ddef39ce",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/jackknife.csv": "aa7a8cd183eb5108",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": "2106a36efee4f9fc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_by_group.csv": "08dd01c06c8eedc2",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/jackknife.csv": "04178dc5d388f9f7"
+   }
+  },
+  "R14": {
+   "n_common_leaves": 29,
+   "n_numeric": 18,
+   "n_int": 0,
+   "n_float_bit_identical": 18,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 35,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 20,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": "b6408c90560b4585",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/derived.json": "3e2d692b74ad6472",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": "d5ae6f1dd6728681",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/derived.json": "8ecc92b58cbd5f65",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/derived.json": "9255562ca6959e9e",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": "d8ebdd4cc458b276",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/derived.json": "e17b92cfe8ba31cc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": "2106a36efee4f9fc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/derived.json": "5fd02863f8b91573"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": "b6408c90560b4585",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/derived.json": "3e2d692b74ad6472",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": "d5ae6f1dd6728681",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/derived.json": "8ecc92b58cbd5f65",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/derived.json": "9255562ca6959e9e",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": "d8ebdd4cc458b276",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/derived.json": "e17b92cfe8ba31cc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": "2106a36efee4f9fc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/derived.json": "5fd02863f8b91573"
+   }
+  },
+  "R15": {
+   "n_common_leaves": 1267,
+   "n_numeric": 837,
+   "n_int": 198,
+   "n_float_bit_identical": 639,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 522,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 482,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": "9e62fe4256c08c50",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_by_group.csv": "6fed1e7be9456655",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": "b6408c90560b4585",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": "87c0b1414af7e370",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_by_group.csv": "be1381c5568d225e",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": "d5ae6f1dd6728681",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": "3a002e9a9deb006a",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_by_group.csv": "d02e8f48ddef39ce",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": "d8ebdd4cc458b276",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_by_group.csv": "08dd01c06c8eedc2",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": "2106a36efee4f9fc"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": "b6408c90560b4585",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_by_group.csv": "6fed1e7be9456655",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": "d5ae6f1dd6728681",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_by_group.csv": "be1381c5568d225e",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": "75f70e5cd22039b6",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": "03585591911c6e01",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": "d8ebdd4cc458b276",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_by_group.csv": "d02e8f48ddef39ce",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": "2106a36efee4f9fc",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_by_group.csv": "08dd01c06c8eedc2"
+   }
+  },
+  "P29": {
+   "n_common_leaves": 1248,
+   "n_numeric": 844,
+   "n_int": 87,
+   "n_float_bit_identical": 111,
+   "n_compared_at_printed_precision": 646,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 226,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 619,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/_headline_tables/verdicts_9abcea419ce2.csv": "9abcea419ce2fe63",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_0.csv": "4b2b7550b77ebe78",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_6.csv": "1b88a644d9110a3e",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_12.csv": "37abd537cd3e0f69",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_0.csv": "e8d72653cfc47bb1",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_6.csv": "2281408c408f5fd8",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_12.csv": "a097e9b97b33810e",
+    "D:/treeroute/runs/_headline_tables/ndvi/verdicts_c4cd7e7c2610.csv": "c4cd7e7c2610e218",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_0.csv": "b8208282f1c27ccc",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_6.csv": "0d48164188f8dfe5",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_12.csv": "972572216dcbf949",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_0.csv": "50db5b3db4a694c8",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_6.csv": "18ba49e839e9a178",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_12.csv": "ce304d4cdf002620",
+    "D:/treeroute/runs/_headline_tables/fire/verdicts_7ee7167afe8d.csv": "7ee7167afe8d7a52",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_0.csv": "031a261083ce6964",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_6.csv": "b9d7636d26f8ad71",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_12.csv": "02236b90973a9c87",
+    "D:/treeroute/runs/_headline_tables/defo/verdicts_bf99c6741bce.csv": "bf99c6741bcee256",
+    "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_0.csv": "0ca58e02d963f54e",
+    "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_1.csv": "6e9086b1decc531d",
+    "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_0.csv": "b912d3b3c726a7cc",
+    "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_1.csv": "fc9dd957167b9b3d",
+    "D:/treeroute/runs/_headline_tables/coral/verdicts_a9d948cbf26b.csv": "a9d948cbf26be365",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_183.csv": "1cba4ab97d3197a0",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_365.csv": "393d7ff606d7b76e",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_0.csv": "8fa769680440d5e5",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_183.csv": "7b57584131254f9c",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_365.csv": "7e7e8602d6a216f3",
+    "D:/treeroute/rivals_table/20261025T162302876402Z/RIVALS_TABLE.csv": "1ccac0e7eb9defc0",
+    "D:/treeroute/runs/_headline_tables/headline_93b64854d1f9.csv": "93b64854d1f9c6bf",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/_headline_tables/fire/headline_85a9134089e4.csv": "85a9134089e47a61",
+    "D:/treeroute/runs/_headline_tables/defo/headline_1571da960aa6.csv": "1571da960aa6540e",
+    "D:/treeroute/runs/_headline_tables/coral/headline_344838cf7de1.csv": "344838cf7de1df55",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/_headline_tables/verdicts_9abcea419ce2.csv": "9abcea419ce2fe63",
+    "D:/treeroute/runs/_headline_tables/ndvi/verdicts_c4cd7e7c2610.csv": "c4cd7e7c2610e218",
+    "D:/treeroute/runs/_headline_tables/fire/verdicts_7ee7167afe8d.csv": "7ee7167afe8d7a52",
+    "D:/treeroute/runs/_headline_tables/defo/verdicts_bf99c6741bce.csv": "bf99c6741bcee256",
+    "D:/treeroute/runs/_headline_tables/coral/verdicts_a9d948cbf26b.csv": "a9d948cbf26be365",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_0.csv": "4b2b7550b77ebe78",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_0.csv": "e8d72653cfc47bb1",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_6.csv": "1b88a644d9110a3e",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_6.csv": "2281408c408f5fd8",
+    "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_12.csv": "37abd537cd3e0f69",
+    "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_12.csv": "a097e9b97b33810e",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_0.csv": "b8208282f1c27ccc",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_0.csv": "50db5b3db4a694c8",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_6.csv": "0d48164188f8dfe5",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_6.csv": "18ba49e839e9a178",
+    "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_12.csv": "972572216dcbf949",
+    "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_12.csv": "ce304d4cdf002620",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_0.csv": "031a261083ce6964",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_6.csv": "b9d7636d26f8ad71",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_12.csv": "02236b90973a9c87",
+    "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_0.csv": "0ca58e02d963f54e",
+    "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_0.csv": "b912d3b3c726a7cc",
+    "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_1.csv": "6e9086b1decc531d",
+    "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_1.csv": "fc9dd957167b9b3d",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_0.csv": "8fa769680440d5e5",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_183.csv": "1cba4ab97d3197a0",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_183.csv": "7b57584131254f9c",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_365.csv": "393d7ff606d7b76e",
+    "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_365.csv": "7e7e8602d6a216f3",
+    "D:/treeroute/rivals_table/20261025T162302876402Z/RIVALS_TABLE.csv": "1ccac0e7eb9defc0",
+    "D:/treeroute/runs/_headline_tables/headline_93b64854d1f9.csv": "93b64854d1f9c6bf",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/_headline_tables/fire/headline_85a9134089e4.csv": "85a9134089e47a61",
+    "D:/treeroute/runs/_headline_tables/defo/headline_1571da960aa6.csv": "1571da960aa6540e",
+    "D:/treeroute/runs/_headline_tables/coral/headline_344838cf7de1.csv": "344838cf7de1df55",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": "b8557782d9cdd703"
+   }
+  },
+  "R3b": {
+   "n_common_leaves": 59,
+   "n_numeric": 49,
+   "n_int": 10,
+   "n_float_bit_identical": 39,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 94,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 107,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": "9e62fe4256c08c50",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/_headline_tables/headline_93b64854d1f9.csv": "93b64854d1f9c6bf",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": "87c0b1414af7e370",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/_headline_tables/fire/headline_85a9134089e4.csv": "85a9134089e47a61",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": "3a002e9a9deb006a",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/_headline_tables/defo/headline_1571da960aa6.csv": "1571da960aa6540e",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/_headline_tables/coral/headline_344838cf7de1.csv": "344838cf7de1df55"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": "af031ef5a44dbe67",
+    "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": "8a7d2f44f00a9e7c",
+    "D:/treeroute/runs/_headline_tables/headline_93b64854d1f9.csv": "93b64854d1f9c6bf",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": "535ef992b5057ed7",
+    "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": "3a7e09b6156e4449",
+    "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": "9e5590eab94b7373",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": "9236a25380d9aede",
+    "D:/treeroute/runs/_headline_tables/fire/headline_85a9134089e4.csv": "85a9134089e47a61",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": "34d090aae96fed3c",
+    "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": "8f1c161ad318e32c",
+    "D:/treeroute/runs/_headline_tables/defo/headline_1571da960aa6.csv": "1571da960aa6540e",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": "bbaa21aa184a1054",
+    "D:/treeroute/runs/_headline_tables/coral/headline_344838cf7de1.csv": "344838cf7de1df55"
+   }
+  },
+  "RC12": {
+   "n_common_leaves": 481,
+   "n_numeric": 432,
+   "n_int": 113,
+   "n_float_bit_identical": 319,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 111,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 117,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_ridge.parquet": "f84ad92e63f9855c",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_rf.parquet": "36830d55b5092fb7",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm.parquet": "3e1d4b01737efbbf",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm_tweedie.parquet": "41f5fa63b5ebb276",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": "7039e548bf4ead04",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_edges.csv": "d6571f1f6d8f314d",
+    "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_bins.csv": "6cafcee415a42ed0",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_ridge.parquet": "f84ad92e63f9855c",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_rf.parquet": "36830d55b5092fb7",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm.parquet": "3e1d4b01737efbbf",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm_tweedie.parquet": "41f5fa63b5ebb276",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": "7039e548bf4ead04",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570",
+    "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_edges.csv": "d6571f1f6d8f314d",
+    "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_bins.csv": "6cafcee415a42ed0"
+   }
+  },
+  "A1": {
+   "n_common_leaves": 305,
+   "n_numeric": 274,
+   "n_int": 71,
+   "n_float_bit_identical": 203,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 64,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 28,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_ridge.parquet": "83f991a07a8cd126",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_rf.parquet": "7634c4a48a959eec",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm.parquet": "954ca794d932bac1",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm_tweedie.parquet": "17979c68252cfd2d",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_0.csv": "031a261083ce6964"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": "86e9c97a58a9b714",
+    "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": "6c744bc1a0647e37",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_ridge.parquet": "83f991a07a8cd126",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_rf.parquet": "7634c4a48a959eec",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm.parquet": "954ca794d932bac1",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm_tweedie.parquet": "17979c68252cfd2d",
+    "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_0.csv": "031a261083ce6964"
+   }
+  },
+  "A2": {
+   "n_common_leaves": 70,
+   "n_numeric": 62,
+   "n_int": 16,
+   "n_float_bit_identical": 46,
+   "n_compared_at_printed_precision": 0,
+   "max_rel_diff_full_precision": 0.0,
+   "n_disagree": 0,
+   "disagreements": [],
+   "only_in_A": [],
+   "only_in_B": [],
+   "A_checks": {
+    "n": 54,
+    "failed": 0
+   },
+   "B_checks": {
+    "n": 15,
+    "failed": 0
+   },
+   "verdict": "AGREE",
+   "A_inputs": {
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_ridge.parquet": "f84ad92e63f9855c",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_rf.parquet": "36830d55b5092fb7",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm.parquet": "3e1d4b01737efbbf",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm_tweedie.parquet": "41f5fa63b5ebb276",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": "7039e548bf4ead04",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570"
+   },
+   "B_inputs": {
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": "6bf9b04970173323",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_ridge.parquet": "f84ad92e63f9855c",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_rf.parquet": "36830d55b5092fb7",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm.parquet": "3e1d4b01737efbbf",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm_tweedie.parquet": "41f5fa63b5ebb276",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": "7039e548bf4ead04",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": "3220b5c8967f0570"
+   }
+  }
+ },
+ "input_hashes": {
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_0.csv": {
+   "sha256": "3220b5c8967f0570fa025f99b4524e1afad8cffdee4fe79ac85549652cba46cc",
+   "prefix": "3220b5c8967f0570",
+   "A": "3220b5c8967f0570",
+   "B": "3220b5c8967f0570",
+   "spec": "3220b5c8967f0570",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_183.csv": {
+   "sha256": "1cba4ab97d3197a0914eea69f4bf864e3925b4f336af0be34b517cec43441935",
+   "prefix": "1cba4ab97d3197a0",
+   "A": "1cba4ab97d3197a0",
+   "B": "1cba4ab97d3197a0",
+   "spec": "1cba4ab97d3197a0",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/board_lead_365.csv": {
+   "sha256": "393d7ff606d7b76e97770681ce4f695c8ed859985f50691678c0ef05aa47b3b1",
+   "prefix": "393d7ff606d7b76e",
+   "A": "393d7ff606d7b76e",
+   "B": "393d7ff606d7b76e",
+   "spec": "393d7ff606d7b76e",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": {
+   "sha256": "7039e548bf4ead04c9712f2f2c1b3564914a52ed34172066ff1acf13fb657e38",
+   "prefix": "7039e548bf4ead04",
+   "A": "7039e548bf4ead04",
+   "B": "7039e548bf4ead04",
+   "spec": "7039e548bf4ead04",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm.parquet": {
+   "sha256": "3e1d4b01737efbbf6947432f557bb498689b5da885813bda0c695f350a2bfba0",
+   "prefix": "3e1d4b01737efbbf",
+   "A": "3e1d4b01737efbbf",
+   "B": "3e1d4b01737efbbf",
+   "spec": "3e1d4b01737efbbf",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_lgbm_tweedie.parquet": {
+   "sha256": "41f5fa63b5ebb27624021d345d5dc5496a4037b97487fb905b4545aa455007eb",
+   "prefix": "41f5fa63b5ebb276",
+   "A": "41f5fa63b5ebb276",
+   "B": "41f5fa63b5ebb276",
+   "spec": "41f5fa63b5ebb276",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_rf.parquet": {
+   "sha256": "36830d55b5092fb7db196d3f7b65b3cdffb2b7f19311b54706af901a56f410d2",
+   "prefix": "36830d55b5092fb7",
+   "A": "36830d55b5092fb7",
+   "B": "36830d55b5092fb7",
+   "spec": "36830d55b5092fb7",
+   "ok": true
+  },
+  "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_ridge.parquet": {
+   "sha256": "f84ad92e63f9855ccebfc1ad71557dd3830e3838b3c23b6ae567d93a0051a807",
+   "prefix": "f84ad92e63f9855c",
+   "A": "f84ad92e63f9855c",
+   "B": "f84ad92e63f9855c",
+   "spec": "f84ad92e63f9855c",
+   "ok": true
+  },
+  "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_0.csv": {
+   "sha256": "0ca58e02d963f54e8b595f09e7aec9bea493bd269934a82abd770d3799ac9f7f",
+   "prefix": "0ca58e02d963f54e",
+   "A": "0ca58e02d963f54e",
+   "B": "0ca58e02d963f54e",
+   "spec": "0ca58e02d963f54e",
+   "ok": true
+  },
+  "D:/treeroute/rivals/defo/20261017_d71c61f4/board_lead_1.csv": {
+   "sha256": "6e9086b1decc531da5531af759d3d8c5e426b97bdd44beb43973b6d19661c083",
+   "prefix": "6e9086b1decc531d",
+   "A": "6e9086b1decc531d",
+   "B": "6e9086b1decc531d",
+   "spec": "6e9086b1decc531d",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_0.csv": {
+   "sha256": "031a261083ce6964dfadc914b1dba7e8c90f38e58f02f67bd1904f9eca005658",
+   "prefix": "031a261083ce6964",
+   "A": "031a261083ce6964",
+   "B": "031a261083ce6964",
+   "spec": "031a261083ce6964",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_12.csv": {
+   "sha256": "02236b90973a9c87863e1c062eb2f5bba4a0e74aa6533194ac1e06f7fc730cd2",
+   "prefix": "02236b90973a9c87",
+   "A": "02236b90973a9c87",
+   "B": "02236b90973a9c87",
+   "spec": "02236b90973a9c87",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/board_lead_6.csv": {
+   "sha256": "b9d7636d26f8ad71cfcb3b74925c619a360a6d5d24af9afcfe4b648a46b2bb07",
+   "prefix": "b9d7636d26f8ad71",
+   "A": "b9d7636d26f8ad71",
+   "B": "b9d7636d26f8ad71",
+   "spec": "b9d7636d26f8ad71",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm.parquet": {
+   "sha256": "954ca794d932bac133674a7eccbf300fc604a66307f7dafcf3e056a5c5e557b9",
+   "prefix": "954ca794d932bac1",
+   "A": "954ca794d932bac1",
+   "B": "954ca794d932bac1",
+   "spec": "954ca794d932bac1",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_lgbm_tweedie.parquet": {
+   "sha256": "17979c68252cfd2dcd7061caa88705ef835a8aaec83008fe15bd943fc248938c",
+   "prefix": "17979c68252cfd2d",
+   "A": "17979c68252cfd2d",
+   "B": "17979c68252cfd2d",
+   "spec": "17979c68252cfd2d",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_rf.parquet": {
+   "sha256": "7634c4a48a959eeca2169c089e26f4784dcc41e480bad34159c62fafb47ce95e",
+   "prefix": "7634c4a48a959eec",
+   "A": "7634c4a48a959eec",
+   "B": "7634c4a48a959eec",
+   "spec": "7634c4a48a959eec",
+   "ok": true
+  },
+  "D:/treeroute/rivals/fire/20261017_869d1f38/lead_0/preds_ridge.parquet": {
+   "sha256": "83f991a07a8cd126bf138c84bfe00d48b8b393affb82acb2b6bb93fe7dc9c3a9",
+   "prefix": "83f991a07a8cd126",
+   "A": "83f991a07a8cd126",
+   "B": "83f991a07a8cd126",
+   "spec": "83f991a07a8cd126",
+   "ok": true
+  },
+  "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_0.csv": {
+   "sha256": "b8208282f1c27ccc729f9dd0594a95267d7a54cbc07aedadf59b136d2371313b",
+   "prefix": "b8208282f1c27ccc",
+   "A": "b8208282f1c27ccc",
+   "B": "b8208282f1c27ccc",
+   "spec": "b8208282f1c27ccc",
+   "ok": true
+  },
+  "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_12.csv": {
+   "sha256": "972572216dcbf94931f93ec40c018c0e0ae4991136514930621c8cba0a86c16b",
+   "prefix": "972572216dcbf949",
+   "A": "972572216dcbf949",
+   "B": "972572216dcbf949",
+   "spec": "972572216dcbf949",
+   "ok": true
+  },
+  "D:/treeroute/rivals/ndvi/20261016_d1de3158/board_lead_6.csv": {
+   "sha256": "0d48164188f8dfe5a892a7d8c96c5825c0b5dcff325edda8f438662fa108ad40",
+   "prefix": "0d48164188f8dfe5",
+   "A": "0d48164188f8dfe5",
+   "B": "0d48164188f8dfe5",
+   "spec": "0d48164188f8dfe5",
+   "ok": true
+  },
+  "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_0.csv": {
+   "sha256": "4b2b7550b77ebe78b0eb632f3765dc380852f8035dbfc4566bb30e8ef9b0feff",
+   "prefix": "4b2b7550b77ebe78",
+   "A": "4b2b7550b77ebe78",
+   "B": "4b2b7550b77ebe78",
+   "spec": "4b2b7550b77ebe78",
+   "ok": true
+  },
+  "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_12.csv": {
+   "sha256": "37abd537cd3e0f69c9ceec647e10da792f707ac9051d33bc57d8dc428510c921",
+   "prefix": "37abd537cd3e0f69",
+   "A": "37abd537cd3e0f69",
+   "B": "37abd537cd3e0f69",
+   "spec": "37abd537cd3e0f69",
+   "ok": true
+  },
+  "D:/treeroute/rivals/pm25/20261007_74e67609/board_lead_6.csv": {
+   "sha256": "1b88a644d9110a3e612d23160ee1149a256b8e6980ce1d6c64ec38338cd8d5bf",
+   "prefix": "1b88a644d9110a3e",
+   "A": "1b88a644d9110a3e",
+   "B": "1b88a644d9110a3e",
+   "spec": "1b88a644d9110a3e",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_0.csv": {
+   "sha256": "8fa769680440d5e53f30f7c6feadba8161584197415edff324850240cd1d3285",
+   "prefix": "8fa769680440d5e5",
+   "A": "8fa769680440d5e5",
+   "B": "8fa769680440d5e5",
+   "spec": "8fa769680440d5e5",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_183.csv": {
+   "sha256": "7b57584131254f9c574715486892f9ce8c394fc1f54dfe31f8bfe64f3a4928c4",
+   "prefix": "7b57584131254f9c",
+   "A": "7b57584131254f9c",
+   "B": "7b57584131254f9c",
+   "spec": "7b57584131254f9c",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/coral/20261020_f3b8e3da/human_board_lead_365.csv": {
+   "sha256": "7e7e8602d6a216f3576a015f8456fa873b3a68ff181591a302f7d917e114e74c",
+   "prefix": "7e7e8602d6a216f3",
+   "A": "7e7e8602d6a216f3",
+   "B": "7e7e8602d6a216f3",
+   "spec": "7e7e8602d6a216f3",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_0.csv": {
+   "sha256": "b912d3b3c726a7cccc6b5a545874b3811cb29faab9a5bceb2d058fd000a7cfe2",
+   "prefix": "b912d3b3c726a7cc",
+   "A": "b912d3b3c726a7cc",
+   "B": "b912d3b3c726a7cc",
+   "spec": "b912d3b3c726a7cc",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/defo/20261017_d71c61f4/human_board_lead_1.csv": {
+   "sha256": "fc9dd957167b9b3d6d85659b5b2a15897f0a7358a886ab4773a6e909650e0ad0",
+   "prefix": "fc9dd957167b9b3d",
+   "A": "fc9dd957167b9b3d",
+   "B": "fc9dd957167b9b3d",
+   "spec": "fc9dd957167b9b3d",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_0.csv": {
+   "sha256": "50db5b3db4a694c8d121451d77cde975f712ef352606a2bf55d4b92d35d80f75",
+   "prefix": "50db5b3db4a694c8",
+   "A": "50db5b3db4a694c8",
+   "B": "50db5b3db4a694c8",
+   "spec": "50db5b3db4a694c8",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_12.csv": {
+   "sha256": "ce304d4cdf002620014465efef3ee22f36be4e8a35c7f2797b0c3c295f2f1644",
+   "prefix": "ce304d4cdf002620",
+   "A": "ce304d4cdf002620",
+   "B": "ce304d4cdf002620",
+   "spec": "ce304d4cdf002620",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/ndvi/20261016_d1de3158/human_board_lead_6.csv": {
+   "sha256": "18ba49e839e9a178a17db618981308f55ef1da24e89b683ca2e749614a894c5e",
+   "prefix": "18ba49e839e9a178",
+   "A": "18ba49e839e9a178",
+   "B": "18ba49e839e9a178",
+   "spec": "18ba49e839e9a178",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_0.csv": {
+   "sha256": "e8d72653cfc47bb1f13e58748c24c8a171a4d373f00134f0ab7a47c5e3c52f44",
+   "prefix": "e8d72653cfc47bb1",
+   "A": "e8d72653cfc47bb1",
+   "B": "e8d72653cfc47bb1",
+   "spec": "e8d72653cfc47bb1",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_12.csv": {
+   "sha256": "a097e9b97b33810e3c9e878d5da5781a2bb09c838f4254edd25e79bfd613d555",
+   "prefix": "a097e9b97b33810e",
+   "A": "a097e9b97b33810e",
+   "B": "a097e9b97b33810e",
+   "spec": "a097e9b97b33810e",
+   "ok": true
+  },
+  "D:/treeroute/rivals_human/pm25/20261007_74e67609/human_board_lead_6.csv": {
+   "sha256": "2281408c408f5fd8a44910fe435bc39c9cbc8f08ae13e95e56f591b379fef678",
+   "prefix": "2281408c408f5fd8",
+   "A": "2281408c408f5fd8",
+   "B": "2281408c408f5fd8",
+   "spec": "2281408c408f5fd8",
+   "ok": true
+  },
+  "D:/treeroute/rivals_table/20261025T162302876402Z/RIVALS_TABLE.csv": {
+   "sha256": "1ccac0e7eb9defc089c31ce382e8a5aa7783a0b12da531813023f19afacc78ba",
+   "prefix": "1ccac0e7eb9defc0",
+   "A": "1ccac0e7eb9defc0",
+   "B": "1ccac0e7eb9defc0",
+   "spec": "1ccac0e7eb9defc0",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_bins.csv": {
+   "sha256": "6cafcee415a42ed08c7661a36911e865531cafc9cbc74a0aa9fd10c745bc378a",
+   "prefix": "6cafcee415a42ed0",
+   "A": "6cafcee415a42ed0",
+   "B": "6cafcee415a42ed0",
+   "spec": "6cafcee415a42ed0",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/coral/coral_report/magnitude_edges.csv": {
+   "sha256": "d6571f1f6d8f314d42391e6a351be2cf2c8632e6b59f5b53e65900cf5e781450",
+   "prefix": "d6571f1f6d8f314d",
+   "A": "d6571f1f6d8f314d",
+   "B": "d6571f1f6d8f314d",
+   "spec": "d6571f1f6d8f314d",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/coral/headline_344838cf7de1.csv": {
+   "sha256": "344838cf7de1df55b5379426e8d131b99bc06a4b8fb7e847121b01c592a9119f",
+   "prefix": "344838cf7de1df55",
+   "A": "344838cf7de1df55",
+   "B": "344838cf7de1df55",
+   "spec": "344838cf7de1df55",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/coral/verdicts_a9d948cbf26b.csv": {
+   "sha256": "a9d948cbf26be365dde300fd05c6d3fff1af092507c371e7101832e51ed59839",
+   "prefix": "a9d948cbf26be365",
+   "A": "a9d948cbf26be365",
+   "B": "a9d948cbf26be365",
+   "spec": "a9d948cbf26be365",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/defo/headline_1571da960aa6.csv": {
+   "sha256": "1571da960aa6540e1c21fe27fbcd358f102df9b1d06964553a104322850fe8dc",
+   "prefix": "1571da960aa6540e",
+   "A": "1571da960aa6540e",
+   "B": "1571da960aa6540e",
+   "spec": "1571da960aa6540e",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/defo/verdicts_bf99c6741bce.csv": {
+   "sha256": "bf99c6741bcee2562a8570251b85697d0c30cf5b9ca4da9da5df4c32a6765ea0",
+   "prefix": "bf99c6741bcee256",
+   "A": "bf99c6741bcee256",
+   "B": "bf99c6741bcee256",
+   "spec": "bf99c6741bcee256",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/fire/headline_85a9134089e4.csv": {
+   "sha256": "85a9134089e47a61e2089b1a045321323d0465e7c40ae67adadbaf7650c71b66",
+   "prefix": "85a9134089e47a61",
+   "A": "85a9134089e47a61",
+   "B": "85a9134089e47a61",
+   "spec": "85a9134089e47a61",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/fire/verdicts_7ee7167afe8d.csv": {
+   "sha256": "7ee7167afe8d7a5287ab4841dc730a5a1c50fb2c76577fcbeb103503f6ac8e6b",
+   "prefix": "7ee7167afe8d7a52",
+   "A": "7ee7167afe8d7a52",
+   "B": "7ee7167afe8d7a52",
+   "spec": "7ee7167afe8d7a52",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/headline_93b64854d1f9.csv": {
+   "sha256": "93b64854d1f9c6bfc7066ad326e2bb643b823055417976bbc375c56d36975021",
+   "prefix": "93b64854d1f9c6bf",
+   "A": "93b64854d1f9c6bf",
+   "B": "93b64854d1f9c6bf",
+   "spec": "93b64854d1f9c6bf",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/ndvi/headline_9e5590eab94b.csv": {
+   "sha256": "9e5590eab94b7373c68a3d993e9885cdc2f7b9626f45ed278798b9508d3cec68",
+   "prefix": "9e5590eab94b7373",
+   "A": "9e5590eab94b7373",
+   "B": "9e5590eab94b7373",
+   "spec": "9e5590eab94b7373",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/ndvi/verdicts_c4cd7e7c2610.csv": {
+   "sha256": "c4cd7e7c2610e218d13872f9d3258be125cc55d9099c5ac39791e228f75ec603",
+   "prefix": "c4cd7e7c2610e218",
+   "A": "c4cd7e7c2610e218",
+   "B": "c4cd7e7c2610e218",
+   "spec": "c4cd7e7c2610e218",
+   "ok": true
+  },
+  "D:/treeroute/runs/_headline_tables/verdicts_9abcea419ce2.csv": {
+   "sha256": "9abcea419ce2fe63d658a5a1519f193938dc25f48460d16d52b5765314eaac7f",
+   "prefix": "9abcea419ce2fe63",
+   "A": "9abcea419ce2fe63",
+   "B": "9abcea419ce2fe63",
+   "spec": "9abcea419ce2fe63",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/adoption.json": {
+   "sha256": "2106a36efee4f9fc0650ed7c821a6f8f73c3fdd10c21674f7c8a24b27d80da2f",
+   "prefix": "2106a36efee4f9fc",
+   "A": "2106a36efee4f9fc",
+   "B": "2106a36efee4f9fc",
+   "spec": "2106a36efee4f9fc",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/derived.json": {
+   "sha256": "5fd02863f8b91573cf145edc98db7f8b4a9d6a9fd34a1519ef0a0f831e184660",
+   "prefix": "5fd02863f8b91573",
+   "A": "5fd02863f8b91573",
+   "B": "5fd02863f8b91573",
+   "spec": "5fd02863f8b91573",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/jackknife.csv": {
+   "sha256": "04178dc5d388f9f76a75e95f01068c431b403c3d04838ad7a85c58f3e79deeab",
+   "prefix": "04178dc5d388f9f7",
+   "A": "04178dc5d388f9f7",
+   "B": "04178dc5d388f9f7",
+   "spec": "04178dc5d388f9f7",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_by_group.csv": {
+   "sha256": "08dd01c06c8eedc2489b22ff19b75e36a514dcfd3a7224bf14539ffbf210f039",
+   "prefix": "08dd01c06c8eedc2",
+   "A": "08dd01c06c8eedc2",
+   "B": "08dd01c06c8eedc2",
+   "spec": "08dd01c06c8eedc2",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/score_pooled.csv": {
+   "sha256": "bbaa21aa184a10544c29d30211894ff850098cf2c81f80c3df5c014a56b10bb9",
+   "prefix": "bbaa21aa184a1054",
+   "A": "bbaa21aa184a1054",
+   "B": "bbaa21aa184a1054",
+   "spec": "bbaa21aa184a1054",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": {
+   "sha256": "dd07762558023d5fed6007a99c5b92f935c518a2c408622ccb8230397db6e3fa",
+   "prefix": "dd07762558023d5f",
+   "A": "dd07762558023d5f",
+   "B": "dd07762558023d5f",
+   "spec": "dd07762558023d5f",
+   "ok": true
+  },
+  "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/verdict.json": {
+   "sha256": "6bf9b04970173323c9112d90910c47c16da9e65bf214be3e6e9e9bb46fcde200",
+   "prefix": "6bf9b04970173323",
+   "A": "6bf9b04970173323",
+   "B": "6bf9b04970173323",
+   "spec": "6bf9b04970173323",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/adoption.json": {
+   "sha256": "d8ebdd4cc458b276938bee2bf165088ac9c622f133518031f7c6c806592ee54a",
+   "prefix": "d8ebdd4cc458b276",
+   "A": "d8ebdd4cc458b276",
+   "B": "d8ebdd4cc458b276",
+   "spec": "d8ebdd4cc458b276",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/derived.json": {
+   "sha256": "e17b92cfe8ba31cc6a91afcf52343fdc2bd57ccefbf5c455bea2ef82f133ab16",
+   "prefix": "e17b92cfe8ba31cc",
+   "A": "e17b92cfe8ba31cc",
+   "B": "e17b92cfe8ba31cc",
+   "spec": "e17b92cfe8ba31cc",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/jackknife.csv": {
+   "sha256": "aa7a8cd183eb510814f1dd52197a4ff77fdd3524000e08b659637dd29166f96d",
+   "prefix": "aa7a8cd183eb5108",
+   "A": "aa7a8cd183eb5108",
+   "B": "aa7a8cd183eb5108",
+   "spec": "aa7a8cd183eb5108",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_by_group.csv": {
+   "sha256": "d02e8f48ddef39ce90f1dd912883bd349c4b622813cc7371c09c827c4e04e6a1",
+   "prefix": "d02e8f48ddef39ce",
+   "A": "d02e8f48ddef39ce",
+   "B": "d02e8f48ddef39ce",
+   "spec": "d02e8f48ddef39ce",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/score_pooled.csv": {
+   "sha256": "8f1c161ad318e32c715e0734989a611922860c0c4b186c28160a8a83f15a71d1",
+   "prefix": "8f1c161ad318e32c",
+   "A": "8f1c161ad318e32c",
+   "B": "8f1c161ad318e32c",
+   "spec": "8f1c161ad318e32c",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/test_preds.parquet": {
+   "sha256": "3a002e9a9deb006a6698f4b021236782deae1480c3df821bf07888ee6012df4a",
+   "prefix": "3a002e9a9deb006a",
+   "A": "3a002e9a9deb006a",
+   "B": "3a002e9a9deb006a",
+   "spec": "3a002e9a9deb006a",
+   "ok": true
+  },
+  "D:/treeroute/runs/defo/headline/20261017_d71c61f4/verdict.json": {
+   "sha256": "34d090aae96fed3c16ea5238c116453db0faa805efd7e91f6e0ecfd6ba89553d",
+   "prefix": "34d090aae96fed3c",
+   "A": "34d090aae96fed3c",
+   "B": "34d090aae96fed3c",
+   "spec": "34d090aae96fed3c",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/adoption.json": {
+   "sha256": "75f70e5cd22039b62c65f0e4546f669de484edd21d5a9cec581fc0ed774260ad",
+   "prefix": "75f70e5cd22039b6",
+   "A": "75f70e5cd22039b6",
+   "B": "75f70e5cd22039b6",
+   "spec": "75f70e5cd22039b6",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/derived.json": {
+   "sha256": "9255562ca6959e9ec4036021420d47c0545391eb8713bd176d1c8853003c6942",
+   "prefix": "9255562ca6959e9e",
+   "A": "9255562ca6959e9e",
+   "B": "9255562ca6959e9e",
+   "spec": "9255562ca6959e9e",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/jackknife.csv": {
+   "sha256": "b8557782d9cdd7036c11b946f61c9ecb0c8e75385dc2825d6afa74114e55a3f7",
+   "prefix": "b8557782d9cdd703",
+   "A": "b8557782d9cdd703",
+   "B": "b8557782d9cdd703",
+   "spec": "b8557782d9cdd703",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_by_group.csv": {
+   "sha256": "03585591911c6e0136bfabfec2ffd2c14a5a8b4477bb9de7f1a7e767b7af264a",
+   "prefix": "03585591911c6e01",
+   "A": "03585591911c6e01",
+   "B": "03585591911c6e01",
+   "spec": "03585591911c6e01",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/score_pooled.csv": {
+   "sha256": "9236a25380d9aede1d2a075414e3d22c3913c01440aeaa4074b8ff23857ddb7c",
+   "prefix": "9236a25380d9aede",
+   "A": "9236a25380d9aede",
+   "B": "9236a25380d9aede",
+   "spec": "9236a25380d9aede",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/test_preds.parquet": {
+   "sha256": "86e9c97a58a9b7142a865fd1e3f3ad1da2ea75550c14cdfe200e8a748ac51c8b",
+   "prefix": "86e9c97a58a9b714",
+   "A": "86e9c97a58a9b714",
+   "B": "86e9c97a58a9b714",
+   "spec": "86e9c97a58a9b714",
+   "ok": true
+  },
+  "D:/treeroute/runs/fire/headline/20261017_869d1f38/verdict.json": {
+   "sha256": "6c744bc1a0647e3736e36b9f2b0fb8c9c5ba6f9d93b5ea940aa917fcbacd10e5",
+   "prefix": "6c744bc1a0647e37",
+   "A": "6c744bc1a0647e37",
+   "B": "6c744bc1a0647e37",
+   "spec": "6c744bc1a0647e37",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/adoption.json": {
+   "sha256": "d5ae6f1dd672868166425c6b7590ca911596b29a0c9ccf198feb594623963e59",
+   "prefix": "d5ae6f1dd6728681",
+   "A": "d5ae6f1dd6728681",
+   "B": "d5ae6f1dd6728681",
+   "spec": "d5ae6f1dd6728681",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/derived.json": {
+   "sha256": "8ecc92b58cbd5f65867d477472001085646553c891773ab382fd542c470bb950",
+   "prefix": "8ecc92b58cbd5f65",
+   "A": "8ecc92b58cbd5f65",
+   "B": "8ecc92b58cbd5f65",
+   "spec": "8ecc92b58cbd5f65",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/jackknife.csv": {
+   "sha256": "533c7dd30d5b5f5bf76f348ffc5d1aaac12e2baabd002a8d1ee33d18fcd7fb32",
+   "prefix": "533c7dd30d5b5f5b",
+   "A": "533c7dd30d5b5f5b",
+   "B": "533c7dd30d5b5f5b",
+   "spec": "533c7dd30d5b5f5b",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_by_group.csv": {
+   "sha256": "be1381c5568d225e27d6f6911dad2c7b2b22bdfafa25f30b265263c97bd3aab1",
+   "prefix": "be1381c5568d225e",
+   "A": "be1381c5568d225e",
+   "B": "be1381c5568d225e",
+   "spec": "be1381c5568d225e",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/score_pooled.csv": {
+   "sha256": "3a7e09b6156e44493c8e74c5755ab3e578a8107308abb98909a1e27d3706f924",
+   "prefix": "3a7e09b6156e4449",
+   "A": "3a7e09b6156e4449",
+   "B": "3a7e09b6156e4449",
+   "spec": "3a7e09b6156e4449",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/test_preds.parquet": {
+   "sha256": "87c0b1414af7e37027905ff55b2caa39adadd7cee01591ea8b17de1172dfb00c",
+   "prefix": "87c0b1414af7e370",
+   "A": "87c0b1414af7e370",
+   "B": "87c0b1414af7e370",
+   "spec": "87c0b1414af7e370",
+   "ok": true
+  },
+  "D:/treeroute/runs/ndvi/headline/20261016_d1de3158/verdict.json": {
+   "sha256": "535ef992b5057ed76023d027072c9c9bc99b5aedbc516b96b60c4eb186f44ba5",
+   "prefix": "535ef992b5057ed7",
+   "A": "535ef992b5057ed7",
+   "B": "535ef992b5057ed7",
+   "spec": "535ef992b5057ed7",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/adoption.json": {
+   "sha256": "b6408c90560b458543f0b1d7d46fc7f4c70de110ff2e6e2ad0e8cdef27ec4335",
+   "prefix": "b6408c90560b4585",
+   "A": "b6408c90560b4585",
+   "B": "b6408c90560b4585",
+   "spec": "b6408c90560b4585",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/derived.json": {
+   "sha256": "3e2d692b74ad64723fb38c8264e2faa5bdfac8e50a224a141f1d5fb19e10cc36",
+   "prefix": "3e2d692b74ad6472",
+   "A": "3e2d692b74ad6472",
+   "B": "3e2d692b74ad6472",
+   "spec": "3e2d692b74ad6472",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/jackknife.csv": {
+   "sha256": "25624a91d0879ae29020081e48b17858a8923c187fdf5a945b7e75c16f2ce509",
+   "prefix": "25624a91d0879ae2",
+   "A": "25624a91d0879ae2",
+   "B": "25624a91d0879ae2",
+   "spec": "25624a91d0879ae2",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_by_group.csv": {
+   "sha256": "6fed1e7be9456655821b8babf6f7af841474ef18bf3d81198decc03d2e9974f5",
+   "prefix": "6fed1e7be9456655",
+   "A": "6fed1e7be9456655",
+   "B": "6fed1e7be9456655",
+   "spec": "6fed1e7be9456655",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/score_pooled.csv": {
+   "sha256": "8a7d2f44f00a9e7c4b3f7c9a5dc511db0bd9164ae1a827d511f929a5e6d70d9a",
+   "prefix": "8a7d2f44f00a9e7c",
+   "A": "8a7d2f44f00a9e7c",
+   "B": "8a7d2f44f00a9e7c",
+   "spec": "8a7d2f44f00a9e7c",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/test_preds.parquet": {
+   "sha256": "9e62fe4256c08c50108f09bb0eef65bd46bed78c1deb045a2746eb500f454225",
+   "prefix": "9e62fe4256c08c50",
+   "A": "9e62fe4256c08c50",
+   "B": "9e62fe4256c08c50",
+   "spec": "9e62fe4256c08c50",
+   "ok": true
+  },
+  "D:/treeroute/runs/pm25/headline/20261007_74e67609/verdict.json": {
+   "sha256": "af031ef5a44dbe671243a3bcccf54db9c3fc0de5e1e3d081dda985769a6cf0a5",
+   "prefix": "af031ef5a44dbe67",
+   "A": "af031ef5a44dbe67",
+   "B": "af031ef5a44dbe67",
+   "spec": "af031ef5a44dbe67",
+   "ok": true
+  }
+ },
+ "n_input_files": 82,
+ "n_input_hash_mismatch": 0,
+ "spec_inputs_not_read_by_A_or_B": [],
+ "spot_checks_C": {
+  "R3b_fire": {
+   "mae": {
+    "arm__log_c_trees_off_unweighted": 0.004281302312816825,
+    "base__predict_zero": 0.004284114619241937,
+    "arm__arcsine_corrector_gls": 0.004385064558301006
+   },
+   "change_pct_vs_logTO": 2.4236140758747786,
+   "change_pct_vs_PZ": 2.3563781091583493
+  },
+  "M34": {
+   "pm25": {
+    "labelled": 91428,
+    "saved": 91440,
+    "MAE_TO": 4.031610558456933,
+    "MAE_GN": 4.031610558674801,
+    "rel": -5.4040038546584e-11,
+    "maxdev": 4.124643737668521e-09,
+    "GN_eq_clip": true
+   },
+   "ndvi": {
+    "labelled": 94527,
+    "saved": 95184,
+    "MAE_TO": 0.039414114188559106,
+    "MAE_GN": 0.03941411443328163,
+    "rel": -6.209007369163008e-09,
+    "maxdev": 1.7599613409691184e-07,
+    "GN_eq_clip": true
+   },
+   "fire": {
+    "labelled": 94702,
+    "saved": 96000,
+    "MAE_TO": 0.006258758011328549,
+    "MAE_GN": 0.006258757880478231,
+    "rel": 2.0906754991836225e-08,
+    "maxdev": 8.090730176402725e-07,
+    "GN_eq_clip": true
+   },
+   "defo": {
+    "labelled": 369096,
+    "saved": 369096,
+    "MAE_TO": 0.008404857347564031,
+    "MAE_GN": 0.008404857347226244,
+    "rel": 4.018950899590886e-11,
+    "maxdev": 4.759310535951133e-09,
+    "GN_eq_clip": true
+   }
+  },
+  "P29_changed": {
+   "own|fire|0": {
+    "G": 40,
+    "t_quantile": 2.0226909200367604,
+    "low_t": -1.2027743388921396e-06,
+    "high_t": 8.580210911799063e-05,
+    "p_z": 0.04921011488404211,
+    "p_t": 0.05635456901611458,
+    "low_z": 1.4553254714064234e-07
+   },
+   "human|coral|183": {
+    "G": 32,
+    "t_quantile": 2.0395134463964077,
+    "low_t": -0.07306569416067066,
+    "high_t": 3.773275681001868,
+    "p_z": 0.04975926843790467,
+    "p_t": 0.05879090741773607,
+    "low_z": 0.0019119578123156789
+   }
+  },
+  "RC12_probe_cuts_single_implementation": {
+   "inputs": {
+    "D:/treeroute/runs/coral/headline/20261020_f3b8e3da/test_preds.parquet": "dd07762558023d5f",
+    "D:/treeroute/rivals/coral/20261020_f3b8e3da/lead_0/preds_hgb_l1.parquet": "7039e548bf4ead04"
+   },
+   "cuts": {
+    "(0,10]": {
+     "n": 607,
+     "n_groups": 29,
+     "ours": 3.708836204588227,
+     "hgb_l1": 4.41396394936231
+    },
+    "(10,50]": {
+     "n": 282,
+     "n_groups": 26,
+     "ours": 14.94088719371902,
+     "hgb_l1": 14.349057986265551
+    },
+    "(50,inf)": {
+     "n": 135,
+     "n_groups": 17,
+     "ours": 53.528817060852326,
+     "hgb_l1": 38.83400928974195
+    }
+   }
+  }
+ },
+ "spot_checks_C_vs_A": {
+  "M34/pm25/MAE_TO": {
+   "C": 4.031610558456933,
+   "A": 4.031610558456933,
+   "equal": true
+  },
+  "M34/pm25/MAE_GN": {
+   "C": 4.031610558674801,
+   "A": 4.031610558674801,
+   "equal": true
+  },
+  "M34/pm25/rel": {
+   "C": -5.4040038546584e-11,
+   "A": -5.4040038546584e-11,
+   "equal": true
+  },
+  "M34/pm25/maxdev": {
+   "C": 4.124643737668521e-09,
+   "A": 4.124643737668521e-09,
+   "equal": true
+  },
+  "M34/pm25/GN_eq_clip": {
+   "C": true,
+   "A": true,
+   "equal": true
+  },
+  "M34/pm25/labelled": {
+   "C": 91428,
+   "A": 91428,
+   "equal": true
+  },
+  "M34/pm25/saved": {
+   "C": 91440,
+   "A": 91440,
+   "equal": true
+  },
+  "M34/ndvi/MAE_TO": {
+   "C": 0.039414114188559106,
+   "A": 0.039414114188559106,
+   "equal": true
+  },
+  "M34/ndvi/MAE_GN": {
+   "C": 0.03941411443328163,
+   "A": 0.03941411443328163,
+   "equal": true
+  },
+  "M34/ndvi/rel": {
+   "C": -6.209007369163008e-09,
+   "A": -6.209007369163008e-09,
+   "equal": true
+  },
+  "M34/ndvi/maxdev": {
+   "C": 1.7599613409691184e-07,
+   "A": 1.7599613409691184e-07,
+   "equal": true
+  },
+  "M34/ndvi/GN_eq_clip": {
+   "C": true,
+   "A": true,
+   "equal": true
+  },
+  "M34/ndvi/labelled": {
+   "C": 94527,
+   "A": 94527,
+   "equal": true
+  },
+  "M34/ndvi/saved": {
+   "C": 95184,
+   "A": 95184,
+   "equal": true
+  },
+  "M34/fire/MAE_TO": {
+   "C": 0.006258758011328549,
+   "A": 0.006258758011328549,
+   "equal": true
+  },
+  "M34/fire/MAE_GN": {
+   "C": 0.006258757880478231,
+   "A": 0.006258757880478231,
+   "equal": true
+  },
+  "M34/fire/rel": {
+   "C": 2.0906754991836225e-08,
+   "A": 2.0906754991836225e-08,
+   "equal": true
+  },
+  "M34/fire/maxdev": {
+   "C": 8.090730176402725e-07,
+   "A": 8.090730176402725e-07,
+   "equal": true
+  },
+  "M34/fire/GN_eq_clip": {
+   "C": true,
+   "A": true,
+   "equal": true
+  },
+  "M34/fire/labelled": {
+   "C": 94702,
+   "A": 94702,
+   "equal": true
+  },
+  "M34/fire/saved": {
+   "C": 96000,
+   "A": 96000,
+   "equal": true
+  },
+  "M34/defo/MAE_TO": {
+   "C": 0.008404857347564031,
+   "A": 0.008404857347564031,
+   "equal": true
+  },
+  "M34/defo/MAE_GN": {
+   "C": 0.008404857347226244,
+   "A": 0.008404857347226244,
+   "equal": true
+  },
+  "M34/defo/rel": {
+   "C": 4.018950899590886e-11,
+   "A": 4.018950899590886e-11,
+   "equal": true
+  },
+  "M34/defo/maxdev": {
+   "C": 4.759310535951133e-09,
+   "A": 4.759310535951133e-09,
+   "equal": true
+  },
+  "M34/defo/GN_eq_clip": {
+   "C": true,
+   "A": true,
+   "equal": true
+  },
+  "M34/defo/labelled": {
+   "C": 369096,
+   "A": 369096,
+   "equal": true
+  },
+  "M34/defo/saved": {
+   "C": 369096,
+   "A": 369096,
+   "equal": true
+  },
+  "P29/own|fire|0/t_quantile": {
+   "C": 2.0226909200367604,
+   "A": 2.0226909200367604,
+   "equal": true
+  },
+  "P29/own|fire|0/low_t": {
+   "C": -1.2027743388921396e-06,
+   "A": -1.2027743388921396e-06,
+   "equal": true
+  },
+  "P29/own|fire|0/high_t": {
+   "C": 8.580210911799063e-05,
+   "A": 8.580210911799063e-05,
+   "equal": true
+  },
+  "P29/own|fire|0/p_z": {
+   "C": 0.04921011488404211,
+   "A": 0.04921011488404211,
+   "equal": true
+  },
+  "P29/own|fire|0/p_t": {
+   "C": 0.05635456901611458,
+   "A": 0.05635456901611458,
+   "equal": true
+  },
+  "P29/own|fire|0/low_z": {
+   "C": 1.4553254714064234e-07,
+   "A": 1.4553254714064234e-07,
+   "equal": true
+  },
+  "P29/human|coral|183/t_quantile": {
+   "C": 2.0395134463964077,
+   "A": 2.0395134463964077,
+   "equal": true
+  },
+  "P29/human|coral|183/low_t": {
+   "C": -0.07306569416067066,
+   "A": -0.07306569416067066,
+   "equal": true
+  },
+  "P29/human|coral|183/high_t": {
+   "C": 3.773275681001868,
+   "A": 3.773275681001868,
+   "equal": true
+  },
+  "P29/human|coral|183/p_z": {
+   "C": 0.04975926843790467,
+   "A": 0.04975926843790467,
+   "equal": true
+  },
+  "P29/human|coral|183/p_t": {
+   "C": 0.05879090741773607,
+   "A": 0.05879090741773607,
+   "equal": true
+  },
+  "P29/human|coral|183/low_z": {
+   "C": 0.0019119578123156789,
+   "A": 0.0019119578123156789,
+   "equal": true
+  },
+  "R3b/fire/change_pct_vs_logTO": {
+   "C": 2.4236140758747786,
+   "A": 2.4236140758747786,
+   "equal": true
+  },
+  "R3b/fire/change_pct_vs_PZ": {
+   "C": 2.3563781091583493,
+   "A": 2.3563781091583493,
+   "equal": true
+  }
+ },
+ "fact_sheet": {
+  "M34": [
+   {
+    "label": "pm25 MAE_TO (6 sig)",
+    "stated": "4.03161",
+    "agreed": 4.031610558456933,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 MAE_GN (6 sig)",
+    "stated": "4.03161",
+    "agreed": 4.031610558674801,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi MAE_TO (6 sig)",
+    "stated": "0.0394141",
+    "agreed": 0.039414114188559106,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi MAE_GN (6 sig)",
+    "stated": "0.0394141",
+    "agreed": 0.03941411443328163,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo MAE_TO (6 sig)",
+    "stated": "0.00840486",
+    "agreed": 0.008404857347564031,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo MAE_GN (6 sig)",
+    "stated": "0.00840486",
+    "agreed": 0.008404857347226244,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi TO anomaly R2",
+    "stated": "1.45e-09",
+    "agreed": 1.4520969982001475e-09,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 MAE_TO (frozen score_pooled)",
+    "stated": "4.031610558456933",
+    "agreed": 4.031610558456933,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 MAE_GN (frozen score_pooled)",
+    "stated": "4.031610558674801",
+    "agreed": 4.031610558674801,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi MAE_TO (frozen score_pooled)",
+    "stated": "0.039414114188559106",
+    "agreed": 0.039414114188559106,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi MAE_GN (frozen score_pooled)",
+    "stated": "0.03941411443328163",
+    "agreed": 0.03941411443328163,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire MAE_TO (frozen score_pooled)",
+    "stated": "0.006258758011328549",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire MAE_GN (frozen score_pooled)",
+    "stated": "0.006258757880478231",
+    "agreed": 0.006258757880478231,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo MAE_TO (frozen score_pooled)",
+    "stated": "0.008404857347564031",
+    "agreed": 0.008404857347564031,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo MAE_GN (frozen score_pooled)",
+    "stated": "0.008404857347226244",
+    "agreed": 0.008404857347226244,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 TO anomaly R2",
+    "stated": "5.16e-11",
+    "agreed": 5.1608384232793014e-11,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi TO anomaly R2",
+    "stated": "1.45e-09",
+    "agreed": 1.4520969982001475e-09,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire TO anomaly R2",
+    "stated": "5.52e-09",
+    "agreed": 5.519035450873844e-09,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo TO anomaly R2",
+    "stated": "2.02e-10",
+    "agreed": 2.0187096438917251e-10,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 maxdev (probe)",
+    "stated": "4.1e-09",
+    "agreed": 4.124643737668521e-09,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi maxdev (probe)",
+    "stated": "1.76e-07",
+    "agreed": 1.7599613409691184e-07,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire maxdev (probe)",
+    "stated": "8.09e-07",
+    "agreed": 8.090730176402725e-07,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo maxdev (probe)",
+    "stated": "4.76e-09",
+    "agreed": 4.759310535951133e-09,
+    "status": "MATCHES"
+   },
+   {
+    "label": "GN == clip(normal) exactly in all four",
+    "stated": "true",
+    "agreed": "true in all four",
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire MAE_TO (added, 6 sig)",
+    "stated": "0.00625876",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire MAE_GN (added, 6 sig)",
+    "stated": "0.00625876",
+    "agreed": 0.006258757880478231,
+    "status": "MATCHES"
+   },
+   {
+    "label": "'equal to every printed digit' (6 sig) in all four",
+    "stated": "true",
+    "agreed": {
+     "pm25": [
+      "4.03161",
+      "4.03161"
+     ],
+     "ndvi": [
+      "0.0394141",
+      "0.0394141"
+     ],
+     "fire": [
+      "0.00625876",
+      "0.00625876"
+     ],
+     "defo": [
+      "0.00840486",
+      "0.00840486"
+     ]
+    },
+    "status": "MATCHES"
+   },
+   {
+    "label": "proposed wording 'equal within 1e-8 relative' (all four runs)",
+    "stated": "max |rel| <= 1e-8",
+    "agreed": "max |rel| = 2.091e-08 (fire); pm25 -5.4e-11, ndvi -6.21e-09, defo 4.02e-11",
+    "status": "DIFFERS"
+   },
+   {
+    "label": "maxdev within the run's identity tolerance (R16/R36)",
+    "stated": "true",
+    "agreed": {
+     "pm25": 0.004124643737668521,
+     "ndvi": 0.19555126010767984,
+     "fire": 0.8989700196003028,
+     "defo": 0.005288122817723482
+    },
+    "status": "MATCHES"
+   }
+  ],
+  "R12": [
+   {
+    "label": "arm__log_c_trees_off_unweighted",
+    "stated": "0.004281",
+    "agreed": 0.004281302312816825,
+    "status": "MATCHES"
+   },
+   {
+    "label": "base__predict_zero",
+    "stated": "0.004284",
+    "agreed": 0.004284114619241937,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__arcsine_corrector_gls",
+    "stated": "0.004385",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__arcsine_trees_off_unweighted",
+    "stated": "0.004428",
+    "agreed": 0.00442826356638935,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__identity_trees_off_unweighted",
+    "stated": "0.006259",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "log tree arms min",
+    "stated": "0.004296",
+    "agreed": 0.0042957948726572255,
+    "status": "MATCHES"
+   },
+   {
+    "label": "log tree arms max",
+    "stated": "0.004322",
+    "agreed": 0.004322425347543649,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ordering logTO < PZ < log arms < adopted < arcsine TO < identity normal",
+    "stated": "as stated",
+    "agreed": [
+     "arm__log_c_trees_off_unweighted",
+     "base__predict_zero",
+     "arm__log_c_corrector_gls",
+     "arm__log_c_plain_gls",
+     "arm__log_c_corrector_unweighted",
+     "arm__log_c_plain_unweighted",
+     "arm__arcsine_corrector_gls",
+     "arm__arcsine_trees_off_unweighted",
+     "base__guess_normal",
+     "arm__identity_trees_off_unweighted"
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__log_c_trees_off_unweighted (frozen score_pooled)",
+    "stated": "0.004281302312816825",
+    "agreed": 0.004281302312816825,
+    "status": "MATCHES"
+   },
+   {
+    "label": "base__predict_zero (frozen score_pooled)",
+    "stated": "0.004284114619241937",
+    "agreed": 0.004284114619241937,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__log_c_corrector_gls (frozen score_pooled)",
+    "stated": "0.0042957948726572255",
+    "agreed": 0.0042957948726572255,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__log_c_plain_gls (frozen score_pooled)",
+    "stated": "0.004296987722157366",
+    "agreed": 0.004296987722157366,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__log_c_corrector_unweighted (frozen score_pooled)",
+    "stated": "0.004320857403502066",
+    "agreed": 0.004320857403502066,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__log_c_plain_unweighted (frozen score_pooled)",
+    "stated": "0.004322425347543649",
+    "agreed": 0.004322425347543649,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__arcsine_corrector_gls (frozen score_pooled)",
+    "stated": "0.004385064558301006",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__arcsine_trees_off_unweighted (frozen score_pooled)",
+    "stated": "0.00442826356638935",
+    "agreed": 0.00442826356638935,
+    "status": "MATCHES"
+   },
+   {
+    "label": "arm__identity_trees_off_unweighted (frozen score_pooled)",
+    "stated": "0.006258758011328549",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "base__guess_normal (frozen score_pooled)",
+    "stated": "0.006258757880478231",
+    "agreed": 0.006258757880478231,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log plain unw mean",
+    "stated": "-4.19e-05",
+    "agreed": -4.187873633792463e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log plain unw low",
+    "stated": "-6.88e-05",
+    "agreed": -6.876883843503599e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log plain unw high",
+    "stated": "-1.50e-05",
+    "agreed": -1.4988634240813266e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log plain unw tag",
+    "stated": "hurts",
+    "agreed": "hurts",
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log corrector unw mean",
+    "stated": "-4.03e-05",
+    "agreed": -4.030492240020977e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log corrector unw low",
+    "stated": "-6.66e-05",
+    "agreed": -6.659734476063998e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log corrector unw high",
+    "stated": "-1.40e-05",
+    "agreed": -1.4012500039779556e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log corrector unw tag",
+    "stated": "hurts",
+    "agreed": "hurts",
+    "status": "MATCHES"
+   },
+   {
+    "label": "jk log GLS arms tag",
+    "stated": "cannot_tell",
+    "agreed": [
+     "cannot_tell",
+     "cannot_tell"
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "new report-only contrasts (adopted vs log TO, vs PZ)",
+    "stated": "not in fact sheet yet",
+    "agreed": {
+     "arm__log_c_trees_off_unweighted": [
+      -0.00010295521202507616,
+      -0.00023100933896972204,
+      2.509891491956972e-05,
+      "cannot_tell"
+     ],
+     "base__predict_zero": [
+      -0.00010354192456672527,
+      -0.0006204908641961194,
+      0.0004134070150626689,
+      "cannot_tell"
+     ]
+    },
+    "status": "MATCHES"
+   }
+  ],
+  "R13": [
+   {
+    "label": "fire arcsine|gls corrector (provisional)",
+    "stated": "0.004385",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire arcsine|gls corrector (frozen, 10 sig)",
+    "stated": "0.004385064558",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire arcsine|gls placebo (provisional)",
+    "stated": "0.004383",
+    "agreed": 0.00438304317129671,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire arcsine|gls placebo (frozen, 10 sig)",
+    "stated": "0.004383043171",
+    "agreed": 0.00438304317129671,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire arcsine|gls plain (provisional)",
+    "stated": "0.004386",
+    "agreed": 0.004385670290261638,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire arcsine|gls plain (frozen, 10 sig)",
+    "stated": "0.004385670290",
+    "agreed": 0.004385670290261638,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted corrector (provisional)",
+    "stated": "0.0054158",
+    "agreed": 0.005415798421978487,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted corrector (frozen, 10 sig)",
+    "stated": "0.005415798422",
+    "agreed": 0.005415798421978487,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted placebo (provisional)",
+    "stated": "0.0054195",
+    "agreed": 0.005419502142027809,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted placebo (frozen, 10 sig)",
+    "stated": "0.005419502142",
+    "agreed": 0.005419502142027809,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted plain (provisional)",
+    "stated": "0.0054164",
+    "agreed": 0.005416406367405097,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log_c|unweighted plain (frozen, 10 sig)",
+    "stated": "0.005416406367",
+    "agreed": 0.005416406367405097,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted corrector (provisional)",
+    "stated": "3.58809",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted corrector (frozen, 10 sig)",
+    "stated": "3.588091134",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted placebo (provisional)",
+    "stated": "3.59157",
+    "agreed": 3.5915728813934615,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted placebo (frozen, 10 sig)",
+    "stated": "3.591572881",
+    "agreed": 3.5915728813934615,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted plain (provisional)",
+    "stated": "3.59645",
+    "agreed": 3.596454183542564,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log_c|unweighted plain (frozen, 10 sig)",
+    "stated": "3.596454184",
+    "agreed": 3.596454183542564,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted corrector (provisional)",
+    "stated": "0.0314975",
+    "agreed": 0.03149747356642757,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted corrector (frozen, 10 sig)",
+    "stated": "0.03149747357",
+    "agreed": 0.03149747356642757,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted placebo (provisional)",
+    "stated": "0.0316536",
+    "agreed": 0.03165363991533624,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted placebo (frozen, 10 sig)",
+    "stated": "0.03165363992",
+    "agreed": 0.03165363991533624,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted plain (provisional)",
+    "stated": "0.0314606",
+    "agreed": 0.03146059686292064,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi identity|unweighted plain (frozen, 10 sig)",
+    "stated": "0.03146059686",
+    "agreed": 0.03146059686292064,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls corrector (provisional)",
+    "stated": "6.698",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls corrector (frozen, 10 sig)",
+    "stated": "6.697989245",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls placebo (provisional)",
+    "stated": "6.732",
+    "agreed": 6.7315457283792615,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls placebo (frozen, 10 sig)",
+    "stated": "6.731545728",
+    "agreed": 6.7315457283792615,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls plain (provisional)",
+    "stated": "6.736",
+    "agreed": 6.735936795790105,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral arcsine|gls plain (frozen, 10 sig)",
+    "stated": "6.735936796",
+    "agreed": 6.735936795790105,
+    "status": "MATCHES"
+   },
+   {
+    "label": "every placebo pair equivalent except defo identity unw (cannot_tell), fire identity x2 (hurts)",
+    "stated": "as stated",
+    "agreed": {
+     "n_pairs": 21,
+     "exceptions": {
+      "fire:arm__identity_corrector_unweighted": "hurts",
+      "fire:arm__identity_corrector_gls": "hurts",
+      "defo:arm__identity_corrector_unweighted": "cannot_tell"
+     }
+    },
+    "status": "MATCHES"
+   }
+  ],
+  "R14": [
+   {
+    "label": "pm25 a_tree",
+    "stated": "15",
+    "agreed": 15.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 a_ctx",
+    "stated": "15",
+    "agreed": 15.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi a_tree",
+    "stated": "0.5",
+    "agreed": 0.5,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi a_ctx",
+    "stated": "0.03125",
+    "agreed": 0.03125,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire a_tree",
+    "stated": "50",
+    "agreed": 50.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire a_ctx",
+    "stated": "50",
+    "agreed": 50.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral a_tree",
+    "stated": "50",
+    "agreed": 50.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral a_ctx",
+    "stated": "50",
+    "agreed": 50.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo lambda",
+    "stated": "10",
+    "agreed": 10.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 derived centre",
+    "stated": "[0.5, 0.25]",
+    "agreed": [
+     0.5,
+     0.25
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi derived centre",
+    "stated": "[0.5, 0.25]",
+    "agreed": [
+     0.5,
+     0.25
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire derived centre",
+    "stated": "[0.5, 0.25]",
+    "agreed": [
+     0.5,
+     0.25
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo derived centre",
+    "stated": "[100.0]",
+    "agreed": [
+     100.0
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral derived centre",
+    "stated": "[0.5, 0.25]",
+    "agreed": [
+     0.5,
+     0.25
+    ],
+    "status": "MATCHES"
+   }
+  ],
+  "R15": [
+   {
+    "label": "pm25 best log corrector GLS",
+    "stated": "3.5875",
+    "agreed": 3.5874804069348305,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 best arm",
+    "stated": "arm__log_c_corrector_gls",
+    "agreed": "arm__log_c_corrector_gls",
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 adopted log corrector unw",
+    "stated": "3.5881",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 regret",
+    "stated": "0.0006",
+    "agreed": 0.0006107271581905493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 regret (score_pooled line)",
+    "stated": "0.00061",
+    "agreed": 0.0006107271581905493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 best (score_pooled line, 10 dp)",
+    "stated": "3.5874804069",
+    "agreed": 3.5874804069348305,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 adopted (score_pooled line, 10 dp)",
+    "stated": "3.5880911341",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 plain unw",
+    "stated": "3.5965",
+    "agreed": 3.596454183542564,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 corrector unw",
+    "stated": "3.5881",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 identity arms min",
+    "stated": "3.724",
+    "agreed": 3.7240015891488047,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 identity arms max",
+    "stated": "3.778",
+    "agreed": 3.777737417581777,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 log trees-off",
+    "stated": "3.853",
+    "agreed": 3.85316555881606,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi adopted identity plain unw",
+    "stated": "0.03146",
+    "agreed": 0.03146059686292064,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi adopted is best (regret 0)",
+    "stated": "regret 0",
+    "agreed": 0.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi other arms min",
+    "stated": "0.03148",
+    "agreed": 0.03148296727485251,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi other arms max",
+    "stated": "0.03151",
+    "agreed": 0.03150740801496085,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire best log corrector GLS",
+    "stated": "0.004296",
+    "agreed": 0.0042957948726572255,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire adopted",
+    "stated": "0.004385",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire regret rel % (fact sheet)",
+    "stated": "2.1",
+    "agreed": 2.0780714231022337,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire regret rel % (score_pooled line)",
+    "stated": "2.08",
+    "agreed": 2.0780714231022337,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire all four log arms beat adopted",
+    "stated": "true",
+    "agreed": [
+     0.0042957948726572255,
+     0.004320857403502066,
+     0.004296987722157366,
+     0.004322425347543649
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire log arms min",
+    "stated": "0.004296",
+    "agreed": 0.0042957948726572255,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire log arms max",
+    "stated": "0.004322",
+    "agreed": 0.004322425347543649,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire log trees-off beats them all",
+    "stated": "true",
+    "agreed": 0.004281302312816825,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire log trees-off",
+    "stated": "0.004281",
+    "agreed": 0.004281302312816825,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire identity arms min",
+    "stated": "0.00648",
+    "agreed": 0.006477791880656638,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire identity arms max",
+    "stated": "0.00669",
+    "agreed": 0.006689094217587933,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire identity arms > identity normal",
+    "stated": "true",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire identity normal",
+    "stated": "0.006259",
+    "agreed": 0.006258758011328549,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo adopted",
+    "stated": "0.0054158",
+    "agreed": 0.005415798421978487,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo log plain",
+    "stated": "0.0054164",
+    "agreed": 0.005416406367405097,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo regret 0",
+    "stated": "0",
+    "agreed": 0.0,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo 'adopted = log plain' (wording)",
+    "stated": "equal",
+    "agreed": "adopted 0.0054157984 < log plain 0.0054164064 (diff 6.08e-07); '=' is not literal",
+    "status": "WORDING"
+   },
+   {
+    "label": "defo arcsine arms min",
+    "stated": "0.00573",
+    "agreed": 0.00572630474833318,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo arcsine arms max",
+    "stated": "0.00573",
+    "agreed": 0.005734363979621296,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo identity arms min",
+    "stated": "0.00791",
+    "agreed": 0.007910046310872217,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo identity arms max",
+    "stated": "0.00797",
+    "agreed": 0.007973050139196167,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo predict-zero",
+    "stated": "0.00612",
+    "agreed": 0.00612027278413151,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo identity arms > PZ",
+    "stated": "true",
+    "agreed": 0.007910046310872217,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral every unweighted arcsine/log arm beats adopted",
+    "stated": "true",
+    "agreed": [
+     6.14748576299595,
+     6.159354031225012,
+     6.359479297265017,
+     6.375598571033158
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral unweighted arcsine/log min",
+    "stated": "6.147",
+    "agreed": 6.14748576299595,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral unweighted arcsine/log max",
+    "stated": "6.376",
+    "agreed": 6.375598571033158,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral adopted",
+    "stated": "6.698",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral best arm",
+    "stated": "arm__arcsine_corrector_unweighted",
+    "agreed": "arm__arcsine_corrector_unweighted",
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral best",
+    "stated": "6.147",
+    "agreed": 6.14748576299595,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral regret",
+    "stated": "0.55",
+    "agreed": 0.5505034820663806,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral regret (score_pooled line)",
+    "stated": "0.5505",
+    "agreed": 0.5505034820663806,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral regret rel % (fact sheet)",
+    "stated": "9.0",
+    "agreed": 8.954937079807,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral regret rel % (score_pooled line)",
+    "stated": "8.95",
+    "agreed": 8.954937079807,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral best (score_pooled line, 10 dp)",
+    "stated": "6.1474857630",
+    "agreed": 6.14748576299595,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral adopted (score_pooled line, 10 dp)",
+    "stated": "6.6979892451",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire best (score_pooled line)",
+    "stated": "0.0042957949",
+    "agreed": 0.0042957948726572255,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire adopted (score_pooled line)",
+    "stated": "0.0043850646",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   }
+  ],
+  "P29": [
+   {
+    "label": "fire t39",
+    "stated": "2.023",
+    "agreed": 2.0226909200367604,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire t lower bound",
+    "stated": "-1.2e-06",
+    "agreed": -1.2027743388921396e-06,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire p_t",
+    "stated": "0.056",
+    "agreed": 0.05635456901611458,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire z lower bound",
+    "stated": "+1.46e-07",
+    "agreed": 1.4553254714064234e-07,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire p_z",
+    "stated": "0.049",
+    "agreed": 0.04921011488404211,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire p_z (probe)",
+    "stated": "0.04921",
+    "agreed": 0.04921011488404211,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire p_t (probe)",
+    "stated": "0.05635",
+    "agreed": 0.05635456901611458,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire HELPS -> CANNOT TELL",
+    "stated": "helps -> cannot_tell",
+    "agreed": [
+     "helps",
+     "cannot_tell"
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW 183 d, 32 groups",
+    "stated": "crw_dhw, G 32",
+    "agreed": [
+     "crw_dhw",
+     32
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW t31 low",
+    "stated": "-0.073",
+    "agreed": -0.07306569416067066,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW t31 high",
+    "stated": "3.773",
+    "agreed": 3.773275681001868,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW p_z (probe)",
+    "stated": "0.04976",
+    "agreed": 0.04975926843790467,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW p_t (probe)",
+    "stated": "0.05879",
+    "agreed": 0.05879090741773607,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral CRW BEATS -> CANNOT TELL",
+    "stated": "helps -> cannot_tell",
+    "agreed": [
+     "helps",
+     "cannot_tell"
+    ],
+    "status": "MATCHES"
+   },
+   {
+    "label": "every other deciding verdict unchanged (exactly 2 change)",
+    "stated": "2",
+    "agreed": 2,
+    "status": "MATCHES"
+   },
+   {
+    "label": "Holm z: all five survive, fire last",
+    "stated": "all survive",
+    "agreed": {
+     "pm25": 1.2496245932051381e-08,
+     "ndvi": 1.3825434560019997e-39,
+     "fire": 0.04921011488404211,
+     "defo": 0.01115614943217776,
+     "coral": 0.004813605965843142
+    },
+    "status": "MATCHES"
+   },
+   {
+    "label": "Holm t: fire fails, others survive",
+    "stated": "fire fails",
+    "agreed": {
+     "pm25": 1.1165386121103335e-07,
+     "ndvi": 2.100409578207426e-25,
+     "fire": 0.05635456901611458,
+     "defo": 0.0166988973828065,
+     "coral": 0.009704291770623541
+    },
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 band share %",
+    "stated": "1.20",
+    "agreed": 1.199324190760551,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 band share % (probe)",
+    "stated": "1.1993",
+    "agreed": 1.199324190760551,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi band share %",
+    "stated": "1.52",
+    "agreed": 1.515880257250493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi band share % (probe)",
+    "stated": "1.5159",
+    "agreed": 1.515880257250493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire band share %",
+    "stated": "0.31",
+    "agreed": 0.30637224549723635,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire band share % (probe)",
+    "stated": "0.3064",
+    "agreed": 0.30637224549723635,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo band share %",
+    "stated": "1.93",
+    "agreed": 1.9327591344563166,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo band share % (probe)",
+    "stated": "1.9328",
+    "agreed": 1.9327591344563166,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral band share %",
+    "stated": "11.06",
+    "agreed": 11.062250590138705,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral band share % (probe)",
+    "stated": "11.0623",
+    "agreed": 11.062250590138705,
+    "status": "MATCHES"
+   },
+   {
+    "label": "'About 80 verdicts'",
+    "stated": "about 80",
+    "agreed": "exactly 79 deciding rows (14 own + 53 common + 12 human); say 79",
+    "status": "MATCHES"
+   },
+   {
+    "label": "count of deciding rows (probe)",
+    "stated": "79",
+    "agreed": 79,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire blocked jk mean",
+    "stated": "4.078e-05",
+    "agreed": 4.078372506086034e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire blocked jk se",
+    "stated": "2.187e-05",
+    "agreed": 2.1871002568701678e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire blocked jk low",
+    "stated": "-2.08e-06",
+    "agreed": -2.083439973794946e-06,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire blocked jk high",
+    "stated": "8.37e-05",
+    "agreed": 8.365089009551563e-05,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire blocked jk blocks",
+    "stated": "39",
+    "agreed": 39,
+    "status": "MATCHES"
+   }
+  ],
+  "R3b": [
+   {
+    "label": "fire model",
+    "stated": "0.004385",
+    "agreed": 0.004385064558301006,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire log TO",
+    "stated": "0.004281",
+    "agreed": 0.004281302312816825,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire best naive is log trees-off",
+    "stated": "arm__log_c_trees_off_unweighted",
+    "agreed": "arm__log_c_trees_off_unweighted",
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire PZ",
+    "stated": "0.004284",
+    "agreed": 0.004284114619241937,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire change % vs best",
+    "stated": "+2.4",
+    "agreed": 2.4236140758747786,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire change % vs PZ",
+    "stated": "+2.4",
+    "agreed": 2.3563781091583493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire change % vs best (expected)",
+    "stated": "+2.424",
+    "agreed": 2.4236140758747786,
+    "status": "MATCHES"
+   },
+   {
+    "label": "fire change % vs PZ (expected)",
+    "stated": "+2.356",
+    "agreed": 2.3563781091583493,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 model",
+    "stated": "3.588",
+    "agreed": 3.588091134093021,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 best naive",
+    "stated": "3.853",
+    "agreed": 3.85316555881606,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 best naive column",
+    "stated": "arm__log_c_trees_off_unweighted",
+    "agreed": "arm__log_c_trees_off_unweighted",
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 change %",
+    "stated": "-6.9",
+    "agreed": -6.879393596689541,
+    "status": "MATCHES"
+   },
+   {
+    "label": "pm25 change % (expected)",
+    "stated": "-6.88",
+    "agreed": -6.879393596689541,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi model",
+    "stated": "0.03146",
+    "agreed": 0.03146059686292064,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi best naive",
+    "stated": "0.03934",
+    "agreed": 0.03933500299284565,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi best naive column",
+    "stated": "base__last5_normal",
+    "agreed": "base__last5_normal",
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi change %",
+    "stated": "-20.0",
+    "agreed": -20.018826822911965,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ndvi change % (expected)",
+    "stated": "-20.02",
+    "agreed": -20.018826822911965,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo model",
+    "stated": "0.005416",
+    "agreed": 0.005415798421978487,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo best naive",
+    "stated": "0.005715",
+    "agreed": 0.005714597480035355,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo best naive column",
+    "stated": "arm__log_c_trees_off_unweighted",
+    "agreed": "arm__log_c_trees_off_unweighted",
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo change %",
+    "stated": "-5.2",
+    "agreed": -5.228698243415378,
+    "status": "MATCHES"
+   },
+   {
+    "label": "defo change % (expected)",
+    "stated": "-5.23",
+    "agreed": -5.228698243415378,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral model",
+    "stated": "6.698",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral best naive",
+    "stated": "8.100",
+    "agreed": 8.099835075446945,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral best naive column",
+    "stated": "base__predict_zero",
+    "agreed": "base__predict_zero",
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral change %",
+    "stated": "-17.3",
+    "agreed": -17.307091037372288,
+    "status": "MATCHES"
+   },
+   {
+    "label": "coral change % (expected)",
+    "stated": "-17.31",
+    "agreed": -17.307091037372288,
+    "status": "MATCHES"
+   }
+  ],
+  "RC12": [
+   {
+    "label": "B0 ours (notes)",
+    "stated": "1.39",
+    "agreed": 1.393452691424863,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B0 hgb_l1 (notes)",
+    "stated": "2.12",
+    "agreed": 2.116261113427335,
+    "status": "MATCHES"
+   },
+   {
+    "label": "severe hgb_l1 (notes)",
+    "stated": "38.7",
+    "agreed": 38.65970596667031,
+    "status": "MATCHES"
+   },
+   {
+    "label": "severe ours (notes)",
+    "stated": "53.1",
+    "agreed": 53.12512328455528,
+    "status": "MATCHES"
+   },
+   {
+    "label": "'L1 wins on every bleached stratum'",
+    "stated": "true on every bleached stratum",
+    "agreed": {
+     "B1 (0, q25]": "ours lower",
+     "B2 (q25, q50]": "ours lower",
+     "B3 (q50, q75]": "ours lower",
+     "B4 (q75, max]": "hgb_l1 lower",
+     "severe y>=50": "hgb_l1 lower"
+    },
+    "status": "DIFFERS"
+   },
+   {
+    "label": "B0 zero ours (probe)",
+    "stated": "1.393",
+    "agreed": 1.393452691424863,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B0 zero hgb_l1 (probe)",
+    "stated": "2.116",
+    "agreed": 2.116261113427335,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B1 (0, q25] ours (probe)",
+    "stated": "2.248",
+    "agreed": 2.2479349965741373,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B1 (0, q25] hgb_l1 (probe)",
+    "stated": "2.489",
+    "agreed": 2.4886164280167926,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B2 (q25, q50] ours (probe)",
+    "stated": "4.571",
+    "agreed": 4.57145862012016,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B2 (q25, q50] hgb_l1 (probe)",
+    "stated": "5.769",
+    "agreed": 5.768837019101032,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B3 (q50, q75] ours (probe)",
+    "stated": "8.396",
+    "agreed": 8.3955187028941,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B3 (q50, q75] hgb_l1 (probe)",
+    "stated": "9.469",
+    "agreed": 9.469240682614936,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B4 (q75, max] ours (probe)",
+    "stated": "41.052",
+    "agreed": 41.05202467908258,
+    "status": "MATCHES"
+   },
+   {
+    "label": "B4 (q75, max] hgb_l1 (probe)",
+    "stated": "31.151",
+    "agreed": 31.15090832749444,
+    "status": "MATCHES"
+   },
+   {
+    "label": "severe y>=50 ours (probe)",
+    "stated": "53.125",
+    "agreed": 53.12512328455528,
+    "status": "MATCHES"
+   },
+   {
+    "label": "severe y>=50 hgb_l1 (probe)",
+    "stated": "38.660",
+    "agreed": 38.65970596667031,
+    "status": "MATCHES"
+   },
+   {
+    "label": "final ALL hgb_l1",
+    "stated": "6.356",
+    "agreed": 6.35555624463641,
+    "status": "MATCHES"
+   },
+   {
+    "label": "final ALL ours",
+    "stated": "6.698",
+    "agreed": 6.69798924506233,
+    "status": "MATCHES"
+   },
+   {
+    "label": "final ALL d",
+    "stated": "-2.30",
+    "agreed": -2.300318346129559,
+    "status": "MATCHES"
+   },
+   {
+    "label": "final ALL low",
+    "stated": "-4.21",
+    "agreed": -4.21159558455701,
+    "status": "MATCHES"
+   },
+   {
+    "label": "final ALL high",
+    "stated": "-0.39",
+    "agreed": -0.3890411077021081,
+    "status": "MATCHES"
+   },
+   {
+    "label": "probe cut (0,10] ours (single implementation C, not A/B-reconciled)",
+    "stated": "3.71",
+    "agreed": 3.708836204588227,
+    "status": "MATCHES (C only)"
+   },
+   {
+    "label": "probe cut (0,10] hgb_l1 (single implementation C, not A/B-reconciled)",
+    "stated": "4.41",
+    "agreed": 4.41396394936231,
+    "status": "MATCHES (C only)"
+   }
+  ],
+  "A1": [
+   {
+    "label": "y>0 rows",
+    "stated": "1759",
+    "agreed": 1759,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 groups",
+    "stated": "33",
+    "agreed": 33,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 ours",
+    "stated": "0.191",
+    "agreed": 0.1911066295793603,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 Tweedie",
+    "stated": "0.201",
+    "agreed": 0.2007004068384659,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 d",
+    "stated": "+0.0047",
+    "agreed": 0.0047161915611460955,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 low",
+    "stated": "+0.0024",
+    "agreed": 0.0023708379552287986,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 high",
+    "stated": "+0.0071",
+    "agreed": 0.0070615451670633924,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 groups ours better",
+    "stated": "25",
+    "agreed": 25,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 ours (probe)",
+    "stated": "0.191107",
+    "agreed": 0.1911066295793603,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 Tweedie (probe)",
+    "stated": "0.200700",
+    "agreed": 0.2007004068384659,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 d (probe)",
+    "stated": "0.0047162",
+    "agreed": 0.0047161915611460955,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 low (probe)",
+    "stated": "0.0023708",
+    "agreed": 0.0023708379552287986,
+    "status": "MATCHES"
+   },
+   {
+    "label": "y>0 high (probe)",
+    "stated": "0.0070615",
+    "agreed": 0.0070615451670633924,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% rows",
+    "stated": "949",
+    "agreed": 949,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% groups (probe)",
+    "stated": "31",
+    "agreed": 31,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% ours",
+    "stated": "0.308",
+    "agreed": 0.3082444795154259,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% Tweedie",
+    "stated": "0.335",
+    "agreed": 0.3350016551784588,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% ours (probe)",
+    "stated": "0.3082",
+    "agreed": 0.3082444795154259,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% Tweedie (probe)",
+    "stated": "0.3350",
+    "agreed": 0.3350016551784588,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% mean pred ours",
+    "stated": "0.098",
+    "agreed": 0.09799716868713272,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% mean pred Tweedie",
+    "stated": "0.062",
+    "agreed": 0.06182752639505287,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% mean y",
+    "stated": "0.391",
+    "agreed": 0.39127151339823263,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% mean y (probe)",
+    "stated": "0.3913",
+    "agreed": 0.39127151339823263,
+    "status": "MATCHES"
+   },
+   {
+    "label": "top1% strict > rows (probe)",
+    "stated": "938",
+    "agreed": 938,
+    "status": "MATCHES"
+   },
+   {
+    "label": "q99 (6 dp)",
+    "stated": "0.102941",
+    "agreed": 0.10294117647058823,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero rows",
+    "stated": "92943",
+    "agreed": 92943,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero-row share %",
+    "stated": "98.1",
+    "agreed": 98.14259466537138,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero-row share % (probe)",
+    "stated": "98.14",
+    "agreed": 98.14259466537138,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero rows mean pred ours",
+    "stated": "0.00085",
+    "agreed": 0.0008512510072854029,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero rows mean pred Tweedie",
+    "stated": "0.00032",
+    "agreed": 0.0003208125704800695,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero rows mean pred ours (probe)",
+    "stated": "0.000851",
+    "agreed": 0.0008512510072854029,
+    "status": "MATCHES"
+   },
+   {
+    "label": "zero rows mean pred Tweedie (probe)",
+    "stated": "0.000321",
+    "agreed": 0.0003208125704800695,
+    "status": "MATCHES"
+   },
+   {
+    "label": "spec wording: Ridge guarded column 'is the normal'",
+    "stated": "guarded == guess-normal",
+    "agreed": "guarded == arm__identity_trees_off_unweighted exactly; differs from base__guess_normal by up to 8.09e-07",
+    "status": "WORDING"
+   }
+  ],
+  "A2": [
+   {
+    "label": "visits",
+    "stated": "1024",
+    "agreed": 1024,
+    "status": "MATCHES"
+   },
+   {
+    "label": "groups",
+    "stated": "36",
+    "agreed": 36,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ours",
+    "stated": "13.37",
+    "agreed": 13.370101628934457,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ours (probe)",
+    "stated": "13.370",
+    "agreed": 13.370101628934457,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 MAE",
+    "stated": "11.69",
+    "agreed": 11.687794651860322,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 MAE (probe)",
+    "stated": "11.688",
+    "agreed": 11.687794651860322,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 d (probe)",
+    "stated": "-1.896",
+    "agreed": -1.8959172403553828,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 low (probe)",
+    "stated": "-4.758",
+    "agreed": -4.758429376513538,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 high (probe)",
+    "stated": "+0.967",
+    "agreed": 0.9665948958027728,
+    "status": "MATCHES"
+   },
+   {
+    "label": "hgb_l1 groups ours better (probe)",
+    "stated": "17",
+    "agreed": 17,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm MAE",
+    "stated": "12.70",
+    "agreed": 12.70400342344966,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm MAE (probe)",
+    "stated": "12.704",
+    "agreed": 12.70400342344966,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm d (probe)",
+    "stated": "-0.745",
+    "agreed": -0.7451568406919876,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm low (probe)",
+    "stated": "-3.298",
+    "agreed": -3.297843725034701,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm high (probe)",
+    "stated": "+1.808",
+    "agreed": 1.8075300436507256,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm groups ours better (probe)",
+    "stated": "18",
+    "agreed": 18,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf MAE",
+    "stated": "12.87",
+    "agreed": 12.866878493343368,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf MAE (probe)",
+    "stated": "12.867",
+    "agreed": 12.866878493343368,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf d (probe)",
+    "stated": "-0.781",
+    "agreed": -0.7807782035108838,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf low (probe)",
+    "stated": "-3.156",
+    "agreed": -3.156196511951882,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf high (probe)",
+    "stated": "+1.595",
+    "agreed": 1.5946401049301144,
+    "status": "MATCHES"
+   },
+   {
+    "label": "rf groups ours better (probe)",
+    "stated": "19",
+    "agreed": 19,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie MAE",
+    "stated": "13.62",
+    "agreed": 13.61727468823652,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie MAE (probe)",
+    "stated": "13.617",
+    "agreed": 13.61727468823652,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie d (probe)",
+    "stated": "+0.337",
+    "agreed": 0.3367537945969967,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie low (probe)",
+    "stated": "-1.232",
+    "agreed": -1.232306596028193,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie high (probe)",
+    "stated": "+1.906",
+    "agreed": 1.9058141852221864,
+    "status": "MATCHES"
+   },
+   {
+    "label": "lgbm_tweedie groups ours better (probe)",
+    "stated": "17",
+    "agreed": 17,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge MAE",
+    "stated": "14.48",
+    "agreed": 14.4776059545183,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge MAE (probe)",
+    "stated": "14.478",
+    "agreed": 14.4776059545183,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge d (probe)",
+    "stated": "+1.808",
+    "agreed": 1.8079234210099406,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge low (probe)",
+    "stated": "-1.805",
+    "agreed": -1.8045414963969117,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge high (probe)",
+    "stated": "+5.420",
+    "agreed": 5.420388338416793,
+    "status": "MATCHES"
+   },
+   {
+    "label": "ridge groups ours better (probe)",
+    "stated": "23",
+    "agreed": 23,
+    "status": "MATCHES"
+   },
+   {
+    "label": "vs L1 d (notes)",
+    "stated": "-1.90",
+    "agreed": -1.8959172403553828,
+    "status": "MATCHES"
+   },
+   {
+    "label": "vs L1 low (notes)",
+    "stated": "-4.76",
+    "agreed": -4.758429376513538,
+    "status": "MATCHES"
+   },
+   {
+    "label": "vs L1 high (notes)",
+    "stated": "+0.97",
+    "agreed": 0.9665948958027728,
+    "status": "MATCHES"
+   },
+   {
+    "label": "every per-region rival contrast CANNOT TELL",
+    "stated": "cannot_tell x5",
+    "agreed": {
+     "ridge": "cannot_tell",
+     "rf": "cannot_tell",
+     "lgbm": "cannot_tell",
+     "lgbm_tweedie": "cannot_tell",
+     "hgb_l1": "cannot_tell"
+    },
+    "status": "MATCHES"
+   },
+   {
+    "label": "mid-pack: L1, LightGBM, RF better; Tweedie, Ridge worse",
+    "stated": "as stated",
+    "agreed": "as stated",
+    "status": "MATCHES"
+   }
+  ]
+ },
+ "comparator_selftest": {
+  "identical": {
+   "expect_agree": true,
+   "got_agree": true,
+   "ok": true
+  },
+  "rel 1e-10 at full precision": {
+   "expect_agree": false,
+   "got_agree": false,
+   "ok": true
+  },
+  "correct 10-sig print": {
+   "expect_agree": true,
+   "got_agree": true,
+   "ok": true
+  },
+  "print off by one in last digit": {
+   "expect_agree": false,
+   "got_agree": false,
+   "ok": true
+  },
+  "flipped tag": {
+   "expect_agree": false,
+   "got_agree": false,
+   "ok": true
+  },
+  "int differs": {
+   "expect_agree": false,
+   "got_agree": false,
+   "ok": true
+  },
+  "null on one side": {
+   "expect_agree": false,
+   "got_agree": false,
+   "ok": true
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "engine_code_sha256": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+ "finished": "2026-10-20T13:08:32+03:00",
+ "green": true,
+ "guards": [
+  {
+   "columns": [],
+   "id": "G-CLOSED",
+   "message": "[G-CLOSED] every non-key column has a verdict; the nine key roles are declared once each; 63 tree features, 5 context columns, 1 strata",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "G-SPLIT",
+   "message": "[G-SPLIT] 94 groups in the data, 11 excluded, 83 after exclusions (every one trained; tested when it has a test-marked row; 46 donor-only (no test-marked row)); seen_during_design: 83",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "U1 (table contract)",
+   "message": "[U1] the lead files [0, 183, 365] pass T-FILES to T-FINITE and T-LEADSET (13650 rows); the largest feature-end minus issue day per lead: {'0': -1, '183': -1, '365': -1} (always below 0); feature timing is vouched by the package owner (U2)",
+   "status": "pass"
+  },
+  {
+   "columns": [],
+   "id": "R18 donor-only groups",
+   "message": "[R18] 46 of 83 kept groups have no test-marked row: donor-only (V6 b: their trees and train rows are used, nothing is scored for them): Austral Islands, French Polynesia, Bay of Campeche, Yucatan, Gulf of Mexico, Bermuda, Bismarck Sea, New Guinea, Brazil, Caroline Islands, Micronesia, Cenderawasih Bay, Papua, Chagos Archipelago, Christmas Island, Indian Ocean, Cocos Keeling Atolls, Indian Ocean, Cook Islands, south-west Pacific, Coral Sea, Costa Rica and Panama, Pacific coast, Cuba and Cayman Islands, Eastern coast South Africa, Flower Garden Banks, Gulf of Mexico, Gilbert Islands, west Kiribati, Gulf of Aden, Gulf of Thailand, Gulf of Tomini, Indonesia ...",
+   "status": "pass"
+  },
+  {
+   "columns": [
+    "pct_bleached"
+   ],
+   "id": "G-FACTS",
+   "message": "[G-FACTS] the target's facts are verified; a table's feature timing is vouched by the package owner (U2), not a store fact (owner item O21) Columns: pct_bleached.",
+   "status": "pass"
+  }
+ ],
+ "mode": "quick",
+ "package": "coral",
+ "package_fingerprint": "5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9",
+ "started": "2026-10-20T13:08:32+03:00"
+}

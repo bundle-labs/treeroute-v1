@@ -1,0 +1,1330 @@
+{
+ "created_utc": "2026-10-20T10:09:07+00:00",
+ "engine": {
+  "contract_function": "treeroute.runs.fingerprint.engine_code_sha256",
+  "engine_code_hash_comment_stripped": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678",
+  "engine_code_sha256": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+  "files": {
+   "__init__.py": "8d601030d72a57ac3627aa3ff742fa5b997caa5baa8151a36f817be95e0207fa",
+   "__main__.py": "1ff9cf03d7a5cb5e13e33e9aad8b99b44352b31757ea4f37c1f0d57744fe1af4",
+   "check/__init__.py": "908c182ccb2d5b68069c67f0ef3d532fe98d4985d4c88c74a6520462bbb3dc4e",
+   "check/deep.py": "565d70795961e8e01952b4ac9cef91d5de970da57f937673d6faf985dc5f04fb",
+   "check/facts.py": "a668d84f5a4b6ab6352d1a320d0a0f569f45c375e7691048bcdc88e1bd325535",
+   "check/guards.py": "132b94d782f3c06f51aa62784ea023e9c4a043685217a6782c808238d245e4ec",
+   "check/quick.py": "d99f4ee807575b79983d40df175cff5cc7401d3a98247ee296614dc7b533e2b3",
+   "check/recompute.py": "1454cb50a7f952130ca3846670387f814e4c3443063a07abeeb519bceb4d4c5e",
+   "check/report.py": "c5fc16d06b6435cf7ac3697ef3eada9c9452f2399c6693de5b26b376b1279d9e",
+   "check/table.py": "3c9b0917bfeae1ea7878c6d3dfce98d061215ea4f736f58085c1db53a97bf0c0",
+   "cli.py": "7804a5ac355c3f581558a05f068c1b13d8fa4a5ec103fb7bba5cf9dc1fcf6aab",
+   "derive/__init__.py": "589c4d75f21574b40ed00cd10c59de63f64259b8c56577a1cf24cbbbe1f78317",
+   "derive/census.py": "608fd522bec2ee423b411d7492723f0d96ec383b51e15b1cee5cc1f4aef42a97",
+   "derive/derived.py": "61f2dfba4b07ee9b8a153a85b1c70d4dcecea5cae977bba0b31b3229c51b34a4",
+   "derive/orchestrate.py": "a48e1afc3304a353a3e41ba89de6b42254cfcc605c0464e7e3d8567012c35303",
+   "derive/router_rules.py": "294c468d353d4530c17eb138576d19fd76ebfef7149ab52b8b93330ff67635f5",
+   "derive/rules.py": "20ddd5aa0b0688c9e6ee79ec11a6551958a28ae992ca7ba73779fc3691784f48",
+   "derive/shapes.py": "b658f0e05153240adddb1614de4f62f17101f7b5a0f40915897e52d864c4ec53",
+   "derive/table.py": "d847bb39ff3cb8e2be7f819ac968042e1efbd6fdf5713caa43d0f995b581d515",
+   "derive/unit_rules.py": "87ce71e5c26c696c78710b5b45d4d32eeb8de6ff9d2d8d636a1758c4f9ac2562",
+   "engine_constants.py": "784bb782f54f6338b469958fa071049d78a1201361c8e2960aa2dc375ceb6009",
+   "errors.py": "c7fc3e0490fd6fced7e6515d482df094e56c0c35e9d0b41d60f10d896e7cf0f7",
+   "fit/__init__.py": "5f06b2215268228a12a19d4e3cda0c5b0e37c91c14ffcb0443100797c5117163",
+   "fit/bank.py": "88e0acee4cecdaad3074032d27b2f9a0e836141139bdea16b0114146749d8316",
+   "fit/context.py": "14a5a014342395594bd68b055783f9bfabe998a7f4986584209db02b36af7a8e",
+   "fit/correctors.py": "0c356a820839f07a8cb143ed488831296c04ae1dfd92c00400af9121930ad8e5",
+   "fit/pool.py": "6df44a4cadd8a62896bd630ab3e22cf1c8f336e08af90cc76617abbcfbd95e6f",
+   "fit/tables.py": "78e279c5134c7921080d77a2b2eca4228ae130e4d9722b8b6bb354df7f67fedb",
+   "fit/weights.py": "171adec247c1c8ee8d054660a380c17250a161938db96080c6f3d0c0a6aa0778",
+   "io/__init__.py": "dabe0850cbb06656a80b2885f632496f31a0b8812c429e2fe71b1f779f5398c5",
+   "io/aggregate.py": "498ee8f8c632ec8a6a91146a428b7ddcd6bdcf670f357def89d92ebc6a919281",
+   "io/apply.py": "9fe1cd2b878fc5fa2e34214d3900120ef2eaa682132dfc39d4071ce72991dc8f",
+   "io/checks.py": "1d4ff579ca631b355af092d57762d5a44e152acb65b112ee260feacd7778853a",
+   "io/joins.py": "d4a95a56e3c041006e19b943243ecd784b00647bd0ec2d25e34fa520995c0c7d",
+   "io/lastvalue.py": "ab4b76994ec7cdd8e77daa2c62a93086496d3d3b7eca356e6a5f83616aabf2c4",
+   "io/listing.py": "8d215969b0ea4e87774e6cde69f5a603ddd057838339df4f2d21b7053afc00b3",
+   "io/readers.py": "ff16387b91088adb728fa718b02ef259093ba6afe81db9df184c54e9f457f3fa",
+   "io/sentinel.py": "0e420533d4cb5c828181faf3e536885e931d980816c1e208ead4feb947064a5b",
+   "io/steps.py": "714bae957431da4a892efbd6ba8a49e43779972837cfe52d19fd8a36602ce989",
+   "labels/__init__.py": "1aa43da110820e1d33abb97d44a289a1f4e697367d077c782c0ac1dd217bc7ad",
+   "labels/rows.py": "6f5eda535f356b97cbf601ca4749d8aa5b264f39722fc085ee5a87af3cab6316",
+   "labels/vault.py": "55a79550b376ee20726d81d9690d570ced91d190e5058f5f447ad7bb9ce3dbc6",
+   "launch.py": "034fb5e1830f68c7522d180364688bff636860a58accf89ea4de615306a4e39f",
+   "layer/__init__.py": "58b93b15b30cdf29c764eb4f1497abd9e198cc45f535bac35ea3312c8a37dc15",
+   "layer/arms.py": "67a3cb9ab18274de8c4254a76b4fd6e60452caaf5acf4cc55c30f6ee06af6b61",
+   "layer/decide.py": "74fbeba80476f036e7a78348e5f0428f449545f65d76f24e6a23b28ac83623cf",
+   "layer/links.py": "8a2f3a750516ffa68658143c8464d4e52e7b74017062c7347e3b0ba05f86750c",
+   "package/__init__.py": "9bbc01b355b0830b46d97961fde0b06cf77d6febb22005007178042b0a7f0dd1",
+   "package/load.py": "99ece46d47623239787cf00aac07bd403899a8c52a989537153db0432791c98c",
+   "package/schema.py": "b757e75f5a7800d9dc521f7ab3b7a905b839791f84c6ea4c512204a653485e78",
+   "package/table.py": "553fa16036814d52f120ae077f1ab02691a1b85cd8612133fa20fe5346457134",
+   "pipeline/__init__.py": "3f38beda735bfcb32ef97decc29fd39d81874bf100371f5ee1f80fa74241b23d",
+   "pipeline/data.py": "906027dbb60774805949646799b7e3c7a87d82dde240a68b8b32ebb27d2fbd43",
+   "pipeline/draft.py": "bb93b3bd1d6f5ad673d922345d5a853c26f55c1aca4db667de371b56a3657808",
+   "pipeline/ladder.py": "960383ff16cad0a86dd3ab65bd094e6d0125de7ab110166bccfe519a621ed48c",
+   "pipeline/passes.py": "4a10c473fcfcfb51f4f5405a7f777bdd91a084a0851f86a874f5824c753ead2a",
+   "pipeline/record.py": "4815693809254323c4f423ef4586860d5e653cb5daacb93c95022e4c7c8274bb",
+   "pipeline/router.py": "eb81e0fd5d9b921776080fb4055097cc4cf7bf0dd20d0b59d6ab5c1fd464d666",
+   "pipeline/run.py": "b46afd4e0d0d7172d100f4dec72cbb9d85116cf01b18ba3e7ef70851f1fec4c8",
+   "pipeline/stages.py": "92248213b061a1ed5a80d292dad5ecc930f6620cbce7a13ab91e2423d5601467",
+   "pipeline/stream.py": "b762a3f009264f89ba85f0f7dadcd551a905c8f5b8ab501f16796fd81f612760",
+   "pipeline/table_ladder.py": "abb0e010b9c8ad6cca167d7f9eba479eaf37ce266a9439fcbe7c07ad30b9a334",
+   "pipeline/table_passes.py": "eab84b866b2a1502f633184c4172f47baaf82a54f17aa4a3369fba899de06ff3",
+   "pipeline/table_router.py": "9626e657a660e70be1839cb449f654f8dbc7a42048958c190e1fa32fc4b58314",
+   "pipeline/table_run.py": "5a6b0e0f5574a99107ab619d973d4e8fe3a74798d8216469f13eceffa2c5a2cb",
+   "report/__init__.py": "fdd664d37755dfb5ee65fdebc9cd4f9cd1c6ce678415781cab7c58887e276580",
+   "report/metrics.py": "5b90337ba404c89faa9e4a074d373cd16b40f3a7ecac79b9caddde9407aff6f1",
+   "route/__init__.py": "fc8b7a08668e60e95fa023512e9cd4d8b17b210e0581bd5ee6ecee2905813f68",
+   "route/kinds.py": "62dc23a4cc2941ccf619b2987ddd35c60a7befd1d6ec6fea004aaa34bbe35607",
+   "route/neighbour.py": "f11630cc2561589b18c3b5eb3c077cee6c35d21057dd6f6fe927ed32e79ce761",
+   "route/region.py": "ddfdd42eeb29c8de3bb00ac007e2110b0bad4f3b160042c68b7a6f0b8899ff4b",
+   "route/solve.py": "99bc7e1d1a3baa24fde12cb30bae8d7f9fade4969b5e7c4a4daf916209696faf",
+   "runs/__init__.py": "100a2d89b1d9a5ffea28136b31e06b9b1e19f4fcd09c5be8d7964ac6243823f6",
+   "runs/atomic.py": "9874063c26724fed9c69d38d99f7d7b4b7243d7916b5974008416e72d1c0b482",
+   "runs/checkpoint.py": "8c0ea1ca427ad01265070db66df95ffd6bbb998ab470eaae03e5f46e1befa52d",
+   "runs/fingerprint.py": "14b2a4919b8a9cd7319b48ba89edc585ff327a2f0f6568f01eb0bd6752dfbaaa",
+   "runs/machine.py": "8fb7f7cbf7159f860cfd308a4f3809440ac2be7c903d23126d50d753721432fc",
+   "runs/manifest.py": "b4849fcc3468fbeb5c5430fb3cb10aa82648bf4df18272fcedd861f03e804b94",
+   "runs/preflight.py": "64a2ba290446a7568fbd8e5a9e69db5f96ec5d931fd79d496f5d4f1f9f26685d",
+   "runs/proc.py": "8f535679ea6e6b7ffe603f5570527c3775506f509626d69a00c90ae28993b048",
+   "runs/registry.py": "037a7e5f3817f76012fa6d986184b18601027bd2f4913010201dce70e65b45e8",
+   "runs/resume.py": "37e22ff48ed3d8e97b0127fb2cb7b832f04aee7ded5b41c0de2a2fbc6ba83489",
+   "runs/room.py": "fd7dc2bf456fde5037d9da3708ffb7bcbd7d57581679fd3c1beb8e245e01c8d1",
+   "runs/status.py": "e76b22bfa1976d8011fce6c1614ae9112f63a1bc0f90d2755bc7eccf5a8a97fc",
+   "runs/tempmem.py": "7cf7f201ddb49272eff43a0b3adf7f175fb30ecc1c1b2a7d74cf83a43fd77422",
+   "split.py": "1f087b616660b7f76d43761cd7eb2dab9c94eaaf241d735850ca5b3c2042e773",
+   "timing/__init__.py": "dda6a91f2ac418c6ed324db104729e13bb271d208e4723ed8221f75be31e8c5d",
+   "timing/aggregate.py": "4686d92688ef3cafa5c578466cb3dd69e7c21d183bbcbd0569f9c2822c29ab29",
+   "timing/calendar.py": "d5a4bac894251d84d13ec7e6e7638893d9d1e53d231e52d9cea1aeab0d888a8c",
+   "timing/content.py": "5244ea4b51e94023fdeb3f4d025bd32674b63f59cb3555c5f67d420c9b98ec9f",
+   "timing/cuts.py": "c23afed15a2676c61d2eb78f41564ac50ae888de1965897deb14b3e191237a0a",
+   "timing/freeze.py": "29c1f86d2fa1e22db9bee50306720166c1e944f5e3b5bafb81b14e844ac018db",
+   "timing/lags.py": "457e12ad233b9536068097e59068f42bd43a65ce4b22ef84adb2674c29c32c10",
+   "timing/shapes.py": "9fa0f060f51bdfe1db95fc7939ade789a96a8ab4ed7d8d2c5c4bb6ee998c8adb"
+  }
+ },
+ "engine_constants": {
+  "awaiting_owner": [],
+  "constants": [
+   {
+    "id": "C1.test_years",
+    "origin": "C1 Test window (R5) origin: the last 4 years of coverage, as the shipped runs use (plan 3.1 C1; fire per Q10 a; NDVI per Q40 a)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "C1.test_years_short_record",
+    "origin": "C1 Test window (R5) origin: the last 4 years of coverage, as the shipped runs use (plan 3.1 C1; fire per Q10 a; NDVI per Q40 a) R5 short-record ladder",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 3
+   },
+   {
+    "id": "C2.inner_score_years",
+    "origin": "C2 Inner score window (R7); inner fit length floor (R5) origin: pm25_adaptation.py:141-142 (INNER = 2016 -> score 2017-19); adaptation.py:1214",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 3
+   },
+   {
+    "id": "C2.inner_score_years_short_record",
+    "origin": "C2 Inner score window (R7); inner fit length floor (R5) origin: pm25_adaptation.py:141-142 (INNER = 2016 -> score 2017-19); adaptation.py:1214 R5 ladder",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "C2.inner_fit_min_years",
+    "origin": "C2 Inner score window (R7); inner fit length floor (R5) origin: pm25_adaptation.py:141-142 (INNER = 2016 -> score 2017-19); adaptation.py:1214 R5: \"4 test + 3 inner score + 1 inner fit\"",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1
+   },
+   {
+    "id": "C3.coverage_group_share",
+    "origin": "C3 Coverage end (R3) origin: plan 3.1 C3, \"robust to a few late groups\"; under LORO the share is of ALL groups (every group is tested; owner ruling D)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.5
+   },
+   {
+    "id": "C3.coverage_row_share",
+    "origin": "C3 Coverage end (R3) origin: plan 3.1 C3, \"robust to a few late groups\"; under LORO the share is of ALL groups (every group is tested; owner ruling D)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.9
+   },
+   {
+    "id": "C4.first_year_from_lag_sources_only",
+    "origin": "C4 First year (R4): set by computed lags only; no number. Recorded as a flag so the manifest carries the convention. origin: pm25_architecture.py:64-72 (the first data year read only as a lag source)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C5.per_unit_min_valid_rows",
+    "origin": "C5 Router thresholds (R12) origin: MIN_HIST = 24, pm25_adaptation.py:143; \"under 2 = most units seen at most once\"",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 24
+   },
+   {
+    "id": "C5.region_min_valid_rows",
+    "origin": "C5 Router thresholds (R12) origin: MIN_HIST = 24, pm25_adaptation.py:143; \"under 2 = most units seen at most once\"",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "C6.lead_months",
+    "origin": "C6 Leads (R10) origin: owner ruling I1 (OWNER_RULINGS_2026-09-28.md section I, 2026-10-05: \"only the nowcast, 6 lead, 12 lead -- three leads only\"): 6 and 12 months for every package, plus lead 0 (the contract, C6 below). It replaces 1/3/6/12 (Q41 a). Grids: steps = months x steps per year / 12; events: days = months x 365.25 / 12 (183 and 365); rounded half up, merged when equal (annual data: both round to 1 year and merge)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     6,
+     12
+    ]
+   },
+   {
+    "id": "C6.months_per_year",
+    "origin": "C6 Leads (R10) origin: owner ruling I1 (OWNER_RULINGS_2026-09-28.md section I, 2026-10-05: \"only the nowcast, 6 lead, 12 lead -- three leads only\"): 6 and 12 months for every package, plus lead 0 (the contract, C6 below). It replaces 1/3/6/12 (Q41 a). Grids: steps = months x steps per year / 12; events: days = months x 365.25 / 12 (183 and 365); rounded half up, merged when equal (annual data: both round to 1 year and merge)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 12
+   },
+   {
+    "id": "C6.days_per_year",
+    "origin": "C6 Leads (R10) origin: owner ruling I1 (OWNER_RULINGS_2026-09-28.md section I, 2026-10-05: \"only the nowcast, 6 lead, 12 lead -- three leads only\"): 6 and 12 months for every package, plus lead 0 (the contract, C6 below). It replaces 1/3/6/12 (Q41 a). Grids: steps = months x steps per year / 12; events: days = months x 365.25 / 12 (183 and 365); rounded half up, merged when equal (annual data: both round to 1 year and merge)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 365.25
+   },
+   {
+    "id": "C6.lead_rounding",
+    "origin": "C6 Leads (R10) origin: owner ruling I1 (OWNER_RULINGS_2026-09-28.md section I, 2026-10-05: \"only the nowcast, 6 lead, 12 lead -- three leads only\"): 6 and 12 months for every package, plus lead 0 (the contract, C6 below). It replaces 1/3/6/12 (Q41 a). Grids: steps = months x steps per year / 12; events: days = months x 365.25 / 12 (183 and 365); rounded half up, merged when equal (annual data: both round to 1 year and merge)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": "half_up"
+   },
+   {
+    "id": "C6.lead_zero_contract",
+    "origin": "C6 Leads (R10) origin: owner ruling I1 (OWNER_RULINGS_2026-09-28.md section I, 2026-10-05: \"only the nowcast, 6 lead, 12 lead -- three leads only\"): 6 and 12 months for every package, plus lead 0 (the contract, C6 below). It replaces 1/3/6/12 (Q41 a). Grids: steps = months x steps per year / 12; events: days = months x 365.25 / 12 (183 and 365); rounded half up, merged when equal (annual data: both round to 1 year and merge) R10: lead 0 always runs as the contract",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C7.bank_units_per_group",
+    "origin": "C7 Bank units per group (R18 (1): trees, region-router fit, fallback router) and the region row budget (R14) origin: 100 units per group, Q39 a; pm25_adaptation.py:122-123. Under LORO this is the BANK count (owner rulings E, L2 rule 1); the scored count is C16.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 100
+   },
+   {
+    "id": "C7.submonthly_rows_per_group_year",
+    "origin": "origin: R18, keeps the rows per group-year of 100 units at a monthly step",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1200
+   },
+   {
+    "id": "C7.event_floor_per_group",
+    "origin": "origin: R18, keeps the rows per group-year of 100 units at a monthly step R18 10-event floor, on the SCORED count",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C7.event_quantile",
+    "origin": "origin: R18, keeps the rows per group-year of 100 units at a monthly step R18: event = y strictly above the donor q90",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.9
+   },
+   {
+    "id": "C7.region_router_row_budget",
+    "origin": "origin: REGROWS = 60000, adaptation.py:1213 (defo's shipped region router budget); exposure unknown (plan 7.2), so flagged test-exposed. Under LORO the fit keeps this budget of whole, evenly spaced BANK units, decoupled from the scored units (owner rulings E, L2 rule 2; split.region_cap_units)",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 60000
+   },
+   {
+    "id": "C8.neighbour_folds_leave_one_group_out",
+    "origin": "C8 Neighbour decision folds (R13): leave one group out. Every group is held out once, by dropping its overlap block's trees (and, by default, the pool groups' trees) from one bank cut at the inner-fit end, so there is no fold count. Recorded as a flag so the manifest carries the convention. origin: owner ruling D (every group tested; a router never sees its own group's trees); plan 3.1 C8. It replaces K = min(5, donor groups) (coral's shipped decision used 5 folds).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C9.guard_tolerance_k",
+    "origin": "C9 Guard tolerance constant k (R36) k is fixed once so that the identity gate of the first shipped nowcast stays at 1e-6 (U-4), and checked to be at least 10x the measured arithmetic error. The value needs that measurement. origin: owner ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S12 a): the measured candidate, PM2.5 nowcast identity gate exactly C9.identity_gate (tests/test_c9_guard_tolerance.py)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 5.230771281733543e-08
+   },
+   {
+    "id": "C9.identity_gate",
+    "origin": "C9 Guard tolerance constant k (R36) k is fixed once so that the identity gate of the first shipped nowcast stays at 1e-6 (U-4), and checked to be at least 10x the measured arithmetic error. The value needs that measurement. origin: U-4, the shipped identity gate",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1e-06
+   },
+   {
+    "id": "C9.k_min_multiple_of_arith_error",
+    "origin": "C9 Guard tolerance constant k (R36) k is fixed once so that the identity gate of the first shipped nowcast stays at 1e-6 (U-4), and checked to be at least 10x the measured arithmetic error. The value needs that measurement.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C9.measured_arith_error",
+    "origin": "C9 Guard tolerance constant k (R36) k is fixed once so that the identity gate of the first shipped nowcast stays at 1e-6 (U-4), and checked to be at least 10x the measured arithmetic error. The value needs that measurement. origin: plan R36, measured",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 9e-08
+   },
+   {
+    "id": "C10.fallback_flag_share",
+    "origin": "C10 Flags (report only, never a choice) R12: fallback over 5% of units",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.05
+   },
+   {
+    "id": "C10.borderline_share",
+    "origin": "C10 Flags (report only, never a choice) plan 2: within 20% of a threshold",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.2
+   },
+   {
+    "id": "C10.thin_group_rows_per_router_column",
+    "origin": "C10 Flags (report only, never a choice) R18",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 20
+   },
+   {
+    "id": "C10.context_missing_flag_share",
+    "origin": "origin: owner ruling G1 (OWNER_RULINGS_2026-09-28.md section G, 2026-10-05): the router fit rows a pass leaves out for missing context are \"flagged above 5% of a unit's fit rows\" (report only, never a choice). Moved here from pipeline/stages.py (SMOKES_REPORT.md section 5, ATTENTION G1-b).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.05
+   },
+   {
+    "id": "C11.neighbour_pool_distance",
+    "origin": "C11 Neighbour pool (R14) origin: adaptation.py:1434 (MINOK = 12), 1638-1640 (150 by distance, then 50 in feature space)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 150
+   },
+   {
+    "id": "C11.neighbour_pool_feature",
+    "origin": "C11 Neighbour pool (R14) origin: adaptation.py:1434 (MINOK = 12), 1638-1640 (150 by distance, then 50 in feature space)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 50
+   },
+   {
+    "id": "C11.neighbour_pool_min_rows",
+    "origin": "C11 Neighbour pool (R14) origin: adaptation.py:1434 (MINOK = 12), 1638-1640 (150 by distance, then 50 in feature space)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 12
+   },
+   {
+    "id": "C12.per_unit_trees_centre",
+    "origin": "C12 Penalty centres and grid (R14, R26) origin: fire_architecture.py:102-103 (ALPHA 0.5, A_CTX 0.25); adaptation.py:1434 for the neighbour kind. Listed in the plan 7.2 test-exposure table, so flagged test-exposed.",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 0.5
+   },
+   {
+    "id": "C12.per_unit_context_centre",
+    "origin": "C12 Penalty centres and grid (R14, R26) origin: fire_architecture.py:102-103 (ALPHA 0.5, A_CTX 0.25); adaptation.py:1434 for the neighbour kind. Listed in the plan 7.2 test-exposure table, so flagged test-exposed.",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 0.25
+   },
+   {
+    "id": "C12.neighbour_trees_centre",
+    "origin": "origin: adaptation.py:1434 (the neighbour grid: 35 points around 0.5 / 0.25, R14); plan 7.2 lists the per-unit AND neighbour centre, so both kinds get their own ids, flagged test-exposed",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 0.5
+   },
+   {
+    "id": "C12.neighbour_context_centre",
+    "origin": "origin: adaptation.py:1434 (the neighbour grid: 35 points around 0.5 / 0.25, R14); plan 7.2 lists the per-unit AND neighbour centre, so both kinds get their own ids, flagged test-exposed",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 0.25
+   },
+   {
+    "id": "C12.region_lambda_centre",
+    "origin": "origin: LAM = 100.0, adaptation.py:1214; coincides with defo's pooled test-window argmax (CLAIMS_LEDGER.md:610), plan 7.2",
+    "status": "cited",
+    "test_exposed": true,
+    "value": 100.0
+   },
+   {
+    "id": "C12.penalty_levels",
+    "origin": "origin: pm25_adaptation.py:176 (LEVELS) and :177 (RATIOS); 7 x 5 = 35 points",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     10.0,
+     30.0,
+     100.0
+    ]
+   },
+   {
+    "id": "C12.penalty_ratios",
+    "origin": "origin: pm25_adaptation.py:176 (LEVELS) and :177 (RATIOS); 7 x 5 = 35 points",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     0.0625,
+     0.125,
+     0.25,
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "id": "C12.region_penalty_levels",
+    "origin": "The plan gives the region grid as \"7 levels 0.1-100x around lambda 100\". No shipped 7-value region list exists (adaptation.py:153 swept 15 levels 0.01-100x; defo_softgate.py:75 swept six values 10-3000), so the per-unit level list above is reused. OWNER CONFIRMS.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     0.1,
+     0.3,
+     1.0,
+     3.0,
+     10.0,
+     30.0,
+     100.0
+    ]
+   },
+   {
+    "id": "C13.trees_per_group",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 100
+   },
+   {
+    "id": "C13.bag_min_rows",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 30
+   },
+   {
+    "id": "C13.bag_fraction",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.5
+   },
+   {
+    "id": "C13.bag_with_replacement",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C13.tree_max_depth",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "C13.tree_min_leaf",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 5
+   },
+   {
+    "id": "C13.tree_max_features",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.1
+   },
+   {
+    "id": "C13.tree_criterion",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": "squared_error"
+   },
+   {
+    "id": "C13.tree_dtype",
+    "origin": "C13 Bank (R19), correctors (R19), GLS weight model (R25), smoke (R21) origin: pm25_adaptation.py:636-648 (bags max(30, half the rows) with replacement; depth 8, leaf 5, max_features 0.1, squared error); 100 trees per donor (uniformity ruling 2026-09-28). Under LORO every group trains its own 100 trees (plan R19), so the constant is per GROUP.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": "float32"
+   },
+   {
+    "id": "C13.oob_share_tolerance_sigmas",
+    "origin": "origin: D51 (owner rulings, part A): |observed - expected| <= 5 x sqrt(p (1 - p) / n), p the expected held-out share for the bag size and n the home group's rows; moved here by owner rulings E (\"the constants D51 5 sigma, D52 50 rows and the block size 12,288 move into engine_constants.py\"). fit/bank.py holds the same value as OOB_SHARE_TOLERANCE_SIGMAS until it reads this one.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 5.0
+   },
+   {
+    "id": "C13.corrector_max_depth",
+    "origin": "origin: adaptation.py:454-477 (out-of-bag correctors, depth 6, leaf 10)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 6
+   },
+   {
+    "id": "C13.corrector_min_leaf",
+    "origin": "origin: adaptation.py:454-477 (out-of-bag correctors, depth 6, leaf 10)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C13.corrector_min_oob_rows",
+    "origin": "origin: adaptation.py:454 (minrows=50); D52 accepted (owner rulings, part A): a tree with fewer out-of-bag rows gets no corrector and no placebo corrector; moved here by owner rulings E. fit/correctors.py holds the same value as CORRECTOR_MIN_OOB_ROWS until it reads this one.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 50
+   },
+   {
+    "id": "C13.gls_trees",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 120
+   },
+   {
+    "id": "C13.gls_max_depth",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "C13.gls_min_leaf",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 20
+   },
+   {
+    "id": "C13.gls_max_features",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1.0
+   },
+   {
+    "id": "C13.gls_bootstrap",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C13.gls_random_state",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1 fixed, disclosed, never varied",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0
+   },
+   {
+    "id": "C13.gls_threads",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "C13.gls_sigma_floor_share",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1 R25: 1% of the donor spread",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.01
+   },
+   {
+    "id": "C13.gls_clip_quantiles",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1 R25, on donor rows only",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     0.05,
+     0.95
+    ]
+   },
+   {
+    "id": "C13.gls_weight_ratio_cap",
+    "origin": "origin: coral_architecture.py:304 (RandomForestRegressor(120, depth 8, leaf 20, all features, bootstrap, random_state 0)); pinned to 4 threads here instead of n_jobs=-1 R25: max/min weight ratio",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 100.0
+   },
+   {
+    "id": "C13.smoke_units_per_group",
+    "origin": "origin: pm25_adaptation.py:122-126 (40 cells, 12 trees per donor at smoke size). Under LORO (plan R21): the first 4 groups in sorted order, every one trained and tested, all 40 units scored, 12 trees per group; it replaces the first 2 donor + first 2 test groups (there is no test set).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 40
+   },
+   {
+    "id": "C13.smoke_trees_per_group",
+    "origin": "origin: pm25_adaptation.py:122-126 (40 cells, 12 trees per donor at smoke size). Under LORO (plan R21): the first 4 groups in sorted order, every one trained and tested, all 40 units scored, 12 trees per group; it replaces the first 2 donor + first 2 test groups (there is no test set).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 12
+   },
+   {
+    "id": "C13.smoke_groups",
+    "origin": "origin: pm25_adaptation.py:122-126 (40 cells, 12 trees per donor at smoke size). Under LORO (plan R21): the first 4 groups in sorted order, every one trained and tested, all 40 units scored, 12 trees per group; it replaces the first 2 donor + first 2 test groups (there is no test set). R21: the first 4 groups in sorted order",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "C14.forest_threads",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "C14.blas_threads",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28) any BLAS outside router units",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "C14.tree_predict_workers",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28) cannot change a number (plan 4.5)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "C14.router_workers",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "C14.router_worker_blas_threads",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1
+   },
+   {
+    "id": "C14.sklearnex_required",
+    "origin": "C14 Threads and backend (A8, plan 4.5) origin: A8 machine profile; bench_tree_threads.py and bench_router_threads.py (2026-09-28)",
+    "status": "cited",
+    "test_exposed": false,
+    "value": true
+   },
+   {
+    "id": "C14.table_row_block_rows",
+    "origin": "origin: pm25_adaptation.py:448 (ROW_BLOCK = 12288, ruling R2: about 0.53 GB of block buffer at 10,700 trees); moved here by owner rulings E. The block size cannot change a number (a tree answers each row on its own; plan 4.5), so it sits with the runtime constants. fit/tables.py holds the same value as ROW_BLOCK_ROWS until it reads this one.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 12288
+   },
+   {
+    "id": "C15.missing_flag_share",
+    "origin": "C15 Thresholds without a cited origin: proposed defaults, the owner signs them (plan 9.1 item 2f). The two group thresholds are cited: they restate the signed D44. R30  # owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was proposed",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.25
+   },
+   {
+    "id": "C15.min_groups",
+    "origin": "origin: D44 (signed as \"3 test or 2 donor refuse; 14 test or 5 donor flag\": owner rulings A accepted its proposed default), restated for LORO, not reopened (SIGNATURES_LORO_ADDENDUM.md, \"Signed decisions that LORO restates\"; plan 3.1 C15; owner ruling D): every group is tested and each router sees the trees of G-1 groups, so the thresholds count GROUPS. The five-donor flag belonged to the old donor folds and goes. G-SUPPORT refuse under 3 groups",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 3
+   },
+   {
+    "id": "C15.flag_groups_below",
+    "origin": "origin: D44 (signed as \"3 test or 2 donor refuse; 14 test or 5 donor flag\": owner rulings A accepted its proposed default), restated for LORO, not reopened (SIGNATURES_LORO_ADDENDUM.md, \"Signed decisions that LORO restates\"; plan 3.1 C15; owner ruling D): every group is tested and each router sees the trees of G-1 groups, so the thresholds count GROUPS. The five-donor flag belonged to the old donor folds and goes. G-SUPPORT flag under 14",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 14
+   },
+   {
+    "id": "C15.fallback_min_units_for_search",
+    "origin": "origin: D44 (signed as \"3 test or 2 donor refuse; 14 test or 5 donor flag\": owner rulings A accepted its proposed default), restated for LORO, not reopened (SIGNATURES_LORO_ADDENDUM.md, \"Signed decisions that LORO restates\"; plan 3.1 C15; owner ruling D): every group is tested and each router sees the trees of G-1 groups, so the thresholds count GROUPS. The five-donor flag belonged to the old donor folds and goes. R12  # owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was proposed",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C16.k_group_equivalents",
+    "origin": "C16 LORO scored-unit budget (R18 (2)) origin: owner rulings E, L1 (one engine constant K = 20: scored units per group = max(10, floor(20 x R18 count / G)), capped at the units available). K = 20 is the old PM2.5 test-group count and the geometric mean (19.5) of the four old counts (20, 10, 16.45 capped, 44): it comes from the size of the old hand splits, not from results (disclosed, plan 7.2). It gives 15 / 50 / 2,040 / 15 per group on PM2.5 / fire / defo / NDVI; the departure from ruling D's \"same total\" (fire x2, NDVI x0.45, defo x1.22) is disclosed and the old totals are printed beside.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 20
+   },
+   {
+    "id": "C16.scored_units_min",
+    "origin": "origin: plan 3.1 C16 and R18 (\"max(10, ...)\"; the 10 is flagged when it binds); owner rulings E, L1",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C17.rival_folds",
+    "origin": "C17 Rival region folds (plan 4.6) origin: owner ruling D (\"donor-only rivals are trained on region folds (10)\"); plan 3.1 C17: round-robin over overlap blocks sorted by their first group name (block at sorted position j -> fold j mod 10), as C8 did over names before LORO. L3 (the tuning rule, Board B) is deferred to M8.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "C18.last_value_max_months",
+    "origin": "C18 Last value (owner rule J2 d): the longest gap the last-value rule bridges, in months origin: owner ruling J2(d) (OWNER_RULINGS_2026-10-05.md section J, 2026-10-05): \"a tree feature missing in a month INSIDE its record takes the most recent EARLIER value of the same unit, at most 2 months back (engine constant), never a later value; every fill is counted per column; longer gaps fall back to R30\". Steps = floor(months x steps per year / 12) (io/lastvalue.py): 2 on a monthly target, 0 on an annual one (no last-value fill on annual data), 7 on 46 composites a year.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "A7.inner_cut_bank_refit",
+    "origin": "A7 design flag (plan 7.2, 9.1 item 4): decision-window parity under leave one region out origin: owner rulings E, L6 option (b): for the inner decision the bank AND the correctors are refit at the INNER cut, so the trees behind the inner decision hold no rows after the inner-fit end (about +5-6.6 h over the four nowcasts). It replaces option (a), pm25_adaptation.py's one bank at the donor train end serving both the inner decision and the test pass. It stays test-exposed (the 7.2 row stays): the ruling names the bank and the correctors only, not whether the inner GLS error target (R25) also uses the inner-cut bank (plan 9.1 item 4, +0.9-2.4 h), and the weight model's in-sample rows (L5) are disclosed beside it.",
+    "status": "cited",
+    "test_exposed": true,
+    "value": true
+   },
+   {
+    "id": "S2.history_last_values",
+    "origin": "Numbers named in plan Section 1 / 2 / 5 rules but missing from the 3.1 table. OWNER CONFIRMS each. origin: R17 (last 3 values, trailing 1-year and 5-year means, all-history mean) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 3
+   },
+   {
+    "id": "S2.history_trailing_years",
+    "origin": "Numbers named in plan Section 1 / 2 / 5 rules but missing from the 3.1 table. OWNER CONFIRMS each. origin: R17 (last 3 values, trailing 1-year and 5-year means, all-history mean) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     1,
+     5
+    ]
+   },
+   {
+    "id": "S2.log_c_quantile",
+    "origin": "origin: R23, pm25_adaptation.py:575-576 (c = 1st percentile of positive donor-row y) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.01
+   },
+   {
+    "id": "S2.link_distinct_values_above",
+    "origin": "origin: R22 (a log or arcsine link needs MORE THAN this many distinct donor values: > 2) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "S2.recent_normal_years",
+    "origin": "origin: R31 (guess-normal and the last-5-years normal, Q26) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 5
+   },
+   {
+    "id": "S2.hit_tolerance_deviation_share",
+    "origin": "origin: R32 (half the donor rows' mean absolute deviation from their own normal) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.5
+   },
+   {
+    "id": "S2.detection_top_share",
+    "origin": "origin: R33, forecast_report.py:57-77 (top 10%; NaN under 10 events or over 50% events) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.1
+   },
+   {
+    "id": "S2.detection_min_events",
+    "origin": "origin: R33, forecast_report.py:57-77 (top 10%; NaN under 10 events or over 50% events) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 10
+   },
+   {
+    "id": "S2.detection_max_event_share",
+    "origin": "origin: R33, forecast_report.py:57-77 (top 10%; NaN under 10 events or over 50% events) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.5
+   },
+   {
+    "id": "S2.jackknife_z",
+    "origin": "origin: R34, Q19 a (group jackknife at 1.96) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1.96
+   },
+   {
+    "id": "S5.sentinel_mask_abs",
+    "origin": "origin: G-SENTINEL (plan 5): abs >= 1e30 masked; abs >= 2^30 flagged unless opted out owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1e+30
+   },
+   {
+    "id": "S5.sentinel_flag_abs",
+    "origin": "origin: G-SENTINEL (plan 5): abs >= 1e30 masked; abs >= 2^30 flagged unless opted out owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1073741824.0
+   },
+   {
+    "id": "S5.cadence_constancy_tolerance",
+    "origin": "origin: G-CADENCE (plan 5): annual joins after a constancy assert at 0.1% (pm25_architecture.py:139-160) owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.001
+   },
+   {
+    "id": "S5.support_min_distinct_values",
+    "origin": "origin: G-SUPPORT (plan 5): donor y has AT LEAST this many distinct values (>= 2); a different test from R22's \"more than 2\" above owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "S1.unit_id_latlon_decimals",
+    "origin": "origin: plan 1.2 unit id format: '{group}_{lat}_{lon}' with 4 decimals when no grid indices exist owner confirmed: ruling N (2026-10-06, FREEZE_SIGNOFF_SHEET.md S20 b), was extra",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4
+   },
+   {
+    "id": "V1.check_sample_rows",
+    "origin": "V  The validators of treeroute/check/ (plan 5 guards; plan 8.1 M1 quick checks, M4 deep validators). Added by the check build (agent B, 2026-10-06) in this separate block at the end of the file. Every value below is an owner-ruled decision (OWNER_RULINGS_2026-09-28.md, ruling A); none is a modelling number. origin: owner ruling A, D79 and D92 (\"a stride sample of 1,000 rows (all rows if fewer)\"): the rows the G-DERIVED recompute (check_g_derived) and the G-HIST sample match (check_g_hist_sample) read.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1000
+   },
+   {
+    "id": "V1.check_sample_rel_tolerance",
+    "origin": "origin: owner ruling A, D79 and D92 (\"with a relative tolerance of 1e-9\"): the match tolerance of the G-DERIVED recompute, the G-HIST sample match and the G-LINEAGE sum-group reconstruction test.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1e-09
+   },
+   {
+    "id": "V2.range_refuse_share",
+    "origin": "origin: owner ruling A, D95 (\"refuse if more than 0.1% of a column's non-missing values fall outside its legal range; otherwise flag and print the count\"): G-RANGE (check_g_range).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 0.001
+   },
+   {
+    "id": "V3.known_fill_codes",
+    "origin": "origin: owner ruling A, D94 (the proposed default: \"the common integer and float fill values, each with its origin comment\"): the codes G-SENTINEL's deep scan (check_g_sentinel_deep) looks for in RAW values of a column that does not declare them. Report only (FLAG); the read-time mask (io/sentinel.py) masks only DECLARED codes and abs >= 1e30. Origins, in order: -9999.0                 the GDAL / ESRI raster NoData convention -999.0                  the common station and gridded-product missing code -32768.0                the int16 minimum (HDF integer fill; the toy store catalog's declared fill) -32767.0                netCDF's default fill for a short (NC_FILL_SHORT) 32767.0                 the int16 maximum, used as a fill by satellite integer products 65535.0                 netCDF's default fill for an unsigned short (NC_FILL_USHORT) -2147483648.0           the int32 minimum: the panel's -2^31 NoData poison (plan 5 G-SENTINEL, 47/133 regions) -2147483647.0           netCDF's default fill for an int (NC_FILL_INT) 2147483647.0            the int32 maximum -2147450880.0           the derived near-sentinel panel_sentinel.py:15-20 missed (plan 5 G-SENTINEL) 1e20                    the CF / CMIP missing_value convention 9.969209968386869e36    netCDF's default float and double fill (NC_FILL_FLOAT; the target product's fill) -3.4028234663852886e38  the float32 minimum (GDAL float NoData) 3.4028234663852886e38   the float32 maximum",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     -9999.0,
+     -999.0,
+     -32768.0,
+     -32767.0,
+     32767.0,
+     65535.0,
+     -2147483648.0,
+     -2147483647.0,
+     2147483647.0,
+     -2147450880.0,
+     1e+20,
+     9.969209968386869e+36,
+     -3.4028234663852886e+38,
+     3.4028234663852886e+38
+    ]
+   },
+   {
+    "id": "V4.hist_sample_lags",
+    "origin": "origin: owner ruling A (the proposed default of check_g_hist_sample: \"lags 0 to 3 and the R17 trailing windows\"): the own-target look-backs G-HIST's sample match tests (the trailing windows are R17's, S2.history_trailing_years).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "id": "V5.check_deep_workers",
+    "origin": "origin: the machine profile (16 cores; 15.8 GB RAM, 5-11 GB free while other work runs): 'check --deep' pass 1 reads each group in its own worker process (one group's target keys and labels plus one 32-column block of one store file per worker). The smoke-size gate (2026-10-06) peaked at 6.7-8.2 GiB for the whole process tree with 3 workers, so 2. Plumbing: pass 1's results are integer counts and sets merged per group, so this value cannot change a number (tests/test_check_deep.py checks 1 worker against 2); it changes hours only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "P1.reader_file_value_bytes",
+    "origin": "P  Pre-flight byte sizes and plumbing of plan R20's per-group schedule (added by the per-group build, agent A, 2026-10-06) in this separate block at the end of the file. Each P1-P3 value is the size of a go/refuse ESTIMATE (plan 1.7: disk and RAM decide only go or refuse; they never set a unit count or any other number), and P4 is a write block: none of them can change a number of a run; P1-P3 change only whether a run is refused on a machine. P5 (added by agent G, 2026-10-06) is a row block of the donor feature matrix and the GLS target: it bounds RAM only. origin: counted from pipeline/data.py ColumnReader._read_drivers, which reads a whole driver file's needed columns before it keeps its units' rows: 8 bytes a read value (float64, the widest stored dtype; runs/preflight.py driver_file_bytes).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "P1.reader_file_row_bytes",
+    "origin": "origin: counted from the same read, per file row: the unit id column as read and its string cast for the unit filter (2 x (a 4-byte offset + up to 60 characters) = 128 bytes), the time-key columns (up to 2 x 8) and the filter mask, rounded up to 160. Checked on two full-size measurements of pm25_draft's largest group (yakutia_larch, 44 driver files, 2026-10-06): D:/treeroute/A_pergroup_20261006/measure_pm25/measure.json (102 frame columns: the reader rose 0.60 GiB working set, 0.38 GiB private; estimate 0.995 GiB, of which this file term 0.87 GiB) and D:/treeroute/skepticA_20261006/measure_pm25_full/measure.json (139 columns: rose 0.66 / 0.66 GiB; estimate 1.21 GiB).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 160
+   },
+   {
+    "id": "P2.gls_matrix_build_bytes_per_value",
+    "origin": "origin: counted from fit/context.py FitContext._tree_feature_matrix (the GLS weight model's donor matrix, fit/weights.py gls_ram_bytes), which writes ONE row block (P5.donor_block_values values) at a time into the preallocated float32 matrix (4 bytes a value, counted apart): per value of the block in flight, an upper bound of the feature source's read and its own copies (FeaturePool's ascending gather and its reordered copy, 2 x 4 bytes a pool value, and the gather's two row-index arrays, 16 bytes a row: at most 9 bytes a tree value while the pool's context columns are at most 1/8 of its tree columns less 2: ndvi_draft 9 of 499, pm25_draft and fire_draft 2 of 124, defo_draft none; HistoryOverride's read and its copy, 2 x 4) and, after the read returns, the read (4) beside one boolean mask at a time (isinf, then isnan: 1). Measured 2026-10-06 at the ndvi_draft smoke's GLS shape (25,558 donor rows x 499 tree columns and 9 context columns, blocks of 8,405 rows; tracemalloc around _tree_feature_matrix alone over a real FeaturePool, D:/treeroute/G2_20261006/probe/fr_live.json): 8.18 bytes a block value above the matrix (85.3 MB for a 51.0 MB matrix; the count above gives 8 x 508/499 + 16/499 = 8.18), so this bound's headroom is about 10% (tests/test_fit_weights_blocks.py checks it over a real FeaturePool). The smoke's own GLS hand-out peaked at the same 85.3 MB (D:/treeroute/G_20261006/gates_final/ndvi_draft/pergroup/gate.json). Before the row blocks (agent G, 2026-10-06) the same 9 bytes were held for EVERY value at once (104.3 MB, D:/treeroute/G2_20261006/probe/fr_old.json).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 9
+   },
+   {
+    "id": "P2.gls_answer_read_bytes_per_cell",
+    "origin": "origin: counted from fit/tables.py TreeAnswerStore._read, the ONE store read of a group's rows in fit/weights.py weight_model_for_cut's donor-row pass (the per-group store view, fit/tables.py DropAfterRead, drops the group's table after that read), beside the matrix, per cell of the read (the group's rows x the bank's trees less the group's own) while it is in flight: the read's float32 output (4 bytes a cell) beside the gathered rows of the table's one segment (4; the GLS pass builds a group's table in one build, so one segment, and a fancy index of its memmap reads a copy). Measured 2026-10-06 (D:/treeroute/G2_20261006/probe/store_read.json from store_read_probe.py: a real TreeAnswerStore read through DropAfterRead, tracemalloc, 4,500 rows x 40, 120, 300 and 800 columns): 8 bytes a cell plus 57-59 bytes a row (the row-index arrays, P2.gls_answer_read_bytes_per_row). After the read only its float32 output is held (4 bytes a cell) while the target is computed beside ONE row block's copies (P2.gls_answer_block_bytes_per_cell); fit/weights.py gls_ram_bytes takes the larger of the two. Until 2026-10-06 (agent G) this constant was 16 for the whole moment: the output (4) plus the column copy (4) and the float64 copy (8) of the whole group, which are now one row block's (the in-flight 8 sat below the 16).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 8
+   },
+   {
+    "id": "P2.gls_answer_read_bytes_per_row",
+    "origin": "origin: counted from the same read (fit/tables.py TreeAnswerStore.unit_view and _read), per row of the read while it is in flight: the read's own copy of the row ids, each row's segment and position (_locate), the segment's selection, its rows, their order and the two reordered copies (the gather's rows and the output's positions): at most 8 int64 arrays, 64 bytes a row. Measured beside the cells above (D:/treeroute/G2_20261006/probe/store_read.json): 57-59 bytes a row at 40-800 columns. Under 0.01 byte a cell at full-size NDVI's 13,200 read columns, but about 1/6 of the read at 40 columns; it was not counted before 2026-10-06 (agent G, second round).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 64
+   },
+   {
+    "id": "P2.gls_answer_block_bytes_per_cell",
+    "origin": "origin: counted from fit/weights.py _blocked_group_error, per cell of ONE row block of the read (P5.donor_block_values values, rows x the read's columns): the copy of the columns outside the rows' overlap block (4 bytes) and the float64 copy whose row mean is the GLS target (8); the finite check's boolean mask (1) is freed before the float64 copy.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 12
+   },
+   {
+    "id": "P2.gls_forest_bytes_per_value",
+    "origin": "origin: counted from fit/weights.py fit_weight_model: the finite check's boolean mask over the donor matrix (1 byte a value) before the forest's fit, which rose at most 0.25 bytes a value above X and y at 36M values or more in the measurement below (it does not coexist with the mask).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1
+   },
+   {
+    "id": "P2.gls_forest_bytes_per_row",
+    "origin": "re-measured 2026-10-15 (install review, D:/treeroute/install_20261015/gls_probe/forest.jsonl, gls_forest_probe.py; the C13 forest after the launcher's pins, float32 X of 200,000-800,000 rows x 60-240 columns, 48M-80M values): the fit's own peak-commit rise above X and y is 5.045 bytes a value + 218.6 a row + 4.8 MB (least squares over 4 shapes, residuals under 0.5 MB), the same with X on a temp memmap (334.6 vs 334.0 MB at 48M values): the fit copies its input (4 bytes a value: the matrix term of the forest moment, which _file_backed keeps for that copy) and adds 1.05 bytes a value, so this constant stays 1 (it is not far below). The per-row part is above P2.gls_forest_bytes_per_row: an owner's item (go/refuse only). The earlier 7.2 bytes a value (12M values or fewer) held the row and fixed parts. origin: measured 2026-10-06 (D:/treeroute/A_pergroup_20261006/gls_ram/forest.jsonl, measure_gls_forest.py): the C13 GLS forest (sklearnex, 4 threads, oob_score on) on synthetic float32 matrices of 100,000-600,000 rows x 40-120 columns rose 6.0-10.8 MB of private bytes above X and y (12.2 MB working set at most): 85 bytes a row at 100,000 rows, 19 at 600,000 (the out-of-bag arrays and a fixed part). 64 bytes a row with the 1 byte a value above covers every measured shape.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 64
+   },
+   {
+    "id": "P3.nowcast_table_kinds",
+    "origin": "origin: the passes' code (pipeline/run.py disk_plan): the tree-answer table kinds of ONE group that coexist on disk in a pass. The nowcast's test pass reads plain, corrector and placebo (pipeline/passes.py test_pass).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 3
+   },
+   {
+    "id": "P3.lead_table_kinds",
+    "origin": "origin: as above: a lead's guard reads the pinned kind and the corrector's fallback level, its test pass the pinned kind and the placebo (pipeline/ladder.py).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "P4.pool_fill_rows",
+    "origin": "origin: plumbing (pipeline/passes.py fill_pool_by_group): the rows of one pool write in a per-group pool fill, the block stages.fill_pool writes. The values written are the same at any block size (the pool is a float32 memmap written row for row; tests/test_pipeline_ladder.py checks the per-group fill byte for byte against the whole fill); it bounds RAM only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 50000
+   },
+   {
+    "id": "P5.donor_block_values",
+    "origin": "origin: plumbing (agent G, 2026-10-06): the values (rows x columns) of ONE row block wherever the donor rows' tree features are built whole (fit/context.py FitContext._tree_feature_matrix: the eager DonorRows.X, the GLS weight model's donor matrix among them) and wherever the GLS donor-row pass turns one group's answer read into its target (fit/weights.py _blocked_group_error). 2^22 values is 16 MiB a float32 copy: one block's temporaries (P2: 9 bytes a value at the build, 12 a cell at the target) are 36-48 MiB, under 1% of full-size NDVI's 4.69 GiB donor matrix (the estimate of 2026-10-06), while the ndvi_draft smoke's 25,558 x 499 matrix (measured 2026-10-06) is still built in 4 blocks, so the smokes run the blocked build (pm25_draft's and fire_draft's GLS matrices fit in one block; defo_draft fits no GLS model). The values are the same at any block size (each feature row is read on its own; the target's blocks keep the whole group's column-wise float64 sum, see fit/weights.py _row_blocks; tests/test_fit_weights_blocks.py checks one block against many, byte for byte); it bounds RAM only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 4194304
+   },
+   {
+    "id": "V6.cadence_compare_rel_tolerance",
+    "origin": "V (continued)  Two float-comparison tolerances of treeroute/check/guards.py that were bare numbers (the check fix round, agent B, 2026-10-06), added in this separate block at the end of the file. Neither is a modelling number: each only absorbs floating-point rounding in a comparison whose operands differ by far more when they really differ. origin: float rounding of a step length in days (C6: a month is 365.25 / 12 days, so a monthly and a target's monthly step can differ in the last bits): list_co_measured_candidates' \"no coarser than the target's cadence\" compares step lengths with this relative slack. Real cadences differ by at least a factor 28/31 (day vs month lengths), so the value only decides equal lengths.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1e-09
+   },
+   {
+    "id": "V7.large_fill_code_rel_tolerance",
+    "origin": "origin: the float32 rounding of a large fill code (relative spacing 2^-24, about 6e-8): G-SENTINEL's deep scan (sentinel_counts) counts a raw value at or above the 1e30 mask as the known code V3.known_fill_codes names when it lies within this relative distance of it. The large codes (1e20 below the mask; 9.97e36 and 3.40e38 above it) differ by orders of magnitude, so the value only absorbs a code stored as float32 and read as float64.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 1e-06
+   },
+   {
+    "id": "P6.census_checkpoint_chunks",
+    "origin": "P6  Crash-safe checkpoints inside the long steps (owner ruling P, OWNER_RULINGS_2026-10-06.md section P, 2026-10-13; runs/checkpoint.py), added in this separate block at the end of the file. None of them can change a number of a run (ruling P2: a step that loads a checkpoint ends in the same bytes as one that computed it; the gates compare): the chunk sizes decide how much work a stop loses, the byte sizes only the G-DISK go/refuse of the checkpoints. origin: owner ruling P1 (\"checkpoint every chunk of files\"): the census pass saves a chunk after every 1/100 of the target files, so a stop loses at most about 1% of the pass (full-size NDVI, 2,926 files in 1,998 s on 2026-10-12: 30 files, about 20 s; a smoke's few files: one file a chunk). A chunk is a delta of the counters the files touched (derive/census.py checkpoint_delta), a few MB at full size, so 100 of them cost seconds.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 100
+   },
+   {
+    "id": "P6.census_checkpoint_seconds",
+    "origin": "origin: owner ruling P1: a chunk also closes after this many seconds, so a store of few slow files still saves at least once a minute (a stop loses at most this plus the file being read).",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 60
+   },
+   {
+    "id": "P6.checkpoint_census_unit_bytes",
+    "origin": "origin: counted from derive/census.py checkpoint_delta, per census unit over all chunks: its id as JSON text (up to about 60 bytes with quotes and comma), its group index (8) and its row count (8, written again by each chunk whose code range holds it: at most twice for a unit whose group spans a chunk edge), rounded up to 128 for the npz headers. G-DISK go/refuse only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 128
+   },
+   {
+    "id": "P6.checkpoint_census_bit_copies",
+    "origin": "origin: counted from the same delta: the existence and validity bits of every (calendar step, unit) are written by the chunk that holds the unit's file of that step; a chunk whose code range spans two groups writes the touched steps over both groups' codes, so at most twice. G-DISK go/refuse only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 2
+   },
+   {
+    "id": "P6.checkpoint_r30_group_bytes",
+    "origin": "origin: counted from pipeline/stream.py StreamedShareReader._measure_by_group's group record (pickled): the group's column-reader leftovers (its data manifest, its static report strata over its picked units, its last-value record) and the fixed parts of the counts, bounded at 256 KiB a group; the per-feature part below is counted apart. G-DISK go/refuse only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 262144
+   },
+   {
+    "id": "P6.checkpoint_r30_feature_bytes",
+    "origin": "origin: counted from the same record, per tree feature: its donor missing and zero counts, its last-value counts (five) and its test-year counts (one per test year, twice: the donor rows' and the streamed count's), each a pickled int beside its key (the column name is pickled once and referenced), bounded at 256 bytes a feature. G-DISK go/refuse only.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 256
+   },
+   {
+    "id": "P7.room_poll_seconds",
+    "origin": "P7  Room to work (owner ruling Q, OWNER_RULINGS_2026-10-06.md section Q, 2026-10-15; runs/room.py) and the RAM savings that cannot change a number (D:/treeroute/engine_next/RAM_TACTICS.md), added in this separate block at the end of the file. None of them can change a number of a run: the room values decide only WHEN a step starts (a step computes the same bytes whenever it starts), and the batch size only how many driver rows are decoded at once (the rows kept are the same at any batch size; tests/test_ram_tactics.py). origin: owner ruling Q1 (\"re-checks every engine-constant interval\"): one check is a psutil read, a gc pass and the working-set trim (well under a second), so 30 s notices a closed program within half a minute at no real cost.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 30
+   },
+   {
+    "id": "P7.room_note_seconds",
+    "origin": "origin: owner ruling Q1 (\"prints what it needs and the biggest programs using memory\"): one note in the run log every 10 minutes while a check waits (the first note at once), so a night's wait writes about 70 lines, not 1,400.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 600
+   },
+   {
+    "id": "P7.room_max_wait_seconds",
+    "origin": "origin: owner ruling Q1 (\"after an engine-constant maximum wait it refuses, as today\"): 12 hours, one night away from the machine; a longer wait would hold the heavy-job lock and the run's temp files for a run nobody is freeing RAM for.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 43200
+   },
+   {
+    "id": "P7.room_top_programs",
+    "origin": "origin: owner ruling Q1 (\"the biggest programs using memory\"): the five largest working sets name the programs to close on a 15.8 GB machine; a longer list adds lines, not decisions.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 5
+   },
+   {
+    "id": "P7.reader_batch_rows",
+    "origin": "origin: plumbing (RAM tactic 5): a driver file's needed columns are decoded this many rows at a time and only the reader's units' rows of each batch are kept (pipeline/data.py ColumnReader._read_drivers), instead of decoding the whole file first. The kept rows, their order, the schema and the values are the same at any batch size (tests/test_ram_tactics.py compares with the whole-file read); it bounds RAM only: 65,536 rows x 170 columns x 8 bytes is at most 89 MB a batch, against 0.5-1.1 GB for a full-size driver file of about a million rows.",
+    "status": "cited",
+    "test_exposed": false,
+    "value": 65536
+   }
+  ],
+  "constants_hash": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b",
+  "file_sha256": "784bb782f54f6338b469958fa071049d78a1201361c8e2960aa2dc375ceb6009",
+  "statuses_awaiting_owner": [
+   "proposed",
+   "extra"
+  ],
+  "statuses_refused": [
+   "unset"
+  ]
+ },
+ "inputs": {
+  "created": "2026-09-28 14:47:05",
+  "extra": [
+   "D:/run89full/ndvi_split.txt",
+   "D:/run89full/forest_census.csv",
+   "D:/fire/region_sizes.csv"
+  ],
+  "n_files": 10186,
+  "path": "D:\\treeroute\\registry\\inputs.json",
+  "roots": [
+   "D:/monthly_panel",
+   "D:/gfed_burn",
+   "D:/edgar_emis",
+   "D:/pm25_acag",
+   "D:/fire/target",
+   "D:/fire/history",
+   "D:/fire/drivers/joined",
+   "D:/defo_matrix",
+   "D:/defo_target"
+  ],
+  "sha256": "ede0331dfa7ff38f8ae8c28d411361a0a7c18c47f1920a4c1f9a7af8df942efd"
+ },
+ "launch_pins": {
+  "env_pins": {
+   "BLIS_NUM_THREADS": "4",
+   "MKL_NUM_THREADS": "4",
+   "NUMEXPR_NUM_THREADS": "4",
+   "OMP_NUM_THREADS": "4",
+   "OPENBLAS_NUM_THREADS": "4",
+   "VECLIB_MAXIMUM_THREADS": "4"
+  },
+  "refused_environment": {
+   "names": [
+    "PYTHONHASHSEED"
+   ],
+   "prefixes": [
+    "OPENBLAS_",
+    "GOTO",
+    "OMP_",
+    "KMP_",
+    "MKL_",
+    "BLIS_",
+    "NUMEXPR_",
+    "VECLIB_",
+    "SKLEARN",
+    "SCIPY_",
+    "NPY_",
+    "DAAL",
+    "ONEDAL",
+    "TBB_"
+   ]
+  },
+  "version_pins": {
+   "installed": {
+    "scikit-learn": "1.6.1",
+    "scikit-learn-intelex": "2025.10.0"
+   },
+   "pins": {
+    "scikit-learn": "1.6.1",
+    "scikit-learn-intelex": "2025.10.0"
+   },
+   "source": "C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\engine\\tests\\test_fit_tables_guard.py",
+   "source_sha256": "663aa836591c1b5049f85b3554abe9af768dd0c64bcf3aeea8361cfb4b22e60b"
+  },
+  "workers": {
+   "blas_threads": 4,
+   "forest_threads": 4,
+   "router_worker_blas_threads": 1,
+   "router_workers": 8,
+   "sklearnex_required": true,
+   "tree_predict_workers": 8
+  }
+ },
+ "lock_format": "treeroute_report.freeze/3",
+ "no_op_rule": "plan 8.1 M5: after the freeze only bug fixes. A bug fix re-runs every package already run, unless the no-op rule applies for that package: its derived.json and smoke outputs stay byte-identical, AND either a one-group full-width probe stays byte-identical or the changed functions are shown never to run on that package at full size.",
+ "packages": [
+  {
+   "ban": {
+    "open": {
+     "keep_unreviewed": [],
+     "open_decision_markers": []
+    },
+    "verdict_counts": {
+     "ban": 5,
+     "conditional": 3,
+     "keep": 65,
+     "watch": 3
+    }
+   },
+   "check_report": {
+    "checked_groups": {
+     "constants": {
+      "C13.smoke_groups": 4,
+      "C15.min_groups": 3
+     },
+     "data_groups": 94,
+     "groups": [
+      "Andaman Islands",
+      "Andaman Sea",
+      "Austral Islands, French Polynesia",
+      "Bahamas and Florida Keys"
+     ],
+     "package_groups": 83,
+     "refused": null,
+     "rule": "R21",
+     "selection": "R21 smoke groups, ruling M2"
+    },
+    "engine_code_sha256": "930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814",
+    "finished": "2026-10-20T13:08:36+03:00",
+    "green": true,
+    "guards": [
+     {
+      "id": "G-CLOSED",
+      "status": "pass"
+     },
+     {
+      "id": "G-SPLIT",
+      "status": "pass"
+     },
+     {
+      "id": "U1 (table contract)",
+      "status": "pass"
+     },
+     {
+      "id": "R18 donor-only groups",
+      "status": "pass"
+     },
+     {
+      "id": "G-FACTS",
+      "status": "pass"
+     },
+     {
+      "id": "derive (table)",
+      "status": "pass"
+     }
+    ],
+    "mode": "deep",
+    "path": "D:\\treeroute\\runs\\coral\\check\\check_deep_5b9383f0446d.json",
+    "sha256": "45baa163b824ca5b87b969c9692b209266a60a8a5693284f2d41b9d756fc4e7e",
+    "started": "2026-10-20T13:08:35+03:00"
+   },
+   "draft": {
+    "is_draft": false,
+    "stamp": "",
+    "stamped_verdicts": 0,
+    "where": []
+   },
+   "file_hashes": {
+    "AUDIT_CHECKLIST.md": "87b44d6dce5ad89c68bad009c17867fe047dc2221ccc587e30ecba739399382b",
+    "ban.yaml": "7a86de1c67249908223337799786c362518ed6dc04e924ca32b83d0ec4c52fd5",
+    "catalog.yaml": "6642ec45c3b9ccd4cf1d835b0ac152122c7778da08d19a47b4eefd5069623d60",
+    "dataset.yaml": "13b1c462d8312c9671d1402d05e1a05392eff60cf115d7ad05659e69f86ca031",
+    "exceptions.yaml": "a73d5bde0e5bf816d17ff9e1fcc7263efad5b0995707cc162aca18e6d7934e98",
+    "ingest/README.md": "d8367c50fd709362c492b36c78032850244a0929b32173f32fc05b3c4dbf01e4",
+    "split.yaml": "f22d70fa9c8292409274d0ce2f2a0344c10c9a9ded3dfccf07d81d067b04b3f0"
+   },
+   "fingerprint": "5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9",
+   "include_hashes": {},
+   "name": "coral",
+   "path": "C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\engine\\datasets\\coral",
+   "plan": {
+    "derived_json_sha256": "5fd02863f8b91573cf145edc98db7f8b4a9d6a9fd34a1519ef0a0f831e184660",
+    "derived_sha256": "0afecb5ec4b1c4cf3985026ae54e13da245d6be260b1e2dd834a731d8d96f8f9",
+    "engine_code_hash": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678",
+    "folder": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da",
+    "package_fingerprint": "5b9383f0446df0f12e460cccb2bcd2e58d09fbf22b234cf2943a07aac14644c9",
+    "plan_json_sha256": "89bd87359d08d02a00faffb91eae0bba02f46704791c35ea3a867b8b7ce39ca7",
+    "run_fingerprint": "f3b8e3daee7474db63e1d10d15b4b93d7044e35408efb31e7611958633e7f362"
+   },
+   "stores": [
+    {
+     "files": [
+      "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_0.parquet",
+      "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_183.parquet",
+      "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_365.parquet"
+     ],
+     "role": "target",
+     "template": "D:/treeroute/coral_build/coral_store/20261020_014201/lead_{lead}.parquet"
+    }
+   ],
+   "version": "0.1.0"
+  }
+ ],
+ "preconditions": [
+  "F-NAMES",
+  "F-PACKAGE",
+  "F-DRAFT",
+  "F-ENGINE-HASH",
+  "F-TOOLING",
+  "F-CHECK-EXISTS",
+  "F-CHECK-CONTRACT",
+  "F-CHECK-MATCH",
+  "F-CHECK-GROUPS",
+  "F-CHECK-GREEN",
+  "G-FACTS",
+  "F-BAN-OPEN",
+  "F-PLAN",
+  "F-CONSTANTS",
+  "F-PINS",
+  "F-INPUTS",
+  "F-PREREG",
+  "F-STORES"
+ ],
+ "python": {
+  "implementation": "CPython",
+  "libraries": {
+   "PyYAML": "6.0.3",
+   "click": "8.1.8",
+   "daal": "2025.10.0",
+   "numpy": "2.0.2",
+   "pandas": "2.3.3",
+   "psutil": "7.2.2",
+   "pyarrow": "21.0.0",
+   "pydantic": "2.13.3",
+   "pydantic-core": "2.46.3",
+   "scikit-learn": "1.6.1",
+   "scikit-learn-intelex": "2025.10.0",
+   "scipy": "1.13.1",
+   "tbb": "2022.3.1",
+   "threadpoolctl": "3.6.0",
+   "typer": "0.23.2"
+  },
+  "python_version": "3.9.13",
+  "sys_version": "3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v.1929 64 bit (AMD64)]"
+ },
+ "registry_dir": "D:\\treeroute\\registry",
+ "report_tooling": {
+  "files": {
+   "__init__.py": "8ec716cde63eaf869392f8c6b65a224bfc3abe38fcc854b0ee645ac43dfd5d20",
+   "common.py": "ab254854b8355784ddf50846ec24e3e8507b70eb295d396d24f76d8fc9931c05",
+   "continuity_groups.yaml": "5c7272dd3a40bfa1ca060e0b6cf00997bc5a62bb1ce96b4407a03bc5089bbfb4",
+   "freeze.py": "0c11c1471b74b576de023af9e685b3623353a3db5d532eb9e8f445910d124bca",
+   "history_bands.yaml": "93f474341798f389c91f89ab2ed0949f96ff0ab7a659a10364246dfa9e54c0f6",
+   "report_rows.yaml": "8185cd4b5eb9cbf33876bd4053f7530f7e38a25f752190cc181360719e2a7d7d",
+   "table.py": "228c1f0fbc14c90868e499e6109917127468a214cff1b4010312e6271f18d273"
+  },
+  "root": "C:\\Users\\moh the ghost\\Desktop\\data set for reserch paper\\engine\\treeroute_report",
+  "sha256": "1658e0ddcf7039e6939fb7ad812885297e025682cf15f29d854d5d98da4b3762",
+  "suffixes": [
+   ".py",
+   ".yaml",
+   ".yml"
+  ]
+ },
+ "run_root": "D:\\treeroute\\runs",
+ "store_files": {
+  "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_0.parquet": {
+   "mtime": 1792451707,
+   "sha256": "82ac203261b030bd1a3442d7d8e22d6787e46354d80176e636737d3a2b6c4c66",
+   "size": 3596785,
+   "source": "freeze"
+  },
+  "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_183.parquet": {
+   "mtime": 1792451707,
+   "sha256": "68c7c7746d1f32508e71e02fdb9ba6f93ab80ab1b87d6c08e3a3b2f43d55096a",
+   "size": 3400821,
+   "source": "freeze"
+  },
+  "D:\\treeroute\\coral_build\\coral_store\\20261020_014201\\lead_365.parquet": {
+   "mtime": 1792451707,
+   "sha256": "c82b3b3795d901c82703ccc28d606c435f518aa0a0eddbd0a71ac3783ee171de",
+   "size": 3566233,
+   "source": "freeze"
+  }
+ }
+}

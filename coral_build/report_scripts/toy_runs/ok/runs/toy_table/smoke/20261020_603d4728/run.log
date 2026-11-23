@@ -1,0 +1,88 @@
+[06:46:55] package toy_table version 0.1.0, fingerprint a39a51f28dab7781 (input: table)
+[06:46:55] feature lineage: vouched by the package owner (U2)
+[06:46:55] groups: 5 in the data, 5 after exclusions; this run: 4 (smoke)
+[06:46:55] preflight: table rows per lead {0: 265, 183: 265, 365: 256}, 19 columns; RAM estimate 0.000 GiB: go
+[06:46:55] table read: 172 rows of 160 package units in 3 lead files (lead 0: 172 rows, lead 183: 172 rows, lead 365: 164 rows) in 0.0 s
+[06:46:55] derive_all_table: 41 entries in 0.0 s; router neighbour; overlap blocks 4 for 4 groups; leads [183, 365] days
+[06:46:57] run folder D:\treeroute\coral_build\report_scripts\toy_runs\ok\runs\toy_table\smoke\20261020_603d4728 (new)
+[06:47:01] preflight: temp disk for the table run 0.000 GiB at its peak (two pools, two banks' tables): go
+[06:47:01] pool: 172 table rows, 6 tree columns, 2 context columns (lead 0)
+[06:47:01] fits: bank at the fit cut 733041: 4 groups x 12 trees
+[06:47:01] checkpoint: bank key e314e44299837501: no earlier checkpoint of this step; computing
+[06:47:01] checkpoint: bank fit-cut (cut 733041, lead 0): 0 of 4 groups loaded, 4 fitted (folder bank-e314e44299837501)
+[06:47:01] fit-cut bank: 48 trees, fingerprint 3b7bfcd2af175860, rows at or before 733041 (max label step 733019)
+[06:47:01] fit-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:01] fits: GLS weight model (R25) at the guard cut 731946
+[06:47:01] GLS weight model (R25): memory given back before the donor matrix (gc: 116 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\coral_build\report_scripts\toy_runs\ok\temp\treeroute_run_603d4728_10856
+[06:47:01] GLS weight model (R25): memory given back before the forest's fit (gc: 23 objects; working-set trim ran)
+[06:47:01] fits: bank refit at the inner cut 731946 (L6 b)
+[06:47:01] checkpoint: bank key 3629f135eb3bde09: no earlier checkpoint of this step; computing
+[06:47:02] checkpoint: bank inner-cut (cut 731946, lead 0): 0 of 4 groups loaded, 4 fitted (folder bank-3629f135eb3bde09)
+[06:47:02] inner-cut bank: 48 trees, fingerprint 6a0967b631bb94a6, rows at or before 731946 (max label step 731917)
+[06:47:02] inner-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:02] fits: GLS weight models of the 4 decision-surface folds (R13, R25)
+[06:47:02] GLS weight model (R25) of fold 0 (g_a): 54 donor rows outside its block ['g_a']
+[06:47:02] GLS weight model (R25) of fold 1 (g_b): 54 donor rows outside its block ['g_b']
+[06:47:02] GLS weight model (R25) of fold 2 (g_c): 56 donor rows outside its block ['g_c']
+[06:47:02] GLS weight model (R25) of fold 3 (g_d): 55 donor rows outside its block ['g_d']
+[06:47:02] decision surface (D67, R13): 43 train rows dated 731947..733041; 43 with a valid label: 43 rows scored
+[06:47:02] decision: neighbour router: 12 tree arms on the decision surface (4 folds)
+[06:47:05] decision surface: 43 rows, 424 candidates, legal range [0.0, 100.0], surface SHA-256 e95d370b0b78fe32
+[06:47:05]   identity_plain_unweighted          MAE 22.701599 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0323 (beside)
+[06:47:05]   identity_plain_gls                 MAE 22.571776 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0257 (beside)
+[06:47:05]   identity_corrector_unweighted      MAE 22.701599 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0323 (beside)
+[06:47:05]   identity_corrector_gls             MAE 22.571776 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0257 (beside)
+[06:47:05]   log_c_plain_unweighted             MAE 21.876506 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0213 (beside)
+[06:47:05]   log_c_plain_gls                    MAE 21.728048 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0134 (beside)
+[06:47:05]   log_c_corrector_unweighted         MAE 21.876506 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0213 (beside)
+[06:47:05]   log_c_corrector_gls                MAE 21.728048 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0134 (beside)
+[06:47:05]   arcsine_plain_unweighted           MAE 22.248017 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0208 (beside)
+[06:47:05]   arcsine_plain_gls                  MAE 22.075173 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0136 (beside)
+[06:47:05]   arcsine_corrector_unweighted       MAE 22.248017 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0208 (beside)
+[06:47:05]   arcsine_corrector_gls              MAE 22.075173 at level 0.1 ratio 0.0625 | EDGE PICK: level bottom, ratio bottom | pre-clip 0 below, 0 above of 1505 | corr2 0.0136 (beside)
+[06:47:05]   identity_trees_off_unweighted      MAE 23.013687 at no grid | pre-clip 0 below, 0 above of 43 | corr2 0.1031 (beside)
+[06:47:05]   log_c_trees_off_unweighted         MAE 22.263300 at no grid | pre-clip 0 below, 0 above of 43 | corr2 0.1223 (beside)
+[06:47:05]   arcsine_trees_off_unweighted       MAE 22.696938 at no grid | pre-clip 0 below, 0 above of 43 | corr2 0.1102 (beside)
+[06:47:05]   predict-zero MAE 21.072619 (beside, never used)
+[06:47:05]   decline baseline base__donor_median MAE 20.543674: N2 compares every arm with it and a decline falls back to it (owner ruling V1)
+[06:47:05]   => DECLINED: no tree arm beat the decline baseline; the decline target is base__donor_median (V1); best tree arm log_c_plain_gls at level 0.1 ratio 0.0625
+[06:47:05] test pass: 56 test rows (56 with a label); tree arms at level 0.1 ratio 0.0625 (the best tree arm's penalty: the layer declined)
+[06:47:07] verdict: declined adopted donor_median vs base__donor_median: contrast 0 [0, 0], band 0.767056, pooled MAE 35.6675 vs 35.6675
+[06:47:08] released the nowcast's inner-cut bank (48 trees, fingerprint 6a0967b631bb94a6) and its tables: the nowcast's decision is locked and its test pass is done; the ladder never reads the inner-cut bank
+[06:47:08] ladder: lead-0 contract: the ladder's lead path at lead 0 against the nowcast
+[06:47:08] GLS weight model (R25): memory given back before the donor matrix (gc: 33 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\coral_build\report_scripts\toy_runs\ok\temp\treeroute_run_603d4728_10856
+[06:47:08] GLS weight model (R25): memory given back before the forest's fit (gc: 23 objects; working-set trim ran)
+[06:47:08] ladder: lead-0 contract holds (20 saved columns of 56 rows) in 0.7 s
+[06:47:09] released the nowcast's fit-cut bank (48 trees, fingerprint 3b7bfcd2af175860) and its tables: the lead-0 contract is done; leads of one day or more fit their own banks
+[06:47:09] ladder: lead 183: lagtrain bank at the lead's fit cut 732859 (4 groups x 12 trees)
+[06:47:09] checkpoint: bank key fded134db2ab1db6: no earlier checkpoint of this step; computing
+[06:47:09] checkpoint: bank lead-183 (cut 732859, lead 183): 0 of 4 groups loaded, 4 fitted (folder bank-fded134db2ab1db6)
+[06:47:09] lead-183 bank: 48 trees, fingerprint 13ebce0f1b6113dd, rows at or before 732859 (max label step 732847)
+[06:47:09] lead-183 bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:10] GLS weight model (R25): memory given back before the donor matrix (gc: 50 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\coral_build\report_scripts\toy_runs\ok\temp\treeroute_run_603d4728_10856
+[06:47:10] GLS weight model (R25): memory given back before the forest's fit (gc: 23 objects; working-set trim ran)
+[06:47:10] ladder: lead 183: guard bank refit at the lead's guard cut 731764 (owner ruling H2)
+[06:47:10] checkpoint: bank key 6a947930d34cb409: no earlier checkpoint of this step; computing
+[06:47:10] checkpoint: bank lead-183 guard-cut (cut 731764, lead 183): 0 of 4 groups loaded, 4 fitted (folder bank-6a947930d34cb409)
+[06:47:10] lead-183 guard-cut bank: 48 trees, fingerprint a1328bfa179b4218, rows at or before 731764 (max label step 731745)
+[06:47:10] lead-183 guard-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:10] ladder: lead 183 guard: log_c_plain_gls MAE 22.7374 vs the donor-row median 11.7691 (MAE 20.9268; V1) on 36 rows; its trees-off 22.7374 beside -> FAILS: the lead adopts the donor-row median (D86, V1)
+[06:47:11] lead 183 test pass: H4: every test row is in the lead's file; none left out
+[06:47:12] ladder: lead 183 done in 2.6 s: the donor-row median (V1) adopted
+[06:47:12] ladder: lead 365: lagtrain bank at the lead's fit cut 732677 (4 groups x 12 trees)
+[06:47:12] checkpoint: bank key 96f416f3d6545e6e: no earlier checkpoint of this step; computing
+[06:47:12] checkpoint: bank lead-365 (cut 732677, lead 365): 0 of 4 groups loaded, 4 fitted (folder bank-96f416f3d6545e6e)
+[06:47:12] lead-365 bank: 48 trees, fingerprint 4096414e5bb8a8b2, rows at or before 732677 (max label step 732636)
+[06:47:12] lead-365 bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:12] GLS weight model (R25): memory given back before the donor matrix (gc: 282 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\coral_build\report_scripts\toy_runs\ok\temp\treeroute_run_603d4728_10856
+[06:47:12] GLS weight model (R25): memory given back before the forest's fit (gc: 23 objects; working-set trim ran)
+[06:47:13] ladder: lead 365: guard bank refit at the lead's guard cut 731582 (owner ruling H2)
+[06:47:13] checkpoint: bank key 64dcabf4caf200b5: no earlier checkpoint of this step; computing
+[06:47:13] checkpoint: bank lead-365 guard-cut (cut 731582, lead 365): 0 of 4 groups loaded, 4 fitted (folder bank-64dcabf4caf200b5)
+[06:47:13] lead-365 guard-cut bank: 48 trees, fingerprint fd596eb3968adb7e, rows at or before 731582 (max label step 731534)
+[06:47:13] lead-365 guard-cut bank: 48 of 48 trees have no corrector (fewer than 50 out-of-bag rows); 4 of 4 groups have none at all
+[06:47:13] ladder: lead 365 guard: log_c_plain_gls MAE 21.6156 vs the donor-row median 0 (MAE 19.1004; V1) on 28 rows; its trees-off 21.6156 beside -> FAILS: the lead adopts the donor-row median (D86, V1)
+[06:47:14] lead 365 test pass: H4 left 4 test row(s) out of scoring (absent from the lead's file); saved in ladder/lead_365/issue_missing_rows.parquet
+[06:47:15] ladder: lead 365 done in 3.1 s: the donor-row median (V1) adopted
+[06:47:16] finished: {"verdict": "declined", "adopted": "donor_median", "band": 0.7670564986343074, "pooled_mae_adopted": 35.667520374999995, "pooled_mae_reference": 35.667520374999995, "draft": false, "test_rows": 56, "ladder": {"leads": [183, 365], "common_rows": 52, "verdicts": {"0": "declined", "183": "declined", "365": "declined"}}}
+[06:47:16] checkpoint: the run finished; removed its 6 checkpoint folder(s) (0.000 GiB): bank-e314e44299837501, bank-3629f135eb3bde09, bank-fded134db2ab1db6, bank-6a947930d34cb409, bank-96f416f3d6545e6e, bank-64dcabf4caf200b5

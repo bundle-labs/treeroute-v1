@@ -1,0 +1,6509 @@
+{
+ "problem": "ndvi",
+ "region_files": 133,
+ "rows": 95184,
+ "units": 1983,
+ "time_steps": 48,
+ "columns_read": [
+  "c__ctx:cos1",
+  "c__ctx:cos2",
+  "c__ctx:sin1",
+  "c__ctx:sin2",
+  "time",
+  "unit",
+  "x__V01_mean_temp_C",
+  "x__V01_mean_temp_C_lag1",
+  "x__V01_mean_temp_C_lag12",
+  "x__V01_mean_temp_C_lag2",
+  "x__V01_mean_temp_C_lag3",
+  "x__V01_mean_temp_C_lag6",
+  "x__V02_total_precip_mm",
+  "x__V02_total_precip_mm_lag1",
+  "x__V02_total_precip_mm_lag12",
+  "x__V02_total_precip_mm_lag2",
+  "x__V02_total_precip_mm_lag3",
+  "x__V02_total_precip_mm_lag6",
+  "x__V02_total_precip_mm_roll12",
+  "x__V02_total_precip_mm_roll3",
+  "x__V02_total_precip_mm_roll6",
+  "x__V03_max_daily_precip_mm",
+  "x__V03_max_daily_precip_mm_lag1",
+  "x__V03_max_daily_precip_mm_lag12",
+  "x__V03_max_daily_precip_mm_lag2",
+  "x__V03_max_daily_precip_mm_lag3",
+  "x__V03_max_daily_precip_mm_lag6",
+  "x__V04_precip_seasonality",
+  "x__V05_mean_vpd_kPa",
+  "x__V05_mean_vpd_kPa_lag1",
+  "x__V05_mean_vpd_kPa_lag12",
+  "x__V05_mean_vpd_kPa_lag2",
+  "x__V05_mean_vpd_kPa_lag3",
+  "x__V05_mean_vpd_kPa_lag6",
+  "x__V06_spei_12m_lag12",
+  "x__V07_total_ref_ET_mm",
+  "x__V07_total_ref_ET_mm_lag1",
+  "x__V07_total_ref_ET_mm_lag12",
+  "x__V07_total_ref_ET_mm_lag2",
+  "x__V07_total_ref_ET_mm_lag3",
+  "x__V07_total_ref_ET_mm_lag6",
+  "x__V07_total_ref_ET_mm_roll12",
+  "x__V07_total_ref_ET_mm_roll3",
+  "x__V07_total_ref_ET_mm_roll6",
+  "x__V07_total_ref_ET_mm_wytd",
+  "x__V09_mean_wind_ms",
+  "x__V09_mean_wind_ms_lag1",
+  "x__V09_mean_wind_ms_lag12",
+  "x__V09_mean_wind_ms_lag2",
+  "x__V09_mean_wind_ms_lag3",
+  "x__V09_mean_wind_ms_lag6",
+  "x__V25_elevation_m",
+  "x__V26_slope_deg",
+  "x__V27_southness",
+  "x__V28_CTI",
+  "x__V30_soil_moisture_pct",
+  "x__V30_soil_moisture_pct_lag1",
+  "x__V30_soil_moisture_pct_lag12",
+  "x__V30_soil_moisture_pct_lag2",
+  "x__V30_soil_moisture_pct_lag3",
+  "x__V30_soil_moisture_pct_lag6",
+  "x__V30_soil_moisture_pct_roll12",
+  "x__V30_soil_moisture_pct_roll3",
+  "x__V30_soil_moisture_pct_roll6",
+  "x__V30_soil_moisture_pct_wytd",
+  "x__aet_total_mm",
+  "x__aet_total_mm_lag1",
+  "x__aet_total_mm_lag12",
+  "x__aet_total_mm_lag2",
+  "x__aet_total_mm_lag3",
+  "x__aet_total_mm_lag6",
+  "x__aet_total_mm_roll12",
+  "x__aet_total_mm_roll3",
+  "x__aet_total_mm_roll6",
+  "x__aet_total_mm_wytd",
+  "x__aglw_buffalo_hold2021",
+  "x__aglw_cattle_hold2021",
+  "x__aglw_goats_hold2021",
+  "x__aglw_horse_hold2021",
+  "x__aglw_sheep_hold2021",
+  "x__aglw_total_lsu_hold2021",
+  "x__amo_lag12",
+  "x__ao",
+  "x__ao_lag1",
+  "x__ao_lag12",
+  "x__ao_lag2",
+  "x__ao_lag3",
+  "x__ao_lag6",
+  "x__api_precip",
+  "x__api_soilmoist",
+  "x__awc_cm3cm3",
+  "x__bulk_density_gcm3",
+  "x__burn_frac",
+  "x__cec_cmolkg",
+  "x__clay_pct",
+  "x__climate_water_deficit_mm",
+  "x__climate_water_deficit_mm_lag1",
+  "x__climate_water_deficit_mm_lag12",
+  "x__climate_water_deficit_mm_lag2",
+  "x__climate_water_deficit_mm_lag3",
+  "x__climate_water_deficit_mm_lag6",
+  "x__climate_water_deficit_mm_roll12",
+  "x__climate_water_deficit_mm_roll3",
+  "x__climate_water_deficit_mm_roll6",
+  "x__climate_water_deficit_mm_wytd",
+  "x__cloud_frequency_pct",
+  "x__cloud_frequency_pct_lag1",
+  "x__cloud_frequency_pct_lag12",
+  "x__cloud_frequency_pct_lag2",
+  "x__cloud_frequency_pct_lag3",
+  "x__cloud_frequency_pct_lag6",
+  "x__coarse_fragments_pct",
+  "x__conflict_deaths",
+  "x__conflict_events",
+  "x__consec_dry_months",
+  "x__deeprec_twsa",
+  "x__deeprec_twsa_lag1",
+  "x__deeprec_twsa_lag12",
+  "x__deeprec_twsa_lag2",
+  "x__deeprec_twsa_lag3",
+  "x__deeprec_twsa_lag6",
+  "x__dist_to_coast_km",
+  "x__diurnal_temp_range_C",
+  "x__diurnal_temp_range_C_lag1",
+  "x__diurnal_temp_range_C_lag12",
+  "x__diurnal_temp_range_C_lag2",
+  "x__diurnal_temp_range_C_lag3",
+  "x__diurnal_temp_range_C_lag6",
+  "x__epo",
+  "x__epo_lag1",
+  "x__epo_lag12",
+  "x__epo_lag2",
+  "x__epo_lag3",
+  "x__epo_lag6",
+  "x__era5l_d2m",
+  "x__era5l_d2m_lag1",
+  "x__era5l_d2m_lag12",
+  "x__era5l_d2m_lag2",
+  "x__era5l_d2m_lag3",
+  "x__era5l_d2m_lag6",
+  "x__era5l_pev",
+  "x__era5l_pev_lag1",
+  "x__era5l_pev_lag12",
+  "x__era5l_pev_lag2",
+  "x__era5l_pev_lag3",
+  "x__era5l_pev_lag6",
+  "x__era5l_slhf",
+  "x__era5l_slhf_lag1",
+  "x__era5l_slhf_lag12",
+  "x__era5l_slhf_lag2",
+  "x__era5l_slhf_lag3",
+  "x__era5l_slhf_lag6",
+  "x__era5l_smlt",
+  "x__era5l_sro",
+  "x__era5l_sro_lag1",
+  "x__era5l_sro_lag12",
+  "x__era5l_sro_lag2",
+  "x__era5l_sro_lag3",
+  "x__era5l_sro_lag6",
+  "x__era5l_sshf",
+  "x__era5l_sshf_lag1",
+  "x__era5l_sshf_lag12",
+  "x__era5l_sshf_lag2",
+  "x__era5l_sshf_lag3",
+  "x__era5l_sshf_lag6",
+  "x__era5l_ssr",
+  "x__era5l_ssr_lag1",
+  "x__era5l_ssr_lag12",
+  "x__era5l_ssr_lag2",
+  "x__era5l_ssr_lag3",
+  "x__era5l_ssr_lag6",
+  "x__era5l_ssro",
+  "x__era5l_ssro_lag1",
+  "x__era5l_ssro_lag12",
+  "x__era5l_ssro_lag2",
+  "x__era5l_ssro_lag3",
+  "x__era5l_ssro_lag6",
+  "x__era5l_stl1",
+  "x__era5l_stl1_lag1",
+  "x__era5l_stl1_lag12",
+  "x__era5l_stl1_lag2",
+  "x__era5l_stl1_lag3",
+  "x__era5l_stl1_lag6",
+  "x__era5l_str",
+  "x__era5l_str_lag1",
+  "x__era5l_str_lag12",
+  "x__era5l_str_lag2",
+  "x__era5l_str_lag3",
+  "x__era5l_str_lag6",
+  "x__fert_n",
+  "x__fert_p",
+  "x__frost_days",
+  "x__gdd5_degC_days",
+  "x__gdd5_degC_days_lag1",
+  "x__gdd5_degC_days_lag12",
+  "x__gdd5_degC_days_lag2",
+  "x__gdd5_degC_days_lag3",
+  "x__gdd5_degC_days_lag6",
+  "x__grace_lwe",
+  "x__grace_lwe_lag1",
+  "x__grace_lwe_lag12",
+  "x__grace_lwe_lag2",
+  "x__grace_lwe_lag3",
+  "x__grace_lwe_lag6",
+  "x__hand_m",
+  "x__hdi",
+  "x__heatwave_days_gt35C",
+  "x__heatwave_days_gt35C_lag1",
+  "x__heatwave_days_gt35C_lag12",
+  "x__heatwave_days_gt35C_lag2",
+  "x__heatwave_days_gt35C_lag3",
+  "x__heatwave_days_gt35C_lag6",
+  "x__hist_last_1",
+  "x__hist_last_2",
+  "x__hist_last_3",
+  "x__hist_mean_12",
+  "x__hist_mean_60",
+  "x__hist_mean_all",
+  "x__iod",
+  "x__iod_lag1",
+  "x__iod_lag12",
+  "x__iod_lag2",
+  "x__iod_lag3",
+  "x__iod_lag6",
+  "x__irrigation_pct_gmia",
+  "x__luh2_cropland",
+  "x__luh2_forest",
+  "x__luh2_pasture",
+  "x__luh2_range",
+  "x__luh2_secondary",
+  "x__luh2_urban",
+  "x__months_since_sig_rain",
+  "x__nao",
+  "x__nao_lag1",
+  "x__nao_lag12",
+  "x__nao_lag2",
+  "x__nao_lag3",
+  "x__nao_lag6",
+  "x__nino12",
+  "x__nino12_lag1",
+  "x__nino12_lag12",
+  "x__nino12_lag2",
+  "x__nino12_lag3",
+  "x__nino12_lag6",
+  "x__nino3",
+  "x__nino34",
+  "x__nino34_lag1",
+  "x__nino34_lag12",
+  "x__nino34_lag2",
+  "x__nino34_lag3",
+  "x__nino34_lag6",
+  "x__nino3_lag1",
+  "x__nino3_lag12",
+  "x__nino3_lag2",
+  "x__nino3_lag3",
+  "x__nino3_lag6",
+  "x__nino4",
+  "x__nino4_lag1",
+  "x__nino4_lag12",
+  "x__nino4_lag2",
+  "x__nino4_lag3",
+  "x__nino4_lag6",
+  "x__nitrogen_gkg",
+  "x__noi",
+  "x__noi_lag1",
+  "x__noi_lag12",
+  "x__noi_lag2",
+  "x__noi_lag3",
+  "x__noi_lag6",
+  "x__ntl",
+  "x__oni",
+  "x__oni_lag1",
+  "x__oni_lag12",
+  "x__oni_lag2",
+  "x__oni_lag3",
+  "x__oni_lag6",
+  "x__pdo",
+  "x__pdo_lag1",
+  "x__pdo_lag12",
+  "x__pdo_lag2",
+  "x__pdo_lag3",
+  "x__pdo_lag6",
+  "x__pna",
+  "x__pna_lag1",
+  "x__pna_lag12",
+  "x__pna_lag2",
+  "x__pna_lag3",
+  "x__pna_lag6",
+  "x__precip_intensity_mm",
+  "x__precip_intensity_mm_lag1",
+  "x__precip_intensity_mm_lag12",
+  "x__precip_intensity_mm_lag2",
+  "x__precip_intensity_mm_lag3",
+  "x__precip_intensity_mm_lag6",
+  "x__precip_wytd",
+  "x__rmin_pct",
+  "x__rmin_pct_lag1",
+  "x__rmin_pct_lag12",
+  "x__rmin_pct_lag2",
+  "x__rmin_pct_lag3",
+  "x__rmin_pct_lag6",
+  "x__sam",
+  "x__sam_lag1",
+  "x__sam_lag12",
+  "x__sam_lag2",
+  "x__sam_lag3",
+  "x__sam_lag6",
+  "x__sand_pct",
+  "x__silt_pct",
+  "x__snow_cover_fraction",
+  "x__snow_duration_days",
+  "x__soi",
+  "x__soi_lag1",
+  "x__soi_lag12",
+  "x__soi_lag2",
+  "x__soi_lag3",
+  "x__soi_lag6",
+  "x__soil_organic_carbon_gkg",
+  "x__soil_ph",
+  "x__soil_water_tc_mm",
+  "x__soil_water_tc_mm_lag1",
+  "x__soil_water_tc_mm_lag12",
+  "x__soil_water_tc_mm_lag2",
+  "x__soil_water_tc_mm_lag3",
+  "x__soil_water_tc_mm_lag6",
+  "x__soil_water_tc_mm_roll12",
+  "x__soil_water_tc_mm_roll3",
+  "x__soil_water_tc_mm_roll6",
+  "x__soil_water_tc_mm_wytd",
+  "x__solar_radiation_Wm2",
+  "x__solar_radiation_Wm2_lag1",
+  "x__solar_radiation_Wm2_lag12",
+  "x__solar_radiation_Wm2_lag2",
+  "x__solar_radiation_Wm2_lag3",
+  "x__solar_radiation_Wm2_lag6",
+  "x__spei_01m_lag12",
+  "x__spei_03m_lag12",
+  "x__spei_06m_lag12",
+  "x__spei_24m_lag12",
+  "x__sph_kgkg",
+  "x__sph_kgkg_lag1",
+  "x__sph_kgkg_lag12",
+  "x__sph_kgkg_lag2",
+  "x__sph_kgkg_lag3",
+  "x__sph_kgkg_lag6",
+  "x__spi_01m",
+  "x__spi_01m_lag1",
+  "x__spi_01m_lag12",
+  "x__spi_01m_lag2",
+  "x__spi_01m_lag3",
+  "x__spi_01m_lag6",
+  "x__spi_03m",
+  "x__spi_03m_lag1",
+  "x__spi_03m_lag12",
+  "x__spi_03m_lag2",
+  "x__spi_03m_lag3",
+  "x__spi_03m_lag6",
+  "x__spi_06m",
+  "x__spi_06m_lag1",
+  "x__spi_06m_lag12",
+  "x__spi_06m_lag2",
+  "x__spi_06m_lag3",
+  "x__spi_06m_lag6",
+  "x__spi_12m",
+  "x__spi_12m_lag1",
+  "x__spi_12m_lag12",
+  "x__spi_12m_lag2",
+  "x__spi_12m_lag3",
+  "x__spi_12m_lag6",
+  "x__spi_24m",
+  "x__spi_24m_lag1",
+  "x__spi_24m_lag12",
+  "x__spi_24m_lag2",
+  "x__spi_24m_lag3",
+  "x__spi_24m_lag6",
+  "x__sst_anom_atl3",
+  "x__sst_anom_atl3_lag1",
+  "x__sst_anom_atl3_lag12",
+  "x__sst_anom_atl3_lag2",
+  "x__sst_anom_atl3_lag3",
+  "x__sst_anom_atl3_lag6",
+  "x__sst_anom_coral_sea",
+  "x__sst_anom_coral_sea_lag1",
+  "x__sst_anom_coral_sea_lag12",
+  "x__sst_anom_coral_sea_lag2",
+  "x__sst_anom_coral_sea_lag3",
+  "x__sst_anom_coral_sea_lag6",
+  "x__sst_anom_global_tropical_mean",
+  "x__sst_anom_global_tropical_mean_lag1",
+  "x__sst_anom_global_tropical_mean_lag12",
+  "x__sst_anom_global_tropical_mean_lag2",
+  "x__sst_anom_global_tropical_mean_lag3",
+  "x__sst_anom_global_tropical_mean_lag6",
+  "x__sst_anom_iod_east",
+  "x__sst_anom_iod_east_lag1",
+  "x__sst_anom_iod_east_lag12",
+  "x__sst_anom_iod_east_lag2",
+  "x__sst_anom_iod_east_lag3",
+  "x__sst_anom_iod_east_lag6",
+  "x__sst_anom_iod_west",
+  "x__sst_anom_iod_west_lag1",
+  "x__sst_anom_iod_west_lag12",
+  "x__sst_anom_iod_west_lag2",
+  "x__sst_anom_iod_west_lag3",
+  "x__sst_anom_iod_west_lag6",
+  "x__sst_anom_nino34",
+  "x__sst_anom_nino34_lag1",
+  "x__sst_anom_nino34_lag12",
+  "x__sst_anom_nino34_lag2",
+  "x__sst_anom_nino34_lag3",
+  "x__sst_anom_nino34_lag6",
+  "x__sst_anom_subpolar_north_atlantic",
+  "x__sst_anom_subpolar_north_atlantic_lag1",
+  "x__sst_anom_subpolar_north_atlantic_lag12",
+  "x__sst_anom_subpolar_north_atlantic_lag2",
+  "x__sst_anom_subpolar_north_atlantic_lag3",
+  "x__sst_anom_subpolar_north_atlantic_lag6",
+  "x__swe_mean_mm",
+  "x__tc_vapor_pressure",
+  "x__tc_vapor_pressure_lag1",
+  "x__tc_vapor_pressure_lag12",
+  "x__tc_vapor_pressure_lag2",
+  "x__tc_vapor_pressure_lag3",
+  "x__tc_vapor_pressure_lag6",
+  "x__tna",
+  "x__tna_lag1",
+  "x__tna_lag12",
+  "x__tna_lag2",
+  "x__tna_lag3",
+  "x__tna_lag6",
+  "x__tni",
+  "x__tni_lag1",
+  "x__tni_lag12",
+  "x__tni_lag2",
+  "x__tni_lag3",
+  "x__tni_lag6",
+  "x__travel_time",
+  "x__tsa",
+  "x__tsa_lag1",
+  "x__tsa_lag12",
+  "x__tsa_lag2",
+  "x__tsa_lag3",
+  "x__tsa_lag6",
+  "x__upstream_area_km2",
+  "x__vpd_days_gt_2kpa",
+  "x__vpd_days_gt_2kpa_lag1",
+  "x__vpd_days_gt_2kpa_lag12",
+  "x__vpd_days_gt_2kpa_lag2",
+  "x__vpd_days_gt_2kpa_lag3",
+  "x__vpd_days_gt_2kpa_lag6",
+  "x__vpd_max_daily",
+  "x__vpd_max_daily_lag1",
+  "x__vpd_max_daily_lag12",
+  "x__vpd_max_daily_lag2",
+  "x__vpd_max_daily_lag3",
+  "x__vpd_max_daily_lag6",
+  "x__vpd_warm_season_mean",
+  "x__vpd_warm_season_mean_lag1",
+  "x__vpd_warm_season_mean_lag12",
+  "x__vpd_warm_season_mean_lag2",
+  "x__vpd_warm_season_mean_lag3",
+  "x__vpd_warm_season_mean_lag6",
+  "x__wbal_mm",
+  "x__wbal_mm_lag1",
+  "x__wbal_mm_lag12",
+  "x__wbal_mm_lag2",
+  "x__wbal_mm_lag3",
+  "x__wbal_mm_lag6",
+  "x__wbal_roll12",
+  "x__wbal_roll12_lag1",
+  "x__wbal_roll12_lag12",
+  "x__wbal_roll12_lag2",
+  "x__wbal_roll12_lag3",
+  "x__wbal_roll12_lag6",
+  "x__wbal_roll24",
+  "x__wbal_roll24_lag1",
+  "x__wbal_roll24_lag12",
+  "x__wbal_roll24_lag2",
+  "x__wbal_roll24_lag3",
+  "x__wbal_roll24_lag6",
+  "x__wbal_roll3",
+  "x__wbal_roll3_lag1",
+  "x__wbal_roll3_lag12",
+  "x__wbal_roll3_lag2",
+  "x__wbal_roll3_lag3",
+  "x__wbal_roll3_lag6",
+  "x__wbal_roll6",
+  "x__wbal_roll6_lag1",
+  "x__wbal_roll6_lag12",
+  "x__wbal_roll6_lag2",
+  "x__wbal_roll6_lag3",
+  "x__wbal_roll6_lag6",
+  "x__wet_day_count",
+  "x__wet_day_count_lag1",
+  "x__wet_day_count_lag12",
+  "x__wet_day_count_lag2",
+  "x__wet_day_count_lag3",
+  "x__wet_day_count_lag6",
+  "x__wp",
+  "x__wp_lag1",
+  "x__wp_lag12",
+  "x__wp_lag2",
+  "x__wp_lag3",
+  "x__wp_lag6"
+ ],
+ "columns_missing": [],
+ "column_one_value_per_step": {
+  "c__ctx:cos1": true,
+  "c__ctx:cos2": true,
+  "c__ctx:sin1": true,
+  "c__ctx:sin2": true,
+  "x__V01_mean_temp_C": false,
+  "x__V01_mean_temp_C_lag1": false,
+  "x__V01_mean_temp_C_lag12": false,
+  "x__V01_mean_temp_C_lag2": false,
+  "x__V01_mean_temp_C_lag3": false,
+  "x__V01_mean_temp_C_lag6": false,
+  "x__V02_total_precip_mm": false,
+  "x__V02_total_precip_mm_lag1": false,
+  "x__V02_total_precip_mm_lag12": false,
+  "x__V02_total_precip_mm_lag2": false,
+  "x__V02_total_precip_mm_lag3": false,
+  "x__V02_total_precip_mm_lag6": false,
+  "x__V02_total_precip_mm_roll12": false,
+  "x__V02_total_precip_mm_roll3": false,
+  "x__V02_total_precip_mm_roll6": false,
+  "x__V03_max_daily_precip_mm": false,
+  "x__V03_max_daily_precip_mm_lag1": false,
+  "x__V03_max_daily_precip_mm_lag12": false,
+  "x__V03_max_daily_precip_mm_lag2": false,
+  "x__V03_max_daily_precip_mm_lag3": false,
+  "x__V03_max_daily_precip_mm_lag6": false,
+  "x__V04_precip_seasonality": false,
+  "x__V05_mean_vpd_kPa": false,
+  "x__V05_mean_vpd_kPa_lag1": false,
+  "x__V05_mean_vpd_kPa_lag12": false,
+  "x__V05_mean_vpd_kPa_lag2": false,
+  "x__V05_mean_vpd_kPa_lag3": false,
+  "x__V05_mean_vpd_kPa_lag6": false,
+  "x__V06_spei_12m_lag12": false,
+  "x__V07_total_ref_ET_mm": false,
+  "x__V07_total_ref_ET_mm_lag1": false,
+  "x__V07_total_ref_ET_mm_lag12": false,
+  "x__V07_total_ref_ET_mm_lag2": false,
+  "x__V07_total_ref_ET_mm_lag3": false,
+  "x__V07_total_ref_ET_mm_lag6": false,
+  "x__V07_total_ref_ET_mm_roll12": false,
+  "x__V07_total_ref_ET_mm_roll3": false,
+  "x__V07_total_ref_ET_mm_roll6": false,
+  "x__V07_total_ref_ET_mm_wytd": false,
+  "x__V09_mean_wind_ms": false,
+  "x__V09_mean_wind_ms_lag1": false,
+  "x__V09_mean_wind_ms_lag12": false,
+  "x__V09_mean_wind_ms_lag2": false,
+  "x__V09_mean_wind_ms_lag3": false,
+  "x__V09_mean_wind_ms_lag6": false,
+  "x__V25_elevation_m": false,
+  "x__V26_slope_deg": false,
+  "x__V27_southness": false,
+  "x__V28_CTI": false,
+  "x__V30_soil_moisture_pct": false,
+  "x__V30_soil_moisture_pct_lag1": false,
+  "x__V30_soil_moisture_pct_lag12": false,
+  "x__V30_soil_moisture_pct_lag2": false,
+  "x__V30_soil_moisture_pct_lag3": false,
+  "x__V30_soil_moisture_pct_lag6": false,
+  "x__V30_soil_moisture_pct_roll12": false,
+  "x__V30_soil_moisture_pct_roll3": false,
+  "x__V30_soil_moisture_pct_roll6": false,
+  "x__V30_soil_moisture_pct_wytd": false,
+  "x__aet_total_mm": false,
+  "x__aet_total_mm_lag1": false,
+  "x__aet_total_mm_lag12": false,
+  "x__aet_total_mm_lag2": false,
+  "x__aet_total_mm_lag3": false,
+  "x__aet_total_mm_lag6": false,
+  "x__aet_total_mm_roll12": false,
+  "x__aet_total_mm_roll3": false,
+  "x__aet_total_mm_roll6": false,
+  "x__aet_total_mm_wytd": false,
+  "x__aglw_buffalo_hold2021": false,
+  "x__aglw_cattle_hold2021": false,
+  "x__aglw_goats_hold2021": false,
+  "x__aglw_horse_hold2021": false,
+  "x__aglw_sheep_hold2021": false,
+  "x__aglw_total_lsu_hold2021": false,
+  "x__amo_lag12": true,
+  "x__ao": true,
+  "x__ao_lag1": true,
+  "x__ao_lag12": true,
+  "x__ao_lag2": true,
+  "x__ao_lag3": true,
+  "x__ao_lag6": true,
+  "x__api_precip": false,
+  "x__api_soilmoist": false,
+  "x__awc_cm3cm3": false,
+  "x__bulk_density_gcm3": false,
+  "x__burn_frac": false,
+  "x__cec_cmolkg": false,
+  "x__clay_pct": false,
+  "x__climate_water_deficit_mm": false,
+  "x__climate_water_deficit_mm_lag1": false,
+  "x__climate_water_deficit_mm_lag12": false,
+  "x__climate_water_deficit_mm_lag2": false,
+  "x__climate_water_deficit_mm_lag3": false,
+  "x__climate_water_deficit_mm_lag6": false,
+  "x__climate_water_deficit_mm_roll12": false,
+  "x__climate_water_deficit_mm_roll3": false,
+  "x__climate_water_deficit_mm_roll6": false,
+  "x__climate_water_deficit_mm_wytd": false,
+  "x__cloud_frequency_pct": false,
+  "x__cloud_frequency_pct_lag1": false,
+  "x__cloud_frequency_pct_lag12": false,
+  "x__cloud_frequency_pct_lag2": false,
+  "x__cloud_frequency_pct_lag3": false,
+  "x__cloud_frequency_pct_lag6": false,
+  "x__coarse_fragments_pct": false,
+  "x__conflict_deaths": false,
+  "x__conflict_events": false,
+  "x__consec_dry_months": false,
+  "x__deeprec_twsa": false,
+  "x__deeprec_twsa_lag1": false,
+  "x__deeprec_twsa_lag12": false,
+  "x__deeprec_twsa_lag2": false,
+  "x__deeprec_twsa_lag3": false,
+  "x__deeprec_twsa_lag6": false,
+  "x__dist_to_coast_km": false,
+  "x__diurnal_temp_range_C": false,
+  "x__diurnal_temp_range_C_lag1": false,
+  "x__diurnal_temp_range_C_lag12": false,
+  "x__diurnal_temp_range_C_lag2": false,
+  "x__diurnal_temp_range_C_lag3": false,
+  "x__diurnal_temp_range_C_lag6": false,
+  "x__epo": true,
+  "x__epo_lag1": true,
+  "x__epo_lag12": true,
+  "x__epo_lag2": true,
+  "x__epo_lag3": true,
+  "x__epo_lag6": true,
+  "x__era5l_d2m": false,
+  "x__era5l_d2m_lag1": false,
+  "x__era5l_d2m_lag12": false,
+  "x__era5l_d2m_lag2": false,
+  "x__era5l_d2m_lag3": false,
+  "x__era5l_d2m_lag6": false,
+  "x__era5l_pev": false,
+  "x__era5l_pev_lag1": false,
+  "x__era5l_pev_lag12": false,
+  "x__era5l_pev_lag2": false,
+  "x__era5l_pev_lag3": false,
+  "x__era5l_pev_lag6": false,
+  "x__era5l_slhf": false,
+  "x__era5l_slhf_lag1": false,
+  "x__era5l_slhf_lag12": false,
+  "x__era5l_slhf_lag2": false,
+  "x__era5l_slhf_lag3": false,
+  "x__era5l_slhf_lag6": false,
+  "x__era5l_smlt": false,
+  "x__era5l_sro": false,
+  "x__era5l_sro_lag1": false,
+  "x__era5l_sro_lag12": false,
+  "x__era5l_sro_lag2": false,
+  "x__era5l_sro_lag3": false,
+  "x__era5l_sro_lag6": false,
+  "x__era5l_sshf": false,
+  "x__era5l_sshf_lag1": false,
+  "x__era5l_sshf_lag12": false,
+  "x__era5l_sshf_lag2": false,
+  "x__era5l_sshf_lag3": false,
+  "x__era5l_sshf_lag6": false,
+  "x__era5l_ssr": false,
+  "x__era5l_ssr_lag1": false,
+  "x__era5l_ssr_lag12": false,
+  "x__era5l_ssr_lag2": false,
+  "x__era5l_ssr_lag3": false,
+  "x__era5l_ssr_lag6": false,
+  "x__era5l_ssro": false,
+  "x__era5l_ssro_lag1": false,
+  "x__era5l_ssro_lag12": false,
+  "x__era5l_ssro_lag2": false,
+  "x__era5l_ssro_lag3": false,
+  "x__era5l_ssro_lag6": false,
+  "x__era5l_stl1": false,
+  "x__era5l_stl1_lag1": false,
+  "x__era5l_stl1_lag12": false,
+  "x__era5l_stl1_lag2": false,
+  "x__era5l_stl1_lag3": false,
+  "x__era5l_stl1_lag6": false,
+  "x__era5l_str": false,
+  "x__era5l_str_lag1": false,
+  "x__era5l_str_lag12": false,
+  "x__era5l_str_lag2": false,
+  "x__era5l_str_lag3": false,
+  "x__era5l_str_lag6": false,
+  "x__fert_n": false,
+  "x__fert_p": false,
+  "x__frost_days": false,
+  "x__gdd5_degC_days": false,
+  "x__gdd5_degC_days_lag1": false,
+  "x__gdd5_degC_days_lag12": false,
+  "x__gdd5_degC_days_lag2": false,
+  "x__gdd5_degC_days_lag3": false,
+  "x__gdd5_degC_days_lag6": false,
+  "x__grace_lwe": false,
+  "x__grace_lwe_lag1": false,
+  "x__grace_lwe_lag12": false,
+  "x__grace_lwe_lag2": false,
+  "x__grace_lwe_lag3": false,
+  "x__grace_lwe_lag6": false,
+  "x__hand_m": false,
+  "x__hdi": false,
+  "x__heatwave_days_gt35C": false,
+  "x__heatwave_days_gt35C_lag1": false,
+  "x__heatwave_days_gt35C_lag12": false,
+  "x__heatwave_days_gt35C_lag2": false,
+  "x__heatwave_days_gt35C_lag3": false,
+  "x__heatwave_days_gt35C_lag6": false,
+  "x__hist_last_1": false,
+  "x__hist_last_2": false,
+  "x__hist_last_3": false,
+  "x__hist_mean_12": false,
+  "x__hist_mean_60": false,
+  "x__hist_mean_all": false,
+  "x__iod": true,
+  "x__iod_lag1": true,
+  "x__iod_lag12": true,
+  "x__iod_lag2": true,
+  "x__iod_lag3": true,
+  "x__iod_lag6": true,
+  "x__irrigation_pct_gmia": false,
+  "x__luh2_cropland": false,
+  "x__luh2_forest": false,
+  "x__luh2_pasture": false,
+  "x__luh2_range": false,
+  "x__luh2_secondary": false,
+  "x__luh2_urban": false,
+  "x__months_since_sig_rain": false,
+  "x__nao": true,
+  "x__nao_lag1": true,
+  "x__nao_lag12": true,
+  "x__nao_lag2": true,
+  "x__nao_lag3": true,
+  "x__nao_lag6": true,
+  "x__nino12": true,
+  "x__nino12_lag1": true,
+  "x__nino12_lag12": true,
+  "x__nino12_lag2": true,
+  "x__nino12_lag3": true,
+  "x__nino12_lag6": true,
+  "x__nino3": true,
+  "x__nino34": true,
+  "x__nino34_lag1": true,
+  "x__nino34_lag12": true,
+  "x__nino34_lag2": true,
+  "x__nino34_lag3": true,
+  "x__nino34_lag6": true,
+  "x__nino3_lag1": true,
+  "x__nino3_lag12": true,
+  "x__nino3_lag2": true,
+  "x__nino3_lag3": true,
+  "x__nino3_lag6": true,
+  "x__nino4": true,
+  "x__nino4_lag1": true,
+  "x__nino4_lag12": true,
+  "x__nino4_lag2": true,
+  "x__nino4_lag3": true,
+  "x__nino4_lag6": true,
+  "x__nitrogen_gkg": false,
+  "x__noi": true,
+  "x__noi_lag1": true,
+  "x__noi_lag12": true,
+  "x__noi_lag2": true,
+  "x__noi_lag3": true,
+  "x__noi_lag6": true,
+  "x__ntl": false,
+  "x__oni": true,
+  "x__oni_lag1": true,
+  "x__oni_lag12": true,
+  "x__oni_lag2": true,
+  "x__oni_lag3": true,
+  "x__oni_lag6": true,
+  "x__pdo": true,
+  "x__pdo_lag1": true,
+  "x__pdo_lag12": true,
+  "x__pdo_lag2": true,
+  "x__pdo_lag3": true,
+  "x__pdo_lag6": true,
+  "x__pna": true,
+  "x__pna_lag1": true,
+  "x__pna_lag12": true,
+  "x__pna_lag2": true,
+  "x__pna_lag3": true,
+  "x__pna_lag6": true,
+  "x__precip_intensity_mm": false,
+  "x__precip_intensity_mm_lag1": false,
+  "x__precip_intensity_mm_lag12": false,
+  "x__precip_intensity_mm_lag2": false,
+  "x__precip_intensity_mm_lag3": false,
+  "x__precip_intensity_mm_lag6": false,
+  "x__precip_wytd": false,
+  "x__rmin_pct": false,
+  "x__rmin_pct_lag1": false,
+  "x__rmin_pct_lag12": false,
+  "x__rmin_pct_lag2": false,
+  "x__rmin_pct_lag3": false,
+  "x__rmin_pct_lag6": false,
+  "x__sam": true,
+  "x__sam_lag1": true,
+  "x__sam_lag12": true,
+  "x__sam_lag2": true,
+  "x__sam_lag3": true,
+  "x__sam_lag6": true,
+  "x__sand_pct": false,
+  "x__silt_pct": false,
+  "x__snow_cover_fraction": false,
+  "x__snow_duration_days": false,
+  "x__soi": true,
+  "x__soi_lag1": true,
+  "x__soi_lag12": true,
+  "x__soi_lag2": true,
+  "x__soi_lag3": true,
+  "x__soi_lag6": true,
+  "x__soil_organic_carbon_gkg": false,
+  "x__soil_ph": false,
+  "x__soil_water_tc_mm": false,
+  "x__soil_water_tc_mm_lag1": false,
+  "x__soil_water_tc_mm_lag12": false,
+  "x__soil_water_tc_mm_lag2": false,
+  "x__soil_water_tc_mm_lag3": false,
+  "x__soil_water_tc_mm_lag6": false,
+  "x__soil_water_tc_mm_roll12": false,
+  "x__soil_water_tc_mm_roll3": false,
+  "x__soil_water_tc_mm_roll6": false,
+  "x__soil_water_tc_mm_wytd": false,
+  "x__solar_radiation_Wm2": false,
+  "x__solar_radiation_Wm2_lag1": false,
+  "x__solar_radiation_Wm2_lag12": false,
+  "x__solar_radiation_Wm2_lag2": false,
+  "x__solar_radiation_Wm2_lag3": false,
+  "x__solar_radiation_Wm2_lag6": false,
+  "x__spei_01m_lag12": false,
+  "x__spei_03m_lag12": false,
+  "x__spei_06m_lag12": false,
+  "x__spei_24m_lag12": false,
+  "x__sph_kgkg": false,
+  "x__sph_kgkg_lag1": false,
+  "x__sph_kgkg_lag12": false,
+  "x__sph_kgkg_lag2": false,
+  "x__sph_kgkg_lag3": false,
+  "x__sph_kgkg_lag6": false,
+  "x__spi_01m": false,
+  "x__spi_01m_lag1": false,
+  "x__spi_01m_lag12": false,
+  "x__spi_01m_lag2": false,
+  "x__spi_01m_lag3": false,
+  "x__spi_01m_lag6": false,
+  "x__spi_03m": false,
+  "x__spi_03m_lag1": false,
+  "x__spi_03m_lag12": false,
+  "x__spi_03m_lag2": false,
+  "x__spi_03m_lag3": false,
+  "x__spi_03m_lag6": false,
+  "x__spi_06m": false,
+  "x__spi_06m_lag1": false,
+  "x__spi_06m_lag12": false,
+  "x__spi_06m_lag2": false,
+  "x__spi_06m_lag3": false,
+  "x__spi_06m_lag6": false,
+  "x__spi_12m": false,
+  "x__spi_12m_lag1": false,
+  "x__spi_12m_lag12": false,
+  "x__spi_12m_lag2": false,
+  "x__spi_12m_lag3": false,
+  "x__spi_12m_lag6": false,
+  "x__spi_24m": false,
+  "x__spi_24m_lag1": false,
+  "x__spi_24m_lag12": false,
+  "x__spi_24m_lag2": false,
+  "x__spi_24m_lag3": false,
+  "x__spi_24m_lag6": false,
+  "x__sst_anom_atl3": true,
+  "x__sst_anom_atl3_lag1": true,
+  "x__sst_anom_atl3_lag12": true,
+  "x__sst_anom_atl3_lag2": true,
+  "x__sst_anom_atl3_lag3": true,
+  "x__sst_anom_atl3_lag6": true,
+  "x__sst_anom_coral_sea": true,
+  "x__sst_anom_coral_sea_lag1": true,
+  "x__sst_anom_coral_sea_lag12": true,
+  "x__sst_anom_coral_sea_lag2": true,
+  "x__sst_anom_coral_sea_lag3": true,
+  "x__sst_anom_coral_sea_lag6": true,
+  "x__sst_anom_global_tropical_mean": true,
+  "x__sst_anom_global_tropical_mean_lag1": true,
+  "x__sst_anom_global_tropical_mean_lag12": true,
+  "x__sst_anom_global_tropical_mean_lag2": true,
+  "x__sst_anom_global_tropical_mean_lag3": true,
+  "x__sst_anom_global_tropical_mean_lag6": true,
+  "x__sst_anom_iod_east": true,
+  "x__sst_anom_iod_east_lag1": true,
+  "x__sst_anom_iod_east_lag12": true,
+  "x__sst_anom_iod_east_lag2": true,
+  "x__sst_anom_iod_east_lag3": true,
+  "x__sst_anom_iod_east_lag6": true,
+  "x__sst_anom_iod_west": true,
+  "x__sst_anom_iod_west_lag1": true,
+  "x__sst_anom_iod_west_lag12": true,
+  "x__sst_anom_iod_west_lag2": true,
+  "x__sst_anom_iod_west_lag3": true,
+  "x__sst_anom_iod_west_lag6": true,
+  "x__sst_anom_nino34": true,
+  "x__sst_anom_nino34_lag1": true,
+  "x__sst_anom_nino34_lag12": true,
+  "x__sst_anom_nino34_lag2": true,
+  "x__sst_anom_nino34_lag3": true,
+  "x__sst_anom_nino34_lag6": true,
+  "x__sst_anom_subpolar_north_atlantic": true,
+  "x__sst_anom_subpolar_north_atlantic_lag1": true,
+  "x__sst_anom_subpolar_north_atlantic_lag12": true,
+  "x__sst_anom_subpolar_north_atlantic_lag2": true,
+  "x__sst_anom_subpolar_north_atlantic_lag3": true,
+  "x__sst_anom_subpolar_north_atlantic_lag6": true,
+  "x__swe_mean_mm": false,
+  "x__tc_vapor_pressure": false,
+  "x__tc_vapor_pressure_lag1": false,
+  "x__tc_vapor_pressure_lag12": false,
+  "x__tc_vapor_pressure_lag2": false,
+  "x__tc_vapor_pressure_lag3": false,
+  "x__tc_vapor_pressure_lag6": false,
+  "x__tna": true,
+  "x__tna_lag1": true,
+  "x__tna_lag12": true,
+  "x__tna_lag2": true,
+  "x__tna_lag3": true,
+  "x__tna_lag6": true,
+  "x__tni": true,
+  "x__tni_lag1": true,
+  "x__tni_lag12": true,
+  "x__tni_lag2": true,
+  "x__tni_lag3": true,
+  "x__tni_lag6": true,
+  "x__travel_time": false,
+  "x__tsa": true,
+  "x__tsa_lag1": true,
+  "x__tsa_lag12": true,
+  "x__tsa_lag2": true,
+  "x__tsa_lag3": true,
+  "x__tsa_lag6": true,
+  "x__upstream_area_km2": false,
+  "x__vpd_days_gt_2kpa": false,
+  "x__vpd_days_gt_2kpa_lag1": false,
+  "x__vpd_days_gt_2kpa_lag12": false,
+  "x__vpd_days_gt_2kpa_lag2": false,
+  "x__vpd_days_gt_2kpa_lag3": false,
+  "x__vpd_days_gt_2kpa_lag6": false,
+  "x__vpd_max_daily": false,
+  "x__vpd_max_daily_lag1": false,
+  "x__vpd_max_daily_lag12": false,
+  "x__vpd_max_daily_lag2": false,
+  "x__vpd_max_daily_lag3": false,
+  "x__vpd_max_daily_lag6": false,
+  "x__vpd_warm_season_mean": false,
+  "x__vpd_warm_season_mean_lag1": false,
+  "x__vpd_warm_season_mean_lag12": false,
+  "x__vpd_warm_season_mean_lag2": false,
+  "x__vpd_warm_season_mean_lag3": false,
+  "x__vpd_warm_season_mean_lag6": false,
+  "x__wbal_mm": false,
+  "x__wbal_mm_lag1": false,
+  "x__wbal_mm_lag12": false,
+  "x__wbal_mm_lag2": false,
+  "x__wbal_mm_lag3": false,
+  "x__wbal_mm_lag6": false,
+  "x__wbal_roll12": false,
+  "x__wbal_roll12_lag1": false,
+  "x__wbal_roll12_lag12": false,
+  "x__wbal_roll12_lag2": false,
+  "x__wbal_roll12_lag3": false,
+  "x__wbal_roll12_lag6": false,
+  "x__wbal_roll24": false,
+  "x__wbal_roll24_lag1": false,
+  "x__wbal_roll24_lag12": false,
+  "x__wbal_roll24_lag2": false,
+  "x__wbal_roll24_lag3": false,
+  "x__wbal_roll24_lag6": false,
+  "x__wbal_roll3": false,
+  "x__wbal_roll3_lag1": false,
+  "x__wbal_roll3_lag12": false,
+  "x__wbal_roll3_lag2": false,
+  "x__wbal_roll3_lag3": false,
+  "x__wbal_roll3_lag6": false,
+  "x__wbal_roll6": false,
+  "x__wbal_roll6_lag1": false,
+  "x__wbal_roll6_lag12": false,
+  "x__wbal_roll6_lag2": false,
+  "x__wbal_roll6_lag3": false,
+  "x__wbal_roll6_lag6": false,
+  "x__wet_day_count": false,
+  "x__wet_day_count_lag1": false,
+  "x__wet_day_count_lag12": false,
+  "x__wet_day_count_lag2": false,
+  "x__wet_day_count_lag3": false,
+  "x__wet_day_count_lag6": false,
+  "x__wp": true,
+  "x__wp_lag1": true,
+  "x__wp_lag12": true,
+  "x__wp_lag2": true,
+  "x__wp_lag3": true,
+  "x__wp_lag6": true
+ },
+ "column_detail": {
+  "c__ctx:cos1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "c__ctx:cos2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "c__ctx:sin1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "c__ctx:sin2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__V01_mean_temp_C": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V01_mean_temp_C_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V01_mean_temp_C_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V01_mean_temp_C_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V01_mean_temp_C_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V01_mean_temp_C_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9984733057386093
+  },
+  "x__V02_total_precip_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9999753348286977
+  },
+  "x__V02_total_precip_mm_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V02_total_precip_mm_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V03_max_daily_precip_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V04_precip_seasonality": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.951895547089217
+  },
+  "x__V05_mean_vpd_kPa": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V05_mean_vpd_kPa_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V05_mean_vpd_kPa_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V05_mean_vpd_kPa_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V05_mean_vpd_kPa_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V05_mean_vpd_kPa_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V06_spei_12m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9997077609677543
+  },
+  "x__V07_total_ref_ET_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V07_total_ref_ET_mm_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V09_mean_wind_ms_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V25_elevation_m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0004466117704747
+  },
+  "x__V26_slope_deg": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V27_southness": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8645914196968079
+  },
+  "x__V28_CTI": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9547395542008336
+  },
+  "x__V30_soil_moisture_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9999821638771057
+  },
+  "x__V30_soil_moisture_pct_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__V30_soil_moisture_pct_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aet_total_mm_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_buffalo_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_cattle_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_goats_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_horse_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_sheep_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__aglw_total_lsu_hold2021": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__amo_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ao_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__api_precip": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9999017912253796
+  },
+  "x__api_soilmoist": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9998293393146284
+  },
+  "x__awc_cm3cm3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.999739096317137
+  },
+  "x__bulk_density_gcm3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.6338968532620461
+  },
+  "x__burn_frac": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__cec_cmolkg": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.915009692124451
+  },
+  "x__clay_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9751457158303307
+  },
+  "x__climate_water_deficit_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__climate_water_deficit_mm_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__cloud_frequency_pct_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__coarse_fragments_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9932106410226421
+  },
+  "x__conflict_deaths": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__conflict_events": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__consec_dry_months": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__deeprec_twsa_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__dist_to_coast_km": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9999756514720111
+  },
+  "x__diurnal_temp_range_C": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__diurnal_temp_range_C_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__diurnal_temp_range_C_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__diurnal_temp_range_C_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__diurnal_temp_range_C_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__diurnal_temp_range_C_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9282511228980889
+  },
+  "x__epo": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__epo_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__epo_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 1,
+   "max_rel_spread": 0.0
+  },
+  "x__epo_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__epo_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__epo_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__era5l_d2m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_d2m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_d2m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_d2m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_d2m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_d2m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.2502299275357576
+  },
+  "x__era5l_pev": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_pev_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_pev_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_pev_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_pev_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_pev_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0027730924885083
+  },
+  "x__era5l_slhf": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_slhf_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_slhf_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_slhf_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_slhf_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_slhf_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0583474419675338
+  },
+  "x__era5l_smlt": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sro_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_sshf": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_sshf_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_sshf_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_sshf_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_sshf_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_sshf_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6895355223976025
+  },
+  "x__era5l_ssr": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssr_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssr_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssr_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssr_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssr_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_ssro_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__era5l_stl1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_stl1_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_stl1_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_stl1_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_stl1_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_stl1_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.20264118288874675
+  },
+  "x__era5l_str": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__era5l_str_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__era5l_str_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__era5l_str_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__era5l_str_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__era5l_str_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.157256066307227
+  },
+  "x__fert_n": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__fert_p": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__frost_days": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__gdd5_degC_days_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__grace_lwe": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.691303738721687
+  },
+  "x__grace_lwe_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.691303738721687
+  },
+  "x__grace_lwe_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.7388209334874223
+  },
+  "x__grace_lwe_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.691303738721687
+  },
+  "x__grace_lwe_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.691303738721687
+  },
+  "x__grace_lwe_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.691303738721687
+  },
+  "x__hand_m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__hdi": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__heatwave_days_gt35C": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__heatwave_days_gt35C_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__heatwave_days_gt35C_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__heatwave_days_gt35C_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__heatwave_days_gt35C_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__heatwave_days_gt35C_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__hist_last_1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.216792536576857
+  },
+  "x__hist_last_2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.216792536576857
+  },
+  "x__hist_last_3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.216792536576857
+  },
+  "x__hist_mean_12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0833196959393765
+  },
+  "x__hist_mean_60": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0783615907311692
+  },
+  "x__hist_mean_all": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0797902252999767
+  },
+  "x__iod": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__iod_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__iod_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__iod_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__iod_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__iod_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__irrigation_pct_gmia": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__luh2_cropland": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__luh2_forest": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__luh2_pasture": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__luh2_range": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__luh2_secondary": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__luh2_urban": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__months_since_sig_rain": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nao_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino12_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino34_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino3_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nino4_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__nitrogen_gkg": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9827171331644885
+  },
+  "x__noi": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__noi_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__noi_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__noi_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__noi_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__noi_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__ntl": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__oni": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__oni_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__oni_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__oni_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__oni_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__oni_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pdo_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__pna_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__precip_intensity_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_intensity_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_intensity_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_intensity_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_intensity_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_intensity_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__precip_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__rmin_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9747784914334818
+  },
+  "x__rmin_pct_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9747784914334818
+  },
+  "x__rmin_pct_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9534694207241625
+  },
+  "x__rmin_pct_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9747784914334818
+  },
+  "x__rmin_pct_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9747784914334818
+  },
+  "x__rmin_pct_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9534694207241625
+  },
+  "x__sam": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sam_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sam_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sam_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sam_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sam_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sand_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9686416670161386
+  },
+  "x__silt_pct": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9652759504867163
+  },
+  "x__snow_cover_fraction": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__snow_duration_days": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__soi": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soi_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soi_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soi_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soi_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soi_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__soil_organic_carbon_gkg": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9969798041871641
+  },
+  "x__soil_ph": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.5711740406439321
+  },
+  "x__soil_water_tc_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996463931902171
+  },
+  "x__soil_water_tc_mm_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9995870825635977
+  },
+  "x__soil_water_tc_mm_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996435996124463
+  },
+  "x__soil_water_tc_mm_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996427295331521
+  },
+  "x__soil_water_tc_mm_wytd": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9996427295462665
+  },
+  "x__solar_radiation_Wm2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__solar_radiation_Wm2_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__solar_radiation_Wm2_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__solar_radiation_Wm2_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__solar_radiation_Wm2_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__solar_radiation_Wm2_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__spei_01m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9812628267985866
+  },
+  "x__spei_03m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.994340641463775
+  },
+  "x__spei_06m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9883717662804625
+  },
+  "x__spei_24m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 6,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.985923557297671
+  },
+  "x__sph_kgkg": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9957584256395331
+  },
+  "x__sph_kgkg_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9957584256395331
+  },
+  "x__sph_kgkg_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9999436012835733
+  },
+  "x__sph_kgkg_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9957584256395331
+  },
+  "x__sph_kgkg_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9957584256395331
+  },
+  "x__sph_kgkg_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9957584256395331
+  },
+  "x__spi_01m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_01m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_01m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_01m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_01m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 2,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_01m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 2,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 2,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_03m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 1,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 3,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 3,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 3,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 4,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 3,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_06m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 3,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_12m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 12,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__spi_24m_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 5,
+   "steps_all_nan": 0,
+   "max_rel_spread": 2.0
+  },
+  "x__sst_anom_atl3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_atl3_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_atl3_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_atl3_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_atl3_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_atl3_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_coral_sea_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_global_tropical_mean_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_east_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_iod_west_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_nino34_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__sst_anom_subpolar_north_atlantic_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__swe_mean_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__tc_vapor_pressure": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tc_vapor_pressure_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tc_vapor_pressure_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tc_vapor_pressure_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tc_vapor_pressure_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tc_vapor_pressure_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.9971857411690442
+  },
+  "x__tna": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tna_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tna_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tna_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tna_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tna_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tni_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__travel_time": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__tsa_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__upstream_area_km2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 48,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__vpd_days_gt_2kpa": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_days_gt_2kpa_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_days_gt_2kpa_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_days_gt_2kpa_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_days_gt_2kpa_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_days_gt_2kpa_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_max_daily_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__vpd_warm_season_mean_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wbal_mm": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9503199694991649
+  },
+  "x__wbal_mm_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9503199694991649
+  },
+  "x__wbal_mm_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8160592145269228
+  },
+  "x__wbal_mm_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9503199694991649
+  },
+  "x__wbal_mm_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9503199694991649
+  },
+  "x__wbal_mm_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9503199694991649
+  },
+  "x__wbal_roll12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.7687336155623659
+  },
+  "x__wbal_roll12_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.7687336155623659
+  },
+  "x__wbal_roll12_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.602295642921916
+  },
+  "x__wbal_roll12_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.7687336155623659
+  },
+  "x__wbal_roll12_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.7687336155623659
+  },
+  "x__wbal_roll12_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.5903087250669714
+  },
+  "x__wbal_roll24": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.575990429301063
+  },
+  "x__wbal_roll24_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.575990429301063
+  },
+  "x__wbal_roll24_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.6217766952245734
+  },
+  "x__wbal_roll24_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.5668146403333938
+  },
+  "x__wbal_roll24_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.5580966687256832
+  },
+  "x__wbal_roll24_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.5526652694201928
+  },
+  "x__wbal_roll3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.900614313531014
+  },
+  "x__wbal_roll3_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.900614313531014
+  },
+  "x__wbal_roll3_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.9776056301076537
+  },
+  "x__wbal_roll3_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.900614313531014
+  },
+  "x__wbal_roll3_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.900614313531014
+  },
+  "x__wbal_roll3_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.900614313531014
+  },
+  "x__wbal_roll6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8298339189918653
+  },
+  "x__wbal_roll6_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8298339189918653
+  },
+  "x__wbal_roll6_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8717126017785406
+  },
+  "x__wbal_roll6_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8298339189918653
+  },
+  "x__wbal_roll6_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8298339189918653
+  },
+  "x__wbal_roll6_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.8298339189918653
+  },
+  "x__wet_day_count": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wet_day_count_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wet_day_count_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wet_day_count_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wet_day_count_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wet_day_count_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 1.0
+  },
+  "x__wp": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__wp_lag1": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__wp_lag12": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__wp_lag2": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__wp_lag3": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  },
+  "x__wp_lag6": {
+   "steps": 48,
+   "steps_with_rows": 48,
+   "steps_mixed_nan": 0,
+   "steps_all_nan": 0,
+   "max_rel_spread": 0.0
+  }
+ },
+ "variable_rule": {
+  "CTI": {
+   "columns": [
+    "x__V28_CTI"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aet_total_mm": {
+   "columns": [
+    "x__aet_total_mm",
+    "x__aet_total_mm_lag1",
+    "x__aet_total_mm_lag12",
+    "x__aet_total_mm_lag2",
+    "x__aet_total_mm_lag3",
+    "x__aet_total_mm_lag6",
+    "x__aet_total_mm_roll12",
+    "x__aet_total_mm_roll3",
+    "x__aet_total_mm_roll6",
+    "x__aet_total_mm_wytd"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_buffalo_hold2021": {
+   "columns": [
+    "x__aglw_buffalo_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_cattle_hold2021": {
+   "columns": [
+    "x__aglw_cattle_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_goats_hold2021": {
+   "columns": [
+    "x__aglw_goats_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_horse_hold2021": {
+   "columns": [
+    "x__aglw_horse_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_sheep_hold2021": {
+   "columns": [
+    "x__aglw_sheep_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "aglw_total_lsu_hold2021": {
+   "columns": [
+    "x__aglw_total_lsu_hold2021"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "amo": {
+   "columns": [
+    "x__amo_lag12"
+   ],
+   "one_value_per_step": [
+    true
+   ],
+   "global_by_rule": true
+  },
+  "ao": {
+   "columns": [
+    "x__ao",
+    "x__ao_lag1",
+    "x__ao_lag12",
+    "x__ao_lag2",
+    "x__ao_lag3",
+    "x__ao_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "api_precip": {
+   "columns": [
+    "x__api_precip"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "api_soilmoist": {
+   "columns": [
+    "x__api_soilmoist"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "awc_cm3cm3": {
+   "columns": [
+    "x__awc_cm3cm3"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "bulk_density_gcm3": {
+   "columns": [
+    "x__bulk_density_gcm3"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "burn_frac": {
+   "columns": [
+    "x__burn_frac"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "calendar": {
+   "columns": [
+    "c__ctx:cos1",
+    "c__ctx:cos2",
+    "c__ctx:sin1",
+    "c__ctx:sin2"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "cec_cmolkg": {
+   "columns": [
+    "x__cec_cmolkg"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "clay_pct": {
+   "columns": [
+    "x__clay_pct"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "climate_water_deficit_mm": {
+   "columns": [
+    "x__climate_water_deficit_mm",
+    "x__climate_water_deficit_mm_lag1",
+    "x__climate_water_deficit_mm_lag12",
+    "x__climate_water_deficit_mm_lag2",
+    "x__climate_water_deficit_mm_lag3",
+    "x__climate_water_deficit_mm_lag6",
+    "x__climate_water_deficit_mm_roll12",
+    "x__climate_water_deficit_mm_roll3",
+    "x__climate_water_deficit_mm_roll6",
+    "x__climate_water_deficit_mm_wytd"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "cloud_frequency_pct": {
+   "columns": [
+    "x__cloud_frequency_pct",
+    "x__cloud_frequency_pct_lag1",
+    "x__cloud_frequency_pct_lag12",
+    "x__cloud_frequency_pct_lag2",
+    "x__cloud_frequency_pct_lag3",
+    "x__cloud_frequency_pct_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "coarse_fragments_pct": {
+   "columns": [
+    "x__coarse_fragments_pct"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "conflict_deaths": {
+   "columns": [
+    "x__conflict_deaths"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "conflict_events": {
+   "columns": [
+    "x__conflict_events"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "consec_dry_months": {
+   "columns": [
+    "x__consec_dry_months"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "deeprec_twsa": {
+   "columns": [
+    "x__deeprec_twsa",
+    "x__deeprec_twsa_lag1",
+    "x__deeprec_twsa_lag12",
+    "x__deeprec_twsa_lag2",
+    "x__deeprec_twsa_lag3",
+    "x__deeprec_twsa_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "dist_to_coast_km": {
+   "columns": [
+    "x__dist_to_coast_km"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "diurnal_temp_range_C": {
+   "columns": [
+    "x__diurnal_temp_range_C",
+    "x__diurnal_temp_range_C_lag1",
+    "x__diurnal_temp_range_C_lag12",
+    "x__diurnal_temp_range_C_lag2",
+    "x__diurnal_temp_range_C_lag3",
+    "x__diurnal_temp_range_C_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "elevation_m": {
+   "columns": [
+    "x__V25_elevation_m"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "epo": {
+   "columns": [
+    "x__epo",
+    "x__epo_lag1",
+    "x__epo_lag12",
+    "x__epo_lag2",
+    "x__epo_lag3",
+    "x__epo_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "era5l_d2m": {
+   "columns": [
+    "x__era5l_d2m",
+    "x__era5l_d2m_lag1",
+    "x__era5l_d2m_lag12",
+    "x__era5l_d2m_lag2",
+    "x__era5l_d2m_lag3",
+    "x__era5l_d2m_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_pev": {
+   "columns": [
+    "x__era5l_pev",
+    "x__era5l_pev_lag1",
+    "x__era5l_pev_lag12",
+    "x__era5l_pev_lag2",
+    "x__era5l_pev_lag3",
+    "x__era5l_pev_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_slhf": {
+   "columns": [
+    "x__era5l_slhf",
+    "x__era5l_slhf_lag1",
+    "x__era5l_slhf_lag12",
+    "x__era5l_slhf_lag2",
+    "x__era5l_slhf_lag3",
+    "x__era5l_slhf_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_smlt": {
+   "columns": [
+    "x__era5l_smlt"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_sro": {
+   "columns": [
+    "x__era5l_sro",
+    "x__era5l_sro_lag1",
+    "x__era5l_sro_lag12",
+    "x__era5l_sro_lag2",
+    "x__era5l_sro_lag3",
+    "x__era5l_sro_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_sshf": {
+   "columns": [
+    "x__era5l_sshf",
+    "x__era5l_sshf_lag1",
+    "x__era5l_sshf_lag12",
+    "x__era5l_sshf_lag2",
+    "x__era5l_sshf_lag3",
+    "x__era5l_sshf_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_ssr": {
+   "columns": [
+    "x__era5l_ssr",
+    "x__era5l_ssr_lag1",
+    "x__era5l_ssr_lag12",
+    "x__era5l_ssr_lag2",
+    "x__era5l_ssr_lag3",
+    "x__era5l_ssr_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_ssro": {
+   "columns": [
+    "x__era5l_ssro",
+    "x__era5l_ssro_lag1",
+    "x__era5l_ssro_lag12",
+    "x__era5l_ssro_lag2",
+    "x__era5l_ssro_lag3",
+    "x__era5l_ssro_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_stl1": {
+   "columns": [
+    "x__era5l_stl1",
+    "x__era5l_stl1_lag1",
+    "x__era5l_stl1_lag12",
+    "x__era5l_stl1_lag2",
+    "x__era5l_stl1_lag3",
+    "x__era5l_stl1_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "era5l_str": {
+   "columns": [
+    "x__era5l_str",
+    "x__era5l_str_lag1",
+    "x__era5l_str_lag12",
+    "x__era5l_str_lag2",
+    "x__era5l_str_lag3",
+    "x__era5l_str_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "fert_n": {
+   "columns": [
+    "x__fert_n"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "fert_p": {
+   "columns": [
+    "x__fert_p"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "frost_days": {
+   "columns": [
+    "x__frost_days"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "gdd5_degC_days": {
+   "columns": [
+    "x__gdd5_degC_days",
+    "x__gdd5_degC_days_lag1",
+    "x__gdd5_degC_days_lag12",
+    "x__gdd5_degC_days_lag2",
+    "x__gdd5_degC_days_lag3",
+    "x__gdd5_degC_days_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "grace_lwe": {
+   "columns": [
+    "x__grace_lwe",
+    "x__grace_lwe_lag1",
+    "x__grace_lwe_lag12",
+    "x__grace_lwe_lag2",
+    "x__grace_lwe_lag3",
+    "x__grace_lwe_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "hand_m": {
+   "columns": [
+    "x__hand_m"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "hdi": {
+   "columns": [
+    "x__hdi"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "heatwave_days_gt35C": {
+   "columns": [
+    "x__heatwave_days_gt35C",
+    "x__heatwave_days_gt35C_lag1",
+    "x__heatwave_days_gt35C_lag12",
+    "x__heatwave_days_gt35C_lag2",
+    "x__heatwave_days_gt35C_lag3",
+    "x__heatwave_days_gt35C_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "hist_last": {
+   "columns": [
+    "x__hist_last_1",
+    "x__hist_last_2",
+    "x__hist_last_3"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "hist_mean": {
+   "columns": [
+    "x__hist_mean_12",
+    "x__hist_mean_60",
+    "x__hist_mean_all"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "iod": {
+   "columns": [
+    "x__iod",
+    "x__iod_lag1",
+    "x__iod_lag12",
+    "x__iod_lag2",
+    "x__iod_lag3",
+    "x__iod_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "irrigation_pct_gmia": {
+   "columns": [
+    "x__irrigation_pct_gmia"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_cropland": {
+   "columns": [
+    "x__luh2_cropland"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_forest": {
+   "columns": [
+    "x__luh2_forest"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_pasture": {
+   "columns": [
+    "x__luh2_pasture"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_range": {
+   "columns": [
+    "x__luh2_range"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_secondary": {
+   "columns": [
+    "x__luh2_secondary"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "luh2_urban": {
+   "columns": [
+    "x__luh2_urban"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "max_daily_precip_mm": {
+   "columns": [
+    "x__V03_max_daily_precip_mm",
+    "x__V03_max_daily_precip_mm_lag1",
+    "x__V03_max_daily_precip_mm_lag12",
+    "x__V03_max_daily_precip_mm_lag2",
+    "x__V03_max_daily_precip_mm_lag3",
+    "x__V03_max_daily_precip_mm_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "mean_temp_C": {
+   "columns": [
+    "x__V01_mean_temp_C",
+    "x__V01_mean_temp_C_lag1",
+    "x__V01_mean_temp_C_lag12",
+    "x__V01_mean_temp_C_lag2",
+    "x__V01_mean_temp_C_lag3",
+    "x__V01_mean_temp_C_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "mean_vpd_kPa": {
+   "columns": [
+    "x__V05_mean_vpd_kPa",
+    "x__V05_mean_vpd_kPa_lag1",
+    "x__V05_mean_vpd_kPa_lag12",
+    "x__V05_mean_vpd_kPa_lag2",
+    "x__V05_mean_vpd_kPa_lag3",
+    "x__V05_mean_vpd_kPa_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "mean_wind_ms": {
+   "columns": [
+    "x__V09_mean_wind_ms",
+    "x__V09_mean_wind_ms_lag1",
+    "x__V09_mean_wind_ms_lag12",
+    "x__V09_mean_wind_ms_lag2",
+    "x__V09_mean_wind_ms_lag3",
+    "x__V09_mean_wind_ms_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "months_since_sig_rain": {
+   "columns": [
+    "x__months_since_sig_rain"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "nao": {
+   "columns": [
+    "x__nao",
+    "x__nao_lag1",
+    "x__nao_lag12",
+    "x__nao_lag2",
+    "x__nao_lag3",
+    "x__nao_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "nino12": {
+   "columns": [
+    "x__nino12",
+    "x__nino12_lag1",
+    "x__nino12_lag12",
+    "x__nino12_lag2",
+    "x__nino12_lag3",
+    "x__nino12_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "nino3": {
+   "columns": [
+    "x__nino3",
+    "x__nino3_lag1",
+    "x__nino3_lag12",
+    "x__nino3_lag2",
+    "x__nino3_lag3",
+    "x__nino3_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "nino34": {
+   "columns": [
+    "x__nino34",
+    "x__nino34_lag1",
+    "x__nino34_lag12",
+    "x__nino34_lag2",
+    "x__nino34_lag3",
+    "x__nino34_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "nino4": {
+   "columns": [
+    "x__nino4",
+    "x__nino4_lag1",
+    "x__nino4_lag12",
+    "x__nino4_lag2",
+    "x__nino4_lag3",
+    "x__nino4_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "nitrogen_gkg": {
+   "columns": [
+    "x__nitrogen_gkg"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "noi": {
+   "columns": [
+    "x__noi",
+    "x__noi_lag1",
+    "x__noi_lag12",
+    "x__noi_lag2",
+    "x__noi_lag3",
+    "x__noi_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "normal": {
+   "columns": [
+    "normal"
+   ],
+   "one_value_per_step": [],
+   "global_by_rule": false
+  },
+  "ntl": {
+   "columns": [
+    "x__ntl"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "oni": {
+   "columns": [
+    "x__oni",
+    "x__oni_lag1",
+    "x__oni_lag12",
+    "x__oni_lag2",
+    "x__oni_lag3",
+    "x__oni_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "pdo": {
+   "columns": [
+    "x__pdo",
+    "x__pdo_lag1",
+    "x__pdo_lag12",
+    "x__pdo_lag2",
+    "x__pdo_lag3",
+    "x__pdo_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "pna": {
+   "columns": [
+    "x__pna",
+    "x__pna_lag1",
+    "x__pna_lag12",
+    "x__pna_lag2",
+    "x__pna_lag3",
+    "x__pna_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "precip": {
+   "columns": [
+    "x__precip_wytd"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "precip_intensity_mm": {
+   "columns": [
+    "x__precip_intensity_mm",
+    "x__precip_intensity_mm_lag1",
+    "x__precip_intensity_mm_lag12",
+    "x__precip_intensity_mm_lag2",
+    "x__precip_intensity_mm_lag3",
+    "x__precip_intensity_mm_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "precip_seasonality": {
+   "columns": [
+    "x__V04_precip_seasonality"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "rmin_pct": {
+   "columns": [
+    "x__rmin_pct",
+    "x__rmin_pct_lag1",
+    "x__rmin_pct_lag12",
+    "x__rmin_pct_lag2",
+    "x__rmin_pct_lag3",
+    "x__rmin_pct_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "sam": {
+   "columns": [
+    "x__sam",
+    "x__sam_lag1",
+    "x__sam_lag12",
+    "x__sam_lag2",
+    "x__sam_lag3",
+    "x__sam_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sand_pct": {
+   "columns": [
+    "x__sand_pct"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "silt_pct": {
+   "columns": [
+    "x__silt_pct"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "slope_deg": {
+   "columns": [
+    "x__V26_slope_deg"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "snow_cover_fraction": {
+   "columns": [
+    "x__snow_cover_fraction"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "snow_duration_days": {
+   "columns": [
+    "x__snow_duration_days"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "soi": {
+   "columns": [
+    "x__soi",
+    "x__soi_lag1",
+    "x__soi_lag12",
+    "x__soi_lag2",
+    "x__soi_lag3",
+    "x__soi_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "soil_moisture_pct": {
+   "columns": [
+    "x__V30_soil_moisture_pct",
+    "x__V30_soil_moisture_pct_lag1",
+    "x__V30_soil_moisture_pct_lag12",
+    "x__V30_soil_moisture_pct_lag2",
+    "x__V30_soil_moisture_pct_lag3",
+    "x__V30_soil_moisture_pct_lag6",
+    "x__V30_soil_moisture_pct_roll12",
+    "x__V30_soil_moisture_pct_roll3",
+    "x__V30_soil_moisture_pct_roll6",
+    "x__V30_soil_moisture_pct_wytd"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "soil_organic_carbon_gkg": {
+   "columns": [
+    "x__soil_organic_carbon_gkg"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "soil_ph": {
+   "columns": [
+    "x__soil_ph"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "soil_water_tc_mm": {
+   "columns": [
+    "x__soil_water_tc_mm",
+    "x__soil_water_tc_mm_lag1",
+    "x__soil_water_tc_mm_lag12",
+    "x__soil_water_tc_mm_lag2",
+    "x__soil_water_tc_mm_lag3",
+    "x__soil_water_tc_mm_lag6",
+    "x__soil_water_tc_mm_roll12",
+    "x__soil_water_tc_mm_roll3",
+    "x__soil_water_tc_mm_roll6",
+    "x__soil_water_tc_mm_wytd"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "solar_radiation_Wm2": {
+   "columns": [
+    "x__solar_radiation_Wm2",
+    "x__solar_radiation_Wm2_lag1",
+    "x__solar_radiation_Wm2_lag12",
+    "x__solar_radiation_Wm2_lag2",
+    "x__solar_radiation_Wm2_lag3",
+    "x__solar_radiation_Wm2_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "southness": {
+   "columns": [
+    "x__V27_southness"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "spei": {
+   "columns": [
+    "x__V06_spei_12m_lag12",
+    "x__spei_01m_lag12",
+    "x__spei_03m_lag12",
+    "x__spei_06m_lag12",
+    "x__spei_24m_lag12"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "sph_kgkg": {
+   "columns": [
+    "x__sph_kgkg",
+    "x__sph_kgkg_lag1",
+    "x__sph_kgkg_lag12",
+    "x__sph_kgkg_lag2",
+    "x__sph_kgkg_lag3",
+    "x__sph_kgkg_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "spi": {
+   "columns": [
+    "x__spi_01m",
+    "x__spi_01m_lag1",
+    "x__spi_01m_lag12",
+    "x__spi_01m_lag2",
+    "x__spi_01m_lag3",
+    "x__spi_01m_lag6",
+    "x__spi_03m",
+    "x__spi_03m_lag1",
+    "x__spi_03m_lag12",
+    "x__spi_03m_lag2",
+    "x__spi_03m_lag3",
+    "x__spi_03m_lag6",
+    "x__spi_06m",
+    "x__spi_06m_lag1",
+    "x__spi_06m_lag12",
+    "x__spi_06m_lag2",
+    "x__spi_06m_lag3",
+    "x__spi_06m_lag6",
+    "x__spi_12m",
+    "x__spi_12m_lag1",
+    "x__spi_12m_lag12",
+    "x__spi_12m_lag2",
+    "x__spi_12m_lag3",
+    "x__spi_12m_lag6",
+    "x__spi_24m",
+    "x__spi_24m_lag1",
+    "x__spi_24m_lag12",
+    "x__spi_24m_lag2",
+    "x__spi_24m_lag3",
+    "x__spi_24m_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "sst_anom_atl3": {
+   "columns": [
+    "x__sst_anom_atl3",
+    "x__sst_anom_atl3_lag1",
+    "x__sst_anom_atl3_lag12",
+    "x__sst_anom_atl3_lag2",
+    "x__sst_anom_atl3_lag3",
+    "x__sst_anom_atl3_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_coral_sea": {
+   "columns": [
+    "x__sst_anom_coral_sea",
+    "x__sst_anom_coral_sea_lag1",
+    "x__sst_anom_coral_sea_lag12",
+    "x__sst_anom_coral_sea_lag2",
+    "x__sst_anom_coral_sea_lag3",
+    "x__sst_anom_coral_sea_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_global_tropical": {
+   "columns": [
+    "x__sst_anom_global_tropical_mean",
+    "x__sst_anom_global_tropical_mean_lag1",
+    "x__sst_anom_global_tropical_mean_lag12",
+    "x__sst_anom_global_tropical_mean_lag2",
+    "x__sst_anom_global_tropical_mean_lag3",
+    "x__sst_anom_global_tropical_mean_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_iod_east": {
+   "columns": [
+    "x__sst_anom_iod_east",
+    "x__sst_anom_iod_east_lag1",
+    "x__sst_anom_iod_east_lag12",
+    "x__sst_anom_iod_east_lag2",
+    "x__sst_anom_iod_east_lag3",
+    "x__sst_anom_iod_east_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_iod_west": {
+   "columns": [
+    "x__sst_anom_iod_west",
+    "x__sst_anom_iod_west_lag1",
+    "x__sst_anom_iod_west_lag12",
+    "x__sst_anom_iod_west_lag2",
+    "x__sst_anom_iod_west_lag3",
+    "x__sst_anom_iod_west_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_nino34": {
+   "columns": [
+    "x__sst_anom_nino34",
+    "x__sst_anom_nino34_lag1",
+    "x__sst_anom_nino34_lag12",
+    "x__sst_anom_nino34_lag2",
+    "x__sst_anom_nino34_lag3",
+    "x__sst_anom_nino34_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "sst_anom_subpolar_north_atlantic": {
+   "columns": [
+    "x__sst_anom_subpolar_north_atlantic",
+    "x__sst_anom_subpolar_north_atlantic_lag1",
+    "x__sst_anom_subpolar_north_atlantic_lag12",
+    "x__sst_anom_subpolar_north_atlantic_lag2",
+    "x__sst_anom_subpolar_north_atlantic_lag3",
+    "x__sst_anom_subpolar_north_atlantic_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "swe_mean_mm": {
+   "columns": [
+    "x__swe_mean_mm"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "tc_vapor_pressure": {
+   "columns": [
+    "x__tc_vapor_pressure",
+    "x__tc_vapor_pressure_lag1",
+    "x__tc_vapor_pressure_lag12",
+    "x__tc_vapor_pressure_lag2",
+    "x__tc_vapor_pressure_lag3",
+    "x__tc_vapor_pressure_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "tna": {
+   "columns": [
+    "x__tna",
+    "x__tna_lag1",
+    "x__tna_lag12",
+    "x__tna_lag2",
+    "x__tna_lag3",
+    "x__tna_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "tni": {
+   "columns": [
+    "x__tni",
+    "x__tni_lag1",
+    "x__tni_lag12",
+    "x__tni_lag2",
+    "x__tni_lag3",
+    "x__tni_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "total_precip_mm": {
+   "columns": [
+    "x__V02_total_precip_mm",
+    "x__V02_total_precip_mm_lag1",
+    "x__V02_total_precip_mm_lag12",
+    "x__V02_total_precip_mm_lag2",
+    "x__V02_total_precip_mm_lag3",
+    "x__V02_total_precip_mm_lag6",
+    "x__V02_total_precip_mm_roll12",
+    "x__V02_total_precip_mm_roll3",
+    "x__V02_total_precip_mm_roll6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "total_ref_ET_mm": {
+   "columns": [
+    "x__V07_total_ref_ET_mm",
+    "x__V07_total_ref_ET_mm_lag1",
+    "x__V07_total_ref_ET_mm_lag12",
+    "x__V07_total_ref_ET_mm_lag2",
+    "x__V07_total_ref_ET_mm_lag3",
+    "x__V07_total_ref_ET_mm_lag6",
+    "x__V07_total_ref_ET_mm_roll12",
+    "x__V07_total_ref_ET_mm_roll3",
+    "x__V07_total_ref_ET_mm_roll6",
+    "x__V07_total_ref_ET_mm_wytd"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "travel_time": {
+   "columns": [
+    "x__travel_time"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "tsa": {
+   "columns": [
+    "x__tsa",
+    "x__tsa_lag1",
+    "x__tsa_lag12",
+    "x__tsa_lag2",
+    "x__tsa_lag3",
+    "x__tsa_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  },
+  "upstream_area_km2": {
+   "columns": [
+    "x__upstream_area_km2"
+   ],
+   "one_value_per_step": [
+    false
+   ],
+   "global_by_rule": false
+  },
+  "vpd_days_gt_2kpa": {
+   "columns": [
+    "x__vpd_days_gt_2kpa",
+    "x__vpd_days_gt_2kpa_lag1",
+    "x__vpd_days_gt_2kpa_lag12",
+    "x__vpd_days_gt_2kpa_lag2",
+    "x__vpd_days_gt_2kpa_lag3",
+    "x__vpd_days_gt_2kpa_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "vpd_max_daily": {
+   "columns": [
+    "x__vpd_max_daily",
+    "x__vpd_max_daily_lag1",
+    "x__vpd_max_daily_lag12",
+    "x__vpd_max_daily_lag2",
+    "x__vpd_max_daily_lag3",
+    "x__vpd_max_daily_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "vpd_warm_season": {
+   "columns": [
+    "x__vpd_warm_season_mean",
+    "x__vpd_warm_season_mean_lag1",
+    "x__vpd_warm_season_mean_lag12",
+    "x__vpd_warm_season_mean_lag2",
+    "x__vpd_warm_season_mean_lag3",
+    "x__vpd_warm_season_mean_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "wbal": {
+   "columns": [
+    "x__wbal_roll12",
+    "x__wbal_roll12_lag1",
+    "x__wbal_roll12_lag12",
+    "x__wbal_roll12_lag2",
+    "x__wbal_roll12_lag3",
+    "x__wbal_roll12_lag6",
+    "x__wbal_roll24",
+    "x__wbal_roll24_lag1",
+    "x__wbal_roll24_lag12",
+    "x__wbal_roll24_lag2",
+    "x__wbal_roll24_lag3",
+    "x__wbal_roll24_lag6",
+    "x__wbal_roll3",
+    "x__wbal_roll3_lag1",
+    "x__wbal_roll3_lag12",
+    "x__wbal_roll3_lag2",
+    "x__wbal_roll3_lag3",
+    "x__wbal_roll3_lag6",
+    "x__wbal_roll6",
+    "x__wbal_roll6_lag1",
+    "x__wbal_roll6_lag12",
+    "x__wbal_roll6_lag2",
+    "x__wbal_roll6_lag3",
+    "x__wbal_roll6_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "wbal_mm": {
+   "columns": [
+    "x__wbal_mm",
+    "x__wbal_mm_lag1",
+    "x__wbal_mm_lag12",
+    "x__wbal_mm_lag2",
+    "x__wbal_mm_lag3",
+    "x__wbal_mm_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "wet_day_count": {
+   "columns": [
+    "x__wet_day_count",
+    "x__wet_day_count_lag1",
+    "x__wet_day_count_lag12",
+    "x__wet_day_count_lag2",
+    "x__wet_day_count_lag3",
+    "x__wet_day_count_lag6"
+   ],
+   "one_value_per_step": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "global_by_rule": false
+  },
+  "wp": {
+   "columns": [
+    "x__wp",
+    "x__wp_lag1",
+    "x__wp_lag12",
+    "x__wp_lag2",
+    "x__wp_lag3",
+    "x__wp_lag6"
+   ],
+   "one_value_per_step": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "global_by_rule": true
+  }
+ },
+ "variable_family": {
+  "CTI": "local_drivers",
+  "aet_total_mm": "local_drivers",
+  "aglw_buffalo_hold2021": "local_drivers",
+  "aglw_cattle_hold2021": "local_drivers",
+  "aglw_goats_hold2021": "local_drivers",
+  "aglw_horse_hold2021": "local_drivers",
+  "aglw_sheep_hold2021": "local_drivers",
+  "aglw_total_lsu_hold2021": "local_drivers",
+  "amo": "global_indices",
+  "ao": "global_indices",
+  "api_precip": "local_drivers",
+  "api_soilmoist": "local_drivers",
+  "awc_cm3cm3": "local_drivers",
+  "bulk_density_gcm3": "local_drivers",
+  "burn_frac": "local_drivers",
+  "calendar": "context_and_calendar",
+  "cec_cmolkg": "local_drivers",
+  "clay_pct": "local_drivers",
+  "climate_water_deficit_mm": "local_drivers",
+  "cloud_frequency_pct": "local_drivers",
+  "coarse_fragments_pct": "local_drivers",
+  "conflict_deaths": "local_drivers",
+  "conflict_events": "local_drivers",
+  "consec_dry_months": "local_drivers",
+  "deeprec_twsa": "local_drivers",
+  "dist_to_coast_km": "local_drivers",
+  "diurnal_temp_range_C": "local_drivers",
+  "elevation_m": "local_drivers",
+  "epo": "global_indices",
+  "era5l_d2m": "local_drivers",
+  "era5l_pev": "local_drivers",
+  "era5l_slhf": "local_drivers",
+  "era5l_smlt": "local_drivers",
+  "era5l_sro": "local_drivers",
+  "era5l_sshf": "local_drivers",
+  "era5l_ssr": "local_drivers",
+  "era5l_ssro": "local_drivers",
+  "era5l_stl1": "local_drivers",
+  "era5l_str": "local_drivers",
+  "fert_n": "local_drivers",
+  "fert_p": "local_drivers",
+  "frost_days": "local_drivers",
+  "gdd5_degC_days": "local_drivers",
+  "grace_lwe": "local_drivers",
+  "hand_m": "local_drivers",
+  "hdi": "local_drivers",
+  "heatwave_days_gt35C": "local_drivers",
+  "hist_last": "own_history",
+  "hist_mean": "own_history",
+  "iod": "global_indices",
+  "irrigation_pct_gmia": "local_drivers",
+  "luh2_cropland": "local_drivers",
+  "luh2_forest": "local_drivers",
+  "luh2_pasture": "local_drivers",
+  "luh2_range": "local_drivers",
+  "luh2_secondary": "local_drivers",
+  "luh2_urban": "local_drivers",
+  "max_daily_precip_mm": "local_drivers",
+  "mean_temp_C": "local_drivers",
+  "mean_vpd_kPa": "local_drivers",
+  "mean_wind_ms": "local_drivers",
+  "months_since_sig_rain": "local_drivers",
+  "nao": "global_indices",
+  "nino12": "global_indices",
+  "nino3": "global_indices",
+  "nino34": "global_indices",
+  "nino4": "global_indices",
+  "nitrogen_gkg": "local_drivers",
+  "noi": "global_indices",
+  "normal": "seasonal_normal",
+  "ntl": "local_drivers",
+  "oni": "global_indices",
+  "pdo": "global_indices",
+  "pna": "global_indices",
+  "precip": "local_drivers",
+  "precip_intensity_mm": "local_drivers",
+  "precip_seasonality": "local_drivers",
+  "rmin_pct": "local_drivers",
+  "sam": "global_indices",
+  "sand_pct": "local_drivers",
+  "silt_pct": "local_drivers",
+  "slope_deg": "local_drivers",
+  "snow_cover_fraction": "local_drivers",
+  "snow_duration_days": "local_drivers",
+  "soi": "global_indices",
+  "soil_moisture_pct": "local_drivers",
+  "soil_organic_carbon_gkg": "local_drivers",
+  "soil_ph": "local_drivers",
+  "soil_water_tc_mm": "local_drivers",
+  "solar_radiation_Wm2": "local_drivers",
+  "southness": "local_drivers",
+  "spei": "local_drivers",
+  "sph_kgkg": "local_drivers",
+  "spi": "local_drivers",
+  "sst_anom_atl3": "global_indices",
+  "sst_anom_coral_sea": "global_indices",
+  "sst_anom_global_tropical": "global_indices",
+  "sst_anom_iod_east": "global_indices",
+  "sst_anom_iod_west": "global_indices",
+  "sst_anom_nino34": "global_indices",
+  "sst_anom_subpolar_north_atlantic": "global_indices",
+  "swe_mean_mm": "local_drivers",
+  "tc_vapor_pressure": "local_drivers",
+  "tna": "global_indices",
+  "tni": "global_indices",
+  "total_precip_mm": "local_drivers",
+  "total_ref_ET_mm": "local_drivers",
+  "travel_time": "local_drivers",
+  "tsa": "global_indices",
+  "upstream_area_km2": "local_drivers",
+  "vpd_days_gt_2kpa": "local_drivers",
+  "vpd_max_daily": "local_drivers",
+  "vpd_warm_season": "local_drivers",
+  "wbal": "local_drivers",
+  "wbal_mm": "local_drivers",
+  "wet_day_count": "local_drivers",
+  "wp": "global_indices"
+ },
+ "global_indices": [
+  "amo",
+  "ao",
+  "epo",
+  "iod",
+  "nao",
+  "nino12",
+  "nino3",
+  "nino34",
+  "nino4",
+  "noi",
+  "oni",
+  "pdo",
+  "pna",
+  "sam",
+  "soi",
+  "sst_anom_atl3",
+  "sst_anom_coral_sea",
+  "sst_anom_global_tropical",
+  "sst_anom_iod_east",
+  "sst_anom_iod_west",
+  "sst_anom_nino34",
+  "sst_anom_subpolar_north_atlantic",
+  "tna",
+  "tni",
+  "tsa",
+  "wp"
+ ],
+ "named_family_also_passing_rule": [
+  "calendar"
+ ]
+}

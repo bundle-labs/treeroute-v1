@@ -1,0 +1,71 @@
+{
+ "accepted_departures": [
+  "departure neighbour_private_kernel: the neighbour router runs through route.neighbour's private kernels (_route_neighbour_grid / _route_neighbour_at), not the approved route_neighbour_loro",
+  "departure neighbour_pool_signature: neighbour_pool_loro takes the keyword row_issue_day (U4 needs each row's issue day) and route.solve's solvers take the keyword n_unpenalised (the neighbour design's intercept alone is unpenalised); both await an owner signature",
+  "departure fold_gls_entry: the decision surface's per-fold c and GLS weight models are handed out by FitContext.donor_rows_outside and fit.weights.weight_models_for_folds (new entries; for_fold stays unbuilt)",
+  "departure table_absent_rows: a non-test row absent from a lead file leaves that lead's banks, c, tolerances, donor-row median, GLS rows and pools; this departs from the accepted grid reading (ladder_h_readings), where such a row stays in the bank with 0-filled features: a table has no feature row at that lead to fill. A guard-surface row absent at its lead refuses, as on grids",
+  "departure table_readings: the owner items of SPEC_TABLE_MODE.md section 7 (O1-O27) are built at their listed defaults and await the owner"
+ ],
+ "departures": [],
+ "derived_sha256": "531d0b6e17095a43a4654eb9c75ebccf5425b8141e71b80038f2fd3b1d7a376e",
+ "donor_only_groups": {
+  "count": 1,
+  "groups": [
+   "g_a"
+  ],
+  "train_rows": 36
+ },
+ "draft": {
+  "is_draft": false,
+  "stamp": "",
+  "stamped_verdicts": 0,
+  "where": []
+ },
+ "feature_lineage": {},
+ "groups": [
+  "g_a",
+  "g_b",
+  "g_c",
+  "g_d"
+ ],
+ "headline_eligible": false,
+ "input": "table",
+ "kind": "smoke",
+ "limits": [
+  "Type 3 (plan 4.1 step 10) is not built",
+  "table features are vouched by the package owner (owner ruling U2): the engine recomputes none of them and checks only the declared feature-end day (T-FEATEND); the G-DERIVED recompute and the look-ahead canary are not run on tables",
+  "the table option builds the neighbour router kind only (U3); per-unit and region tables are refused (O16)",
+  "the scored rows are the package's test marks (U1), not R18 (2)'s stride pick",
+  "the continuity row (continuity.csv), nearest-donor distances and distance bands, report.html and part_draft.md are not built (treeroute_report)",
+  "the band is derived from this run's own contrasts; registry/bands.csv and registry/index.csv are not written",
+  "'freeze' verdicts are refused: per-cut frozen pools are not built",
+  "a time-varying report stratum is reported per row (a string stratum per value, a numeric one by quartiles)"
+ ],
+ "listed_in_reports": [],
+ "max_feature_end_minus_issue_day": {
+  "0": -1,
+  "183": -1,
+  "365": -1
+ },
+ "not_headline_reasons": [
+  "smoke run: plumbing only (R21), smoke deltas carry no sign information"
+ ],
+ "package": "toy_table",
+ "package_fingerprint": "a39a51f28dab7781d4f7db73c94f52ebe1dc2cc25d3cfb9a15f0a67c1c38155c",
+ "package_version": "0.1.0",
+ "run_fingerprint": "9db32590d6fe4df929ea43fd8fc586f85755f014e72796fd59c712f334e57174",
+ "strata": [
+  "source"
+ ],
+ "table_rows": 165,
+ "u2_vouched": [
+  "U2: features vouched by the package owner (owner ruling U2); the engine recomputes none of them",
+  "1. every feature and context value of a lead-L row uses only content dated strictly before its issue date, in the source's own day convention (publication delay disclosed per source in exceptions.yaml)",
+  "2. no feature reads the row's own label, a label of any test row, or any label dated on or after the issue date",
+  "3. the issue date equals the target date minus L days (checked by the engine: T-ISSUE)",
+  "4. the same row id means the same sample, with the same label, in every lead file (checked: T-LEADSET)",
+  "5. the target date is the label's last content day",
+  "6. key_feature_end is the last content day any of the row's feature windows may read; the engine checks that it is before the issue day on every row (T-FEATEND) but cannot check that the declaration is true",
+  "the G-DERIVED recompute and the look-ahead canary are not run on tables (U2)"
+ ]
+}

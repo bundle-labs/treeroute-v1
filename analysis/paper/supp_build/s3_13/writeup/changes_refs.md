@@ -1,0 +1,9 @@
+# Changes: writer refs (S3.13 write-up, 2026-11-17)
+
+No live file was copied or edited. One new staged file, with no live counterpart:
+
+| File | Place | What | Why | Source |
+|---|---|---|---|---|
+| `stage/refs_candidates.md` (new) | whole file | Five candidate entries for draft/REFERENCES.md section A, in its style (reference line, Key, Supports, Check dated 2026-11-17): Janzing2020_interventional, KendallBabingtonSmith1939_W, LundbergLee2017_SHAP, Lundberg2020_TreeSHAP, Webber2010_RBO; a table of the in-text forms that resolve and of each entry's place under the build's sort key; notes for the writers; the points not confirmed. | Brief item 3 (REFERENCES.md section A: every new author-year citation, checked as the file's "How each entry was checked" paragraph says) and this writer's task; none of the five is in section A or A2, and the SHAP protocol cites no other work for a method S3.13 describes (its only author-year citation is Webber, Moffat and Zobel 2010). | doi.org registration agency and handle records, Crossref records (JSON; for Webber et al. 2010 also XML), the publishers' pages (nature.com article page; NeurIPS proceedings page, metadata JSON, BibTeX and PDF; PMLR page, BibTeX and PDF; ACM and Project Euclid pages, which gave no content to scripts) and the arXiv API by title, all fetched 2026-11-17; draft/REFERENCES.md; the SHAP protocol, sections 5 and 8; paper/build/build_docx.py (read, not run). |
+
+Scripts (in `stage/_scripts/refs/`, run as `py -3.9 -I -B`): `pdf_text.py` and `pdf_grep.py` read the two fetched proceedings PDFs (text of the content streams; metadata), and `check_entries.py` copies the build's entry parser, author labels, sort key and citation scanner to check the five entries against draft/REFERENCES.md (all parse; no key or label clash; places as in the table; "Webber, Moffat and Zobel 2010", "Kendall 1939" and "Kendall's (1939)" would stop the build as unresolved). None of them writes a file.

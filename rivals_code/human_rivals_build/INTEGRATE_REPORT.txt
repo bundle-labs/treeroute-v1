@@ -1,0 +1,106 @@
+INTEGRATE_REPORT.txt - human-rival tool, integration of builders A (shared), B (coral/defo), C (pm25/ndvi), D (tests).
+Written 2026-10-22. Build root D:\treeroute\human_rivals_build\human. Writes only under D:\treeroute\human_rivals_build.
+LIVE engine and D:/treeroute/rivals_build: not edited. No download. No real product read. No __pycache__ written
+(checked after the runs; the only ones on D: are the old D:/treeroute/rivals_build/rivals/__pycache__ of 2026-10-20).
+The pm25 common export (PID 18812, ~2.3 GB) ran the whole time; my test runs peaked at ~0.75 GB.
+
+=====================================================================================================================
+1. RESULT
+=====================================================================================================================
+ONE full run, all three test folders together, on frozen code (F4):
+  py -3.9 -B -m pytest rivals_human/tests tests_builder_b tests_builder_c -p no:cacheprovider -q -ra
+     --basetemp D:\treeroute\human_rivals_build\pt\integrate\full03
+  -> 216 passed, 4 skipped, 0 failed (10 min 24 s). Log: pt\integrate\full03.log.
+  The 4 skipped are the real-data registry checks (HUMAN_REAL=1). Run separately, read-only (run JSON files only):
+  HUMAN_REAL=1 pytest rivals_human/tests/test_h20_nonames.py -> 11 passed (pt\integrate\real02). So all four real
+  registries (coral, defo, pm25, ndvi) now pass board.check_registry_against_run against their headline runs.
+  Count: D 157 + B 30 + C 12 + new integration tests 17 = 216.
+
+Coral TUNE-ONLY dry pass: NOT RUN (see section 4).
+
+=====================================================================================================================
+2. INTEGRATION FAILURES FOUND AND FIXED
+=====================================================================================================================
+I1 C-R1: pm25 and ndvi registries held plain words in `coverage`, so `init` refused them (board.py:78-87).
+   - registry/pm25.yaml:32-33, 69-70, 104-105, 141-142: coverage x_finite (all four are N-kind index rivals that
+     read no target in the test window); the words moved to coverage_note. Placebos keep the default x_finite.
+   - registry/ndvi.yaml:31-32 bardl_h1: coverage {units_column_true: is_scored}. This is exactly the rows its
+     predict() fills (adapters/ndvi_bardl.py:326-351: pre is finite iff the unit is scored; fallback units predict
+     the normal). Builder A suggested all_rows; is_scored is the same on scored test rows and cannot over-claim if a
+     non-scored unit ever appears (refit refuses a covered row with no value, board.py:858-863).
+   - registry/ndvi.yaml:67-68 kraft_lstm: coverage {units_column_true: is_scored, function:
+     "adapters.ndvi_kraft:coverage"}. NEW label-free function adapters/ndvi_kraft.py:280-294: the same window rule as
+     predict() (scored unit AND complete seq-month driver window AND statics in the Kraft store); reads only the store
+     product and units.parquet, no label, no test feature.
+   - Test: tests_builder_c/test_integrate_coverage.py (7): every real registry's coverage is a rule; runners have
+     a label-free rule; the H1 and Kraft masks from board.coverage_rule_mask equal the runners' predicted rows on toys
+     (incl. a not-scored unit and a driver hole).
+I2 SPEC_HUMAN 3 "`check` asserts equality per (unit, time)" for defo leads 0 and 1 was missing (A open item, B item g,
+   D O2). Added generically (plug and predict; no problem named in the tool):
+   - registry field equal_value_leads (registry/_schema.yaml:45-46 doc, :86 field).
+   - rivals_human/index.py:579-592 (`check` calls it once every listed lead has an index table; a test stage is read
+     only after the human lock is verified, :595-601) and :604-646 check_equal_value_leads (per (unit, time) present at
+     both leads every stat equal, NaN = NaN; keys at one lead only are counted; any difference refuses).
+   - rivals_human/board.py:83-90 (before :91): check_registry_against_run refuses equal_value_leads on a runner, or naming fewer
+     than two run leads with a row.
+   - registry/defo.yaml:41, 91, 125: equal_value_leads [0, 1] on vt0007_shipped, vt0007_cal, vt0007_frozen2019.
+   - Test: tests_builder_b/test_integrate_equal_leads.py (7), incl. builder B's REAL vt0007 adapter on the toy granules
+     at lead 0 and lead 1 passed through the tool's check (all keys equal).
+I3 Staged product paths were BUILD paths in registry/_products.yaml (defo_vt0007_prep, ndvi_kraft_store pointed at
+   D:/treeroute/human_rivals_build/_index/...). With the production config, `prep` writes under the production
+   index_root (ctx.work_dir) but the product would still be read from the build folder.
+   - rivals_human/config.py:398-419: load_products expands {<config root>} in a product's path / manifest (e.g.
+     {index_root}); an unknown root refuses.
+   - registry/_products.yaml:62, 101 now read '{index_root}/defo/20261017_d71c61f4/_work/vt0007_shipped' and
+     '{index_root}/ndvi/20261016_d1de3158/_work/kraft_lstm/store'.
+   - Test: tests_builder_c/test_integrate_products.py (3): build and production configs both resolve to their own
+     index_root; an unknown root refuses.
+I4 The three test folders could not run in one pytest process: builder B's tests_builder_b/conftest.py was imported
+   as the top-level module `conftest`, which the common toy builders reserve for the engine's tests/conftest.py
+   (D:/treeroute/rivals_build/rivals/tests/toy_runs.py:184-191). First combined run: 87 setup errors (pt\integrate\
+   full01.log). Fix: tests_builder_b/__init__.py and tests_builder_c/__init__.py (packages; conftest becomes
+   tests_builder_b.conftest), and the integration tests import siblings as tests_builder_b.* / tests_builder_c.*
+   (never putting a test folder on sys.path). This is likely also why builder A saw "50 passed, then 1 failed" in
+   D's suite (h09 "order dependent").
+I5 test_h09 forecast-only pick test read sorted(glob("*.json"))[0], which can pick a .map.json; now it filters
+   .map.json like the other T-H09 tests (rivals_human/tests/test_h09_pick.py:36-41). Passed in the full run.
+Already done by builder A before integration (verified, nothing to do): B1 staged product defo_vt0007_prep, B2 /
+C5 `prep --stage train|test` with the lock token (index.py:645-671), C3 product_available, C4 placebo pick, C7 is_scored
+kept in the slim units.
+
+Backups of every edited registry file (moved copies, nothing deleted): D:\treeroute\human_rivals_build\_moved\
+20261022_integrate\ (pm25.yaml.before, ndvi.yaml.before, defo.yaml.before, _products.yaml.before;
+_schema.yaml.after_integrate_copy is a copy taken AFTER its additive edit). Code files edited in place: index.py,
+board.py, config.py, adapters/ndvi_kraft.py (additions only), test_h09_pick.py.
+
+=====================================================================================================================
+3. ALSO WRITTEN
+=====================================================================================================================
+- human\human_rivals_production.DRAFT.yaml: the production config from the PRODUCTION comment block of
+  human_rivals.yaml (engine machine file = engine heavy-job lock; out/slim D:/treeroute/rivals_human, index
+  D:/treeroute/human_index, table D:/treeroute/rivals_table). Parses with config.load_config; used by no command.
+  The owner reviews and renames it before any real command.
+
+=====================================================================================================================
+4. CORAL TUNE-ONLY DRY PASS: NOT RUN
+=====================================================================================================================
+Reason (hard rule): it needs `adapt crw_dhw`, which reads and sha-checks the 0.93 GB SST store
+D:/coral/drivers/sst_compact_all.npz (an SST full pass, forbidden while the pm25 job runs), plus product manifests
+O4-O6 (hashing the coral products) and the coral slim (O1-O3). None of these is a toy step. It is owner command O9
+after O1-O7. No test label was read.
+
+=====================================================================================================================
+5. OPEN ITEMS (owner / later)
+=====================================================================================================================
+O-1 Owner decisions before the Part A signature: H1 standardize (ndvi.yaml options.standardize, now false; C O-C1);
+    H1 missing-climate rule (C O-C2); BAA alert rule (B V2); VT0007 class-edge / NRT wording (B V6, item b);
+    T-H17 water-filling vs scale-then-cap reading (D D3).
+O-2 Spec 1.10 wording (D F1, F2): persistence from the float64 label at the T2 step; last visit by the package unit.
+O-3 Part draft hash lines "TO FILL" need O1-O6 and the D1 (EAC4) decision. EAC4 rivals stay "waiting" until D1.
+O-4 Not run (need real passes): D6 and replay checks (inside adapt crw_dhw, O7), defo prep O10/O11 (~0.6-0.9 GB per
+    worker, 3 workers), Kraft prep O15 (panel 40.9 GB), Outlook fit-row counts 239/22 and 38/11, BoM ACCESS-S check.
+O-5 Toy flows still missing: defo full toy flow through the tool (map_pass on toy granules -> adapt -> check; the
+    equality check is now tested on B's adapter output, not via `check` on written index tables), coral crw_dhw
+    flow through the tool (D O3).
+O-6 Run the human tool's suites together from now on (section 1 command). Any code edit after init changes the
+    tool code hash (D F4): freeze code before real runs.

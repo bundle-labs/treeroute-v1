@@ -1,0 +1,865 @@
+# index_facts.yaml -- PROPOSED catalog facts from the F10 index-window audit and the target-window audit.
+# Written 2026-09-28 by the index-audit task; revised the same day after review. NOTHING HERE IS SIGNED.
+# Evidence and sources: INDEX_WINDOW_AUDIT.md in this folder ([S..] = provider page or repo file,
+# [T..] = read-only data test).
+#
+# THIS FILE IS A PROPOSAL, NOT A STORE CATALOG. The M1 catalog loader must NOT glob it (it shares the
+# folder with the seeded store catalogs). At M1 its entries are merged by hand: store facts into the one
+# catalog per store (e.g. monthly_panel_v170.yaml), target facts into each package's catalog.yaml.
+# Keys outside APP_PLAN 1.3 (running_mean, evidence, owner_options, notes, product, provider, source_file,
+# ingest_ref, not_global, window_fallbacks_in_current_schema, window_if_*, legal_range_documented,
+# lineage_note, proposed_status) are review aids; drop or map them at the merge.
+# EVERY fact_status here is 'unverified'. proposed_status is the auditor's proposal only; fact_status may
+# change only when the owner signs (reviewed_by + date filled in).
+#
+# Field meanings follow APP_PLAN.md 1.3 (store facts) and, for the targets block, the package facts
+# "target window and stamp". Roles are NOT written here (a role in a store catalog is refused, 1.3).
+#
+# Conventions
+#   stamp: period_centre  -- a (year, month) key names the CENTRE of that calendar month; a (year) key
+#                            names the centre of that calendar year.
+#   window                -- the span of CONTENT time that can enter the stamped value, around the stamp.
+#                            {length: 1, unit: month, align: centred} is exactly the calendar month.
+#   running_mean          -- the provider's own smoothing of the monthly value (none = not smoothed).
+#   fact_status           -- always 'unverified' in this file (APP_PLAN 1.2: catalog facts start unverified).
+#   proposed_status       -- the auditor's proposal. verified: a provider page or repo code states it AND,
+#                            where a test was possible, the panel values agree. assumed: a bound or choice
+#                            the owner must sign (G-FACTS). pending_owner_ruling: the fact itself depends
+#                            on a ruling listed under pending_rulings (the window given is the one that
+#                            holds if the ruling goes the "disclose" way; window_if_* gives the other).
+#                            A value 'unknown' inside a fact = could not be verified.
+#   reviewed_by, date     -- left null for the owner (APP_PLAN 1.3).
+#   No lag is written as a fact (G-LAG, G-NOKNOB: a verdict never types a number). The R8 lag each fact
+#   implies is given in a COMMENT only, for review:
+#     "R8 monthly" = lag on a monthly target (nowcast: behind the target month; at lead L: behind the
+#                    issue month -- the same number).
+#     "R8 annual"  = lag on an annual target built from calendar-year aggregates (aggregate_time).
+
+meta:
+  audit: F10 index-window audit + target-window audit (R8, R17)
+  written: 2026-09-28
+  revised: "2026-09-28 (review fixes: ERSSTv5 filter ruling, tni alignment, MOD13 year-end reach, fire detection window, statuses)"
+  status: proposed_unsigned
+  merged: >-
+    2026-09-28 (catalogs task): the owner's rulings R-A (a), R-B, R-C (a), R-D (b), item 8 (a) and F4
+    (OWNER_RULINGS_2026-09-28.md parts B and F) are merged, every fact still unverified or assumed (the owner signs
+    timing facts by Sat 10 Oct). Store facts went into monthly_panel_v170_schema_catalog.yaml (nino12, nino3, nino4,
+    nino34, oni, tni, co2, the 8 sst_anom_*, V11_mean_ndvi, V12_mean_evi); target facts into ../fire/catalog.yaml
+    (reach_after_max, a proposed 1-month bound, unverified until signed) and ../ndvi/catalog.yaml. R-E (PSL
+    footers) is authorised but not done, so the unknown base periods here are unchanged. The pending_rulings text
+    below is kept as the record of what was asked; the catalogs, not this file, hold the facts the engine reads.
+  not_a_store_catalog: true   # the M1 loader must skip this file (see header)
+  plan_refs: ["APP_PLAN.md 1.3", "APP_PLAN.md R1", "APP_PLAN.md R8", "APP_PLAN.md R17", "G-LAG", "G-FACTS", "Q2", "Q43 a"]
+  report: INDEX_WINDOW_AUDIT.md
+  schema_proposals:
+    - "window.reach_after_max / window.reach_before_max (days or months) for values whose content crosses the step edge (V11 composites; ERSSTv5 filter under ruling R-A option a); see audit open item 6"
+    - "running_mean kept beside window for readability; it is implied by window and may be dropped"
+  pending_rulings:   # owner decisions that change facts in this file; details in INDEX_WINDOW_AUDIT.md
+    R-A_ersstv5_filter: >-
+      CPC (ONI v5 and v6 pages): "Because of the high frequency filter applied to the ERSSTv5 data ... ONI
+      values may change up to two months after the initial real-time value is posted." A value that changes
+      later because of a filter contains later data, i.e. content up to 2 months after its month. Applies to
+      the 13 ERSSTv5 columns: nino12, nino3, nino4, nino34, oni and the 8 sst_anom_* boxes.
+      (a) rule it CONTENT: reach +2 months -> R8 monthly lag 2 (nino*, sst_anom_*), 3 (oni); annual lag 1 year for all 13.
+      (b) rule it a disclosed input-analysis property like a base period -> lags as without it (0; oni 1).
+      Q43 a covers base periods only, so (b) needs an explicit new ruling.
+    R-B_tni_alignment: >-
+      Provider states only the 5-month length. Data rule out alignments giving lag 0-1 but cannot separate
+      centred (lag 2) from one month later (lag 3). Sign one: centred as verified-from-data (lag 2);
+      'centred or later' bound {7, month, centred} (lag 3); or align unknown, max_length 5 (lag 4).
+    R-C_co2_bound: "sign window {3, month, centred} as assumed (lag 1; annual 1) or a plain month (lag 0)."
+    R-D_fire_detection_window: >-
+      MCD64A1 labels month m burned/unburned using observations past the month end (User Guide V6.1 3.1.2).
+      (a) sign the target window as one calendar month and disclose the margin (history ends t-1);
+      (b) add a reach_after fact (margin not stated) -> R17 history block starts t-2, a new acceptance flag.
+    R-E_psl_footers: >-
+      Authorise reading the 13 PSL .data footers (read-only, nothing saved), as F10's endorsed fix says
+      ("Record each index's smoothing from PSL/CPC footers"). Until then no footer is used as evidence.
+
+stores:
+  monthly_panel_globals:
+    description: >-
+      Globally scoped columns of the shared monthly panel: one value per (year, month), identical in
+      every cell of all 133 regions [T1]. Broadcast on [year, month] by
+      presplit_cc/assemble_monthly_panel.py:63-68 (indices, ERSST boxes) and by
+      presplit_cc/assemble_human_drivers.py:279-295 (co2, food).
+    physical_store: "D:/monthly_panel/<region>_monthly_<year>.parquet (read in place)"
+    scope: global
+    cadence: {length: 1, unit: month}
+    content_epoch: {first: "2002-01", last: "2023-12"}
+    source_tables:
+      noaa_indices:
+        path: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/noaa_indices_monthly.parquet"
+        sha256: 3f3ca574d3e19d7eac91e303b4a710ec3b23ef8b97e898a6ec731fa6bf69984b
+        written_by: presplit_cc/ingest_noaa_indices.py
+        snapshot_date: "2026-06-16"
+        snapshot_date_basis: file modification time (the download date is not logged)
+        panel_equals_source: true   # [T2], all 264 months, 19 columns
+      ersst_boxes:
+        path: "C:/Users/<user>/Downloads/desertflow/desertflow_bundle_global/ersst_sst_boxes_monthly.parquet"
+        sha256: 53dc9c52acc66cf5f1e024f9940a6439ba4dad74c48ded3eadf6841be66ac46b
+        written_by: presplit_cc/ingest_ersst_boxes.py
+        snapshot_date: "2026-06-18"
+        snapshot_date_basis: file modification time
+        panel_equals_source: true   # [T2], 8 columns
+      co2_raw:
+        path: "D:/ndvi_drivers/co2/co2_mm_gl.txt"
+        sha256: bfb68369346888380bb28f32c2b3d3a7fcba7bffe07fd39de36edc9883c8aa3f
+        release_date: "2026-06-05"   # header 'File Creation: Fri Jun 5 03:55:16 2026'
+        panel_equals_source: true   # [T2], column 'average' (not 'trend')
+      food_raw:
+        path: "D:/ndvi_drivers/prices/fao_food_price_indices.csv"
+        sha256: 0e6d83223e76f573064b36164d8bbbc81fc4b3317d205835e223fb5036503455
+        panel_equals_source: true   # [T2], 6 columns
+    vintage_warning: >-
+      The ENSO columns and the sst_anom_* boxes are ERSSTv5 [T5, T6]. Providers moved to ERSSTv6 in 2026
+      (PSL timeseries pages; CPC ONI v6 page). The 2-month filter revision is NOT v6-only: CPC's v5 ONI page
+      states it for ERSSTv5 (citing Huang et al. 2017), and it is a CONTENT question, not release time
+      (pending_rulings R-A). Re-audit before any re-download.
+    fill_values_in_source: >-
+      PSL/CPC missing flags (-99.9, -99.99, -999, -99.90) were turned into NaN at ingest (any |v| >= 50,
+      ingest_noaa_indices.py:94-95). In the panel these columns hold NaN, not codes.
+
+    columns:
+      # ---------------- ENSO SST indices (CPC, via PSL correlation files) ----------------
+      nino12:
+        units: degC
+        product_family: ERSST
+        provider: NOAA CPC via NOAA PSL
+        product: "Nino 1+2 SST anomaly (0-10S, 90-80W), CPC, ERSST"
+        source_file: "https://psl.noaa.gov/data/correlation/nina1.anom.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:32
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # 1981-2010 (PSL DS Nino12_CPC page) or 1991-2020 (PSL list links CPC ersst5.nino.mth.91-20)
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a): bound reaching +2 months (only the forward side matters to R8)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter)
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S7, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      nino3:
+        units: degC
+        product_family: ERSST
+        provider: NOAA CPC via NOAA PSL
+        product: "Nino 3 SST anomaly (5N-5S, 150-90W), CPC, ERSST"
+        source_file: "https://psl.noaa.gov/data/correlation/nina3.anom.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:33
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # as nino12
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter)
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, sibling_comparison_T8, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      nino4:
+        units: degC
+        product_family: ERSST
+        provider: NOAA CPC via NOAA PSL
+        product: "Nino 4 SST anomaly (5N-5S, 160E-150W), CPC, ERSST"
+        source_file: "https://psl.noaa.gov/data/correlation/nina4.anom.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:34
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # as nino12
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter)
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, sibling_comparison_T8, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      nino34:
+        units: degC
+        product_family: ERSST
+        provider: NOAA CPC via NOAA PSL
+        product: "Nino 3.4 SST anomaly (5N-5S, 170-120W), CPC, ERSSTv5 (tested, T6)"
+        source_file: "https://psl.noaa.gov/data/correlation/nina34.anom.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:35
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # as nino12
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' itself rests on T6 (equals an unrolled ERSSTv5 box mean)
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S7, ersst_v5_box_match_T6, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      oni:
+        units: degC
+        product_family: ERSST
+        provider: NOAA CPC via NOAA PSL
+        product: "Oceanic Nino Index: 3-month running mean of ERSSTv5 Nino 3.4 anomalies"
+        source_file: "https://psl.noaa.gov/data/correlation/oni.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:36
+        stamp: period_centre          # the PSL column for month m holds the 3-month season centred on m (Jan = DJF) [T3]
+        running_mean: {length: 3, unit: month, align: centred}
+        window: {length: 3, unit: month, align: centred}
+        baseline_period: "rolling centred 30-year bases, updated every 5 years (CPC)"
+        window_if_filter_is_content: {length: 7, unit: month, align: centred}   # R-A (a): 3-month mean + 2 months of filter reach
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # the 3-month centred mean itself is verified (S6, T3, T5); the filter reach needs R-A
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S6, cpc_oni_filter_note_S6_S39, window_fit_T3, rolling_base_structure_T5]
+        notes: "PSL DS ONI page says 1971-2000 base; contradicted by T5 (block-wise offsets, residual 0.0059 vs 0.0453 for one base). Plan 3.2's 'oni 1 month' becomes 3 under R-A (a)."
+        # R8 monthly: 1 under R-A (b), 3 under R-A (a) | R8 annual: 1 either way (December's value reaches the next January)
+      tni:
+        units: standardized
+        product_family: HadISST
+        provider: NOAA PSL
+        product: "Trans-Nino Index: standardized Nino 1+2 minus standardized Nino 4, 5-month running mean, re-standardized; HadISST1.1 (+ NOAA OI)"
+        source_file: "https://psl.noaa.gov/data/correlation/tni.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:38
+        stamp: period_centre
+        running_mean: {length: 5, unit: month, align: unknown}   # length stated by the provider [S4]; alignment NOT stated
+        window: {max_length: 5, unit: month, align: unknown}      # APP_PLAN 1.3 form for a smoothing that cannot be found; R8 lags by the bound
+        baseline_period: "1950-1979 (standardization)"
+        fact_status: unverified
+        proposed_status: assumed           # owner item 2 / pending_rulings R-B; the bound needs a signature
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S4, recipe_S23, window_fit_T4, year_block_bootstrap_T4b]
+        owner_options:   # choose one and sign it (T4, T4b in the audit)
+          - {window: {length: 5, unit: month, align: centred}, basis: "data fit T4 only (best of 13; 5 centred 0.9431)"}   # R8 monthly 2
+          - {window: {length: 7, unit: month, align: centred}, basis: "'centred or one month later' bound: T4b cannot separate centred from the window shifted one month later (0.9303; gap 0.0129, 95% [-0.0028, +0.0408], reversed in 6.2% of year-block resamples, centred wins 15/22 years)"}   # R8 monthly 3
+          - {window: {max_length: 5, unit: month, align: unknown}, basis: "provider length only (this file's default)"}   # R8 monthly 4
+        notes: "T4b rules out the alignments that give lag 0 or 1: backward (gap 0.1195) and one month earlier (gap 0.0390, 95% [+0.0220, +0.0565]). The PSL tni.data footer read earlier (S22) is NOT used as evidence until the owner rules on footer reads (R-E)."
+        # R8 monthly: 4 under this file's default bound; 2 or 3 if the owner signs option 1 or 2 | R8 annual: 1 under every option
+      # ---------------- other SST and pressure indices (PSL) ----------------
+      soi:
+        units: standardized
+        product_family: station_slp
+        provider: NOAA PSL (underlying provider unknown -- CPC per PSL list page, CRU per PSL DS page)
+        product: "Southern Oscillation Index (Tahiti minus Darwin SLP)"
+        source_file: "https://psl.noaa.gov/data/correlation/soi.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:37
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown
+        fact_status: unverified
+        proposed_status: verified          # window; the provider identity is unknown
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S8, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      pdo:
+        units: degC
+        product_family: [ERSST, HadISST, COBE]   # per PSL DS page; the variant behind pdo.data is unknown
+        provider: NOAA PSL
+        product: "Pacific Decadal Oscillation (leading EOF of monthly North Pacific SST anomalies); exact variant unknown"
+        source_file: "https://psl.noaa.gov/data/correlation/pdo.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:39
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # 1920-2014 (PSL DS page) or 1948-2002 (PSL list page)
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S9]
+        notes: "T8 (stored -0.03) is consistent with no running mean but not decisive for SST indices. The PSL DS page lists ERSSTv5 among the inputs; if pdo.data uses it, the ERSSTv5 filter question (R-A) applies here too (variant unknown)."
+        # R8 monthly: 0 | R8 annual: 0 (unless R-A (a) and the variant includes ERSSTv5)
+      amo:
+        units: degC
+        product_family: Kaplan_SST
+        provider: NOAA PSL
+        product: "AMO unsmoothed, short (1948 to Jan 2023), detrended N Atlantic (0-70N) SST, Kaplan SST"
+        source_file: "https://psl.noaa.gov/data/correlation/amon.us.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:40
+        stamp: period_centre
+        running_mean: none         # the 121-month smoothed version (amon.sm.data) is NOT used
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "series detrended over its whole record (whole-record dependency; disclose per Q43 a)"
+        observed_through: "2023-01"   # source not updated since; panel NaN 2023-02..2023-12 (R30 flag)
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S10]
+        notes: "T8 (stored 0.17) is consistent but not decisive. Filters inside the Kaplan SST analysis are not traced (audit open item 5)."
+        # R8 monthly: 0 | R8 annual: 0
+      tna:
+        units: degC
+        product_family: HadISST
+        provider: NOAA PSL
+        product: "Tropical North Atlantic SST anomaly index (55-15W, 5-25N), HadISST1.1"
+        source_file: "https://psl.noaa.gov/data/correlation/tna.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:41
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # 1951-2000 (PSL DS page) or 1971-2000 (PSL list page)
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S11]
+        notes: "T8 (stored 0.13) is consistent but not decisive. HadISST1.1: no cross-month filter is described on the Met Office HadISST page or the Climate Data Guide page [S40, S41]; Rayner et al. (2003) not read, so a filter is not ruled out (audit open item 5)."
+        # R8 monthly: 0 | R8 annual: 0
+      tsa:
+        units: degC
+        product_family: HadISST
+        provider: NOAA PSL
+        product: "Tropical South Atlantic SST anomaly index (Eq-20S, 10E-30W), HadISST1.1"
+        source_file: "https://psl.noaa.gov/data/correlation/tsa.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:42
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown   # 1951-2000 (PSL DS page) or 1971-2000 (PSL list page)
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S3, provider_page_S12]
+        notes: "T8 (stored -0.13) is consistent but not decisive. HadISST1.1 input filter: as tna."
+        # R8 monthly: 0 | R8 annual: 0
+      iod:
+        units: degC
+        product_family: HadISST
+        provider: NOAA PSL (GCOS WGSP)
+        product: "Dipole Mode Index: SST anomaly 50-70E/10S-10N minus 90-110E/10S-0, HadISST1.1"
+        source_file: "https://psl.noaa.gov/gcos_wgsp/Timeseries/Data/dmi.had.long.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:43
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S14]
+        notes: "T7 (1 month 0.851 vs 3 centred 0.842) and T8 (stored -0.02) are consistent with no running mean but too close or too indirect to decide it; 'none' rests on the provider page. HadISST1.1 input filter: as tna."
+        # R8 monthly: 0 | R8 annual: 0
+      noi:
+        units: hPa
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA PSL (index by Schwing et al. 2002, PFEL)
+        product: "Northern Oscillation Index: SLP anomaly difference, North Pacific High minus Darwin"
+        source_file: "https://psl.noaa.gov/data/correlation/noi.data"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:44
+        stamp: period_centre
+        running_mean: none         # provider page silent; data test only
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: unknown
+        fact_status: unverified
+        proposed_status: verified      # by data signature T8 only (-0.44 as stored vs +0.20 if 3-month smoothed; decisive for the negative-valued atmospheric indices); owner may downgrade to assumed
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S13, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      # ---------------- CPC teleconnection indices ----------------
+      ao:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "Arctic Oscillation: monthly mean 1000-hPa height anomalies projected on the leading EOF"
+        source_file: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/monthly.ao.index.b50.current.ascii"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:45
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1979-2000 (loading pattern and normalization)"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S15, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      nao:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "North Atlantic Oscillation, RPCA least-squares fit of the month's standardized 500-hPa anomaly map"
+        source_file: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:46
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1950-2000 (standardization and pattern estimation)"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S16, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      pna:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "Pacific/North American pattern, RPCA (as nao)"
+        source_file: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.pna.monthly.b5001.current.ascii"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:47
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1950-2000"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S16, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      wp:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "West Pacific pattern, RPCA (as nao); WP column of tele_index.nh"
+        source_file: "https://ftp.cpc.ncep.noaa.gov/wd52dg/data/indices/tele_index.nh"
+        ingest_ref: "presplit_cc/ingest_noaa_indices.py:48, 57-78"
+        stamp: period_centre
+        running_mean: none   # the 3-month window on the CPC page estimates the fixed PATTERNS over 1950-2000, not the monthly value
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1950-2000"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S16, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      epo:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "East Pacific - North Pacific pattern, RPCA (as nao); EP/NP column of tele_index.nh"
+        source_file: "https://ftp.cpc.ncep.noaa.gov/wd52dg/data/indices/tele_index.nh"
+        ingest_ref: "presplit_cc/ingest_noaa_indices.py:49, 57-78"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1950-2000"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S16, smoothing_signature_T8]
+        notes: "NaN every December 2002-2023 (22 of 264 months), consistent with CPC: 8-9 of 10 patterns appear in each calendar month."
+        # R8 monthly: 0 | R8 annual: 0 (the annual aggregate covers 11 months)
+      sam:
+        units: standardized
+        product_family: NCEP_NCAR_reanalysis
+        provider: NOAA CPC
+        product: "Antarctic Oscillation (AAO): monthly mean 700-hPa height anomalies projected on the leading EOF"
+        source_file: "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/monthly.aao.index.b79.current.ascii"
+        ingest_ref: presplit_cc/ingest_noaa_indices.py:50
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1979-2000 (loading pattern and normalization)"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S15, smoothing_signature_T8]
+        # R8 monthly: 0 | R8 annual: 0
+      # ---------------- SST boxes built by the repo from ERSSTv5 ----------------
+      # Common: PSL noaa.ersst.v5 sst.mnmean.nc (monthly fields), cos-lat-weighted box mean, anomaly vs the
+      # box's own 1971-2000 monthly climatology computed by the ingest (ingest_ersst_boxes.py:28, 70-91).
+      sst_anom_atl3:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon -20..0, lat -3..3"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_iod_west:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon 50..70, lat -10..10"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_iod_east:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon 90..110, lat -10..0"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_subpolar_north_atlantic:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon -60..-10, lat 50..65"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_coral_sea:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon 145..170, lat -30..-10"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_mediterranean:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon -5..36, lat 30..46"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_global_tropical_mean:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon -180..180, lat -20..20"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter); 'no running mean' in the repo step rests on the code (S17)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      sst_anom_nino34:
+        units: degC
+        product_family: ERSST
+        provider: repo-computed from NOAA ERSSTv5 (PSL)
+        product: "ERSSTv5 box mean anomaly, box lon -170..-120, lat -5..5 (validation box for nino34)"
+        ingest_ref: "presplit_cc/ingest_ersst_boxes.py:25-40, 70-91"
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "1971-2000"
+        source_file: "https://downloads.psl.noaa.gov/Datasets/noaa.ersst.v5/sst.mnmean.nc (ingest_ersst_boxes.py:26-27)"
+        window_if_filter_is_content: {length: 5, unit: month, align: centred}   # R-A (a)
+        fact_status: unverified
+        proposed_status: pending_owner_ruling   # R-A (ERSSTv5 filter)
+        reviewed_by: null
+        date: null
+        evidence: [repo_code_S17, box_match_T6, cpc_oni_filter_note_S6_S39]
+        # R8 monthly: 0 under R-A (b), 2 under R-A (a) | R8 annual: 0 under (b), 1 under (a)
+      # ---------------- co2 and food prices ----------------
+      co2:
+        units: ppm
+        product_family: NOAA_GML_MBL
+        provider: NOAA GML
+        product: "Global monthly mean CO2 over marine surface sites, column 'average' of co2_mm_gl.txt"
+        source_file: "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_gl.txt"
+        ingest_ref: "presplit_cc/download_drivers.py:29; presplit_cc/assemble_human_drivers.py:279-283"
+        stamp: period_centre       # GML: monthly means 'centered on the middle of each month'
+        running_mean: none         # no running mean over months, BUT each value comes from per-site smooth curves:
+                                   # a ~40-day FWHM low-pass on residuals + whole-record quadratic/harmonic fit [S19]
+        window: {length: 3, unit: month, align: centred}   # PROPOSED BOUND: the smoothing can reach into the next month
+        baseline_period: none      # absolute ppm; whole-record curve fit (disclose)
+        fact_status: unverified
+        proposed_status: assumed       # owner item 1: sign this bound (lag 1) or {length: 1} (lag 0)
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S18, provider_page_S19, local_file_header]
+        # R8 monthly: 1 under the bound (0 if signed as a plain month) | R8 annual: 1 under the bound (0 otherwise)
+      food_price_index:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Food Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        # R8 monthly: 0 | R8 annual: 0
+      food_meat:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Meat Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        notes: "Recent months are partly projected at release and revised later (FAO). Release time only; R8 uses content time (Q2)."
+        # R8 monthly: 0 | R8 annual: 0
+      food_dairy:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Dairy Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        # R8 monthly: 0 | R8 annual: 0
+      food_cereals:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Cereals Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        # R8 monthly: 0 | R8 annual: 0
+      food_oils:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Vegetable Oils Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        # R8 monthly: 0 | R8 annual: 0
+      food_sugar:
+        units: "index (2014-2016 = 100)"
+        product_family: FAO_FFPI
+        provider: FAO
+        product: "FAO Sugar Price Index, nominal"
+        source_file: "D:/ndvi_drivers/prices/fao_food_price_indices.csv (FAO food_price_indices_data.csv; URL in presplit_cc/download_drivers.py:30)"
+        ingest_ref: presplit_cc/assemble_human_drivers.py:286-295
+        stamp: period_centre
+        running_mean: none
+        window: {length: 1, unit: month, align: centred}
+        baseline_period: "2014-2016 = 100"
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [provider_page_S20, local_file_header_line2]
+        # R8 monthly: 0 | R8 annual: 0
+
+    not_global:   # look global in some regions, but are not (T1)
+      conflict_events: {scope: unit, reason: "UCDP GED counted per cell (assemble_human_drivers.py:254-276); varies within region-month in 36 regions (2019)"}
+      conflict_deaths: {scope: unit, reason: "same source as conflict_events; varies within region-month in 32 regions (2019)"}
+      eddi_observed: {scope: unit, reason: "varies within a region-month in 36 of 133 regions (2019) and differs across regions; per cell"}
+
+  monthly_panel_unit_columns:
+    # Unit-scoped panel columns whose window was audited because R17 (NDVI target) and R8 (V11/V12 as
+    # drivers) need it.
+    columns:
+      V11_mean_ndvi:
+        units: "1"
+        product_family: MODIS_VI
+        provider: NASA LP DAAC
+        product: "MOD13C2.061 'CMG 0.05 Deg Monthly NDVI' (from MOD13C1/MOD13A2 16-day composites)"
+        ingest_ref: "presplit_cc/ingest_modis_cmg_local.py:56-60, 143-166; presplit_cc/assemble_monthly_panel.py:49"
+        stamp: period_centre       # granule matched by acquisition month A<YYYYDDD> (ingest_modis_cmg_local.py:143-166)
+        running_mean: "weighted average of every 16-day composite that overlaps the calendar month, weight = overlap"
+        window:
+          length: 1
+          unit: month
+          align: centred
+          reach_after_max: {value: 15, unit: day}    # SCHEMA PROPOSAL; per month: Jan 1, Feb 4-5, ..., Sep 14-15, Oct 0 (15 leap), Nov 1-2, Dec 2-3 [T9]
+          reach_before_max: {value: 15, unit: day}   # SCHEMA PROPOSAL
+          # December: the DOY-353 16-day composite runs to 3 January (2 January in leap years) -- NASA CMR
+          # granule time ranges [S42]: MOD13C1.A2019353 2019-12-19..2020-01-03, MOD13C1.A2020353 2020-12-18..2021-01-02.
+          # So a calendar-year aggregate of V11 reaches 2-3 days past the year end.
+        window_fallbacks_in_current_schema:
+          - {window: {length: 3, unit: month, align: centred}, tradeoff: "safe for R17 and as a driver; as a TARGET window it moves R8's reference to the end of t+1 (too loose)"}
+          - {window: {length: 61, unit: day, align: centred}, tradeoff: "close to exact; overstates February's reach (17 vs at most 5 days)"}
+        legal_range_documented: {min: -0.2, max: 1.0, source: "MOD13 User Guide V6.1 Table 19: valid range -2000..10000, scale 0.0001"}
+        baseline_period: none      # an absolute index, not an anomaly
+        fact_status: unverified
+        proposed_status: verified      # overlap weighting documented (S38 7.1, 9.1); 16-day calendar (starts DOY 1, 17, ..., 353; full 16 days across 1 January) confirmed from CMR granule time ranges [S42]
+        reviewed_by: null
+        date: null
+        evidence: [user_guide_S38, product_page_S38, cmr_granule_time_ranges_S42, composite_calendar_T9]
+        lineage_note: "Pixel reliability rank 4 = 'Estimated: from MODIS historic time series' (climatology fill); see ingest_modis_cmg_local.py:62-73."
+        source_file: "MOD13C2.061 granules, band 'CMG 0.05 Deg Monthly NDVI', per-cell table in D:/modis_ndvi_cmg (ingest_modis_cmg_local.py:56-60)"
+        # R8 as a DRIVER, monthly target: 1 (reaches into the next month) | R8 annual (calendar-year aggregate): 1
+        #   (December reaches 2-3 days into January [S42]; defo already lags V11, defo_ban.py:130)
+        # R17 as the TARGET: history block starts one step back (t-2 at the nowcast)
+      V12_mean_evi:
+        units: "1"
+        product_family: MODIS_VI
+        provider: NASA LP DAAC
+        product: "MOD13C2.061 'CMG 0.05 Deg Monthly EVI' (sibling band of V11 in the same file)"
+        ingest_ref: "presplit_cc/ingest_modis_cmg_local.py:75-80"
+        stamp: period_centre
+        running_mean: "as V11_mean_ndvi"
+        window:
+          length: 1
+          unit: month
+          align: centred
+          reach_after_max: {value: 15, unit: day}    # SCHEMA PROPOSAL
+          reach_before_max: {value: 15, unit: day}   # SCHEMA PROPOSAL
+        baseline_period: none
+        fact_status: unverified
+        proposed_status: verified
+        reviewed_by: null
+        date: null
+        evidence: [user_guide_S38, cmr_granule_time_ranges_S42, composite_calendar_T9]
+        source_file: "MOD13C2.061 granules, band 'CMG 0.05 Deg Monthly EVI', per-cell table in D:/modis_evi_cmg (ingest_modis_cmg_local.py:75-80)"
+        # R8 as a DRIVER, monthly target: 1 | R8 annual: 1 (December reaches 2-3 days into January, as V11)
+
+proposed_package_target_facts:
+  # Package facts (APP_PLAN 1.3 'target window and stamp'). They belong in each package's catalog.yaml
+  # together with the role 'target'; listed here only as the audit's proposal.
+  pm25:
+    column_source: "ACAG V5.GL.06 HybridPM25 Global monthly (GWRPM25), mean of the pixels inside each cell"
+    ingest_ref: "acag_pm25_ingest.py:1-9, 56-66, 248-252"
+    file_pattern: "V5GL06.HybridPM25.Global.YYYYMM-YYYYMM.nc (one file per calendar month)"
+    stamp: period_centre
+    window: {length: 1, unit: month, align: centred}
+    fact_status: unverified
+    proposed_status: verified          # file coverage; construction detail below is unknown
+    reviewed_by: null
+    date: null
+    unknown: "whether the monthly GWR calibration pools ground monitors across months (ACAG page silent) -- owner item 7"
+    # R17: history block ends at t-1
+  fire:
+    column_source: "MCD64A1.061 monthly Burn_Date; burned_frac = pixels with Burn_Date > 0 / valid land pixels"
+    ingest_ref: "fire_fetch_target.py:1-13, 114-125, 159-161, 226-228, 339"
+    stamp: period_centre
+    window: {length: 1, unit: month, align: centred}   # burn DATES lie in the month (User Guide V6.1 3.1.1)
+    fact_status: unverified
+    proposed_status: pending_owner_ruling   # pending_rulings R-D (detection window)
+    reviewed_by: null
+    date: null
+    detection_window_note: >-
+      MCD64 User Guide V6.1 3.1.2 (p. 10): the First Day / Last Day layers give the first and last days "on
+      which changes could be reliably detected within the time series"; they lie within the mapped calendar
+      month only "during periods of persistent cloud cover or frequent data loss". QA special code 3 =
+      "Apparent burn date at limits of time series". So month m's burned/unburned label normally uses
+      observations from month m+1 (margin not stated in the guide).
+    window_if_detection_is_content: {length: 1, unit: month, align: centred, reach_after_max: {value: unknown, unit: day}}   # R-D (b); SCHEMA PROPOSAL
+    data_check_note: >-
+      Aug 2007 in cerrado (15,714 of 39,025 cells) and gran_chaco (8,337 of 20,998 cells): n_valid+n_unmapped
+      exactly doubled (ratio 2.0 in 98% / 91% of those cells; n_burned even in 99.95%), region total 1.40x.
+      Signature of a duplicated STAC item (fire_fetch_target.py:114-125 has no id/tile de-duplication);
+      burned_frac is unchanged by an exact duplicate, n_valid is not. For the fire audit checklist, not a window fact.
+    # R17: history block ends at t-1 under R-D (a); starts at t-2 under R-D (b)
+  defo:
+    column_source: "Hansen GFC-2025-v1.13 lossyear; loss_frac = pixels with lossyear == year-2000 over year-2000 forest pixels"
+    ingest_ref: "defo_fetch.py:5-22, 41; defo_ingest.py:1-16"
+    stamp: period_centre
+    window: {length: 1, unit: year, align: centred}
+    fact_status: unverified
+    proposed_status: verified          # 'loss detected primarily in the year' (GFC definitions page)
+    reviewed_by: null
+    date: null
+    notes: "Late-year losses can be labelled the following year (a backward slip, harmless for R8/R17); each GFC release re-derives loss years with later imagery, so the version is pinned (defo_fetch.py:21-22, 41)."
+    # R17: history block ends at t-1 (year)
+  ndvi:
+    column_source: "panel column V11_mean_ndvi (MOD13C2.061), see stores.monthly_panel_unit_columns"
+    stamp: period_centre
+    window:
+      length: 1
+      unit: month
+      align: centred
+      reach_after_max: {value: 15, unit: day}    # SCHEMA PROPOSAL (owner item 6)
+      reach_before_max: {value: 15, unit: day}
+    legal_range_documented: {min: -0.2, max: 1.0, source: "MOD13 User Guide V6.1 Table 19"}
+    fact_status: unverified
+    proposed_status: verified
+    reviewed_by: null
+    date: null
+    # R17: the target's window reaches past its step -> history block starts one step back (t-2 at the nowcast,
+    #      one extra step at every lead). R8: whole-month drivers keep the lags above (reference <= 15 days into t+1).

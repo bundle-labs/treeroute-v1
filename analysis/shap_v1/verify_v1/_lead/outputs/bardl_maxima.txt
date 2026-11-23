@@ -1,0 +1,14 @@
+﻿== BARDL pair-levels
+   jaccard_top5  spread 0.1388888889 -> 0.139 (3 sig. 0.139) at ndvi/variable/rival_bardl_h1|treeroute; values 0.2500000000 / 0.2500000000 / 0.1111111111
+   jaccard_top10 spread 0.0584795322 -> 0.058 (3 sig. 0.0585) at ndvi/variable/rival_bardl_h1|rival_lgbm; values 0.0526315789 / 0.0526315789 / 0.1111111111
+   jaccard_top20 spread 0.0317460317 -> 0.032 (3 sig. 0.0317) at ndvi/feature/rival_bardl_h1|treeroute; values 0.1111111111 / 0.1428571429 / 0.1111111111
+   rho20         spread 0.1283023565 -> 0.128 (3 sig. 0.128) at ndvi/feature/rival_bardl_h1|treeroute; values -0.0639682922 / -0.1255947039 / 0.0027076526
+   rbo090        spread 0.0497081097 -> 0.050 (3 sig. 0.0497) at ndvi/variable/rival_bardl_h1|rival_lgbm; values 0.2026589736 / 0.2026589736 / 0.2523670833
+   rbo095        spread 0.0815684909 -> 0.082 (3 sig. 0.0816) at ndvi/variable/rival_bardl_h1|rival_ridge; values 0.1520993218 / 0.1520993218 / 0.2336678127
+== other pair-levels
+   jaccard_top5  spread 0.0000000000 -> 0.000 (3 sig. 0) at defo/feature/rival_lgbm|rival_lgbm_tweedie; values 0.4285714286 / 0.4285714286 / 0.4285714286
+   jaccard_top10 spread 0.0000000000 -> 0.000 (3 sig. 0) at defo/feature/rival_lgbm|rival_lgbm_tweedie; values 0.5384615385 / 0.5384615385 / 0.5384615385
+   jaccard_top20 spread 0.0000000000 -> 0.000 (3 sig. 0) at defo/feature/rival_lgbm|rival_lgbm_tweedie; values 0.4285714286 / 0.4285714286 / 0.4285714286
+   rho20         spread 0.0000000000 -> 0.000 (3 sig. 0) at defo/feature/rival_lgbm|rival_lgbm_tweedie; values 0.3568691845 / 0.3568691845 / 0.3568691845
+   rbo090        spread 0.0000003579 -> 0.000 (3 sig. 3.58e-07) at fire/variable/rival_lgbm|rival_lgbm_tweedie; values 0.5572471313 / 0.5572471313 / 0.5572474892
+   rbo095        spread 0.0000224767 -> 0.000 (3 sig. 2.25e-05) at fire/variable/rival_lgbm|rival_lgbm_tweedie; values 0.6013729355 / 0.6013729355 / 0.6013954122

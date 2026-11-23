@@ -1,0 +1,13 @@
+{
+ "file": "adoption.json",
+ "lead": 0,
+ "locked_at": "2026-10-20T06:47:26",
+ "locked_at_epoch": 1792468046.4110126,
+ "pre_lock_test_window_reads": {
+  "reads": 0,
+  "rows": 0,
+  "rows_before_any_lock": 0,
+  "rule": "D54 (a): each row's persistence reads the labels known at its issue date, served before the pass's lock"
+ },
+ "sha256": "0fbb79f5f08993d8c166ea5dc6d295839c17a7812167c595b2097888920a43a5"
+}

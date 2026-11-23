@@ -1,0 +1,1276 @@
+# ndvi_ban_proposed.yaml -- PROPOSAL, NOT SIGNED. The agent's Q34 recommendations for the NDVI package
+# (owner request, not quoted: the agent makes the ban list with its recommendations; written 2026-10-05).
+# Ready to copy over engine/datasets/ndvi/ban.yaml ONLY after the owner approves it; nothing in the package
+# was changed. Row-by-row reasons, timing-fact proposals and questions: ndvi_columns_proposed.csv (same folder).
+#
+# Closed world (plan 1.4, G-CLOSED): one verdict per non-key column of datasets/ndvi/catalog.yaml (206 = every row of
+# review/v2/ndvi_columns.csv: the target V11 and the 165 other panel columns, GFED burn_frac / burn_npix, 28 engineered
+# water-memory columns, 10 router-context columns). Schema: treeroute/package/schema.py BanFile / Verdict, validated in a scratch
+# copy under D:/treeroute/ban_review/ndvi/ (load_package + io.apply_verdicts against the catalog roles).
+# For a ban, 'reason' is the ban-reason word and 'evidence' starts with the plain reason; for every other verdict
+# 'reason' is the plain reason. There is no 'lag' verdict: a shipped 'lagged' column is 'keep' and R8 computes its
+# lag from the signed timing facts.
+#
+# The 435 driver lags declared by features/build.py are NOT listed here: catalog.yaml has no rows for them yet
+# (dataset.yaml OPEN item). When their rows are added, each <base>_lag<k> takes its base column's verdict (plan 1.4
+# family expansion). Bases banned for a leak reason (trend_proxy: co2, the 6 food prices, scpdsi,
+# sst_anom_mediterranean; lookahead_unfixable: deeprec_twsa) must leave features/build.py LAG_BASES, or the engine
+# refuses their 50 lag outputs (treeroute/pipeline/data.py:224-227). epo, eddi, aridity_index_p_pet (structural) and
+# esacci_sm (incomplete) do not trip that check, but their lags are banned with them: drop them from LAG_BASES too.
+#
+# Owner rulings applied, not re-decided: Q1 a / F16 (V11 label, V12 twin), Q35 a (clf_dry/clf_wet), Q38 b (GFED burn
+# at lag 1), Q2 + R-A / R-B (oni, tni, nino*, sst_anom_* kept and lagged), Q3 a / A1 / A3 / A5 (annual columns lagged,
+# FREEZE banned, snow-DOY banned, AMO and SPEI dropped for 2023), Q33 (engineered features kept), F3 (MOD44B trio as
+# shipped), Q34 (ban lists per problem). Open questions: BAN_REVIEW_SUMMARY.md (Q2, Q3, Q4, Q6, Q8, Q9 touch NDVI).
+# SKEPTIC-PASS MERGE 2026-10-05 (BAN_REVIEW_SUMMARY.md): snow_cover_fraction -> ban incomplete (October 2022 empty
+# in all 133 regions); epo -> ban structural (December gap = month key); deeprec_twsa -> ban lookahead_unfixable;
+# gdp_pc and population_density -> ban trend_proxy (year clocks, Q4); noi conservative 3-month bound (lag 1, Q2);
+# 'Q3 a / A1' citation corrected on the annual rows.
+# Verdict counts: keep 136, ban:post_window_snapshot 14, ban:coproduct 13, ban:incomplete 11, ban:trend_proxy 11, ban:structural 10, watch 5, ban:lookahead_unfixable 2, ban:target_derived 2, ban:label 1, ban:replaced_by_engine 1
+verdicts:
+  lon:
+    verdict: ban
+    reason: structural
+    evidence: coordinates are never tree features. task principle (keys and coordinates are never tree features); shipped
+      GEO ban (presplit_cc/experiment_thar_regime_full.py:29); NDVI's router context does not use them (cross_region_run89.py:887-889);
+      banned by pm25 and fire
+  lat:
+    verdict: ban
+    reason: structural
+    evidence: coordinates are never tree features. task principle (keys and coordinates are never tree features); shipped
+      GEO ban (presplit_cc/experiment_thar_regime_full.py:29); NDVI's router context does not use them (cross_region_run89.py:887-889);
+      banned by pm25 and fire
+  V25_elevation_m:
+    verdict: keep
+    reason: static topography/geography; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); PM2.5''s GWR watch (pm25_ban.py:149-158) is about PM2.5''s calibration model, not NDVI''s'
+  V26_slope_deg:
+    verdict: keep
+    reason: static topography/geography; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); PM2.5''s GWR watch (pm25_ban.py:149-158) is about PM2.5''s calibration model, not NDVI''s'
+  V27_southness:
+    verdict: keep
+    reason: static topography/geography; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); PM2.5''s GWR watch (pm25_ban.py:149-158) is about PM2.5''s calibration model, not NDVI''s'
+  V28_CTI:
+    verdict: keep
+    reason: static topography/geography; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); PM2.5''s GWR watch (pm25_ban.py:149-158) is about PM2.5''s calibration model, not NDVI''s'
+  clay_pct:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  sand_pct:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  silt_pct:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  soil_organic_carbon_gkg:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes)'
+  nitrogen_gkg:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes)'
+  soil_ph:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  awc_cm3cm3:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  bulk_density_gcm3:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  cec_cmolkg:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  coarse_fragments_pct:
+    verdict: keep
+    reason: static soil property; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); AUDIT_REPORT.md item 3 quality notes are G-RANGE matters, not leaks'
+  V15_bare_ground_pct:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MOD44B vegetation cover from the same MODIS reflectances (a vegetation-state readout); sum group. REMOVE-11
+      (presplit_cc/experiment_thar_regime_full.py:30-31); MOD44B sum group V15+V17+tree_cover_pct = 100 shares one verdict
+      (defo_ban.py:28-34; APP_PLAN.md 1.4); product year runs to day 64 of the next year (defo_ban.py:28-29); ruling F3:
+      follow the shipped verdicts, Y0 stays 2003 (OWNER_RULINGS_2026-09-28.md:76); optical land cover leaks for vegetation
+      targets (reference_vegtype_leakfree_sources); Parts 67-69'
+  V17_herb_cover_pct:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MOD44B vegetation cover from the same MODIS reflectances (a vegetation-state readout); sum group. REMOVE-11
+      (presplit_cc/experiment_thar_regime_full.py:30-31); MOD44B sum group V15+V17+tree_cover_pct = 100 shares one verdict
+      (defo_ban.py:28-34; APP_PLAN.md 1.4); product year runs to day 64 of the next year (defo_ban.py:28-29); ruling F3:
+      follow the shipped verdicts, Y0 stays 2003 (OWNER_RULINGS_2026-09-28.md:76); optical land cover leaks for vegetation
+      targets (reference_vegtype_leakfree_sources); Parts 67-69'
+  tree_cover_pct:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MOD44B vegetation cover from the same MODIS reflectances (a vegetation-state readout); sum group. REMOVE-11
+      (presplit_cc/experiment_thar_regime_full.py:30-31); MOD44B sum group V15+V17+tree_cover_pct = 100 shares one verdict
+      (defo_ban.py:28-34; APP_PLAN.md 1.4); product year runs to day 64 of the next year (defo_ban.py:28-29); ruling F3:
+      follow the shipped verdicts, Y0 stays 2003 (OWNER_RULINGS_2026-09-28.md:76); optical land cover leaks for vegetation
+      targets (reference_vegtype_leakfree_sources); Parts 67-69'
+  modis_landcover_class:
+    verdict: ban
+    reason: coproduct
+    evidence: MCD12Q1 optical land cover (a greenness-derived class). shipped ban (run89 --drop, presplit_cc/run89_outputs.py:216;
+      draft reason structural); MCD12Q1 is the same family as modis_landcover_annual (REMOVE-11, experiment_thar_regime_full.py:32)
+      and is classified from MODIS reflectance and vegetation-index features; optical land cover leaks for vegetation targets
+      (reference_vegtype_leakfree_sources); defo_ban.py:36-41
+  shrub_cover_pct_global:
+    verdict: ban
+    reason: coproduct
+    evidence: MCD12Q1 classes 6+7 slice (optical land cover). REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:31);
+      MCD12Q1 classes 6+7 (defo_ban.py:37-38); reference_vegtype_leakfree_sources
+  phenology_sos_doy:
+    verdict: ban
+    reason: coproduct
+    evidence: MCD12Q2 start of season, computed from the MODIS vegetation-index series. REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:31);
+      MCD12Q2 phenology is derived from the MODIS vegetation-index time series; R30 flag (26.6% missing in donor rows) answered
+      by this ban; window unknown; pm25_ban.py:37; banned by pm25/fire/defo
+  population_density:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a year clock inside each region: smooth annual growth, so within a group''s trees it stands in for the year,
+      and the test years sit above every training value (a tree answers them as its latest training year); also 2021-23 are
+      extrapolated model output (WorldPop ends 2020) | CHANGE (skeptic pass 2026-10-05); shipped lagged (proposal: watch). Measured
+      by the NDVI skeptic: median r 0.99, r > 0.9 in 50 of 67 groups, all test years above the training maximum in 49; defo_ban.py:106-111
+      (2021-23 extrapolated); not in LAG_BASES. pm25_ban.py:44-52 (trend proxies: accurate in-sample, worse than naive in the
+      test window); co2 is banned on the same test; reference_regime_ood_failure. Kept by owner rulings elsewhere: PM2.5 both
+      (Part 539: annual human columns fed one year late), defo population_density (Part 437, defo_ban.py:99-105). Question Q4
+      (BAN_REVIEW_SUMMARY.md)'
+  built_surface_fraction:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'GHSL: 2020+ projections; interpolated by distance to vegetation. ruling Q3 a; defo FREEZE_BUILT (defo_ban.py:89-91):
+      2020+ projected, intermediate years interpolated with ''distance to vegetation'', an optical vegetation input for
+      an NDVI target'
+  cropland_fraction:
+    verdict: ban
+    reason: coproduct
+    evidence: MCD12Q1 class-12 slice (optical land cover); the raster and its other slice are already banned. CHANGE vs
+      shipped (run89 kept it). MCD12Q1 IGBP class 12 slice (defo_ban.py:36-39; QUESTIONS_ROUND3_HANDOFF.md:447 A2 counts
+      it among the 8 MODIS land-cover columns); NDVI already bans the raster and its other slice (modis_landcover_class/annual,
+      shrub_cover_pct_global), so keeping one class of it is inconsistent (defo_ban.py:38-39); optical land cover leaks
+      for vegetation targets (reference_vegtype_leakfree_sources); sheet co_measured candidate; luh2_cropland (census-based,
+      leak-free) keeps the cropland signal; Q34 option a
+  hand_m:
+    verdict: keep
+    reason: static hydrography (MERIT); legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); lineage assimilates Hansen treecover2000 (a static pre-window snapshot, Part 508: admissible with
+      disclosure); G-LINEAGE checks the target family MOD13C2 only'
+  upstream_area_km2:
+    verdict: keep
+    reason: static hydrography (MERIT); legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); lineage assimilates Hansen treecover2000 (a static pre-window snapshot, Part 508: admissible with
+      disclosure); G-LINEAGE checks the target family MOD13C2 only'
+  irrigation_pct_gmia:
+    verdict: keep
+    reason: static irrigation map; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); one static epoch (pre-window), the kind of human-management layer the leak-free rule allows (static
+      or frozen <= 2019: reference_vegtype_leakfree_sources); irrigation decouples greenness from rain (reference_greenness_skill_collapse)'
+  dist_to_coast_km:
+    verdict: keep
+    reason: static topography/geography; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); PM2.5''s GWR watch (pm25_ban.py:149-158) is about PM2.5''s calibration model, not NDVI''s'
+  V01_mean_temp_C:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  diurnal_temp_range_C:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  V02_total_precip_mm:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  V07_total_ref_ET_mm:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  aet_total_mm:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  climate_water_deficit_mm:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  soil_water_tc_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month water store
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); fill codes masked (Part 248)
+  V05_mean_vpd_kPa:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  V09_mean_wind_ms:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  solar_radiation_Wm2:
+    verdict: keep
+    reason: 'TerraClimate downward shortwave: a light driver'
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); PM2.5's conditional reason (aerosol
+      dimming responds to PM2.5, pm25_ban.py:71-73) does not apply to an NDVI target; not a vegetation retrieval; kept by
+      fire/defo; Q34 option a would ban it (not adopted)
+  swe_mean_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month water store
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); fill codes masked (Part 248)
+  aridity_index_p_pet:
+    verdict: ban
+    reason: structural
+    evidence: 'seasonal missing mask (PET -> 0 in winter): a filled value carries the season key. CHANGE vs shipped. MEASURED
+      2026-10-05 (2015, every other region): 35% missing in Dec and Jan, 0% in Jun-Aug, the eddi mechanism (reference_drought_tier_hazards
+      2); 18.7% donor / 23.6-24.2% test-year missing (just under R30); impossible values up to 2,573 where PET -> 0 (AUDIT_REPORT.md
+      item 3); a ratio of two kept columns (V02, V07); banned by pm25 (pm25_ban.py:110); Q34 option a'
+  tc_vapor_pressure:
+    verdict: keep
+    reason: TerraClimate monthly climate/water-balance driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); climate driver with no vegetation
+      input; kept by pm25/fire/defo (review/v2 notes); fill codes masked by the store catalog (-32768 / -2^31 in 47 coastal
+      regions, Part 248)
+  V11_mean_ndvi:
+    verdict: ban
+    reason: label
+    evidence: 'the target itself. the target (APP_PLAN.md 1.4: the target is forced to ban; ruling Q1 a, HEADLINE_QUESTIONS_AND_FIXES.md:62;
+      F16 :380); catalog.yaml role target'
+  V13_mean_lst_C:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MODIS LST, same sensor and month: a response to vegetation (transpirational cooling). REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:30);
+      MOD11 on Terra MODIS, same sensor and month as MOD13C2; LST responds to vegetation (reference_shap_driver_causality,
+      Part 67); refit without the proxies drops R2 0.875 -> 0.72, the circular greenness share (Parts 68-69)'
+  nighttime_lst_C:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MODIS LST, same sensor and month: a response to vegetation (transpirational cooling). REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:30);
+      MOD11 on Terra MODIS, same sensor and month as MOD13C2; LST responds to vegetation (reference_shap_driver_causality,
+      Part 67); refit without the proxies drops R2 0.875 -> 0.72, the circular greenness share (Parts 68-69)'
+  snow_cover_fraction:
+    verdict: ban
+    reason: incomplete
+    evidence: 'one test month is empty everywhere: October 2022 is 100% missing in all 133 regions (a MOD10CM month is absent),
+      so at its lag 1 every November 2022 row (and the May/November 2023 rows at leads 6 and 12) reads R30''s zero-fill, which
+      means ''no snow''; polar night also blanks December in the Arctic groups (eddi''s seasonal-mask mechanism) | CHANGE (skeptic
+      pass 2026-10-05) (HIGH); shipped keep (run89). Measured by the NDVI skeptic on every region''s 2022 file; alaska_interior_taiga
+      and canadian_arctic_nunavut are 100% missing every December; APP_PLAN.md R30, treeroute/fit/bank.py:27, pipeline/stages.py:158
+      (zero-fill); fire''s 40 groups show the same October 2022 hole (measured 2026-10-05) and defo bans it as incomplete; swe_mean_mm
+      (TerraClimate) and era5l_smlt (ERA5-Land) carry snow without MODIS. Not in features/build.py LAG_BASES. Re-ingesting MOD10CM
+      2022-10 would reopen it (then watch at lag 1, December mask disclosed)'
+  cloud_frequency_pct:
+    verdict: keep
+    reason: 'keep at lag 1: co-measured (MODIS cloud fraction decides which days enter the MOD13 composite)'
+    evidence: 'ruling Q3 a: lag same-month co-measured columns, fire''s same-month cloud precedent (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); sheet co_measured candidate; 0% missing; lagged by fire and defo; PM2.5''s smoke-as-cloud reason (pm25_ban.py:68-70)
+      does not apply to NDVI'
+  V14_mean_albedo:
+    verdict: ban
+    reason: coproduct
+    evidence: 'MODIS albedo, same sensor: a consequence of vegetation. REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:30);
+      MCD43 16-day centred windows reach 8 days past the month (fire_ban.py:33-37); albedo is driven by greenness (Part
+      67)'
+  gpp_kgC_m2:
+    verdict: ban
+    reason: coproduct
+    evidence: 'FluxSat GPP from MODIS reflectance: co-measures canopy greenness. REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:30);
+      store lineage assimilates MODIS MCD43 NBAR reflectance; GPP co-measures canopy greenness (Part 67)'
+  snow_onset_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30: about half the donor rows missing; also an annual snow-timing summary (ruled ban). R30 flag: 55% / 51%
+      / 49% missing in donor rows (onset / disappearance / max; all-null in 56-57 of 133 groups); ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111) also bans snow-DOY on every problem (PM2.5''s BAN_LOOKAHEAD, pm25_ban.py:38-41); calendar-year summaries
+      split at day 200 (ingest_era5land_snowphen.py:1-8)'
+  snow_disappearance_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30: about half the donor rows missing; also an annual snow-timing summary (ruled ban). R30 flag: 55% / 51%
+      / 49% missing in donor rows (onset / disappearance / max; all-null in 56-57 of 133 groups); ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111) also bans snow-DOY on every problem (PM2.5''s BAN_LOOKAHEAD, pm25_ban.py:38-41); calendar-year summaries
+      split at day 200 (ingest_era5land_snowphen.py:1-8)'
+  snow_duration_days:
+    verdict: ban
+    reason: lookahead_unfixable
+    evidence: 'annual snow-day count: an end-of-year fact on every month (ruled ban). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111) bans snow-DOY on every problem (PM2.5''s BAN_LOOKAHEAD, pm25_ban.py:40); calendar-year count broadcast to
+      12 months (ingest_era5land_snowphen.py:1-8); constant zero in 56/133 groups; ERA5-Land swe/smlt carry the monthly
+      snow signal'
+  snow_max_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30: about half the donor rows missing; also an annual snow-timing summary (ruled ban). R30 flag: 55% / 51%
+      / 49% missing in donor rows (onset / disappearance / max; all-null in 56-57 of 133 groups); ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111) also bans snow-DOY on every problem (PM2.5''s BAN_LOOKAHEAD, pm25_ban.py:38-41); calendar-year summaries
+      split at day 200 (ingest_era5land_snowphen.py:1-8)'
+  V06_spei_12m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'empty for all of 2023, an NDVI test year. R30: 100% missing in 2023 in all 133 regions (AUDIT_REPORT.md item
+      1; reference_dataset_audit); ruling Q3 a / A5 (pm25_ban.py:113); spi_* cover 2023 instead (Part 324)'
+  spei_01m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'empty for all of 2023, an NDVI test year. R30: 100% missing in 2023 in all 133 regions (AUDIT_REPORT.md item
+      1; reference_dataset_audit); ruling Q3 a / A5 (pm25_ban.py:113); spi_* cover 2023 instead (Part 324)'
+  spei_03m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'empty for all of 2023, an NDVI test year. R30: 100% missing in 2023 in all 133 regions (AUDIT_REPORT.md item
+      1; reference_dataset_audit); ruling Q3 a / A5 (pm25_ban.py:113); spi_* cover 2023 instead (Part 324)'
+  spei_06m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'empty for all of 2023, an NDVI test year. R30: 100% missing in 2023 in all 133 regions (AUDIT_REPORT.md item
+      1; reference_dataset_audit); ruling Q3 a / A5 (pm25_ban.py:113); spi_* cover 2023 instead (Part 324)'
+  spei_24m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'empty for all of 2023, an NDVI test year. R30: 100% missing in 2023 in all 133 regions (AUDIT_REPORT.md item
+      1; reference_dataset_audit); ruling Q3 a / A5 (pm25_ban.py:113); spi_* cover 2023 instead (Part 324)'
+  frost_days:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  heatwave_days_gt35C:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  gdd5_degC_days:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  wet_day_count:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  V03_max_daily_precip_mm:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  precip_intensity_mm:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  vpd_max_daily:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  vpd_days_gt_2kpa:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  vpd_warm_season_mean:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  rmin_pct:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  sph_kgkg:
+    verdict: keep
+    reason: monthly counts/extremes from daily reanalysis-based weather
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); kept by pm25/fire/defo (review/v2
+      notes); vpd_warm_season_mean is the plain monthly mean VPD (ingest_agera5_daycounts.py:169)
+  V30_soil_moisture_pct:
+    verdict: keep
+    reason: 'ERA5-Land soil moisture: the water driver'
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis, no retrieval; the
+      real driver of greenness is water (Parts 67-69, reference_shap_driver_causality); kept by pm25/fire/defo (review/v2
+      notes)
+  V20_burned_binary:
+    verdict: ban
+    reason: structural
+    evidence: 'FireCCI switches sensor exactly at the train/test split (MODIS <= 2019, OLCI >= 2020); same-month burn is
+      also co-measured. CHANGE vs shipped (run89 kept it). Sensor switch at the 2019/2020 split: esa_cci MODIS 5.1 for <=
+      2019, C3S OLCI 1.1 for >= 2020 (presplit_cc/ingest_firecci_fire.py:29, 39-42), so test rows come from another instrument
+      than every training row; a same-month burn browns NDVI and FireCCI <= 2019 is MODIS reflectance (co-measured, the
+      logic of Q38 b); GFED burn_frac at lag 1 (ruling Q38 b) carries the burn signal from one consistent product; banned
+      by pm25 (pm25_ban.py:34) and fire (fire_ban.py:23); Q34 option a'
+  burn_month_count:
+    verdict: ban
+    reason: structural
+    evidence: 'FireCCI annual summaries: sensor switch at the split, and within-year look-ahead. shipped ban (run89 --drop,
+      presplit_cc/run89_outputs.py:216); same FireCCI sensor switch at the 2019/2020 split (ingest_firecci_fire.py:29, 39-42);
+      annual summary of within-year events (pm25_ban.py:35-36; ruling Q3 a); dropping them costs nothing on thar (-0.0056,
+      CI [-0.0139, +0.0029], reference_feature_hygiene_groups)'
+  burn_doy_mean:
+    verdict: ban
+    reason: structural
+    evidence: 'FireCCI annual summaries: sensor switch at the split, and within-year look-ahead. shipped ban (run89 --drop,
+      presplit_cc/run89_outputs.py:216); same FireCCI sensor switch at the 2019/2020 split (ingest_firecci_fire.py:29, 39-42);
+      annual summary of within-year events (pm25_ban.py:35-36; ruling Q3 a); dropping them costs nothing on thar (-0.0056,
+      CI [-0.0139, +0.0029], reference_feature_hygiene_groups)'
+  sst_anom_atl3:
+    verdict: watch
+    reason: 'keep, listed: partly trend-loaded (ocean warming)'
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; MEASURED 2026-10-05: r(annual
+      mean, year) = 0.54, 2.1% of 2020-23 months above the 2003-2019 maximum -> listed in reports (a physical SST anomaly,
+      not a clock)'
+  sst_anom_iod_west:
+    verdict: keep
+    reason: repo ERSSTv5 SST box anomaly, lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; measured trend check 2026-10-05:
+      not year-like (|r(annual, year)| <= 0.47, <= 4.2% of 2020-23 months outside the 2003-2019 range)'
+  sst_anom_iod_east:
+    verdict: keep
+    reason: repo ERSSTv5 SST box anomaly, lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; measured trend check 2026-10-05:
+      not year-like (|r(annual, year)| <= 0.47, <= 4.2% of 2020-23 months outside the 2003-2019 range)'
+  sst_anom_subpolar_north_atlantic:
+    verdict: keep
+    reason: repo ERSSTv5 SST box anomaly, lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; measured trend check 2026-10-05:
+      not year-like (|r(annual, year)| <= 0.47, <= 4.2% of 2020-23 months outside the 2003-2019 range)'
+  sst_anom_coral_sea:
+    verdict: watch
+    reason: 'keep, listed: partly trend-loaded (ocean warming)'
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; MEASURED 2026-10-05: r(annual
+      mean, year) = 0.53, 8.3% of 2020-23 months above the 2003-2019 maximum -> listed in reports (a physical SST anomaly,
+      not a clock)'
+  sst_anom_mediterranean:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar with a near-monotone warming trend: a noisy year index. CHANGE vs shipped (run89 and the
+      other three sheets keep it). MEASURED 2026-10-05 on the panel: r(annual mean, year) = 0.88 (Spearman 0.87), 8.3% of
+      2020-23 months above the 2003-2019 maximum, test mean +0.88 training SD; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so outside the few Mediterranean groups it is a year index; more year-like than food_dairy (0.52) or food_sugar
+      (0.45), which every sheet bans as trend proxies. Banning it also removes its 5 lags from features/build.py LAG_BASES
+      (G-LINEAGE stand-in, treeroute/pipeline/data.py:224-227)'
+  sst_anom_global_tropical_mean:
+    verdict: keep
+    reason: repo ERSSTv5 SST box anomaly, lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; measured trend check 2026-10-05:
+      not year-like (|r(annual, year)| <= 0.47, <= 4.2% of 2020-23 months outside the 2003-2019 range)'
+  sst_anom_nino34:
+    verdict: keep
+    reason: repo ERSSTv5 SST box anomaly, lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a: lag 2; measured trend check 2026-10-05:
+      not year-like (|r(annual, year)| <= 0.47, <= 4.2% of 2020-23 months outside the 2003-2019 range)'
+  nino12:
+    verdict: keep
+    reason: ENSO SST index (ERSSTv5), lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a (OWNER_RULINGS_2026-09-28.md:24):
+      content reach +2 months -> lag 2'
+  nino3:
+    verdict: keep
+    reason: ENSO SST index (ERSSTv5), lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a (OWNER_RULINGS_2026-09-28.md:24):
+      content reach +2 months -> lag 2'
+  nino4:
+    verdict: keep
+    reason: ENSO SST index (ERSSTv5), lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a (OWNER_RULINGS_2026-09-28.md:24):
+      content reach +2 months -> lag 2'
+  nino34:
+    verdict: keep
+    reason: ENSO SST index (ERSSTv5), lagged by its ruled reach
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); ruling R-A a (OWNER_RULINGS_2026-09-28.md:24):
+      content reach +2 months -> lag 2'
+  oni:
+    verdict: keep
+    reason: 'ONI: kept and lagged by its ruled window (ruling Q2)'
+    evidence: 'ruling Q2 (HEADLINE_QUESTIONS_AND_FIXES.md:63): centred indices kept, lagged by the computed rule; R-A a:
+      lag 3 (OWNER_RULINGS_2026-09-28.md:24); shipped lagged'
+  soi:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  tni:
+    verdict: keep
+    reason: 'TNI: kept and lagged by its signed bound (ruling Q2)'
+    evidence: 'ruling Q2 (HEADLINE_QUESTIONS_AND_FIXES.md:63); R-B: the bound {7, month, centred} (OWNER_RULINGS_2026-09-28.md:25)'
+  pdo:
+    verdict: keep
+    reason: PDO; needs its window signed, conservatively with the ERSSTv5 reach
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); a stationary climate index, one
+      global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      the PSL page lists ERSSTv5 among its inputs [S9], so R-A a may apply (index_facts.yaml pdo notes)
+  amo:
+    verdict: ban
+    reason: incomplete
+    evidence: 'vanishes in 2023 (source ends January 2023). R30: 91.7% missing in 2023 (NOAA PSL amon.us.data ends Jan 2023,
+      pm25_ban.py:114-117); ruling A5 (QUESTIONS_ROUND3_HANDOFF.md:450) and the owner''s AMO-2023 drop'
+  tna:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  tsa:
+    verdict: watch
+    reason: plain monthly SST index, partly trend-loaded; needs its window signed
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      MEASURED 2026-10-05: r(annual mean, year) = 0.50, 6.2% of 2020-23 months above the 2003-2019 maximum -> listed in
+      reports'
+  iod:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  noi:
+    verdict: keep
+    reason: plain monthly index (data signature); needs its window signed
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); a stationary climate index, one
+      global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      provider page silent, data signature T8 (-0.44) shows no running mean (INDEX_WINDOW_AUDIT.md open item 11)
+  ao:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  nao:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  pna:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  wp:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  epo:
+    verdict: ban
+    reason: structural
+    evidence: 'a month key in disguise: CPC never issues a December EPO, and R30 fills a missing tree feature with 0, so epo
+      == 0 marks December exactly (eddi''s mechanism) | CHANGE (skeptic pass 2026-10-05); shipped keep, presplit_cc/bundle_lag_compare.py:53,
+      run89''s base features. INDEX_WINDOW_AUDIT.md:75 (CPC publishes 8-9 of its 10 patterns a month; EPO is missing every December,
+      22 of 264 months); measured 2026-10-05: month 12 is 100% missing in all 40 fire groups'' 2022 panel files, and in 22 of
+      22 Decembers on thar_desert (NDVI skeptic); real two-decimal EPO values are almost never exactly 0; APP_PLAN.md R30 (tree
+      features zero-filled); eddi and eddi_observed are banned structural for the same seasonal-mask mechanism (Parts 340, 342).
+      Same verdict in pm25, fire and ndvi; defo bans it as incomplete (no December, so its strict annual aggregate is empty).
+      epo is in features/build.py LAG_BASES: ''structural'' is not a lineage-leak reason (treeroute/pipeline/data.py:65-66),
+      so its 5 lags do not trip the engine, but they carry the same marker (lag 1 marks January, lag 12 December) and take this
+      verdict: drop epo from LAG_BASES.'
+  sam:
+    verdict: keep
+    reason: plain monthly climate index; needs its window signed (G-LAG refused it at the smoke)
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); a stationary climate index,
+      one global value per month; kept by pm25/fire/defo (review/v2 notes); G-LAG refused it for an unknown window (SMOKES_REPORT.md:83-88);
+      INDEX_WINDOW_AUDIT.md Table 1: no running mean (proposed_status verified)'
+  V04_precip_seasonality:
+    verdict: keep
+    reason: annual rainfall-seasonality summary, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      an annual summary of the year''s own rainfall (pm25_ban.py:136-137)'
+  clf_dry:
+    verdict: ban
+    reason: target_derived
+    evidence: 'regime classifier trained on NDVI: a label leak. ruling Q35 a (HEADLINE_QUESTIONS_AND_FIXES.md:87, 268-271);
+      store lineage trained_on V11_mean_ndvi (save_regime_to_panel.py:1-5); Part 431; tests/test_ndvi_package.py requires
+      ban target_derived; also worse than naive out of sample (Parts 144-148, 308)'
+  clf_wet:
+    verdict: ban
+    reason: target_derived
+    evidence: 'regime classifier trained on NDVI: a label leak. ruling Q35 a (HEADLINE_QUESTIONS_AND_FIXES.md:87, 268-271);
+      store lineage trained_on V11_mean_ndvi (save_regime_to_panel.py:1-5); Part 431; tests/test_ndvi_package.py requires
+      ban target_derived; also worse than naive out of sample (Parts 144-148, 308)'
+  road_density:
+    verdict: keep
+    reason: static access layer; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); not in defo''s FREEZE list (defo_ban.py:80-87); travel_time content epoch 2015 (store catalog)'
+  travel_time:
+    verdict: keep
+    reason: static access layer; legitimate driver
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); static layer (constant in the
+      5-region sample, review/v2 notes): no time axis, lag 0; not an optical vegetation retrieval; kept by pm25/fire/defo
+      (review/v2 notes); not in defo''s FREEZE list (defo_ban.py:80-87); travel_time content epoch 2015 (store catalog)'
+  dist_powerplant:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_thermal:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_coal_mine:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_dam:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_reservoir:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_oilgas_well:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  dist_pa:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: static snapshot dated after the window (sources to 2026). ruling Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64,
+      108-111); defo FREEZE_INFRA (defo_ban.py:80-87); the store holds no pre-window epoch, so a freeze verdict cannot apply
+      until re-ingested with the source date fields
+  gdp_pc:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a year clock inside each region: smooth annual growth, so within a group''s trees it stands in for the year,
+      and the test years sit above every training value (a tree answers them as its latest training year) | CHANGE (skeptic
+      pass 2026-10-05); shipped lagged. Measured by the NDVI skeptic (67 groups, every second region, group annual means at
+      the 1-year lag): median r(value, year) 0.96, r > 0.9 in 46, all 4 test years above the group''s 2003-2019 maximum in 35;
+      not in features/build.py LAG_BASES. pm25_ban.py:44-52 (trend proxies: accurate in-sample, worse than naive in the test
+      window); co2 is banned on the same test; reference_regime_ood_failure. Kept by owner rulings elsewhere: PM2.5 both (Part
+      539: annual human columns fed one year late), defo population_density (Part 437, defo_ban.py:99-105). Question Q4 (BAN_REVIEW_SUMMARY.md)'
+  ntl:
+    verdict: keep
+    reason: annual night lights, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      DMSP -> VIIRS switch 2013 -> 2014 lies inside the training years'
+  hdi:
+    verdict: keep
+    reason: annual HDI, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      frozen at 2015 (min(y, 2015), assemble_human_drivers.py:113), so no later content'
+  luh2_cropland:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s'
+  luh2_pasture:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s'
+  luh2_range:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s'
+  luh2_urban:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s; year clock measured by the NDVI
+      skeptic (median r 1.00, r > 0.9 in 59 of 62 groups, all test years above the training maximum in 60): kept because the
+      six LUH2 states are one sum group and the owner ruled luh2_* KEEP (Parts 306-312, reference_feature_hygiene_groups); disclose
+      (Q4)'
+  luh2_forest:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s'
+  luh2_secondary:
+    verdict: keep
+    reason: LUH2 land-use state, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      LUH2 is census/land-use based, one of the few leak-free vegetation-type sources for an NDVI target (reference_vegtype_leakfree_sources);
+      its Hansen/MapBiomas lineage is a forest-loss issue (defo_ban.py:43-49), not NDVI''s'
+  fert_n:
+    verdict: keep
+    reason: annual fertiliser use, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      frozen at 2013 (min(y, 2013), assemble_human_drivers.py:146)'
+  fert_p:
+    verdict: keep
+    reason: annual fertiliser use, lagged one year by rule
+    evidence: 'lagged one year by rule (Q3 a: PM2.5''s look-ahead rules apply to every problem; R8). A1 is PM2.5''s ruling;
+      no ruling decides that NDVI keeps these columns (R8; pm25_ban.py:142-146; QUESTIONS_ROUND3_HANDOFF.md:446); shipped lagged;
+      frozen at 2013 (min(y, 2013), assemble_human_drivers.py:146)'
+  aglw_cattle:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  aglw_buffalo:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  aglw_horse:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  aglw_sheep:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  aglw_goats:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  aglw_total_lsu:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'livestock: post-2021 rescaled, downscaled on a year-matched optical land-cover mask. ruling Q3 a; defo FREEZE_LIVESTOCK
+      (defo_ban.py:93-97): post-2021 values are the 2021 layer rescaled; downscaled on a year-matched FROM-GLC Plus optical
+      land-cover mask, which leaks for a vegetation target (reference_vegtype_leakfree_sources)'
+  conflict_events:
+    verdict: keep
+    reason: monthly UCDP conflict counts per cell
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); monthly, per cell, zero = no event
+      (assemble_human_drivers.py:254-276; INDEX_WINDOW_AUDIT.md 'columns that look global but are not'); kept by pm25/fire/defo
+      (review/v2 notes)
+  conflict_deaths:
+    verdict: keep
+    reason: monthly UCDP conflict counts per cell
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); monthly, per cell, zero = no event
+      (assemble_human_drivers.py:254-276; INDEX_WINDOW_AUDIT.md 'columns that look global but are not'); kept by pm25/fire/defo
+      (review/v2 notes)
+  co2:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global monotone clock (= the year). CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 1.00, 91.7% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:56, fire_ban.py:77, defo_ban.py:63);
+      Q34 option a'
+  food_price_index:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.63, 14.6% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  food_meat:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.82, 16.7% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  food_dairy:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.52, 2.1% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  food_cereals:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.55, 8.3% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  food_oils:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.50, 18.8% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  food_sugar:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'a global scalar that tracks the year. CHANGE vs shipped (run89 kept it). MEASURED 2026-10-05 on the panel:
+      r(annual mean, year) = 0.45, 0.0% of 2020-23 months above the 2003-2019 maximum; one global value per month (INDEX_WINDOW_AUDIT.md
+      T1), so it carries no spatial information; banned by pm25, fire and defo (pm25_ban.py:57, fire_ban.py:78, defo_ban.py:63-64);
+      Q34 option a'
+  grace_lwe:
+    verdict: watch
+    reason: 'keep, listed: GRACE availability shift (16% missing <= 2019, 0% in test years)'
+    evidence: 'shipped keep (presplit_cc/bundle_lag_compare.py:53, run89''s base features); 16.2% donor missing (< R30 25%),
+      0% in test years: an availability shift (GRACE gap 2017-06..2018-05; reference_feature_hygiene_groups) -> listed in
+      reports; dropping it costs -0.0306 on thar (ibid.); G-LAG refused it at the smoke for an unknown window (SMOKES_REPORT.md:83-88)
+      -> the bound below; banned by pm25 (14.4%, pm25_ban.py:111), kept by fire/defo; Q34 option a would ban it (not adopted)'
+  modis_landcover_annual:
+    verdict: ban
+    reason: coproduct
+    evidence: MCD12Q1 optical land cover (a greenness-derived class). REMOVE-11 (presplit_cc/experiment_thar_regime_full.py:32;
+      reference_remove_list_9_vs_11); optical land cover leaks for vegetation targets (reference_vegtype_leakfree_sources);
+      defo_ban.py:40; the 2023-vintage OWNER CHECK on the sheet is moot while banned
+  V12_mean_evi:
+    verdict: ban
+    reason: coproduct
+    evidence: 'target twin: the EVI band of the same MOD13C2 granule and month. target twin, forced to ban (APP_PLAN.md
+      1.4; catalog.yaml role target_twin; ruling: NDVI bans V11/V12 as features; REMOVE-11 presplit_cc/experiment_thar_regime_full.py:32;
+      F16 HEADLINE_QUESTIONS_AND_FIXES.md:380)'
+  deeprec_twsa:
+    verdict: ban
+    reason: lookahead_unfixable
+    evidence: 'a CNN+LSTM water-storage reconstruction whose input time window is not documented: the LSTM may read months after
+      month m, so no forward reach can be signed (the proposed lag-3 bound counted only its ONI input) | CHANGE (skeptic pass
+      2026-10-05); shipped keep, presplit_cc/bundle_lag_compare.py:53, run89''s base features. D:/deeprec/DeepRec_mixture_CSR_ERA5-ONI-HI.nc
+      global attributes (read 2026-10-05): model_input = ERA5 single-level monthly means (14 variables), ISIMIP land use and
+      lake fraction, NOAA ERSSTv5 ONI, with no input window; model_target = CSR GRACE/GRACE-FO RL06.3 mascons; coverage 1941-01
+      to 2023-12 (fitted on GRACE months that include the test years). Gentner et al., JGR Machine Learning and Computation,
+      doi 10.1029/2025JH000889 (CNN encoder + LSTM): the publisher page refused the read (HTTP 403); the Uni Stuttgart news
+      page and the EGU25-17055 abstract do not state the LSTM input sequence. Q34 review rule: no documented bound -> lookahead_unfixable.
+      The 3-month reach covered only the ONI input (OWNER_RULINGS_2026-09-28.md B R-A a). Same verdict in pm25, fire and ndvi
+      (one shared store fact); defo already bans it. grace_lwe (watch) still carries water storage. deeprec_twsa must leave
+      features/build.py LAG_BASES: lookahead_unfixable is a lineage-leak reason (treeroute/pipeline/data.py:65-66, 224-227).
+      Question Q3 (BAN_REVIEW_SUMMARY.md).'
+  era5l_pev:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_sro:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_ssro:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_smlt:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_slhf:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_sshf:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_ssr:
+    verdict: keep
+    reason: 'ERA5-Land net shortwave: a light driver'
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); net shortwave uses ERA5's climatological
+      background albedo, not observed vegetation; PM2.5's aerosol reason (pm25_ban.py:71-73) does not apply; kept by fire/defo;
+      Q34 option a would ban it (not adopted)
+  era5l_str:
+    verdict: keep
+    reason: ERA5-Land monthly flux/runoff driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis-forced land model whose
+      vegetation is a fixed climatology, not observed greenness; kept by pm25/fire/defo (review/v2 notes)
+  era5l_d2m:
+    verdict: keep
+    reason: ERA5-Land dewpoint / soil temperature driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis; kept by pm25/fire/defo
+      (review/v2 notes)
+  era5l_stl1:
+    verdict: keep
+    reason: ERA5-Land dewpoint / soil temperature driver
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); reanalysis; kept by pm25/fire/defo
+      (review/v2 notes)
+  esacci_sm:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30: 30% missing in donor rows; retrieved jointly with vegetation optical depth. CHANGE vs shipped. R30 flag:
+      29.8% missing in donor rows, 32-33% per test year; seasonal mask (49% missing in January vs 10% in July, measured
+      2015); jointly retrieved with VOD, so it partly reads greenness (fire_ban.py:51-53; reference_feature_hygiene_groups);
+      banned by pm25 (pm25_ban.py:108) and fire; V30 (ERA5-Land) keeps the soil-moisture signal'
+  scpdsi:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'trend-loaded Palmer index with a static spatial mask and an implausible range. CHANGE vs shipped. Trend-loaded:
+      annual r with year > 0.6 in 22/133 regions, shifts > 1 training SD into 2020-23 in 26 regions while the target does
+      not (reference_drought_tier_hazards 3, Part 340); static spatial mask over hyper-arid land (5.4% of rows) and range
+      [-11.25, 22.15] on a nominal +-4 index (ibid. 1, 4); thar: the drought tier costs -0.0095 anomaly R2 (Part 345); banned
+      by pm25 (pm25_ban.py:59) and fire (fire_ban.py:79); Q34 option a names it'
+  spi_01m:
+    verdict: keep
+    reason: standardised precipitation index; covers 2023
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); replaces the SPEI block in 2023
+      (Part 324); kept by pm25/fire/defo (review/v2 notes)
+  spi_03m:
+    verdict: keep
+    reason: standardised precipitation index; covers 2023
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); replaces the SPEI block in 2023
+      (Part 324); kept by pm25/fire/defo (review/v2 notes)
+  spi_06m:
+    verdict: keep
+    reason: standardised precipitation index; covers 2023
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); replaces the SPEI block in 2023
+      (Part 324); kept by pm25/fire/defo (review/v2 notes)
+  spi_12m:
+    verdict: keep
+    reason: standardised precipitation index; covers 2023
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); replaces the SPEI block in 2023
+      (Part 324); kept by pm25/fire/defo (review/v2 notes)
+  spi_24m:
+    verdict: watch
+    reason: 'keep, listed: trend-loaded in thar'
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); covers 2023 (Part 324); row correlation
+      with the month index +0.723 in thar (reference_drought_tier_hazards 3) -> listed in reports; kept by pm25/fire/defo
+      (review/v2 notes)
+  eddi:
+    verdict: ban
+    reason: structural
+    evidence: 'seasonal missing mask: a filled value carries the month key into the trees. CHANGE vs shipped. 0% missing
+      Mar-Sep, all of its gaps in Oct-Feb (reference_drought_tier_hazards 2, Part 340; measured 2015: 19-22% of Dec-Jan
+      rows missing panel-wide); a filled value is then a month detector (alaska: one split explains 35.6% of NDVI variance),
+      the key G-KEYS keeps out of the trees; per-month standardisation carries the calendar-month key (ndvi_draft/AUDIT_CHECKLIST.md);
+      banned by pm25 (pm25_ban.py:60) and fire (fire_ban.py:80); Q34 option a names it'
+  wbal_mm:
+    verdict: keep
+    reason: TerraClimate water balance P - ET0 (trailing)
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); derived from kept V02/V07, sentinels
+      masked before the subtraction (Part 340); kept by pm25/fire/defo (review/v2 notes)
+  wbal_roll3:
+    verdict: keep
+    reason: TerraClimate water balance P - ET0 (trailing)
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); derived from kept V02/V07, sentinels
+      masked before the subtraction (Part 340); kept by pm25/fire/defo (review/v2 notes)
+  wbal_roll6:
+    verdict: keep
+    reason: TerraClimate water balance P - ET0 (trailing)
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); derived from kept V02/V07, sentinels
+      masked before the subtraction (Part 340); kept by pm25/fire/defo (review/v2 notes)
+  wbal_roll12:
+    verdict: keep
+    reason: TerraClimate water balance P - ET0 (trailing)
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); derived from kept V02/V07, sentinels
+      masked before the subtraction (Part 340); kept by pm25/fire/defo (review/v2 notes)
+  wbal_roll24:
+    verdict: keep
+    reason: 24-month water balance; missing only on the first 11 fit months
+    evidence: shipped keep (presplit_cc/bundle_lag_compare.py:53, run89's base features); missing only on 2003-01..11 (head
+      of record, min_periods = window), 0% in every test year; R30 not flagged (5.4%); PM2.5's reason (empty in 2002, pm25_ban.py:112)
+      does not bite on NDVI's fit rows from 2003; kept by fire/defo; Q34 option a would ban it (not adopted)
+  eddi_observed:
+    verdict: ban
+    reason: structural
+    evidence: 'isfinite(eddi): eddi''s seasonal mask itself (a month/snow key). CHANGE vs shipped. isfinite(eddi) (Part
+      342): at high latitude it is the Oct-Feb mask (97% purity, reference_drought_tier_hazards 2); constant in 90/133 groups;
+      follows eddi; banned by pm25 and fire; Q34 option a'
+  burn_frac:
+    verdict: keep
+    reason: GFED monthly burned fraction at lag 1 (ruled co-measured)
+    evidence: 'ruling Q38 b (HEADLINE_QUESTIONS_AND_FIXES.md:89, 283-286): GFED burn on NDVI at lag 1 only; catalog.yaml
+      co_measured_with_target true; R30 not flagged (10.6% donor incl. the 6 absent groups, 12.3% per test year)'
+  burn_npix:
+    verdict: ban
+    reason: structural
+    evidence: 'a pixel-count support column, not a predictor. shipped ban (gfed_burn_ingest.py:364: pixel count); a support
+      column (pm25_ban.py:165 KEYS); role ''support'' in catalog.yaml would be the cleaner declaration'
+  V02_total_precip_mm_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V02_total_precip_mm_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V02_total_precip_mm_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  soil_water_tc_mm_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (soil_water_tc_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      soil_water_tc_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  soil_water_tc_mm_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (soil_water_tc_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      soil_water_tc_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  soil_water_tc_mm_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (soil_water_tc_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      soil_water_tc_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V30_soil_moisture_pct_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V30_soil_moisture_pct)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V30_soil_moisture_pct is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V30_soil_moisture_pct_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V30_soil_moisture_pct)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V30_soil_moisture_pct is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V30_soil_moisture_pct_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V30_soil_moisture_pct)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V30_soil_moisture_pct is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V07_total_ref_ET_mm_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V07_total_ref_ET_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V07_total_ref_ET_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V07_total_ref_ET_mm_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V07_total_ref_ET_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V07_total_ref_ET_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V07_total_ref_ET_mm_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V07_total_ref_ET_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V07_total_ref_ET_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  aet_total_mm_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (aet_total_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      aet_total_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  aet_total_mm_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (aet_total_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      aet_total_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  aet_total_mm_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (aet_total_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      aet_total_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  climate_water_deficit_mm_roll3:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (climate_water_deficit_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      climate_water_deficit_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  climate_water_deficit_mm_roll6:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (climate_water_deficit_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      climate_water_deficit_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  climate_water_deficit_mm_roll12:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (climate_water_deficit_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      climate_water_deficit_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  precip_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  api_precip:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  api_soilmoist:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V30_soil_moisture_pct)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V30_soil_moisture_pct is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  soil_water_tc_mm_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (soil_water_tc_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      soil_water_tc_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V30_soil_moisture_pct_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V30_soil_moisture_pct)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V30_soil_moisture_pct is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  V07_total_ref_ET_mm_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V07_total_ref_ET_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V07_total_ref_ET_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  aet_total_mm_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (aet_total_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      aet_total_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  climate_water_deficit_mm_wytd:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (climate_water_deficit_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      climate_water_deficit_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  consec_dry_months:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  months_since_sig_rain:
+    verdict: keep
+    reason: run89 water-memory feature from a kept parent (V02_total_precip_mm)
+    evidence: 'ruling Q33 (HEADLINE_QUESTIONS_AND_FIXES.md:47): NDVI keeps its engineered features, rebuilt date-safe; parent
+      V02_total_precip_mm is kept; trailing only (plan 1.5), recomputed by G-DERIVED'
+  ctx:climatology:
+    verdict: ban
+    reason: replaced_by_engine
+    evidence: 'a copy of the normal: the engine''s unpenalised normal column replaces it. plan 1.5: a context column equal
+      to the normal is refused as replaced_by_engine; the per-unit link-matched normal is an unpenalised router column (R15,
+      U-1); catalog.yaml provenance (cross_region_run89.py:889)'
+  ctx:sin1:
+    verdict: keep
+    reason: seasonal harmonic of the month (router context only)
+    evidence: run89 router context (cross_region_run89.py:888-889); month-key harmonics are allowed only as router context
+      (G-KEYS, plan 1.5)
+  ctx:cos1:
+    verdict: keep
+    reason: seasonal harmonic of the month (router context only)
+    evidence: run89 router context (cross_region_run89.py:888-889); month-key harmonics are allowed only as router context
+      (G-KEYS, plan 1.5)
+  ctx:sin2:
+    verdict: keep
+    reason: seasonal harmonic of the month (router context only)
+    evidence: run89 router context (cross_region_run89.py:888-889); month-key harmonics are allowed only as router context
+      (G-KEYS, plan 1.5)
+  ctx:cos2:
+    verdict: keep
+    reason: seasonal harmonic of the month (router context only)
+    evidence: run89 router context (cross_region_run89.py:888-889); month-key harmonics are allowed only as router context
+      (G-KEYS, plan 1.5)
+  ctx:top5:sph_kgkg_lag6:
+    verdict: keep
+    reason: frozen top-5 router-context column; base sph_kgkg is kept; test-exposed (disclosed)
+    evidence: 'plan 3.3 flag 8 keeps the frozen list (catalog.yaml data_selected); base column sph_kgkg kept; test-exposed
+      on both plan 1.3 grounds (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379: 19 of the 89 helper groups were NDVI test groups;
+      selection rows to 2019-12, after the earliest fit cut), so the keep stands only with the exceptions.yaml disclosure
+      signed (question)'
+  ctx:top5:era5l_slhf_lag1:
+    verdict: keep
+    reason: frozen top-5 router-context column; base era5l_slhf is kept; test-exposed (disclosed)
+    evidence: 'plan 3.3 flag 8 keeps the frozen list (catalog.yaml data_selected); base column era5l_slhf kept; test-exposed
+      on both plan 1.3 grounds (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379: 19 of the 89 helper groups were NDVI test groups;
+      selection rows to 2019-12, after the earliest fit cut), so the keep stands only with the exceptions.yaml disclosure
+      signed (question)'
+  ctx:top5:V07_total_ref_ET_mm_lag1:
+    verdict: keep
+    reason: frozen top-5 router-context column; base V07_total_ref_ET_mm is kept; test-exposed (disclosed)
+    evidence: 'plan 3.3 flag 8 keeps the frozen list (catalog.yaml data_selected); base column V07_total_ref_ET_mm kept;
+      test-exposed on both plan 1.3 grounds (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379: 19 of the 89 helper groups were NDVI
+      test groups; selection rows to 2019-12, after the earliest fit cut), so the keep stands only with the exceptions.yaml
+      disclosure signed (question)'
+  ctx:top5:era5l_d2m:
+    verdict: keep
+    reason: frozen top-5 router-context column; base era5l_d2m is kept; test-exposed (disclosed)
+    evidence: 'plan 3.3 flag 8 keeps the frozen list (catalog.yaml data_selected); base column era5l_d2m kept; test-exposed
+      on both plan 1.3 grounds (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379: 19 of the 89 helper groups were NDVI test groups;
+      selection rows to 2019-12, after the earliest fit cut), so the keep stands only with the exceptions.yaml disclosure
+      signed (question)'
+  ctx:top5:V01_mean_temp_C:
+    verdict: keep
+    reason: frozen top-5 router-context column; base V01_mean_temp_C is kept; test-exposed (disclosed)
+    evidence: 'plan 3.3 flag 8 keeps the frozen list (catalog.yaml data_selected); base column V01_mean_temp_C kept; test-exposed
+      on both plan 1.3 grounds (F15, HEADLINE_QUESTIONS_AND_FIXES.md:379: 19 of the 89 helper groups were NDVI test groups;
+      selection rows to 2019-12, after the earliest fit cut), so the keep stands only with the exceptions.yaml disclosure
+      signed (question)'

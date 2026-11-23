@@ -1,0 +1,42 @@
+[2026-11-13 18:12:39 +    0.0s] rival SHAP fire lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-13 18:12:39 +    0.1s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-13 18:12:40 +    1.2s] test set: 96000 rows x 133 features (D:\treeroute\rival_export\fire\20261017_869d1f38\lead_0), read and hash-checked in 0.9 s
+[2026-11-13 18:12:41 +    2.3s] sample: 1000 explained rows, 14286 distinct background rows (per row: min 2, median 16, max 16)
+[2026-11-13 18:12:42 +    2.8s] ridge: 179 design columns; saved predictions reproduced on 95711 of 96000 test rows (max |diff| 5.55e-17): FAIL
+[2026-11-13 18:12:42 +    2.8s] STOP S-EXACT: ridge does not reproduce its saved predictions; no SHAP value
+[2026-11-13 18:12:43 +    3.8s] lgbm: 80 trees; saved predictions reproduced on 96000 of 96000 test rows (max |diff| 0): PASS
+[2026-11-13 18:12:45 +    6.3s] lgbm: interventional TreeSHAP over 80 trees on 1000 rows (2 levels) in 2.4 s
+[2026-11-13 18:12:45 +    6.5s] rival_lgbm: 1000 rows, 134 players (103 nonzero), 117 variables (87 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-13 18:12:51 +   12.4s] lgbm_tweedie: 1281 trees; saved predictions reproduced on 96000 of 96000 test rows (max |diff| 0): PASS
+[2026-11-13 18:15:06 +  147.0s] lgbm_tweedie: interventional TreeSHAP over 1281 trees on 1000 rows (2 levels) in 131.7 s
+[2026-11-13 18:15:07 +  147.8s] rival_lgbm_tweedie: 1000 rows, 134 players (111 nonzero), 117 variables (94 nonzero); additivity max 9.24e-14 / 8.53e-14; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-13 18:15:08 +  148.9s] rf: refit set 751508 rows x 133 features read in 1.0 s (RAM)
+[2026-11-13 18:18:13 +  334.4s] rf: rebuilt 300 trees in 186.5 s; draws equal to the board's: True; saved predictions reproduced on 96000 of 96000 test rows (max |diff| 0): PASS
+[2026-11-13 18:18:23 +  343.9s] rf: SHAP tree 50 of 300 (9.5 s)
+[2026-11-13 18:18:32 +  352.7s] rf: SHAP tree 100 of 300 (18.3 s)
+[2026-11-13 18:18:41 +  361.8s] rf: SHAP tree 150 of 300 (27.4 s)
+[2026-11-13 18:18:50 +  371.1s] rf: SHAP tree 200 of 300 (36.6 s)
+[2026-11-13 18:18:59 +  380.0s] rf: SHAP tree 250 of 300 (45.5 s)
+[2026-11-13 18:19:09 +  389.6s] rf: SHAP tree 300 of 300 (55.1 s)
+[2026-11-13 18:19:09 +  389.8s] rival_rf: 1000 rows, 134 players (111 nonzero), 117 variables (94 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-13 18:19:09 +  389.8s] summary: {'ridge': 'stopped (a stop rule)', 'lgbm': 'done', 'lgbm_tweedie': 'done', 'rf': 'done'}
+[2026-11-13 18:46:50 +    0.0s] rival SHAP fire lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-13 18:46:50 +    0.1s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-13 18:46:51 +    0.6s] test set: 96000 rows x 133 features (D:\treeroute\rival_export\fire\20261017_869d1f38\lead_0), read and hash-checked in 0.5 s
+[2026-11-13 18:46:52 +    1.7s] sample: 1000 explained rows, 14286 distinct background rows (per row: min 2, median 16, max 16)
+[2026-11-13 18:46:52 +    2.1s] ridge: 179 design columns; saved predictions reproduced on 95711 of 96000 test rows (max |diff| 5.55e-17): FAIL
+[2026-11-13 18:46:52 +    2.1s] STOP S-EXACT: ridge does not reproduce its saved predictions; no SHAP value
+[2026-11-13 18:46:53 +    2.1s] lgbm: finished piece found with matching hashes: skipped
+[2026-11-13 18:46:53 +    2.1s] lgbm_tweedie: finished piece found with matching hashes: skipped
+[2026-11-13 18:46:53 +    2.2s] rf: finished piece found with matching hashes: skipped
+[2026-11-13 18:46:53 +    2.2s] summary: {'ridge': 'stopped (a stop rule)', 'lgbm': 'skipped (done)', 'lgbm_tweedie': 'skipped (done)', 'rf': 'skipped (done)'}
+[2026-11-13 21:17:45 +    0.0s] rival SHAP fire lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-13 21:17:45 +    0.1s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-13 21:17:46 +    1.6s] test set: 96000 rows x 133 features (D:\treeroute\rival_export\fire\20261017_869d1f38\lead_0), read and hash-checked in 1.0 s
+[2026-11-13 21:17:49 +    4.1s] sample: 1000 explained rows, 14286 distinct background rows (per row: min 2, median 16, max 16)
+[2026-11-13 21:17:49 +    4.6s] ridge: 179 design columns; saved predictions reproduced on 95711 of 96000 test rows (max |diff| 5.55e-17): FAIL
+[2026-11-13 21:17:49 +    4.6s] STOP S-EXACT: ridge does not reproduce its saved predictions; no SHAP value
+[2026-11-13 21:17:49 +    4.8s] lgbm: finished piece found with matching hashes: skipped
+[2026-11-13 21:17:50 +    5.1s] lgbm_tweedie: finished piece found with matching hashes: skipped
+[2026-11-13 21:17:50 +    5.3s] rf: finished piece found with matching hashes: skipped
+[2026-11-13 21:17:50 +    5.3s] summary: {'ridge': 'stopped (a stop rule)', 'lgbm': 'skipped (done)', 'lgbm_tweedie': 'skipped (done)', 'rf': 'skipped (done)'}

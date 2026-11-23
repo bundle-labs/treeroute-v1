@@ -1,0 +1,231 @@
+kind,element,text,in_figure,in_caption,value,fact_id,source,checked_needle,figure_probe,caption_probe
+checked claim,package,"dataset package: data, column facts, ban list, split file, optional feature script",yes,yes,,M4,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,an optional feature script (which also builds the router context),optional feature script,optional feature script
+checked claim,package,the package is the only hand-set input,yes,yes,,M4,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The only hand-set input is a dataset package,the only hand-set input,only hand-set input
+checked claim,settings,36 written rules set every modelling setting,yes,yes,36,M4,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,R1-R36,36 written rules,36 written rules
+checked claim,settings,set before any compute,yes,yes,,M4,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,before any compute,before any compute,before any compute
+checked claim,settings,"four qualifiers on plug-and-predict, incl. coral bleaching's hand-set test window",yes,yes,4,M6,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Coral's 2016-2019 window departs from R3: it was set by leaving out the 2020 survey visits, and signed after the yearly counts were seen",four disclosed qualifiers,Four disclosed qualifiers
+checked claim,settings,NDVI's context drivers are test-exposed,no,yes,5,K12,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,five drivers from the run89 top-5 list (test-exposed,,five context drivers are test-exposed
+checked claim,settings,coral bleaching enters as a table; feature timing and marks vouched for,no,yes,,M6,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the owner vouches for its features and train/test marks,,table of survey visits
+checked claim,settings,46 training-only regions on coral bleaching,no,yes,46,M6,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,46 coral groups are train-only donors,,46 training-only regions
+checked claim,settings,plug-and-predict claimed for the four gridded problems only,no,yes,,02 §2.9,C:/Users/<user>/Desktop/data set for reserch paper/paper/draft/02_method.md (Section 2.9),Plug-and-predict is therefore claimed for the four gridded packages only,,claimed for the four gridded problems only
+checked claim,tree bank,100 specialist trees per region,yes,yes,100,M11,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Each group trains 100 trees,100 specialist trees,100 specialist trees
+checked claim,tree bank,tree depth 8,yes,yes,8,M11,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,depth 8,(depth 8),(depth 8)
+checked claim,tree bank,bootstrap bags of the region's training rows,yes,yes,,M11,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,drawn with replacement,bootstrap bags,bootstrap bags
+checked claim,tree bank,corrector: depth-6 tree on out-of-bag residuals,yes,yes,6,M15,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,depth 6,corrector,depth-6 tree
+checked claim,tree bank,no corrector below 50 out-of-bag rows; most coral trees have none,no,yes,50,M15,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"On coral, 5,851-6,384 of the 8,300 trees per bank have no corrector",,fewer than 50 out-of-bag rows has no corrector
+checked claim,tree bank,"placebo: control, never selectable",yes,yes,,M15,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,It is never selectable,"control, never selectable",never selectable
+checked claim,tree bank,tree inputs: kept columns (lagged) and own-history features; not the router context,yes,yes,,K9,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,router-context columns are a separate block and are not tree inputs,never the router,the router context is never a tree input
+checked claim,tree bank,no own-history features on coral bleaching,no,yes,,M35,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Coral: none,,own-history features (none on coral bleaching)
+checked claim,tree-answer table,location u uses only trees outside its overlap block,yes,yes,,M16,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,never sees the trees of its own overlap block,𝒦(u),outside the block
+checked claim,tree-answer table,every tree answer is an out-of-region prediction,yes,yes,,M18,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,out-of-group prediction,own mask,out-of-region predictions
+checked claim,tree-answer table,most overlap blocks hold one region (24 of 401 hold two),no,yes,,M17,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Two-group blocks,,most overlap blocks hold a single region
+checked claim,tree-answer table,coral rows are survey visits,yes,yes,,K1,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,each survey visit is one row,survey visits on coral,survey visits on coral bleaching
+checked claim,router,history depth h: median valid labels per location,yes,yes,,K6,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,h is the numpy median,history depth,history depth
+checked claim,router,one router type per problem,yes,yes,,M21,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The kind is set by h,one router type per problem,one router type per problem
+checked claim,per-location router,h >= 24,yes,yes,24,M21,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,h >= 24 gives per-unit,$h \geq 24$,$h \ge 24$
+checked claim,region router,2 <= h < 24,yes,yes,2;24,M21,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,2 <= h < 24 gives region,$2 \leq h < 24$,$2 \le h < 24$
+checked claim,neighbour router,h < 2,yes,yes,2,M21,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,h < 2 gives neighbour,$h < 2$,$h < 2$
+checked claim,per-location router,"PM2.5, NDVI, burned fraction",yes,yes,,M59,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Per-unit (with the exact trees-off = normal identity): PM2.5, NDVI and fire","PM2.5, NDVI, burned fraction","serves PM2.5, NDVI and burned fraction"
+checked claim,region router,forest loss,yes,yes,,M59,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Region (one pooled ridge per group, no context, no GLS): defo",forest loss,serves forest loss
+checked claim,neighbour router,coral bleaching,yes,yes,,M59,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Neighbour (no normal column, no climatology identity, constant donor-median reference): coral",coral bleaching,serves coral bleaching
+checked claim,per-location router,design [1 | n_u - nbar_u | z | T]; intercept and normal unpenalised,yes,yes,,M22,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The intercept and normal are unpenalised,$n_u-\bar{n}_u$,intercept and normal are unpenalised
+checked claim,per-location router,"penalties a_ctx kappa_ctx, a_tree kappa_tree; kappa = mean diagonal of own block",yes,yes,,M22,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,each scaled by the mean diagonal of their own block's Gram,$a_{\mathrm{tree}}\kappa_{\mathrm{tree}}$,mean diagonal
+checked claim,per-location router,penalty scale on the weighted Gram (X'WX),no,yes,,K16,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the mean diagonal of its block of X'WX,,weighted Gram matrix
+checked claim,per-location router,router fit rows: the location's own rows at or before the cut,yes,yes,,K15,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The fit rows are the scored unit's own rows,own router fit rows,own router fit rows
+checked claim,per-location router,trees-off fit = seasonal normal (exact),yes,yes,,M33,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,trees-off equals the normal exactly,trees-off fit = seasonal normal (exact),equals the seasonal normal exactly
+checked claim,per-location router,short-history fallback below 24 router fit rows,no,yes,24,M29,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,fewer than 24 valid fit rows are routed by their group's region router,,fewer than 24 router fit rows
+checked claim,region router,"at most 60,000 router fit rows of whole bank locations",yes,yes,60000,M27,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"largest evenly spaced set of whole units within 60,000 rows","60,000 router fit rows","60,000 router fit rows"
+checked claim,region router,"no router context, no error weighting",yes,yes,,M27,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,There is no GLS solve,no error weighting,no error weighting
+checked claim,region router,penalty lambda kappa^c_tree (centred tree Gram),yes,yes,,K7,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,lambda x (trace of the Gram of the tree block centred,"$\lambda\,\kappa^{c}_{\mathrm{tree}}$",column-centred tree block
+checked claim,region router,trees-off fit = seasonal normal (exact),yes,yes,,K8,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,asserted equal to the normal on every score row,trees-off fit = seasonal normal (exact),In both routers
+checked claim,neighbour router,150 nearest earlier training visits,yes,yes,150,M28,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,150 nearest,150 nearest,150 nearest
+checked claim,neighbour router,then the 50 most similar in tree inputs,yes,yes,50,M28,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,50 most similar,50 most similar,50 most similar
+checked claim,neighbour router,fewer than 12 eligible visits: training median,no,yes,12,M28,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,fewer than 12 eligible rows,,fewer than 12 visits are eligible
+checked claim,neighbour router,masks its own overlap block and every block in the pool,no,yes,,M28,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,drops the blocks of the row's own group and of every group in its pool,,every block in the pool
+checked claim,neighbour router,"design [1 | z | T], intercept alone unpenalised",yes,yes,,K19,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,only the intercept unpenalised,$\mathbf{z}$,only the intercept unpenalised
+checked claim,neighbour router,penalties trace-normalised per block (a kappa),yes,yes,,(code),"C:/Users/<user>/Desktop/data set for reserch paper/engine/treeroute/route/neighbour.py (module docstring, 'The local fit (R14)')",each penalised block trace-normalised on its own raw block,$a_{\mathrm{ctx}}\kappa_{\mathrm{ctx}}$,per-location penalty grid
+checked claim,neighbour router,no normal; reference and decline target = training median,yes,yes,,M43,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the donor median for the neighbour kind,reference = training median,reference and decline target are the training median
+checked claim,adaptation layer,"links identity, log(y + c), arcsine sqrt(y/U)",yes,yes,,M39,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"arcsine(sqrt(y/UB)) on [0, UB]",$\arcsin\sqrt{y/U}$,$\arcsin\sqrt{y/U}$
+checked claim,adaptation layer,links admitted by rules on declared bounds and training values,yes,yes,,K27,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the training rows hold at least one positive value,and training values,declared bounds and training values
+checked claim,adaptation layer,log constant c from the training rows at the lead's fit cut,no,yes,,K27,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,c is the 1st percentile (numpy linear) of positive training y at each lead's fit cut,,The log constant $c$
+checked claim,adaptation layer,answer type plain / corrected x weighting uniform / error-weighted,yes,yes,,M40,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"the arms are plain and corrector, each unweighted and GLS-weighted",answer type: plain,an answer type (plain or corrected)
+checked claim,adaptation layer,error weight omega = sigma-hat^-2,yes,yes,,M41,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The weight is 1/sigma^2,$\omega=\hat{\sigma}^{-2}$,$\omega = \hat\sigma^{-2}$
+checked claim,adaptation layer,trees-off fits and placebos never selectable,yes,yes,,M40,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Trees-off (the guard reference) and the placebo are never selectable,"never selectable: trees-off fits, placebos",Trees-off fits and placebos are never selectable
+checked claim,adaptation layer,"lowest surface MAE in units of y, back-transformed, clipped",yes,yes,,K30,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"scored by MAE in y units, on back-transformed, clipped predictions",lowest MAE on the decision,after back-transformation and clipping
+checked claim,adaptation layer,decision surface: scored locations' inner-score rows,yes,yes,,M46,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the scored units' inner-score rows,inner score window,inner score window
+checked claim,adaptation layer,"coral decision surface: training visits, one fold per region",no,yes,,K31,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,There is one fold per group (R13),,in one fold per region
+checked claim,adaptation layer,decision rows predicted by trees and routers fitted at the inner cut,no,yes,,K22,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,the bank is refit at the inner (guard) cut,,fitted at the inner cut
+checked claim,adaptation layer,error-weight target from trees that saw the inner score window,no,yes,,K28,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,at the nowcast they come from trees that saw the inner-score years,,not fully out of sample
+checked claim,skill guard,"surface MAE strictly below the reference, no margin",yes,yes,,M43,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,strictly below its own link's trees-off MAE,strictly below,strictly below (with no margin)
+checked claim,skill guard,reference = own-link trees-off fit (coral: training median),yes,yes,,K33,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Each link's trees-off, back-transformed and clipped, is that link's guard reference",reference: own-link trees-off fit,its own link's trees-off fit
+checked claim,skill guard,nowcast guard reuses the decision surface (no separate hold-out),no,yes,,M46,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,there is no separate holdout,,there is no separate hold-out
+checked claim,skill guard,"adopt lowest-MAE admitted arm, else decline",yes,yes,,M44,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"If none is eligible, the layer declines to the decline target",admitted arm,The admitted arm with the lowest surface MAE is adopted
+checked claim,decline target,arithmetic normal (gridded) / training median (coral),yes,yes,,M44,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"the identity (arithmetic) normal for grid kinds, the donor median for neighbour",arithmetic normal,"the arithmetic normal, or the training median on coral bleaching"
+checked claim,skill guard,log/arcsine reference differs from decline target (gridded),yes,yes,,K33,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,This holds for log and arcsine arms alike,differs from the decline target,which differs from the decline target
+checked claim,lock,adoption locked before test labels are opened,yes,yes,,M38,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Test labels open only if the hash matches,adoption locked,locked before the test labels are opened
+checked claim,test round,"test round: refit at tau, open test labels, forecast",yes,yes,,K22,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The test round reads the fit-cut objects,Test round,In the test round
+checked claim,forecast ladder,each lead's adoption locked before its test labels,yes,yes,,P17,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,At every lead of every run,lock,Each lead's adoption is locked
+checked claim,forecast ladder,tree bank refitted at the fit cut tau_L,yes,yes,,M47,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"The bank, correctors and c are refit at the lead's fit cut",tree bank refitted,refitted at the fit cut
+checked claim,forecast ladder,pinned arm = nowcast's adopted arm and penalty,yes,yes,,M47,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,The arm and penalty are PINNED to the nowcast's adoption,pinned arm,pins the nowcast's adoption directly
+checked claim,forecast ladder,pinned arm after a decline = best tree arm and its penalty,yes,yes,,K23,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,its best tree arm and that arm's penalty,best tree arm,its best tree arm and that arm's penalty
+checked claim,forecast ladder,"skill guard on guard rows, trees at the guard cut tau^g_L; fail declines",yes,yes,,M47,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"A guard bank at the lead's guard cut serves the guard. If it fails, the lead declines",guard cut,guard cut
+checked claim,forecast ladder,"leads 6 and 12 months (PM2.5, NDVI, burned fraction)",no,yes,6;12,M9,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"PM2.5, NDVI and fire: nowcast + 6 and 12 months",,6 and 12 months
+checked claim,forecast ladder,lead 1 year (forest loss),no,yes,1,M9,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,Defo: nowcast + 1 year,,1 year
+checked claim,forecast ladder,leads 183 and 365 days (coral),no,yes,183;365,M9,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"Coral: 0, 183 and 365 days",,183 and 365 days
+checked claim,test exposure,penalty-grid centres test-exposed,no,yes,,M24,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,are test-exposed,,the penalty-grid centres
+checked claim,test exposure,"60,000-row budget test-exposed",no,yes,60000,P23,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"The 60,000-row budget",,"60,000-row budget"
+checked claim,test exposure,inner-cut refit of the trees test-exposed,no,yes,,M19,C:/Users/<user>/Desktop/data set for reserch paper/paper/PAPER_FACTS.md,"A7.inner_cut_bank_refit = True, test-exposed",,the refit of the trees at the inner cut
+label drawn,package,Dataset package (the only hand-set input),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,package,data · column facts · ban list · split file ·,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,package,optional feature script (builds the router context),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,settings,Settings,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,settings,36 written rules set every modelling setting from the package,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,settings,"and fixed engine constants, before any compute;",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,settings,"four disclosed qualifiers (Section 2.9), e.g. coral bleaching's",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,settings,"test window, set by hand",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,1  Tree bank,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,region 1,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\cdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,region 2,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\cdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,region 3,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\cdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\vdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,region G,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\cdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,each region: 100 specialist trees,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,(depth 8) on bootstrap bags of,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,its own training rows,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,Each tree $k$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,tree answer $T_k$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,corrector $C_k$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,$\rightarrow$ corrected answer $T_k+C_k$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,placebo of the corrector:,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,"control, never selectable",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,tree inputs: columns the ban list,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,keeps (lagged) and own-history,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree bank,features; never the router context,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,Tree-answer table,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,rows: location-steps (survey visits on coral,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,bleaching); columns: trees by region,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,region 1,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,region 2,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,region 3,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,$\cdots$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,region G,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,location,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,$u'$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,$u$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,$u''$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,overlap block $ℬ(u)$ of $u$ (in region 2): masked,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,$u$ may use only the trees $𝒦(u)=\{k:$ region$(k)\notin ℬ(u)\}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,tree-answer table,(leave-one-block-out tree bank; each location has its own mask),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,router,2  Router,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,router,"one router type per problem, set by the history depth $h$ (Table 1)",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,Per-location router   $h \geq 24$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,"PM2.5, NDVI, burned fraction",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,"one ridge per location in link $\phi$, on its",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,own router fit rows,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,design,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,penalty,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$1$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,0,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$n_u-\bar{n}_u$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,0,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$\mathbf{z}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$a_{\mathrm{ctx}}\kappa_{\mathrm{ctx}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$\mathbf{T}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,per-location router,$a_{\mathrm{tree}}\kappa_{\mathrm{tree}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,Region router   $2 \leq h < 24$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,forest loss,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,one pooled ridge per region on at most,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,"60,000 router fit rows; no router context,",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,no error weighting,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,design,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,penalty,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,$1$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,0,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,$n_u-\bar{n}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,0,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,$\mathbf{T}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,region router,"$\lambda\,\kappa^{c}_{\mathrm{tree}}$",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,climatology identity,trees-off fit = seasonal normal (exact),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,climatology identity,trees-off fit = seasonal normal (exact),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,Neighbour router   $h < 2$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,coral bleaching,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,one ridge per scored survey visit (star) on the,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,50 most similar in tree inputs (dark dots),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,of the 150 nearest earlier training visits,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,design,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,penalty,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,$1$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,0,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,$\mathbf{z}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,$a_{\mathrm{ctx}}\kappa_{\mathrm{ctx}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,$\mathbf{T}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,$a_{\mathrm{tree}}\kappa_{\mathrm{tree}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,neighbour router,no normal; reference = training median,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,3  Adaptation layer,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,"nowcast ($L=0$), chosen on pre-test rows",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,4  Forecast ladder,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,each lead $L \geq 1$ (Table 1),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,Arms: link × answer type × weighting,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,link $\phi$: identity · $\log(y+c)$ · $\arcsin\sqrt{y/U}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,(admitted by rules on declared bounds,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,and training values),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,answer type: plain $T_k$ · corrected $T_k+C_k$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,"weighting: uniform · error-weighted, $\omega=\hat{\sigma}^{-2}$",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,penalty point: lowest MAE on the decision,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,"surface (inner score window, pre-test)",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,reference: own-link trees-off fit,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,(coral: training median),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,adaptation layer,"never selectable: trees-off fits, placebos",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,Skill guard,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,surface MAE,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,strictly below,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,the reference?,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,yes,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,adopt the,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,admitted arm,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,with the lowest,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,surface MAE,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,no,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,decline target,Decline,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,decline target,to the decline target:,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,decline target,the arithmetic normal,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,decline target,(coral: training median),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,lock,Lock,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,lock,adoption locked,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,lock,before test labels,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,lock,are opened,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,test round,Test round (nowcast),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,test round,trees and routers refitted at $\tau$; test,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,test round,"labels opened; forecast: the adopted arm,",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,test round,or the decline target after a decline,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,On gridded problems a log or arcsine arm's,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,reference (that link's back-transformed,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,normal) differs from the decline target,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,skill guard,(the arithmetic normal).,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,pinned arm = the adopted arm and penalty,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,(after a decline: its best tree arm),yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,lead $L_{1}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,tree bank refitted,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,at the fit cut $\tau_{L_{1}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,skill guard,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,"on the guard rows,",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,trees fitted at the,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,guard cut $\tau^{g}_{L_{1}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,lock,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,pass: forecast,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,fail,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,lead $L_{2}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,tree bank refitted,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,at the fit cut $\tau_{L_{2}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,skill guard,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,"on the guard rows,",yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,trees fitted at the,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,guard cut $\tau^{g}_{L_{2}}$,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,lock,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,pass: forecast,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,fail,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,
+label drawn,forecast ladder,decline to the decline target,yes,,,,drawn by fig1.py; facts in the checked-claim rows,,,

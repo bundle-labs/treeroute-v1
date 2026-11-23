@@ -1,0 +1,71 @@
+{
+ "lens": "Round 14 skeptic, reconciliation lens: could V\\reconcile (reconcile.py, rlib.py, mapping.md, mismatches.json, work\\summary.json) have hidden a disagreement between A, B and the official compare_shap.py outputs, or in B1?",
+ "verdict": "not_ready",
+ "findings": [
+  {
+   "severity": "major",
+   "what": "V\\reconcile\\report.md does not exist. Because of that, none of the reconciliation's conclusions is written down, and the report's counts cannot be confirmed. The B1 checks and the brief's required statement that no number of items 1-8 depends on B1 exist only as raw fields in work\\summary.json. Several of them are never compared in code. A_status/B_status, A_run/B_run and A_identity/B_identity are stored next to the reconciler's own values, and the independence facts are only recorded. The A/B side of that independence is not checked by reconcile.py at all.",
+   "evidence": "V\\reconcile was listed at 18:56 and again at 19:11 local time. It holds only mapping.md, mismatches.json, reconcile.py, rlib.py and work\\, and reconcile.py writes no report. The values in summary.json are correct, which I checked by hand. B1 nonzero counts equal meta.json: fire 113/96, pm25 105/91, ndvi 482/96. The defo identity check is 0/0 with the same rows, players and variables. Run facts match the logs and records. Every compare file's mtime, and the 'finished' time in pairs.parquet.done.json, is before 2026-11-15 23:06:16 (the latest is ndvi at 19:11:39). per_lead models never lists treeroute_B1. On the implementer side, A's opened_items_<p>.json lists no treeroute_B1 file, and B's README says the same and b_compare.py asserts it.",
+   "fix": "Write report.md. It should give: the counts (72,974 mismatching keys in 16 groups, 157 keys with no number, key counts); per group, the verdict and the value to report; the second checks (3,953 table cells); the per-draw checks (408 arrays per implementer); the B1 checks with their values; and the independence statement, citing the mtimes, A's open logs and B's assert. Ideally, also turn the side-by-side B1 records into asserts."
+  },
+  {
+   "severity": "minor",
+   "what": "classify() puts a key into a group by its key pattern and by whether the official files lack it. It never looks at the A-vs-B status. So an A-vs-B disagreement would be filed under a group whose diagnosis says A and B agree. That could happen for an importance, family-share, count or sign-agreement interval, a range end, an item-8 number or a derived set. mismatches.json also records no per-group status counts. Latent only: nothing is hidden in this run.",
+   "evidence": "See reconcile.py lines 441-466: the rules for no_interval_importance, no_interval_family_share, C08, sign_agreement_no_interval, C22, C25 and derived_only test only the key and eo/eod. I tallied the statuses in the rerun's mismatches.json: every key of those groups has AB=match (64,089 + 342 + 762 + 285 + 24 + 2,562 + 904).",
+   "fix": "Send any key with AB other than match (outside the groups built for A-vs-B choices) to its own 'A-B disagreement' group, or write per-group status counts into mismatches.json."
+  },
+  {
+   "severity": "minor",
+   "what": "verdict() ignores AOd/BOd. An official-derived key that both A and B lack would therefore count as 'match' (it compares only in one direction). Latent only.",
+   "evidence": "In compare_all/verdict (lines 382-411), AB, AO and BO are all 'absent_both' for such a key. In this run all 921 derived keys are present in A and B (derived_second_check: 916 match and 5 diff for each implementer; the 5 diffs are the item-8 J keys, explained under C25).",
+   "fix": "Count AOd or BOd = missing_in_first as a mismatch."
+  },
+  {
+   "severity": "minor",
+   "what": "sign_agreement_no_interval is marked affects_reported_numbers=false. But section 10 asks S3.13 for 'pairs x statistics with intervals', and the official files have no sign-agreement interval. pairs.parquet also writes finite_replicates=0 for 95 pair-levels whose agreement was never evaluated on any draw. That 0 is correct only for the 7 pairs where no sign is determined in both models.",
+   "evidence": "compare_shap.py lines 230-234 set lo = hi = NaN and nfin = 0. A = B on all 285 interval keys. My independent re-mapping found 95 DIFF on ci_low, ci_high and n_finite for each implementer, and 7 ok.",
+   "fix": "Mark the group as affecting S3.13: the interval must come from A/B or from a corrected compare_shap.py. Say that the official n_finite=0 must not be printed."
+  },
+  {
+   "severity": "minor",
+   "what": "The C15_empty_family resolution ('report compare_shap's 0') leaves coral's main-text row reading 'own history 0.00 [0.00, 0.00] / 0.00 [0.00, 0.00]', and defo's context-and-calendar share at 0.0%, although these problems have no variable in that family. The diagnosis does not ask for a note. The group is also labelled open_choice, although section 8's sum rule (a family's attribution is the sum of its variables' phi; an empty sum is 0) already gives compare_shap's 0.",
+   "evidence": "coral AW4_main_row.json: own_history_share_treeroute and own_history_share_median_rival are 0.0 with ci [0.0, 0.0, 2000]. A writes null with its why; B and the official outputs write 0. compare_shap.py lines 267-274.",
+   "fix": "Keep the 0, and have the main row and S3.13 say 'no own-history input' for coral and 'no context or calendar input' for defo."
+  },
+  {
+   "severity": "minor",
+   "what": "The C23 diagnosis covers only defo and pm25. For NDVI (four rivals), the official 'median rival' own-history share, 0.256 [0.236, 0.276], is the mean of the two middle rivals' shares. No rival has that share, yet the main-text column is labelled 'median rival'.",
+   "evidence": "compare_shap.py line 385 uses np.median. See NDVI's AW4_main_row.json. A's C23 says: 'for an even count, the mean of the two middle values'.",
+   "fix": "Say in the diagnosis, and in the table label, that NDVI's value is the median of the four rivals' shares."
+  },
+  {
+   "severity": "minor",
+   "what": "C15_feature_family_tvd and its B1 counterpart are resolved to 'no feature-level family TVD' only because compare_shap.py omits it. Yet section 8 lists the family-share distance among the statistics of 'every pair, both levels', and section 10 asks for the B1 pair 'at both levels ... and between their family shares'. The words can be read as deciding the question, not leaving it open. Only presentation is at stake: B's feature-level value equals the variable-level one.",
+   "evidence": "PROTOCOL.md lines 490-498 and 583-587. summary.json b1_feature_family_tvd: B's feature value equals the variable value, which equals A's (fire 0.8114, pm25 0.7038, ndvi 0.4904). For the main pairs, B's 204 feature-level keys repeat the variable-level values.",
+   "fix": "State that the words can be read either way and that the value is the variable-level one, and let the owner decide whether the feature-level tables show it."
+  },
+  {
+   "severity": "minor",
+   "what": "The test_set_columns_text diagnosis is inaccurate and partly unchecked. It says A 'also lists the context columns', but A's extra columns also include the own-history x__hist_* columns. Its claim that both implementers 'read the same records' is never compared, because test_set_records is in SKIP_KEYS. A names the export folder as '<run>'; B names it by run id.",
+   "evidence": "Independent walk (s06): for defo, A has 310 columns and B has 306; A-only columns are x__hist_last_1..3, x__hist_mean_5 and x__hist_mean_all; B-only is 'issue'. rlib.SKIP_KEYS.",
+   "fix": "Correct the sentence, and compare the folders the two implementers read."
+  },
+  {
+   "severity": "minor",
+   "what": "Two latent deviations in compare_shap.py are not reported. Item 8's top 10 is ordered with np.argsort(-Iz) (line 313), not by section 8's name tie rule. The AW3 header lists at most 30 structural zeros (line 413). Neither has any effect in this run.",
+   "evidence": "The 12 largest item-8 shares are distinct for all five arcsine models (coral's 4, fire's treeroute). The largest structural-zero count at any level is 29 (defo, feature level).",
+   "fix": "Record both as latent deviations with no effect."
+  }
+ ],
+ "checked": [
+  "Rerun: copied reconcile.py and rlib.py to V\\skeptic\\reconcile\\rerun, changing only rlib.RC and the sys.path line, and ran py -3.9 -I -B (exit 0, 9.5 s). mismatches.json (16,321,120 bytes) and work\\summary.json equal V\\reconcile's in every field except run times (0 differences). Counts reproduced: keys A 117,944, B 117,946, official 38,354, derived 921; numbers A 107,677, B 107,948, official 29,023; verdicts items 1-8: 34,121 match, 72,962 mismatch, 157 with no number; B1: 14,412 match, 12 mismatch; 16 groups with the same sizes. V\\reconcile was left untouched. report.md is absent, so its counts could not be compared.",
+  "Mapping, re-checked with my own code (not official()/flatten()): every pairs.parquet row (value, CI, finite_replicates, signs_compared), all 7,121 active importance.parquet rows (I, share, signed mean, sign_determined), families.parquet, per_lead W, mean rho, stability, nonzero players and item 8, and AW4_main_row.json against A's and B's keys. All equal within 1e-12 apart from the known groups. No duplicate key rows in the official parquet files; pairs are in alphabetical order.",
+  "The 898 rows (3,592 keys) present only in the official importance.parquet are exactly the players outside J. Every structural-zero column is exactly 0 on every row of every model's row file. Item 8's J (all variables minus the structural zeros) equals A's and B's J.",
+  "Independent walk of both results.json files: no interval object holds extra keys, and the skipped keys hold only text or paths. A and B differ only on the feature-level family TVD (main and B1), the empty families, coral's main-row own-history entries, and text fields.",
+  "Tolerance: over all matched numbers the largest |difference| is 1.6e-15 and the largest relative difference 9.5e-13, so the 1e-9 tolerance hides nothing. The rounded AW3/AW4 tables are only a second check: all 3,953 cells equal the unrounded official values, and A or B differ only through the empty families. All 408 bootstrap_stats per-draw arrays match A's and B's npz (largest difference 2.8e-15).",
+  "Per group, every key in a group whose diagnosis says A = B has AB=match. The 5 derived-value disagreements are item 8's J and are explained under C25.",
+  "Diagnoses checked against PROTOCOL.md sections 5, 8 and 10 and against compare_shap.py and shapv1_stats.py, for fire_main_row_missing, sign_agreement_no_interval, C15_empty_family, C22, C23, C25, no_interval_importance, C08, undefined_nan_zero_replicates and derived_only. The cited lines and file contents are correct. Fire's AW4 JSON and table hold neither treeroute's top 3 nor its own-history share; coral's own-history share is 0 [0, 0] with 2,000 finite replicates.",
+  "B1: folder status, the meta fields, the registered sample (one register line per problem), the nonzero counts against meta.json, defo's identity check (also recomputed by the reconciler) and the run facts against the logs all agree. per_lead models never lists treeroute_B1. compare_shap.py reads only folders named treeroute or rival_* (line 88). A's items 1-8 open logs list no treeroute_B1 file.",
+  "Independent B1 spot check from the row files (fire, pm25 and ndvi, both levels): the pair J, I, shares, signed means, Spearman over J, top 10 and nonzero counts all equal A's and B's (differences of at most 3.3e-16)."
+ ]
+}

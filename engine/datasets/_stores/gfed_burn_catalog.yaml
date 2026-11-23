@@ -1,0 +1,68 @@
+# gfed_burn -- side-store catalog SEED (physical facts only, all 'unverified'), 2026-09-28T12:30:28
+store: gfed_burn
+path_template: D:/gfed_burn/{group}_burn_{year}.parquet
+keys:
+  unit: cell_id
+  time:
+  - year
+  - month
+product: GFED monthly burned fraction on the panel cells (ingested for PM2.5)
+provenance: pm25_architecture.py:67
+cadence: 1 month
+stamp: period_end
+window:
+  length: 1
+  unit: month
+  align: backward
+fill_values: []
+fact_status_default: unverified
+generated_by: engine/datasets/_tools/export_review_csv.py
+generated_at: '2026-09-28T12:30:28'
+absent_groups:
+  alaska_north_slope: no GFED file for this panel group (directory listing 2026-09-28)
+  canadian_arctic_nunavut: no GFED file for this panel group (directory listing 2026-09-28)
+  finnish_lapland: no GFED file for this panel group (directory listing 2026-09-28)
+  taimyr_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+  tierra_del_fuego: no GFED file for this panel group (directory listing 2026-09-28)
+  yamal_peninsula: no GFED file for this panel group (directory listing 2026-09-28)
+columns:
+- name: cell_id
+  dtype: string
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: null
+    max: null
+- name: year
+  dtype: int16
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: 2002.0
+    max: 2023.0
+- name: month
+  dtype: int8
+  units: null
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: 1.0
+    max: 12.0
+- name: burn_frac
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.00035
+    min: -0.0
+    max: 1.0
+- name: burn_npix
+  dtype: int32
+  units: count
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: 0.0
+    max: 4265.0

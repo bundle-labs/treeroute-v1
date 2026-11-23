@@ -1,0 +1,279 @@
+{
+ "defo_identity": {
+  "n_rows_main": 1000,
+  "n_rows_b1": 1000,
+  "same_rows": true,
+  "max_abs_diff_phi": 0.0,
+  "nan_mismatch_phi": 0,
+  "n_phi_main": 309,
+  "n_phi_b1": 309,
+  "same_phi_names": true,
+  "bitwise_equal_phi": true,
+  "max_abs_diff_phiv": 0.0,
+  "nan_mismatch_phiv": 0,
+  "n_phiv_main": 121,
+  "n_phiv_b1": 121,
+  "same_phiv_names": true,
+  "bitwise_equal_phiv": true,
+  "other_columns": {
+   "unit": true,
+   "group": true,
+   "time": true,
+   "year": true,
+   "base": 0.0,
+   "eta": 0.0,
+   "eta_model": 0.0,
+   "pre": 0.0,
+   "resid": 0.0,
+   "gap": 0.0,
+   "add_err": 0.0
+  },
+  "meta_treeroute": {
+   "pairs": 16000,
+   "trees_used": 4200,
+   "players_nonzero": 279,
+   "variables_nonzero": 99,
+   "tree_shap_seconds": 413.9,
+   "background": "B2",
+   "pass": true
+  },
+  "meta_treeroute_B1": {
+   "pairs": 16000,
+   "trees_used": 4200,
+   "players_nonzero": 279,
+   "variables_nonzero": 99,
+   "tree_shap_seconds": 464.3,
+   "background": "B1",
+   "pass": true
+  }
+ },
+ "fire_b1_variable": {
+  "J_n": 96,
+  "structural_zeros": [
+   "CTI",
+   "awc_cm3cm3",
+   "bulk_density_gcm3",
+   "cec_cmolkg",
+   "clay_pct",
+   "coarse_fragments_pct",
+   "conflict_deaths",
+   "conflict_events",
+   "ctx:lat",
+   "dist_to_coast_km",
+   "elevation_m",
+   "hand_m",
+   "irrigation_pct_gmia",
+   "nitrogen_gkg",
+   "sand_pct",
+   "silt_pct",
+   "slope_deg",
+   "soil_organic_carbon_gkg",
+   "soil_ph",
+   "southness",
+   "upstream_area_km2"
+  ],
+  "J_only_from_b1": [
+   "calendar",
+   "normal"
+  ],
+  "spearman_J": {
+   "value": 0.8419249929680566,
+   "ci_low": 0.7827354609901933,
+   "ci_high": 0.8673216811013013,
+   "n_finite": 2000
+  },
+  "tv_shares": {
+   "value": 0.5422957561297295,
+   "ci_low": 0.41350758889484984,
+   "ci_high": 0.6438028961167983,
+   "n_finite": 2000
+  },
+  "spearman_top20_union": {
+   "value": 0.39133089133089133,
+   "ci_low": 0.2462985769020252,
+   "ci_high": 0.49948717948717947,
+   "n_finite": 2000
+  },
+  "rbo_p090": {
+   "value": 0.4586152340878628,
+   "ci_low": 0.42443825379737266,
+   "ci_high": 0.610805264380368,
+   "n_finite": 2000
+  },
+  "b1_top10": [
+   [
+    "normal",
+    0.5420783730452287
+   ],
+   [
+    "era5l_str",
+    0.014955729639046383
+   ],
+   [
+    "wbal",
+    0.014787652244604148
+   ],
+   [
+    "hist_mean",
+    0.014335536358905561
+   ],
+   [
+    "deeprec_twsa",
+    0.014165337077246697
+   ],
+   [
+    "tslf_months",
+    0.012974551398793046
+   ],
+   [
+    "spei",
+    0.01122769123980211
+   ],
+   [
+    "rmin_pct",
+    0.010767395601438879
+   ],
+   [
+    "era5l_sshf",
+    0.01039201110873177
+   ],
+   [
+    "spi",
+    0.009963579351359969
+   ]
+  ],
+  "b1_n_nonzero_own_columns": 96,
+  "draws_sha256_match": true,
+  "b1_family_shares": {
+   "own_history": 0.0218097104924482,
+   "global_indices": 0.04081947318009992,
+   "local_drivers": 0.1260176011285401,
+   "context_and_calendar": 0.00022874088180238348,
+   "seasonal_normal": 0.8111244743171094
+  },
+  "tv_family_shares": {
+   "value": 0.8113532151989118,
+   "ci_low": 0.7157861889421349,
+   "ci_high": 0.8728428810002953,
+   "n_finite": 2000
+  },
+  "b1_own_history_share": {
+   "value": 0.0218097104924482,
+   "ci_low": 0.014290223955271904,
+   "ci_high": 0.03409822000751631,
+   "n_finite": 2000
+  },
+  "b1_top3": [
+   [
+    "normal",
+    0.5420783730452287
+   ],
+   [
+    "era5l_str",
+    0.014955729639046383
+   ],
+   [
+    "wbal",
+    0.014787652244604148
+   ]
+  ]
+ },
+ "fire_b1_feature": {
+  "J_n": 113,
+  "structural_zeros": [
+   "c__ctx:lat",
+   "x__V25_elevation_m",
+   "x__V26_slope_deg",
+   "x__V27_southness",
+   "x__V28_CTI",
+   "x__awc_cm3cm3",
+   "x__bulk_density_gcm3",
+   "x__cec_cmolkg",
+   "x__clay_pct",
+   "x__coarse_fragments_pct",
+   "x__conflict_deaths",
+   "x__conflict_events",
+   "x__dist_to_coast_km",
+   "x__hand_m",
+   "x__irrigation_pct_gmia",
+   "x__nitrogen_gkg",
+   "x__sand_pct",
+   "x__silt_pct",
+   "x__soil_organic_carbon_gkg",
+   "x__soil_ph",
+   "x__upstream_area_km2"
+  ],
+  "J_only_from_b1": [
+   "c__ctx:month",
+   "normal"
+  ],
+  "spearman_J": {
+   "value": 0.822137247442657,
+   "ci_low": 0.7547112139696557,
+   "ci_high": 0.8572367531889272,
+   "n_finite": 2000
+  },
+  "tv_shares": {
+   "value": 0.5259186580535489,
+   "ci_low": 0.39969909486730737,
+   "ci_high": 0.6284898835672406,
+   "n_finite": 2000
+  },
+  "spearman_top20_union": {
+   "value": 0.2606837606837607,
+   "ci_low": 0.06398190190618977,
+   "ci_high": 0.36615750915750916,
+   "n_finite": 2000
+  },
+  "rbo_p090": {
+   "value": 0.5688556295882188,
+   "ci_low": 0.42817398851234967,
+   "ci_high": 0.5885762540456038,
+   "n_finite": 2000
+  },
+  "b1_top10": [
+   [
+    "normal",
+    0.5257009877331216
+   ],
+   [
+    "x__era5l_str",
+    0.014496362175911803
+   ],
+   [
+    "x__deeprec_twsa",
+    0.01373122241494357
+   ],
+   [
+    "x__tslf_months",
+    0.012579500635340817
+   ],
+   [
+    "x__wbal_roll3",
+    0.010475255212562411
+   ],
+   [
+    "x__rmin_pct",
+    0.010437187580157381
+   ],
+   [
+    "x__era5l_sshf",
+    0.010080392044033088
+   ],
+   [
+    "x__hist_mean_60",
+    0.009064597436322042
+   ],
+   [
+    "x__V05_mean_vpd_kPa",
+    0.008956348272070125
+   ],
+   [
+    "x__V03_max_daily_precip_mm",
+    0.00866209689911807
+   ]
+  ],
+  "b1_n_nonzero_own_columns": 113,
+  "draws_sha256_match": true
+ }
+}

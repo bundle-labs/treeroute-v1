@@ -1,0 +1,188 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": false
+   }
+  },
+  "E10_exported_trees": {
+   "pass": true,
+   "values": {
+    "rows_x_trees": [
+     51,
+     7700
+    ],
+    "what": "the first fitted row's pool and test row, every tree"
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "85c64b55c02e638c",
+    "engine_root": "D:\\treeroute\\engine_v2\\engine_v1_ref",
+    "manifest": "85c64b55c02e638c"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3_inputs": {
+   "pass": true,
+   "values": {
+    "config_keys_differing": [],
+    "derived": "0afecb5ec4b1c4cf",
+    "fingerprint": "f3b8e3daee7474db",
+    "manifest_fingerprint": "f3b8e3daee7474db",
+    "package": "5b9383f0446df0f1"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [
+     "target_files_sha256"
+    ],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [],
+    "path_map": false,
+    "static_files_sha256": [
+     "4f53cda18c2baa0c",
+     "4f53cda18c2baa0c"
+    ],
+    "target_files_sha256": [
+     "{'_not_computed'",
+     "e1239c53e1a8b222"
+    ]
+   }
+  },
+  "E4_donor_rows": {
+   "pass": true,
+   "values": {
+    "row_key_hash": [
+     "7b687cdf4d66b3c8",
+     "7b687cdf4d66b3c8"
+    ],
+    "rows": [
+     11338,
+     11338
+    ]
+   }
+  },
+  "E5_bank_fingerprint": {
+   "pass": false,
+   "values": {
+    "rebuilt": "b8f9084f87ba2a5860cdb3bf9e34993a7b5f1680c1d5237adb1247c49b4dd574",
+    "role": "informational, cause not established (answers decide: E5a, E8, E10)",
+    "run": "d7acde42e32c15d135010469a85b4188ec21e0d4224d1b5e0fcfb19d709f769c",
+    "trees": 8300
+   }
+  },
+  "E5a_identity_twin": {
+   "pass": true,
+   "values": {
+    "arm": "identity_corrector_gls",
+    "arm_bit_equal": 2312,
+    "bit_identical": true,
+    "max_abs_pre": 0.0,
+    "max_rel_arm": 0.0,
+    "max_rel_pre": 0.0,
+    "max_ulps_arm": 0,
+    "max_ulps_pre": 0,
+    "pre_bit_equal": 2312,
+    "rows_checked": 2312,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "units": 2312,
+    "within_relative_tolerance": true
+   }
+  },
+  "E6_c_and_tolerances": {
+   "pass": true,
+   "values": {
+    "c": [
+     0.1084375,
+     0.1084375
+    ]
+   }
+  },
+  "E7_gls_weight_model": {
+   "pass": true,
+   "values": {
+    "rebuilt": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\coral\\headline\\20261112_f3b8e3da\\gls_weight_model.json",
+    "run": "D:\\treeroute\\runs\\coral\\headline\\20261020_f3b8e3da\\gls_weight_model.json"
+   }
+  },
+  "E8_predictions": {
+   "pass": true,
+   "values": {
+    "arm": "arcsine_corrector_gls",
+    "arm_bit_equal": 2228,
+    "bit_identical": false,
+    "d8_licence": "E5a at this lead (the arm's identity-link twin, bit-identical)",
+    "max_abs_pre": 2.1316282072803006e-14,
+    "max_rel_arm": 1.055062494413031e-15,
+    "max_rel_pre": 1.055062494413031e-15,
+    "max_ulps_arm": 8,
+    "max_ulps_pre": 8,
+    "pre_bit_equal": 2228,
+    "rows_checked": 2312,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "tolerance_rule": "relative 1e-12 (|rebuilt - saved| <= 1e-12 |saved|, exact where saved is 0) on an arcsine arm (owner decision D8), licensed by: E5a at this lead (the arm's identity-link twin, bit-identical)",
+    "units": 2312,
+    "within_relative_tolerance": true
+   }
+  },
+  "E9_coefficients_reproduce_the_kernel": {
+   "pass": true,
+   "values": {
+    "fits_captured": 2312,
+    "fits_whose_X_b_differs_from_the_kernel": 0,
+    "region_proof": null
+   }
+  }
+ },
+ "peak_gb": 1.3,
+ "result": {
+  "arm": "arcsine_corrector_gls",
+  "c": 0.1084375,
+  "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\coral\\headline\\20261112_f3b8e3da",
+  "kind": "neighbour",
+  "legal": [
+   0.0,
+   100.0
+  ],
+  "link": "arcsine",
+  "point": {
+   "level": 100.0,
+   "ratio": 1.0
+  },
+  "rows_checked": 2312,
+  "table_kind": "corrector",
+  "ub": 100.0,
+  "weighted": true
+ },
+ "seconds": 223.4,
+ "stopped_at": null
+}

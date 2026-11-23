@@ -1,0 +1,30 @@
+[    0.0s] protocol hash OK c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4
+[    0.1s] eligible (candidate_order): ['identity_plain_unweighted', 'identity_plain_gls', 'identity_corrector_unweighted', 'identity_corrector_gls', 'log_c_plain_unweighted', 'log_c_plain_gls', 'log_c_corrector_unweighted', 'log_c_corrector_gls']
+[    2.3s] surface rows 68559, grid cols read 280, RAM peak 0.647 GB
+[    2.7s] G1 True chosen rel 1.33e-16, max rel over 280 points 3.88e-16, eligible recomputed 8
+[    2.7s] point flags (own pick differs from adopted, used at adopted point): {'identity_plain_unweighted': [30.0, 0.125], 'identity_corrector_unweighted': [30.0, 0.125]}
+[    3.2s] test rows 91440; finite C&T 91440; all-arms finite 91440
+[    3.2s] alarm: gap surface 0.275970 test 0.275105 ratio 0.9969 fires False; per year {2020: 0.9931055702179851, 2021: 0.9016093649930125, 2022: 0.9421552627119745, 2023: 1.1505933320110449}
+[    3.2s] M4 surface MAE (beside) 3.390630 vs chosen 3.339518
+[    3.6s] folds by group (127 groups): rows per fold {0: 15659, 1: 11872, 2: 12959, 3: 14033, 4: 14036}
+[    3.6s] M5 LP (true surface y)
+[  160.3s]   M5[true] fold 0: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+[  314.6s]   M5[true] fold 1: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8398, 0.1602]
+[  437.6s]   M5[true] fold 2: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+[  548.7s]   M5[true] fold 3: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0936, 0.0, 0.9064, 0.0]
+[  679.9s]   M5[true] fold 4: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0589, 0.0, 0.9411, 0.0]
+[  824.7s] M5: CF-MAE 3.341044 vs chosen 3.339518 -> FALLBACK:CF; full weights {'identity_plain_unweighted': 0.0, 'identity_plain_gls': 0.0, 'identity_corrector_unweighted': 0.0, 'identity_corrector_gls': 0.0, 'log_c_plain_unweighted': 0.0, 'log_c_plain_gls': 0.0, 'log_c_corrector_unweighted': 1.0, 'log_c_corrector_gls': 0.0}
+[  824.7s] M5 placebo LP (shuffled surface y)
+[  945.6s]   M5[placebo] fold 0: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[ 1063.2s]   M5[placebo] fold 1: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[ 1163.9s]   M5[placebo] fold 2: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[ 1274.3s]   M5[placebo] fold 3: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[ 1379.5s]   M5[placebo] fold 4: train 50000 rows, weights [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[ 1477.4s] M5 placebo: CF-MAE 17.027684 vs chosen-on-y_placebo 17.121766 -> gated M5_placebo; weights {'identity_plain_unweighted': 0.0, 'identity_plain_gls': 0.0, 'identity_corrector_unweighted': 0.0, 'identity_corrector_gls': 0.0, 'log_c_plain_unweighted': 0.0, 'log_c_plain_gls': 1.0, 'log_c_corrector_unweighted': 0.0, 'log_c_corrector_gls': 0.0}; RAM 0.966 GB
+[ 1478.2s] G3 True (surface 1.0000, test 1.0000); X surface (68559, 118) test (91440, 118); RAM 0.966 GB
+[ 1478.2s] M6 chooser (true features)
+[ 1485.6s]   M6[true]: nontie 68559 (ties 0), base rate 0.4749, CF ACC 0.5209 (majority 0.5251), AUC 0.5216 -> FALLBACK:ACC; test mean p 0.5704, switched 0.8172
+[ 1485.6s] M6 placebo (features shuffled against z)
+[ 1492.8s]   M6[placebo]: nontie 68559 (ties 0), base rate 0.4749, CF ACC 0.5141 (majority 0.5251), AUC 0.4957 -> FALLBACK:ACC; test mean p 0.4864, switched 0.3665
+[ 1492.8s] RAM peak 1.146 GB
+[ 1493.0s] stage A done: D:/treeroute/analysis/guidance/pm25\method_preds_pm25.parquet, D:/treeroute/analysis/guidance/pm25\stageA_pm25.json; 1493.0 s; peak RAM 1.146 GB

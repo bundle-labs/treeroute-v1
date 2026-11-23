@@ -1,0 +1,34 @@
+PART_LOG_DRAFT_partB.txt - the Part A section-12 log entry for the Part B (fire) build, drafted 2026-10-25 by builder
+B4_prereg (SPEC_HUMAN_PARTB.txt section 6; Part 618 precedent). Part A section 12: "Any change to a file of section 1 ...
+Each fix is logged as a new Part with the old and new hashes, the reason and the diff."
+HOW TO USE: the final integration stage fills every <TO FILL>; then the MAIN SESSION appends the block between the two
+marker lines to engine/PENDING_PARTS.md (the engine folder is outside the build's write root), with the next free Part
+number (621 if nothing else is appended first). Nothing in it is a test score; no fire human command ran on real data.
+
+----------------------------------------------------- BEGIN PART LOG -----------------------------------------------------
+## Part <next> - HUMAN TOOL CHANGE FOR PART B (fire), Part A section 12: TOOL cd956f1d -> <TO FILL>, _products.yaml 4e479759 -> <TO FILL>; NO PART A PICK, BOARD OR SCORE RE-RUN
+
+2026-10-<TO FILL>.
+- **Why.** Part B (fire human rivals; ruling AB, Q22 a) is built into the same human tool (spec SPEC_HUMAN_PARTB.txt). Adding fire files and one shared edit changes two Part A section-1 hashes, so this Part logs it (as Part 618 did).
+- **Tool code:** cd956f1dbd0f9b0f2ada37c1a27f8212768d94fc6242cab0686bf7c71608a273 -> <TO FILL>.
+  - Added (fire only; plug and predict, no problem name in rivals_human/): adapters/fire_geff.py <TO FILL>, adapters/fire_refs_prep.py <TO FILL>, adapters/fire_enso.py <TO FILL>, adapters/fire_turco.py <TO FILL>, adapters/fire_lag_common.py <TO FILL>.
+  - Edited, the ONE shared code edit (spec 4.4; owner decision OD-14): rivals_human/maps.py f38d7ce78ede1b10 -> <TO FILL>.
+    - What: F6 is fitted as research C-A states it. On fit rows the normal is the unit-month mean with the row's own year left out, N_loo = (S_c - y) / (n_c - 1) from the cell sum. The isotonic ratio is fitted with weights N_loo^2, i.e. squared error on the burned fraction (PLAN rule 5). Iso.fit gains an optional `weights` argument; with None it makes the old call.
+    - Why (measured on lead-0 refit rows, training labels only): with the in-sample normal the old F6 level is 1.0 by construction against 0.846 out of sample; 2,192 of 14,834 burned rows are single-burn cells; the unweighted ratio loss is ruled by tiny-N rows (mean ratio 1.58).
+    - Diff: BUILD_NOTES_fire_B2.txt section 5 (diff -u baseline new) <TO FILL: re-check it equals the final file>. Baseline kept at human_rivals_build/_moved/20261025T194657Z_partB_baseline/rivals_human/maps.py.
+- **Registries.**
+  - registry/fire.yaml: new, <TO FILL>.
+  - registry/_products.yaml: 4e4797597c0a7c76815159d7ce5fa3cf723d2b996d1e3b67a05968136bcb5d1f -> <TO FILL>. The fire block is appended; every Part A entry is unchanged (T-F15 c). Baseline kept at _moved/20261025T194657Z_partB_baseline/registry/_products.yaml. (The owner's later F4b folder edits change it again before signing; Part B section 1 records the final value.)
+  - Unchanged (T-F15 b): _schema.yaml 0d4dbcb7, coral.yaml 7e356d61, defo.yaml fe11acf4, pm25.yaml 5fe8e221, ndvi.yaml b69537fc.
+- **Proofs (tests_fire, toy data and finished-board files only):**
+  - T-F15 a: the tool hash recipe over every code file except adapters/fire_*.py, with maps.py replaced by its baseline bytes, gives cd956f1d. So no other tool file changed. <TO FILL: pass>
+  - T-F15 e: maps.py differs from the baseline only in the module docstring, Iso.fit, the F6PctRatio class and the new F6_* constants. No Part A registry lists F6. <TO FILL: pass>
+  - T-F10: F6 after the edit; Iso.fit without weights and the F2 / F4 fits are byte-equal to the baseline module. <TO FILL: pass>
+  - T-F15 d (realdata, run separately with HUMAN_REAL=1): `join --runs CORAL DEFO PM NDVI --pending FIRE` writes a RIVALS_TABLE.csv byte-equal to Part 619's (sha256 1ccac0e7eb9defc0...78ba). <TO FILL: result>
+- **Part A effect: none.**
+  - No Part A pick, board or score is re-run.
+  - The coral, defo and pm25 boards stay as made under 32ec5df0, and the NDVI board under cd956f1d. They refuse load_board under the new hash and need no further command.
+  - The joiner never calls load_board and never compares tool hashes (T-F15 d).
+- **Tests on the final code:** the ONE full suite <TO FILL: passed / skipped / failed, log>; the separate realdata command <TO FILL>.
+- **Not done here:** no download (~/.ewdsapirc is missing); no fire human command on real data; Part B is unsigned. OD-14 still needs the owner's confirmation. If the owner declines, the baseline maps.py is restored before the F7 DRY pass and this Part gets an addendum.
+------------------------------------------------------ END PART LOG ------------------------------------------------------

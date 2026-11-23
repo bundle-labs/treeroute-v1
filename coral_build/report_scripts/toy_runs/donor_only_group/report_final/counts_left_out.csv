@@ -1,0 +1,10 @@
+what,lead,source,rows_record,rows_file
+H4 test rows absent at the lead (left out of scoring),183,lead.json issue_features_missing / issue_missing_rows.parquet,0,0
+H4 test rows absent at the lead (left out of scoring),365,lead.json issue_features_missing / issue_missing_rows.parquet,3,3
+"S1/G1 rows with missing router context, left out",0,context_missing/decision_surface.parquet (neighbour_pool:decision_surface),3,3
+"S1/G1 rows with missing router context, left out",0,context_missing/lead_0_contract.parquet (neighbour_pool:lead_0_contract),3,3
+"S1/G1 rows with missing router context, left out",183,context_missing/lead_183_guard.parquet (neighbour_pool:lead_183_guard),3,3
+"S1/G1 rows with missing router context, left out",183,context_missing/lead_183_test_pass.parquet (neighbour_pool:lead_183_test_pass),3,3
+"S1/G1 rows with missing router context, left out",365,context_missing/lead_365_guard.parquet (neighbour_pool:lead_365_guard),3,3
+"S1/G1 rows with missing router context, left out",365,context_missing/lead_365_test_pass.parquet (neighbour_pool:lead_365_test_pass),3,3
+"S1/G1 rows with missing router context, left out",0,context_missing/test_pass.parquet (neighbour_pool:test_pass),3,3

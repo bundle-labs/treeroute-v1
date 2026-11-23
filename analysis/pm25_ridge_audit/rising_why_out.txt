@@ -1,0 +1,66 @@
+
+=== rising >3%/yr: 88 units in 26 regions
+all months                   rows   4224  MAE ours 2.535 ridge 2.691  gap +0.157 | bias ours -1.181 ridge -1.316 | mean y 10.63 normal 9.69 ours 9.45 ridge 9.32
+spike months (y > own p90)   rows    557  MAE ours 10.522 ridge 11.145  gap +0.624 | bias ours -10.046 ridge -10.680 | mean y 25.91 normal 15.78 ours 15.87 ridge 15.23
+ordinary months              rows   3667  MAE ours 1.321 ridge 1.407  gap +0.086 | bias ours +0.166 ridge +0.106 | mean y 8.31 normal 8.76 ours 8.48 ridge 8.42
+year 2020                    rows   1056  MAE ours 2.418 ridge 2.719  gap +0.301 | bias ours -1.243 ridge -1.602 | mean y 10.82 normal 9.69 ours 9.58 ridge 9.22
+year 2021                    rows   1056  MAE ours 3.354 ridge 3.577  gap +0.223 | bias ours -2.157 ridge -2.113 | mean y 11.63 normal 9.69 ours 9.47 ridge 9.52
+year 2022                    rows   1056  MAE ours 1.949 ridge 1.970  gap +0.022 | bias ours -0.519 ridge -0.324 | mean y 9.74 normal 9.69 ours 9.22 ridge 9.41
+year 2023                    rows   1056  MAE ours 2.418 ridge 2.498  gap +0.080 | bias ours -0.803 ridge -1.227 | mean y 10.34 normal 9.69 ours 9.54 ridge 9.12
+
+=== rising 1-3%/yr: 341 units in 63 regions
+all months                   rows  16365  MAE ours 3.859 ridge 3.903  gap +0.044 | bias ours -0.525 ridge -1.230 | mean y 23.19 normal 22.54 ours 22.66 ridge 21.96
+spike months (y > own p90)   rows   2110  MAE ours 8.836 ridge 9.572  gap +0.736 | bias ours -7.828 ridge -8.366 | mean y 43.64 normal 34.89 ours 35.82 ridge 35.28
+ordinary months              rows  14255  MAE ours 3.123 ridge 3.064  gap -0.058 | bias ours +0.556 ridge -0.174 | mean y 20.16 normal 20.71 ours 20.72 ridge 19.99
+year 2020                    rows   4092  MAE ours 3.797 ridge 4.087  gap +0.290 | bias ours -0.621 ridge -1.275 | mean y 23.40 normal 22.53 ours 22.78 ridge 22.12
+year 2021                    rows   4089  MAE ours 3.433 ridge 3.613  gap +0.180 | bias ours -0.842 ridge -0.860 | mean y 23.46 normal 22.55 ours 22.62 ridge 22.60
+year 2022                    rows   4092  MAE ours 3.966 ridge 3.913  gap -0.053 | bias ours -0.931 ridge -1.425 | mean y 23.40 normal 22.53 ours 22.47 ridge 21.97
+year 2023                    rows   4092  MAE ours 4.241 ridge 4.001  gap -0.241 | bias ours +0.295 ridge -1.360 | mean y 22.49 normal 22.53 ours 22.79 ridge 21.14
+
+=== flat: 604 units in 101 regions
+all months                   rows  28987  MAE ours 3.624 ridge 3.648  gap +0.024 | bias ours +0.294 ridge -1.064 | mean y 20.28 normal 20.84 ours 20.57 ridge 19.21
+spike months (y > own p90)   rows   2817  MAE ours 8.312 ridge 9.943  gap +1.630 | bias ours -7.629 ridge -9.545 | mean y 38.31 normal 30.35 ours 30.68 ridge 28.76
+ordinary months              rows  26170  MAE ours 3.120 ridge 2.971  gap -0.149 | bias ours +1.146 ridge -0.152 | mean y 18.33 normal 19.81 ours 19.48 ridge 18.18
+year 2020                    rows   7246  MAE ours 3.508 ridge 3.517  gap +0.009 | bias ours +0.731 ridge -0.477 | mean y 19.72 normal 20.84 ours 20.46 ridge 19.25
+year 2021                    rows   7245  MAE ours 3.437 ridge 3.521  gap +0.084 | bias ours -0.033 ridge -0.932 | mean y 20.57 normal 20.84 ours 20.54 ridge 19.64
+year 2022                    rows   7248  MAE ours 3.805 ridge 3.813  gap +0.008 | bias ours -0.010 ridge -1.289 | mean y 20.54 normal 20.83 ours 20.53 ridge 19.25
+year 2023                    rows   7248  MAE ours 3.747 ridge 3.742  gap -0.005 | bias ours +0.487 ridge -1.559 | mean y 20.27 normal 20.83 ours 20.75 ridge 18.71
+
+=== falling >3%/yr: 298 units in 48 regions
+all months                   rows  14300  MAE ours 4.487 ridge 3.476  gap -1.011 | bias ours +2.464 ridge +0.599 | mean y 13.18 normal 17.03 ours 15.64 ridge 13.78
+spike months (y > own p90)   rows    540  MAE ours 17.371 ridge 19.245  gap +1.874 | bias ours -16.835 ridge -19.090 | mean y 37.57 normal 22.09 ours 20.74 ridge 18.48
+ordinary months              rows  13760  MAE ours 3.981 ridge 2.857  gap -1.124 | bias ours +3.221 ridge +1.371 | mean y 12.22 normal 16.83 ours 15.44 ridge 13.59
+year 2020                    rows   3572  MAE ours 3.810 ridge 3.314  gap -0.496 | bias ours +2.156 ridge +1.045 | mean y 13.06 normal 17.03 ours 15.22 ridge 14.10
+year 2021                    rows   3576  MAE ours 4.321 ridge 3.356  gap -0.966 | bias ours +2.635 ridge +0.901 | mean y 13.19 normal 17.03 ours 15.83 ridge 14.09
+year 2022                    rows   3576  MAE ours 4.414 ridge 3.244  gap -1.171 | bias ours +3.294 ridge +1.083 | mean y 12.58 normal 17.03 ours 15.88 ridge 13.67
+year 2023                    rows   3576  MAE ours 5.401 ridge 3.991  gap -1.410 | bias ours +1.771 ridge -0.633 | mean y 13.88 normal 17.03 ours 15.65 ridge 13.25
+
+rising >3%/yr units by region (gap > 0 = ours better):
+                            units  slope  mae_ours  mae_ridge       y  normal  spike_share    gap
+group                                                                                            
+arabian_peninsula               1  3.251     8.576      9.947  90.109  82.671        0.188  1.371
+new_zealand_fiordland           1  3.466     1.280      1.988   9.989   8.356        0.458  0.708
+sahel                           1  3.192     7.387      7.991  40.005  37.970        0.167  0.604
+amazon_basin_brazil             2  3.428     4.135      4.672  21.458  18.912        0.240  0.538
+yakutia_larch                   5  6.497     8.622      9.136  12.126   5.971        0.146  0.514
+tanezrouft                      1  3.147     3.836      4.285  26.684  23.602        0.292  0.449
+new_zealand_north_island        1  3.417     0.588      1.005   7.279   6.608        0.208  0.416
+anatolian_plateau               1  3.338     3.052      3.426  22.238  19.932        0.167  0.374
+bolivia_beni_savanna            3  3.160     6.188      6.470  40.194  36.450        0.167  0.281
+caatinga                        1  3.321     1.147      1.311   7.079   6.369        0.062  0.164
+australian_bushfire_belt       15  9.836     1.679      1.826   6.207   6.177        0.069  0.147
+siberian_taiga                  2  3.929     4.773      4.915   9.122  12.367        0.094  0.142
+bc_inland_rainforest           15  5.297     2.526      2.650   6.887   5.377        0.251  0.124
+llanos_venezuela                3  3.726     1.748      1.844  11.436  11.581        0.104  0.096
+atlantic_forest_brazil          3  3.541     1.478      1.564  11.342  10.822        0.139  0.087
+tasmania_western                6  3.670     0.563      0.633   3.189   3.083        0.101  0.070
+columbia_plateau                1  3.760     2.715      2.783   7.604   6.018        0.188  0.068
+northern_australia_monsoon      3  3.569     1.777      1.824   6.840   5.976        0.090  0.047
+australian_mulga                8  4.576     0.865      0.893   4.571   5.110        0.049  0.027
+tongass_alaska                  2  3.735     0.734      0.756   3.740   4.155        0.042  0.021
+sierra_nevada_foothills         1  5.842     2.564      2.579   7.026   5.733        0.146  0.015
+brigalow_belt                   7  3.621     0.754      0.752   4.150   4.302        0.054 -0.003
+idaho_montana_wildfire          2  4.555     2.021      1.926   7.006   7.585        0.115 -0.095
+nile_valley_delta               1  3.397     3.628      3.513  34.171  32.702        0.125 -0.115
+ganges_plain                    1  3.251     6.396      6.273  32.721  32.722        0.125 -0.123
+sahara_eastern                  1  3.998     3.209      3.040  16.854  16.636        0.083 -0.168

@@ -1,0 +1,176 @@
+[12:41:36] package coral_sens_2017_2020 version 0.1.0, fingerprint 6a8509e323a7349f | DRAFT: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline (input: table)
+[12:41:36] feature lineage: vouched by the package owner (U2)
+[12:41:36] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[12:41:36] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[12:41:36] preflight: table rows per lead {0: 13723, 183: 13715, 365: 13715}, 85 columns; RAM estimate 0.026 GiB: go
+[12:41:36] table read: 13679 rows of 8138 package units in 3 lead files (lead 0: 13679 rows, lead 183: 13671 rows, lead 365: 13671 rows) in 0.3 s
+[12:41:36] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[12:41:38] derive_all_table: 120 entries in 2.0 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[12:41:40] run folder D:\treeroute\analysis\coral_sens_2017_2020\run\coral_sens_2017_2020\headline\20261029_75f66839 (new)
+[12:41:43] plan written: D:\treeroute\analysis\coral_sens_2017_2020\run\coral_sens_2017_2020\headline\20261029_75f66839\plan.json
+[12:41:46] package coral_sens_2017_2020 version 0.1.0, fingerprint 6a8509e323a7349f | DRAFT: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline (input: table)
+[12:41:46] feature lineage: vouched by the package owner (U2)
+[12:41:46] listed in every report (keep_unreviewed / watch): n_dhw_ge8_before, days_since_dhw4, mhw_thr_gap
+[12:41:46] groups: 94 in the data, 83 after exclusions; this run: 83 (headline)
+[12:41:46] preflight: table rows per lead {0: 13723, 183: 13715, 365: 13715}, 85 columns; RAM estimate 0.026 GiB: go
+[12:41:46] table read: 13679 rows of 8138 package units in 3 lead files (lead 0: 13679 rows, lead 183: 13671 rows, lead 365: 13671 rows) in 0.3 s
+[12:41:46] split view for derive_all: excluded groups not read ['Ashmore Reef, north-west Australia', 'Birds Head Peninsula, Papua', 'Gulf of California', 'Gulf of Guinea to Sierra Leone', 'Houtman Abrolhos Islands, west Australia', 'Kimberley Coast, north-west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']; seen_during_design groups not read []
+[12:41:48] derive_all_table: 120 entries in 2.0 s; router neighbour; overlap blocks 78 for 83 groups; leads [183, 365] days
+[12:41:50] plan check: derived.json equals the latest plan's (20261029_75f66839)
+[12:41:50] run folder D:\treeroute\analysis\coral_sens_2017_2020\run\coral_sens_2017_2020\headline\20261029_75f66839 (resume)
+[12:41:50] preflight: temp disk for the table run 2.545 GiB at its peak (two pools, two banks' tables): go
+[12:41:50] pool: 13679 table rows, 63 tree columns, 5 context columns (lead 0)
+[12:41:50] fits: bank at the fit cut 736329: 83 groups x 100 trees
+[12:41:50] checkpoint: bank key e949ac6da6f9e332: no earlier checkpoint of this step; computing
+[12:42:10] checkpoint: bank fit-cut (cut 736329, lead 0): 0 of 83 groups loaded, 83 fitted (folder bank-e949ac6da6f9e332)
+[12:42:10] fit-cut bank: 8300 trees, fingerprint 221b14e73e9c5818, rows at or before 736329 (max label step 736318)
+[12:42:10] fit-cut bank: 5704 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 54 of 83 groups have none at all
+[12:42:10] fits: GLS weight model (R25) at the guard cut 735233
+[12:42:10] GLS weight model (R25): memory given back before the donor matrix (gc: 17 objects; working-set trim ran); the matrix is a temp file at D:\treeroute\tmp\treeroute_run_75f66839_17652
+[12:43:13] GLS weight model (R25): memory given back before the forest's fit (gc: 0 objects; working-set trim ran)
+[12:43:14] fits: bank refit at the inner cut 735233 (L6 b)
+[12:43:14] checkpoint: bank key 18ae475d45d3a1f0: no earlier checkpoint of this step; computing
+[12:43:34] checkpoint: bank inner-cut (cut 735233, lead 0): 0 of 83 groups loaded, 83 fitted (folder bank-18ae475d45d3a1f0)
+[12:43:34] inner-cut bank: 8300 trees, fingerprint 35b7d78fa9657395, rows at or before 735233 (max label step 735222)
+[12:43:34] inner-cut bank: 5960 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 58 of 83 groups have none at all
+[12:43:35] fits: GLS weight models of the 83 decision-surface folds (R13, R25)
+[12:43:36] GLS weight model (R25) of fold 0 (Andaman Islands): 9932 donor rows outside its block ['Andaman Islands']
+[12:43:37] GLS weight model (R25) of fold 1 (Andaman Sea): 9822 donor rows outside its block ['Andaman Sea']
+[12:43:37] GLS weight model (R25) of fold 2 (Austral Islands, French Polynesia): 9929 donor rows outside its block ['Austral Islands, French Polynesia']
+[12:43:38] GLS weight model (R25) of fold 3 (Bahamas and Florida Keys): 7489 donor rows outside its block ['Bahamas and Florida Keys']
+[12:43:38] GLS weight model (R25) of fold 4 (Banda Sea and Molucca Islands): 9850 donor rows outside its block ['Banda Sea and Molucca Islands']
+[12:43:38] GLS weight model (R25) of fold 5 (Bay of Campeche, Yucatan, Gulf of Mexico): 9928 donor rows outside its block ['Bay of Campeche, Yucatan, Gulf of Mexico']
+[12:43:39] GLS weight model (R25) of fold 6 (Belize and west Caribbean): 8890 donor rows outside its block ['Belize and west Caribbean']
+[12:43:39] GLS weight model (R25) of fold 7 (Bermuda): 9902 donor rows outside its block ['Bermuda']
+[12:43:40] GLS weight model (R25) of fold 8 (Bismarck Sea, New Guinea): 9900 donor rows outside its block ['Bismarck Sea, New Guinea']
+[12:43:40] GLS weight model (R25) of fold 9 (Brazil): 9788 donor rows outside its block ['Brazil']
+[12:43:41] GLS weight model (R25) of fold 10 (Caroline Islands, Micronesia): 9932 donor rows outside its block ['Caroline Islands, Micronesia']
+[12:43:41] GLS weight model (R25) of fold 11 (Celebes Sea): 9922 donor rows outside its block ['Celebes Sea']
+[12:43:42] GLS weight model (R25) of fold 12 (Cenderawasih Bay, Papua): 9930 donor rows outside its block ['Cenderawasih Bay, Papua']
+[12:43:42] GLS weight model (R25) of fold 13 (Central and northern Great Barrier Reef): 9611 donor rows outside its block ['Central and northern Great Barrier Reef']
+[12:43:43] GLS weight model (R25) of fold 14 (Chagos Archipelago): 9932 donor rows outside its block ['Chagos Archipelago']
+[12:43:43] GLS weight model (R25) of fold 15 (Christmas Island, Indian Ocean): 9921 donor rows outside its block ['Christmas Island, Indian Ocean']
+[12:43:44] GLS weight model (R25) of fold 16 (Cocos Keeling Atolls, Indian Ocean): 9902 donor rows outside its block ['Cocos Keeling Atolls, Indian Ocean']
+[12:43:45] GLS weight model (R25) of fold 17 (Cook Islands, south-west Pacific): 9922 donor rows outside its block ['Cook Islands, south-west Pacific']
+[12:43:45] GLS weight model (R25) of fold 18 (Coral Sea): 9923 donor rows outside its block ['Coral Sea']
+[12:43:45] GLS weight model (R25) of fold 19 (Costa Rica and Panama, Pacific coast): 9916 donor rows outside its block ['Costa Rica and Panama, Pacific coast']
+[12:43:46] GLS weight model (R25) of fold 20 (Cuba and Cayman Islands): 9646 donor rows outside its block ['Cuba and Cayman Islands']
+[12:43:46] GLS weight model (R25) of fold 21 (Eastern Hawaii): 9886 donor rows outside its block ['Eastern Hawaii']
+[12:43:47] GLS weight model (R25) of fold 22 (Eastern coast South Africa): 9901 donor rows outside its block ['Eastern coast South Africa', 'South Mozambique coast']
+[12:43:47] GLS weight model (R25) of fold 23 (Fiji): 9574 donor rows outside its block ['Fiji']
+[12:43:48] GLS weight model (R25) of fold 24 (Flower Garden Banks, Gulf of Mexico): 9923 donor rows outside its block ['Flower Garden Banks, Gulf of Mexico']
+[12:43:48] GLS weight model (R25) of fold 25 (Gilbert Islands, west Kiribati): 9932 donor rows outside its block ['Gilbert Islands, west Kiribati']
+[12:43:49] GLS weight model (R25) of fold 26 (Gulf of Aden): 9904 donor rows outside its block ['Gulf of Aden', 'South Red Sea']
+[12:43:49] GLS weight model (R25) of fold 27 (Gulf of Oman): 9861 donor rows outside its block ['Gulf of Oman']
+[12:43:50] GLS weight model (R25) of fold 28 (Gulf of Thailand): 9782 donor rows outside its block ['Gulf of Thailand']
+[12:43:50] GLS weight model (R25) of fold 29 (Gulf of Tomini, Indonesia): 9924 donor rows outside its block ['Gulf of Tomini, Indonesia']
+[12:43:51] GLS weight model (R25) of fold 30 (Hispaniola, Puerto Rico and Lesser Antilles): 9077 donor rows outside its block ['Hispaniola, Puerto Rico and Lesser Antilles']
+[12:43:51] GLS weight model (R25) of fold 31 (Hong Kong): 9621 donor rows outside its block ['Hong Kong']
+[12:43:52] GLS weight model (R25) of fold 32 (Honshu, Japan): 9922 donor rows outside its block ['Honshu, Japan']
+[12:43:52] GLS weight model (R25) of fold 33 (Jamaica): 9674 donor rows outside its block ['Jamaica']
+[12:43:53] GLS weight model (R25) of fold 34 (Java Sea): 9904 donor rows outside its block ['Java Sea']
+[12:43:53] GLS weight model (R25) of fold 35 (Johnston Atoll, north central Pacific): 9930 donor rows outside its block ['Johnston Atoll, north central Pacific']
+[12:43:54] GLS weight model (R25) of fold 36 (Kenya and Tanzania coast): 9852 donor rows outside its block ['Kenya and Tanzania coast']
+[12:43:54] GLS weight model (R25) of fold 37 (Lakshadweep Islands): 9931 donor rows outside its block ['Lakshadweep Islands']
+[12:43:55] GLS weight model (R25) of fold 38 (Lesser Sunda Islands and Savu Sea): 9901 donor rows outside its block ['Lesser Sunda Islands and Savu Sea']
+[12:43:55] GLS weight model (R25) of fold 39 (Makassar Strait, Indonesia): 9913 donor rows outside its block ['Makassar Strait, Indonesia']
+[12:43:56] GLS weight model (R25) of fold 40 (Maldive Islands): 9845 donor rows outside its block ['Maldive Islands']
+[12:43:56] GLS weight model (R25) of fold 41 (Marianas): 9924 donor rows outside its block ['Marianas']
+[12:43:57] GLS weight model (R25) of fold 42 (Marshall Islands): 9920 donor rows outside its block ['Marshall Islands']
+[12:43:57] GLS weight model (R25) of fold 43 (Mascarene Islands): 9805 donor rows outside its block ['Mascarene Islands']
+[12:43:57] GLS weight model (R25) of fold 44 (Mayotte and Comoros): 9862 donor rows outside its block ['Mayotte and Comoros', 'North Madagascar']
+[12:43:58] GLS weight model (R25) of fold 45 (Milne Bay, Papua New Guinea): 9926 donor rows outside its block ['Milne Bay, Papua New Guinea']
+[12:43:58] GLS weight model (R25) of fold 46 (Moreton Bay, eastern Australia): 9785 donor rows outside its block ['Moreton Bay, eastern Australia', 'Southern Great Barrier Reef']
+[12:43:59] GLS weight model (R25) of fold 47 (Netherlands Antilles and south Caribbean): 9722 donor rows outside its block ['Netherlands Antilles and south Caribbean']
+[12:43:59] GLS weight model (R25) of fold 48 (New Caledonia): 9733 donor rows outside its block ['New Caledonia']
+[12:44:00] GLS weight model (R25) of fold 49 (Ningaloo Reef and coastal north-west Australia): 9925 donor rows outside its block ['Ningaloo Reef and coastal north-west Australia']
+[12:44:00] GLS weight model (R25) of fold 50 (North Madagascar): 9862 donor rows outside its block ['Mayotte and Comoros', 'North Madagascar']
+[12:44:01] GLS weight model (R25) of fold 51 (North Mozambique coast): 9928 donor rows outside its block ['North Mozambique coast']
+[12:44:01] GLS weight model (R25) of fold 52 (North Myanmar and Bangladesh): 9932 donor rows outside its block ['North Myanmar and Bangladesh']
+[12:44:02] GLS weight model (R25) of fold 53 (North Philippines): 9898 donor rows outside its block ['North Philippines']
+[12:44:02] GLS weight model (R25) of fold 54 (North Ryukyu Islands, Japan): 9918 donor rows outside its block ['North Ryukyu Islands, Japan']
+[12:44:02] GLS weight model (R25) of fold 55 (North Sri Lanka and east India): 9925 donor rows outside its block ['North Sri Lanka and east India']
+[12:44:03] GLS weight model (R25) of fold 56 (North Vietnam): 9910 donor rows outside its block ['North Vietnam']
+[12:44:03] GLS weight model (R25) of fold 57 (North and central Red Sea): 9745 donor rows outside its block ['North and central Red Sea']
+[12:44:04] GLS weight model (R25) of fold 58 (Northern Seychelles): 9929 donor rows outside its block ['Northern Seychelles']
+[12:44:04] GLS weight model (R25) of fold 59 (Ogasawara Islands, Japan): 9932 donor rows outside its block ['Ogasawara Islands, Japan']
+[12:44:05] GLS weight model (R25) of fold 60 (Palau): 9925 donor rows outside its block ['Palau']
+[12:44:05] GLS weight model (R25) of fold 61 (Persian Gulf): 9915 donor rows outside its block ['Persian Gulf']
+[12:44:06] GLS weight model (R25) of fold 62 (Phoenix Islands, central Kiribati): 9932 donor rows outside its block ['Phoenix Islands, central Kiribati']
+[12:44:06] GLS weight model (R25) of fold 63 (Pohnpei and Kosrae, Micronesia): 9864 donor rows outside its block ['Pohnpei and Kosrae, Micronesia']
+[12:44:07] GLS weight model (R25) of fold 64 (Samoa, Tuvalu and Tonga): 9893 donor rows outside its block ['Samoa, Tuvalu and Tonga']
+[12:44:07] GLS weight model (R25) of fold 65 (Shikoku, Japan): 9917 donor rows outside its block ['Shikoku, Japan']
+[12:44:08] GLS weight model (R25) of fold 66 (Society Islands, French Polynesia): 9702 donor rows outside its block ['Society Islands, French Polynesia']
+[12:44:08] GLS weight model (R25) of fold 67 (Socotra Archipelago): 9928 donor rows outside its block ['Socotra Archipelago']
+[12:44:09] GLS weight model (R25) of fold 68 (Solomon Islands and Bougainville): 9878 donor rows outside its block ['Solomon Islands and Bougainville']
+[12:44:09] GLS weight model (R25) of fold 69 (South Madagascar): 9907 donor rows outside its block ['South Madagascar']
+[12:44:10] GLS weight model (R25) of fold 70 (South Mozambique coast): 9901 donor rows outside its block ['Eastern coast South Africa', 'South Mozambique coast']
+[12:44:10] GLS weight model (R25) of fold 71 (South Red Sea): 9904 donor rows outside its block ['Gulf of Aden', 'South Red Sea']
+[12:44:10] GLS weight model (R25) of fold 72 (South Ryukyu Islands, Japan): 9900 donor rows outside its block ['South Ryukyu Islands, Japan']
+[12:44:11] GLS weight model (R25) of fold 73 (South Vietnam): 9861 donor rows outside its block ['South Vietnam']
+[12:44:11] GLS weight model (R25) of fold 74 (South-east Philippines): 9540 donor rows outside its block ['South-east Philippines']
+[12:44:12] GLS weight model (R25) of fold 75 (Southern Great Barrier Reef): 9785 donor rows outside its block ['Moreton Bay, eastern Australia', 'Southern Great Barrier Reef']
+[12:44:12] GLS weight model (R25) of fold 76 (Strait of Malacca): 9909 donor rows outside its block ['Strait of Malacca', 'West Sumatra']
+[12:44:13] GLS weight model (R25) of fold 77 (Sulu Sea): 9812 donor rows outside its block ['Sulu Sea']
+[12:44:13] GLS weight model (R25) of fold 78 (Sunda Shelf, south-east Asia): 9430 donor rows outside its block ['Sunda Shelf, south-east Asia']
+[12:44:14] GLS weight model (R25) of fold 79 (Taiwan and coastal China): 9918 donor rows outside its block ['Taiwan and coastal China']
+[12:44:14] GLS weight model (R25) of fold 80 (Vanuatu): 9819 donor rows outside its block ['Vanuatu']
+[12:44:14] GLS weight model (R25) of fold 81 (West Sumatra): 9909 donor rows outside its block ['Strait of Malacca', 'West Sumatra']
+[12:44:15] GLS weight model (R25) of fold 82 (Western Tuamotu Archipelago, central Pacific): 9905 donor rows outside its block ['Western Tuamotu Archipelago, central Pacific']
+[12:44:17] decision surface (D67, R13): 2277 train rows dated 735234..736329; 2277 with a valid label: 2277 rows scored
+[12:44:17] decision surface: 14 of 39 folds with surface rows are donor-only groups (V6 b), 197 rows: Andaman Islands, Honshu, Japan, Java Sea, Kenya and Tanzania coast, Lakshadweep Islands, Makassar Strait, Indonesia, Mascarene Islands, Ningaloo Reef and coastal north-west Australia, North Ryukyu Islands, Japan, Shikoku, Japan, Solomon Islands and Bougainville, South Madagascar, South Ryukyu Islands, Japan, Strait of Malacca
+[12:44:17] decision: neighbour router: 12 tree arms on the decision surface (39 folds)
+[12:59:12] decision surface: 2277 rows, 424 candidates, legal range [0.0, 100.0], surface SHA-256 ccb0a7555c356e4a
+[12:59:12]   identity_plain_unweighted          MAE 10.212876 at level 100.0 ratio 0.0625 | EDGE PICK: level top, ratio bottom | pre-clip 8812 below, 0 above of 79695 | corr2 0.4996 (beside)
+[12:59:12]   identity_plain_gls                 MAE 10.437354 at level 30.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 8772 below, 0 above of 79695 | corr2 0.4887 (beside)
+[12:59:12]   identity_corrector_unweighted      MAE 10.205344 at level 100.0 ratio 0.0625 | EDGE PICK: level top, ratio bottom | pre-clip 8884 below, 0 above of 79695 | corr2 0.5005 (beside)
+[12:59:12]   identity_corrector_gls             MAE 10.401477 at level 30.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 8800 below, 0 above of 79695 | corr2 0.4924 (beside)
+[12:59:12]   log_c_plain_unweighted             MAE 9.905036 at level 10.0 ratio 0.0625 | EDGE PICK: ratio bottom | pre-clip 4937 below, 343 above of 79695 | corr2 0.4650 (beside)
+[12:59:12]   log_c_plain_gls                    MAE 10.076489 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 4947 below, 339 above of 79695 | corr2 0.4238 (beside)
+[12:59:12]   log_c_corrector_unweighted         MAE 9.832413 at level 10.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 4831 below, 194 above of 79695 | corr2 0.4742 (beside)
+[12:59:12]   log_c_corrector_gls                MAE 9.974951 at level 3.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 4871 below, 271 above of 79695 | corr2 0.4406 (beside)
+[12:59:12]   arcsine_plain_unweighted           MAE 9.698255 at level 100.0 ratio 0.0625 | EDGE PICK: level top, ratio bottom | pre-clip 0 below, 0 above of 79695 | corr2 0.5302 (beside)
+[12:59:12]   arcsine_plain_gls                  MAE 9.819544 at level 10.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 0 below, 0 above of 79695 | corr2 0.5116 (beside)
+[12:59:12]   arcsine_corrector_unweighted       MAE 9.659470 at level 30.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 0 below, 0 above of 79695 | corr2 0.5207 (beside)
+[12:59:12]   arcsine_corrector_gls              MAE 9.736806 at level 10.0 ratio 1.0 | EDGE PICK: ratio top | pre-clip 0 below, 0 above of 79695 | corr2 0.5188 (beside)
+[12:59:12]   identity_trees_off_unweighted      MAE 11.061548 at no grid | pre-clip 63 below, 0 above of 2277 | corr2 0.4203 (beside)
+[12:59:12]   log_c_trees_off_unweighted         MAE 12.105269 at no grid | pre-clip 28 below, 0 above of 2277 | corr2 0.3343 (beside)
+[12:59:12]   arcsine_trees_off_unweighted       MAE 11.255721 at no grid | pre-clip 0 below, 0 above of 2277 | corr2 0.3878 (beside)
+[12:59:12]   predict-zero MAE 14.368717 (beside, never used)
+[12:59:12]   decline baseline base__donor_median MAE 14.473915: N2 compares every arm with it and a decline falls back to it (owner ruling V1)
+[12:59:12]   => ADOPTED arcsine_corrector_unweighted at level 30.0 ratio 1.0 (12 of 12 tree arms eligible)
+[12:59:14] test pass: 1468 test rows (1468 with a label); tree arms at level 30.0 ratio 1.0 (the adopted penalty)
+[13:05:36] report: 57 donor-only group(s) (V6 b: no test row; trees and donor rows used, nothing scored): Andaman Islands, Austral Islands, French Polynesia, Bay of Campeche, Yucatan, Gulf of Mexico, Bermuda, Bismarck Sea, New Guinea, Brazil, Caroline Islands, Micronesia, Cenderawasih Bay, Papua, Chagos Archipelago, Christmas Island, Indian Ocean, Cocos Keeling Atolls, Indian Ocean, Cook Islands, south-west Pacific, Coral Sea, Costa Rica and Panama, Pacific coast, Cuba and Cayman Islands, Eastern coast South Africa, Flower Garden Banks, Gulf of Mexico, Gilbert Islands, west Kiribati, Gulf of Aden, Gulf of Thailand
+[13:05:36] verdict: cannot_tell adopted arcsine_corrector_unweighted vs base__donor_median: contrast -0.699961 [-1.94301, 0.543089], band 0.166429, pooled MAE 3.48292 vs 3.15315
+[13:05:44] released the nowcast's inner-cut bank (8300 trees, fingerprint 35b7d78fa9657395) and its tables: the nowcast's decision is locked and its test pass is done; the ladder never reads the inner-cut bank
+[13:05:44] ladder: lead-0 contract: the ladder's lead path at lead 0 against the nowcast
+[13:05:55] ladder: lead-0 contract holds (20 saved columns of 1468 rows) in 11.5 s
+[13:06:07] released the nowcast's fit-cut bank (8300 trees, fingerprint 221b14e73e9c5818) and its tables: the lead-0 contract is done; leads of one day or more fit their own banks
+[13:06:07] ladder: lead 183: lagtrain bank at the lead's fit cut 736147 (83 groups x 100 trees)
+[13:06:07] checkpoint: bank key 52c88cdcaeea318c: no earlier checkpoint of this step; computing
+[13:06:27] checkpoint: bank lead-183 (cut 736147, lead 183): 0 of 83 groups loaded, 83 fitted (folder bank-52c88cdcaeea318c)
+[13:06:27] lead-183 bank: 8300 trees, fingerprint a972d8ade73d5a18, rows at or before 736147 (max label step 736147)
+[13:06:28] lead-183 bank: 5794 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 55 of 83 groups have none at all
+[13:06:28] ladder: lead 183: guard bank refit at the lead's guard cut 735051 (owner ruling H2)
+[13:06:28] checkpoint: bank key f5876be47c6eeac5: no earlier checkpoint of this step; computing
+[13:06:48] checkpoint: bank lead-183 guard-cut (cut 735051, lead 183): 0 of 83 groups loaded, 83 fitted (folder bank-f5876be47c6eeac5)
+[13:06:48] lead-183 guard-cut bank: 8300 trees, fingerprint 0b132e4a6a0b2202, rows at or before 735051 (max label step 735051)
+[13:06:48] lead-183 guard-cut bank: 6077 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 59 of 83 groups have none at all
+[13:08:23] ladder: lead 183 guard: arcsine_corrector_unweighted MAE 13.8147 vs the donor-row median 1 (MAE 15.4342; V1) on 1915 rows; its trees-off 13.5848 beside -> PASSES
+[13:08:27] lead 183 test pass: H4: every test row is in the lead's file; none left out
+[13:10:09] ladder: lead 183 done in 242.4 s: arcsine_corrector_unweighted adopted
+[13:10:10] ladder: lead 365: lagtrain bank at the lead's fit cut 735965 (83 groups x 100 trees)
+[13:10:10] checkpoint: bank key da7794c6d0c29b71: no earlier checkpoint of this step; computing
+[13:10:30] checkpoint: bank lead-365 (cut 735965, lead 365): 0 of 83 groups loaded, 83 fitted (folder bank-da7794c6d0c29b71)
+[13:10:30] lead-365 bank: 8300 trees, fingerprint 611243abf33da070, rows at or before 735965 (max label step 735960)
+[13:10:30] lead-365 bank: 5851 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 56 of 83 groups have none at all
+[13:10:30] ladder: lead 365: guard bank refit at the lead's guard cut 734869 (owner ruling H2)
+[13:10:30] checkpoint: bank key c6ab8361821d7aee: no earlier checkpoint of this step; computing
+[13:10:50] checkpoint: bank lead-365 guard-cut (cut 734869, lead 365): 0 of 83 groups loaded, 83 fitted (folder bank-c6ab8361821d7aee)
+[13:10:50] lead-365 guard-cut bank: 8300 trees, fingerprint 2a277d9ef51a2ee2, rows at or before 734869 (max label step 734865)
+[13:10:50] lead-365 guard-cut bank: 6193 of 8300 trees have no corrector (fewer than 50 out-of-bag rows); 60 of 83 groups have none at all
+[13:12:19] ladder: lead 365 guard: arcsine_corrector_unweighted MAE 11.1144 vs the donor-row median 1.19 (MAE 12.613; V1) on 1404 rows; its trees-off 10.6242 beside -> PASSES
+[13:12:23] lead 365 test pass: H4: every test row is in the lead's file; none left out
+[13:15:44] ladder: lead 365 done in 334.7 s: arcsine_corrector_unweighted adopted
+[13:15:46] finished: {"verdict": "cannot_tell", "adopted": "arcsine_corrector_unweighted", "band": 0.16642942452726842, "pooled_mae_adopted": 3.4829170913429484, "pooled_mae_reference": 3.153149920712534, "draft": true, "test_rows": 1468, "ladder": {"leads": [183, 365], "common_rows": 1468, "verdicts": {"0": "cannot_tell", "183": "cannot_tell", "365": "cannot_tell"}}}
+[13:15:46] checkpoint: the run finished; removed its 6 checkpoint folder(s) (0.118 GiB): bank-e949ac6da6f9e332, bank-18ae475d45d3a1f0, bank-52c88cdcaeea318c, bank-f5876be47c6eeac5, bank-da7794c6d0c29b71, bank-c6ab8361821d7aee

@@ -1,0 +1,68 @@
+# edgar_emis -- side-store catalog SEED (physical facts only, all 'unverified'), 2026-09-28T12:30:28
+store: edgar_emis
+path_template: D:/edgar_emis/{group}_edgar.parquet
+keys:
+  unit: cell_id
+  time:
+  - year
+product: EDGAR annual emission grids on the panel cells
+provenance: pm25_architecture.py:68
+cadence: 1 year
+stamp: period_end
+window:
+  length: 1
+  unit: year
+  align: backward
+fill_values: []
+fact_status_default: unverified
+generated_by: engine/datasets/_tools/export_review_csv.py
+generated_at: '2026-09-28T12:30:28'
+columns:
+- name: edgar_carried
+  dtype: int8
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: 0.0
+    max: 1.0
+- name: edgar_so2
+  dtype: float
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 3611.324462890625
+- name: edgar_nox
+  dtype: float
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 2185.11083984375
+- name: edgar_nh3
+  dtype: float
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 8040.7861328125
+- name: edgar_bc
+  dtype: float
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 66.26509857177734
+- name: edgar_oc
+  dtype: float
+  units: unknown (EDGAR emission field as ingested; check the ingest)
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 97.00056457519531

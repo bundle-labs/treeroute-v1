@@ -1,0 +1,13 @@
+[2026-11-12 19:16:33 +    0.0s] problem ndvi, scope (iii): leads (0, 6, 12); N 1000; arcsine tolerance 0; with pinned False
+[2026-11-12 19:16:33 +    0.0s] STEP sample: D:\treeroute\analysis\shap_v1\scripts\make_sample.py --problem ndvi --n 1000 --defo-regions 0
+[2026-11-12 19:16:33 +    0.0s] STEP treeroute rebuild lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_rebuild.py --problem ndvi --lead 0 --arcsine-tolerance 0.0
+[2026-11-12 19:16:33 +    0.0s] STEP treeroute SHAP lead 0: D:\treeroute\analysis\shap_v1\scripts\tr_shap.py --problem ndvi --lead 0
+[2026-11-12 19:16:33 +    0.0s] STEP rivals lead 0: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem ndvi --lead 0 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-12 19:16:33 +    0.0s] STEP compare lead 0: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem ndvi --lead 0 --draws 2000
+[2026-11-12 19:16:33 +    0.0s] lead 6: the kept prediction is a feature-free baseline: treeroute has no SHAP here (D5)
+[2026-11-12 19:16:33 +    0.0s] STEP rivals lead 6: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem ndvi --lead 6 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-12 19:16:33 +    0.0s] STEP compare lead 6: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem ndvi --lead 6 --draws 2000
+[2026-11-12 19:16:33 +    0.0s] lead 12: the kept prediction is a feature-free baseline: treeroute has no SHAP here (D5)
+[2026-11-12 19:16:33 +    0.0s] STEP rivals lead 12: D:\treeroute\analysis\shap_v1\scripts\rival_shap.py --problem ndvi --lead 12 --learners ridge lgbm lgbm_tweedie hgb_l1 rf
+[2026-11-12 19:16:33 +    0.0s] STEP compare lead 12: D:\treeroute\analysis\shap_v1\scripts\compare_shap.py --problem ndvi --lead 12 --draws 2000
+[2026-11-12 19:16:33 +    0.0s] runner finished: [["sample", "dry-run"], ["treeroute rebuild lead 0", "dry-run"], ["treeroute SHAP lead 0", "dry-run"], ["rivals lead 0", "dry-run"], ["compare lead 0", "dry-run"], ["rivals lead 6", "dry-run"], ["compare lead 6", "dry-run"], ["rivals lead 12", "dry-run"], ["compare lead 12", "dry-run"]]

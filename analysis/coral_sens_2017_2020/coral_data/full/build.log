@@ -1,0 +1,51 @@
+[12:09:21] sensitivity copy: visit table D:\treeroute\analysis\coral_sens_2017_2020\coral_data\visits.parquet; output D:\treeroute\analysis\coral_sens_2017_2020\coral_data\full
+[12:09:21] BUILD full | groups all | g 1 | free 9.6/16.9 GB
+[12:09:22] visits 14839 in scope, 13723 candidate samples (94 groups, 8164 sites) | free 9.6/16.9 GB
+[12:09:23] IBTrACS track points usable: 725,903 (1842-10-25 .. 2026-08-20)
+[12:10:41]   200/8164 sites | 1.3 min | free 7.4/16.9 GB
+[12:11:35]   400/8164 sites | 2.2 min | free 6.9/16.9 GB
+[12:12:14]   600/8164 sites | 2.9 min | free 7.6/16.9 GB
+[12:13:43]   800/8164 sites | 4.3 min | free 7.7/16.9 GB
+[12:14:27]   1000/8164 sites | 5.1 min | free 7.7/16.9 GB
+[12:15:10]   1200/8164 sites | 5.8 min | free 7.7/16.9 GB
+[12:15:34]   1400/8164 sites | 6.2 min | free 7.8/16.9 GB
+[12:16:13]   1600/8164 sites | 6.8 min | free 7.9/16.9 GB
+[12:17:21]   1800/8164 sites | 8.0 min | free 7.6/16.9 GB
+[12:18:24]   2000/8164 sites | 9.0 min | free 7.5/16.9 GB
+[12:19:45]   2200/8164 sites | 10.4 min | free 7.7/16.9 GB
+[12:20:25]   2400/8164 sites | 11.0 min | free 7.8/16.9 GB
+[12:20:54]   2600/8164 sites | 11.5 min | free 7.5/16.9 GB
+[12:21:23]   2800/8164 sites | 12.0 min | free 7.4/16.9 GB
+[12:21:58]   3000/8164 sites | 12.6 min | free 7.6/16.9 GB
+[12:22:37]   3200/8164 sites | 13.2 min | free 7.4/16.9 GB
+[12:23:09]   3400/8164 sites | 13.8 min | free 7.4/16.9 GB
+[12:23:48]   3600/8164 sites | 14.4 min | free 6.9/16.9 GB
+[12:24:13]   3800/8164 sites | 14.8 min | free 7.3/16.9 GB
+[12:24:42]   4000/8164 sites | 15.3 min | free 7.2/16.9 GB
+[12:25:16]   4200/8164 sites | 15.9 min | free 7.2/16.9 GB
+[12:25:54]   4400/8164 sites | 16.5 min | free 7.2/16.9 GB
+[12:26:30]   4600/8164 sites | 17.1 min | free 7.2/16.9 GB
+[12:26:55]   4800/8164 sites | 17.5 min | free 7.2/16.9 GB
+[12:27:49]   5000/8164 sites | 18.4 min | free 6.6/16.9 GB
+[12:28:21]   5200/8164 sites | 19.0 min | free 6.7/16.9 GB
+[12:28:47]   5400/8164 sites | 19.4 min | free 6.6/16.9 GB
+[12:29:13]   5600/8164 sites | 19.8 min | free 6.6/16.9 GB
+[12:29:39]   5800/8164 sites | 20.3 min | free 6.6/16.9 GB
+[12:30:05]   6000/8164 sites | 20.7 min | free 6.6/16.9 GB
+[12:30:33]   6200/8164 sites | 21.2 min | free 6.6/16.9 GB
+[12:31:00]   6400/8164 sites | 21.6 min | free 6.5/16.9 GB
+[12:31:29]   6600/8164 sites | 22.1 min | free 6.5/16.9 GB
+[12:31:58]   6800/8164 sites | 22.6 min | free 6.5/16.9 GB
+[12:32:24]   7000/8164 sites | 23.0 min | free 7.0/16.9 GB
+[12:32:49]   7200/8164 sites | 23.4 min | free 7.0/16.9 GB
+[12:33:22]   7400/8164 sites | 24.0 min | free 6.9/16.9 GB
+[12:33:48]   7600/8164 sites | 24.4 min | free 6.9/16.9 GB
+[12:34:16]   7800/8164 sites | 24.9 min | free 6.9/16.9 GB
+[12:34:43]   8000/8164 sites | 25.3 min | free 6.9/16.9 GB
+[12:35:18] features done: 8164 sites in 25.9 min | asserts 41153 | canary 825 rows | free 6.9/16.9 GB
+[12:35:19] replay lead 0: 8576 rows x 68 columns, max rel diff 0 (dhw_30)
+[12:35:19] replay lead 365: 8576 rows x 65 columns, max rel diff 0 (dhw_30)
+[12:35:19] wrote lead_0.parquet: {'rows': 13723, 'train': 12230, 'test': 1493, 'groups': 94, 'units': 8164}
+[12:35:20] wrote lead_183.parquet: {'rows': 13715, 'train': 12222, 'test': 1493, 'groups': 94, 'units': 8159}
+[12:35:20] wrote lead_365.parquet: {'rows': 13715, 'train': 12222, 'test': 1493, 'groups': 94, 'units': 8159}
+[12:35:20] manifest written | total 26.0 min | peak working set 1.38 GB

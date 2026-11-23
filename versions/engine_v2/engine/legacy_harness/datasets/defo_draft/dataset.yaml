@@ -1,0 +1,101 @@
+# dataset.yaml -- defo_draft: GENERATED from datasets/defo/dataset.yaml by datasets/_tools/refresh_drafts.py;
+# do not edit by hand (tests/test_pipeline_draft.py checks it against the generator).
+# DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run.
+# Only name, version, owner and description differ from the real package; every store, include and
+# sha256 is the real package's. The real file's comments follow.
+#
+# dataset.yaml -- the deforestation (annual forest-loss fraction) dataset package (APP_PLAN.md 1.1-1.2). Drafted
+# 2026-09-28; rewired 2026-09-29 for owner ruling C 'Defo store' (option b); unsigned. Name, version, owner,
+# description, store path templates, includes. Nothing else.
+#
+# Stores are READ IN PLACE (plan 1.2), never copied.
+#   target   D:/defo_target: cell_id, year, loss_px, forest2000_px, land_px, loss_frac (parquet footer, 2026-09-28),
+#            read through ingest/target_reader.py (loss_frac only; NaN without year-2000 forest, D30). The group
+#            comes from the {group} placeholder.
+#   drivers  RULED (OWNER_RULINGS_2026-09-28.md C): "Rebuild defo's yearly columns from the monthly panel with the
+#            package's feature script (aggregate_time). Do not read D:/defo_matrix's target copy, train/test flag or
+#            pre-lagged columns." So:
+#            1. the FEATURES store D:/defo_features/{group}_{year}.parquet, written by features/build_store.py from
+#               the monthly panel and the target store (one file per group and panel year, one row per target
+#               cell): the aggregate_time columns <parent>_mean/_min/_max of the monthly drivers, the annual and
+#               static drivers as they are, and the four target-derived h_* columns. It is listed FIRST, so the
+#               engine reads every kept column from it (the reader takes each column from the first store that
+#               holds it). Its facts: features/defo_features_store_catalog.yaml (generated) for the aggregates and
+#               h_*, the panel catalog for the annual and static columns (the same columns).
+#            2. the monthly PANEL, the features store's source (read by features/build_store.py and
+#               ingest/build_static.py). The engine reads no column from it for this package: an annual target
+#               cannot take a monthly store's 12 rows per (unit, year), and every kept column is in store 1.
+#            D:/defo_matrix is no longer declared: nothing reads it.
+#   features the features output (plan 1.1 'features output'; the same template as driver store 1).
+#   static   D:/defo_features/static/part-0.parquet, written once by ingest/build_static.py: cell_id, region, lat,
+#            lon, grid_ix, grid_iy and forest2000_px (the Q50 report stratum; static by construction).
+# BUILT by the owner (commands: engine/datasets/defo/features/build_store.py docstring), 2026-09-29 17:46 to
+# 2026-09-30 00:45: the static table and 924 group-year files (42 groups x 2002-2023, 5.9 GB). Checked
+# 2026-10-04, read-only: every file is kept by build_store.py's resume rule today (same content digest through
+# the pinned predecessor, store catalog, aggregate code, target sha256, panel size and mtime, file size), and
+# every store year's aggregate facts are covered by the catalog entry. A missing file stops a run at the driver
+# read (G-MISSING), loudly.
+#
+# 2026-10-05 (owner ruling K, OWNER_RULINGS_2026-10-05.md, 2026-10-06, the author's answer, not quoted): a SECOND driver store, the
+# small K supplementary store D:/defo_features_k/{group}_{year}.parquet (one file per group and panel year, one row per
+# target cell, the features store's rows), written by features/build_store_k.py from the monthly panel so the
+# 6.3-hour features store is not rebuilt: K2 epo_mean/_min/_max (after the last-value fill), K3
+# deeprec_twsa_k3_mean/_min/_max (the J2 b reach carried) and K5 V15_bare_ground_pct_lag2, V17_herb_cover_pct_lag2,
+# tree_cover_pct_lag2 (year t-2). No column is in both stores. Its facts: features/defo_features_k_store_catalog.yaml
+# (generated), included by sha256. NOT BUILT IN FULL by the agent: the owner runs 'build_store_k.py build ..'
+# (command, time and disk in the K report); until every group is built a run on a group without K files stops at
+# the driver read (G-MISSING), loudly.
+# includes: the panel store catalog (the source store's facts, and the annual / static columns' facts) and the
+# generated features store catalog, each by sha256. ../_stores/defo_annual_features_schema_catalog.yaml, the
+# catalogs task's seed of the aggregate facts (no window), is NOT included: the generated catalog supersedes it
+# and is cross-checked against it on every typed fact when it is written.
+name: defo_draft
+version: '0.2.0-draft'
+owner: 'UNSIGNED -- DRAFT development package; not the owner''s'
+description: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run. Annual Hansen GFC forest-loss fraction on the 4 km panel cells of 42 forested regions; drivers rebuilt from the monthly panel by the package feature script (ruling C); declarative package, every fact unverified, or assumed where an owner ruling sets it (nothing signed)'
+stores:
+  target: 'D:/defo_target/{group}.parquet'
+  static: 'D:/defo_features/static/part-0.parquet'
+  drivers:
+    - 'D:/defo_features/{group}_{year}.parquet'
+    - 'D:/defo_features_k/{group}_{year}.parquet'
+    - 'D:/monthly_panel/{group}_monthly_{year}.parquet'
+  features: 'D:/defo_features/{group}_{year}.parquet'
+# 2026-10-05 (defo J ban-list task): the panel store catalog's sha256 follows the J merge into the shared catalog by
+# the PM2.5 ban-list task (nitrogen_gkg units/range and V30_soil_moisture_pct minimum, J4; deeprec_twsa and
+# phenology_sos_doy bounds, J2 b; every changed fact 'assumed', unsigned). Re-pinned to the 19:53 edit (512b4a2e...),
+# reviewed for defo 2026-10-05 against the 14:43 edit (475f694e...) the defo J build used, typed fact by fact
+# (treeroute.package.schema.StoreCatalog): only the provenance text of nitrogen_gkg, phenology_sos_doy,
+# V30_soil_moisture_pct, deeprec_twsa and the six aglw_* changed, and the aglw_* lost the content_epoch '2002/2021'
+# and fact_status 'assumed' written for the first J3 text (freeze); under the AMENDED J3 (watch, lagged through
+# catalog.yaml co_measured_with_target) no fact defo reads changed.
+# 2026-10-06 (defo K task): re-pinned to the 00:21 edit (53f56fe0...), the ruling L1 merge into the shared catalog by
+# another task ("SIGNED 2026-10-06" header block), reviewed for defo typed fact by fact against the pinned 512b4a2e...
+# (an exact copy: D:/treeroute/runs/_acceptance_ban_install_20261005/defo/scratch_pkgs/_stores/): no column added or
+# removed; only reviewed_by/date (owner, 2026-10-06) on nitrogen_gkg, phenology_sos_doy, V30_soil_moisture_pct, tni,
+# deeprec_twsa; fact_status unverified -> assumed (+ reviewed_by) on the six aglw_*; and the 13 index windows (soi, tna,
+# tsa, iod, ao, nao, pna, wp, sam, noi, pdo, epo, grace_lwe) unknown -> {3, month, centred}, assumed. For defo: epo's
+# window lets the K store catalog compute the K2 aggregates' facts (regenerated, below; K2 conditional -> keep in
+# ban.yaml); the 33 index aggregates of the 11 families are NOT in the features store (refused when it was built), so
+# they stay conditional (K6) until built; the reviewed_by fields enter no defo fact (generated entries never copy them).
+# 2026-10-06 (defo K review fixes): the K store catalog regenerated and re-pinned (ac2566c5... -> ec2a35e1...): the K5
+# lag columns get their own sum group MOD44B_V15_V17_tree_cover_lag2 (the banned raw trio keeps MOD44B_V15_V17_tree_cover)
+# and the header notes the G-LINEAGE stand-in does not run on store columns; no other fact changed. The K store's build
+# records now carry the parents' value facts (cadence, fill_values, near_sentinel_optout), so the costa_rica and
+# pearl_river_delta files were rebuilt (the earlier ones moved aside, not deleted: D:/defo_features_k_superseded_20261006).
+# 2026-10-06 (owner ruling K6 after L1 b, agent C1): the K store also builds the 11 index families' yearly aggregates
+# (soi, tna, tsa, iod, ao, nao, pna, wp, sam, noi, pdo: <index>_mean/_min/_max, 33 columns; their windows signed
+# {3, month, centred} by L1 b, so R8 gives them one year), and every K build record carries the store schema sha256:
+# files of an older schema (the 44 costa_rica / pearl_river_delta files built before K6) are moved aside into
+# D:/defo_features_k/_moved_20261006/<schema>/ and rebuilt by the next 'build_store_k.py build'. The K catalog is
+# regenerated (42 columns) and re-pinned below.
+# 2026-10-06 (defo follow-ups of ruling N, OWNER_RULINGS_2026-10-06.md): the K catalog regenerated by 'build_store_k.py
+# catalog', which now carries the owner's signatures (S5) onto unchanged entries; ruling N1 (the shared panel catalog's
+# pdo window became nino34's ERSSTv5 window) changes pdo_mean/_min/_max (reach 31 -> 60 days, R8 still 1 year), so
+# their signatures were dropped, then the sign-off tool signed them again (S5, its 2026-10-06 re-run, which also signed
+# phenology_sos_doy_lag2). Re-pinned 0965b87c... -> c402ff0a... (the tool's pin). No K file changes
+# (the window enters no value; content_sha256 unchanged).
+includes:
+  - {path: ../_stores/monthly_panel_v170_schema_catalog.yaml, sha256: 6bb3f9eca049d965143d25a3125de0e1e06465d945209659a85aad503de23e9b}
+  - {path: features/defo_features_store_catalog.yaml, sha256: df6007bc9a5ba000fdb31c02af4c2bd274a04dba54dfc9ed50a67696750f08d2}
+  - {path: features/defo_features_k_store_catalog.yaml, sha256: c402ff0a24449cf756c73785522bb65ad0fdb9fbe4580637f47bebaf0480d213}

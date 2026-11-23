@@ -1,0 +1,49 @@
+# dataset.yaml -- pm25_draft: GENERATED from datasets/pm25/dataset.yaml by datasets/_tools/refresh_drafts.py;
+# do not edit by hand (tests/test_pipeline_draft.py checks it against the generator).
+# DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run.
+# Only name, version, owner and description differ from the real package; every store, include and
+# sha256 is the real package's. The real file's comments follow.
+#
+# dataset.yaml -- the PM2.5 dataset package (APP_PLAN.md 1.1-1.2). Declarative form, drafted 2026-09-28; unsigned.
+# Name, version, owner, one-line description, store path templates and shared store-catalog includes. Nothing else.
+#
+# Stores are READ IN PLACE, never copied (plan 1.2). Paths: engine/datasets/_tools/export_review_csv.py:59-76
+# (PANEL_DIR, GFED_DIR, EDGAR_DIR, PM25_TARGET_DIR) and :1844-1890 / :1971 (file patterns). Placeholders:
+# {group} = the key_group value (region), {year} = the key_time year. The target files hold cell_id, year, month,
+# pm25_ugm3 only (parquet footer, 2026-09-28); the group comes from the {group} placeholder.
+#
+# static: WRITTEN 2026-10-05 23:08 under owner ruling L5 (OWNER_RULINGS_2026-10-05.md section L) by
+#     py -3.9 datasets/pm25/ingest/build_static.py datasets/pm25        (read-only on D:)
+# data/static/part-0.parquet: cell_id, region, lat, lon, grid_ix, grid_iy; 2,034,972 cells in 127 groups (the same
+# table as ../pm25_draft/data/static). Plan 1.2 wants a static table (unit id, group id, lat, lon); lat/lon also sit in
+# the monthly panel, repeated on every row. The path is the plan's default layout for NEW data (1.1).
+#
+# includes: shared STORE catalogs in the engine schema, by sha256. The older *_catalog.yaml and
+# monthly_panel_v170.yaml seeds do not load under the schema and are not included (review/v2/README.md). No store
+# catalog exists yet for the target store D:/pm25_acag: the target's physical facts (dtype, units, cadence, the
+# ACAG fill 9.96921e36) are declared nowhere yet (owner item; engine/datasets/_stores/ is outside this task).
+name: pm25_draft
+version: '0.1.0-draft'
+owner: 'UNSIGNED -- DRAFT development package; not the owner''s'
+description: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run. Monthly surface PM2.5 (ACAG V5.GL.06, ug m-3) on the 4 km panel cells of 127 regions; declarative package, every fact unverified'
+stores:
+  target: 'D:/pm25_acag/{group}_pm25_{year}.parquet'
+  static: 'data/static/part-0.parquet'
+  drivers:
+    # monthly_panel_v170: 170 columns, 133 groups, 2002-2023, one parquet per group-year
+    - 'D:/monthly_panel/{group}_monthly_{year}.parquet'
+    # GFED burned fraction; its 6 absent groups (store fact) are exactly the 6 panel groups PM2.5 does not use
+    - 'D:/gfed_burn/{group}_burn_{year}.parquet'
+    # EDGAR: an add-on arm in the shipped run (USE_EDGAR = 0, pm25_architecture.py:77; ruling A4); the sheet marks
+    # its columns 'conditional'
+    - 'D:/edgar_emis/{group}_edgar.parquet'
+includes:
+  # 2026-10-06: re-pinned after ruling L (L1 signatures and the 13 index windows in the panel catalog; burn_frac signed
+  # in the GFED catalog).
+  # 2026-10-05: hashes refreshed after the ruling-J merges into the two shared catalogs (J4, J2 b, J3 content epochs;
+  # J1 burn_frac reach), again after the fix round rewrote their provenance (amended J3; the assumed facts named per
+  # column), and again (fix round 3) after the aglw_* content epochs were removed (the seed's facts again); every
+  # changed fact there is 'assumed', unsigned. The same batch refreshed every package that includes these catalogs.
+  - {path: ../_stores/monthly_panel_v170_schema_catalog.yaml, sha256: 6bb3f9eca049d965143d25a3125de0e1e06465d945209659a85aad503de23e9b}
+  - {path: ../_stores/gfed_burn_schema_catalog.yaml, sha256: baf76c72d7a84378864f641282925924874759f602b11f4b7f24936698b3d424}
+  - {path: ../_stores/edgar_emis_schema_catalog.yaml, sha256: 2dd78e175cb77e1258a83cc3bf258743b8f1b7440bce04c77349f04e6a723e16}

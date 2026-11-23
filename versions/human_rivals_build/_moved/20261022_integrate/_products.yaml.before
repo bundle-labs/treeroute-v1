@@ -1,0 +1,105 @@
+# Product registry (SPEC_HUMAN.txt 1.8), owned by builder A. Every product an adapter or runner may open
+# (ctx.open_product(id, name)), read-only. A download (D1-D6) names its own product_manifest.json under `manifest`; a
+# product that was on disk before the plan is hashed by `py -3.9 -B -m rivals_human.cli manifest --product <id>`
+# (owner command O4-O6, O15) into <out_root>/_products/<id>/product_manifest.json, never into its folder.
+# `path` is a folder, or one file (then the file's folder is the product root and the manifest names the file).
+# Ids follow the adapter builders' registries (B: coral, defo; C: PM2.5, NDVI). Request new ids in
+# BUILD_NOTES_shared.txt.
+products:
+  # ---------------------------------------------------------------------------------------------- coral (builder B ids)
+  coral_sst_npz:
+    path: 'D:/coral/drivers/sst_compact_all.npz'
+    label: 'CoralTemp v3.1 daily SST per site pixel (compact npz, members stored uncompressed)'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested'
+    source: 'built from NOAA CRW CoralTemp v3.1 (coral_fetch_sst.py, PIFSC OceanWatch ERDDAP)'
+  crw_climatology:
+    path: 'D:/coral/drivers/static/ct5km_climatology_v3.1.nc'
+    label: 'CRW 5 km climatology v3.1 (official MMM, sst_clim_mmm)'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested'
+    source: 'NOAA CRW ct5km_climatology_v3.1.nc'
+  crw_outlook:
+    path: 'D:/coral/crw/nc'
+    patterns: ['*.nc']
+    label: 'CRW 4-Month Outlook v5 (CFSv2) weekly composites, 4 percentile products, 1,984 files'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested (experimental product)'
+    source: 'NOAA CRW 4-Month Outlook v5 archive (files are a v5 reissue; disclose)'
+  coral_store_20261020:
+    path: 'D:/treeroute/coral_build/coral_store/20261020_014201'
+    patterns: ['lead_*.parquet', 'build_manifest.json']
+    label: 'coral package store row facts (unit_id, lat, lon, target_date, issue_date, feature_end, mark only; the label column is never read)'
+    licence: 'project data'
+    source: 'coral package build (protected root, read-only)'
+  noaa_crw_dhw_sitedays:
+    manifest: 'D:/treeroute/human_products/noaa_crw_dhw_sitedays/v3.1_sitedays_v2_train200_test100_pifsc/product_manifest.json'
+    label: 'D6 NOAA CRW DHW / BAA / HotSpot / SST at 300 site-days (200 train, 100 test)'
+    licence: 'NOAA CRW: public, no restriction; credit requested'
+    source: 'ERDDAP griddap CRW 5 km v3.1, PIFSC OceanWatch (fetch_products.py, owner ruling AB1)'
+  # ---------------------------------------------------------------------------------------------- defo (builder B ids)
+  hansen_gfc_v1_13:
+    path: 'D:/hansen'
+    patterns: ['*.tif']
+    label: 'Hansen GFC-2025-v1.13 tiles (lossyear, treecover2000, datamask; 231 files, 32 GB)'
+    licence: 'CC BY 4.0 (Hansen et al., University of Maryland)'
+    source: 'Global Forest Change v1.13 (same version as the target, defo_fetch.py)'
+  defo_target:
+    path: 'D:/defo_target'
+    patterns: ['*.parquet']
+    label: 'defo target cell grid (loss_px, forest2000_px per cell and year): parity check and denominator'
+    licence: 'project data'
+    source: 'defo package ingest'
+  defo_static:
+    path: 'D:/defo_features/static'
+    patterns: ['part-0.parquet']
+    label: 'defo static features (forest2000_px)'
+    licence: 'project data'
+    source: 'defo package ingest'
+  gadm36_defo42:
+    manifest: 'D:/treeroute/human_products/gadm/3.6_gpkg_defo42/product_manifest.json'
+    label: 'D4 GADM 3.6 level 2 (52 country GeoPackages for the 42 defo regions)'
+    licence: 'GADM: free for academic / non-commercial use, no redistribution'
+    source: 'https://gadm.org (fetch_products.py, owner ruling AB1)'
+  defo_vt0007_prep:
+    path: 'D:/treeroute/human_rivals_build/_index/defo/20261017_d71c61f4/_work/vt0007_shipped'
+    patterns: ['prep_manifest_*.json', '*/map_T*__*.npz', '*/map_T*__*.json', '*/divisions.parquet', '*/divisions.json']
+    staged: true
+    label: 'VT0007 prep outputs (distance-class count tables, divisions) of adapters/defo_prep.py; BUILD value of the path'
+    licence: 'project data'
+    source: 'prep --rival vt0007_shipped (owner commands O10 stage train, O11 stage test); production path <index_root>/defo/<run>/_work/vt0007_shipped'
+  # ---------------------------------------------------------------------------------------------- PM2.5 (builder C ids)
+  cams_eac4_monthly_pm2p5:
+    manifest: 'D:/treeroute/human_products/cams_eac4_monthly_pm2p5/eac4_monthly_mean_2003-2023/product_manifest.json'
+    waiting_line: 'D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first'
+    label: 'D1 CAMS EAC4 monthly mean pm2p5 (0.75 deg)'
+    licence: 'CC BY 4.0 (Copernicus Atmosphere Monitoring Service); ADS licence accepted by the owner'
+    source: 'ADS cams-global-reanalysis-eac4-monthly (owner download, rulings AB1/AB2; folder of fetch_products.py)'
+  merra2_aer_monthly:
+    path: 'D:/pm25_products/merra2'
+    patterns: ['aer_*.nc']
+    label: 'MERRA-2 tavgM_2d_aer_Nx monthly aerosol (252 files, 0.84 GB)'
+    licence: 'NASA GES DISC: public'
+    source: 'NASA MERRA-2 (MERRA2_401 stream months disclosed)'
+  pm25_static_cells:
+    path: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/pm25/data/static'
+    patterns: ['part-0.parquet']
+    label: 'PM2.5 unit centres (cell_id, region, lat, lon)'
+    licence: 'project data'
+    source: 'engine package static table (read-only)'
+  # ---------------------------------------------------------------------------------------------- NDVI (builder C ids)
+  ndvi_static_cells:
+    path: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/ndvi/data/static'
+    patterns: ['part-0.parquet']
+    label: 'NDVI unit centres and statics (cell_id, region, lat, lon, ...)'
+    licence: 'project data'
+    source: 'engine package static table (read-only)'
+  monthly_panel:
+    path: 'D:/monthly_panel'
+    patterns: ['*.parquet']
+    label: 'monthly 4 km panel (Kraft LSTM inputs only, optional)'
+    licence: 'project data'
+    source: 'monthly panel build (40.9 GB; manifest O15, optional)'
+  ndvi_kraft_store:
+    path: 'D:/treeroute/human_rivals_build/_index/ndvi/20261016_d1de3158/_work/kraft_lstm/store'
+    patterns: ['*.parquet', '*.json']
+    label: 'Kraft LSTM input store written by its prep (adapters/ndvi_kraft_prep.py); BUILD value of the path'
+    licence: 'project data'
+    source: 'prep --rival kraft_lstm (owner command O15); production path <index_root>/ndvi/<run>/_work/kraft_lstm/store'

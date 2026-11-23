@@ -1,0 +1,181 @@
+=== AUDIT code-export no_leak_found
+I found no leak in Ridge's pm25 data path at leads 0, 6 or 12. Ridge's columns, offset, training rows, tuning window and test rows match the signed protocol, and I checked them against the exported files across all 127 groups. Nothing in its feature matrix comes from at or after the target step, or after the issue step at leads 6 and 12. The offset is built only from labels at or before each cut. Tuning ran on lead 0 only and finished before the test labels were opened. Ridge gets no column outside the pm25 ban list's keep and watch sets.
+
+There are three preregistered differences between Ridge and our model. Their measured effect is small or very small:
+- Ridge trains one model on all groups, including the test unit's own group. Our model's router never uses its own group's trees.
+- Ridge uses ctx:lat and ctx:month directly as inputs. These carry about 0.1-0.4% of its weight.
+- The log_c constant used in tuning comes from the fit cut: c = 1.5. Using only rows up to the guard cut it would be 1.55.
+
+Evidence that the win is real: on the same 68,559 inner rows, before any test label was read, Ridge already beat our adopted arm, 3.3275 vs 3.3395 MAE. It picked from 16 candidates against our 282.
+
+What drives Ridge: its largest coefficients are on hist_mean_60 and hist_mean_12 (positive) and hist_mean_all (negative). That is a correction of the 2003-2019 normal toward each unit's recent level. It uses only labels at or before the issue step, and our trees get the same columns.
+
+Parity checks P1-P15 do not cover four things: the values of test-row and score-surface features, the context columns, the normals on the fit rows, and the pattern of missing values. My own checks closed the normals and the time alignment.
+
+  [minor] (5) Ridge is trained on every group, including the test unit's own group. Our model's router never uses its own group's trees. Not a leak (all rows are at or before the fit cut) and allowed by signed rule 1. But Ridge does see more same-group data than our architecture does, unless the owner's rule is read to cover other units of the test group. I did not measure this.
+     EV: Every refit set covers all 12,700 bank units of all 127 groups (100 units per group, 15 scored); units.parquet is_scored 1,905/12,700. Our side: 'a unit's router never uses its own group's trees' (engine fit/bank.py:382, 447-453); the overlap-block mask also drops other groups in the same block (route/kinds.py:26-32); the per-unit router fits only the scored unit's own rows (stages.py G1_SCOPE). Prereg rule 1 'Same rows' (PREREGISTRATION_rivals_common_20261021T125123Z.md:79). Size of the effect 
+  [minor] (5) Ridge gets ctx:lat and ctx:month as direct inputs. lat is banned from our trees, and both columns reach our model only through the router. This is preregistered, and Ridge gives them very little weight.
+     EV: ban.yaml:63-66 (lat banned, structural); ban.yaml:807-814 (ctx:month and ctx:lat: router context only). Prereg rule 2 (line 83-84) and section 9 item 8 (line 337-339). Standardized Ridge coefficients from model_ridge.json at alpha 1000, leads 0/6/12:
+- ctx:lat: +0.0031/+0.0036/+0.0031 (rank 57/170, 33/179, 49/206)
+- ctx:month: +0.0017/+0.0017/+0.0023 (rank 79, 68, 55)
+Each is 0.1-0.4% of the total absolute weight.
+  [minor] (4) Inner-window labels touch tuning only through the log_c constant, which is computed from the fit cut. The effect is negligible, disclosed, and the same as our engine.
+     EV: Tuning trials use the lead-0 c (harness.py:1165-1166, 1633). R23:lead=0 = 1st percentile of positive y over the 2,590,280 fit-cut rows = 1.5 (derived.json). My recompute over the 2,133,214 guard-cut tune rows gives 1.55 (c_guard.py). Prereg rule 8 (line 102-107) and section 9 item 6 (line 332).
+  [minor] (6) What the parity checks do NOT verify:
+(a) test-row feature and context values against what our test pass used;
+(b) features on the inner and guard score rows;
+(c) the context columns on any row (P7 checks names only, and the banks do not use context, so P15 cannot see them);
+(d) the normals on refit, tune and guardfit rows, which are the offset and target of every Ridge fit (P9-P11 cover test and surface rows only);
+(e) P13 compares against the engine code re-run inside the export, not a saved run file, and both P13 and P15 compare 0-filled features, so the missing-value pattern Ridge depends on is never checked;
+(f) how the harness assembles its fit sets (swapping in the guard-cut histo
+     EV: P13 compares against b.donors[...], built by ctx_fit/ctx_g inside the export process (export.py:787-797, 829-831), on 0-filled values (export.py:2079-2080). The run's test_preds are read with key, normal and trees-off columns only (export.py:2003-2008, TEST_KEY_COLUMNS). The lean export took the R30 test-year count and the separability check from the run's record (manifest lean_export). Closures: all_groups.py (normals: max |diff| 0), crosslead.py (test features at lead L vs lead 0), f32_check.p
+  OPEN: How much does training on the test unit's own group help Ridge? A leave-one-group-out Ridge would measure it cheaply: one pass over the refit .f32 accumulating 127 per-group cross-product matrices, then each group's fit = the total minus that group. Not run here (outside a code audit). | Owner ruling needed: does 'rivals get the test region's history' cover only the scored unit's own history, or also the test group's other units (85 non-scored plus the scored ones) and their rows up to the fit cut, which a pooled Ridge uses? | Nothing checks the lead-0 test-row and surface-row feature values or the context columns against the run's own test pass. They come from the engine's build_pool re-run inside the export. A check that scores the run's saved tree answers on test rows from the exported features would close this. | Not audited: guard and decline logic beyond the data path (for example, our lead-12 guard declined while Ridge's passed), the board's jackknife and verdict code, and scoring beyond the exact-row join.
+
+=== AUDIT code-fit no_leak_found
+I found no leak and no unfair advantage behind Ridge's PM2.5 result. Ridge's fit, tuning, refit and scoring all use the same rows, columns, normals, cuts, guard rule and metric code as our model. Test labels were first opened about an hour after the picks were locked and after every Ridge prediction file had been written and hashed.
+
+I rescored the board myself from the saved files and got the same numbers exactly:
+- lead 0: d = -0.161716 [-0.342313, +0.018881]
+- lead 6: d = -0.246646 [-0.421859, -0.071434]
+- lead 12: d = -0.427444 [-0.636622, -0.218265] against our headline answer, and -0.184325 [-0.326148, -0.042501] raw against raw
+
+There is evidence the win is real and was visible before the test period. On the same 68,559 inner rows (2017-2019), Ridge's inner MAE of 3.327456 was already below our best inner candidate (log_c_corrector_unweighted, 3.339518).
+
+Two things make the result look worse for us than the typical region:
+- **Lead 12 decline.** Our own guard failed there (3.580670 vs 3.552497), so our headline falls back to the normal (4.084). That accounts for 0.243 of the 0.427 gap, but Ridge still wins raw against raw.
+- **A few regions carry the win.** At lead 0, North China Plain alone gives -9.45 of the -20.54 summed group difference. The median group difference is -0.008, and without the 10 regions where Ridge gains most, ours is ahead by +0.044.
+
+Ridge's biggest effects are the history columns (all-time mean -0.32, 60-month mean +0.20, 12-month mean +0.12), and its lead grows every test year (lead 0: -0.04 in 2020 to -0.31 in 2023). My reading, which I have not tested, is that Ridge carries forward the recent PM2.5 decline, mainly in China, that the pre-2020 normal misses. That would be a modelling difference, not a leak.
+
+  [minor] The lead-12 decline makes ours look worse than our pinned model is, but it does not change who wins.
+     EV: Our guard at lead 12 failed: in ladder\lead_12\guard_preds.parquet the pinned model scores 3.580670 against our model with the trees turned off (log_c) at 3.552497, on 47,606 rows. So our headline answer falls back to the normal: 4.083558 on test, against 3.840460 for the pinned model. Ridge's guard passed on the same rows against the same comparator column (3.457665 vs 3.552497). That gives d -0.427 for the headline contrast and still d -0.184 [-0.326, -0.043] raw against raw. The fallback is t
+  [minor] A few strongly trending regions carry most of Ridge's lead, and the lead grows each test year. My reading is that this is genuine trend extrapolation, not a leak.
+     EV: Lead 0, Ridge raw against our pinned model, per group:
+- The summed group difference is -20.54, and north_china_plain alone gives -9.45, with pearl_river_delta at -4.31.
+- The median group difference is -0.0076, and 65 of 127 groups favour Ridge.
+- Without the 10 groups where Ridge gains most, the mean difference is +0.044 in our favour.
+
+At lead 6, north_china_plain gives -10.18 of -31.32.
+
+The per-year gap at lead 0 grows from 2020 to 2023: Ridge 3.367 / 3.343 / 3.449 / 3.547 against ours 3.40
+  OPEN: I checked the history and lag timing directly in only 3 of 127 groups (including the two that drive the result); the other 124 rely on the export's parity checks P1-P15. | On training rows, the normal and the history fill value are computed from all rows up to the cut, so they include each row's own label. This is not a test leak and our engine does the same (parity P9-P11), but it is an in-sample feature on training rows that the paper may want to disclose. | I did not test whether the aglw_*_hold2021 livestock columns (a disclosed data defect: the 2022-23 layers are built from India's ratios) help a linear model more than trees. Both sides receive them. | My reading that Ridge carries forward the post-2019 PM2.5 decline (China) is untested. A check would be our pinned model against Ridge with the North China Plain and Pearl River Delta excluded, or rescoring on the anomaly from the normal (not run). | My conversion of month numbers to dates (24240 = Dec 2019, i.e. year*12 + month) is inferred from derived.json R11 windows (train_end 2019, test 2020-2023); it does not affect any conclusion.
+
+=== AUDIT data-alignment no_leak_found
+I checked the time alignment of the PM2.5 rival export byte by byte and found no leak at leads 6 or 12. Ridge's lead-L rows carry the issue-step (t-L) value of every column it receives: the 122 tree columns, which include 6 history columns, and the 2 context columns. No column carries the value at the target step t.
+
+- **Features (all 127 groups):** every test row whose issue row exists was checked: 91,439 of 91,440 at lead 6 and 91,438 of 91,440 at lead 12. Every column matches the lead-0 issue-step row exactly. On the cells where the issue value differs from the target value (7.46 M at lead 6, 7.67 M at lead 12), 0 match the target.
+- **History:** hist_last_1 equals y(t-L) exactly on 91,415 of 91,415 rows (lead 6) and 91,414 of 91,414 rows (lead 12).
+- **Labels:** the label Ridge is scored against equals y(t) on 91,440 of 91,440 rows at each lead. The export test keys equal the saved test keys.
+- **Training cut:** the newest training label is exactly the run's fit cut (24240, 24235, 24229 for leads 0, 6, 12).
+- **Normal (offset):** for every test row it equals the per unit-month mean of training labels up to the cut, with a gap of 0.0. It is constant across the 4 test years. Adding test-year labels would move it by a median of 0.28 to 0.35 ug/m3.
+- **Correlations:** no column shows a year-to-year correlation with y(t) at lead 12 that is positive and higher than at lead 0, which is what target-time information would produce.
+
+The only edge case is not a leak under the owner's definition: at leads 6 and 12, training labels reach exactly the first test issue step. The engine's rule R11 allows this, and our own model gets the same.
+
+This check covers time alignment only. I did not check the ban list, how Ridge was tuned, the guard decision, the scoring code, or whether the lead-0 features themselves contain anything from after t.
+
+  [minor] Training rows stop at the run's fit cut for every lead; at leads 6 and 12 the newest training label is exactly the first test issue step (allowed: it is at the issue step, not after it).
+     EV: All 127 groups. Newest training target: 24240, 24235, 24229 for leads 0, 6, 12. This equals the export manifest cuts and the run's ladder/lead_6/lead.json fit_cut (24235), and also the run manifest fit_cut values 24240, 24235, 24229. Earliest test issue: 24241, 24235, 24229. Newest training issue: 24240, 24229, 24217. Lead-L train y equals lead-0 y(t) on 119,400 of 119,400 rows (lead 6) and 115,800 of 115,800 (lead 12) in the 6 groups. The engine's rule is timing/cuts.py fit_cut_step (R11: label
+  [minor] 3 test rows and some early training rows could not be checked byte for byte because the lead-0 row at their issue step does not exist, so I could not test them. They are too few to matter.
+     EV: Test rows affected: east_african_savanna_1107_-5 with issue 24235 (lead 6, t=24241; lead 12, t=24247), and northern_australia_woodland_3648_-447 with issue 24231 (lead 12, t=24243). The lead-0 train file has no row for these unit-steps, probably because the label is missing there. On cells where the target value differs from issue-1, these rows match the target in 0, 1 and 3 cells. The matches are ctx:month, which shares its calendar month with the target at lead 12, plus wind 2.3 and wet_day_co
+  OPEN: I treated the lead-0 export rows as the true value at step s. I did not check whether lead-0 features already contain information from after t, for example centred windows or annual values. That affects ours and the rivals alike; ban.yaml says the centred indices are lagged. One aside, not checked a | Out of scope here and not checked: ban-list membership of the 122 exported columns, how Ridge was tuned (the inner MAE 3.327 pick of alpha 1000 on log_c), whether the lead-0 tune and inner rows are leak-free, the guard decision, and the scoring and bootstrap code. | R11 lets training labels reach the first test issue step at leads 6 and 12 (one month of overlap for the first test issue only). Under the owner's definition this is not a leak, and our run has the same boundary. The owner may still want to confirm that is the intended convention.
+
+=== AUDIT data-model no_leak_found
+I found no leak and no unfair advantage. Ridge's win is real, and why it wins is clear from the numbers (post-hoc diagnosis, labelled as such). (a) Ridge saw the same data we did: the same 91,440 test rows in the same order, the same labels, and a normal that is exactly ours (max gap 0). Its 116 driver columns plus 6 history columns are all on our keep/watch list, and none is banned or conditional. There are no AOD, CAMS, MERRA-2 or other aerosol columns. Drivers at lead L are read at the issue step t-L (100% match). hist_last_1 equals y(t-L) exactly (y(t-1) at lead 0). Every training row is dated at or before its cut. Tuning used the earlier guard-cut normal (100% of rows). The picks were locked at 05:21:41Z, before any test label was opened (06:27:13Z), and the ledger shows only that one lock. Re-scoring both models from the saved row-level predictions gives exactly the board's numbers. (b) How Ridge wins: its largest coefficients form a linear trend detector. hist_mean_all is negative, hist_mean_60 and hist_mean_12 are positive (standardised -0.319/+0.198/+0.116 at lead 0), so it lowers its forecast for places where the recent level sits below the long-run level. It also gets a roughly uniform -4% shift from slow climate indices (PDO, global tropical SST anomaly). Both are linear extrapolations that trees cannot make, while our model stays anchored to a normal frozen at 2019. (c) The win is concentrated. At lead 0 Ridge wins only 65 of 127 groups (median group difference -0.008). north_china_plain alone moves the mean difference by -0.074 of the -0.162: there our model predicts about 58 ug/m3 against observed 40-46, and has a +16 bias even with last month's value in hand. With the 3 Chinese groups left out, lead 0 is d -0.042 [-0.128, +0.043]. At leads 6 and 12 the win is broad: Ridge wins 85 of 127 groups, and it still wins after dropping China (d -0.130 and -0.093, both intervals below 0). (d) The edge grows with test year and with how steeply a group was declining before 2020. It was already visible before test labels at leads 6 and 12 (the pre-test check window: Ridge 0.11-0.12 ahead). At lead 0 the pre-test window was nearly a tie (Ridge 0.012 ahead).
+
+  [major] How Ridge wins (post-hoc): its largest coefficients form a linear trend detector built from the history block, plus a near-uniform downward shift from slow climate indices. Both extrapolate linearly beyond the training range, which trees cannot do.
+     EV: model_ridge.json, coefficient times design sd (coefficients are stored on the unscaled design; target = log_c(y) minus the normal). Top 3 at every lead: hist_mean_all (-0.319/-0.294/-0.248), hist_mean_60 (+0.198/+0.233/+0.203), hist_mean_12 (+0.116/+0.064/+0.049). These net to roughly a zero level effect, so together they act as recent-mean minus long-run-mean. Next at lead 0: hist_last_1 +0.057, sst_anom_global_tropical_mean -0.046, vpd_warm_season_mean -0.030, the normal column -0.028. At lead
+  [major] At lead 0 the Ridge edge comes almost entirely from a few Chinese groups where our model fails to follow the post-2013 decline; elsewhere it is a coin flip.
+     EV: Per-group d (Ridge MAE minus ours) at lead 0: Ridge wins 65 of 127 groups (sign test p=0.86), median d -0.008. The 10 groups with the largest Ridge edge carry 125% of the pooled gap. north_china_plain: our MAE 16.30 vs Ridge 6.85 (d -9.45), our bias +16.0. In 2023 our prediction averaged 57.6 vs observed 40.1, with the normal at 62.4 and last month's value at 40.2, so our model barely moves off the normal despite the history features. Persistence MAE there is 10-15, below ours. Next largest: pea
+  [major] At leads 6 and 12 Ridge's win is broad and survives removing China.
+     EV: Ridge wins 85 of 127 groups at both leads (sign test p<0.001). Without the 3 Chinese groups: lead 6 d -0.130 [-0.192, -0.069], 82/124 wins; lead 12 d -0.093 [-0.153, -0.034], 82/124 wins. The top 10 groups carry 74% (lead 6) and 84% (lead 12) of the gap.
+  [major] Trend hypothesis supported: Ridge's edge grows with how steeply a group was declining before 2020 (signed trend, not its size) and with distance into the test window.
+     EV: Train trend per group: OLS of the deseasonalised group-mean monthly label over the last 5 training years (2015-2019), divided by the 2003-2019 mean (export train rows with r_refit, lead 0). Spearman(Ridge edge, relative 5-year slope) = -0.30 (lead 0), -0.31 (lead 6), -0.26 (lead 12). Without NCP: -0.28/-0.29/-0.24. Spearman with the absolute slope is only +0.03 to +0.13. Lead-0 terciles: most declining, mean edge +0.488, median +0.137, Ridge wins 27/43, our bias +1.61; most rising, edge -0.084, 
+  [minor] The advantage was visible before test labels at leads 6/12. At lead 0 the inner window was nearly a tie, and the selection there favoured us, not Ridge.
+     EV: Lead 0 inner window (2017-2019, 68,559 rows, identical keys and labels): our adopted arm log_c_corrector_unweighted@level=30,ratio=1.0 scores 3.3395, the best of 282 candidates picked on that window. Ridge's tuning model at alpha 1000 scores 3.3275, the best of 16 (log_c_trees_off 3.5257). d -0.012; Ridge wins 62/127 groups, median d +0.005; by year +0.126/-0.124/-0.038. Ridge already won north_china_plain (-1.55) and pearl_river_delta (-0.83) there. Spearman(inner per-group d, test per-group d)
+  [minor] Interpretation, not a leak: part of Ridge's shift comes from slow climate indices that act like linear time or phase proxies (strongly negative PDO and La Nina in 2020-23, the global tropical SST anomaly).
+     EV: These columns are 'keep' in ban.yaml, lagged by R8 (pdo and the SST boxes lag 2), and identical in our model's inputs. Their summed contribution is about -0.04 log units (about -4%) on every slope tercile at lead 0 and about -0.025 at leads 6/12. Whether to treat any of them as a trend proxy (ban.yaml already uses the reason 'trend_proxy' for 10 other columns) is a protocol question for the owner, not evidence of unfairness.
+  OPEN: Why does our model on north_china_plain (and pearl_river_delta) stay near the frozen normal (about 58 vs observed 40-46) even at lead 0, with y(t-1) as a tree feature? Speculation: the leave-one-region-out trees see history in raw ug/m3 rather than relative to each unit's normal, and trees cannot ex | Owner decision: should slow climate indices that move Ridge's level linearly in 2020-23 (pdo, sst_anom_global_tropical_mean, nino34/sst_anom_nino34) be reviewed as trend proxies? They are allowed now and are shared by both models, so this is not a fairness issue on the current protocol. | For the paper: the lead-0 'CANNOT TELL' rests on 3 Chinese groups; the lead 6/12 losses are broad (85/127 groups) and survive removing China. Report both.
+
+=== CHALLENGE leak yes high
+  STRONGEST_CASE_AGAINST: The strongest remaining case is not a leak, and it is small. It comes from five points, all shared by Ridge and our model:
+(1) Some raw driver stores are processed using their whole record, and I did not audit that processing. This covers how SPI was calibrated, how AMO was detrended, how deeprec_twsa was trained, and that WorldPop 2021-23 is extrapolated. These columns carry only 2.8-4.1% of Ridge's standardized weight. They are lagged correctly, both models get them, and I did not audit the processing inside those stores.
+(2) On training rows the offset (the normal) is in-sample. It includes the row's own label and labels after that row's issue step, up to the fit cut. Read literally, the owner's definition ("post-issue information in the offset of a training row") covers this. But the engine does the same for our model (R15). It carries no 2020-23 information, and on test rows the normal uses only labels at or before the cut.
+(3) Ridge pools all 12,700 units, including other units of the test group. I measured this with an exact leave-one-group-out refit. It changes no verdict.
+(4) The slow climate indices act as a level or trend term: about -0.02 to -0.06 log units on test rows and -0.01 to -0.03 on 2017-19 training rows. They are legitimate, lagged, on the keep list, and both models get them.
+(5) At lead 0 the nowcast uses weather from month t by design, for both models.
+A weaker point: the lead-0 test feature files carry hist_last_1 = y(t-1), so 47 of the 48 test months' labels can be read without opening the label column. The ledger therefore does not prove the picks were blind by itself. The pick is the mechanical argmin of inner MAE, written to trials.csv before the lock, so it could not have used them.
+  WHY_IT_FAILS_OR_HOLDS: I hunted for a leak and none survived. Each check was run on the bytes.
+(1) HISTORY, the block that carries Ridge's win (52-59% of its weight). I recomputed all 6 history columns from labels in all 127 groups, at leads 0, 6 and 12, on training and test rows.
+- Under the rule "newest label = t-1 at lead 0, t-L at lead L" they match on 100% of rows: 2,577,580 lead-0 training rows (mean columns), 2,298,199 at lead 12, and 91,426-91,440 test rows per lead.
+- A version that includes y(t) matches only 0.01-0.46% of rows, which is chance ties.
+- The guard-side h__ history used for tuning and guard fits also matches 100%: 2.19M, 2.05M and 1.89M rows at leads 0, 6 and 12.
+(2) DRIVERS, which no audit checked against the raw stores. I compared every one of the 116 driver columns, in all 127 groups (14,732 group-by-column cells), with D:\monthly_panel and D:\gfed_burn, with the engineered lag-12 and hold-2021 versions rebuilt from their parents. Every cell matches at exactly the derived.json R8 lag on 100% of finite training and test rows. That is 10,584,264 test cells.
+- Annual columns sit at 12 months, ERSSTv5 and pdo at 2, oni and tni at 3, the other centred indices at 1, burn_frac at 1 and deeprec at 3. Matches at lag 0 are near zero except for series that never change.
+- The data-alignment audit showed that lead-6 and lead-12 values equal the lead-0 values at the issue step, so this closes leads 6 and 12 as well.
+(3) WHAT RIDGE ACTUALLY TRAINED ON.
+- The harness .f32 fit sets match the export's r_refit rows in every group at all 3 leads: identical non-missing counts per column, and column sums equal to at most 5.6e-14 relative.
+- Refitting from the .f32 reproduces the saved model: sd to 9e-15 relative, standardized coefficients to 1.2e-13, and the intercept.
+- The refit reprod
+  EXPLANATION_OF_WIN: POST-HOC, not tested as a hypothesis.
+
+What Ridge relies on: about half its standardized weight sits on the history block. The three biggest coefficients are, at leads 0/6/12:
+- hist_mean_all: -0.319/-0.294/-0.248
+- hist_mean_60: +0.198/+0.233/+0.203
+- hist_mean_12: +0.116/+0.064/+0.049
+
+Together these form a linear, unit-relative contrast: recent level minus long-run level. All of them are leak-free (100% rule match, every row). The contrast pushes the forecast below the 2003-2019 normal, which is fixed at 2019, for units whose PM2.5 had been falling. Our router never sees the raw history columns, and trees cannot extrapolate.
+
+How the shift changes over time: in link space, Ridge's history block shifts lead-0 test rows by -0.015 to -0.019 log units per test year, against -0.004 to -0.008 on 2017-19 training rows. Slow, legitimately lagged climate indices (sst_anom_global_tropical_mean, pdo, the nino pair) add a further -0.02 to -0.06.
+
+Where the edge comes from: the data-model audit found it concentrated in China at lead 0 (north_china_plain alone gives -9.45 of -20.54), and broad at leads 6 and 12 (85/127 groups). Training on the test unit's own group adds only +0.026/+0.009/+0.012 MAE to Ridge's advantage at leads 0/6/12.
+
+Scripts (temp only):
+C:\Users\<user>\AppData\Local\Temp\claude\<session-folder>\<session-folder>\scratchpad\sk_hist.py
+C:\Users\<user>\AppData\Local\Temp\claude\<session-folder>\<session-folder>\scratchpad\sk_rawlag.py
+C:\Users\<user>\AppData\Local\Temp\claude\<session-folder>\<session-folder>\scratchpad\sk_logo.py
+C:\Users\<user>\AppData\Local\Temp\claude\C--
+  GAPS: Content-level processing inside the raw stores was not audited: SPI calibration window, NOAA AMO detrending, deeprec_twsa (CNN+LSTM) training window, WorldPop 2021-23 extrapolation, and the base periods of the CPC indices. These columns carry about 3-4% of Ridge's weight, and both models get them. | Training-row normals are in-sample (they include the row's own label and later labels up to the fit cut, engine R15, same for our model). I did not measure Ridge refitted with a strictly-past training normal. | My leave-one-group-out refit keeps the full-fit imputation means and missing-flag set. That is exact except for this approximation, and each group is about 0.8% of the rows. | Our own run's lead-0 test-row features were not compared with the export, because the run saves no features. This is a question of fairness to us, not a Ridge leak. Ridge's own test inputs are verified against the raw stores. | Not re-audited: the tune .f32 content beyond its time bounds and the guard-side history. Tuning only picks alpha and link on a flat curve, so the test win cannot come from it. | deeprec_twsa is entirely missing in 2 groups, so those 2 cells could not be compared (Ridge mean-fills and flags them). | By design, the lead-0 nowcast uses weather of month t. An owner ruling is needed only if 'at the target time' in the leak definition was meant to exclude lead 0's own month (it applies to both models).
+
+=== CHALLENGE fairness yes high
+  STRONGEST_CASE_AGAINST: The strongest fairness objection is the data each side trains on. Ridge is one pooled model trained on all 12,700 bank units of all 127 groups, so for each test region it also sees the other 99 units of the test unit's own group. Our trees never use their own group, and our per-unit router fits only the scored unit's own rows. Ridge also gets three inputs our trees do not see:
+- ctx:lat, which is banned from our trees;
+- ctx:month as a plain input;
+- a fit-row mean fill plus missing-value flags, where our trees get a 0-fill.
+
+Two smaller points sit behind this. Nothing byte-checks the lead-0 test-row feature values against what our own test pass used, because the run saved no test features. And the lead-0 gap rests mostly on 3 Chinese groups.
+  WHY_IT_FAILS_OR_HOLDS: The objection does not hold. Every extra advantage Ridge had, when removed, moves the result by 0.026 MAE or less, and no verdict changes.
+
+**How I tested it.** I reproduced Ridge exactly: the same design rules, alpha 1000 and the log_c link with c = 1.5. I rebuilt it from sufficient statistics collected in one memmap pass over each lead's refit .f32, per group. The full refit matches the saved model_ridge.json coefficients to within 1.3e-9 relative, and the saved pre-clip test predictions to within 1.3e-11, at all three leads. I then refit these variants:
+- **LOGO:** the test unit's whole group removed.
+- **LOGO+own:** the group removed, then the scored unit's own pre-cut rows added back. This is exactly what our router sees.
+- **Strict:** LOGO+own, plus no ctx:lat and no missing flags.
+
+**Results (pooled MAE, then d = rival minus our pinned model, mean over groups with group-jackknife 95% interval):**
+
+| Lead | Saved Ridge | LOGO | LOGO+own | Strict | Ours |
+|---|---|---|---|---|---|
+| 0 | 3.4264, d -0.162 [-0.342, +0.019] | 3.4524, d -0.136 [-0.319, +0.048] | 3.4511 | 3.4488, d -0.139 [-0.322, +0.044] | 3.5881 |
+| 6 | 3.5996, d -0.247 [-0.422, -0.071] | 3.6086, d -0.238 [-0.412, -0.063] | 3.6081 | 3.6094, d -0.237 [-0.413, -0.060], 85/127 groups | 3.8463 |
+| 12 | 3.6561, d -0.184 [-0.326, -0.043] | 3.6677 | 3.6672 | 3.6654, d -0.175 [-0.314, -0.037] | 3.8405 pinned |
+
+At lead 12, the strict variant against our headline answer (4.0836) gives d -0.418 [-0.625, -0.212]. Dropping only lat, or only the flags and context, changes MAE by 0.002 or less, and Ridge actually gets slightly better without them.
+
+**Other checks I did myself on the files:**
+- **Same rows:** the outer join on (unit, time, lead) is 91,440/91,440 at every lead, 91,428 rows have labels, and all 127 gro
+  EXPLANATION_OF_WIN: (Post-hoc, from data I read only after the test labels had been opened.) Ridge wins through a linear reading of the history columns that both models receive.
+
+**The test.** I refit Ridge from the exact sufficient statistics with the 6 history columns removed (hist_last_1/2/3, hist_mean_12/60/all) and everything else kept. Its edge disappears:
+- lead 0: MAE 3.7355, d +0.147 [+0.067, +0.228], so ours is better;
+- lead 6: MAE 3.8186, d -0.028 [-0.073, +0.018];
+- lead 12: MAE 3.8482, d +0.008 [-0.042, +0.057].
+
+**What Ridge does with history.** Its largest standardized coefficients are hist_mean_all (negative) against hist_mean_60 and hist_mean_12 (positive). In effect it measures "recent level minus long-run level" for each unit and uses that to correct the normal, which is frozen at 2019. That correction matters most where PM2.5 has been falling. At lead 6, North China Plain is ours 18.49 against Ridge 8.31, and Pearl River Delta is 10.07 against 6.50.
+
+**Why our model misses it.** Our trees get the same history columns in raw µg/m3, are trained leave-one-region-out, and cannot extrapolate. Our router sees only the tree answers, not the history columns. So this is a model-form difference, not a data advantage. A simple recent-level baseline (last5_normal: 3.972/4.051/4.122) does worse than us, so a stale normal alone does not explain the result; Ridge's learned linear contrast does.
+
+**Supporting signs from before the test period.** Ridge was already ahead on the inner window (3.3275 vs 3.3395, from the other auditors and done_ridge.json). On the guard window at lead 6 it scored 3.356 against 3.470, the latter from the other audit reports.
+
+**Scripts** (temporary, read-only), all in C:\Users\<user>\AppData\Local\Temp\claude\<session-folder>
+  GAPS: Test-row feature values were not compared byte-for-byte with what our own test pass used, because the run saved no test features. This is only closed indirectly. The export calls the engine's own RunState.build_pool and history_block. The three engine hops carry pm25 smoke proofs that the prediction | The LOGO variants keep the pinned alpha of 1000 and are not re-tuned on the inner window. The inner-MAE curve is flat (3.337 at alpha 0.1, 3.327 at 1000), so this is unlikely to matter. That is my judgement; I did not test it. | I did not refit an identity-link Ridge on test rows. I did not audit RF or LightGBM, and I did not re-read the guard and verdict code. I used the board's verdict wording. | I did not audit whether the lead-0 non-history columns (for example annual covariates or centred indices) carry information from after t. A leak there would reach both models equally, and a Ridge with the history columns removed loses its edge (see the explanation), so such columns are not what driv | The training-row normal includes each row's own label (in-sample R15 normal). Both models share this. It is a disclosure item, not a fairness gap. | Owner ruling still open: the signed rule AA1 lets Ridge pool the test group's other units. I measured that effect at 0.010-0.026 MAE, but the reading of the rule itself is the owner's call.
+

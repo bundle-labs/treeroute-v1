@@ -1,0 +1,68 @@
+G0 pass (108 listed files, engine v2 88f4db2c, LIVE 930d961c) 28s
+A2 tools re-run 54s
+in-process recomputation 61s
+G1 pass
+G2 pass
+G3 pass
+G4 pass
+G5 pass
+G6 pass
+G7 pass
+G8 pass
+G9 pass; gate complete 73s
+Q1 done
+Q2 done
+Q8 done
+Q3 done
+Q4 done
+Q5 done
+Q7 done
+Q6 done
+Q9 done
+Q10 done
+Q11 done
+Q12 done
+POST HOC: reproduction gate G0-G9 passed; engine v2 88f4db2c, LIVE 930d961c unchanged; the re-run tools gave byte-identical WITH_WITHOUT.csv, alarm_replay.json and alarm_replay_scores.csv files and equal row files.
+POST HOC, CIRCULAR: coral nowcast (test window 2016-2019, set by hand): status active; twin arcsine_corrector_unweighted (weighting), simpler, passes its skill guard; reference gap 0.34056479282671 on 2046 decision-surface rows.
+POST HOC, CIRCULAR: coral nowcast: 48 month batches, 33 with at least 30 visits and tested, 11 switched (2016-01 2016-02 2016-03 2016-04 2016-05 2016-06 2016-08 2017-03 2017-12 2019-05 2019-06); 737 of 2312 survey visits switched (726 changed value); largest tested ratio 29.105817502602708.
+POST HOC, CIRCULAR: coral nowcast MAE without 6.69798924506233, with 6.119956002798195 (change -0.5780332422641354, -8.62995178277203% of without, -0.6299690271443118 band units).
+POST HOC, CIRCULAR: coral nowcast 2016 (n 873): 12.406328256098309 -> 10.681069664805374, better; 7 batches switched, 545 visits.
+POST HOC, CIRCULAR: coral nowcast 2017 (n 565): 3.5692507744181308 -> 3.6880301411805525, worse; 2 batches switched, 80 visits.
+POST HOC, CIRCULAR: coral nowcast 2018 (n 443): 1.280418254929322 -> 1.280418254929322, unchanged; 0 batches switched, 0 visits.
+POST HOC, CIRCULAR: coral nowcast 2019 (n 431): 4.805509495430039 -> 5.043624464950422, worse; 2 batches switched, 112 visits.
+POST HOC: test years in which the alarm made a nowcast worse: coral/0/2017, coral/0/2019.
+POST HOC, CIRCULAR: coral nowcast programme AGRRA (n 1, not interpretable): 5.540752183604888 -> 0.8690803622182504, better; 1 visits switched in 1 switched batches; contribution -0.0020206192999077154 (share 0.0034956800961706324 of the pooled change).
+POST HOC, CIRCULAR: coral nowcast programme FRRP (n 190): 7.659652365514182 -> 7.722607016988904, worse; 44 visits switched in 4 switched batches; contribution 0.0051736089014693416 (share -0.00895036569385612 of the pooled change).
+POST HOC, CIRCULAR: coral nowcast programme McClanahan (n 189): 35.05979452499404 -> 26.64835517575011, better; 179 visits switched in 4 switched batches; contribution -0.6876133378058404 (share 1.1895740374939054 of the pooled change).
+POST HOC, CIRCULAR: coral nowcast programme Reef_Check (n 1932): 3.829490304207522 -> 3.9568502777756454, worse; 513 visits switched in 11 switched batches; contribution 0.1064271059401445 (share -0.184119351896222 of the pooled change).
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y > 0 (bleached) (n 1024): 13.370101628934457 -> 11.835788785619453; 436 visits switched in this subset.
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y == 0 (complement of y > 0) (n 1288): 1.393452691424863 -> 1.5756914301204252; 301 visits switched in this subset.
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y >= 50 (n 140): 53.12512328455528 -> 40.9865068947793; 122 visits switched in this subset.
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y < 50 (complement of y >= 50) (n 2172): 3.705448376955049 -> 3.87257242780862; 615 visits switched in this subset.
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y > 23.9575 (the lead's q75 of positive donor labels) (n 239): 41.05202467908258 -> 33.27844301061296; 187 visits switched in this subset.
+POST HOC, CIRCULAR, outcome-defined (selected on the test label): coral nowcast y <= 23.9575 (complement) (n 2073): 2.737249028597863 -> 2.988803858626593; 550 visits switched in this subset.
+POST HOC, CIRCULAR: coral nowcast form F1 (per-batch switch: the fixed v2 rule (= the with-alarm column)): pooled MAE 6.119956002798195; 726 rows differ from the adopted arm.
+POST HOC, CIRCULAR: coral nowcast form F2 (per-batch even blend on the same 11 switched batches (INFORMATION ONLY, not the rule)): pooled MAE 6.382019265777694; 726 rows differ from the adopted arm.
+POST HOC, CIRCULAR: coral nowcast form F3 (whole-window switch, the twin on every row (Part 603/604 M1; cross-check only; not the alarm's value (C6))): pooled MAE 6.14748576299595; 2240 rows differ from the adopted arm.
+POST HOC, CIRCULAR: coral nowcast form F4 (whole-window even blend on every row (Part 603 blend = Part 604 M2 = M3; cross-check only)): pooled MAE 6.393951387338696; 2240 rows differ from the adopted arm.
+POST HOC, CIRCULAR: coral nowcast: 15 batches had fewer than 30 visits (275 visits), not tested; 3 of them had a ratio above 2.0 (63 visits); largest 25.529655201638473. INFORMATION ONLY: had those also switched, the pooled MAE would be 6.140019322890241.
+POST HOC, CIRCULAR, INFORMATION ONLY (2.0 stays fixed): coral nowcast at threshold 1.5: 13 batches, 976 visits switched, MAE with 6.10878452237827.
+POST HOC, CIRCULAR: coral nowcast at threshold 2.0: 11 batches, 737 visits switched, MAE with 6.119956002798195.
+POST HOC, CIRCULAR, INFORMATION ONLY (2.0 stays fixed): coral nowcast at threshold 2.5: 9 batches, 670 visits switched, MAE with 6.099749549737929.
+POST HOC, CIRCULAR, INFORMATION ONLY (2.0 stays fixed): coral nowcast at threshold 3.0: 9 batches, 670 visits switched, MAE with 6.099749549737929.
+POST HOC: defo nowcast: status active; twin log_c_plain_unweighted (answer type); reference gap 0.00013719429872479928 on 276822 rows; 4 yearly batches, 4 tested, 0 switched; largest ratio 1.1659792695776747; MAE 0.005415798421978487 with and without.
+POST HOC: pm25 nowcast: cannot switch: twin not simpler; 48 batches, ratios computed but 0 tested; largest computed ratio 1.753861864808271 (information only: the rule could not act); MAE 3.588091134093021 with and without.
+POST HOC: ndvi nowcast: cannot switch: twin not simpler; 48 batches, ratios computed but 0 tested; largest computed ratio 1.749949522314697 (information only: the rule could not act); MAE 0.03146059686292064 with and without.
+POST HOC: fire nowcast: cannot switch: twin fails its skill guard; 48 batches, ratios computed but 0 tested; largest computed ratio 1.847279910383901 (information only: the rule could not act); MAE 0.004385064558301006 with and without.
+POST HOC: pm25 lead 6: cannot switch: twin not simpler; MAE 3.846310424132128 with and without.
+POST HOC: pm25 lead 12: nothing to switch: declined; MAE 4.083558322865165 with and without.
+POST HOC: ndvi lead 6: nothing to switch: declined; MAE 0.03956835866470208 with and without.
+POST HOC: ndvi lead 12: nothing to switch: declined; MAE 0.039583272201769236 with and without.
+POST HOC: fire lead 6: nothing to switch: declined; MAE 0.006312458723027394 with and without.
+POST HOC: fire lead 12: nothing to switch: declined; MAE 0.006310978468756987 with and without.
+POST HOC: defo lead 1: not replayable: twin not saved; MAE without 0.005407746164567043; 4 batches, 4 with at least 30 rows; MAE with not computed.
+POST HOC, CIRCULAR: coral lead 183: not replayable: twin not saved; MAE without 7.709698984777605; 49 batches, 32 with at least 30 rows; MAE with not computed.
+POST HOC, CIRCULAR: coral lead 365: nothing to switch: declined; MAE 8.294498353993655 with and without.
+POST HOC, CIRCULAR: coral nowcast regions: 16 better, 6 same, 15 worse with the alarm (of 37).
+POST HOC, CIRCULAR: coral nowcast verdict with the alarm against the training median: helps, contrast mean 7.873171654763077 [2.405477799042173, 13.34086551048398], 37 groups, 23 better (locked verdict without: helps).
+wrote D:\treeroute\analysis\paper_posthoc\v2_replay\A\result_A.json

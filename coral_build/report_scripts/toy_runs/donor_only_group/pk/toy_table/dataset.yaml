@@ -1,0 +1,8 @@
+name: toy_table
+version: '0.1.0'
+owner: tester
+description: a synthetic table package for the table tests
+input: table
+stores:
+  target: 'data/lead_{lead}.parquet'
+includes: []

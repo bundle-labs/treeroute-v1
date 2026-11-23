@@ -1,0 +1,166 @@
+{
+ "gates": {
+  "E0_ram_preflight": {
+   "pass": true,
+   "values": {
+    "engine_warning": [],
+    "fix": "close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning",
+    "ignored": false
+   }
+  },
+  "E10_exported_trees": {
+   "pass": true,
+   "values": {
+    "regions": 42,
+    "what": "every sampled unit's score rows and pre-cut rows, every tree of the region's columns"
+   }
+  },
+  "E1_engine_code": {
+   "pass": true,
+   "values": {
+    "engine": "13838e41843cf1ec",
+    "engine_root": "D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc",
+    "manifest": "13838e41843cf1ec"
+   }
+  },
+  "E2_versions": {
+   "pass": true,
+   "values": {
+    "differ": {},
+    "python": "3.9.13"
+   }
+  },
+  "E3_inputs": {
+   "pass": true,
+   "values": {
+    "config_keys_differing": [],
+    "derived": "25c0f5b4ae025d0b",
+    "fingerprint": "d71c61f4543fa5b2",
+    "manifest_fingerprint": "d71c61f4543fa5b2",
+    "package": "d607314e8d571703"
+   }
+  },
+  "E3a_inputs_before_read": {
+   "pass": true,
+   "values": {
+    "checked": [
+     "context_list",
+     "draft",
+     "engine_constants_sha256",
+     "groups",
+     "kind",
+     "package",
+     "package_fingerprint",
+     "static_files_sha256",
+     "strata",
+     "target_files_sha256",
+     "trees_per_group",
+     "feature_list (tree-feature prefix)"
+    ],
+    "differ": [],
+    "not_before_read": [],
+    "package_dir": null,
+    "package_files_under_the_package_folder": [],
+    "path_map": false,
+    "static_files_sha256": [
+     "b7aa9016a63437a1",
+     "b7aa9016a63437a1"
+    ],
+    "target_files_sha256": [
+     "e4c7cb6809ca743f",
+     "e4c7cb6809ca743f"
+    ]
+   }
+  },
+  "E4_donor_rows": {
+   "pass": true,
+   "values": {
+    "row_key_hash": [
+     "7b68c5857da16b17",
+     "7b68c5857da16b17"
+    ],
+    "rows": [
+     3011184,
+     3011184
+    ]
+   }
+  },
+  "E5_bank_fingerprint": {
+   "pass": false,
+   "values": {
+    "rebuilt": "ff66252629947b76ef50137310d3f1fe6db2cbb60f9f9888a2f3122439997841",
+    "role": "informational, cause not established (answers decide: E5a, E8, E10)",
+    "run": "ddae37983b4077823c2bc5a06efd70e52ea90746e09d7788513175935984affd",
+    "trees": 4200
+   }
+  },
+  "E6_c_and_tolerances": {
+   "pass": true,
+   "values": {
+    "c": [
+     4.9563837819732726e-05,
+     4.9563837819732726e-05
+    ]
+   }
+  },
+  "E8_predictions": {
+   "pass": true,
+   "values": {
+    "arm": "log_c_corrector_unweighted",
+    "arm_bit_equal": 1008,
+    "bit_identical": true,
+    "d8_licence": null,
+    "max_abs_pre": 0.0,
+    "max_rel_arm": 0.0,
+    "max_rel_pre": 0.0,
+    "max_ulps_arm": 0,
+    "max_ulps_pre": 0,
+    "pre_bit_equal": 1008,
+    "rows_checked": 1008,
+    "rows_outside_tolerance": 0,
+    "same_nan": true,
+    "tolerance_rule": "bit identity",
+    "units": 252,
+    "within_relative_tolerance": true
+   }
+  },
+  "E9_coefficients_reproduce_the_kernel": {
+   "pass": true,
+   "values": {
+    "fits_captured": 42,
+    "fits_whose_X_b_differs_from_the_kernel": 0,
+    "region_proof": {
+     "answers_equal": true,
+     "background_rows": 4032,
+     "errors": [],
+     "eta_ours_equal": true,
+     "eta_store_equal": true,
+     "regions": 42,
+     "score_rows": 1008
+    }
+   }
+  }
+ },
+ "peak_gb": 10.3,
+ "result": {
+  "arm": "log_c_corrector_unweighted",
+  "c": 4.9563837819732726e-05,
+  "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\defo\\headline\\20261114_d71c61f4",
+  "kind": "region",
+  "legal": [
+   0.0,
+   1.0
+  ],
+  "link": "log_c",
+  "point": {
+   "level": 0.1,
+   "ratio": null
+  },
+  "rows_checked": 1008,
+  "table_kind": "corrector",
+  "ub": 1.0,
+  "weighted": false
+ },
+ "seconds": 10919.3,
+ "stopped_at": null
+}

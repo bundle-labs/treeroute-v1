@@ -1,0 +1,128 @@
+# fire_ndvi_lags -- EVIDENCE for the seeded store catalog (review aids; not a catalog, never included by a package)
+store: fire_ndvi_lags
+generated_by: engine/datasets/_tools/export_review_csv_v2.py
+generated_at: '2026-09-28T13:18:10'
+path_template: D:/fire/drivers/ndvi/{group}.parquet
+keys:
+- lat
+- lon
+- year
+- month
+provenance: fire_build_ndvi_lags.py:49
+keys_note: key columns are left out of the store catalog (key roles are package facts)
+columns:
+  ndvi_lag1_anom:
+    window_text: 'built from month t-1 and earlier of V11_mean_ndvi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.00895
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -0.6401764899492264
+      max: 0.9462176226079464
+  ndvi_cure:
+    window_text: 'built from month t-1 and earlier of V11_mean_ndvi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.01689
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -629.5000345244198
+      max: 214.8333376827393
+  ndvi_ratio_1_3:
+    window_text: 'built from month t-1 and earlier of V11_mean_ndvi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.02161
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -8047.0
+      max: 7443.00048828125
+  ndvi_ratio_1_12:
+    window_text: 'built from month t-1 and earlier of V11_mean_ndvi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.01688
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -51110108.0
+      max: 54116588.0
+  evi_lag1_anom:
+    window_text: 'built from month t-1 and earlier of V12_mean_evi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.00899
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1.02889996021986
+      max: 0.796923503279686
+  evi_cure:
+    window_text: 'built from month t-1 and earlier of V12_mean_evi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.01693
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1464.9999681313047
+      max: 618.5000004001777
+  evi_ratio_1_3:
+    window_text: 'built from month t-1 and earlier of V12_mean_evi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.02161
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -5516.0
+      max: 4871.0
+  evi_ratio_1_12:
+    window_text: 'built from month t-1 and earlier of V12_mean_evi, whose own window may reach up to 15 days past
+      its month (index audit, V11 entry): align unknown until that is signed'
+    units_source: hand seed from the builder (see provenance)
+    legal_range_source: unknown
+    fill_values_note: 'none known: the builder writes NaN for missing'
+    notes: normal fitted on <= 2018 (TRAIN_END), fire's donor train end
+    footer_stats:
+      null_share_all_files: 0.01693
+      groups_all_null: 0
+      groups: 40
+      files_with_fill_code_as_min_or_max: 0
+      min: -1899234432.0
+      max: 206158416.0
+schema_catalog: _stores/fire_ndvi_lags_schema_catalog.yaml
+schema_catalog_sha256: 5dc634d86778bc7f32355e57e038a8bdddf77f799e13030dbfd851172a38a11a
+engine_schema_sha256: 5ade1dd6602a209c8f8a1eaa65e6191e0ebb9c10b34c2d474cb6eee121085e09

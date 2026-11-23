@@ -1,0 +1,117 @@
+{
+ "background_keys_removed_missing_context": {
+  "0": 0,
+  "183": 0,
+  "365": 0
+ },
+ "background_rows": {
+  "0": {
+   "max": 50,
+   "median": 50.0,
+   "min": 50
+  },
+  "183": {
+   "max": 50,
+   "median": 50.0,
+   "min": 50
+  },
+  "365": {
+   "max": 50,
+   "median": 50.0,
+   "min": 50
+  }
+ },
+ "defo_regions": 0,
+ "excluded_no_background": [],
+ "excluded_sentinel_or_no_background": [],
+ "frame_rows": 2312,
+ "leads": [
+  0,
+  183,
+  365
+ ],
+ "models_in_frame": {
+  "0": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie",
+   "hgb_l1"
+  ],
+  "183": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie",
+   "hgb_l1"
+  ],
+  "365": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie",
+   "hgb_l1"
+  ]
+ },
+ "n": 1000,
+ "n_asked": 1000,
+ "problem": "coral",
+ "regions_in_sample": 37,
+ "rows_per_year": {
+  "2016": 440,
+  "2017": 248,
+  "2018": 149,
+  "2019": 163
+ },
+ "rule": "PROTOCOL.md section 3 (v3)",
+ "selection": {
+  "quota": {
+   "Andaman Islands": 8,
+   "Andaman Sea": 44,
+   "Bahamas and Florida Keys": 44,
+   "Banda Sea and Molucca Islands": 44,
+   "Belize and west Caribbean": 22,
+   "Celebes Sea": 25,
+   "Central and northern Great Barrier Reef": 44,
+   "Eastern Hawaii": 1,
+   "Fiji": 44,
+   "Gulf of Oman": 13,
+   "Hispaniola, Puerto Rico and Lesser Antilles": 45,
+   "Jamaica": 44,
+   "Java Sea": 18,
+   "Kenya and Tanzania coast": 35,
+   "Lakshadweep Islands": 14,
+   "Lesser Sunda Islands and Savu Sea": 44,
+   "Makassar Strait, Indonesia": 2,
+   "Maldive Islands": 44,
+   "Mascarene Islands": 14,
+   "Mayotte and Comoros": 7,
+   "Moreton Bay, eastern Australia": 45,
+   "Netherlands Antilles and south Caribbean": 10,
+   "Ningaloo Reef and coastal north-west Australia": 16,
+   "North Madagascar": 28,
+   "North Philippines": 19,
+   "North Ryukyu Islands, Japan": 4,
+   "North and central Red Sea": 44,
+   "Persian Gulf": 11,
+   "Society Islands, French Polynesia": 45,
+   "Solomon Islands and Bougainville": 16,
+   "South Madagascar": 12,
+   "South-east Philippines": 16,
+   "Southern Great Barrier Reef": 32,
+   "Strait of Malacca": 14,
+   "Sulu Sea": 44,
+   "Sunda Shelf, south-east Asia": 44,
+   "Taiwan and coastal China": 44
+  },
+  "regions": 37
+ },
+ "sha256": {
+  "background_lead_0.parquet": "3f14715159e94ba48fb9d92c4344522b73fa4527197187729851c6e49dc40aa4",
+  "background_lead_183.parquet": "dbf9e493647f4fa4607e8a1606b5c4f20b94fd7d89b93953be805a0fdeab84a8",
+  "background_lead_365.parquet": "e5397bdc4b2c3a3eb68c6b09022be450c5ba2f8901ffbbee72b085466aaefa66",
+  "sample.parquet": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023"
+ },
+ "tag": "v1",
+ "units_in_sample": 1000
+}

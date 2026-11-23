@@ -1,0 +1,139 @@
+{
+ "DRAFT": "DRAFT: DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline -- never a headline number",
+ "band": 0.16642942452726842,
+ "band_source": "the nowcast's band (F57: the nowcast band decides at every lead)",
+ "common_rows": 1468,
+ "hit_tolerance": 5.3703811427322385,
+ "issue_rows_left_out": {
+  "by_lead": {
+   "183": {
+    "rows_file": null,
+    "rows_left_out": 0
+   },
+   "365": {
+    "rows_file": null,
+    "rows_left_out": 0
+   }
+  },
+  "rule": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features"
+ },
+ "lead_unit": "days",
+ "leads": [
+  183,
+  365
+ ],
+ "longest_lead": 365,
+ "measurement_error_floor": null,
+ "penalty": {
+  "level": 30.0,
+  "ratio": 1.0
+ },
+ "pinned": "arcsine_corrector_unweighted",
+ "reference": "base__donor_median",
+ "reference_rule": "donor_row_median",
+ "rulings": {
+  "H2": "owner ruling H2 (L6 b at every lead): each lead refits its bank, correctors and placebo correctors at the lead's GUARD cut and builds its guard history block there (F1's fallbacks at the guard cut), as the nowcast's inner decision does at the inner cut, so no guard row sits inside a bank trained on its labels (asserted: guard_rows_in_bank_label_window is 0); one more bank per lead. The guard reads the lead's FIT-cut c and R36 tolerances, exactly as the nowcast's inner decision does: c by ruling D63 a (one c per lead, from its FIT cut, serves that lead's guard surface and its test pass; layer.c_for_cut refuses guard-cut donor rows); R36's tolerances are the identity-check tolerances, which move no prediction. A weighted pin's GLS weight model (R25 / D57: its donor rows at the lead's guard cut) reads its error target's tree answers from the lead's fit-cut bank, as the nowcast's does (fit.weights.L6_ANSWERS_DISCLOSURE; READINGS guard_gls_answers)",
+  "H3": "owner ruling H3: at a lead the router context moves to the issue step with the whole feature row (plan 1.5, io.apply.features_at_issue_step)",
+  "H4": "owner ruling H4: a test row whose issue-step features are missing (its issue row t - L is absent from the base rows, so every moved feature and context value is NaN) is LEFT OUT of scoring: never routed, absent from test_preds.parquet and from every score, saved in ladder/lead_<L>/issue_missing_rows.parquet with the flag issue_features_missing, and counted per unit and lead (lead.json issue_features_missing); it is never scored on NaN features",
+  "H5": "owner ruling H5: each lead searches its own R12 fallback level on its own guard surface (the guard routed at the pinned penalty, the level searched on that surface's pooled fallback rows, the lambda centre below C15's 10 fallback units); the lead's test pass reads the levels its guard found; lead 0 (the contract) reads the nowcast decision surface's levels",
+  "I1": "owner ruling I1: the leads are 6 and 12 months (C6.lead_months), generic for every package, plus lead 0 (the contract); on annual data both round to 1 year and merge; the pinned placebo is built at the longest lead"
+ },
+ "verdicts": {
+  "0": {
+   "adopted": "arm__arcsine_corrector_unweighted",
+   "band": 0.16642942452726842,
+   "common_rows": 1468,
+   "contrast": {
+    "high": 0.5430886373276913,
+    "low": -1.9430109522054304,
+    "mean": -0.6999611574388696,
+    "n_groups": 26,
+    "se": 0.6342090789625311
+   },
+   "groups_better": 13,
+   "guard_passed": null,
+   "pooled_contrast": -0.32976717063041416,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "Bahamas and Florida Keys",
+    "Celebes Sea",
+    "Central and northern Great Barrier Reef",
+    "Eastern Hawaii",
+    "Gulf of Oman",
+    "Jamaica",
+    "Mayotte and Comoros",
+    "Moreton Bay, eastern Australia",
+    "North Philippines",
+    "North and central Red Sea",
+    "Society Islands, French Polynesia",
+    "Sunda Shelf, south-east Asia",
+    "Taiwan and coastal China"
+   ],
+   "tag": "cannot_tell"
+  },
+  "183": {
+   "adopted": "arm__arcsine_corrector_unweighted",
+   "band": 0.16642942452726842,
+   "common_rows": 1468,
+   "contrast": {
+    "high": 0.12986521910988202,
+    "low": -1.2607314492574555,
+    "mean": -0.5654331150737867,
+    "n_groups": 26,
+    "se": 0.3547440480528922
+   },
+   "groups_better": 12,
+   "guard_passed": true,
+   "pooled_contrast": -1.0293477412232295,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "Andaman Sea",
+    "Bahamas and Florida Keys",
+    "Eastern Hawaii",
+    "Jamaica",
+    "Mayotte and Comoros",
+    "Moreton Bay, eastern Australia",
+    "North Madagascar",
+    "North Philippines",
+    "North and central Red Sea",
+    "South-east Philippines",
+    "Sunda Shelf, south-east Asia",
+    "Taiwan and coastal China"
+   ],
+   "tag": "cannot_tell"
+  },
+  "365": {
+   "adopted": "arm__arcsine_corrector_unweighted",
+   "band": 0.16642942452726842,
+   "common_rows": 1468,
+   "contrast": {
+    "high": 0.21792987240293382,
+    "low": -1.6263828201090784,
+    "mean": -0.7042264738530724,
+    "n_groups": 26,
+    "se": 0.4704879317632685
+   },
+   "groups_better": 14,
+   "guard_passed": true,
+   "pooled_contrast": -1.1429998950437503,
+   "reference": "base__donor_median",
+   "sign_flip_groups": [
+    "Andaman Sea",
+    "Bahamas and Florida Keys",
+    "Belize and west Caribbean",
+    "Celebes Sea",
+    "Eastern Hawaii",
+    "Mayotte and Comoros",
+    "Moreton Bay, eastern Australia",
+    "North Philippines",
+    "North and central Red Sea",
+    "South-east Philippines",
+    "Southern Great Barrier Reef",
+    "Sulu Sea",
+    "Sunda Shelf, south-east Asia",
+    "Taiwan and coastal China"
+   ],
+   "tag": "cannot_tell"
+  }
+ }
+}

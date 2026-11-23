@@ -1,0 +1,5075 @@
+{
+ "run_started": "2026-11-16T19:01:38+01:00",
+ "official_internal_checks": {
+  "coral": [
+   [
+    "pairs.parquet SHA-256 and size == pairs.parquet.done.json",
+    true
+   ],
+   [
+    "per_lead salt == shap_v1|AW4|<p>|0",
+    true
+   ],
+   [
+    "per_lead sample_sha256 == the registered sample",
+    true
+   ],
+   [
+    "family map: a variable is a global index iff all its x__ columns are in global_columns (0 off)",
+    true
+   ],
+   [
+    "per_lead.regions == number of regions",
+    true
+   ],
+   [
+    "per_lead.draws == draw matrix rows",
+    true
+   ],
+   [
+    "draw matrix columns == number of regions",
+    true
+   ],
+   [
+    "draw values in 0..G-1",
+    true
+   ],
+   [
+    "feature: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "feature: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "feature: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "feature rival_hgb_l1: one row per player",
+    true
+   ],
+   [
+    "feature rival_hgb_l1: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_rf: one row per player",
+    true
+   ],
+   [
+    "feature rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_ridge: one row per player",
+    true
+   ],
+   [
+    "feature rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature treeroute: one row per player",
+    true
+   ],
+   [
+    "feature treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_hgb_l1|rival_lgbm: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_hgb_l1|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_hgb_l1|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_hgb_l1|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_hgb_l1|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "variable: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "variable: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "variable rival_hgb_l1: one row per player",
+    true
+   ],
+   [
+    "variable rival_hgb_l1: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_rf: one row per player",
+    true
+   ],
+   [
+    "variable rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_ridge: one row per player",
+    true
+   ],
+   [
+    "variable rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable treeroute: one row per player",
+    true
+   ],
+   [
+    "variable treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_hgb_l1|rival_lgbm: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_hgb_l1|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_hgb_l1|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_hgb_l1|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_hgb_l1|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "families rival_hgb_l1: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_lgbm: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_lgbm_tweedie: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_rf: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_ridge: shares sum to 1",
+    true
+   ],
+   [
+    "families treeroute: shares sum to 1",
+    true
+   ],
+   [
+    "main row W == per_lead variable W",
+    true
+   ],
+   [
+    "main row main set == per_lead main_set",
+    true
+   ],
+   [
+    "main row declined == per_lead declined_by_guard",
+    true
+   ],
+   [
+    "consensus top 3 == derived consensus ranking",
+    true
+   ],
+   [
+    "treeroute top 3 == derived ranking",
+    true
+   ]
+  ],
+  "defo": [
+   [
+    "pairs.parquet SHA-256 and size == pairs.parquet.done.json",
+    true
+   ],
+   [
+    "per_lead salt == shap_v1|AW4|<p>|0",
+    true
+   ],
+   [
+    "per_lead sample_sha256 == the registered sample",
+    true
+   ],
+   [
+    "family map: a variable is a global index iff all its x__ columns are in global_columns (0 off)",
+    true
+   ],
+   [
+    "per_lead.regions == number of regions",
+    true
+   ],
+   [
+    "per_lead.draws == draw matrix rows",
+    true
+   ],
+   [
+    "draw matrix columns == number of regions",
+    true
+   ],
+   [
+    "draw values in 0..G-1",
+    true
+   ],
+   [
+    "feature: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "feature: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "feature: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "feature rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_rf: one row per player",
+    true
+   ],
+   [
+    "feature rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_ridge: one row per player",
+    true
+   ],
+   [
+    "feature rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature treeroute: one row per player",
+    true
+   ],
+   [
+    "feature treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "variable: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "variable: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "variable rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_rf: one row per player",
+    true
+   ],
+   [
+    "variable rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_ridge: one row per player",
+    true
+   ],
+   [
+    "variable rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable treeroute: one row per player",
+    true
+   ],
+   [
+    "variable treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "families rival_lgbm: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_lgbm_tweedie: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_rf: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_ridge: shares sum to 1",
+    true
+   ],
+   [
+    "families treeroute: shares sum to 1",
+    true
+   ],
+   [
+    "main row W == per_lead variable W",
+    true
+   ],
+   [
+    "main row main set == per_lead main_set",
+    true
+   ],
+   [
+    "main row declined == per_lead declined_by_guard",
+    true
+   ],
+   [
+    "consensus top 3 == derived consensus ranking",
+    true
+   ],
+   [
+    "treeroute top 3 == derived ranking",
+    true
+   ]
+  ],
+  "fire": [
+   [
+    "pairs.parquet SHA-256 and size == pairs.parquet.done.json",
+    true
+   ],
+   [
+    "per_lead salt == shap_v1|AW4|<p>|0",
+    true
+   ],
+   [
+    "per_lead sample_sha256 == the registered sample",
+    true
+   ],
+   [
+    "family map: a variable is a global index iff all its x__ columns are in global_columns (0 off)",
+    true
+   ],
+   [
+    "per_lead.regions == number of regions",
+    true
+   ],
+   [
+    "per_lead.draws == draw matrix rows",
+    true
+   ],
+   [
+    "draw matrix columns == number of regions",
+    true
+   ],
+   [
+    "draw values in 0..G-1",
+    true
+   ],
+   [
+    "feature: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "feature: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "feature: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "feature rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_rf: one row per player",
+    true
+   ],
+   [
+    "feature rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_ridge: one row per player",
+    true
+   ],
+   [
+    "feature rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature treeroute: one row per player",
+    true
+   ],
+   [
+    "feature treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "variable: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "variable: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "variable rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_rf: one row per player",
+    true
+   ],
+   [
+    "variable rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_ridge: one row per player",
+    true
+   ],
+   [
+    "variable rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable treeroute: one row per player",
+    true
+   ],
+   [
+    "variable treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_lgbm_tweedie: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm_tweedie|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "families rival_lgbm: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_lgbm_tweedie: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_rf: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_ridge: shares sum to 1",
+    true
+   ],
+   [
+    "families treeroute: shares sum to 1",
+    true
+   ],
+   [
+    "main row W == per_lead variable W",
+    true
+   ],
+   [
+    "main row main set == per_lead main_set",
+    true
+   ],
+   [
+    "main row declined == per_lead declined_by_guard",
+    true
+   ]
+  ],
+  "pm25": [
+   [
+    "pairs.parquet SHA-256 and size == pairs.parquet.done.json",
+    true
+   ],
+   [
+    "per_lead salt == shap_v1|AW4|<p>|0",
+    true
+   ],
+   [
+    "per_lead sample_sha256 == the registered sample",
+    true
+   ],
+   [
+    "family map: a variable is a global index iff all its x__ columns are in global_columns (0 off)",
+    true
+   ],
+   [
+    "per_lead.regions == number of regions",
+    true
+   ],
+   [
+    "per_lead.draws == draw matrix rows",
+    true
+   ],
+   [
+    "draw matrix columns == number of regions",
+    true
+   ],
+   [
+    "draw values in 0..G-1",
+    true
+   ],
+   [
+    "feature: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "feature: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "feature: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "feature rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_rf: one row per player",
+    true
+   ],
+   [
+    "feature rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_ridge: one row per player",
+    true
+   ],
+   [
+    "feature rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature treeroute: one row per player",
+    true
+   ],
+   [
+    "feature treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "variable: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "variable: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "variable rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_rf: one row per player",
+    true
+   ],
+   [
+    "variable rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_ridge: one row per player",
+    true
+   ],
+   [
+    "variable rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable treeroute: one row per player",
+    true
+   ],
+   [
+    "variable treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "families rival_lgbm: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_rf: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_ridge: shares sum to 1",
+    true
+   ],
+   [
+    "families treeroute: shares sum to 1",
+    true
+   ],
+   [
+    "main row W == per_lead variable W",
+    true
+   ],
+   [
+    "main row main set == per_lead main_set",
+    true
+   ],
+   [
+    "main row declined == per_lead declined_by_guard",
+    true
+   ],
+   [
+    "consensus top 3 == derived consensus ranking",
+    true
+   ],
+   [
+    "treeroute top 3 == derived ranking",
+    true
+   ]
+  ],
+  "ndvi": [
+   [
+    "pairs.parquet SHA-256 and size == pairs.parquet.done.json",
+    true
+   ],
+   [
+    "per_lead salt == shap_v1|AW4|<p>|0",
+    true
+   ],
+   [
+    "per_lead sample_sha256 == the registered sample",
+    true
+   ],
+   [
+    "family map: a variable is a global index iff all its x__ columns are in global_columns (0 off)",
+    true
+   ],
+   [
+    "per_lead.regions == number of regions",
+    true
+   ],
+   [
+    "per_lead.draws == draw matrix rows",
+    true
+   ],
+   [
+    "draw matrix columns == number of regions",
+    true
+   ],
+   [
+    "draw values in 0..G-1",
+    true
+   ],
+   [
+    "feature: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "feature: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "feature: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "feature rival_bardl_h1: one row per player",
+    true
+   ],
+   [
+    "feature rival_bardl_h1: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "feature rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_rf: one row per player",
+    true
+   ],
+   [
+    "feature rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_ridge: one row per player",
+    true
+   ],
+   [
+    "feature rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature treeroute: one row per player",
+    true
+   ],
+   [
+    "feature treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "feature rival_bardl_h1|rival_lgbm: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_bardl_h1|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_bardl_h1|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_bardl_h1|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "feature rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable: per_lead active == |J| of importance.parquet",
+    true
+   ],
+   [
+    "variable: per_lead structural_zero == inactive players",
+    true
+   ],
+   [
+    "variable: per_lead players == players of importance.parquet",
+    true
+   ],
+   [
+    "variable rival_bardl_h1: one row per player",
+    true
+   ],
+   [
+    "variable rival_bardl_h1: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_lgbm: one row per player",
+    true
+   ],
+   [
+    "variable rival_lgbm: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_rf: one row per player",
+    true
+   ],
+   [
+    "variable rival_rf: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_ridge: one row per player",
+    true
+   ],
+   [
+    "variable rival_ridge: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable treeroute: one row per player",
+    true
+   ],
+   [
+    "variable treeroute: share == mean_abs / sum over J",
+    true
+   ],
+   [
+    "variable rival_bardl_h1|rival_lgbm: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_bardl_h1|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_bardl_h1|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_bardl_h1|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_rf: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_lgbm|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|rival_ridge: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_rf|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "variable rival_ridge|treeroute: signs_compared == |determined in both| (derived)",
+    true
+   ],
+   [
+    "families rival_bardl_h1: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_lgbm: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_rf: shares sum to 1",
+    true
+   ],
+   [
+    "families rival_ridge: shares sum to 1",
+    true
+   ],
+   [
+    "families treeroute: shares sum to 1",
+    true
+   ],
+   [
+    "main row W == per_lead variable W",
+    true
+   ],
+   [
+    "main row main set == per_lead main_set",
+    true
+   ],
+   [
+    "main row declined == per_lead declined_by_guard",
+    true
+   ],
+   [
+    "consensus top 3 == derived consensus ranking",
+    true
+   ],
+   [
+    "treeroute top 3 == derived ranking",
+    true
+   ]
+  ]
+ },
+ "key_counts": {
+  "A": 117944,
+  "B": 117946,
+  "official": 38354,
+  "official_derived": 921
+ },
+ "number_counts": {
+  "A": 107677,
+  "B": 107948,
+  "official": 29023
+ },
+ "verdicts": {
+  "b1 match": 14412,
+  "b1 mismatch": 12,
+  "items1_8 match": 34121,
+  "items1_8 mismatch": 72962,
+  "items1_8 match_no_number": 157
+ },
+ "derived_second_check": {
+  "A match": 916,
+  "B match": 916,
+  "A diff": 5,
+  "B diff": 5
+ },
+ "derived_disagreements": [
+  {
+   "key": "problems/coral/nonzero_forecast/models/rival_hgb_l1/J",
+   "A": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "B": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "derived": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (26 items)"
+   ],
+   "st": {
+    "AB": "match",
+    "AO": "missing_in_second",
+    "BO": "missing_in_second",
+    "AOd": "diff",
+    "BOd": "diff"
+   }
+  },
+  {
+   "key": "problems/coral/nonzero_forecast/models/rival_lgbm/J",
+   "A": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "B": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "derived": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (26 items)"
+   ],
+   "st": {
+    "AB": "match",
+    "AO": "missing_in_second",
+    "BO": "missing_in_second",
+    "AOd": "diff",
+    "BOd": "diff"
+   }
+  },
+  {
+   "key": "problems/coral/nonzero_forecast/models/rival_rf/J",
+   "A": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "B": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "derived": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (26 items)"
+   ],
+   "st": {
+    "AB": "match",
+    "AO": "missing_in_second",
+    "BO": "missing_in_second",
+    "AOd": "diff",
+    "BOd": "diff"
+   }
+  },
+  {
+   "key": "problems/coral/nonzero_forecast/models/treeroute/J",
+   "A": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "B": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (25 items)"
+   ],
+   "derived": [
+    "calendar",
+    "cool",
+    "ctx:abslat",
+    "ctx:mmm",
+    "cyc_days_since_close",
+    "cyc_maxw",
+    "cyc_mindist",
+    "cyc_n",
+    "... (26 items)"
+   ],
+   "st": {
+    "AB": "match",
+    "AO": "missing_in_second",
+    "BO": "missing_in_second",
+    "AOd": "diff",
+    "BOd": "diff"
+   }
+  },
+  {
+   "key": "problems/fire/nonzero_forecast/models/treeroute/J",
+   "A": [
+    "aet_total_mm",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "amo",
+    "... (94 items)"
+   ],
+   "B": [
+    "aet_total_mm",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "amo",
+    "... (94 items)"
+   ],
+   "derived": [
+    "CTI",
+    "aet_total_mm",
+    "aglw_buffalo_hold2021",
+    "aglw_cattle_hold2021",
+    "aglw_goats_hold2021",
+    "aglw_horse_hold2021",
+    "aglw_sheep_hold2021",
+    "aglw_total_lsu_hold2021",
+    "... (117 items)"
+   ],
+   "st": {
+    "AB": "match",
+    "AO": "missing_in_second",
+    "BO": "missing_in_second",
+    "AOd": "diff",
+    "BOd": "diff"
+   }
+  }
+ ],
+ "groups": {
+  "C15_feature_family_tvd_B1": 12,
+  "derived_only": 904,
+  "C08_no_interval_count": 762,
+  "no_interval_importance": 64089,
+  "O_only_structural_zero_rows": 3592,
+  "sign_agreement_no_interval": 285,
+  "C15_feature_family_tvd": 204,
+  "test_set_columns_text": 5,
+  "O_only_family_mean_abs": 125,
+  "no_interval_family_share": 342,
+  "C15_empty_family": 55,
+  "C22_range_no_interval": 24,
+  "C25_item8_scope": 2562,
+  "C23_median_rival_name": 2,
+  "undefined_nan_zero_replicates": 5,
+  "fire_main_row_missing": 6
+ },
+ "group_patterns": {
+  "C15_feature_family_tvd_B1": [
+   [
+    "b1/<b1>/feature/pair_main_b1/tv_family_shares/ci_high",
+    3
+   ],
+   [
+    "b1/<b1>/feature/pair_main_b1/tv_family_shares/ci_low",
+    3
+   ],
+   [
+    "b1/<b1>/feature/pair_main_b1/tv_family_shares/n_finite",
+    3
+   ],
+   [
+    "b1/<b1>/feature/pair_main_b1/tv_family_shares/value",
+    3
+   ]
+  ],
+  "derived_only": [
+   [
+    "problems/<problems>/main_row/consensus_shares/<consensus_shares>",
+    309
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/both_in_main_set",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_determined_both",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_agree/value",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_union_top10",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/top20_union",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/both_in_main_set",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_determined_both",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_agree/value",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_union_top10",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/top20_union",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/ranking",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/ranking",
+    25
+   ],
+   [
+    "problems/<problems>/draws/regions_in_draw_order",
+    5
+   ],
+   [
+    "problems/<problems>/levels/variable/families/global_indices",
+    5
+   ],
+   [
+    "problems/<problems>/main_row/rivals",
+    5
+   ],
+   [
+    "problems/<problems>/levels/feature/per_problem/kendall_w_m",
+    4
+   ],
+   [
+    "problems/<problems>/levels/feature/per_problem/kendall_w_n",
+    4
+   ],
+   [
+    "problems/<problems>/levels/variable/per_problem/kendall_w_m",
+    4
+   ],
+   [
+    "problems/<problems>/levels/variable/per_problem/kendall_w_n",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/consensus_top3/<i>",
+    4
+   ]
+  ],
+  "C08_no_interval_count": [
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_agree/ci_high",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_agree/ci_low",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_agree/n_finite",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_determined/ci_high",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_determined/ci_low",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_determined/n_finite",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_agree/ci_high",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_agree/ci_low",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_agree/n_finite",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_determined/ci_high",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_determined/ci_low",
+    51
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_determined/n_finite",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/n_nonzero/ci_high",
+    25
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/n_nonzero/ci_low",
+    25
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/n_nonzero/n_finite",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/n_nonzero/ci_high",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/n_nonzero/ci_low",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/n_nonzero/n_finite",
+    25
+   ]
+  ],
+  "no_interval_importance": [
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/I/ci_high",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/I/ci_low",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/I/n_finite",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/share/ci_high",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/share/ci_low",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/share/n_finite",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/signed_mean/ci_high",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/signed_mean/ci_low",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/signed_mean/n_finite",
+    5170
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/I/ci_high",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/I/ci_low",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/I/n_finite",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/share/ci_high",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/share/ci_low",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/share/n_finite",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/signed_mean/ci_high",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/signed_mean/ci_low",
+    1951
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/signed_mean/n_finite",
+    1951
+   ]
+  ],
+  "O_only_structural_zero_rows": [
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/I/value",
+    474
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/share/value",
+    474
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/sign_determined",
+    474
+   ],
+   [
+    "problems/<problems>/levels/feature/models/<models>/players/<players>/signed_mean/value",
+    474
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/I/value",
+    424
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/share/value",
+    424
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/sign_determined",
+    424
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/players/<players>/signed_mean/value",
+    424
+   ]
+  ],
+  "sign_agreement_no_interval": [
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/ci_high",
+    49
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/ci_low",
+    49
+   ],
+   [
+    "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/n_finite",
+    49
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/ci_high",
+    46
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/ci_low",
+    46
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/n_finite",
+    46
+   ]
+  ],
+  "C15_feature_family_tvd": [
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/tv_family_shares/ci_high",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/tv_family_shares/ci_low",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/tv_family_shares/n_finite",
+    51
+   ],
+   [
+    "problems/<problems>/levels/feature/pairs/<pairs>/tv_family_shares/value",
+    51
+   ]
+  ],
+  "test_set_columns_text": [
+   [
+    "problems/<problems>/levels/variable/families/test_set_columns",
+    5
+   ]
+  ],
+  "O_only_family_mean_abs": [
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_mean_abs/context_and_calendar",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_mean_abs/global_indices",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_mean_abs/local_drivers",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_mean_abs/own_history",
+    25
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_mean_abs/seasonal_normal",
+    25
+   ]
+  ],
+  "no_interval_family_share": [
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/ci_high",
+    114
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/ci_low",
+    114
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/n_finite",
+    114
+   ]
+  ],
+  "C15_empty_family": [
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/ci_high",
+    11
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/ci_low",
+    11
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/n_finite",
+    11
+   ],
+   [
+    "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/value",
+    11
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_per_rival/<own_history_share_per_rival>",
+    3
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_median_rival/ci_high",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_median_rival/ci_low",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_median_rival/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_median_rival/value",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/ci_high",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/ci_low",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/value",
+    1
+   ]
+  ],
+  "C22_range_no_interval": [
+   [
+    "problems/<problems>/main_row/spearman_top20_union_max/ci_high",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/spearman_top20_union_max/ci_low",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/spearman_top20_union_max/n_finite",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/spearman_top20_union_min/ci_high",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/spearman_top20_union_min/ci_low",
+    4
+   ],
+   [
+    "problems/<problems>/main_row/spearman_top20_union_min/n_finite",
+    4
+   ]
+  ],
+  "C25_item8_scope": [
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/I/ci_high",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/I/ci_low",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/I/n_finite",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/I/value",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/share/ci_high",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/share/ci_low",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/share/n_finite",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/share/value",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/sign_determined",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/signed_mean/ci_high",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/signed_mean/ci_low",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/signed_mean/n_finite",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/players/<players>/signed_mean/value",
+    194
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/J",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/level",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/n_nonzero/ci_high",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/n_nonzero/ci_low",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/n_nonzero/n_finite",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/n_nonzero/value",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/ranking",
+    5
+   ],
+   [
+    "problems/<problems>/nonzero_forecast/models/<models>/regions_used",
+    5
+   ]
+  ],
+  "C23_median_rival_name": [
+   [
+    "problems/<problems>/main_row/median_rival_name",
+    2
+   ]
+  ],
+  "undefined_nan_zero_replicates": [
+   [
+    "problems/<problems>/levels/feature/per_problem/kendall_w/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/levels/feature/per_problem/mean_pairwise_spearman/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/levels/variable/per_problem/kendall_w/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/levels/variable/per_problem/mean_pairwise_spearman/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/kendall_w/n_finite",
+    1
+   ]
+  ],
+  "fire_main_row_missing": [
+   [
+    "problems/<problems>/main_row/treeroute_top3/<i>",
+    2
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/ci_high",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/ci_low",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/n_finite",
+    1
+   ],
+   [
+    "problems/<problems>/main_row/own_history_share_treeroute/value",
+    1
+   ]
+  ]
+ },
+ "no_number_keys_count": 157,
+ "no_number_key_patterns": [
+  [
+   "problems/<problems>/levels/feature/per_problem/stability/<stability>/ci_high",
+   25
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/stability/<stability>/ci_low",
+   25
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/stability/<stability>/n_finite",
+   25
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/stability/<stability>/ci_high",
+   25
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/stability/<stability>/ci_low",
+   25
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/stability/<stability>/n_finite",
+   25
+  ],
+  [
+   "problems/<problems>/main_row/median_rival_name",
+   2
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_per_rival",
+   1
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w_m",
+   1
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w_n",
+   1
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w_m",
+   1
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w_n",
+   1
+  ]
+ ],
+ "second_checks": {
+  "coral": {
+   "n": 1114,
+   "official_table_eq_unrounded": 1114,
+   "A_eq": 1102,
+   "B_eq": 1114,
+   "not_ok": [
+    [
+     "AW3 family rival_hgb_l1 own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_lgbm own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_lgbm_tweedie own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_rf own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_ridge own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family treeroute own_history",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history treeroute value",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history median rival value",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history treeroute ci_low",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history median rival ci_low",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history treeroute ci_high",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW4 own history median rival ci_high",
+     "0.00",
+     "0.00",
+     "nan",
+     "0.00",
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  "defo": {
+   "n": 790,
+   "official_table_eq_unrounded": 790,
+   "A_eq": 785,
+   "B_eq": 790,
+   "not_ok": [
+    [
+     "AW3 family rival_lgbm context_and_calendar",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_lgbm_tweedie context_and_calendar",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_rf context_and_calendar",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family rival_ridge context_and_calendar",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ],
+    [
+     "AW3 family treeroute context_and_calendar",
+     "0.0%",
+     "0.0%",
+     "null",
+     "0.0%",
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  "fire": {
+   "n": 754,
+   "official_table_eq_unrounded": 754,
+   "A_eq": 754,
+   "B_eq": 754,
+   "not_ok": []
+  },
+  "pm25": {
+   "n": 505,
+   "official_table_eq_unrounded": 505,
+   "A_eq": 505,
+   "B_eq": 505,
+   "not_ok": []
+  },
+  "ndvi": {
+   "n": 790,
+   "official_table_eq_unrounded": 790,
+   "A_eq": 790,
+   "B_eq": 790,
+   "not_ok": []
+  }
+ },
+ "per_draw": {
+  "coral": {
+   "bootstrap_stats_vs_A": {
+    "n": 120,
+    "n_ok": 120,
+    "max_abs_diff": 5.551115123125783e-16,
+    "bad": {}
+   },
+   "bootstrap_stats_vs_B": {
+    "n": 120,
+    "n_ok": 120,
+    "max_abs_diff": 5.551115123125783e-16,
+    "bad": {}
+   },
+   "A_vs_B_npz": {
+    "keys_A": 458,
+    "keys_B": 481,
+    "only_A": [],
+    "only_B": [
+     "levels/feature/pairs/rival_hgb_l1|rival_lgbm/tv_family_shares",
+     "levels/feature/pairs/rival_hgb_l1|rival_lgbm_tweedie/tv_family_shares",
+     "levels/feature/pairs/rival_hgb_l1|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_hgb_l1|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_hgb_l1|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_lgbm_tweedie/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_rf|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_rf|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_ridge|treeroute/tv_family_shares",
+     "levels/variable/models/rival_hgb_l1/family_shares/own_history",
+     "levels/variable/models/rival_lgbm/family_shares/own_history",
+     "levels/variable/models/rival_lgbm_tweedie/family_shares/own_history",
+     "levels/variable/models/rival_rf/family_shares/own_history",
+     "levels/variable/models/rival_ridge/family_shares/own_history",
+     "levels/variable/models/treeroute/family_shares/own_history",
+     "main_row/own_history_share_median_rival",
+     "main_row/own_history_share_treeroute"
+    ],
+    "bad": {},
+    "n_ok": 442
+   }
+  },
+  "defo": {
+   "bootstrap_stats_vs_A": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 9.43689570931383e-16,
+    "bad": {}
+   },
+   "bootstrap_stats_vs_B": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 9.992007221626409e-16,
+    "bad": {}
+   },
+   "A_vs_B_npz": {
+    "keys_A": 321,
+    "keys_B": 336,
+    "only_A": [],
+    "only_B": [
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_lgbm_tweedie/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_rf|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_rf|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_ridge|treeroute/tv_family_shares",
+     "levels/variable/models/rival_lgbm/family_shares/context_and_calendar",
+     "levels/variable/models/rival_lgbm_tweedie/family_shares/context_and_calendar",
+     "levels/variable/models/rival_rf/family_shares/context_and_calendar",
+     "levels/variable/models/rival_ridge/family_shares/context_and_calendar",
+     "levels/variable/models/treeroute/family_shares/context_and_calendar"
+    ],
+    "bad": {},
+    "n_ok": 311
+   }
+  },
+  "fire": {
+   "bootstrap_stats_vs_A": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 6.661338147750939e-16,
+    "bad": {}
+   },
+   "bootstrap_stats_vs_B": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 6.661338147750939e-16,
+    "bad": {}
+   },
+   "A_vs_B_npz": {
+    "keys_A": 311,
+    "keys_B": 321,
+    "only_A": [],
+    "only_B": [
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm_tweedie|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_lgbm_tweedie/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_rf|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_rf|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_ridge|treeroute/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 300
+   }
+  },
+  "pm25": {
+   "bootstrap_stats_vs_A": {
+    "n": 48,
+    "n_ok": 48,
+    "max_abs_diff": 5.551115123125783e-16,
+    "bad": {}
+   },
+   "bootstrap_stats_vs_B": {
+    "n": 48,
+    "n_ok": 48,
+    "max_abs_diff": 6.661338147750939e-16,
+    "bad": {}
+   },
+   "A_vs_B_npz": {
+    "keys_A": 209,
+    "keys_B": 215,
+    "only_A": [],
+    "only_B": [
+     "levels/feature/pairs/rival_lgbm|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_rf|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_rf|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_ridge|treeroute/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 201
+   }
+  },
+  "ndvi": {
+   "bootstrap_stats_vs_A": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 2.7755575615628914e-15,
+    "bad": {}
+   },
+   "bootstrap_stats_vs_B": {
+    "n": 80,
+    "n_ok": 80,
+    "max_abs_diff": 2.6645352591003757e-15,
+    "bad": {}
+   },
+   "A_vs_B_npz": {
+    "keys_A": 326,
+    "keys_B": 336,
+    "only_A": [],
+    "only_B": [
+     "levels/feature/pairs/rival_bardl_h1|rival_lgbm/tv_family_shares",
+     "levels/feature/pairs/rival_bardl_h1|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_bardl_h1|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_bardl_h1|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_rf/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_lgbm|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_rf|rival_ridge/tv_family_shares",
+     "levels/feature/pairs/rival_rf|treeroute/tv_family_shares",
+     "levels/feature/pairs/rival_ridge|treeroute/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 316
+   }
+  },
+  "b1_fire": {
+   "A_vs_B_npz": {
+    "keys_A": 40,
+    "keys_B": 41,
+    "only_A": [],
+    "only_B": [
+     "feature/pair_main_b1/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 38
+   }
+  },
+  "b1_pm25": {
+   "A_vs_B_npz": {
+    "keys_A": 40,
+    "keys_B": 41,
+    "only_A": [],
+    "only_B": [
+     "feature/pair_main_b1/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 38
+   }
+  },
+  "b1_ndvi": {
+   "A_vs_B_npz": {
+    "keys_A": 41,
+    "keys_B": 42,
+    "only_A": [],
+    "only_B": [
+     "feature/pair_main_b1/tv_family_shares"
+    ],
+    "bad": {},
+    "n_ok": 39
+   }
+  }
+ },
+ "b1": {
+  "coral": {
+   "folder_exists": false,
+   "has_done_json": false,
+   "has_failed_json": false,
+   "registered_sample_sha256": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023",
+   "A_status": {
+    "folder_exists": false,
+    "has_done_json": false,
+    "has_failed_json": false,
+    "finished": false,
+    "numbers": "none",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": null,
+    "background_is_B1": null
+   },
+   "B_status": {
+    "folder_exists": false,
+    "has_done_json": false,
+    "has_failed_json": false,
+    "finished": false,
+    "numbers": "none",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": null,
+    "background_is_B1": null
+   },
+   "A_registered": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023",
+   "B_registered": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023"
+  },
+  "defo": {
+   "folder_exists": true,
+   "has_done_json": true,
+   "has_failed_json": false,
+   "registered_sample_sha256": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+   "A_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "identity",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "B_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "identity",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "A_registered": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+   "B_registered": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+   "meta": {
+    "pass": true,
+    "checks_passed": {
+     "S-ADD": true,
+     "S-EVAL": true,
+     "S-RESID": true,
+     "S-ZERO": true
+    },
+    "rows": 1000,
+    "background": "B1",
+    "pairs": 16000,
+    "trees_used": 4200,
+    "sample_sha256": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+    "duplicates_merged": {}
+   },
+   "meta_players_nonzero": 279,
+   "meta_variables_nonzero": 99,
+   "meta_tree_shap_seconds": 464.3,
+   "done_seconds": 465.9,
+   "main_duplicates_merged": [],
+   "b1_duplicates_merged": [],
+   "A_meta_equal": true,
+   "B_meta_equal": true,
+   "sample_is_registered": true,
+   "A_run": {
+    "log_setup_line_number": 24,
+    "log_done_line_number": 30,
+    "pairs_log": 16000,
+    "pairs_meta": 16000,
+    "total_seconds_log": 465.9,
+    "total_seconds_done_json": 465.9,
+    "tree_shap_seconds_log": 464.3,
+    "tree_shap_seconds_meta": 464.3
+   },
+   "B_run": {
+    "log_setup_line_number": 24,
+    "log_done_line_number": 30,
+    "pairs_log": 16000,
+    "pairs_meta": 16000,
+    "total_seconds_log": 465.9,
+    "total_seconds_done_json": 465.9,
+    "tree_shap_seconds_log": 464.3,
+    "tree_shap_seconds_meta": 464.3
+   },
+   "log_nonzero": [
+    279,
+    99
+   ],
+   "log": {
+    "setup_line": 24,
+    "pairs": 16000,
+    "done_line": 30,
+    "total_seconds": 465.9,
+    "tree_shap_seconds": 464.3
+   },
+   "identity_reconciler": {
+    "n_rows_main": 1000,
+    "n_rows_b1": 1000,
+    "same_rows": true,
+    "n_phi_main": 309,
+    "n_phi_b1": 309,
+    "same_phi": true,
+    "max_abs_diff_phi": 0.0,
+    "n_values_compared_phi": 309000,
+    "n_phiv_main": 121,
+    "n_phiv_b1": 121,
+    "same_phiv": true,
+    "max_abs_diff_phiv": 0.0,
+    "n_values_compared_phiv": 121000
+   },
+   "A_identity": {
+    "max_abs_diff_phi": 0.0,
+    "max_abs_diff_phiv": 0.0,
+    "same_rows": true,
+    "same_players": true,
+    "same_variables": true,
+    "n_rows_main": 1000,
+    "n_rows_b1": 1000,
+    "n_players_main": 309,
+    "n_players_b1": 309,
+    "n_variables_main": 121,
+    "n_variables_b1": 121,
+    "as_expected": true
+   },
+   "B_identity": {
+    "max_abs_diff_phi": 0.0,
+    "max_abs_diff_phiv": 0.0,
+    "same_rows": true,
+    "same_players": true,
+    "same_variables": true,
+    "n_rows_main": 1000,
+    "n_rows_b1": 1000,
+    "n_players_main": 309,
+    "n_players_b1": 309,
+    "n_variables_main": 121,
+    "n_variables_b1": 121,
+    "as_expected": true
+   }
+  },
+  "fire": {
+   "folder_exists": true,
+   "has_done_json": true,
+   "has_failed_json": false,
+   "registered_sample_sha256": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+   "A_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "B_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "A_registered": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+   "B_registered": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+   "meta": {
+    "pass": true,
+    "checks_passed": {
+     "S-ADD": true,
+     "S-EVAL": true,
+     "S-RESID": true,
+     "S-ZERO": true
+    },
+    "rows": 1000,
+    "background": "B1",
+    "pairs": 187186,
+    "trees_used": 4000,
+    "sample_sha256": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+    "duplicates_merged": {}
+   },
+   "meta_players_nonzero": 113,
+   "meta_variables_nonzero": 96,
+   "meta_tree_shap_seconds": 2631.6,
+   "done_seconds": 2636.6,
+   "main_duplicates_merged": [],
+   "b1_duplicates_merged": [],
+   "A_meta_equal": true,
+   "B_meta_equal": true,
+   "sample_is_registered": true,
+   "nonzero_counts": {
+    "A": {
+     "feature_n_nonzero_before_merge": 113.0,
+     "feature_n_nonzero": 113.0,
+     "variable_n_nonzero": 96.0
+    },
+    "B": {
+     "feature_n_nonzero_before_merge": 113.0,
+     "feature_n_nonzero": 113.0,
+     "variable_n_nonzero": 96.0
+    }
+   },
+   "nonzero_vs_meta": {
+    "A": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    },
+    "B": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    }
+   },
+   "A_run": {
+    "log_setup_line_number": 20,
+    "log_done_line_number": 26,
+    "pairs_log": 187186,
+    "pairs_meta": 187186,
+    "total_seconds_log": 2636.6,
+    "total_seconds_done_json": 2636.6,
+    "tree_shap_seconds_log": 2631.6,
+    "tree_shap_seconds_meta": 2631.6
+   },
+   "B_run": {
+    "log_setup_line_number": 20,
+    "log_done_line_number": 26,
+    "pairs_log": 187186,
+    "pairs_meta": 187186,
+    "total_seconds_log": 2636.6,
+    "total_seconds_done_json": 2636.6,
+    "tree_shap_seconds_log": 2631.6,
+    "tree_shap_seconds_meta": 2631.6
+   },
+   "log_nonzero": [
+    113,
+    96
+   ],
+   "log": {
+    "setup_line": 20,
+    "pairs": 187186,
+    "done_line": 26,
+    "total_seconds": 2636.6,
+    "tree_shap_seconds": 2631.6
+   }
+  },
+  "pm25": {
+   "folder_exists": true,
+   "has_done_json": true,
+   "has_failed_json": false,
+   "registered_sample_sha256": "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca",
+   "A_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "B_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "A_registered": "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca",
+   "B_registered": "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca",
+   "meta": {
+    "pass": true,
+    "checks_passed": {
+     "S-ADD": true,
+     "S-EVAL": true,
+     "S-RESID": true,
+     "S-ZERO": true
+    },
+    "rows": 1000,
+    "background": "B1",
+    "pairs": 203963,
+    "trees_used": 12700,
+    "sample_sha256": "ccb170212b82bbe7bc29709d774fa42f0ae82bc7c99b909b7ef629110b0ba6ca",
+    "duplicates_merged": {}
+   },
+   "meta_players_nonzero": 105,
+   "meta_variables_nonzero": 91,
+   "meta_tree_shap_seconds": 17883.2,
+   "done_seconds": 17890.4,
+   "main_duplicates_merged": [],
+   "b1_duplicates_merged": [],
+   "A_meta_equal": true,
+   "B_meta_equal": true,
+   "sample_is_registered": true,
+   "nonzero_counts": {
+    "A": {
+     "feature_n_nonzero_before_merge": 105.0,
+     "feature_n_nonzero": 105.0,
+     "variable_n_nonzero": 91.0
+    },
+    "B": {
+     "feature_n_nonzero_before_merge": 105.0,
+     "feature_n_nonzero": 105.0,
+     "variable_n_nonzero": 91.0
+    }
+   },
+   "nonzero_vs_meta": {
+    "A": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    },
+    "B": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    }
+   },
+   "A_run": {
+    "log_setup_line_number": 25,
+    "log_done_line_number": 39,
+    "pairs_log": 203963,
+    "pairs_meta": 203963,
+    "total_seconds_log": 17890.4,
+    "total_seconds_done_json": 17890.4,
+    "tree_shap_seconds_log": 17883.2,
+    "tree_shap_seconds_meta": 17883.2
+   },
+   "B_run": {
+    "log_setup_line_number": 25,
+    "log_done_line_number": 39,
+    "pairs_log": 203963,
+    "pairs_meta": 203963,
+    "total_seconds_log": 17890.4,
+    "total_seconds_done_json": 17890.4,
+    "tree_shap_seconds_log": 17883.2,
+    "tree_shap_seconds_meta": 17883.2
+   },
+   "log_nonzero": [
+    105,
+    91
+   ],
+   "log": {
+    "setup_line": 25,
+    "pairs": 203963,
+    "done_line": 39,
+    "total_seconds": 17890.4,
+    "tree_shap_seconds": 17883.2
+   }
+  },
+  "ndvi": {
+   "folder_exists": true,
+   "has_done_json": true,
+   "has_failed_json": false,
+   "registered_sample_sha256": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+   "A_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "B_status": {
+    "folder_exists": true,
+    "has_done_json": true,
+    "has_failed_json": false,
+    "finished": true,
+    "numbers": "full",
+    "per_lead_models_lists_treeroute_B1": false,
+    "sample_sha256_is_registered": true,
+    "background_is_B1": true
+   },
+   "A_registered": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+   "B_registered": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+   "meta": {
+    "pass": true,
+    "checks_passed": {
+     "S-ADD": true,
+     "S-EVAL": true,
+     "S-RESID": true,
+     "S-ZERO": true
+    },
+    "rows": 1000,
+    "background": "B1",
+    "pairs": 201768,
+    "trees_used": 13300,
+    "sample_sha256": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db",
+    "duplicates_merged": {
+     "c__ctx:top5:V01_mean_temp_C": "x__V01_mean_temp_C",
+     "c__ctx:top5:V07_total_ref_ET_mm_lag1": "x__V07_total_ref_ET_mm_lag1",
+     "c__ctx:top5:era5l_d2m": "x__era5l_d2m",
+     "c__ctx:top5:era5l_slhf_lag1": "x__era5l_slhf_lag1",
+     "c__ctx:top5:sph_kgkg_lag6": "x__sph_kgkg_lag6"
+    }
+   },
+   "meta_players_nonzero": 482,
+   "meta_variables_nonzero": 96,
+   "meta_tree_shap_seconds": 11871.8,
+   "done_seconds": 11883.1,
+   "main_duplicates_merged": [
+    "c__ctx:top5:V01_mean_temp_C",
+    "c__ctx:top5:V07_total_ref_ET_mm_lag1",
+    "c__ctx:top5:era5l_d2m",
+    "c__ctx:top5:era5l_slhf_lag1",
+    "c__ctx:top5:sph_kgkg_lag6"
+   ],
+   "b1_duplicates_merged": [
+    "c__ctx:top5:V01_mean_temp_C",
+    "c__ctx:top5:V07_total_ref_ET_mm_lag1",
+    "c__ctx:top5:era5l_d2m",
+    "c__ctx:top5:era5l_slhf_lag1",
+    "c__ctx:top5:sph_kgkg_lag6"
+   ],
+   "A_meta_equal": true,
+   "B_meta_equal": true,
+   "sample_is_registered": true,
+   "nonzero_counts": {
+    "A": {
+     "feature_n_nonzero_before_merge": 482.0,
+     "feature_n_nonzero": 482.0,
+     "variable_n_nonzero": 96.0
+    },
+    "B": {
+     "feature_n_nonzero_before_merge": 482.0,
+     "feature_n_nonzero": 482.0,
+     "variable_n_nonzero": 96.0
+    }
+   },
+   "nonzero_vs_meta": {
+    "A": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    },
+    "B": {
+     "before_merge_eq_players_nonzero": true,
+     "after_merge_eq_players_nonzero": true,
+     "variable_eq_variables_nonzero": true
+    }
+   },
+   "A_run": {
+    "log_setup_line_number": 17,
+    "log_done_line_number": 32,
+    "pairs_log": 201768,
+    "pairs_meta": 201768,
+    "total_seconds_log": 11883.1,
+    "total_seconds_done_json": 11883.1,
+    "tree_shap_seconds_log": 11871.8,
+    "tree_shap_seconds_meta": 11871.8
+   },
+   "B_run": {
+    "log_setup_line_number": 17,
+    "log_done_line_number": 32,
+    "pairs_log": 201768,
+    "pairs_meta": 201768,
+    "total_seconds_log": 11883.1,
+    "total_seconds_done_json": 11883.1,
+    "tree_shap_seconds_log": 11871.8,
+    "tree_shap_seconds_meta": 11871.8
+   },
+   "log_nonzero": [
+    482,
+    96
+   ],
+   "log": {
+    "setup_line": 17,
+    "pairs": 201768,
+    "done_line": 32,
+    "total_seconds": 11883.1,
+    "tree_shap_seconds": 11871.8
+   }
+  }
+ },
+ "independence": {
+  "coral": {
+   "per_lead_models_lists_treeroute_B1": false,
+   "pairs_done_finished": "2026-11-13T00:06:12",
+   "compare_file_mtimes": {
+    "per_lead.json": "2026-11-13T00:06:12+01:00",
+    "importance.parquet": "2026-11-13T00:06:12+01:00",
+    "families.parquet": "2026-11-13T00:06:12+01:00",
+    "pairs.parquet": "2026-11-13T00:06:12+01:00",
+    "bootstrap_stats.parquet": "2026-11-13T00:06:12+01:00",
+    "bootstrap_draws.npy": "2026-11-13T00:05:58+01:00",
+    "AW3_table.md": "2026-11-13T00:06:12+01:00",
+    "AW4_table.md": "2026-11-13T00:06:12+01:00",
+    "AW4_main_row.json": "2026-11-13T00:06:12+01:00"
+   }
+  },
+  "defo": {
+   "per_lead_models_lists_treeroute_B1": false,
+   "pairs_done_finished": "2026-11-14T14:35:05",
+   "compare_file_mtimes": {
+    "per_lead.json": "2026-11-14T14:35:05+01:00",
+    "importance.parquet": "2026-11-14T14:35:05+01:00",
+    "families.parquet": "2026-11-14T14:35:05+01:00",
+    "pairs.parquet": "2026-11-14T14:35:05+01:00",
+    "bootstrap_stats.parquet": "2026-11-14T14:35:05+01:00",
+    "bootstrap_draws.npy": "2026-11-14T14:34:41+01:00",
+    "AW3_table.md": "2026-11-14T14:35:05+01:00",
+    "AW4_table.md": "2026-11-14T14:35:05+01:00",
+    "AW4_main_row.json": "2026-11-14T14:35:05+01:00"
+   },
+   "max_abs_official_minus_A_main_I_feature": 2.7755575615628914e-17,
+   "max_abs_official_minus_A_B1_I_feature": null,
+   "max_abs_official_minus_A_main_I_variable": 2.0816681711721685e-17,
+   "max_abs_official_minus_A_B1_I_variable": null
+  },
+  "fire": {
+   "per_lead_models_lists_treeroute_B1": false,
+   "pairs_done_finished": "2026-11-14T04:47:14",
+   "compare_file_mtimes": {
+    "per_lead.json": "2026-11-14T04:47:14+01:00",
+    "importance.parquet": "2026-11-14T04:47:14+01:00",
+    "families.parquet": "2026-11-14T04:47:14+01:00",
+    "pairs.parquet": "2026-11-14T04:47:14+01:00",
+    "bootstrap_stats.parquet": "2026-11-14T04:47:14+01:00",
+    "bootstrap_draws.npy": "2026-11-14T04:47:02+01:00",
+    "AW3_table.md": "2026-11-14T04:47:14+01:00",
+    "AW4_table.md": "2026-11-14T04:47:14+01:00",
+    "AW4_main_row.json": "2026-11-14T04:47:14+01:00"
+   },
+   "max_abs_official_minus_A_main_I_feature": 1.0842021724855044e-19,
+   "max_abs_official_minus_A_B1_I_feature": 0.012628841029537203,
+   "max_abs_official_minus_A_main_I_variable": 8.131516293641283e-20,
+   "max_abs_official_minus_A_B1_I_variable": 0.012628841029537203
+  },
+  "pm25": {
+   "per_lead_models_lists_treeroute_B1": false,
+   "pairs_done_finished": "2026-11-14T04:47:52",
+   "compare_file_mtimes": {
+    "per_lead.json": "2026-11-14T04:47:52+01:00",
+    "importance.parquet": "2026-11-14T04:47:51+01:00",
+    "families.parquet": "2026-11-14T04:47:51+01:00",
+    "pairs.parquet": "2026-11-14T04:47:51+01:00",
+    "bootstrap_stats.parquet": "2026-11-14T04:47:51+01:00",
+    "bootstrap_draws.npy": "2026-11-14T04:47:42+01:00",
+    "AW3_table.md": "2026-11-14T04:47:52+01:00",
+    "AW4_table.md": "2026-11-14T04:47:52+01:00",
+    "AW4_main_row.json": "2026-11-14T04:47:52+01:00"
+   },
+   "max_abs_official_minus_A_main_I_feature": 3.469446951953614e-18,
+   "max_abs_official_minus_A_B1_I_feature": 0.20114359962838455,
+   "max_abs_official_minus_A_main_I_variable": 2.6020852139652106e-18,
+   "max_abs_official_minus_A_B1_I_variable": 0.20114359962838455
+  },
+  "ndvi": {
+   "per_lead_models_lists_treeroute_B1": false,
+   "pairs_done_finished": "2026-11-15T19:11:39",
+   "compare_file_mtimes": {
+    "per_lead.json": "2026-11-15T19:11:39+01:00",
+    "importance.parquet": "2026-11-15T19:11:38+01:00",
+    "families.parquet": "2026-11-15T19:11:38+01:00",
+    "pairs.parquet": "2026-11-15T19:11:38+01:00",
+    "bootstrap_stats.parquet": "2026-11-15T19:11:38+01:00",
+    "bootstrap_draws.npy": "2026-11-15T19:10:54+01:00",
+    "AW3_table.md": "2026-11-15T19:11:39+01:00",
+    "AW4_table.md": "2026-11-15T19:11:39+01:00",
+    "AW4_main_row.json": "2026-11-15T19:11:39+01:00"
+   },
+   "max_abs_official_minus_A_main_I_feature": 1.734723475976807e-18,
+   "max_abs_official_minus_A_B1_I_feature": 0.045557108193280724,
+   "max_abs_official_minus_A_main_I_variable": 2.6020852139652106e-18,
+   "max_abs_official_minus_A_B1_I_variable": 0.045557108193280724
+  }
+ },
+ "by_item": {
+  "9": {
+   "match": 14412,
+   "mismatch": 12
+  },
+  "copied structural keys": {
+   "match": 50
+  },
+  "6": {
+   "match": 25,
+   "mismatch": 5
+  },
+  "1": {
+   "match": 60
+  },
+  "2": {
+   "mismatch": 67881,
+   "match": 28634
+  },
+  "4": {
+   "mismatch": 1611,
+   "match": 4447
+  },
+  "5": {
+   "match": 126,
+   "mismatch": 20,
+   "match_no_number": 154
+  },
+  "3": {
+   "mismatch": 521,
+   "match": 606
+  },
+  "7": {
+   "mismatch": 362,
+   "match": 153,
+   "match_no_number": 3
+  },
+  "8": {
+   "mismatch": 2562,
+   "match": 20
+  }
+ },
+ "matched_patterns": [
+  [
+   "problems/<problems>/levels/feature/models/<models>/players/<players>/I/value",
+   5170
+  ],
+  [
+   "problems/<problems>/levels/feature/models/<models>/players/<players>/share/value",
+   5170
+  ],
+  [
+   "problems/<problems>/levels/feature/models/<models>/players/<players>/sign_determined",
+   5170
+  ],
+  [
+   "problems/<problems>/levels/feature/models/<models>/players/<players>/signed_mean/value",
+   5170
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/players/<players>/I/value",
+   1951
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/players/<players>/share/value",
+   1951
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/players/<players>/sign_determined",
+   1951
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/players/<players>/signed_mean/value",
+   1951
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/I/ci_high",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/I/ci_low",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/I/n_finite",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/I/value",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/share/ci_high",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/share/ci_low",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/share/n_finite",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/share/value",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/sign_determined",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/signed_mean/ci_high",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/signed_mean/ci_low",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/signed_mean/n_finite",
+   700
+  ],
+  [
+   "b1/<b1>/feature/importance/players/<players>/signed_mean/value",
+   700
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/main_shares/<main_shares>",
+   700
+  ],
+  [
+   "problems/<problems>/levels/variable/families/variable_family/<variable_family>",
+   492
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/I/ci_high",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/I/ci_low",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/I/n_finite",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/I/value",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/share/ci_high",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/share/ci_low",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/share/n_finite",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/share/value",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/sign_determined",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/signed_mean/ci_high",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/signed_mean/ci_low",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/signed_mean/n_finite",
+   283
+  ],
+  [
+   "b1/<b1>/variable/importance/players/<players>/signed_mean/value",
+   283
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/main_shares/<main_shares>",
+   283
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/family_shares/<family_shares>/value",
+   114
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/declined",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top10/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top10/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top10/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top10/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top20/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top20/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top20/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top20/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top5/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top5/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top5/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/jaccard_top5/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/kendall_tau_b/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/kendall_tau_b/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/kendall_tau_b/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/kendall_tau_b/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/link_class",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/models",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p090/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p090/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p090/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p090/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p095/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p095/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p095/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/rbo_p095/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/sign_n_determined/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_J/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_J/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_J/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_J/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_top20_union/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_top20_union/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_top20_union/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/spearman_top20_union/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/tv_shares/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/tv_shares/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/tv_shares/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/tv_shares/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/declined",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top10/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top10/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top10/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top10/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top20/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top20/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top20/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top20/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top5/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top5/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top5/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/jaccard_top5/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/kendall_tau_b/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/kendall_tau_b/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/kendall_tau_b/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/kendall_tau_b/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/link_class",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/models",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p090/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p090/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p090/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p090/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p095/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p095/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p095/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/rbo_p095/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/sign_n_determined/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_J/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_J/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_J/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_J/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_top20_union/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_top20_union/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_top20_union/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/spearman_top20_union/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_family_shares/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_family_shares/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_family_shares/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_family_shares/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_shares/ci_high",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_shares/ci_low",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_shares/n_finite",
+   51
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/tv_shares/value",
+   51
+  ],
+  [
+   "problems/<problems>/levels/feature/models/<models>/top10/<i>",
+   50
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/top10/<i>",
+   50
+  ],
+  [
+   "problems/<problems>/levels/feature/models/<models>/n_nonzero/value",
+   25
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/stability/<stability>/value",
+   25
+  ],
+  [
+   "problems/<problems>/levels/variable/models/<models>/n_nonzero/value",
+   25
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/stability/<stability>/value",
+   25
+  ],
+  [
+   "problems/<problems>/links/<links>",
+   25
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/cross_link_label",
+   20
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/cross_link_label",
+   20
+  ],
+  [
+   "b1/<b1>/status/meta/checks_passed/<checks_passed>",
+   16
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_per_rival/<spearman_top20_union_per_rival>",
+   13
+  ],
+  [
+   "b1/<b1>/variable/families/<families>/ci_high",
+   12
+  ],
+  [
+   "b1/<b1>/variable/families/<families>/ci_low",
+   12
+  ],
+  [
+   "b1/<b1>/variable/families/<families>/n_finite",
+   12
+  ],
+  [
+   "b1/<b1>/variable/families/<families>/value",
+   12
+  ],
+  [
+   "problems/<problems>/nonzero_forecast/models/<models>/top10/<i>",
+   10
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_per_rival/<own_history_share_per_rival>",
+   10
+  ],
+  [
+   "problems/<problems>/main_row/treeroute_top3/<i>",
+   8
+  ],
+  [
+   "b1/<b1>/feature/top10/<i>",
+   6
+  ],
+  [
+   "b1/<b1>/variable/top10/<i>",
+   6
+  ],
+  [
+   "b1/<b1>/variable/top3/<i>",
+   6
+  ],
+  [
+   "b1/<b1>/status/background_is_B1",
+   5
+  ],
+  [
+   "b1/<b1>/status/failed_stop",
+   5
+  ],
+  [
+   "b1/<b1>/status/finished",
+   5
+  ],
+  [
+   "b1/<b1>/status/folder_exists",
+   5
+  ],
+  [
+   "b1/<b1>/status/has_done_json",
+   5
+  ],
+  [
+   "b1/<b1>/status/has_failed_json",
+   5
+  ],
+  [
+   "b1/<b1>/status/numbers",
+   5
+  ],
+  [
+   "b1/<b1>/status/per_lead_models_lists_treeroute_B1",
+   5
+  ],
+  [
+   "b1/<b1>/status/sample_sha256_is_registered",
+   5
+  ],
+  [
+   "b1/<b1>/status/sample_sha256_registered",
+   5
+  ],
+  [
+   "b1/<b1>/status/meta/duplicates_merged/<duplicates_merged>",
+   5
+  ],
+  [
+   "problems/<problems>/declined_by_guard",
+   5
+  ],
+  [
+   "problems/<problems>/draws/dtype",
+   5
+  ],
+  [
+   "problems/<problems>/draws/sha256_computed",
+   5
+  ],
+  [
+   "problems/<problems>/draws/sha256_match",
+   5
+  ],
+  [
+   "problems/<problems>/draws/sha256_per_lead",
+   5
+  ],
+  [
+   "problems/<problems>/draws/shape",
+   5
+  ],
+  [
+   "problems/<problems>/lead",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/J",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/n_J/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/n_J/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/n_J/n_finite",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/n_J/value",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/active_set/structural_zeros",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w/value",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/mean_pairwise_spearman/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/mean_pairwise_spearman/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/mean_pairwise_spearman/value",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/J",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/n_J/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/n_J/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/n_J/n_finite",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/n_J/value",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/active_set/structural_zeros",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w/value",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/mean_pairwise_spearman/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/mean_pairwise_spearman/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/mean_pairwise_spearman/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/kendall_w/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/kendall_w/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/kendall_w/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/level",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/main_set",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/rbo_p090_vs_consensus/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/rbo_p090_vs_consensus/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/rbo_p090_vs_consensus/n_finite",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/rbo_p090_vs_consensus/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_max/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_median/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_median/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_median/n_finite",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_median/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_min/value",
+   5
+  ],
+  [
+   "problems/<problems>/main_set",
+   5
+  ],
+  [
+   "problems/<problems>/models",
+   5
+  ],
+  [
+   "problems/<problems>/nonzero_forecast/models/<models>/rows_used",
+   5
+  ],
+  [
+   "problems/<problems>/nonzero_forecast/models_covered",
+   5
+  ],
+  [
+   "problems/<problems>/rows",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/ci_high",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/ci_low",
+   5
+  ],
+  [
+   "problems/<problems>/levels/feature/pairs/<pairs>/sign_agreement/n_finite",
+   5
+  ],
+  [
+   "b1/<b1>/status/meta/background",
+   4
+  ],
+  [
+   "b1/<b1>/status/meta/pairs",
+   4
+  ],
+  [
+   "b1/<b1>/status/meta/pass",
+   4
+  ],
+  [
+   "b1/<b1>/status/meta/rows",
+   4
+  ],
+  [
+   "b1/<b1>/status/meta/sample_sha256",
+   4
+  ],
+  [
+   "b1/<b1>/status/meta/trees_used",
+   4
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/kendall_w/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/levels/feature/per_problem/mean_pairwise_spearman/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/kendall_w/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/levels/variable/per_problem/mean_pairwise_spearman/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/consensus_top3/<i>",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/kendall_w/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_median_rival/ci_high",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_median_rival/ci_low",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_median_rival/n_finite",
+   4
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_median_rival/value",
+   4
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero_before_merge/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero_before_merge/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero_before_merge/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/n_nonzero_before_merge/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/importance/ranking",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/J",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top10/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top10/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top10/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top10/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top20/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top20/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top20/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top20/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top5/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top5/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top5/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/jaccard_top5/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/kendall_tau_b/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/kendall_tau_b/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/kendall_tau_b/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/kendall_tau_b/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/main_ranking",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/n_J/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/n_J/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/n_J/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/n_J/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/pair",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p090/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p090/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p090/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p090/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p095/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p095/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p095/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/rbo_p095/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_agreement/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_agreement/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_agreement/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_agreement/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_determined_both",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_agree/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_agree/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_agree/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_agree/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_determined/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_determined/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_determined/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_n_determined/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/sign_union_top10",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_J/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_J/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_J/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_J/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_top20_union/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_top20_union/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_top20_union/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/spearman_top20_union/value",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/top20_union",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/tv_shares/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/tv_shares/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/tv_shares/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/feature/pair_main_b1/tv_shares/value",
+   3
+  ],
+  [
+   "b1/<b1>/run/context_columns_summed",
+   3
+  ],
+  [
+   "b1/<b1>/run/draws_sha256_match",
+   3
+  ],
+  [
+   "b1/<b1>/run/duplicates_merged_b1",
+   3
+  ],
+  [
+   "b1/<b1>/run/duplicates_merged_main",
+   3
+  ],
+  [
+   "b1/<b1>/run/log_done_line_number",
+   3
+  ],
+  [
+   "b1/<b1>/run/log_setup_line_number",
+   3
+  ],
+  [
+   "b1/<b1>/run/pairs_log",
+   3
+  ],
+  [
+   "b1/<b1>/run/pairs_meta",
+   3
+  ],
+  [
+   "b1/<b1>/run/total_seconds_done_json",
+   3
+  ],
+  [
+   "b1/<b1>/run/total_seconds_log",
+   3
+  ],
+  [
+   "b1/<b1>/run/tree_shap_seconds_log",
+   3
+  ],
+  [
+   "b1/<b1>/run/tree_shap_seconds_meta",
+   3
+  ],
+  [
+   "b1/<b1>/variable/families/global_indices/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/families/global_indices/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/families/global_indices/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/families/global_indices/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/importance/n_nonzero/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/importance/n_nonzero/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/importance/n_nonzero/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/importance/n_nonzero/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/importance/ranking",
+   3
+  ],
+  [
+   "b1/<b1>/variable/own_history_share/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/own_history_share/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/own_history_share/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/own_history_share/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/J",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top10/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top10/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top10/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top10/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top20/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top20/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top20/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top20/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top5/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top5/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top5/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/jaccard_top5/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/kendall_tau_b/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/kendall_tau_b/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/kendall_tau_b/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/kendall_tau_b/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/main_ranking",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/n_J/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/n_J/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/n_J/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/n_J/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/pair",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p090/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p090/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p090/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p090/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p095/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p095/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p095/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/rbo_p095/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_agreement/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_agreement/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_agreement/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_agreement/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_determined_both",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_agree/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_agree/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_agree/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_agree/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_determined/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_determined/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_determined/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_n_determined/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/sign_union_top10",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_J/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_J/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_J/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_J/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_top20_union/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_top20_union/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_top20_union/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/spearman_top20_union/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/top20_union",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_family_shares/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_family_shares/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_family_shares/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_family_shares/value",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_shares/ci_high",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_shares/ci_low",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_shares/n_finite",
+   3
+  ],
+  [
+   "b1/<b1>/variable/pair_main_b1/tv_shares/value",
+   3
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_treeroute/ci_high",
+   3
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_treeroute/ci_low",
+   3
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_treeroute/n_finite",
+   3
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_treeroute/value",
+   3
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/ci_high",
+   2
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/ci_low",
+   2
+  ],
+  [
+   "problems/<problems>/levels/variable/pairs/<pairs>/sign_agreement/n_finite",
+   2
+  ],
+  [
+   "b1/<b1>/status/meta",
+   1
+  ],
+  [
+   "b1/<b1>/identity/as_expected",
+   1
+  ],
+  [
+   "b1/<b1>/identity/log_done_line_number",
+   1
+  ],
+  [
+   "b1/<b1>/identity/log_setup_line_number",
+   1
+  ],
+  [
+   "b1/<b1>/identity/max_abs_diff_phi",
+   1
+  ],
+  [
+   "b1/<b1>/identity/max_abs_diff_phiv",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_players_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_players_main",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_rows_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_rows_main",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_variables_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/n_variables_main",
+   1
+  ],
+  [
+   "b1/<b1>/identity/pairs_log",
+   1
+  ],
+  [
+   "b1/<b1>/identity/pairs_meta",
+   1
+  ],
+  [
+   "b1/<b1>/identity/players_only_in_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/players_only_in_main",
+   1
+  ],
+  [
+   "b1/<b1>/identity/rows_only_in_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/rows_only_in_main",
+   1
+  ],
+  [
+   "b1/<b1>/identity/same_players",
+   1
+  ],
+  [
+   "b1/<b1>/identity/same_rows",
+   1
+  ],
+  [
+   "b1/<b1>/identity/same_variables",
+   1
+  ],
+  [
+   "b1/<b1>/identity/total_seconds_done_json",
+   1
+  ],
+  [
+   "b1/<b1>/identity/total_seconds_log",
+   1
+  ],
+  [
+   "b1/<b1>/identity/tree_shap_seconds_log",
+   1
+  ],
+  [
+   "b1/<b1>/identity/tree_shap_seconds_meta",
+   1
+  ],
+  [
+   "b1/<b1>/identity/variables_only_in_b1",
+   1
+  ],
+  [
+   "b1/<b1>/identity/variables_only_in_main",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/consensus_shares",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/consensus_top3",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/median_rival_name",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/own_history_share_per_rival",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_max/ci_high",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_max/ci_low",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_max/n_finite",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_min/ci_high",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_min/ci_low",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_min/n_finite",
+   1
+  ],
+  [
+   "problems/<problems>/main_row/spearman_top20_union_per_rival",
+   1
+  ]
+ ],
+ "structural_zero_rows_official": {
+  "rows": 898,
+  "max_mean_abs": 0.0,
+  "max_abs_share": 0.0,
+  "max_abs_signed_mean": 0.0,
+  "sign_determined_true": 0,
+  "nonzero_mean_abs_rows": 0,
+  "max_mean_abs_over_model_total": 0.0
+ },
+ "closeness": {
+  "A_vs_B_items1_8": {
+   "n_numbers": 94383,
+   "max_abs_diff": 8.881784197001252e-16,
+   "key": "problems/ndvi/levels/feature/pairs/rival_bardl_h1|treeroute/tv_shares/value",
+   "max_rel_diff": 8.330090971867995e-13,
+   "key_rel": "problems/defo/levels/feature/models/rival_ridge/players/x__V11_mean_ndvi_max/signed_mean/ci_high",
+   "n_exactly_equal": 50563
+  },
+  "A_vs_official": {
+   "n_numbers": 26082,
+   "max_abs_diff": 1.5543122344752192e-15,
+   "key": "problems/ndvi/levels/feature/pairs/rival_bardl_h1|rival_rf/tv_shares/ci_high",
+   "max_rel_diff": 9.497304081161767e-13,
+   "key_rel": "problems/ndvi/levels/feature/models/rival_lgbm/players/x__aet_total_mm/signed_mean/value",
+   "n_exactly_equal": 10775
+  },
+  "B_vs_official": {
+   "n_numbers": 26104,
+   "max_abs_diff": 1.5543122344752192e-15,
+   "key": "problems/ndvi/levels/feature/pairs/rival_bardl_h1|rival_rf/tv_shares/ci_high",
+   "max_rel_diff": 3.9107213199530724e-13,
+   "key_rel": "problems/ndvi/levels/feature/models/rival_lgbm/players/x__aet_total_mm/signed_mean/value",
+   "n_exactly_equal": 10620
+  },
+  "A_vs_B_b1": {
+   "n_numbers": 13294,
+   "max_abs_diff": 4.440892098500626e-16,
+   "key": "b1/fire/feature/importance/players/normal/share/value",
+   "max_rel_diff": 2.637611487715541e-13,
+   "key_rel": "b1/pm25/variable/importance/players/mean_temp_C/signed_mean/value",
+   "n_exactly_equal": 6818
+  }
+ },
+ "b1_feature_family_tvd": {
+  "fire": {
+   "B_feature": {
+    "value": 0.8113532151989118,
+    "n_finite": 2000,
+    "ci_low": 0.7157861889421349,
+    "ci_high": 0.8728428810002953
+   },
+   "B_variable": {
+    "value": 0.8113532151989118,
+    "n_finite": 2000,
+    "ci_low": 0.7157861889421349,
+    "ci_high": 0.8728428810002953
+   },
+   "A_variable": {
+    "value": 0.8113532151989118,
+    "ci_low": 0.7157861889421347,
+    "ci_high": 0.8728428810002953,
+    "n_finite": 2000
+   },
+   "B_feature_equals_B_variable": true,
+   "A_variable_equals_B_variable": true
+  },
+  "pm25": {
+   "B_feature": {
+    "value": 0.7038491553617086,
+    "n_finite": 2000,
+    "ci_low": 0.6746857377166278,
+    "ci_high": 0.7315018697282195
+   },
+   "B_variable": {
+    "value": 0.7038491553617086,
+    "n_finite": 2000,
+    "ci_low": 0.6746857377166278,
+    "ci_high": 0.7315018697282195
+   },
+   "A_variable": {
+    "value": 0.7038491553617086,
+    "ci_low": 0.6746857377166275,
+    "ci_high": 0.7315018697282194,
+    "n_finite": 2000
+   },
+   "B_feature_equals_B_variable": true,
+   "A_variable_equals_B_variable": true
+  },
+  "ndvi": {
+   "B_feature": {
+    "value": 0.49038204732520735,
+    "n_finite": 2000,
+    "ci_low": 0.45259939752478645,
+    "ci_high": 0.5261776569722664
+   },
+   "B_variable": {
+    "value": 0.49038204732520735,
+    "n_finite": 2000,
+    "ci_low": 0.45259939752478645,
+    "ci_high": 0.5261776569722664
+   },
+   "A_variable": {
+    "value": 0.49038204732520735,
+    "ci_low": 0.4525993975247866,
+    "ci_high": 0.5261776569722665,
+    "n_finite": 2000
+   },
+   "B_feature_equals_B_variable": true,
+   "A_variable_equals_B_variable": true
+  }
+ },
+ "pairs_with_no_sign_determined_in_both": [
+  "problems/fire/levels/feature/pairs/rival_lgbm_tweedie|treeroute",
+  "problems/fire/levels/feature/pairs/rival_lgbm|treeroute",
+  "problems/fire/levels/feature/pairs/rival_rf|treeroute",
+  "problems/fire/levels/feature/pairs/rival_ridge|treeroute",
+  "problems/ndvi/levels/feature/pairs/rival_bardl_h1|treeroute",
+  "problems/ndvi/levels/variable/pairs/rival_bardl_h1|rival_lgbm",
+  "problems/ndvi/levels/variable/pairs/rival_bardl_h1|rival_rf"
+ ],
+ "seconds": 8.4,
+ "run_finished": "2026-11-16T19:01:47+01:00"
+}

@@ -1,0 +1,321 @@
+{
+ "flags": [],
+ "input_hashes": {
+  "answers_bank": "e78283650841aaa408da325acf3be8b26681be354cf2b5bdc6c0fe4396d7aa70",
+  "answers_bank_cut": "5ef045b2a085d015bb7e88d6f9e94b0066894ecfb96daad4cba0657d2fe7238a",
+  "blocks": "ca810475a4466c64d153a3b4bba3de894e79a4cc49dd9600c878d6d6ccb6cd42",
+  "blocks_sha256": "61c9dc6c83492bacbf0ce7393a456f41ae13d01fb7ebad52c4be748a3106dc48",
+  "clip_high": "e8229760d727dbb220ddb7a0aef7575583e2d9f77aa152913948bca9cdd0f84f",
+  "clip_low": "dfcfbcc3e773e8ff7ac4461903864d42d57e4ee62f5c4f9fdea766ada2e3e665",
+  "constants": "4088bf894ad71a67beb9f849012581fa469c5f099a5bd414b5e6e650eceefb54",
+  "cut": "6ff5935c28cf4dc38e78bc06fb41953b5920fabfb56b23486b53da52e0881cd8",
+  "donor_row_key_hash": "dd78a9a9eee7d83c94d07e409a2c146dd0b0cd98464d257af8f24e4e7dc2403e",
+  "donor_rows": "9c51a2a1594c74c394ee449981b27491d4273957c76365217db5d55103959fd1",
+  "fit_warnings": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "fold": "1bad6b8cf97131fceab8543e81f7757195fbb1d36b376ee994ad1cf17699c464",
+  "implementation": "7ad33632645bd294afb9c6b71c0b7a4a23d44642ed5592afecd634f912c8e891",
+  "lead": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+  "sigma_floor": "1741ec33b222f941c9df3394ac81dc260be85153d77f5dfed4d57ae892ed2d76",
+  "sigma_served": "f98fedfc81e82a417c62512283ef6104496a47ee3c1a74060d1f2d388e718ac8",
+  "trees": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+ },
+ "inputs": {
+  "answers_bank": "the tree answers of the GLS target come from the bank of fit_ctx's cut (approved contract); at lead 0 the decision surface's GLS target therefore reads the FIT-cut bank, not the L6 b inner-cut bank (owner ruling pending)",
+  "answers_bank_cut": 736329,
+  "blocks": [
+   [
+    "Andaman Islands"
+   ],
+   [
+    "Andaman Sea"
+   ],
+   [
+    "Austral Islands, French Polynesia"
+   ],
+   [
+    "Bahamas and Florida Keys"
+   ],
+   [
+    "Banda Sea and Molucca Islands"
+   ],
+   [
+    "Bay of Campeche, Yucatan, Gulf of Mexico"
+   ],
+   [
+    "Belize and west Caribbean"
+   ],
+   [
+    "Bermuda"
+   ],
+   [
+    "Bismarck Sea, New Guinea"
+   ],
+   [
+    "Brazil"
+   ],
+   [
+    "Caroline Islands, Micronesia"
+   ],
+   [
+    "Celebes Sea"
+   ],
+   [
+    "Cenderawasih Bay, Papua"
+   ],
+   [
+    "Central and northern Great Barrier Reef"
+   ],
+   [
+    "Chagos Archipelago"
+   ],
+   [
+    "Christmas Island, Indian Ocean"
+   ],
+   [
+    "Cocos Keeling Atolls, Indian Ocean"
+   ],
+   [
+    "Cook Islands, south-west Pacific"
+   ],
+   [
+    "Coral Sea"
+   ],
+   [
+    "Costa Rica and Panama, Pacific coast"
+   ],
+   [
+    "Cuba and Cayman Islands"
+   ],
+   [
+    "Eastern Hawaii"
+   ],
+   [
+    "Eastern coast South Africa",
+    "South Mozambique coast"
+   ],
+   [
+    "Fiji"
+   ],
+   [
+    "Flower Garden Banks, Gulf of Mexico"
+   ],
+   [
+    "Gilbert Islands, west Kiribati"
+   ],
+   [
+    "Gulf of Aden",
+    "South Red Sea"
+   ],
+   [
+    "Gulf of Oman"
+   ],
+   [
+    "Gulf of Thailand"
+   ],
+   [
+    "Gulf of Tomini, Indonesia"
+   ],
+   [
+    "Hispaniola, Puerto Rico and Lesser Antilles"
+   ],
+   [
+    "Hong Kong"
+   ],
+   [
+    "Honshu, Japan"
+   ],
+   [
+    "Jamaica"
+   ],
+   [
+    "Java Sea"
+   ],
+   [
+    "Johnston Atoll, north central Pacific"
+   ],
+   [
+    "Kenya and Tanzania coast"
+   ],
+   [
+    "Lakshadweep Islands"
+   ],
+   [
+    "Lesser Sunda Islands and Savu Sea"
+   ],
+   [
+    "Makassar Strait, Indonesia"
+   ],
+   [
+    "Maldive Islands"
+   ],
+   [
+    "Marianas"
+   ],
+   [
+    "Marshall Islands"
+   ],
+   [
+    "Mascarene Islands"
+   ],
+   [
+    "Mayotte and Comoros",
+    "North Madagascar"
+   ],
+   [
+    "Milne Bay, Papua New Guinea"
+   ],
+   [
+    "Moreton Bay, eastern Australia",
+    "Southern Great Barrier Reef"
+   ],
+   [
+    "Netherlands Antilles and south Caribbean"
+   ],
+   [
+    "New Caledonia"
+   ],
+   [
+    "Ningaloo Reef and coastal north-west Australia"
+   ],
+   [
+    "Mayotte and Comoros",
+    "North Madagascar"
+   ],
+   [
+    "North Mozambique coast"
+   ],
+   [
+    "North Myanmar and Bangladesh"
+   ],
+   [
+    "North Philippines"
+   ],
+   [
+    "North Ryukyu Islands, Japan"
+   ],
+   [
+    "North Sri Lanka and east India"
+   ],
+   [
+    "North Vietnam"
+   ],
+   [
+    "North and central Red Sea"
+   ],
+   [
+    "Northern Seychelles"
+   ],
+   [
+    "Ogasawara Islands, Japan"
+   ],
+   [
+    "Palau"
+   ],
+   [
+    "Persian Gulf"
+   ],
+   [
+    "Phoenix Islands, central Kiribati"
+   ],
+   [
+    "Pohnpei and Kosrae, Micronesia"
+   ],
+   [
+    "Samoa, Tuvalu and Tonga"
+   ],
+   [
+    "Shikoku, Japan"
+   ],
+   [
+    "Society Islands, French Polynesia"
+   ],
+   [
+    "Socotra Archipelago"
+   ],
+   [
+    "Solomon Islands and Bougainville"
+   ],
+   [
+    "South Madagascar"
+   ],
+   [
+    "Eastern coast South Africa",
+    "South Mozambique coast"
+   ],
+   [
+    "Gulf of Aden",
+    "South Red Sea"
+   ],
+   [
+    "South Ryukyu Islands, Japan"
+   ],
+   [
+    "South Vietnam"
+   ],
+   [
+    "South-east Philippines"
+   ],
+   [
+    "Moreton Bay, eastern Australia",
+    "Southern Great Barrier Reef"
+   ],
+   [
+    "Strait of Malacca",
+    "West Sumatra"
+   ],
+   [
+    "Sulu Sea"
+   ],
+   [
+    "Sunda Shelf, south-east Asia"
+   ],
+   [
+    "Taiwan and coastal China"
+   ],
+   [
+    "Vanuatu"
+   ],
+   [
+    "Strait of Malacca",
+    "West Sumatra"
+   ],
+   [
+    "Western Tuamotu Archipelago, central Pacific"
+   ]
+  ],
+  "blocks_sha256": "ca810475a4466c64d153a3b4bba3de894e79a4cc49dd9600c878d6d6ccb6cd42",
+  "clip_high": 30.940094375610354,
+  "clip_low": 6.922312569618225,
+  "constants": {
+   "C13.gls_bootstrap": true,
+   "C13.gls_clip_quantiles": [
+    0.05,
+    0.95
+   ],
+   "C13.gls_max_depth": 8,
+   "C13.gls_max_features": 1.0,
+   "C13.gls_min_leaf": 20,
+   "C13.gls_random_state": 0,
+   "C13.gls_sigma_floor_share": 0.01,
+   "C13.gls_threads": 4,
+   "C13.gls_trees": 120,
+   "C13.gls_weight_ratio_cap": 100.0
+  },
+  "cut": 735233,
+  "donor_rows": 9934,
+  "fit_warnings": [],
+  "fold": -1,
+  "implementation": "sklearnex.ensemble._forest.RandomForestRegressor",
+  "lead": 0,
+  "sigma_floor": 0.1929097224252657,
+  "sigma_served": "out-of-bag on the fitted donor rows, the whole forest elsewhere (L5 c)",
+  "trees": 120
+ },
+ "margins": {},
+ "rule_id": "R25",
+ "value": {
+  "clip_high": 30.940094375610354,
+  "clip_low": 6.922312569618225,
+  "sigma_floor": 0.1929097224252657
+ }
+}

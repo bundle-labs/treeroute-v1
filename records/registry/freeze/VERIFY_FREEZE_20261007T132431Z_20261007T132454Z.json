@@ -1,0 +1,9 @@
+{
+ "affected": [],
+ "drift": [],
+ "lock": "D:\\treeroute\\registry\\freeze\\FREEZE_20261007T132431Z.lock.json",
+ "lock_sha256": "7b34725519b5d9332f094ede777a35f000b5427af130b256871ad250d73a0744",
+ "no_op_rule": "plan 8.1 M5: after the freeze only bug fixes. A bug fix re-runs every package already run, unless the no-op rule applies for that package: its derived.json and smoke outputs stay byte-identical, AND either a one-group full-width probe stays byte-identical or the changed functions are shown never to run on that package at full size.",
+ "rehash_inputs": false,
+ "verified_utc": "2026-10-07T13:24:54+00:00"
+}

@@ -1,0 +1,19 @@
+[2026-11-14 04:10:04 +    0.2s] rival SHAP pm25 lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-14 04:10:04 +    0.3s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-14 04:10:10 +    7.0s] test set: 91440 rows x 124 features (D:\treeroute\rival_export\pm25\20261007_74e67609\lead_0), read and hash-checked in 3.5 s
+[2026-11-14 04:10:17 +   13.9s] sample: 1000 explained rows, 14977 distinct background rows (per row: min 17, median 17, max 17)
+[2026-11-14 04:10:18 +   14.4s] ridge: 170 design columns; saved predictions reproduced on 70795 of 91440 test rows (max |diff| 1.71e-13): FAIL
+[2026-11-14 04:10:18 +   14.4s] STOP S-EXACT: ridge does not reproduce its saved predictions; no SHAP value
+[2026-11-14 04:10:26 +   22.1s] lgbm: 961 trees; saved predictions reproduced on 91440 of 91440 test rows (max |diff| 0): PASS
+[2026-11-14 04:11:09 +   65.4s] lgbm: interventional TreeSHAP over 961 trees on 1000 rows (2 levels) in 41.7 s
+[2026-11-14 04:11:10 +   66.0s] rival_lgbm: 1000 rows, 125 players (101 nonzero), 111 variables (87 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-14 04:11:13 +   69.7s] rf: refit set 2590280 rows x 124 features read in 3.4 s (RAM)
+[2026-11-14 04:20:55 +  651.8s] rf: rebuilt 300 trees in 585.5 s; draws equal to the board's: True; saved predictions reproduced on 91440 of 91440 test rows (max |diff| 0): PASS
+[2026-11-14 04:22:29 +  745.3s] rf: SHAP tree 50 of 300 (93.3 s)
+[2026-11-14 04:24:00 +  836.4s] rf: SHAP tree 100 of 300 (184.4 s)
+[2026-11-14 04:25:31 +  927.1s] rf: SHAP tree 150 of 300 (275.1 s)
+[2026-11-14 04:26:54 + 1010.9s] rf: SHAP tree 200 of 300 (358.9 s)
+[2026-11-14 04:28:10 + 1086.7s] rf: SHAP tree 250 of 300 (434.7 s)
+[2026-11-14 04:29:25 + 1161.8s] rf: SHAP tree 300 of 300 (509.8 s)
+[2026-11-14 04:29:26 + 1162.3s] rival_rf: 1000 rows, 125 players (101 nonzero), 111 variables (87 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator max 0.00e+00; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-14 04:29:26 + 1162.3s] summary: {'ridge': 'stopped (a stop rule)', 'lgbm': 'done', 'rf': 'done'}

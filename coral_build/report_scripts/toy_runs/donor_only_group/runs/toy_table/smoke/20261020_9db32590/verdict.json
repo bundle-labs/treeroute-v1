@@ -1,0 +1,325 @@
+{
+ "adopted": "identity_plain_gls",
+ "adopted_column": "arm__identity_plain_gls",
+ "adoption_sha256": "0fbb79f5f08993d8c166ea5dc6d295839c17a7812167c595b2097888920a43a5",
+ "band": 0.30174933825557826,
+ "band_pairs": [
+  {
+   "arm": "arm__identity_plain_unweighted",
+   "high": 0.13657649969288035,
+   "identical": false,
+   "low": -0.11209991818727999,
+   "mean": 0.012238290752800177,
+   "n_groups": 3,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.06343786170412254,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__identity_corrector_unweighted",
+   "high": 0.13657649969288035,
+   "identical": false,
+   "low": -0.11209991818727999,
+   "mean": 0.012238290752800177,
+   "n_groups": 3,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.06343786170412254,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__identity_corrector_unweighted",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__identity_placebo_corrector_unweighted",
+   "se": 0.0,
+   "tag": "identical"
+  },
+  {
+   "arm": "arm__identity_plain_gls",
+   "high": 0.6903446745363522,
+   "identical": false,
+   "low": -1.6285729267146576,
+   "mean": -0.4691141260891527,
+   "n_groups": 3,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.5915606125640331,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_gls",
+   "high": 0.6903446745363522,
+   "identical": false,
+   "low": -1.6285729267146576,
+   "mean": -0.4691141260891527,
+   "n_groups": 3,
+   "reference": "arm__identity_trees_off_unweighted",
+   "se": 0.5915606125640331,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__identity_corrector_gls",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__identity_placebo_corrector_gls",
+   "se": 0.0,
+   "tag": "identical"
+  },
+  {
+   "arm": "arm__log_c_plain_unweighted",
+   "high": 0.21124108441863151,
+   "identical": false,
+   "low": -0.19848725064962033,
+   "mean": 0.00637691688450559,
+   "n_groups": 3,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.1045225344561867,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__log_c_corrector_unweighted",
+   "high": 0.21124108441863151,
+   "identical": false,
+   "low": -0.19848725064962033,
+   "mean": 0.00637691688450559,
+   "n_groups": 3,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.1045225344561867,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__log_c_corrector_unweighted",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__log_c_placebo_corrector_unweighted",
+   "se": 0.0,
+   "tag": "identical"
+  },
+  {
+   "arm": "arm__log_c_plain_gls",
+   "high": 0.6103595299881955,
+   "identical": false,
+   "low": -1.2138667809339987,
+   "mean": -0.30175362547290163,
+   "n_groups": 3,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.4653638548270904,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_gls",
+   "high": 0.6103595299881955,
+   "identical": false,
+   "low": -1.2138667809339987,
+   "mean": -0.30175362547290163,
+   "n_groups": 3,
+   "reference": "arm__log_c_trees_off_unweighted",
+   "se": 0.4653638548270904,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__log_c_corrector_gls",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__log_c_placebo_corrector_gls",
+   "se": 0.0,
+   "tag": "identical"
+  },
+  {
+   "arm": "arm__arcsine_plain_unweighted",
+   "high": 0.25252140882611634,
+   "identical": false,
+   "low": -0.2889670921754229,
+   "mean": -0.018222841674653267,
+   "n_groups": 3,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.13813482168406613,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__arcsine_corrector_unweighted",
+   "high": 0.25252140882611634,
+   "identical": false,
+   "low": -0.2889670921754229,
+   "mean": -0.018222841674653267,
+   "n_groups": 3,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.13813482168406613,
+   "tag": "does_not_help_equivalent"
+  },
+  {
+   "arm": "arm__arcsine_corrector_unweighted",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__arcsine_placebo_corrector_unweighted",
+   "se": 0.0,
+   "tag": "identical"
+  },
+  {
+   "arm": "arm__arcsine_plain_gls",
+   "high": 0.7993477957499828,
+   "identical": false,
+   "low": -1.729263680932533,
+   "mean": -0.46495794259127504,
+   "n_groups": 3,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.6450539481332949,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_gls",
+   "high": 0.7993477957499828,
+   "identical": false,
+   "low": -1.729263680932533,
+   "mean": -0.46495794259127504,
+   "n_groups": 3,
+   "reference": "arm__arcsine_trees_off_unweighted",
+   "se": 0.6450539481332949,
+   "tag": "cannot_tell"
+  },
+  {
+   "arm": "arm__arcsine_corrector_gls",
+   "high": 0.0,
+   "identical": true,
+   "low": 0.0,
+   "mean": 0.0,
+   "n_groups": 3,
+   "reference": "placebo__arcsine_placebo_corrector_gls",
+   "se": 0.0,
+   "tag": "identical"
+  }
+ ],
+ "band_source": "this run's own D75 contrasts (each tree arm vs its own trees-off, each corrector vs its placebo; R35 derives the band from the package's first headline run)",
+ "beside": {
+  "adopted_link_neighbour_trees_off_mae": 22.244527690584036,
+  "base__donor_median_mae@all": 21.47651080952381,
+  "base__predict_zero_mae@all": 29.601609761904758,
+  "identity_trees_off_mae": 22.244527690584036
+ },
+ "best_tree_arm": "identity_plain_gls",
+ "best_tree_penalty": {
+  "level": 3.0,
+  "ratio": 0.0625
+ },
+ "blocked_jackknife": {
+  "flag": false,
+  "high": 1.3036223093865336,
+  "low": -3.592289725360516,
+  "mean": -1.1443337079869913,
+  "n_blocks": 3,
+  "se": 1.2489571517211862
+ },
+ "decline_rule": "owner ruling V1 (the owner rulings file, section V): for the neighbour kind, every decline (nowcast and every lead) falls back to the donor-row median (R34), and every guard or decline comparison uses that same donor-row median as its baseline, so the check and the fallback are one object",
+ "decline_target": "base__donor_median",
+ "declined": false,
+ "donor_only_groups": {
+  "count": 1,
+  "groups": [
+   "g_a"
+  ],
+  "rule": "V6 b (PLAN_V6B.md 2): a run group that has rows but no test-marked row is donor-only: its rows are bank rows (its trees enter every bank), its train rows are donor rows (every pool, c, median, tolerance and GLS model) and its inner-score rows are decision-surface rows of its own fold (R13); nothing is scored or reported for it",
+  "surface_rows": 13,
+  "train_rows": 36
+ },
+ "draft": {
+  "is_draft": false,
+  "stamp": "",
+  "stamped_verdicts": 0,
+  "where": []
+ },
+ "gls_arms": {
+  "kernel": "route.solve solve_grid_weighted / solve_point_weighted (NEW formula, owner review): the weighted primal is solve_local with the weights; the weighted shared-Gram solve is grid_dual on rows scaled by sqrt(w)",
+  "routed": true,
+  "weights": "fit.weights.weights_for_rows on the router's fit rows (R25; out-of-bag sigma on the weight model's own donor rows, L5 c); trees-off unweighted"
+ },
+ "groups_trained": 4,
+ "headline_eligible": false,
+ "hit_tolerance": 12.435677943089429,
+ "input": "table",
+ "kind": "smoke",
+ "listed_in_reports": [],
+ "measurement_error_floor": null,
+ "n_groups": 3,
+ "not_headline_reasons": [
+  "smoke run: plumbing only (R21), smoke deltas carry no sign information"
+ ],
+ "package": "toy_table",
+ "penalty": {
+  "level": 3.0,
+  "ratio": 0.0625
+ },
+ "pooled_mae_adopted": 22.722619626241702,
+ "pooled_mae_reference": 21.47651080952381,
+ "reference": "base__donor_median",
+ "reference_rule": "donor_row_median",
+ "router_kind": "neighbour",
+ "run_fingerprint": "9db32590d6fe4df929ea43fd8fc586f85755f014e72796fd59c712f334e57174",
+ "scored_units": 42,
+ "strata": {
+  "source": {
+   "kind": "string: scored per value (O18)",
+   "test_rows": 42,
+   "test_rows_without_value": 0,
+   "values": [
+    "field",
+    "lab",
+    "remote"
+   ]
+  }
+ },
+ "test_rows": 42,
+ "timings_seconds": {
+  "decision": 3.04,
+  "fits": 1.61,
+  "pool": 0.05,
+  "report": 0.5,
+  "test_pass": 1.29
+ },
+ "tolerances": {
+  "floor": 9e-07,
+  "floor_rule": "owner ruling O4 (owner rulings, section O): the R36 tolerance is max(k x s, C9.k_min_multiple_of_arith_error x C9.measured_arith_error); the floor (10 x 9e-8 = 9e-7) keeps a small s from pushing k x s below the measured rounding error",
+  "k": 5.230771281733543e-08,
+  "s": {
+   "arcsine": 0.4046234233961551,
+   "identity": 27.21686927940093,
+   "log_c": 0.6976275869053215
+  },
+  "standin": false,
+  "tolerance": {
+   "arcsine": 9e-07,
+   "identity": 1.423652182053863e-06,
+   "log_c": 9e-07
+  }
+ },
+ "verdict": {
+  "band": 0.30174933825557826,
+  "contrast": {
+   "high": 1.3036223093865336,
+   "low": -3.592289725360516,
+   "mean": -1.1443337079869913,
+   "n_groups": 3,
+   "se": 1.2489571517211862
+  },
+  "groups_better": 1,
+  "pooled_contrast": -1.2461088167178929,
+  "reference": "donor_row_median",
+  "sign_flip_groups": [
+   "g_b"
+  ],
+  "tag": "cannot_tell"
+ }
+}

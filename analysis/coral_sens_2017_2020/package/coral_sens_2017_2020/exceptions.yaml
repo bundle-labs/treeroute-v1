@@ -1,0 +1,127 @@
+# exceptions.yaml -- coral (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:494-518): provenance
+# flags, disclosed defects and test-exposure disclosures ONLY. A disclosure cannot relax a time rule, hold a timing
+# value or set a derived value. Drafted 2026-10-19 by the agent. Signed 2026-10-20: an 'owner' field that reads
+# 'owner -- signed by the owner ...; basis: ...' was signed through make_signed_coral.py (ruling X); one
+# that names owner ruling V (OWNER_RULINGS_2026-10-06.md:97-114, signed 2026-10-19) or W1 (:116-121) is signed by
+# that ruling item. 'date' is the date of the entry's basis, not of the signature.
+# Counts are from D:/treeroute/coral_build/coral_data/visits_census.json (build_visits.py, 2026-10-19).
+entries:
+  # ---- disclosed defects of the source data
+  - kind: disclosed_defect
+    column: target_date
+    decision: 'month precision: T = the month''s last day, features end before the month starts (feature anchor = the first day)'
+    reason: 'The survey day of every Donner sample (and 86% of Safaie, which has no label) was filled with the 15th and cannot be recovered (CORAL_DATA_AUDIT.md:65-69). 2,128 visits (all train, 1994-2011, none in the 2013-2015 inner-score years) carry month precision; list: coral_data/month_precision_rows.csv. With T at the month end, the label is surely known after T (pools and bank cuts stay safe); with features before the month start, no post-survey heat enters.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E0); basis: CORAL_ENGINE_PLAN.md:265 (Q20 a)'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    column: target_date
+    decision: 'rebuilt from GCBD Date_Year/Month/Day; events_dated.parquet date column not used'
+    reason: 'events_dated.date clamps the day of month at 28 (1,324 events 1-3 days early; CORAL_STATE.md:148-151). The legacy feature tables used the clamped date (coral_forecast.py:94), so their day-29-31 rows differ from this build by 1-3 days of SST.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E1); basis: CORAL_STATE.md:148-151'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    column: pct_bleached
+    decision: 'repeat surveys at one site and date are averaged into one visit'
+    reason: '3,080 visits merge more than one Sample_ID (5,405 samples absorbed); 1,282 of them disagree on the label; 5 merge two programmes (programme = mixed). The unit is site + date; depth and reef id are not used (CORAL_ENGINE_PLAN.md:252, Q7 a).'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E2); basis: CORAL_ENGINE_PLAN.md:252 (Q7 a)'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    column: lat
+    decision: 'not patched'
+    reason: 'Two survey coordinates put their site in the wrong ocean, so their SST comes from the wrong place: (17.635528, -148.618556) eco 93, 2006-01-22, and (32.2411, 34.7604) eco 71, 1998-07-15 (CORAL_DATA_AUDIT.md:236-240). Both are train rows.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E3); basis: CORAL_DATA_AUDIT.md:236-240'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    check: T-LEADSET
+    decision: 'visits with no SST series or too little SST history are not samples'
+    reason: '1,006 labelled visits sit on 576 sites with no CoralTemp series (747 train, 259 test, 40 ecoregions) and 101 more have under 1,825 SST days or 10 years before the nowcast anchor; they are not written (coral_forecast.py:106-116 rule). 8 train visits of 1994 lack the history at lead 183 and 365 and are absent from those files (SPEC_TABLE_MODE.md 1.6). Near-shore sites on CRW land pixels are over-represented among the missing (CORAL_DATA_AUDIT.md:71-75).'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E4); basis: coral_forecast.py:106-116'
+    date: '2026-10-19'
+  # ---- provenance flags
+  - kind: provenance_flag
+    column: programme
+    decision: 'report per programme first; pooled numbers labelled as mixing programmes'
+    reason: 'The drivers identify the survey programme at AUC 0.948 out of sample, because programmes surveyed disjoint epochs (CORAL_STATE.md:32-34). Test rows: Reef_Check 1,932, FRRP 190, McClanahan 189, AGRRA 1 (after the split.yaml exclusions); Donner has none.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E5); basis: CORAL_STATE.md:30-34; CORAL_ENGINE_PLAN.md:259 (Q14 a)'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: cyc_days_since_close
+    decision: 'disclose'
+    reason: 'IBTrACS best tracks are revised after each season. Each point is dated by its own time and only points before the feature cut are used, but a real-time forecaster had operational advisories, not best tracks. Applies to all 16 cyc_* columns.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E6); basis: coral_extra_drivers.py:8-10, 70-122'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: nino34a_lag3
+    decision: 'disclose: anomaly built in the package from the absolute ERSST V6 series; reach +2 months assumed from ruling R-A (written for ERSSTv5)'
+    reason: 'nina34.txt holds absolute Nino-3.4 SST (ERSST V6 in its footer). The anomaly subtracts each calendar month''s 1951-1980 mean, a base that ends before every visit (first visit 1994). The shared PSL anomaly file of the grid packages (index_facts.yaml) is not on disk today. Applies to nino34a_lag3/6/9.'
+    owner: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): kept and disclosed. Basis: OWNER_RULINGS_2026-09-28.md:24 (R-A); CORAL_ENGINE_PLAN.md:164'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: dmi_lag2
+    decision: 'conditional until the window bound is signed; base period disclosed, not lagged (ruling item 7)'
+    reason: 'PSL DMI from HadISST1.1: the SST anomaly base period is not stated in dmi.txt; HadISST is a smoothed monthly reconstruction whose window is undocumented here. Proposed bound {3, month, centred}, as ruling R-B did for tni. Applies to dmi_lag2/5/8.'
+    owner: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): DMI stays conditional, disclosed. Basis: OWNER_RULINGS_2026-09-28.md:25 (R-B), item 7'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: dhw_56
+    decision: 'disclose: CoralTemp content reach after its day stamp is unverified'
+    reason: 'Each daily CoralTemp value is an analysis that may use observations from neighbouring days. The build uses SST strictly before C - g, with g = 1 day by default (build_tables.py --sst-gap-days; SPEC_CORAL_TABLES.md 3.1, P17), one day more than the legacy rule (coral_forecast.py:110). The one-day gap covers the UTC day stamp, not an unknown analysis reach. Applies to every SST, MMM and Hobday column and to ctx_mmm.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E9); basis: CORAL_ENGINE_PLAN.md:283 (risks), :267 (Q22 a: CoralTemp reach_after_max)'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: ctx_mmm
+    decision: 'router context only; disclosed departure from the absolute-temperature ban'
+    reason: 'MMM is an absolute temperature. It is banned from the trees and kept as penalised router context (the legacy router used it unpenalised, coral_glorys2_ab.py:100-102). It is computed from SST before the feature cut only (coral_dhw_model.py:69-93).'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E10); basis: CORAL_ENGINE_PLAN.md:172 (C3), :267 (Q22 a)'
+    date: '2026-10-19'
+  # ---- test exposure
+  - kind: test_exposure
+    check: G-SPLIT
+    decision: 'disclose'
+    reason: 'Every group was a donor or test ecoregion in the legacy runs (Parts 417-558), and the 2016-2019 rows of 24 ecoregions were scored before (APP_PLAN.md:310; CORAL_EXPERIMENTS.md:2463-2465). The column set, the link set and the pool design were chosen with labels of this test window visible.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E11); basis: CORAL_ENGINE_PLAN.md:193, :295'
+    date: '2026-10-19'
+  # ---- added 2026-10-19 with stage 2 (SPEC_CORAL_TABLES.md section 6, five items)
+  - kind: provenance_flag
+    column: pct_bleached
+    decision: 'disclose: every forecast is conditional on a survey happening; scores are also reported per programme (per_stratum.csv)'
+    reason: 'Surveys are often made because bleaching is seen, so the date of a row is not random and the existence of a row carries outcome information. The tables answer: given a survey at T, what will it find, using data before the issue date. They do not predict whether a survey happens (coral_forecast.py:31-35).'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E12); basis: coral_forecast.py:31-35; SPEC_CORAL_TABLES.md REVIEW LOG LK11'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    column: ctx_doy_sin
+    decision: 'disclose: month-precision rows read their season context at C = the month''s first day minus L'
+    reason: 'For the 2,128 month-precision visits (all train, mostly Donner; coral_data/month_precision_rows.csv) the feature anchor is the month''s first day, so ctx_doy_sin and ctx_doy_cos take only 12 values on them and the router context can tell them apart. They enter pools and scalers as candidates; the report script (coral_report.py) counts per pass the pools that hold one, from the saved pools_<pass>.parquet (the engine does not count them). Applies to ctx_doy_sin, ctx_doy_cos, ctx_month.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E13); basis: SPEC_CORAL_TABLES.md 1.3 (LK9)'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    column: feature_end
+    decision: 'SST and cyclone windows end before C - g (g = 1 day by default): source days are UTC, survey dates are local'
+    reason: 'CoralTemp days and IBTrACS track times are UTC. In the west Pacific, UTC day C - 1 runs to about midday local time on day C. So the SST windows end before C - 1 and the cyclone windows are [C - 1 - d, C - 1). The index lags are counted in whole months and are not affected. feature_end is the window bound per row and lead; the engine refuses a row whose feature_end is not before its issue date (T-FEATEND). g = 0 is the legacy setting (P17).'
+    owner: 'owner ruling V9 (2026-10-19; OWNER_RULINGS_2026-10-06.md:111): the 1-day gap is kept, disclosed. Basis: SPEC_CORAL_TABLES.md 3.1, P17 (LK8)'
+    date: '2026-10-19'
+  - kind: provenance_flag
+    check: R18
+    decision: 'scored rows = every test-marked visit (ruling U1); the R18(2) stride pick over candidate units is not used'
+    reason: 'Ruling U1 makes the package mark train and test rows. Most test sites have no label before the train end, so they would never be R18 candidates (783 of 1,262 kept test sites; SPEC_CORAL_TABLES.md 2.1). The pre-registration states the scored set.'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E15); basis: OWNER_RULINGS_2026-10-06.md:90 (U1); SPEC_CORAL_TABLES.md 2.1 (FS10)'
+    date: '2026-10-19'
+  - kind: disclosed_defect
+    check: R11
+    decision: 'disclose the one-day gap at the event cut (SPEC_TABLE_MODE.md 2.2, O27); signed R11 code kept'
+    reason: 'At leads 183 and 365 the earliest test rows are issued ON the fit cut day, and label_usable keeps labels dated on the cut. So a lead-L bank, c, tolerance and median may hold a label dated on a scored row''s issue day, which the table contract says is known only from the next day. The neighbour pool itself is strict (dated before the issue date).'
+    owner: 'owner -- signed by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md, coral sign-off E16); basis: SPEC_TABLE_MODE.md 2.2 (O27); timing/cuts.py:62-87, 91-100'
+    date: '2026-10-19'
+  # ---- added 2026-10-19 with owner ruling V (OWNER_RULINGS_2026-10-06.md:97-114)
+  - kind: disclosed_defect
+    check: R3
+    decision: 'test window 2016-2019, set by leaving out the 38 visits of 2020 (owner ruling V3); 2017-2020 is the declared sensitivity row'
+    reason: 'Signed R3 on all the data gives 2017-2020. The builder does not write the 38 visits dated 2020 (build_visits.py:202-203, mark unused; census visits_unused_after_window 38), so R3 on the lead files gives Y_end 2019 and R5 gives 2016-2019 (SPEC_CORAL_TABLES.md 2.1). The window was chosen after the yearly counts were seen (SPEC_CORAL_TABLES.md:19-21, 89-114). The sensitivity row and how it is produced: ingest/README.md, section Signed answers, ruling V.'
+    owner: 'owner ruling V3 (2026-10-19; OWNER_RULINGS_2026-10-06.md:105)'
+    date: '2026-10-19'
+  - kind: test_exposure
+    check: G-SPLIT
+    decision: '11 groups left out in split.yaml (V5); 46 donor-only groups (V6 b) train trees and lend pool and surface rows; nothing is scored for them; scores cover 37 ecoregions'
+    reason: 'V5: the 11 groups the engine defaults refuse (O13: 0 train rows at a bank cut; O14: one site) hold 35 test and 9 train visits. V6 (b), owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121; D:/treeroute/coral_build_v6b/PLAN_V6B.md): the 46 groups with no test row in the lead files after V5 are NOT left out. They are donor-only groups: they hold 1,874 train visits on 1,066 sites (111 of them 2013-2015 decision-surface rows), their trees enter every bank and their train rows every neighbour pool, c, median, tolerance and GLS model and the decision surface; nothing is scored or reported for them (counted and disclosed as ruling W1 lists: derived.json R18:donor_only, the run records, the check report and one report disclosure row). One of them, Gulf of Thailand, has 10 test-window visits, but none is written: they have no lead-0 SST history (present_L0 False). Kept at lead 0: 11,338 train visits in 83 groups and 2,312 test visits in 37 groups. Recomputed by the V6 (b) copy of coral_tables/make_split.py from coral_data/visits.parquet (2026-10-19).'
+    owner: 'owner ruling V5 (2026-10-19; OWNER_RULINGS_2026-10-06.md:107); V6 (b) by owner ruling W1 (2026-10-20; OWNER_RULINGS_2026-10-06.md:116-121), which replaces V6 (:108)'
+    date: '2026-10-19'

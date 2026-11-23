@@ -1,0 +1,70 @@
+BUILD_NOTES_pm25_ndvi.txt - builder C (PM2.5 + NDVI adapters) -> builders A, D. Written 2026-10-22.
+
+FILES (builder C; layout of BUILD_NOTES_shared.txt: adapters/ and registry/ beside rivals_human/ under human/)
+  human/adapters/pm25_reanalysis.py   EAC4 + MERRA-2 reader, bilinear, P (t-1) / A (t) rows, placebo; build() + availability()
+  human/adapters/ndvi_bardl.py        H1 M runner: fit() / predict()
+  human/adapters/ndvi_kraft.py        Kraft LSTM M runner (optional, opt-in)
+  human/adapters/ndvi_kraft_prep.py   Kraft store prep (owner command O15; run_prep())
+  human/registry/pm25.yaml            eac4_lag1 (P), eac4_same (A), merra2_lag1 (P, optional), merra2_same (A, optional),
+                                      eac4_lag1_placebo, merra2_lag1_placebo (X, placebo_of)
+  human/registry/ndvi.yaml            bardl_h1 (P at 0, X at 6/12), kraft_lstm (P at 0, optional)
+  human/tests_builder_c/test_pm25_ndvi_adapters.py   12 toy tests (outside rivals_human/tests; builder D may fold them in)
+A first copy was written under human/rivals_human/adapters/ before BUILD_NOTES_shared.txt existed; it was MOVED
+(not deleted) to D:\treeroute\human_rivals_build\_moved\20261021T205810Z\builder_c_wrong_layout\adapters.
+
+REQUESTS TO BUILDER A
+ C1 registry/_schema.yaml rival_fields: my registries use these fields beyond the ones config.check_rival reads:
+      label (str), options (map; the adapter/runner settings), coverage (str), disclosures (list), availability
+      (str "module:function"), print_beside (str, rival id), resolution_matched (bool), prep (str "module:function"),
+      placebo_of (str), r10_note (str), optional (bool). Package fields: package, rivals only.
+      runner is a module string ("adapters.ndvi_bardl"), as methods.load_runner imports it.
+ C2 registry/_products.yaml product ids I use:
+      cams_eac4_monthly_pm2p5  path D:/treeroute/human_products/cams_eac4_monthly_pm2p5/eac4_monthly_mean_2003-2023,
+                               manifest IN that folder (fetch_products.py spec_D1); waiting_line
+                               "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first"
+                               (SPEC_HUMAN 4 says <products_root>/cams_eac4/<version>; the fetcher's real folder is
+                               cams_eac4_monthly_pm2p5 - deviation, the fetcher wins)
+      merra2_aer_monthly       path D:/pm25_products/merra2 (252 aer_YYYYMM.nc), manifest via `manifest` (O5)
+      pm25_static_cells        path <engine>/datasets/pm25/data/static (part-0.parquet: cell_id, region, lat, lon)
+      ndvi_static_cells        path <engine>/datasets/ndvi/data/static (part-0.parquet: cell_id, region, lat, lon)
+      monthly_panel            path D:/monthly_panel (2,926 files, 40.9 GB; manifest O15; Kraft prep only)
+      ndvi_kraft_store         the Kraft prep output folder (one parquet per region), manifest via `manifest`
+      (unit centres are read as a product so their file is sha-checked like every product file; the AdapterCtx
+      gives no engine_root.)
+ C3 availability without a refusal: pm25_reanalysis.product_available (adapters/pm25_reanalysis.py:100-110) uses
+      ctx.product_available(pid) if the ctx has it, else rivals_human.index.product_status(ctx.cfg, ctx.products, pid).
+      Please either add AdapterCtx.product_available or keep product_status's signature. `init` can list a waiting
+      rival by calling the registry's `availability` ("adapters.pm25_reanalysis:availability" -> (False, the D1 line)).
+ C4 placebos (SPEC_HUMAN 4 "through the same pick"): pm25 placebo rivals carry placebo_of, tier X, no families,
+      no pick. Please refit the parent's pinned candidate (stat, family, link) on the placebo's x__pm25 per lead and
+      print it (never decides). The placebo reads m - 48 months; rows without a product 4 years earlier are NaN, so
+      T1/T2 hold on every covered row (no special-casing needed).
+ C5 Kraft prep hook: a cli step (e.g. `adapt --rival kraft_lstm --prep`) that calls the registry `prep`
+      (run_prep(ctx, rival, out_dir=None) -> writes <work_dir>/store/<region>.parquet via ctx.write_bytes) and
+      then `manifest --product ndvi_kraft_store` on that folder. Owner command only (O15).
+ C6 runner outputs: both runners return ONE row per key of the score set (methods.run_predict needs it); pre is
+      NaN on rows they do not cover (H1: units that are not scored; Kraft: no complete 12-month window or not
+      scored). info_end is never NaN. target_obs_end: H1 = the T2 step; Kraft = NaN (reads no NDVI).
+ C7 H1 and Kraft read ctx.units()["is_scored"]; please keep that column in the slim units.parquet.
+
+NOTES FOR BUILDER D
+ - Toy tests live in human/tests_builder_c (T-H18, T-H19, the Kraft CPU toy, the Kraft prep, and two tests against
+   builder A's index.Timing / check_tier_timing and methods.run_fit / run_predict). Run:
+     cd D:\treeroute\human_rivals_build\human ; set PYTHONDONTWRITEBYTECODE=1
+     py -3.9 -B -m pytest tests_builder_c -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\pm25_ndvi\<fresh>
+   Last run: 12 passed (run7). The Kraft test is marked slow_ok (about 2 s).
+
+OPEN ITEMS (owner, before the Part A signature)
+ O-C1 H1 predictor scaling (registry ndvi.yaml options.standardize, default false = the spec's literal
+      "BayesianRidge defaults"). The shared BayesianRidge prior is not scale-invariant: on the toy ARDL (true lag-1
+      AR 0.6) the per-unit fit gives about 0.48 unscaled, 0.52 standardized, 0.58 by OLS. Options: (a) keep false
+      (spec text); (b) true (z-score per unit on its fit rows; stronger, still published-method settings).
+ O-C2 H1 climate gap rule at prediction: a missing climate value (or a unit x month mean missing from the fit set)
+      is set to anomaly 0 and counted; at fit such rows are dropped (not "complete"). Pre-registered here; confirm.
+ O-C3 H1 inputs read through the slim copy: the ndvi slim needs slim_extra_columns x__V02_total_precip_mm(_lag1,
+      _lag2) and x__V30_soil_moisture_pct(_lag1, _lag2) (A5). All six are R8 entries with steps 0 on run
+      20261016_d1de3158 (checked); whether the ndvi EXPORT carries them as x__ columns is checked by `slim` (export
+      not on disk yet).
+ O-C4 EAC4 zip content is unknown until D1 lands: the reader takes every *.nc member, time from valid_time / time /
+      forecast_reference_time, variable pm2p5 in kg m-3 (kg m**-3 accepted), refusing a month seen twice, another
+      grid, or other units. A first `adapt` after D1 will show it.

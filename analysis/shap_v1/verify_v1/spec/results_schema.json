@@ -1,0 +1,4818 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "round14_results_schema_v1",
+ "title": "Round 14 results.json (one file per implementer, V\\<X>\\results.json)",
+ "description": "Format of the independent re-computation of the SHAP comparison numbers of scope (i), lead 0, and of treeroute's B1 sensitivity. See V\\spec\\SPEC.md. Format only: it defines no statistic.",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "implementer",
+  "written_at",
+  "software",
+  "choices",
+  "problems",
+  "b1"
+ ],
+ "properties": {
+  "schema_version": {
+   "const": "round14_results_v1"
+  },
+  "implementer": {
+   "enum": [
+    "A",
+    "B"
+   ]
+  },
+  "written_at": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2}(\\.\\d+)?)?(Z|[+-]\\d{2}:\\d{2})?$"
+  },
+  "software": {
+   "type": "object",
+   "required": [
+    "python",
+    "numpy"
+   ],
+   "additionalProperties": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "choices": {
+   "type": "object",
+   "required": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "I01",
+    "I02",
+    "I03",
+    "I04",
+    "I05",
+    "I06"
+   ],
+   "patternProperties": {
+    "^[CIX][0-9]{2}$": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    }
+   },
+   "additionalProperties": false,
+   "description": "One short line per open choice / identification of SPEC.md section 3 (X01, X02, ... for further choices the implementer found)."
+  },
+  "problems": {
+   "type": "object",
+   "required": [
+    "coral",
+    "defo",
+    "fire",
+    "pm25",
+    "ndvi"
+   ],
+   "properties": {
+    "coral": {
+     "$ref": "#/definitions/problem"
+    },
+    "defo": {
+     "$ref": "#/definitions/problem"
+    },
+    "fire": {
+     "$ref": "#/definitions/problem"
+    },
+    "pm25": {
+     "$ref": "#/definitions/problem"
+    },
+    "ndvi": {
+     "$ref": "#/definitions/problem"
+    }
+   },
+   "additionalProperties": false
+  },
+  "b1": {
+   "type": "object",
+   "required": [
+    "coral",
+    "defo",
+    "fire",
+    "pm25",
+    "ndvi"
+   ],
+   "properties": {
+    "coral": {
+     "$ref": "#/definitions/b1_problem_coral"
+    },
+    "defo": {
+     "$ref": "#/definitions/b1_problem_defo"
+    },
+    "fire": {
+     "$ref": "#/definitions/b1_problem_full"
+    },
+    "pm25": {
+     "$ref": "#/definitions/b1_problem_full"
+    },
+    "ndvi": {
+     "$ref": "#/definitions/b1_problem_full"
+    }
+   },
+   "additionalProperties": false
+  },
+  "notes": {
+   "type": "string"
+  },
+  "extra": {
+   "description": "Optional free diagnostics."
+  }
+ },
+ "additionalProperties": false,
+ "definitions": {
+  "interval": {
+   "type": "object",
+   "required": [
+    "value",
+    "ci_low",
+    "ci_high",
+    "n_finite"
+   ],
+   "properties": {
+    "value": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "description": "The number on the full sample (every region once)."
+    },
+    "ci_low": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "description": "Lower end of the percentile 95% interval over the draws."
+    },
+    "ci_high": {
+     "type": [
+      "number",
+      "null"
+     ],
+     "description": "Upper end of the percentile 95% interval over the draws."
+    },
+    "n_finite": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 0,
+     "maximum": 2000,
+     "description": "Number of the 2,000 draws on which the number is finite."
+    },
+    "value_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "ci_low_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "ci_high_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "n_finite_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "value": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "value"
+      ]
+     },
+     "then": {
+      "required": [
+       "value_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "ci_low": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "ci_low"
+      ]
+     },
+     "then": {
+      "required": [
+       "ci_low_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "ci_high": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "ci_high"
+      ]
+     },
+     "then": {
+      "required": [
+       "ci_high_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "n_finite": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_finite"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_finite_why"
+      ]
+     }
+    }
+   ],
+   "description": "Interval object {value, ci_low, ci_high, n_finite}. A number without an interval (by the implementer's reading) has ci_low, ci_high and n_finite null, each with its _why. It does not decide whether a number gets an interval."
+  },
+  "topk10": {
+   "type": "array",
+   "maxItems": 10,
+   "description": "Top-10 list in rank order (rank 1 first): [[name, share], ...], share = full-sample share.",
+   "items": {
+    "type": "array",
+    "minItems": 2,
+    "maxItems": 2,
+    "additionalItems": false,
+    "items": [
+     {
+      "type": "string",
+      "minLength": 1
+     },
+     {
+      "type": "number"
+     }
+    ]
+   }
+  },
+  "topk3": {
+   "type": "array",
+   "maxItems": 3,
+   "description": "Top-3 list in rank order (rank 1 first): [[name, share], ...], share = full-sample share.",
+   "items": {
+    "type": "array",
+    "minItems": 2,
+    "maxItems": 2,
+    "additionalItems": false,
+    "items": [
+     {
+      "type": "string",
+      "minLength": 1
+     },
+     {
+      "type": "number"
+     }
+    ]
+   }
+  },
+  "player_imp": {
+   "type": "object",
+   "required": [
+    "I",
+    "share",
+    "signed_mean",
+    "sign_determined"
+   ],
+   "properties": {
+    "I": {
+     "$ref": "#/definitions/interval"
+    },
+    "share": {
+     "$ref": "#/definitions/interval"
+    },
+    "signed_mean": {
+     "$ref": "#/definitions/interval"
+    },
+    "sign_determined": {
+     "type": [
+      "boolean",
+      "null"
+     ],
+     "description": "Whether this player's sign is determined (section 8), by the implementer's rule."
+    },
+    "sign_determined_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "sign_determined": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_determined"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_determined_why"
+      ]
+     }
+    }
+   ],
+   "description": "One player (feature level) or variable (variable level): I_m(j), s_m(j), S_m(j)."
+  },
+  "players_map": {
+   "type": "object",
+   "patternProperties": {
+    "_why$": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    }
+   },
+   "additionalProperties": {
+    "$ref": "#/definitions/player_imp"
+   },
+   "minProperties": 1,
+   "description": "Keyed by player name without the phi__ prefix (feature level) or variable name without the phiv__ prefix (variable level)."
+  },
+  "family_shares": {
+   "type": "object",
+   "required": [
+    "own_history",
+    "global_indices",
+    "local_drivers",
+    "context_and_calendar",
+    "seasonal_normal"
+   ],
+   "properties": {
+    "own_history": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "global_indices": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "local_drivers": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "context_and_calendar": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "seasonal_normal": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "own_history_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "global_indices_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "local_drivers_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "context_and_calendar_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "seasonal_normal_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "own_history": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "own_history"
+      ]
+     },
+     "then": {
+      "required": [
+       "own_history_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "global_indices": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "global_indices"
+      ]
+     },
+     "then": {
+      "required": [
+       "global_indices_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "local_drivers": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "local_drivers"
+      ]
+     },
+     "then": {
+      "required": [
+       "local_drivers_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "context_and_calendar": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "context_and_calendar"
+      ]
+     },
+     "then": {
+      "required": [
+       "context_and_calendar_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "seasonal_normal": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "seasonal_normal"
+      ]
+     },
+     "then": {
+      "required": [
+       "seasonal_normal_why"
+      ]
+     }
+    }
+   ],
+   "description": "A model's share per family (section 8's five families)."
+  },
+  "families": {
+   "type": "object",
+   "required": [
+    "variable_family",
+    "global_indices",
+    "test_set_records",
+    "test_set_columns"
+   ],
+   "properties": {
+    "variable_family": {
+     "type": "object",
+     "minProperties": 1,
+     "additionalProperties": {
+      "enum": [
+       "own_history",
+       "global_indices",
+       "local_drivers",
+       "context_and_calendar",
+       "seasonal_normal"
+      ]
+     },
+     "description": "Every variable the implementer classifies -> its family key."
+    },
+    "global_indices": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "test_set_records": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Short paths of the records read for the lead's test set."
+    },
+    "test_set_columns": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "Family map of the problem (variable level)."
+  },
+  "pair": {
+   "type": "object",
+   "required": [
+    "models",
+    "link_class",
+    "declined",
+    "both_in_main_set",
+    "spearman_J",
+    "spearman_top20_union",
+    "kendall_tau_b",
+    "jaccard_top5",
+    "jaccard_top10",
+    "jaccard_top20",
+    "rbo_p090",
+    "rbo_p095",
+    "tv_shares",
+    "tv_family_shares",
+    "sign_agreement",
+    "sign_n_determined",
+    "sign_n_agree",
+    "top20_union",
+    "sign_union_top10",
+    "sign_determined_both"
+   ],
+   "properties": {
+    "models": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 2,
+     "maxItems": 2,
+     "description": "The two model names in the key's order (alphabetical)."
+    },
+    "link_class": {
+     "enum": [
+      "same-link",
+      "cross-link"
+     ]
+    },
+    "declined": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "both_in_main_set": {
+     "type": "boolean"
+    },
+    "spearman_J": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "kendall_tau_b": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top5": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top20": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "rbo_p090": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "rbo_p095": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "tv_shares": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "tv_family_shares": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_agreement": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_n_determined": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_n_agree": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "top20_union": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_union_top10": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_determined_both": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "cross_link_label": {
+     "const": "not comparable in scale or rank"
+    },
+    "spearman_J_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "kendall_tau_b_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top5_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top20_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rbo_p090_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rbo_p095_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tv_shares_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tv_family_shares_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_agreement_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_n_determined_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_n_agree_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top20_union_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_union_top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_determined_both_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "spearman_J": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_J"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_J_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "kendall_tau_b": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_tau_b"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_tau_b_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top5": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top5"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top5_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top10_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top20": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top20"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top20_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rbo_p090": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rbo_p090"
+      ]
+     },
+     "then": {
+      "required": [
+       "rbo_p090_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rbo_p095": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rbo_p095"
+      ]
+     },
+     "then": {
+      "required": [
+       "rbo_p095_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tv_shares": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tv_shares"
+      ]
+     },
+     "then": {
+      "required": [
+       "tv_shares_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tv_family_shares": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tv_family_shares"
+      ]
+     },
+     "then": {
+      "required": [
+       "tv_family_shares_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_agreement": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_agreement"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_agreement_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_n_determined": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_n_determined"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_n_determined_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_n_agree": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_n_agree"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_n_agree_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top20_union": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top20_union"
+      ]
+     },
+     "then": {
+      "required": [
+       "top20_union_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_union_top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_union_top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_union_top10_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_determined_both": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_determined_both"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_determined_both_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "link_class": {
+        "const": "cross-link"
+       }
+      },
+      "required": [
+       "link_class"
+      ]
+     },
+     "then": {
+      "required": [
+       "cross_link_label"
+      ]
+     },
+     "else": {
+      "not": {
+       "required": [
+        "cross_link_label"
+       ]
+      }
+     }
+    }
+   ],
+   "description": "One pair of models at one level (brief item 4)."
+  },
+  "pair_b1": {
+   "type": "object",
+   "required": [
+    "pair",
+    "J",
+    "n_J",
+    "main_shares",
+    "main_ranking",
+    "spearman_J",
+    "spearman_top20_union",
+    "kendall_tau_b",
+    "jaccard_top5",
+    "jaccard_top10",
+    "jaccard_top20",
+    "rbo_p090",
+    "rbo_p095",
+    "tv_shares",
+    "tv_family_shares",
+    "sign_agreement",
+    "sign_n_determined",
+    "sign_n_agree",
+    "top20_union",
+    "sign_union_top10",
+    "sign_determined_both"
+   ],
+   "properties": {
+    "pair": {
+     "const": "treeroute|treeroute_B1"
+    },
+    "J": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "n_J": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "main_shares": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "number"
+     },
+     "description": "The main run's full-sample shares over this pair's J."
+    },
+    "main_ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "The main run's ranking over this pair's J, rank order."
+    },
+    "spearman_J": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "kendall_tau_b": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top5": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "jaccard_top20": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "rbo_p090": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "rbo_p095": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "tv_shares": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "tv_family_shares": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_agreement": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_n_determined": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_n_agree": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "top20_union": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_union_top10": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "sign_determined_both": {
+     "oneOf": [
+      {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_J_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "kendall_tau_b_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top5_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "jaccard_top20_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rbo_p090_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rbo_p095_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tv_shares_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tv_family_shares_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_agreement_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_n_determined_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_n_agree_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top20_union_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_union_top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sign_determined_both_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "n_J_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "spearman_J": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_J"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_J_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "kendall_tau_b": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_tau_b"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_tau_b_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top5": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top5"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top5_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top10_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "jaccard_top20": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "jaccard_top20"
+      ]
+     },
+     "then": {
+      "required": [
+       "jaccard_top20_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rbo_p090": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rbo_p090"
+      ]
+     },
+     "then": {
+      "required": [
+       "rbo_p090_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rbo_p095": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rbo_p095"
+      ]
+     },
+     "then": {
+      "required": [
+       "rbo_p095_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tv_shares": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tv_shares"
+      ]
+     },
+     "then": {
+      "required": [
+       "tv_shares_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tv_family_shares": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tv_family_shares"
+      ]
+     },
+     "then": {
+      "required": [
+       "tv_family_shares_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_agreement": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_agreement"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_agreement_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_n_determined": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_n_determined"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_n_determined_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_n_agree": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_n_agree"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_n_agree_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top20_union": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top20_union"
+      ]
+     },
+     "then": {
+      "required": [
+       "top20_union_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_union_top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_union_top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_union_top10_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sign_determined_both": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sign_determined_both"
+      ]
+     },
+     "then": {
+      "required": [
+       "sign_determined_both_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "n_J": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_J"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_J_why"
+      ]
+     }
+    }
+   ],
+   "description": "The pair (treeroute's main run, its B1 run) at one level (brief item 9)."
+  },
+  "model_level_feature": {
+   "type": "object",
+   "required": [
+    "players",
+    "n_nonzero",
+    "ranking",
+    "top10"
+   ],
+   "properties": {
+    "players": {
+     "$ref": "#/definitions/players_map"
+    },
+    "n_nonzero": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "The model's ranking over J, rank order (rank 1 first)."
+    },
+    "top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk10"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "family_shares": {
+     "$ref": "#/definitions/family_shares"
+    },
+    "n_nonzero_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "n_nonzero": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "top10_why"
+      ]
+     }
+    }
+   ],
+   "description": "One model at one level (brief item 2)."
+  },
+  "model_level_variable": {
+   "type": "object",
+   "required": [
+    "players",
+    "n_nonzero",
+    "ranking",
+    "top10",
+    "family_shares"
+   ],
+   "properties": {
+    "players": {
+     "$ref": "#/definitions/players_map"
+    },
+    "n_nonzero": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "The model's ranking over J, rank order (rank 1 first)."
+    },
+    "top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk10"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "family_shares": {
+     "$ref": "#/definitions/family_shares"
+    },
+    "n_nonzero_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "n_nonzero": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "top10_why"
+      ]
+     }
+    }
+   ],
+   "description": "One model at one level (brief item 2)."
+  },
+  "per_problem": {
+   "type": "object",
+   "required": [
+    "kendall_w",
+    "kendall_w_m",
+    "kendall_w_n",
+    "mean_pairwise_spearman",
+    "stability"
+   ],
+   "properties": {
+    "kendall_w": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "kendall_w_m": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "kendall_w_n": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "mean_pairwise_spearman": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "stability": {
+     "type": "object",
+     "patternProperties": {
+      "_why$": {
+       "type": "string",
+       "minLength": 1,
+       "description": "Why the sibling key is null (a plain sentence)."
+      }
+     },
+     "additionalProperties": {
+      "oneOf": [
+       {
+        "$ref": "#/definitions/interval"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "minProperties": 1,
+     "description": "Keyed by model name: the model's stability under region resampling."
+    },
+    "kendall_w_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "kendall_w_m_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "kendall_w_n_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "mean_pairwise_spearman_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "kendall_w": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_w"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_w_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "kendall_w_m": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_w_m"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_w_m_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "kendall_w_n": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_w_n"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_w_n_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "mean_pairwise_spearman": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "mean_pairwise_spearman"
+      ]
+     },
+     "then": {
+      "required": [
+       "mean_pairwise_spearman_why"
+      ]
+     }
+    }
+   ],
+   "description": "Per problem-lead statistics at one level (brief item 5)."
+  },
+  "level_feature": {
+   "type": "object",
+   "required": [
+    "active_set",
+    "models",
+    "pairs",
+    "per_problem"
+   ],
+   "properties": {
+    "active_set": {
+     "type": "object",
+     "required": [
+      "J",
+      "n_J",
+      "structural_zeros"
+     ],
+     "properties": {
+      "J": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "minItems": 1,
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      "n_J": {
+       "oneOf": [
+        {
+         "$ref": "#/definitions/interval"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "structural_zeros": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      "n_J_why": {
+       "type": "string",
+       "minLength": 1,
+       "description": "Why the sibling key is null (a plain sentence)."
+      },
+      "extra": {
+       "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+      }
+     },
+     "additionalProperties": false,
+     "allOf": [
+      {
+       "if": {
+        "properties": {
+         "n_J": {
+          "type": "null"
+         }
+        },
+        "required": [
+         "n_J"
+        ]
+       },
+       "then": {
+        "required": [
+         "n_J_why"
+        ]
+       }
+      }
+     ],
+     "description": "Brief item 1."
+    },
+    "models": {
+     "type": "object",
+     "minProperties": 1,
+     "additionalProperties": {
+      "$ref": "#/definitions/model_level_feature"
+     },
+     "description": "Keyed by model name: every model of per_lead.json key models."
+    },
+    "pairs": {
+     "type": "object",
+     "minProperties": 1,
+     "propertyNames": {
+      "pattern": "^[^|]+\\|[^|]+$"
+     },
+     "additionalProperties": {
+      "$ref": "#/definitions/pair"
+     },
+     "description": "Keyed 'a|b' (the two model names in alphabetical order): every pair of models."
+    },
+    "per_problem": {
+     "$ref": "#/definitions/per_problem"
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "Feature level."
+  },
+  "level_variable": {
+   "type": "object",
+   "required": [
+    "active_set",
+    "models",
+    "pairs",
+    "per_problem",
+    "families"
+   ],
+   "properties": {
+    "active_set": {
+     "type": "object",
+     "required": [
+      "J",
+      "n_J",
+      "structural_zeros"
+     ],
+     "properties": {
+      "J": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "minItems": 1,
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      "n_J": {
+       "oneOf": [
+        {
+         "$ref": "#/definitions/interval"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "structural_zeros": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+      },
+      "n_J_why": {
+       "type": "string",
+       "minLength": 1,
+       "description": "Why the sibling key is null (a plain sentence)."
+      },
+      "extra": {
+       "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+      }
+     },
+     "additionalProperties": false,
+     "allOf": [
+      {
+       "if": {
+        "properties": {
+         "n_J": {
+          "type": "null"
+         }
+        },
+        "required": [
+         "n_J"
+        ]
+       },
+       "then": {
+        "required": [
+         "n_J_why"
+        ]
+       }
+      }
+     ],
+     "description": "Brief item 1."
+    },
+    "models": {
+     "type": "object",
+     "minProperties": 1,
+     "additionalProperties": {
+      "$ref": "#/definitions/model_level_variable"
+     },
+     "description": "Keyed by model name: every model of per_lead.json key models."
+    },
+    "pairs": {
+     "type": "object",
+     "minProperties": 1,
+     "propertyNames": {
+      "pattern": "^[^|]+\\|[^|]+$"
+     },
+     "additionalProperties": {
+      "$ref": "#/definitions/pair"
+     },
+     "description": "Keyed 'a|b' (the two model names in alphabetical order): every pair of models."
+    },
+    "per_problem": {
+     "$ref": "#/definitions/per_problem"
+    },
+    "families": {
+     "$ref": "#/definitions/families"
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "Variable level."
+  },
+  "draws": {
+   "type": "object",
+   "required": [
+    "path",
+    "shape",
+    "dtype",
+    "sha256_computed",
+    "sha256_covers",
+    "sha256_per_lead",
+    "sha256_match",
+    "region_source",
+    "regions_in_draw_order",
+    "npz"
+   ],
+   "properties": {
+    "path": {
+     "type": "string",
+     "minLength": 1
+    },
+    "shape": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     },
+     "minItems": 2,
+     "maxItems": 2
+    },
+    "dtype": {
+     "type": "string",
+     "minLength": 1
+    },
+    "sha256_computed": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "sha256_covers": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Which bytes the computed SHA-256 covers (identification I03)."
+    },
+    "sha256_per_lead": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "sha256_match": {
+     "type": "boolean"
+    },
+    "region_source": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Where a row's region is read (identification I01)."
+    },
+    "regions_in_draw_order": {
+     "type": "array",
+     "items": {
+      "type": [
+       "string",
+       "integer"
+      ]
+     },
+     "minItems": 1,
+     "description": "The regions in the order the draw integers refer to (identification I02)."
+    },
+    "npz": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Short path of this problem's per-draw file, V\\<X>\\draws\\<problem>.npz."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "The saved draw matrix and its check (brief item 6)."
+  },
+  "main_row": {
+   "type": "object",
+   "required": [
+    "level",
+    "main_set",
+    "rivals",
+    "kendall_w",
+    "spearman_top20_union_median",
+    "spearman_top20_union_min",
+    "spearman_top20_union_max",
+    "spearman_top20_union_per_rival",
+    "rbo_p090_vs_consensus",
+    "consensus_shares",
+    "treeroute_top3",
+    "consensus_top3",
+    "own_history_share_treeroute",
+    "own_history_share_median_rival",
+    "own_history_share_per_rival",
+    "median_rival_name"
+   ],
+   "properties": {
+    "level": {
+     "const": "variable"
+    },
+    "main_set": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "rivals": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "kendall_w": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union_median": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union_min": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union_max": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "spearman_top20_union_per_rival": {
+     "oneOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "number"
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "rbo_p090_vs_consensus": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "consensus_shares": {
+     "oneOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "number"
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "treeroute_top3": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk3"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "consensus_top3": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk3"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "own_history_share_treeroute": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "own_history_share_median_rival": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "own_history_share_per_rival": {
+     "oneOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "number"
+       }
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "median_rival_name": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "kendall_w_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_median_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_min_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_max_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "spearman_top20_union_per_rival_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rbo_p090_vs_consensus_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "consensus_shares_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "treeroute_top3_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "consensus_top3_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "own_history_share_treeroute_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "own_history_share_median_rival_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "own_history_share_per_rival_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "median_rival_name_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "kendall_w": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "kendall_w"
+      ]
+     },
+     "then": {
+      "required": [
+       "kendall_w_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union_median": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union_median"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_median_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union_min": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union_min"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_min_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union_max": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union_max"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_max_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "spearman_top20_union_per_rival": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "spearman_top20_union_per_rival"
+      ]
+     },
+     "then": {
+      "required": [
+       "spearman_top20_union_per_rival_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rbo_p090_vs_consensus": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rbo_p090_vs_consensus"
+      ]
+     },
+     "then": {
+      "required": [
+       "rbo_p090_vs_consensus_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "consensus_shares": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "consensus_shares"
+      ]
+     },
+     "then": {
+      "required": [
+       "consensus_shares_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "treeroute_top3": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "treeroute_top3"
+      ]
+     },
+     "then": {
+      "required": [
+       "treeroute_top3_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "consensus_top3": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "consensus_top3"
+      ]
+     },
+     "then": {
+      "required": [
+       "consensus_top3_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "own_history_share_treeroute": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "own_history_share_treeroute"
+      ]
+     },
+     "then": {
+      "required": [
+       "own_history_share_treeroute_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "own_history_share_median_rival": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "own_history_share_median_rival"
+      ]
+     },
+     "then": {
+      "required": [
+       "own_history_share_median_rival_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "own_history_share_per_rival": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "own_history_share_per_rival"
+      ]
+     },
+     "then": {
+      "required": [
+       "own_history_share_per_rival_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "median_rival_name": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "median_rival_name"
+      ]
+     },
+     "then": {
+      "required": [
+       "median_rival_name_why"
+      ]
+     }
+    }
+   ],
+   "description": "The main-text row, variable level (brief item 7)."
+  },
+  "nz_model": {
+   "type": "object",
+   "required": [
+    "level",
+    "rows_used",
+    "regions_used",
+    "J",
+    "players",
+    "n_nonzero",
+    "ranking",
+    "top10"
+   ],
+   "properties": {
+    "level": {
+     "const": "variable"
+    },
+    "rows_used": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "regions_used": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "J": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "players": {
+     "$ref": "#/definitions/players_map"
+    },
+    "n_nonzero": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk10"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "n_nonzero_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "n_nonzero": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "top10_why"
+      ]
+     }
+    }
+   ],
+   "description": "One arcsine-link model's variable-level importances on its rows with pre > 0 (brief item 8)."
+  },
+  "nonzero_forecast": {
+   "type": "object",
+   "required": [
+    "models_covered",
+    "models_covered_why",
+    "models"
+   ],
+   "properties": {
+    "models_covered": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "models_covered_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "models": {
+     "type": "object",
+     "additionalProperties": {
+      "$ref": "#/definitions/nz_model"
+     }
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "Brief item 8, keyed by model name."
+  },
+  "problem": {
+   "type": "object",
+   "required": [
+    "lead",
+    "models",
+    "main_set",
+    "declined_by_guard",
+    "links",
+    "rows",
+    "draws",
+    "levels",
+    "main_row",
+    "nonzero_forecast"
+   ],
+   "properties": {
+    "lead": {
+     "const": 0
+    },
+    "models": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Copied from per_lead.json key models, same order."
+    },
+    "main_set": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Copied from per_lead.json key main_set, same order."
+    },
+    "declined_by_guard": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Copied from per_lead.json key declined_by_guard, same order."
+    },
+    "links": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Copied from per_lead.json key links."
+    },
+    "rows": {
+     "type": "integer",
+     "description": "Copied from per_lead.json key rows."
+    },
+    "draws": {
+     "$ref": "#/definitions/draws"
+    },
+    "levels": {
+     "type": "object",
+     "required": [
+      "feature",
+      "variable"
+     ],
+     "properties": {
+      "feature": {
+       "$ref": "#/definitions/level_feature"
+      },
+      "variable": {
+       "$ref": "#/definitions/level_variable"
+      }
+     },
+     "additionalProperties": false
+    },
+    "main_row": {
+     "$ref": "#/definitions/main_row"
+    },
+    "nonzero_forecast": {
+     "$ref": "#/definitions/nonzero_forecast"
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "description": "One problem, lead 0 (brief items 1-8)."
+  },
+  "b1_meta": {
+   "type": "object",
+   "required": [
+    "pass",
+    "checks_passed",
+    "rows",
+    "background",
+    "pairs",
+    "trees_used",
+    "sample_sha256",
+    "duplicates_merged"
+   ],
+   "properties": {
+    "pass": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "checks_passed": {
+     "type": [
+      "object",
+      "null"
+     ]
+    },
+    "rows": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "background": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "pairs": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "trees_used": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "sample_sha256": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "duplicates_merged": {
+     "type": [
+      "object",
+      "null"
+     ]
+    },
+    "pass_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "checks_passed_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "rows_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "background_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "pairs_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "trees_used_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sample_sha256_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "duplicates_merged_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "pass": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pass"
+      ]
+     },
+     "then": {
+      "required": [
+       "pass_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "checks_passed": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "checks_passed"
+      ]
+     },
+     "then": {
+      "required": [
+       "checks_passed_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "rows": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "rows"
+      ]
+     },
+     "then": {
+      "required": [
+       "rows_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "background": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "background"
+      ]
+     },
+     "then": {
+      "required": [
+       "background_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "pairs": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pairs"
+      ]
+     },
+     "then": {
+      "required": [
+       "pairs_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "trees_used": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "trees_used"
+      ]
+     },
+     "then": {
+      "required": [
+       "trees_used_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sample_sha256": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sample_sha256"
+      ]
+     },
+     "then": {
+      "required": [
+       "sample_sha256_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "duplicates_merged": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "duplicates_merged"
+      ]
+     },
+     "then": {
+      "required": [
+       "duplicates_merged_why"
+      ]
+     }
+    }
+   ],
+   "description": "The B1 piece's meta.json fields, copied verbatim (brief item 9, first sub-item)."
+  },
+  "b1_status": {
+   "type": "object",
+   "required": [
+    "folder_exists",
+    "has_done_json",
+    "has_failed_json",
+    "finished",
+    "failed_stop",
+    "meta",
+    "background_is_B1",
+    "sample_sha256_registered",
+    "sample_sha256_is_registered",
+    "per_lead_models_lists_treeroute_B1",
+    "numbers",
+    "numbers_why"
+   ],
+   "properties": {
+    "folder_exists": {
+     "type": "boolean"
+    },
+    "has_done_json": {
+     "type": "boolean"
+    },
+    "has_failed_json": {
+     "type": "boolean"
+    },
+    "finished": {
+     "type": "boolean"
+    },
+    "failed_stop": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "meta": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/b1_meta"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "background_is_B1": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "sample_sha256_registered": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "sample_sha256_is_registered": {
+     "type": [
+      "boolean",
+      "null"
+     ]
+    },
+    "per_lead_models_lists_treeroute_B1": {
+     "type": "boolean"
+    },
+    "numbers": {
+     "enum": [
+      "none",
+      "identity",
+      "full"
+     ]
+    },
+    "numbers_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "failed_stop_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "meta_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "background_is_B1_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sample_sha256_registered_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "sample_sha256_is_registered_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "failed_stop": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "failed_stop"
+      ]
+     },
+     "then": {
+      "required": [
+       "failed_stop_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "meta": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "meta"
+      ]
+     },
+     "then": {
+      "required": [
+       "meta_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "background_is_B1": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "background_is_B1"
+      ]
+     },
+     "then": {
+      "required": [
+       "background_is_B1_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sample_sha256_registered": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sample_sha256_registered"
+      ]
+     },
+     "then": {
+      "required": [
+       "sample_sha256_registered_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "sample_sha256_is_registered": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "sample_sha256_is_registered"
+      ]
+     },
+     "then": {
+      "required": [
+       "sample_sha256_is_registered_why"
+      ]
+     }
+    }
+   ],
+   "description": "Brief item 9, first sub-item, and the check that per_lead.json's models does not list treeroute_B1."
+  },
+  "b1_identity": {
+   "type": "object",
+   "required": [
+    "max_abs_diff_phi",
+    "max_abs_diff_phiv",
+    "same_rows",
+    "same_players",
+    "same_variables",
+    "n_rows_main",
+    "n_rows_b1",
+    "n_players_main",
+    "n_players_b1",
+    "n_variables_main",
+    "n_variables_b1",
+    "rows_only_in_main",
+    "rows_only_in_b1",
+    "players_only_in_main",
+    "players_only_in_b1",
+    "variables_only_in_main",
+    "variables_only_in_b1",
+    "as_expected",
+    "log_file",
+    "log_setup_line_number",
+    "log_done_line_number",
+    "pairs_log",
+    "pairs_meta",
+    "total_seconds_log",
+    "total_seconds_done_json",
+    "tree_shap_seconds_log",
+    "tree_shap_seconds_meta"
+   ],
+   "properties": {
+    "max_abs_diff_phi": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "max_abs_diff_phiv": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "same_rows": {
+     "type": "boolean"
+    },
+    "same_players": {
+     "type": "boolean"
+    },
+    "same_variables": {
+     "type": "boolean"
+    },
+    "n_rows_main": {
+     "type": "integer"
+    },
+    "n_rows_b1": {
+     "type": "integer"
+    },
+    "n_players_main": {
+     "type": "integer"
+    },
+    "n_players_b1": {
+     "type": "integer"
+    },
+    "n_variables_main": {
+     "type": "integer"
+    },
+    "n_variables_b1": {
+     "type": "integer"
+    },
+    "rows_only_in_main": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    },
+    "rows_only_in_b1": {
+     "type": "array",
+     "items": {
+      "type": "integer"
+     }
+    },
+    "players_only_in_main": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "players_only_in_b1": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "variables_only_in_main": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "variables_only_in_b1": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "as_expected": {
+     "type": "boolean"
+    },
+    "log_file": {
+     "type": "string",
+     "minLength": 1
+    },
+    "log_setup_line_number": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "log_done_line_number": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "pairs_log": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "pairs_meta": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "total_seconds_log": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "total_seconds_done_json": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "tree_shap_seconds_log": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "tree_shap_seconds_meta": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "max_abs_diff_phi_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "max_abs_diff_phiv_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "log_setup_line_number_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "log_done_line_number_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "pairs_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "pairs_meta_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "total_seconds_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "total_seconds_done_json_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tree_shap_seconds_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tree_shap_seconds_meta_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "max_abs_diff_phi": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "max_abs_diff_phi"
+      ]
+     },
+     "then": {
+      "required": [
+       "max_abs_diff_phi_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "max_abs_diff_phiv": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "max_abs_diff_phiv"
+      ]
+     },
+     "then": {
+      "required": [
+       "max_abs_diff_phiv_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "log_setup_line_number": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "log_setup_line_number"
+      ]
+     },
+     "then": {
+      "required": [
+       "log_setup_line_number_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "log_done_line_number": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "log_done_line_number"
+      ]
+     },
+     "then": {
+      "required": [
+       "log_done_line_number_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "pairs_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pairs_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "pairs_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "pairs_meta": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pairs_meta"
+      ]
+     },
+     "then": {
+      "required": [
+       "pairs_meta_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "total_seconds_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "total_seconds_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "total_seconds_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "total_seconds_done_json": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "total_seconds_done_json"
+      ]
+     },
+     "then": {
+      "required": [
+       "total_seconds_done_json_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tree_shap_seconds_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tree_shap_seconds_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "tree_shap_seconds_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tree_shap_seconds_meta": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tree_shap_seconds_meta"
+      ]
+     },
+     "then": {
+      "required": [
+       "tree_shap_seconds_meta_why"
+      ]
+     }
+    }
+   ],
+   "description": "Defo's identity check with its pairs and seconds (brief item 9)."
+  },
+  "b1_run": {
+   "type": "object",
+   "required": [
+    "log_file",
+    "log_setup_line_number",
+    "log_done_line_number",
+    "pairs_log",
+    "pairs_meta",
+    "total_seconds_log",
+    "total_seconds_done_json",
+    "tree_shap_seconds_log",
+    "tree_shap_seconds_meta",
+    "duplicates_merged_main",
+    "duplicates_merged_b1",
+    "context_columns_summed",
+    "draws_sha256_match",
+    "npz"
+   ],
+   "properties": {
+    "log_file": {
+     "type": "string",
+     "minLength": 1
+    },
+    "log_setup_line_number": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "log_done_line_number": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "pairs_log": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "pairs_meta": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "total_seconds_log": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "total_seconds_done_json": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "tree_shap_seconds_log": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "tree_shap_seconds_meta": {
+     "type": [
+      "number",
+      "null"
+     ]
+    },
+    "duplicates_merged_main": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "duplicates_merged_b1": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "context_columns_summed": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "Names; sorted ascending (Python sorted()) unless the key says rank order."
+    },
+    "draws_sha256_match": {
+     "type": "boolean"
+    },
+    "npz": {
+     "type": "string",
+     "minLength": 1
+    },
+    "log_setup_line_number_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "log_done_line_number_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "pairs_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "pairs_meta_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "total_seconds_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "total_seconds_done_json_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tree_shap_seconds_log_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "tree_shap_seconds_meta_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "log_setup_line_number": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "log_setup_line_number"
+      ]
+     },
+     "then": {
+      "required": [
+       "log_setup_line_number_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "log_done_line_number": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "log_done_line_number"
+      ]
+     },
+     "then": {
+      "required": [
+       "log_done_line_number_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "pairs_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pairs_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "pairs_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "pairs_meta": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "pairs_meta"
+      ]
+     },
+     "then": {
+      "required": [
+       "pairs_meta_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "total_seconds_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "total_seconds_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "total_seconds_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "total_seconds_done_json": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "total_seconds_done_json"
+      ]
+     },
+     "then": {
+      "required": [
+       "total_seconds_done_json_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tree_shap_seconds_log": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tree_shap_seconds_log"
+      ]
+     },
+     "then": {
+      "required": [
+       "tree_shap_seconds_log_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "tree_shap_seconds_meta": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "tree_shap_seconds_meta"
+      ]
+     },
+     "then": {
+      "required": [
+       "tree_shap_seconds_meta_why"
+      ]
+     }
+    }
+   ],
+   "description": "The B1 run's pairs, seconds and merged context columns (fire, pm25, ndvi)."
+  },
+  "b1_importance_feature": {
+   "type": "object",
+   "required": [
+    "players",
+    "n_nonzero",
+    "ranking",
+    "n_nonzero_before_merge"
+   ],
+   "properties": {
+    "players": {
+     "$ref": "#/definitions/players_map"
+    },
+    "n_nonzero": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "The B1 run's ranking over the pair's J, rank order."
+    },
+    "n_nonzero_before_merge": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "n_nonzero_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "n_nonzero_before_merge_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "n_nonzero": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "n_nonzero_before_merge": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero_before_merge"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_before_merge_why"
+      ]
+     }
+    }
+   ],
+   "description": "The B1 run's I(j), s(j), S(j) (shares over the pair's J) and nonzero count."
+  },
+  "b1_importance_variable": {
+   "type": "object",
+   "required": [
+    "players",
+    "n_nonzero",
+    "ranking"
+   ],
+   "properties": {
+    "players": {
+     "$ref": "#/definitions/players_map"
+    },
+    "n_nonzero": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "ranking": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "description": "The B1 run's ranking over the pair's J, rank order."
+    },
+    "n_nonzero_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "n_nonzero": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "n_nonzero"
+      ]
+     },
+     "then": {
+      "required": [
+       "n_nonzero_why"
+      ]
+     }
+    }
+   ],
+   "description": "The B1 run's I(j), s(j), S(j) (shares over the pair's J) and nonzero count."
+  },
+  "b1_level_feature": {
+   "type": "object",
+   "required": [
+    "importance",
+    "top10",
+    "pair_main_b1"
+   ],
+   "properties": {
+    "importance": {
+     "$ref": "#/definitions/b1_importance_feature"
+    },
+    "top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk10"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "pair_main_b1": {
+     "$ref": "#/definitions/pair_b1"
+    },
+    "top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "top10_why"
+      ]
+     }
+    }
+   ]
+  },
+  "b1_level_variable": {
+   "type": "object",
+   "required": [
+    "importance",
+    "top10",
+    "pair_main_b1",
+    "families",
+    "top3",
+    "own_history_share"
+   ],
+   "properties": {
+    "importance": {
+     "$ref": "#/definitions/b1_importance_variable"
+    },
+    "top10": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk10"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "pair_main_b1": {
+     "$ref": "#/definitions/pair_b1"
+    },
+    "families": {
+     "$ref": "#/definitions/family_shares"
+    },
+    "top3": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/topk3"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "own_history_share": {
+     "oneOf": [
+      {
+       "$ref": "#/definitions/interval"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "top10_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "top3_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "own_history_share_why": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Why the sibling key is null (a plain sentence)."
+    },
+    "extra": {
+     "description": "Optional free diagnostics of the implementer; the reconciler does not match them."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "if": {
+      "properties": {
+       "top10": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top10"
+      ]
+     },
+     "then": {
+      "required": [
+       "top10_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "top3": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "top3"
+      ]
+     },
+     "then": {
+      "required": [
+       "top3_why"
+      ]
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "own_history_share": {
+        "type": "null"
+       }
+      },
+      "required": [
+       "own_history_share"
+      ]
+     },
+     "then": {
+      "required": [
+       "own_history_share_why"
+      ]
+     }
+    }
+   ]
+  },
+  "b1_problem_coral": {
+   "type": "object",
+   "required": [
+    "status"
+   ],
+   "properties": {
+    "status": {
+     "$ref": "#/definitions/b1_status"
+    },
+    "extra": {
+     "description": "Optional free diagnostics."
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "properties": {
+      "status": {
+       "properties": {
+        "numbers": {
+         "enum": [
+          "none"
+         ]
+        }
+       }
+      }
+     }
+    }
+   ]
+  },
+  "b1_problem_defo": {
+   "type": "object",
+   "required": [
+    "status"
+   ],
+   "properties": {
+    "status": {
+     "$ref": "#/definitions/b1_status"
+    },
+    "extra": {
+     "description": "Optional free diagnostics."
+    },
+    "identity": {
+     "$ref": "#/definitions/b1_identity"
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "properties": {
+      "status": {
+       "properties": {
+        "numbers": {
+         "enum": [
+          "none",
+          "identity"
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "status": {
+        "properties": {
+         "numbers": {
+          "const": "identity"
+         }
+        },
+        "required": [
+         "numbers"
+        ]
+       }
+      }
+     },
+     "then": {
+      "required": [
+       "identity"
+      ]
+     }
+    }
+   ]
+  },
+  "b1_problem_full": {
+   "type": "object",
+   "required": [
+    "status"
+   ],
+   "properties": {
+    "status": {
+     "$ref": "#/definitions/b1_status"
+    },
+    "extra": {
+     "description": "Optional free diagnostics."
+    },
+    "run": {
+     "$ref": "#/definitions/b1_run"
+    },
+    "feature": {
+     "$ref": "#/definitions/b1_level_feature"
+    },
+    "variable": {
+     "$ref": "#/definitions/b1_level_variable"
+    }
+   },
+   "additionalProperties": false,
+   "allOf": [
+    {
+     "properties": {
+      "status": {
+       "properties": {
+        "numbers": {
+         "enum": [
+          "none",
+          "full"
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "if": {
+      "properties": {
+       "status": {
+        "properties": {
+         "numbers": {
+          "const": "full"
+         }
+        },
+        "required": [
+         "numbers"
+        ]
+       }
+      }
+     },
+     "then": {
+      "required": [
+       "run",
+       "feature",
+       "variable"
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

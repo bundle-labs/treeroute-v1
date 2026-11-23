@@ -1,0 +1,37 @@
+{
+ "arcsine_tolerance": 1e-12,
+ "arm": "arcsine_corrector_gls",
+ "c": 0.012987012987012988,
+ "d8_licence": "E5a at this lead (the arm's identity-link twin, bit-identical)",
+ "e8_bit_identical": false,
+ "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\fire\\headline\\20261113_869d1f38",
+ "files": {
+  "bank.npz": "b6b6502ae6b30c3aba1b1d11c9375c8155989cfac223c4db1743ac87d601728c",
+  "preds_check.parquet": "ec8237ee8ca23f39106522e0eb0823b03733de1db891d8419ac747ae46de6468",
+  "routers.npz": "80f8e8f0a90ef76e195bb8a8109c55a00b8d574cba65a3b26a4128befde66213",
+  "rows.parquet": "61528af9575e982a1a8c7e47f308edb3ad24eb922d0b37e268c9c72e74ccb4d6"
+ },
+ "identity": {
+  "engine_root": "d:/treeroute/analysis/ablation_perlocation/ckproof/engine_65a177bc",
+  "package_dir": null,
+  "path_map": true,
+  "sample_sha256": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+  "script_sha256": "b48196273b43ccc877249b00e16e2d4e11d3d09c83bad1eadd3ad200dc782beb",
+  "smoke_arm": null
+ },
+ "kind": "per_unit",
+ "legal": [
+  0.0,
+  1.0
+ ],
+ "link": "arcsine",
+ "point": {
+  "level": 100.0,
+  "ratio": 1.0
+ },
+ "rows_checked": 13440,
+ "sample_sha256": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2",
+ "table_kind": "corrector",
+ "ub": 1.0,
+ "weighted": true
+}

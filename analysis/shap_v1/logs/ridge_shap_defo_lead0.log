@@ -1,0 +1,24 @@
+[2026-11-14 14:34:12 +    0.2s] ridge SHAP defo lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-14 14:34:12 +    0.5s] board records: ridge pick ridge__log_c__alphas (link log_c, alpha 1000000.0, flags ['edge_alpha_1e6']), 369096 test rows, guard passed
+[2026-11-14 14:34:12 +    0.5s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-14 14:34:12 +    0.6s] S-ENV: numpy's BLAS libscipy_openblas runs 8 threads, the board's count (OpenBLAS 0.3.27, SkylakeX, pthreads)
+[2026-11-14 14:34:12 +    0.6s] drift guard: the copied rival_shap.py lines are current (run_ridge 330-389, ridge_design 311-327)
+[2026-11-14 14:34:12 +    0.6s] sample: registered (tag v1, N 1000)
+[2026-11-14 14:34:17 +    5.6s] test set: 369096 rows x 308 features (D:\treeroute\rival_export\defo\20261017_d71c61f4\lead_0), read and hash-checked in 4.1 s
+[2026-11-14 14:34:21 +    9.3s] S-EXACT: 20 record checks all equal; the board's scoring of 369096 test rows in 6 blocks (stored F): pre bit-equal 369096 of 369096 (max |diff| 0.0), raw 369096 of 369096 (equal bit patterns: pre 369096, raw 369096); row-by-row copy (rival_shap.py's way) 303967: PASS
+[2026-11-14 14:34:21 +    9.4s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-14 14:34:22 +   10.6s] test set: 369096 rows x 308 features (D:\treeroute\rival_export\defo\20261017_d71c61f4\lead_0), read and hash-checked in 1.1 s
+[2026-11-14 14:34:33 +   21.7s] sample: 1000 explained rows, 4032 distinct background rows (per row: min 16, median 16, max 16)
+[2026-11-14 14:34:33 +   21.8s] context: the test set is the one S-EXACT checked (bit for bit); 1000 explained rows at their own keys
+[2026-11-14 14:34:35 +   23.8s] ridge: exact linear SHAP on 1000 rows (309 players, 121 variables, 16000 pairs); the model's value is the board's own scoring (explained) and its scoring code (background)
+[2026-11-14 14:34:35 +   23.9s] rival_ridge: 1000 rows, 309 players (280 nonzero), 121 variables (99 nonzero); additivity max 3.55e-15 / 3.55e-15; evaluator max 1.78e-15; resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-14 14:34:35 +   23.9s] rival_ridge done: 1000 rows; players nonzero 280 of 309, variables nonzero 99 of 121; additivity max 3.55e-15 / 3.55e-15; evaluator max 1.78e-15 (background 3.55e-15); link key log_c|c=4.95638378197e-05|ub=1; guard passed; 23.9 s; peak RSS 2.04 GB
+[2026-11-14 14:34:35 +   23.9s] REMINDER: the comparison in D:\treeroute\analysis\shap_v1\out\defo\lead_0\compare does not cover this rival_ridge piece (it does not list rival_ridge): run compare_shap.py --problem defo --lead 0 again on this models root, so that it includes it
+[2026-11-14 14:35:13 +    0.1s] ridge SHAP defo lead 0; versions {'python': '3.9.13', 'numpy': '2.0.2', 'scipy': '1.13.1', 'pandas': '2.3.3', 'pyarrow': '21.0.0', 'scikit-learn': '1.6.1', 'scikit-learn-intelex': '2025.10.0', 'daal': '2025.10.0', 'tbb': '2022.3.1', 'lightgbm': '4.6.0', 'threadpoolctl': '3.6.0', 'psutil': '7.2.2', 'pydantic': '2.13.3', 'pydantic-core': '2.46.3', 'typer': '0.23.2', 'click': '8.1.8', 'PyYAML': '6.0.3'}
+[2026-11-14 14:35:13 +    0.1s] board records: ridge pick ridge__log_c__alphas (link log_c, alpha 1000000.0, flags ['edge_alpha_1e6']), 369096 test rows, guard passed
+[2026-11-14 14:35:13 +    0.2s] S-ENV: library versions and thread pins equal the board's (8 threads)
+[2026-11-14 14:35:13 +    0.2s] S-ENV: numpy's BLAS libscipy_openblas runs 8 threads, the board's count (OpenBLAS 0.3.27, SkylakeX, pthreads)
+[2026-11-14 14:35:13 +    0.2s] drift guard: the copied rival_shap.py lines are current (run_ridge 330-389, ridge_design 311-327)
+[2026-11-14 14:35:13 +    0.2s] sample: registered (tag v1, N 1000)
+[2026-11-14 14:35:13 +    0.3s] rival_ridge: finished piece found with matching hashes: skipped
+[2026-11-14 14:35:13 +    0.3s] rival_shap.py's own check in this folder (exactness.json, kept): 303967 of 369096 test rows bit-equal: FAIL

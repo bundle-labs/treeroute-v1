@@ -1,0 +1,346 @@
+ndvi/main_row/kendall_w/value: mine 0.617310367353 | A 0.617310367353 | B 0.617310367353 | official 0.617310367353
+ndvi/main_row/kendall_w/ci_low: mine 0.605189794298 | A 0.605189794298 | B 0.605189794298 | official 0.605189794298
+ndvi/main_row/kendall_w/ci_high: mine 0.623868587241 | A 0.623868587241 | B 0.623868587241 | official 0.623868587241
+ndvi/main_row/kendall_w/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+ndvi/main_row/spearman_top20_union_median/value: mine 0.0699040600667 | A 0.0699040600667 | B 0.0699040600667 | official 0.0699040600667
+ndvi/main_row/spearman_top20_union_median/ci_low: mine -0.0102551446051 | A -0.0102551446051 | B -0.0102551446051 | official -0.0102551446051
+ndvi/main_row/spearman_top20_union_median/ci_high: mine 0.123075118187 | A 0.123075118187 | B 0.123075118187 | official 0.123075118187
+ndvi/main_row/spearman_top20_union_median/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+ndvi/main_row/spearman_top20_union_min/value: mine -0.405080213904 | A -0.405080213904 | B -0.405080213904 | official -0.405080213904
+ndvi/main_row/spearman_top20_union_max/value: mine 0.384090372165 | A 0.384090372165 | B 0.384090372165 | official 0.384090372165
+ndvi/main_row/spearman_top20_union_min/ci_low: mine -0.438049853372 | A -0.438049853372 | B -0.438049853372 | official (no official)
+ndvi/main_row/spearman_top20_union_max/ci_low: mine 0.340620160279 | A 0.340620160279 | B 0.340620160279 | official (no official)
+ndvi/main_row/spearman_top20_union_min/ci_high: mine -0.336898395722 | A -0.336898395722 | B -0.336898395722 | official (no official)
+ndvi/main_row/spearman_top20_union_max/ci_high: mine 0.405204475081 | A 0.405204475081 | B 0.405204475081 | official (no official)
+ndvi/main_row/spearman_top20_union_min/n_finite: mine 2000 | A 2000 | B 2000 | official (no official)
+ndvi/main_row/spearman_top20_union_max/n_finite: mine 2000 | A 2000 | B 2000 | official (no official)
+ndvi/main_row/spearman_top20_union_per_rival/rival_bardl_h1: mine 0.384090372165 | A 0.384090372165 | B 0.384090372165 | official (no official)
+ndvi/main_row/spearman_top20_union_per_rival/rival_lgbm: mine 0.164404894327 | A 0.164404894327 | B 0.164404894327 | official (no official)
+ndvi/main_row/spearman_top20_union_per_rival/rival_rf: mine -0.0245967741935 | A -0.0245967741935 | B -0.0245967741935 | official (no official)
+ndvi/main_row/spearman_top20_union_per_rival/rival_ridge: mine -0.405080213904 | A -0.405080213904 | B -0.405080213904 | official (no official)
+ndvi/main_row/rbo_p090_vs_consensus/value: mine 0.402874129937 | A 0.402874129937 | B 0.402874129937 | official 0.402874129937
+ndvi/main_row/rbo_p090_vs_consensus/ci_low: mine 0.375604246571 | A 0.375604246571 | B 0.375604246571 | official 0.375604246571
+ndvi/main_row/rbo_p090_vs_consensus/ci_high: mine 0.425874934965 | A 0.425874934965 | B 0.425874934965 | official 0.425874934965
+ndvi/main_row/rbo_p090_vs_consensus/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+ndvi/main_row/treeroute_top3/names: mine [hist_mean, hist_last, era5l_slhf] | A [hist_mean, hist_last, era5l_slhf] | B [hist_mean, hist_last, era5l_slhf] | official [hist_mean, hist_last, era5l_slhf]
+ndvi/main_row/treeroute_top3/share0: mine 0.0731688393121 | A 0.0731688393121 | B 0.0731688393121 | official (no official)
+ndvi/main_row/treeroute_top3/share1: mine 0.0637978991092 | A 0.0637978991092 | B 0.0637978991092 | official (no official)
+ndvi/main_row/treeroute_top3/share2: mine 0.0557121477994 | A 0.0557121477994 | B 0.0557121477994 | official (no official)
+ndvi/main_row/consensus_top3/names: mine [soil_moisture_pct, spi, hist_last] | A [soil_moisture_pct, spi, hist_last] | B [soil_moisture_pct, spi, hist_last] | official [soil_moisture_pct, spi, hist_last]
+ndvi/main_row/consensus_top3/share0: mine 0.125054474468 | A 0.125054474468 | B 0.125054474468 | official (no official)
+ndvi/main_row/consensus_top3/share1: mine 0.123531118596 | A 0.123531118596 | B 0.123531118596 | official (no official)
+ndvi/main_row/consensus_top3/share2: mine 0.0985824109509 | A 0.0985824109509 | B 0.0985824109509 | official (no official)
+ndvi/main_row/own_history_share_treeroute/value: mine 0.244535215233 | A 0.244535215233 | B 0.244535215233 | official 0.244535215233
+ndvi/main_row/own_history_share_treeroute/ci_low: mine 0.216830399422 | A 0.216830399422 | B 0.216830399422 | official 0.216830399422
+ndvi/main_row/own_history_share_treeroute/ci_high: mine 0.271886295544 | A 0.271886295544 | B 0.271886295544 | official 0.271886295544
+ndvi/main_row/own_history_share_treeroute/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+ndvi/main_row/own_history_share_median_rival/value: mine 0.25596368495 | A 0.25596368495 | B 0.25596368495 | official 0.25596368495
+ndvi/main_row/own_history_share_median_rival/ci_low: mine 0.235692102901 | A 0.235692102901 | B 0.235692102901 | official 0.235692102901
+ndvi/main_row/own_history_share_median_rival/ci_high: mine 0.275664023983 | A 0.275664023983 | B 0.275664023983 | official 0.275664023983
+ndvi/main_row/own_history_share_median_rival/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+pm25/main_row/kendall_w/value: mine 0.853889401981 | A 0.853889401981 | B 0.853889401981 | official 0.853889401981
+pm25/main_row/kendall_w/ci_low: mine 0.846297902178 | A 0.846297902178 | B 0.846297902178 | official 0.846297902178
+pm25/main_row/kendall_w/ci_high: mine 0.862436357244 | A 0.862436357244 | B 0.862436357244 | official 0.862436357244
+pm25/main_row/kendall_w/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+pm25/main_row/spearman_top20_union_median/value: mine -0.0189098998888 | A -0.0189098998888 | B -0.0189098998888 | official -0.0189098998888
+pm25/main_row/spearman_top20_union_median/ci_low: mine -0.078531701891 | A -0.078531701891 | B -0.078531701891 | official -0.078531701891
+pm25/main_row/spearman_top20_union_median/ci_high: mine 0.0722632731253 | A 0.0722632731253 | B 0.0722632731253 | official 0.0722632731253
+pm25/main_row/spearman_top20_union_median/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+pm25/main_row/spearman_top20_union_min/value: mine -0.121370967742 | A -0.121370967742 | B -0.121370967742 | official -0.121370967742
+pm25/main_row/spearman_top20_union_max/value: mine 0.0793103448276 | A 0.0793103448276 | B 0.0793103448276 | official 0.0793103448276
+pm25/main_row/spearman_top20_union_min/ci_low: mine -0.167342434054 | A -0.167342434054 | B -0.167342434054 | official (no official)
+pm25/main_row/spearman_top20_union_max/ci_low: mine 0.0142733990148 | A 0.0142733990148 | B 0.0142733990148 | official (no official)
+pm25/main_row/spearman_top20_union_min/ci_high: mine -0.0209607897664 | A -0.0209607897664 | B -0.0209607897664 | official (no official)
+pm25/main_row/spearman_top20_union_max/ci_high: mine 0.187686097427 | A 0.187686097427 | B 0.187686097427 | official (no official)
+pm25/main_row/spearman_top20_union_min/n_finite: mine 2000 | A 2000 | B 2000 | official (no official)
+pm25/main_row/spearman_top20_union_max/n_finite: mine 2000 | A 2000 | B 2000 | official (no official)
+pm25/main_row/spearman_top20_union_per_rival/rival_lgbm: mine 0.0793103448276 | A 0.0793103448276 | B 0.0793103448276 | official (no official)
+pm25/main_row/spearman_top20_union_per_rival/rival_rf: mine -0.0189098998888 | A -0.0189098998888 | B -0.0189098998888 | official (no official)
+pm25/main_row/spearman_top20_union_per_rival/rival_ridge: mine -0.121370967742 | A -0.121370967742 | B -0.121370967742 | official (no official)
+pm25/main_row/rbo_p090_vs_consensus/value: mine 0.371986956965 | A 0.371986956965 | B 0.371986956965 | official 0.371986956965
+pm25/main_row/rbo_p090_vs_consensus/ci_low: mine 0.36454028257 | A 0.36454028257 | B 0.36454028257 | official 0.36454028257
+pm25/main_row/rbo_p090_vs_consensus/ci_high: mine 0.570712408928 | A 0.570712408928 | B 0.570712408928 | official 0.570712408928
+pm25/main_row/rbo_p090_vs_consensus/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+pm25/main_row/treeroute_top3/names: mine [hist_last, spei, wbal] | A [hist_last, spei, wbal] | B [hist_last, spei, wbal] | official [hist_last, spei, wbal]
+pm25/main_row/treeroute_top3/share0: mine 0.0498212955364 | A 0.0498212955364 | B 0.0498212955364 | official (no official)
+pm25/main_row/treeroute_top3/share1: mine 0.0332829128861 | A 0.0332829128861 | B 0.0332829128861 | official (no official)
+pm25/main_row/treeroute_top3/share2: mine 0.0320172492422 | A 0.0320172492422 | B 0.0320172492422 | official (no official)
+pm25/main_row/consensus_top3/names: mine [spi, sst_anom_global_tropical, hist_last] | A [spi, sst_anom_global_tropical, hist_last] | B [spi, sst_anom_global_tropical, hist_last] | official [spi, sst_anom_global_tropical, hist_last]
+pm25/main_row/consensus_top3/share0: mine 0.0813119818449 | A 0.0813119818449 | B 0.0813119818449 | official (no official)
+pm25/main_row/consensus_top3/share1: mine 0.079121705861 | A 0.079121705861 | B 0.079121705861 | official (no official)
+pm25/main_row/consensus_top3/share2: mine 0.0778319245088 | A 0.0778319245088 | B 0.0778319245088 | official (no official)
+pm25/main_row/own_history_share_treeroute/value: mine 0.185253004202 | A 0.185253004202 | B 0.185253004202 | official 0.185253004202
+pm25/main_row/own_history_share_treeroute/ci_low: mine 0.162172663425 | A 0.162172663425 | B 0.162172663425 | official 0.162172663425
+pm25/main_row/own_history_share_treeroute/ci_high: mine 0.208035525608 | A 0.208035525608 | B 0.208035525608 | official 0.208035525608
+pm25/main_row/own_history_share_treeroute/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+pm25/main_row/own_history_share_median_rival/value: mine 0.297693460865 | A 0.297693460865 | B 0.297693460865 | official 0.297693460865
+pm25/main_row/own_history_share_median_rival/ci_low: mine 0.275537454462 | A 0.275537454462 | B 0.275537454462 | official 0.275537454462
+pm25/main_row/own_history_share_median_rival/ci_high: mine 0.320043521535 | A 0.320043521535 | B 0.320043521535 | official 0.320043521535
+pm25/main_row/own_history_share_median_rival/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+defo/feature/kendall_w/value: mine 0.710685643955 | A 0.710685643955 | B 0.710685643955 | official 0.710685643955
+defo/feature/kendall_w/ci_low: mine 0.691435303184 | A 0.691435303184 | B 0.691435303184 | official 0.691435303184
+defo/feature/kendall_w/ci_high: mine 0.725531684414 | A 0.725531684414 | B 0.725531684414 | official 0.725531684414
+defo/feature/kendall_w/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+defo/feature/mean_pairwise_spearman/value: mine 0.614247540628 | A 0.614247540628 | B 0.614247540628 | official 0.614247540628
+defo/feature/mean_pairwise_spearman/ci_low: mine 0.588580421 | A 0.588580421 | B 0.588580421 | official 0.588580421
+defo/feature/mean_pairwise_spearman/ci_high: mine 0.63404227494 | A 0.63404227494 | B 0.63404227494 | official 0.63404227494
+defo/feature/mean_pairwise_spearman/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+defo/feature/active_set/n_J: mine 280 | A 280 | B 280 | official 280
+defo/variable/kendall_w/value: mine 0.795807050093 | A 0.795807050093 | B 0.795807050093 | official 0.795807050093
+defo/variable/kendall_w/ci_low: mine 0.778934639765 | A 0.778934639765 | B 0.778934639765 | official 0.778934639765
+defo/variable/kendall_w/ci_high: mine 0.808022572665 | A 0.808022572665 | B 0.808022572665 | official 0.808022572665
+defo/variable/kendall_w/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+defo/variable/mean_pairwise_spearman/value: mine 0.727742733457 | A 0.727742733457 | B 0.727742733457 | official 0.727742733457
+defo/variable/mean_pairwise_spearman/ci_low: mine 0.705246186353 | A 0.705246186353 | B 0.705246186353 | official 0.705246186353
+defo/variable/mean_pairwise_spearman/ci_high: mine 0.744030096887 | A 0.744030096887 | B 0.744030096887 | official 0.744030096887
+defo/variable/mean_pairwise_spearman/n_finite: mine 2000 | A 2000 | B 2000 | official 2000
+defo/variable/active_set/n_J: mine 99 | A 99 | B 99 | official 99
+coral/feature/treeroute/top10/names: mine [x__nino34a_lag6, x__nino34a_lag3, x__nino34a_lag9, x__mhw_icum_90, x__hs_max_30, x__mhw_days_90, x__mhw_durmax_365, x__hs_max_56, x__dhw_56, x__dhw_84] | A [x__nino34a_lag6, x__nino34a_lag3, x__nino34a_lag9, x__mhw_icum_90, x__hs_max_30, x__mhw_days_90, x__mhw_durmax_365, x__hs_max_56, x__dhw_56, x__dhw_84] | B [x__nino34a_lag6, x__nino34a_lag3, x__nino34a_lag9, x__mhw_icum_90, x__hs_max_30, x__mhw_days_90, x__mhw_durmax_365, x__hs_max_56, x__dhw_56, x__dhw_84] | official [x__nino34a_lag6, x__nino34a_lag3, x__nino34a_lag9, x__mhw_icum_90, x__hs_max_30, x__mhw_days_90, x__mhw_durmax_365, x__hs_max_56, x__dhw_56, x__dhw_84]
+coral/feature/treeroute/top10/share0: mine 0.0631010692114 | A 0.0631010692114 | B 0.0631010692114 | official 0.0631010692114
+coral/feature/treeroute/top10/share1: mine 0.0415342308092 | A 0.0415342308092 | B 0.0415342308092 | official 0.0415342308092
+coral/feature/treeroute/top10/share2: mine 0.0387442734302 | A 0.0387442734302 | B 0.0387442734302 | official 0.0387442734302
+coral/feature/treeroute/top10/share3: mine 0.0371982442296 | A 0.0371982442296 | B 0.0371982442296 | official 0.0371982442296
+coral/feature/treeroute/top10/share4: mine 0.0342745779921 | A 0.0342745779921 | B 0.0342745779921 | official 0.0342745779921
+coral/feature/treeroute/top10/share5: mine 0.0270523595723 | A 0.0270523595723 | B 0.0270523595723 | official 0.0270523595723
+coral/feature/treeroute/top10/share6: mine 0.0251219138575 | A 0.0251219138575 | B 0.0251219138575 | official 0.0251219138575
+coral/feature/treeroute/top10/share7: mine 0.0247206441089 | A 0.0247206441089 | B 0.0247206441089 | official 0.0247206441089
+coral/feature/treeroute/top10/share8: mine 0.0244866965733 | A 0.0244866965733 | B 0.0244866965733 | official 0.0244866965733
+coral/feature/treeroute/top10/share9: mine 0.0239254474074 | A 0.0239254474074 | B 0.0239254474074 | official 0.0239254474074
+coral/feature/active_set/n_J: mine 68 | A 68 | B 68 | official 68
+coral/feature/active_set/structural_zeros: mine [normal] | A [normal] | B [normal] | official [normal]
+coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - A| = 1.39e-17 (absolute; every value < 1) over 340 numbers
+coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - B| = 2.08e-17 (absolute; every value < 1) over 340 numbers
+coral/feature/treeroute: all 68 players' I, share (value, ci_low, ci_high) and n_finite: largest |mine - official| = 6.94e-18 (absolute; every value < 1) over 136 numbers
+b1/defo/identity/max_abs_diff_phi | mine 0.0 | A 0.0 | B 0.0
+b1/defo/identity/max_abs_diff_phiv | mine 0.0 | A 0.0 | B 0.0
+b1/defo/identity/same_rows | mine True | A True | B True
+b1/defo/identity/same_players | mine True | A True | B True
+b1/defo/identity/same_variables | mine True | A True | B True
+b1/defo/identity/n_players | mine 309 | A 309 | B 309
+b1/defo/identity/n_variables | mine 121 | A 121 | B 121
+b1/defo/identity/pairs_meta_b1 | mine 16000 | A 16000 | B 16000
+b1/defo/identity/tree_shap_seconds_meta | mine 464.3 | A 464.3 | B 464.3
+b1/defo/identity/as_expected | mine True | A True | B True
+b1/fire/variable/pair/n_J | mine 96 | A 96.0 | B 96.0
+b1/fire/variable/pair/J_size_listed | mine 96 | A 96 | B 96
+b1/fire/variable/pair/spearman_J/value | mine 0.8419249929680566 | A 0.8419249929680566 | B 0.8419249929680566
+b1/fire/variable/pair/spearman_J/ci_low | mine 0.7827354609901933 | A 0.7827354609901933 | B 0.7827354609901933
+b1/fire/variable/pair/spearman_J/ci_high | mine 0.8673216811013013 | A 0.8673216811013013 | B 0.8673216811013013
+b1/fire/variable/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/pair/tv_shares/value | mine 0.5422957561297295 | A 0.5422957561297295 | B 0.5422957561297291
+b1/fire/variable/pair/tv_shares/ci_low | mine 0.41350758889484984 | A 0.41350758889484995 | B 0.41350758889484995
+b1/fire/variable/pair/tv_shares/ci_high | mine 0.6438028961167983 | A 0.6438028961167982 | B 0.6438028961167982
+b1/fire/variable/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/pair/spearman_top20_union/value | mine 0.39133089133089133 | A 0.39133089133089133 | B 0.39133089133089133
+b1/fire/variable/pair/spearman_top20_union/ci_low | mine 0.2462985769020252 | A 0.2462985769020252 | B 0.2462985769020252
+b1/fire/variable/pair/spearman_top20_union/ci_high | mine 0.49948717948717947 | A 0.49948717948717947 | B 0.49948717948717947
+b1/fire/variable/pair/spearman_top20_union/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/pair/rbo_p090/value | mine 0.4586152340878628 | A 0.4586152340878628 | B 0.4586152340878628
+b1/fire/variable/pair/rbo_p090/ci_low | mine 0.42443825379737266 | A 0.42443825379737266 | B 0.42443825379737277
+b1/fire/variable/pair/rbo_p090/ci_high | mine 0.610805264380368 | A 0.610805264380368 | B 0.6108052643803679
+b1/fire/variable/pair/rbo_p090/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/b1_top10/names | mine ['normal', 'era5l_str', 'wbal', 'hist_mean', 'deeprec_twsa', 'tslf_months', 'spei', 'rmin_pct', 'era5l_sshf', 'spi'] | A ['normal', 'era5l_str', 'wbal', 'hist_mean', 'deeprec_twsa', 'tslf_months', 'spei', 'rmin_pct', 'era5l_sshf', 'spi'] | B ['normal', 'era5l_str', 'wbal', 'hist_mean', 'deeprec_twsa', 'tslf_months', 'spei', 'rmin_pct', 'era5l_sshf', 'spi']
+b1/fire/variable/b1_top10/share0 | mine 0.5420783730452287 | A 0.5420783730452287 | B 0.5420783730452287
+b1/fire/variable/b1_top10/share1 | mine 0.014955729639046383 | A 0.01495572963904638 | B 0.014955729639046381
+b1/fire/variable/b1_top10/share2 | mine 0.014787652244604148 | A 0.014787652244604143 | B 0.014787652244604146
+b1/fire/variable/b1_top10/share3 | mine 0.014335536358905561 | A 0.014335536358905557 | B 0.01433553635890556
+b1/fire/variable/b1_top10/share4 | mine 0.014165337077246697 | A 0.014165337077246692 | B 0.014165337077246693
+b1/fire/variable/b1_top10/share5 | mine 0.012974551398793046 | A 0.012974551398793043 | B 0.012974551398793045
+b1/fire/variable/b1_top10/share6 | mine 0.01122769123980211 | A 0.011227691239802107 | B 0.011227691239802108
+b1/fire/variable/b1_top10/share7 | mine 0.010767395601438879 | A 0.010767395601438875 | B 0.010767395601438877
+b1/fire/variable/b1_top10/share8 | mine 0.01039201110873177 | A 0.010392011108731766 | B 0.010392011108731768
+b1/fire/variable/b1_top10/share9 | mine 0.009963579351359969 | A 0.009963579351359966 | B 0.009963579351359967
+b1/fire/variable/pair/tv_family_shares/value | mine 0.8113532151989118 | A 0.8113532151989118 | B 0.8113532151989118
+b1/fire/variable/own_history_share/value | mine 0.0218097104924482 | A 0.021809710492448196 | B 0.0218097104924482
+b1/fire/variable/pair/tv_family_shares/ci_low | mine 0.7157861889421349 | A 0.7157861889421347 | B 0.7157861889421349
+b1/fire/variable/own_history_share/ci_low | mine 0.014290223955271904 | A 0.014290223955271908 | B 0.014290223955271904
+b1/fire/variable/pair/tv_family_shares/ci_high | mine 0.8728428810002953 | A 0.8728428810002953 | B 0.8728428810002953
+b1/fire/variable/own_history_share/ci_high | mine 0.03409822000751631 | A 0.03409822000751632 | B 0.03409822000751631
+b1/fire/variable/pair/tv_family_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/own_history_share/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/variable/families/own_history/value | mine 0.0218097104924482 | A 0.021809710492448196 | B 0.0218097104924482
+b1/fire/variable/families/global_indices/value | mine 0.04081947318009992 | A 0.040819473180099916 | B 0.04081947318009992
+b1/fire/variable/families/local_drivers/value | mine 0.1260176011285401 | A 0.12601760112854007 | B 0.1260176011285401
+b1/fire/variable/families/context_and_calendar/value | mine 0.00022874088180238348 | A 0.00022874088180238348 | B 0.00022874088180238348
+b1/fire/variable/families/seasonal_normal/value | mine 0.8111244743171094 | A 0.8111244743171095 | B 0.8111244743171094
+b1/fire/variable/top3/names | mine ['normal', 'era5l_str', 'wbal'] | A ['normal', 'era5l_str', 'wbal'] | B ['normal', 'era5l_str', 'wbal']
+b1/fire/feature/pair/n_J | mine 113 | A 113.0 | B 113.0
+b1/fire/feature/pair/J_size_listed | mine 113 | A 113 | B 113
+b1/fire/feature/pair/spearman_J/value | mine 0.822137247442657 | A 0.822137247442657 | B 0.822137247442657
+b1/fire/feature/pair/spearman_J/ci_low | mine 0.7547112139696557 | A 0.7547112139696557 | B 0.7547112139696557
+b1/fire/feature/pair/spearman_J/ci_high | mine 0.8572367531889272 | A 0.8572367531889272 | B 0.8572367531889272
+b1/fire/feature/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/feature/pair/tv_shares/value | mine 0.5259186580535489 | A 0.5259186580535489 | B 0.5259186580535489
+b1/fire/feature/pair/tv_shares/ci_low | mine 0.39969909486730737 | A 0.39969909486730754 | B 0.3996990948673074
+b1/fire/feature/pair/tv_shares/ci_high | mine 0.6284898835672406 | A 0.6284898835672407 | B 0.6284898835672407
+b1/fire/feature/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/feature/pair/spearman_top20_union/value | mine 0.2606837606837607 | A 0.2606837606837607 | B 0.2606837606837607
+b1/fire/feature/pair/spearman_top20_union/ci_low | mine 0.06398190190618977 | A 0.06398190190618977 | B 0.06398190190618977
+b1/fire/feature/pair/spearman_top20_union/ci_high | mine 0.36615750915750916 | A 0.36615750915750916 | B 0.36615750915750916
+b1/fire/feature/pair/spearman_top20_union/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/feature/pair/rbo_p090/value | mine 0.5688556295882188 | A 0.5688556295882188 | B 0.5688556295882188
+b1/fire/feature/pair/rbo_p090/ci_low | mine 0.42817398851234967 | A 0.42817398851234967 | B 0.4281739885123497
+b1/fire/feature/pair/rbo_p090/ci_high | mine 0.5885762540456038 | A 0.5885762540456038 | B 0.588576254045604
+b1/fire/feature/pair/rbo_p090/n_finite | mine 2000 | A 2000 | B 2000
+b1/fire/feature/b1_top10/names | mine ['normal', 'x__era5l_str', 'x__deeprec_twsa', 'x__tslf_months', 'x__wbal_roll3', 'x__rmin_pct', 'x__era5l_sshf', 'x__hist_mean_60', 'x__V05_mean_vpd_kPa', 'x__V03_max_daily_precip_mm'] | A ['normal', 'x__era5l_str', 'x__deeprec_twsa', 'x__tslf_months', 'x__wbal_roll3', 'x__rmin_pct', 'x__era5l_sshf', 'x__hist_mean_60', 'x__V05_mean_vpd_kPa', 'x__V03_max_daily_precip_mm'] | B ['normal', 'x__era5l_str', 'x__deeprec_twsa', 'x__tslf_months', 'x__wbal_roll3', 'x__rmin_pct', 'x__era5l_sshf', 'x__hist_mean_60', 'x__V05_mean_vpd_kPa', 'x__V03_max_daily_precip_mm']
+b1/fire/feature/b1_top10/share0 | mine 0.5257009877331216 | A 0.5257009877331217 | B 0.5257009877331212
+b1/fire/feature/b1_top10/share1 | mine 0.014496362175911803 | A 0.014496362175911803 | B 0.014496362175911798
+b1/fire/feature/b1_top10/share2 | mine 0.01373122241494357 | A 0.01373122241494357 | B 0.013731222414943565
+b1/fire/feature/b1_top10/share3 | mine 0.012579500635340817 | A 0.012579500635340812 | B 0.012579500635340812
+b1/fire/feature/b1_top10/share4 | mine 0.010475255212562411 | A 0.010475255212562408 | B 0.010475255212562406
+b1/fire/feature/b1_top10/share5 | mine 0.010437187580157381 | A 0.010437187580157381 | B 0.010437187580157378
+b1/fire/feature/b1_top10/share6 | mine 0.010080392044033088 | A 0.010080392044033087 | B 0.010080392044033085
+b1/fire/feature/b1_top10/share7 | mine 0.009064597436322042 | A 0.009064597436322042 | B 0.009064597436322036
+b1/fire/feature/b1_top10/share8 | mine 0.008956348272070125 | A 0.008956348272070125 | B 0.008956348272070121
+b1/fire/feature/b1_top10/share9 | mine 0.00866209689911807 | A 0.00866209689911807 | B 0.008662096899118066
+main_row/coral/treeroute_top3/names | mine ['nino34a', 'hs', 'dhw'] | A ['nino34a', 'hs', 'dhw'] | B ['nino34a', 'hs', 'dhw'] | off ['nino34a', 'hs', 'dhw']
+main_row/coral/own_history_share_treeroute/value | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_treeroute/ci_low | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_treeroute/ci_high | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_treeroute/n_finite | mine 2000 | A None | B 2000 | off 2000
+main_row/coral/kendall_w/value | mine 0.7346153846153847 | A 0.7346153846153847 | B 0.7346153846153847 | off 0.7346153846153847
+main_row/coral/kendall_w/ci_low | mine 0.6943269230769231 | A 0.6943269230769231 | B 0.6943269230769231 | off 0.6943269230769231
+main_row/coral/kendall_w/ci_high | mine 0.7636538461538461 | A 0.7636538461538461 | B 0.7636538461538461 | off 0.7636538461538461
+main_row/coral/kendall_w/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/coral/rho20_median/value | mine 0.48434782608695653 | A 0.48434782608695653 | B 0.48434782608695653 | off 0.48434782608695653
+main_row/coral/rho20_median/ci_low | mine 0.38520234113712376 | A 0.38520234113712376 | B 0.38520234113712376 | off 0.3852023411371238
+main_row/coral/rho20_median/ci_high | mine 0.551304347826087 | A 0.551304347826087 | B 0.551304347826087 | off 0.551304347826087
+main_row/coral/rho20_median/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/coral/rho20_range_min | mine 0.4147826086956522 | A 0.4147826086956522 | B 0.4147826086956522 | off 0.4147826086956522
+main_row/coral/rho20_range_max | mine 0.4930434782608696 | A 0.4930434782608696 | B 0.4930434782608696 | off 0.4930434782608696
+main_row/coral/rbo_p090_vs_consensus/value | mine 0.6674485606374702 | A 0.6674485606374702 | B 0.6674485606374702 | off 0.6674485606374702
+main_row/coral/rbo_p090_vs_consensus/ci_low | mine 0.6090914505538131 | A 0.6090914505538131 | B 0.609091450553813 | off 0.609091450553813
+main_row/coral/rbo_p090_vs_consensus/ci_high | mine 0.7754054214478014 | A 0.7754054214478014 | B 0.7754054214478013 | off 0.7754054214478013
+main_row/coral/rbo_p090_vs_consensus/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/coral/consensus_top3/names | mine ['n_above_mmm1', 'dhw', 'nino34a'] | A ['n_above_mmm1', 'dhw', 'nino34a'] | B ['n_above_mmm1', 'dhw', 'nino34a'] | off ['n_above_mmm1', 'dhw', 'nino34a']
+main_row/coral/own_history_share_median_rival/value | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_median_rival/ci_low | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_median_rival/ci_high | mine 0.0 | A None | B 0.0 | off 0.0
+main_row/coral/own_history_share_median_rival/n_finite | mine 2000 | A None | B 2000 | off 2000
+main_row/defo/treeroute_top3/names | mine ['hist_last', 'h_nbr1', 'spei'] | A ['hist_last', 'h_nbr1', 'spei'] | B ['hist_last', 'h_nbr1', 'spei'] | off ['hist_last', 'h_nbr1', 'spei']
+main_row/defo/own_history_share_treeroute/value | mine 0.2926054071153381 | A 0.2926054071153381 | B 0.2926054071153381 | off 0.2926054071153381
+main_row/defo/own_history_share_treeroute/ci_low | mine 0.24790914111016624 | A 0.2479091411101663 | B 0.24790914111016624 | off 0.24790914111016624
+main_row/defo/own_history_share_treeroute/ci_high | mine 0.33264948270729777 | A 0.33264948270729777 | B 0.33264948270729777 | off 0.33264948270729777
+main_row/defo/own_history_share_treeroute/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/defo/kendall_w/value | mine 0.7958070500927644 | A 0.7958070500927644 | B 0.7958070500927644 | off 0.7958070500927644
+main_row/defo/kendall_w/ci_low | mine 0.7789346397649969 | A 0.7789346397649969 | B 0.7789346397649969 | off 0.7789346397649969
+main_row/defo/kendall_w/ci_high | mine 0.8080225726654298 | A 0.8080225726654298 | B 0.8080225726654298 | off 0.8080225726654298
+main_row/defo/kendall_w/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/defo/rho20_median/value | mine 0.19516129032258064 | A 0.19516129032258064 | B 0.19516129032258064 | off 0.19516129032258064
+main_row/defo/rho20_median/ci_low | mine 0.14474981671554252 | A 0.14474981671554252 | B 0.14474981671554252 | off 0.14474981671554252
+main_row/defo/rho20_median/ci_high | mine 0.2926231527093595 | A 0.2926231527093595 | B 0.2926231527093595 | off 0.2926231527093595
+main_row/defo/rho20_median/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/defo/rho20_range_min | mine 0.0064516129032258064 | A 0.0064516129032258064 | B 0.0064516129032258064 | off 0.0064516129032258064
+main_row/defo/rho20_range_max | mine 0.46852764094143406 | A 0.46852764094143406 | B 0.46852764094143406 | off 0.46852764094143406
+main_row/defo/rbo_p090_vs_consensus/value | mine 0.6341042636670127 | A 0.6341042636670127 | B 0.6341042636670127 | off 0.6341042636670126
+main_row/defo/rbo_p090_vs_consensus/ci_low | mine 0.6127462104526353 | A 0.6127462104526353 | B 0.6127462104526351 | off 0.6127462104526351
+main_row/defo/rbo_p090_vs_consensus/ci_high | mine 0.7502021375553192 | A 0.7502021375553192 | B 0.7502021375553192 | off 0.750202137555319
+main_row/defo/rbo_p090_vs_consensus/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/defo/consensus_top3/names | mine ['hist_last', 'hist_mean', 'spi'] | A ['hist_last', 'hist_mean', 'spi'] | B ['hist_last', 'hist_mean', 'spi'] | off ['hist_last', 'hist_mean', 'spi']
+main_row/defo/own_history_share_median_rival/value | mine 0.3547151350918556 | A 0.3547151350918556 | B 0.3547151350918556 | off 0.35471513509185565
+main_row/defo/own_history_share_median_rival/ci_low | mine 0.3161813501923929 | A 0.31618135019239296 | B 0.3161813501923929 | off 0.31618135019239296
+main_row/defo/own_history_share_median_rival/ci_high | mine 0.3953861318458286 | A 0.3953861318458286 | B 0.3953861318458286 | off 0.3953861318458287
+main_row/defo/own_history_share_median_rival/n_finite | mine 2000 | A 2000 | B 2000 | off 2000
+main_row/fire/treeroute_top3/names | mine ['hist_mean', 'spei', 'tslf_months'] | A ['hist_mean', 'spei', 'tslf_months'] | B ['hist_mean', 'spei', 'tslf_months'] | off None
+main_row/fire/own_history_share_treeroute/value | mine 0.13575708581250598 | A 0.135757085812506 | B 0.13575708581250598 | off None
+main_row/fire/own_history_share_treeroute/ci_low | mine 0.10821105011464341 | A 0.1082110501146434 | B 0.10821105011464341 | off None
+main_row/fire/own_history_share_treeroute/ci_high | mine 0.1646718513928904 | A 0.1646718513928904 | B 0.1646718513928904 | off None
+main_row/fire/own_history_share_treeroute/n_finite | mine 2000 | A 2000 | B 2000 | off None
+b1/pm25/variable/pair/n_J | mine 91 | A 91.0 | B 91.0
+b1/pm25/variable/pair/spearman_J/value | mine 0.8446224658256364 | A 0.8446224658256364 | B 0.8446224658256364
+b1/pm25/variable/pair/spearman_J/ci_low | mine 0.8311155932694326 | A 0.8311155932694326 | B 0.8311155932694326
+b1/pm25/variable/pair/spearman_J/ci_high | mine 0.8633068691470587 | A 0.8633068691470587 | B 0.8633068691470587
+b1/pm25/variable/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/pm25/variable/pair/tv_shares/value | mine 0.4469720043303989 | A 0.4469720043303989 | B 0.44697200433039885
+b1/pm25/variable/pair/tv_shares/ci_low | mine 0.4221036621868725 | A 0.4221036621868726 | B 0.4221036621868725
+b1/pm25/variable/pair/tv_shares/ci_high | mine 0.4748976389904773 | A 0.47489763899047704 | B 0.4748976389904772
+b1/pm25/variable/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/pm25/variable/pair/tv_family_shares/value | mine 0.7038491553617086 | A 0.7038491553617086 | B 0.7038491553617086
+b1/pm25/variable/own_history_share/value | mine 0.058600109820398344 | A 0.058600109820398344 | B 0.058600109820398344
+b1/pm25/variable/pair/tv_family_shares/ci_low | mine 0.6746857377166278 | A 0.6746857377166275 | B 0.6746857377166278
+b1/pm25/variable/own_history_share/ci_low | mine 0.050409034419012136 | A 0.050409034419012115 | B 0.050409034419012136
+b1/pm25/variable/pair/tv_family_shares/ci_high | mine 0.7315018697282195 | A 0.7315018697282194 | B 0.7315018697282195
+b1/pm25/variable/own_history_share/ci_high | mine 0.06721459028483641 | A 0.06721459028483645 | B 0.06721459028483641
+b1/pm25/variable/pair/tv_family_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/pm25/variable/own_history_share/n_finite | mine 2000 | A 2000 | B 2000
+b1/pm25/variable/top3/names | mine ['normal', 'hist_last', 'wbal'] | A ['normal', 'hist_last', 'wbal'] | B ['normal', 'hist_last', 'wbal']
+b1/pm25/feature/pair/n_J | mine 105 | A 105.0 | B 105.0
+b1/pm25/feature/pair/spearman_J/value | mine 0.8398594221830359 | A 0.8398594221830359 | B 0.8398594221830359
+b1/pm25/feature/pair/spearman_J/ci_low | mine 0.8234060585768893 | A 0.8234060585768893 | B 0.8234060585768893
+b1/pm25/feature/pair/spearman_J/ci_high | mine 0.8603593252336371 | A 0.8603593252336371 | B 0.8603593252336371
+b1/pm25/feature/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/pm25/feature/pair/tv_shares/value | mine 0.4333835645139241 | A 0.4333835645139241 | B 0.4333835645139242
+b1/pm25/feature/pair/tv_shares/ci_low | mine 0.40880449338491953 | A 0.4088044933849197 | B 0.40880449338491964
+b1/pm25/feature/pair/tv_shares/ci_high | mine 0.46012340516433875 | A 0.46012340516433875 | B 0.4601234051643387
+b1/pm25/feature/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/variable/pair/n_J | mine 96 | A 96.0 | B 96.0
+b1/ndvi/variable/pair/spearman_J/value | mine 0.8444548441951847 | A 0.8444548441951847 | B 0.8444548441951847
+b1/ndvi/variable/pair/spearman_J/ci_low | mine 0.8328833182471869 | A 0.8328833182471869 | B 0.8328833182471869
+b1/ndvi/variable/pair/spearman_J/ci_high | mine 0.8508918912552023 | A 0.8508918912552023 | B 0.8508918912552023
+b1/ndvi/variable/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/variable/pair/tv_shares/value | mine 0.40326437373805735 | A 0.40326437373805735 | B 0.40326437373805746
+b1/ndvi/variable/pair/tv_shares/ci_low | mine 0.3788612781210437 | A 0.37886127812104375 | B 0.37886127812104387
+b1/ndvi/variable/pair/tv_shares/ci_high | mine 0.4266361532575272 | A 0.4266361532575271 | B 0.42663615325752713
+b1/ndvi/variable/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/variable/pair/tv_family_shares/value | mine 0.49038204732520735 | A 0.49038204732520735 | B 0.49038204732520735
+b1/ndvi/variable/own_history_share/value | mine 0.071821016511092 | A 0.071821016511092 | B 0.071821016511092
+b1/ndvi/variable/pair/tv_family_shares/ci_low | mine 0.45259939752478645 | A 0.4525993975247866 | B 0.45259939752478645
+b1/ndvi/variable/own_history_share/ci_low | mine 0.06153279579508892 | A 0.061532795795088954 | B 0.06153279579508892
+b1/ndvi/variable/pair/tv_family_shares/ci_high | mine 0.5261776569722664 | A 0.5261776569722665 | B 0.5261776569722664
+b1/ndvi/variable/own_history_share/ci_high | mine 0.08304545771427463 | A 0.08304545771427467 | B 0.08304545771427463
+b1/ndvi/variable/pair/tv_family_shares/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/variable/own_history_share/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/variable/top3/names | mine ['normal', 'aet_total_mm', 'hist_last'] | A ['normal', 'aet_total_mm', 'hist_last'] | B ['normal', 'aet_total_mm', 'hist_last']
+b1/ndvi/feature/pair/n_J | mine 482 | A 482.0 | B 482.0
+b1/ndvi/feature/pair/spearman_J/value | mine 0.8726525484199601 | A 0.8726525484199601 | B 0.8726525484199601
+b1/ndvi/feature/pair/spearman_J/ci_low | mine 0.8603705159723772 | A 0.8603705159723772 | B 0.8603705159723772
+b1/ndvi/feature/pair/spearman_J/ci_high | mine 0.8815485586638248 | A 0.8815485586638248 | B 0.8815485586638248
+b1/ndvi/feature/pair/spearman_J/n_finite | mine 2000 | A 2000 | B 2000
+b1/ndvi/feature/pair/tv_shares/value | mine 0.3396418694855128 | A 0.3396418694855128 | B 0.3396418694855128
+b1/ndvi/feature/pair/tv_shares/ci_low | mine 0.31902404081315755 | A 0.31902404081315733 | B 0.3190240408131574
+b1/ndvi/feature/pair/tv_shares/ci_high | mine 0.3611812680043389 | A 0.3611812680043392 | B 0.3611812680043391
+b1/ndvi/feature/pair/tv_shares/n_finite | mine 2000 | A 2000 | B 2000
+pairs/ndvi/variable/rival_lgbm|treeroute/spearman | mine 0.7004727378780377 | A 0.7004727378780377 | B 0.7004727378780377 | off 0.7004727378780377
+pairs/ndvi/variable/rival_lgbm|treeroute/spearman_top20_union | mine 0.16440489432703004 | A 0.16440489432703004 | B 0.16440489432703004 | off 0.16440489432703004
+pairs/ndvi/variable/rival_lgbm|treeroute/kendall_tau_b | mine 0.5222636543101556 | A 0.5222636543101558 | B 0.5222636543101558 | off 0.5222636543101558
+pairs/ndvi/variable/rival_lgbm|treeroute/jaccard_top5 | mine 0.42857142857142855 | A 0.42857142857142855 | B 0.42857142857142855 | off 0.42857142857142855
+pairs/ndvi/variable/rival_lgbm|treeroute/jaccard_top10 | mine 0.42857142857142855 | A 0.42857142857142855 | B 0.42857142857142855 | off 0.42857142857142855
+pairs/ndvi/variable/rival_lgbm|treeroute/rbo_p0.9 | mine 0.5128012387025713 | A 0.5128012387025713 | B 0.5128012387025712 | off 0.5128012387025712
+pairs/ndvi/variable/rival_lgbm|treeroute/rbo_p0.95 | mine 0.5645912888997829 | A 0.5645912888997829 | B 0.5645912888997828 | off 0.5645912888997828
+pairs/ndvi/variable/rival_lgbm|treeroute/tvd | mine 0.30173225380250873 | A 0.30173225380250873 | B 0.3017322538025088 | off 0.3017322538025088
+pairs/ndvi/variable/rival_lgbm|treeroute/tvd_family | mine 0.08577383122527169 | A 0.08577383122527169 | B 0.08577383122527169 | off 0.08577383122527155
+pairs/ndvi/variable/rival_lgbm|treeroute/sign_agreement_top10 | mine 0.75 | A 0.75 | B 0.75 | off 0.75
+pairs/ndvi/variable/rival_lgbm|treeroute/signs_compared | mine 4 | A 4.0 | B 4.0 | off 4
+pairs/ndvi/variable/rival_bardl_h1|treeroute/spearman | mine 0.27964527572231074 | A 0.27964527572231074 | B 0.27964527572231074 | off 0.27964527572231074
+pairs/ndvi/variable/rival_bardl_h1|treeroute/spearman_top20_union | mine 0.38409037216474107 | A 0.38409037216474107 | B 0.38409037216474107 | off 0.38409037216474107
+pairs/ndvi/variable/rival_bardl_h1|treeroute/kendall_tau_b | mine 0.22754136324546487 | A 0.2275413632454649 | B 0.2275413632454649 | off 0.2275413632454649
+pairs/ndvi/variable/rival_bardl_h1|treeroute/jaccard_top5 | mine 0.25 | A 0.25 | B 0.25 | off 0.25
+pairs/ndvi/variable/rival_bardl_h1|treeroute/jaccard_top10 | mine 0.25 | A 0.25 | B 0.25 | off 0.25
+pairs/ndvi/variable/rival_bardl_h1|treeroute/rbo_p0.9 | mine 0.36523944852290047 | A 0.36523944852290047 | B 0.3652394485229004 | off 0.3652394485229004
+pairs/ndvi/variable/rival_bardl_h1|treeroute/rbo_p0.95 | mine 0.40296774849197836 | A 0.40296774849197836 | B 0.4029677484919785 | off 0.4029677484919784
+pairs/ndvi/variable/rival_bardl_h1|treeroute/tvd | mine 0.8821540728509714 | A 0.8821540728509714 | B 0.8821540728509711 | off 0.882154072850971
+pairs/ndvi/variable/rival_bardl_h1|treeroute/tvd_family | mine 0.10736271499847697 | A 0.10736271499847697 | B 0.10736271499847697 | off 0.107362714998477
+pairs/ndvi/variable/rival_bardl_h1|treeroute/sign_agreement_top10 | mine 1.0 | A 1.0 | B 1.0 | off 1.0
+pairs/ndvi/variable/rival_bardl_h1|treeroute/signs_compared | mine 1 | A 1.0 | B 1.0 | off 1
+pairs/pm25/variable/rival_ridge|treeroute/spearman | mine 0.692254000680967 | A 0.692254000680967 | B 0.692254000680967 | off 0.692254000680967
+pairs/pm25/variable/rival_ridge|treeroute/spearman_top20_union | mine -0.12137096774193548 | A -0.12137096774193548 | B -0.12137096774193548 | off -0.12137096774193548
+pairs/pm25/variable/rival_ridge|treeroute/kendall_tau_b | mine 0.49744637385086826 | A 0.4974463738508682 | B 0.4974463738508682 | off 0.4974463738508682
+pairs/pm25/variable/rival_ridge|treeroute/jaccard_top5 | mine 0.0 | A 0.0 | B 0.0 | off 0.0
+pairs/pm25/variable/rival_ridge|treeroute/jaccard_top10 | mine 0.25 | A 0.25 | B 0.25 | off 0.25
+pairs/pm25/variable/rival_ridge|treeroute/rbo_p0.9 | mine 0.25675823524744734 | A 0.25675823524744734 | B 0.25675823524744734 | off 0.2567582352474474
+pairs/pm25/variable/rival_ridge|treeroute/rbo_p0.95 | mine 0.41396979547929896 | A 0.41396979547929896 | B 0.413969795479299 | off 0.413969795479299
+pairs/pm25/variable/rival_ridge|treeroute/tvd | mine 0.49094925590569416 | A 0.49094925590569416 | B 0.4909492559056941 | off 0.49094925590569416
+pairs/pm25/variable/rival_ridge|treeroute/tvd_family | mine 0.28770616224672835 | A 0.28770616224672835 | B 0.28770616224672835 | off 0.2877061622467285
+pairs/pm25/variable/rival_ridge|treeroute/sign_agreement_top10 | mine 1.0 | A 1.0 | B 1.0 | off 1.0
+pairs/pm25/variable/rival_ridge|treeroute/signs_compared | mine 4 | A 4.0 | B 4.0 | off 4
+pairs/pm25/variable/rival_lgbm|rival_rf/spearman | mine 0.9764213178525524 | A 0.9764213178525524 | B 0.9764213178525524 | off 0.9764213178525524
+pairs/pm25/variable/rival_lgbm|rival_rf/spearman_top20_union | mine 0.6894409937888198 | A 0.6894409937888198 | B 0.6894409937888198 | off 0.6894409937888198
+pairs/pm25/variable/rival_lgbm|rival_rf/kendall_tau_b | mine 0.8692209450830141 | A 0.8692209450830141 | B 0.8692209450830141 | off 0.8692209450830141
+pairs/pm25/variable/rival_lgbm|rival_rf/jaccard_top5 | mine 0.25 | A 0.25 | B 0.25 | off 0.25
+pairs/pm25/variable/rival_lgbm|rival_rf/jaccard_top10 | mine 0.6666666666666666 | A 0.6666666666666666 | B 0.6666666666666666 | off 0.6666666666666666
+pairs/pm25/variable/rival_lgbm|rival_rf/rbo_p0.9 | mine 0.6594134041895028 | A 0.6594134041895028 | B 0.6594134041895028 | off 0.6594134041895027
+pairs/pm25/variable/rival_lgbm|rival_rf/rbo_p0.95 | mine 0.7621408544959144 | A 0.7621408544959144 | B 0.7621408544959147 | off 0.7621408544959147
+pairs/pm25/variable/rival_lgbm|rival_rf/tvd | mine 0.22282847564081365 | A 0.2228284756408136 | B 0.22282847564081368 | off 0.22282847564081365
+pairs/pm25/variable/rival_lgbm|rival_rf/tvd_family | mine 0.045313095193538905 | A 0.04531309519353893 | B 0.045313095193538905 | off 0.045313095193538905
+pairs/pm25/variable/rival_lgbm|rival_rf/sign_agreement_top10 | mine 1.0 | A 1.0 | B 1.0 | off 1.0
+pairs/pm25/variable/rival_lgbm|rival_rf/signs_compared | mine 8 | A 8.0 | B 8.0 | off 8

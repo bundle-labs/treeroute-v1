@@ -1,0 +1,5269 @@
+# monthly_panel_v170 -- shared STORE catalog (physical facts only), SEEDED 2026-09-28T12:30:28 by engine/datasets/_tools/export_review_csv.py
+# Every fact is 'unverified'. The owner verifies or signs them through the review CSVs (engine/datasets/review/).
+# Do not trust assemble_monthly_panel.py's CARRY list for cadence: it mixes static and annual columns (APP_PLAN.md 1.2).
+store: monthly_panel_v170
+path_template: D:/monthly_panel/{group}_monthly_{year}.parquet
+layout: one parquet per group-year; one row group; cells x 12 months; read in place, never copied
+keys:
+  unit: cell_id
+  group: region
+  time:
+  - year
+  - month
+n_columns: 170
+n_files: 2926
+groups: 133
+years:
+- 2002
+- 2023
+fill_values:
+- -32768
+- -32767
+- -2147483648
+- -2147483647
+fill_values_provenance: panel_sentinel.py:27 (SENTINELS), confirmed for this panel only (APP_PLAN.md 1.3)
+huge_value_rule: abs >= 1e30 is a float fill (panel_sentinel.py HUGE); abs >= 2^30 is flagged unless opted out
+conventions:
+  stamp: 'which instant of the period named by the row key (a calendar month, or a calendar year for annual values)
+    anchors the window: period_start / period_centre / period_end'
+  window: 'length + unit + align relative to that anchor: backward = the window ends at the anchor; centred = centred
+    on it; forward = starts at it and runs past the named period'
+  fact_status: every fact here is a SEED ('unverified'); a headline run needs verified or signed 'assumed' timing
+    facts for every kept column (G-FACTS)
+  roles: 'no roles here: roles are package facts (APP_PLAN.md 1.3)'
+generated_by: engine/datasets/_tools/export_review_csv.py
+generated_at: '2026-09-28T12:30:28'
+cadence_sample:
+  regions:
+  - thar_desert
+  - tongass_alaska
+  - costa_rica
+  - mesopotamia
+  - okavango_delta
+  years:
+  - 2010
+  - 2015
+  files:
+  - D:/monthly_panel/thar_desert_monthly_2010.parquet
+  - D:/monthly_panel/thar_desert_monthly_2015.parquet
+  - D:/monthly_panel/tongass_alaska_monthly_2010.parquet
+  - D:/monthly_panel/tongass_alaska_monthly_2015.parquet
+  - D:/monthly_panel/costa_rica_monthly_2010.parquet
+  - D:/monthly_panel/costa_rica_monthly_2015.parquet
+  - D:/monthly_panel/mesopotamia_monthly_2010.parquet
+  - D:/monthly_panel/mesopotamia_monthly_2015.parquet
+  - D:/monthly_panel/okavango_delta_monthly_2010.parquet
+  - D:/monthly_panel/okavango_delta_monthly_2015.parquet
+  rule: within-year varying = any cell with >1 distinct value in a year; between-year changed = any cell whose first
+    value differs between the two years (shares printed); fills -32768/-32767/-2^31/-2^31+1 and |x|>=1e30 masked
+    first
+columns:
+- name: cell_id
+  dtype: string
+  units: id
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: key
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  key_column: true
+  product: panel keys
+  product_family: keys
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:30
+  notes: key roles live in each package catalog, never here
+- name: region
+  dtype: string
+  units: id
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: key
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  key_column: true
+  product: panel keys
+  product_family: keys
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:98
+  notes: key roles live in each package catalog, never here
+- name: year
+  dtype: int64
+  units: year
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: key
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  key_column: true
+  product: panel keys
+  product_family: keys
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:30
+  notes: key roles live in each package catalog, never here
+- name: lon
+  dtype: float32
+  units: degrees_east
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - -180
+  - 180
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: panel grid cell centre (EPSG:4326)
+  product_family: grid
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -156.00143432617188
+    max: 176.986083984375
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: lat
+  dtype: float32
+  units: degrees_north
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - -90
+  - 90
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: panel grid cell centre (EPSG:4326)
+  product_family: grid
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -55.00069046020508
+    max: 75.02266693115234
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: V25_elevation_m
+  dtype: float32
+  units: m
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - -500
+  - 9000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle terrain layers (feature_definitions.json; DEM source not recorded here)
+  product_family: terrain
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -141.87171936035156
+    max: 6441.69873046875
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: V26_slope_deg
+  dtype: float32
+  units: degree
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 90
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle terrain layers (feature_definitions.json; DEM source not recorded here)
+  product_family: terrain
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 45.45656204223633
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: V27_southness
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - -1
+  - 1
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle terrain layers (feature_definitions.json; DEM source not recorded here)
+  product_family: terrain
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.0
+    max: 0.9910683035850525
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: V28_CTI
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - -10
+  - 50
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle terrain layers (feature_definitions.json; DEM source not recorded here)
+  product_family: terrain
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.013820981606841087
+    max: 6.907755374908447
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:71
+- name: clay_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.0944443941116333
+    max: 68.08191680908203
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: sand_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.258463978767395
+    max: 96.83223724365234
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: silt_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.5919915437698364
+    max: 78.14530181884766
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: soil_organic_carbon_gkg
+  dtype: float32
+  units: g kg-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 1000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.35672393441200256
+    max: 439.4082946777344
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: nitrogen_gkg
+  dtype: float32
+  units: g kg-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 50
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.7077981233596802
+    max: 267.1656188964844
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: soil_ph
+  dtype: float32
+  units: pH
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 14
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 3.7146947383880615
+    max: 9.681120872497559
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:72
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: awc_cm3cm3
+  dtype: float32
+  units: cm3 cm-3
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.9308333396911621
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:73
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: bulk_density_gcm3
+  dtype: float32
+  units: g cm-3
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 2.7
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.2509288191795349
+    max: 1.7937226295471191
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:73
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: cec_cmolkg
+  dtype: float32
+  units: cmol kg-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 300
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.765567421913147
+    max: 76.86701965332031
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:73
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: coarse_fragments_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: master-bundle soil layers (SoilGrids-type)
+  product_family: soil
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.004843630827963352
+    max: 49.10224151611328
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:73
+  notes: 'AUDIT_REPORT.md item 3: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible'
+- name: V15_bare_ground_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_start
+  window:
+    length: 1
+    unit: year
+    align: forward
+    offset: starts day-of-year 65
+    text: 1 year from DOY 65
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MOD44B VCF (product year starts DOY 65, runs to DOY 64 of the next year)
+  product_family: MODIS MOD44B
+  sensor_lineage: MODIS
+  sum_group: MOD44B (V15 + V17 + tree = 100, defo_ban.py:30-32)
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00365
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 100.0
+  fact_status: unverified
+  provenance: defo_ban.py:34
+  notes: carried from the master to all 12 months (assemble_monthly_panel.py CARRY)
+- name: V17_herb_cover_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_start
+  window:
+    length: 1
+    unit: year
+    align: forward
+    offset: starts day-of-year 65
+    text: 1 year from DOY 65
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MOD44B VCF (product year starts DOY 65, runs to DOY 64 of the next year)
+  product_family: MODIS MOD44B
+  sensor_lineage: MODIS
+  sum_group: MOD44B (V15 + V17 + tree = 100, defo_ban.py:30-32)
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00365
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 97.82877349853516
+  fact_status: unverified
+  provenance: defo_ban.py:34
+  notes: carried from the master to all 12 months (assemble_monthly_panel.py CARRY)
+- name: tree_cover_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_start
+  window:
+    length: 1
+    unit: year
+    align: forward
+    offset: starts day-of-year 65
+    text: 1 year from DOY 65
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MOD44B VCF (product year starts DOY 65, runs to DOY 64 of the next year)
+  product_family: MODIS MOD44B
+  sensor_lineage: MODIS
+  sum_group: MOD44B (V15 + V17 + tree = 100, defo_ban.py:30-32)
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00365
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 94.0
+  fact_status: unverified
+  provenance: defo_ban.py:34
+  notes: carried from the master to all 12 months (assemble_monthly_panel.py CARRY)
+- name: modis_landcover_class
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 9 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 255
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 9 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MCD12Q1 IGBP land cover (cropland = class 12, shrub = classes 6+7; defo_ban.py:36-38)
+  product_family: MODIS MCD12Q1
+  sensor_lineage: MODIS
+  observed_sample: constant within each year, changes between years (annual; max 80.97% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.0
+    max: 17.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:74
+  notes: carried from the master; modis_landcover_class is a categorical code stored as float
+- name: shrub_cover_pct_global
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MCD12Q1 IGBP land cover (cropland = class 12, shrub = classes 6+7; defo_ban.py:36-38)
+  product_family: MODIS MCD12Q1
+  sensor_lineage: MODIS
+  observed_sample: constant within each year, changes between years (annual; max 56.10% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00011
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 100.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:75
+  notes: carried from the master; modis_landcover_class is a categorical code stored as float
+- name: phenology_sos_doy
+  dtype: float32
+  units: day of year
+  units_source: presplit_cc/audit/_check_spec.json (most common of 8 specs)
+  cadence: 1 year
+  stamp: unknown
+  window:
+    length: null
+    unit: year
+    align: unknown
+    max_length: null
+    text: about 1 year (detection window unknown)
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 8 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MCD12Q2 start of season (master)
+  product_family: MODIS MCD12Q2
+  sensor_lineage: MODIS
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.23658
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 364.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:75
+  notes: the season is known only after it happens; detection window beyond the calendar year not recorded
+- name: population_density
+  dtype: float32
+  units: persons per 1-km pixel
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: WorldPop Global1 annual 1 km persons per pixel (observed 2002-2020)
+  product_family: WorldPop
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 368684.21875
+  fact_status: unverified
+  provenance: presplit_cc/ingest_worldpop_annual.py:30
+  notes: 'CONTRADICTION: ingest_worldpop_annual.py:1-2 says 2020 is HELD for 2021-2023; defo_ban.py:106-111 says
+    2021-2023 rise (extrapolated). AUDIT_REPORT.md item 3: max 368,684 is impossible as a density'
+- name: built_surface_fraction
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: GHS-BUILT-S R2023A (observed epochs 1975/1990/2000/2014/2018; interpolated between; 2020+ projected)
+  product_family: GHSL
+  sensor_lineage: Landsat/Sentinel-2
+  observed_sample: constant within each year, changes between years (annual; max 88.86% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.5771499872207642
+  fact_status: unverified
+  provenance: defo_ban.py:91
+  notes: 'defo_ban.py:89-91: 2020+ are PROJECTIONS -> FREEZE family'
+- name: cropland_fraction
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MCD12Q1 IGBP land cover (cropland = class 12, shrub = classes 6+7; defo_ban.py:36-38)
+  product_family: MODIS MCD12Q1
+  sensor_lineage: MODIS
+  observed_sample: constant within each year, changes between years (annual; max 30.85% of cells changed); all zero
+    in 1/5 regions
+  footer_stats:
+    null_share_all_files: 0.00012
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:76
+  notes: carried from the master; modis_landcover_class is a categorical code stored as float
+- name: hand_m
+  dtype: float32
+  units: m
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MERIT Hydro
+  product_family: MERIT
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.00872
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1062.42919921875
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:78
+  notes: MERIT's flow routing uses Hansen tree density (year 2000) -- a lineage link to the defo target's product
+    family, measured admissible with disclosure (Part 508)
+- name: upstream_area_km2
+  dtype: float32
+  units: km2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 10000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MERIT Hydro
+  product_family: MERIT
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.00872
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.003079667454585433
+    max: 125562.9375
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:78
+  notes: MERIT's flow routing uses Hansen tree density (year 2000) -- a lineage link to the defo target's product
+    family, measured admissible with disclosure (Part 508)
+- name: irrigation_pct_gmia
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: GMIA irrigated area share
+  product_family: GMIA
+  observed_sample: constant within and between the sampled years (static in sample); all zero in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 100.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:78
+- name: dist_to_coast_km
+  dtype: float32
+  units: km
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - 5000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: distance to coast
+  product_family: coast
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 4.585419446812011e-06
+    max: 2337.2138671875
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:78
+- name: month
+  dtype: int64
+  units: month
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: key
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  key_column: true
+  product: panel keys
+  product_family: keys
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:30
+  notes: key roles live in each package catalog, never here
+- name: V01_mean_temp_C
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -90
+  - 60
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 41.95000076293945
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:36
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: diurnal_temp_range_C
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 50
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.0
+    max: 27.900001525878906
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:36
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: V02_total_precip_mm
+  dtype: float32
+  units: mm month-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 12000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -2147483648.0
+    max: 3784.800048828125
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:36
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: V07_total_ref_ET_mm
+  dtype: float32
+  units: mm month-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 437.8999938964844
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:37
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: aet_total_mm
+  dtype: float32
+  units: mm month-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 273.70001220703125
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:37
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: climate_water_deficit_mm
+  dtype: float32
+  units: mm month-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 437.70001220703125
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:37
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: soil_water_tc_mm
+  dtype: float32
+  units: mm
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 0
+    unit: month
+    align: backward
+    text: instant (end of month)
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 651.4000244140625
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:38
+  notes: TerraClimate documents soil moisture and SWE as END-OF-MONTH values (verify); -2^31 fill in swe
+- name: V05_mean_vpd_kPa
+  dtype: float32
+  units: kPa
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 20
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 7.980000019073486
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:38
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: V09_mean_wind_ms
+  dtype: float32
+  units: m s-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 60
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 14.600000381469727
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:38
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: solar_radiation_Wm2
+  dtype: float32
+  units: W m-2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 600
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 404.6000061035156
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:39
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: swe_mean_mm
+  dtype: float32
+  units: mm
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 0
+    unit: month
+    align: backward
+    text: instant (end of month)
+  scope: unit
+  legal_range:
+  - 0
+  - 40000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 2/5 sampled regions (max 99.64% of cells); all zero in 3/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -2147483648.0
+    max: 72306.8984375
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:39
+  notes: TerraClimate documents soil moisture and SWE as END-OF-MONTH values (verify); -2^31 fill in swe
+- name: aridity_index_p_pet
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.20159
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 7323.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:39
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: tc_vapor_pressure
+  dtype: float32
+  units: kPa
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: TerraClimate monthly (1/24 deg)
+  product_family: TerraClimate
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 1034
+    min: -32768.0
+    max: 3.8450000286102295
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:40
+  notes: 47 coastal regions carry -32768 (9 cols) or -2^31 (V02) as ordinary numbers (Part 248, reference_panel_nodata_sentinel)
+- name: V11_mean_ndvi
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: 1
+    unit: month
+    align: unknown
+    note: reach past month end set by the M0 V11 audit
+    text: 1 month from overlapping 16-day composites
+  scope: unit
+  legal_range:
+  - -0.2
+  - 1.0
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD13C2 v061 monthly CMG NDVI
+  product_family: MODIS MOD13C2
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0191
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.19999998807907104
+    max: 0.9990999698638916
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:59
+  notes: valid_range -2000..10000 x 1e-4 (ingest_modis_cmg_local.py:57); monthly composite built from 16-day inputs
+    that overlap the month -- the M0 V11 window audit decides the reach past month end
+- name: V13_mean_lst_C
+  dtype: float32
+  units: degC
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -90
+  - 80
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD11C3 v061 monthly CMG LST (day / night), Kelvin converted to Celsius
+  product_family: MODIS MOD11C3
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00204
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -49.209991455078125
+    max: 68.010009765625
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:52
+  notes: MOD11C3 composites the calendar month from daily MOD11C1 (fire_ban.py:65-66 describes 8-day)
+- name: nighttime_lst_C
+  dtype: float32
+  units: degC
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -90
+  - 60
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD11C3 v061 monthly CMG LST (day / night), Kelvin converted to Celsius
+  product_family: MODIS MOD11C3
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00868
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -51.029998779296875
+    max: 39.989990234375
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:53
+  notes: MOD11C3 composites the calendar month from daily MOD11C1 (fire_ban.py:65-66 describes 8-day)
+- name: snow_cover_fraction
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD10CM v61 monthly CMG snow cover
+  product_family: MODIS MOD10
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 3/5 sampled regions (max 98.65% of cells); all zero in 2/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.05555
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:90
+  notes: raw 0-100 % scaled to a 0-1 fraction (ingest_modis_cmg_local.py:88-91)
+- name: cloud_frequency_pct
+  dtype: float32
+  units: percent
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD08_M3 v6.1 monthly 1-degree Cloud_Fraction_Mean_Mean
+  product_family: MODIS MOD08 (atmosphere)
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 99.97000122070312
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:96
+  notes: 1-degree atmosphere product (the MODIS L3 family that also carries aerosol); smoke can be flagged as cloud
+    (pm25_ban.py:68-70)
+- name: V14_mean_albedo
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_centre
+  window:
+    length: 1
+    unit: month
+    align: centred
+    pad_days_each_side: 8
+    text: 1 month + 8 day each side
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MCD43C3 v061 daily white-sky shortwave albedo -> monthly mean
+  product_family: MODIS MCD43
+  sensor_lineage: MODIS Terra+Aqua
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.04431
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.0006000000284984708
+    max: 0.9650000333786011
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:102
+  notes: each daily MCD43 value uses a 16-day window CENTRED on its day (fire_ban.py:33-37)
+- name: gpp_kgC_m2
+  dtype: float32
+  units: kg C m-2 month-1
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_centre
+  window:
+    length: 1
+    unit: month
+    align: centred
+    pad_days_each_side: 8
+    text: 1 month + 8 day each side
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: FluxSat v2.2 daily GPP (0.625 x 0.5 deg) -> monthly kgC m-2
+  product_family: FluxSat
+  sensor_lineage: MODIS (MCD43 NBAR inputs)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.09063
+    groups_all_null: 1
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.6149399876594543
+  fact_status: unverified
+  provenance: presplit_cc/ingest_fluxsat_gpp.py:25
+  notes: FluxSat is driven by MODIS MCD43 reflectances (16-day windows) -- the 8-day reach is assumed from that;
+    ~60 km native, 55 distinct values in a borneo region (defo_ban.py:142-145)
+- name: snow_onset_doy
+  dtype: float32
+  units: day of year
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land daily snow_cover >= 50% per CALENDAR year, split at DOY 200, broadcast to 12 months
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: constant within each year, changes between years (annual; max 81.71% of cells changed); all-null
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.5418
+    groups_all_null: 57
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 200.0
+    max: 366.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_snowphen.py:158
+  notes: 'calendar-year summaries (ingest_era5land_snowphen.py:4-8): an end-of-year fact on every month'
+- name: snow_disappearance_doy
+  dtype: float32
+  units: day of year
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land daily snow_cover >= 50% per CALENDAR year, split at DOY 200, broadcast to 12 months
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed); all-null
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.49875
+    groups_all_null: 56
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.0
+    max: 199.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_snowphen.py:158
+  notes: 'calendar-year summaries (ingest_era5land_snowphen.py:4-8): an end-of-year fact on every month'
+- name: snow_duration_days
+  dtype: float32
+  units: day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land daily snow_cover >= 50% per CALENDAR year, split at DOY 200, broadcast to 12 months
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: constant within each year, changes between years (annual; max 90.64% of cells changed); all zero
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 366.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_snowphen.py:159
+  notes: 'calendar-year summaries (ingest_era5land_snowphen.py:4-8): an end-of-year fact on every month'
+- name: snow_max_doy
+  dtype: float32
+  units: day of year
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land daily snow_cover >= 50% per CALENDAR year, split at DOY 200, broadcast to 12 months
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed); all-null
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.481
+    groups_all_null: 56
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 1.0
+    max: 366.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_snowphen.py:159
+  notes: 'calendar-year summaries (ingest_era5land_snowphen.py:4-8): an end-of-year fact on every month'
+- name: V06_spei_12m
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 12
+    unit: month
+    align: backward
+    text: 12 month
+  scope: unit
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: CSIC SPEIbase v2.9 (0.5 deg); ends 2022-12
+  product_family: SPEIbase
+  baseline_period: standardised over the SPEIbase record (calibration period not recorded here)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.04569
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -6.628409385681152
+    max: 3.7808351516723633
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:42
+  notes: 100% NaN in 2023 in all 133 regions (AUDIT_REPORT.md item 1)
+- name: spei_01m
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: CSIC SPEIbase v2.9 (0.5 deg); ends 2022-12
+  product_family: SPEIbase
+  baseline_period: standardised over the SPEIbase record (calibration period not recorded here)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.04584
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -8.727126121520996
+    max: 7.591877460479736
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:42
+  notes: 100% NaN in 2023 in all 133 regions (AUDIT_REPORT.md item 1)
+- name: spei_03m
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 3
+    unit: month
+    align: backward
+    text: 3 month
+  scope: unit
+  legal_range:
+  - -8
+  - 8
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: CSIC SPEIbase v2.9 (0.5 deg); ends 2022-12
+  product_family: SPEIbase
+  baseline_period: standardised over the SPEIbase record (calibration period not recorded here)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0457
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -9.055240631103516
+    max: 5.625552654266357
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:42
+  notes: 100% NaN in 2023 in all 133 regions (AUDIT_REPORT.md item 1)
+- name: spei_06m
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 6
+    unit: month
+    align: backward
+    text: 6 month
+  scope: unit
+  legal_range:
+  - -8
+  - 8
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: CSIC SPEIbase v2.9 (0.5 deg); ends 2022-12
+  product_family: SPEIbase
+  baseline_period: standardised over the SPEIbase record (calibration period not recorded here)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0457
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -6.745827674865723
+    max: 7.478718280792236
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:43
+  notes: 100% NaN in 2023 in all 133 regions (AUDIT_REPORT.md item 1)
+- name: spei_24m
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 24
+    unit: month
+    align: backward
+    text: 24 month
+  scope: unit
+  legal_range:
+  - -8
+  - 8
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: CSIC SPEIbase v2.9 (0.5 deg); ends 2022-12
+  product_family: SPEIbase
+  baseline_period: standardised over the SPEIbase record (calibration period not recorded here)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0457
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -7.686373233795166
+    max: 5.042037487030029
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:43
+  notes: 100% NaN in 2023 in all 133 regions (AUDIT_REPORT.md item 1)
+- name: frost_days
+  dtype: float32
+  units: day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 31
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 2/5 sampled regions (max 100.00% of cells); all zero in 3/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 31.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:41
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: heatwave_days_gt35C
+  dtype: float32
+  units: day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 31
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 4/5 sampled regions (max 100.00% of cells); all zero in 1/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 31.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:41
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: gdd5_degC_days
+  dtype: float32
+  units: degC day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1200
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1155.694580078125
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:41
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: wet_day_count
+  dtype: float32
+  units: day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 31
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 31.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:41
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: V03_max_daily_precip_mm
+  dtype: float32
+  units: mm day-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 623.4099731445312
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:41
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: precip_intensity_mm
+  dtype: float32
+  units: mm day-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 229.10000610351562
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: vpd_max_daily
+  dtype: float32
+  units: kPa
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 25
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 9.376852035522461
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: vpd_days_gt_2kpa
+  dtype: float32
+  units: day
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 31
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 4/5 sampled regions (max 100.00% of cells); all zero in 1/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 31.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: vpd_warm_season_mean
+  dtype: float32
+  units: kPa
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 20
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 7.659533977508545
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: rmin_pct
+  dtype: float32
+  units: percent
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.9325438737869263
+    max: 99.74082946777344
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: sph_kgkg
+  dtype: float32
+  units: kg kg-1
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 0.05
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: AgERA5 (CDS sis-agrometeorological-indicators) daily fields -> monthly statistics
+  product_family: AgERA5
+  sensor_lineage: reanalysis (ERA5)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.02409888058900833
+  fact_status: unverified
+  provenance: presplit_cc/ingest_agera5_daycounts.py:42
+  notes: vpd_warm_season_mean is the plain MONTHLY mean VPD despite its name (ingest_agera5_daycounts.py:169)
+- name: V30_soil_moisture_pct
+  dtype: float32
+  units: percent (volumetric)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 100
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means swvl1 (0-7 cm) x 100
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.2082607562022527e-18
+    max: 76.59454345703125
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_soilmoisture.py:157
+- name: V20_burned_binary
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: 'FireCCI 0.25 deg burned area: 1 if the month burned (esa_cci/MODIS <= 2019, C3S/OLCI >= 2020)'
+  product_family: FireCCI
+  sensor_lineage: MODIS <= 2019, OLCI >= 2020
+  observed_sample: varies within a year (monthly) in 3/5 sampled regions (max 72.58% of cells); all zero in 2/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_firecci_fire.py:152
+  notes: 'CONTRADICTION: ingest_firecci_fire.py:7 says MONTHLY; pm25_ban.py:34 says annual -- see the observed cadence
+    sample. SENSOR SWITCH exactly at the 2019/2020 split (ingest_firecci_fire.py:28, 37-40)'
+- name: burn_month_count
+  dtype: float32
+  units: count
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 12
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: FireCCI annual summary broadcast to 12 months (count of burned months / area-weighted mid-month DOY)
+  product_family: FireCCI
+  sensor_lineage: MODIS <= 2019, OLCI >= 2020
+  observed_sample: constant within each year, changes between years (annual; max 74.60% of cells changed); all zero
+    in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 12.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_firecci_fire.py:153
+  notes: SENSOR SWITCH at the 2019/2020 split; burn_doy_mean is 0 when no fire
+- name: burn_doy_mean
+  dtype: float32
+  units: day of year
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 366
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: FireCCI annual summary broadcast to 12 months (count of burned months / area-weighted mid-month DOY)
+  product_family: FireCCI
+  sensor_lineage: MODIS <= 2019, OLCI >= 2020
+  observed_sample: constant within each year, changes between years (annual; max 84.27% of cells changed); all zero
+    in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 349.0000305175781
+  fact_status: unverified
+  provenance: presplit_cc/ingest_firecci_fire.py:154
+  notes: SENSOR SWITCH at the 2019/2020 split; burn_doy_mean is 0 when no fire
+- name: sst_anom_atl3
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.1544909477233887
+    max: 1.590657114982605
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:88
+- name: sst_anom_iod_west
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.41549941897392273
+    max: 1.365265965461731
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:88
+- name: sst_anom_iod_east
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.8082609176635742
+    max: 1.4450726509094238
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:88
+- name: sst_anom_subpolar_north_atlantic
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.3992635905742645
+    max: 1.9615038633346558
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:89
+- name: sst_anom_coral_sea
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.4724799394607544
+    max: 1.1498631238937378
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:89
+- name: sst_anom_mediterranean
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.36186879873275757
+    max: 2.328651189804077
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:89
+- name: sst_anom_global_tropical_mean
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.1450948715209961
+    max: 1.0214184522628784
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:90
+- name: sst_anom_nino34
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -6
+  - 6
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERSSTv5 box means minus the 1971-2000 monthly climatology
+  product_family: ERSSTv5
+  baseline_period: 1971-2000 (ingest_ersst_boxes.py:23)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.583969235420227
+    max: 2.910553216934204
+  fact_status: unverified
+  provenance: presplit_cc/ingest_ersst_boxes.py:143
+- name: nino12
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 35
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.909999966621399
+    max: 3.2899999618530273
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:32
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: nino3
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 35
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.659999966621399
+    max: 2.8399999141693115
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:33
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: nino4
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 35
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.6100000143051147
+    max: 1.5099999904632568
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:34
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: nino34
+  dtype: float32
+  units: degC
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 35
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.690000057220459
+    max: 2.7200000286102295
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:35
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: oni
+  dtype: float32
+  units: K (anomaly)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_centre
+  window:
+    length: 3
+    unit: month
+    align: centred
+    text: 3 month
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 8 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: 'PSL oni.data (CPC ONI: 3-month running mean of Nino3.4 anomalies)'
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1.6399999856948853
+    max: 2.75
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:36
+  notes: 'centred 3-month mean by the CPC definition; owner ruling Q2: kept, lagged by the computed rule'
+- name: soi
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -60
+  - 60
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -5.199999809265137
+    max: 4.800000190734863
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:37
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: tni
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL tni.data (Trans-Nino Index)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.6740000247955322
+    max: 2.2890000343322754
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:38
+  notes: 'described as a CENTRED running mean (Q2); Trenberth & Stepaniak 2001 smooth over 5 months -- the F10 audit
+    (tni first) decides; owner ruling Q2: kept, lagged'
+- name: pdo
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.859999895095825
+    max: 2.619999885559082
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:39
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: amo
+  dtype: float32
+  units: K (anomaly)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL amon.us.data (Kaplan SST V2 AMO, 'us' = unsmoothed by PSL's file naming)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.04167
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.1850000023841858
+    max: 0.6620000004768372
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:40
+  notes: 'source ends January 2023: Feb-Dec 2023 empty (pm25_ban.py:114-117); ''unsmoothed'' to be confirmed by
+    F10'
+- name: tna
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.47999998927116394
+    max: 1.4299999475479126
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:41
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: tsa
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.5099999904632568
+    max: 1.309999942779541
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:42
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: iod
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.7580000162124634
+    max: 0.9639999866485596
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:43
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: noi
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -60
+  - 60
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -8.052000045776367
+    max: 8.118000030517578
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:44
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: ao
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -4.265699863433838
+    max: 3.4172000885009766
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:45
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: nao
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.178999900817871
+    max: 2.5445001125335693
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:46
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: pna
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.5583999156951904
+    max: 2.5404000282287598
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:47
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: wp
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.5299999713897705
+    max: 2.5
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:48
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: epo
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.08333
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.5899999141693115
+    max: 3.359999895095825
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:49
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: sam
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: null
+    unit: month
+    align: unknown
+    max_length: null
+    text: unknown
+  scope: global
+  legal_range:
+  - -10
+  - 10
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: PSL / CPC monthly index files (ingest_noaa_indices.py:31-51)
+  product_family: NOAA indices
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.7985000610351562
+    max: 2.573499917984009
+  fact_status: unverified
+  provenance: presplit_cc/ingest_noaa_indices.py:50
+  notes: smoothing undocumented (HEADLINE_QUESTIONS_AND_FIXES.md F10) -> R8 refuses these at lag 0 until a window
+    or a signed maximum exists
+- name: V04_precip_seasonality
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: CV of the 12 monthly V02 values of the calendar year, broadcast to all months (assemble_monthly_panel.py:148-163)
+  product_family: derived
+  derived_from: V02_total_precip_mm
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00027
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 3.316624879837036
+  fact_status: unverified
+  provenance: presplit_cc/assemble_monthly_panel.py:92
+  notes: an annual summary of the year's own rainfall (pm25_ban.py:136-137)
+- name: clf_dry
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: annual regime probabilities from a classifier TRAINED ON NDVI tertiles (<= 2019 OOF; 2020-23 predicted)
+  product_family: regime classifier
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 8.0e-05
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/save_regime_to_panel.py:61
+  notes: 'trained_on V11_mean_ndvi (save_regime_to_panel.py:1-5): a G-LINEAGE flag for any NDVI target'
+- name: clf_wet
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: annual regime probabilities from a classifier TRAINED ON NDVI tertiles (<= 2019 OOF; 2020-23 predicted)
+  product_family: regime classifier
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 8.0e-05
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/save_regime_to_panel.py:61
+  notes: 'trained_on V11_mean_ndvi (save_regime_to_panel.py:1-5): a G-LINEAGE flag for any NDVI target'
+- name: road_density
+  dtype: float64
+  units: log1p(m km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GRIP4 road density, stored as log1p
+  product_family: GRIP4
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.00134
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 12.529271464527817
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:182
+- name: travel_time
+  dtype: float64
+  units: log1p(minutes)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: travel time to cities 2015, stored as log1p
+  product_family: accessibility
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.00328
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 8.97449144816442
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:189
+- name: dist_powerplant
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.008072359987079919
+    max: 1296.0416151171644
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:202
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_thermal
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.03813248528710953
+    max: 2165.1160326058857
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:203
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_coal_mine
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.035742120089978756
+    max: 2721.1091225393197
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:214
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_dam
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.010879966487654697
+    max: 1282.0168635354555
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:229
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_reservoir
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.033901211157596
+    max: 1267.467867319337
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:230
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_oilgas_well
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.004554341177756364
+    max: 5061.525303946533
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:240
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: dist_pa
+  dtype: float64
+  units: km
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: static
+  stamp: n/a
+  window:
+    length: null
+    unit: null
+    align: n/a
+    text: n/a
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: distance to nearest feature in a snapshot (GPPD, GEM coal May 2026, GDW, OGIM, WDPA June 2026)
+  product_family: infrastructure snapshots
+  observed_sample: constant within and between the sampled years (static in sample)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.010720185997155275
+    max: 688.4979459021343
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:251
+  notes: snapshots dated after the window (defo_ban.py:80-87) -> FREEZE family; dist_pa uses PA bounding-box centres,
+    so a cell inside a park can score far (defo_ban.py:84-85)
+- name: gdp_pc
+  dtype: float64
+  units: log1p(GDP per capita)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: gridded GDP per capita 1990-2024 v4, stored as log1p
+  product_family: GDP
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00013
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 5.123963979403259
+    max: 13.39199043459605
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:93
+  notes: stored as log1p (assemble_human_drivers.py:93); the audit spec's USD range does not apply
+- name: ntl
+  dtype: float64
+  units: log1p(DN)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: 'harmonised night lights DN, stored as log1p: calDMSP <= 2013, simVIIRS >= 2014'
+  product_family: night lights
+  observed_sample: constant within each year, changes between years (annual; max 55.54% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00013
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 4.1588830833596715
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:103
+  notes: SENSOR SWITCH 2013 -> 2014 (assemble_human_drivers.py:100); stored as log1p
+- name: hdi
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: HDI_1990_2015_v2, HELD at 2015 for 2016-2023
+  product_family: HDI
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0004
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 0.26600000262260437
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:114
+  notes: 'min(y, 2015) at assemble_human_drivers.py:113: every row after 2015 carries 2015''s value; AUDIT_REPORT.md:
+    hdi = 1.0 exactly looks like a clip'
+- name: luh2_cropland
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.9999997615814209
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:123
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: luh2_pasture
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 87.03% of cells changed); all zero
+    in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.9999746680259705
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:123
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: luh2_range
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:124
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: luh2_urban
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 48.47% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:124
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: luh2_forest
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 92.14% of cells changed); all zero
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0000001192092896
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:124
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: luh2_secondary
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: LUH2-GCB2025 annual states (sums of LUH2 state classes)
+  product_family: LUH2
+  observed_sample: constant within each year, changes between years (annual; max 100.00% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.00016
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:125
+  notes: 'Hurtt et al. 2020: LUH2 forest transitions are constrained by Hansen loss (defo_ban.py:43-47); GCB2025
+    adds MapBiomas for Brazil and Indonesia'
+- name: fert_n
+  dtype: float64
+  units: g N m-2 (as in Lu & Tian; audit spec says kg/ha)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: Lu & Tian 2016 N/P fertiliser, HELD at 2013 for 2014-2023
+  product_family: fertiliser
+  observed_sample: constant within each year, changes between years (annual; max 96.98% of cells changed); all zero
+    in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.00489
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 444.69000244140625
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:148
+  notes: 'min(y, 2013) at assemble_human_drivers.py:145: every row after 2013 carries 2013''s value; units unconfirmed'
+- name: fert_p
+  dtype: float64
+  units: g P m-2 (as in Lu & Tian; audit spec says kg/ha)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 2000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: Lu & Tian 2016 N/P fertiliser, HELD at 2013 for 2014-2023
+  product_family: fertiliser
+  observed_sample: constant within each year, changes between years (annual; max 96.98% of cells changed); all zero
+    in 2/5 regions
+  footer_stats:
+    null_share_all_files: 0.00489
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 49.38999938964844
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:148
+  notes: 'min(y, 2013) at assemble_human_drivers.py:145: every row after 2013 carries 2013''s value; units unconfirmed'
+- name: aglw_cattle
+  dtype: float64
+  units: log1p(head km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 7.353759216523107
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:160
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: aglw_buffalo
+  dtype: float64
+  units: log1p(head km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed); all zero
+    in 3/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 7.821386716346168
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:160
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: aglw_horse
+  dtype: float64
+  units: log1p(head km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 5.843211675849216
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:160
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: aglw_sheep
+  dtype: float64
+  units: log1p(head km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 9.577091924763122
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:161
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: aglw_goats
+  dtype: float64
+  units: log1p(head km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 8.302726728795614
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:161
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: aglw_total_lsu
+  dtype: float64
+  units: log1p(LSU km-2)
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: GLW annual livestock (FAOSTAT-disaggregated), stored as log1p
+  product_family: GLW
+  observed_sample: constant within each year, changes between years (annual; max 97.75% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 7.862905133603235
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:174
+  notes: stored as log1p (assemble_human_drivers.py:171-174); post-2021 values are the 2021 layer rescaled (defo_ban.py:93-95)
+    -> FREEZE family
+- name: conflict_events
+  dtype: float64
+  units: count
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: UCDP GED 26.1 events within 50 km, by the month of date_start, ZERO-filled
+  product_family: UCDP
+  observed_sample: varies within a year (monthly) in 1/5 sampled regions (max 0.36% of cells); all zero in 4/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 180.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:275
+  notes: MONTHLY, zero-filled (assemble_human_drivers.py:254-276; pm25_ban.py:139-140). AUDIT_REPORT.md item 5 called
+    it annual-broadcast from an all-zero region; the cadence sample shows within-year variation where conflict exists
+    (mesopotamia). Zero means 'no event within 50 km', never 'not measured'
+- name: conflict_deaths
+  dtype: float64
+  units: count
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: UCDP GED 26.1 events within 50 km, by the month of date_start, ZERO-filled
+  product_family: UCDP
+  observed_sample: varies within a year (monthly) in 1/5 sampled regions (max 0.36% of cells); all zero in 4/5 regions
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1365.0
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:275
+  notes: MONTHLY, zero-filled (assemble_human_drivers.py:254-276; pm25_ban.py:139-140). AUDIT_REPORT.md item 5 called
+    it annual-broadcast from an all-zero region; the cadence sample shows within-year variation where conflict exists
+    (mesopotamia). Zero means 'no event within 50 km', never 'not measured'
+- name: co2
+  dtype: float64
+  units: ppm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - '.inf'
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: NOAA global monthly mean CO2 (co2_mm_gl)
+  product_family: NOAA GML
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 370.35
+    max: 421.5
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:280
+- name: food_price_index
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 50.8
+    max: 160.2
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: food_meat
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 4 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 52.3
+    max: 125.4
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: food_dairy
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 4 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 40.1
+    max: 158.2
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: food_cereals
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 4 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 49.3
+    max: 173.5
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: food_oils
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 4 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 47.62
+    max: 251.8
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: food_sugar
+  dtype: float64
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 4 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: global
+  legal_range:
+  - 0
+  - 500
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 4 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: FAO food price indices, monthly (2014-2016 = 100)
+  product_family: FAO FFPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 35.6
+    max: 183.2
+  fact_status: unverified
+  provenance: presplit_cc/assemble_human_drivers.py:289
+- name: grace_lwe
+  dtype: float32
+  units: cm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: 1
+    unit: month
+    align: unknown
+    max_length: null
+    text: about 1 month (solution dates vary)
+  scope: unit
+  legal_range:
+  - -200
+  - 200
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 8 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: JPL GRACE/GRACE-FO mascon lwe_thickness
+  product_family: GRACE
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.14394
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -505.45745849609375
+    max: 126.39895629882812
+  fact_status: unverified
+  provenance: presplit_cc/ingest_grace_monthly.py:61
+  notes: GRACE -> GRACE-FO gap about 2017-06..2018-05 (58% NaN 2017-18, AUDIT_REPORT.md item 4)
+- name: modis_landcover_annual
+  dtype: float32
+  units: '1'
+  units_source: presplit_cc/audit/_check_spec.json (most common of 8 specs)
+  cadence: 1 year
+  stamp: period_end
+  window:
+    length: 1
+    unit: year
+    align: backward
+    text: 1 year
+  scope: unit
+  legal_range:
+  - 0
+  - 255
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 8 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: MCD12C1 v061 annual majority IGBP class (covers 2001-2022; 2023 is NaN, ingest_modis_cmg_local.py:80-84)
+  product_family: MODIS MCD12C1
+  sensor_lineage: MODIS
+  observed_sample: constant within each year, changes between years (annual; max 15.33% of cells changed)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 16.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:84
+  notes: categorical IGBP code stored as float; empty in 2023
+- name: V12_mean_evi
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: unknown
+  window:
+    length: 1
+    unit: month
+    align: unknown
+    note: reach past month end set by the M0 V11 audit
+    text: 1 month from overlapping 16-day composites
+  scope: unit
+  legal_range:
+  - -0.2
+  - 1.0
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: MOD13C2 v061 monthly CMG EVI (same file as NDVI)
+  product_family: MODIS MOD13C2
+  sensor_lineage: MODIS Terra
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.01949
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.19999998807907104
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_modis_cmg_local.py:78
+- name: deeprec_twsa
+  dtype: float32
+  units: cm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -300
+  - 300
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 8 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: DeepRec GRACE reconstruction (mixture_CSR_ERA5-ONI-HI), gap-free monthly
+  product_family: DeepRec
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.01432
+    groups_all_null: 2
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -48.21588897705078
+    max: 44.074951171875
+  fact_status: unverified
+  provenance: presplit_cc/ingest_deeprec_tws.py:22
+  notes: its predictors include ONI (a centred index) and ISIMIP land use from LUH2 (defo_ban.py:51-53)
+- name: era5l_pev
+  dtype: float32
+  units: m_water_equiv
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -2
+  - 0.5
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.08356339484453201
+    max: 0.0005081817507743835
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:33
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_sro
+  dtype: float32
+  units: m
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 5
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.06246671825647354
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:33
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_ssro
+  dtype: float32
+  units: m
+  units_source: presplit_cc/audit/_check_spec.json (most common of 5 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 2
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 5 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.048613518476486206
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:33
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_smlt
+  dtype: float32
+  units: m
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 5
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 2/5 sampled regions (max 99.30% of cells); all zero in 3/5
+    regions
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 0.03359034284949303
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:34
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_slhf
+  dtype: float32
+  units: J m-2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -50000000
+  - 6000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -21758636.0
+    max: 2275020.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:34
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_sshf
+  dtype: float32
+  units: J m-2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 6 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -50000000
+  - 50000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 6 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -19669476.0
+    max: 14131800.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:34
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_ssr
+  dtype: float32
+  units: J m-2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 60000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 31996614.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:35
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_str
+  dtype: float32
+  units: J m-2
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - -50000000
+  - 5000000
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -18094586.0
+    max: 2416798.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:35
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_d2m
+  dtype: float32
+  units: K
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 180
+  - 340
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 221.41111755371094
+    max: 300.473876953125
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:36
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: era5l_stl1
+  dtype: float32
+  units: K
+  units_source: presplit_cc/audit/_check_spec.json (most common of 7 specs)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 180
+  - 350
+  legal_range_source: presplit_cc/audit/_check_spec.json (widest hard range of 7 specs; not a cited product range)
+  fill_values: panel default (see top)
+  product: ERA5-Land monthly means (0.1 deg)
+  product_family: ERA5-Land
+  sensor_lineage: reanalysis (ERA5-Land)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00102
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: 234.00161743164062
+    max: 319.0494384765625
+  fact_status: unverified
+  provenance: presplit_cc/ingest_era5land_extra.py:36
+  notes: era5l_d2m and era5l_stl1 are KELVIN while every other temperature column is Celsius (AUDIT_REPORT.md item
+    6)
+- name: esacci_sm
+  dtype: float32
+  units: m3 m-3
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: ESA CCI soil moisture COMBINED v09.2, daily -> monthly mean
+  product_family: ESA CCI SM
+  sensor_lineage: microwave (active+passive)
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.30911
+    groups_all_null: 2
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/ingest_esacci_sm.py:31
+  notes: jointly retrieved with VOD from the same brightness temperatures, so it partly reads greenness (fire_ban.py:51-53);
+    27.4% of rows missing (pm25_ban.py:108)
+- name: scpdsi
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: null
+    unit: month
+    align: backward
+    text: unbounded (Palmer recursion)
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: scPDSI, CRU TS 4.09 (0.5 deg)
+  product_family: CRU scPDSI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.05575
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -11.25
+    max: 22.149999618530273
+  fact_status: unverified
+  provenance: presplit_cc/ingest_drought_indices.py:5
+  notes: STATIC SPATIAL mask over hyper-arid land (0% or 100% NaN per cell); range [-11.25, 22.15] on a nominal
+    +-4 index; trend-loaded (reference_drought_tier_hazards)
+- name: spi_01m
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: GPCC SPI (gamma), 1.0 deg
+  product_family: GPCC SPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00058
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.0899999141693115
+    max: 3.0899999141693115
+  fact_status: unverified
+  provenance: presplit_cc/ingest_drought_indices.py:7
+  notes: covers 2023 (the SPEI replacement for the test window, Part 324); spi_24m trend-loaded
+- name: spi_03m
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 3
+    unit: month
+    align: backward
+    text: 3 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: GPCC SPI (gamma), 1.0 deg
+  product_family: GPCC SPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00019
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.0899999141693115
+    max: 3.0899999141693115
+  fact_status: unverified
+  provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma),
+    1.0 deg)'
+  notes: covers 2023 (the SPEI replacement for the test window, Part 324); spi_24m trend-loaded
+- name: spi_06m
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 6
+    unit: month
+    align: backward
+    text: 6 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: GPCC SPI (gamma), 1.0 deg
+  product_family: GPCC SPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 5.0e-05
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.0899999141693115
+    max: 3.0899999141693115
+  fact_status: unverified
+  provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma),
+    1.0 deg)'
+  notes: covers 2023 (the SPEI replacement for the test window, Part 324); spi_24m trend-loaded
+- name: spi_12m
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 12
+    unit: month
+    align: backward
+    text: 12 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: GPCC SPI (gamma), 1.0 deg
+  product_family: GPCC SPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 4.0e-05
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.0899999141693115
+    max: 3.0899999141693115
+  fact_status: unverified
+  provenance: 'presplit_cc/ingest_drought_indices.py (column not named in source; family product: GPCC SPI (gamma),
+    1.0 deg)'
+  notes: covers 2023 (the SPEI replacement for the test window, Part 324); spi_24m trend-loaded
+- name: spi_24m
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 24
+    unit: month
+    align: backward
+    text: 24 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: GPCC SPI (gamma), 1.0 deg
+  product_family: GPCC SPI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 2.0e-05
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3.0899999141693115
+    max: 3.0899999141693115
+  fact_status: unverified
+  provenance: presplit_cc/ingest_drought_indices.py:7
+  notes: covers 2023 (the SPEI replacement for the test window, Part 324); spi_24m trend-loaded
+- name: eddi
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  product: NOAA PSL EDDI, NCEP stream, 1-month timescale ending on the month's last day (ingest_drought_indices.py:55,
+    262)
+  product_family: EDDI
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.0946
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2.1675355434417725
+    max: 2.173490047454834
+  fact_status: unverified
+  provenance: presplit_cc/ingest_drought_indices.py:9
+  notes: 'SEASONAL mask: Oct-Feb missing at high latitude; a median fill smuggles the month key back (reference_drought_tier_hazards)'
+- name: wbal_mm
+  dtype: float32
+  units: mm month-1
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  near_sentinel_note: -2147450880 = -2^31 - (-32768) escapes both codes if a parent is unmasked
+  product: V02_total_precip_mm - V07_total_ref_ET_mm, sentinels masked before subtracting
+  product_family: derived
+  derived_from: V02_total_precip_mm, V07_total_ref_ET_mm
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00026
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -437.6999816894531
+    max: 3717.900146484375
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:51
+  notes: -2^31 - (-32768) = -2147450880 escapes both fill codes if unmasked (Part 340)
+- name: wbal_roll3
+  dtype: float32
+  units: mm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 3
+    unit: month
+    align: backward
+    text: 3 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  near_sentinel_note: -2147450880 = -2^31 - (-32768) escapes both codes if a parent is unmasked
+  product: trailing SUMS of wbal_mm across year files
+  product_family: derived
+  derived_from: wbal_mm
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.00783
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -1165.0999755859375
+    max: 7403.39990234375
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:51
+  notes: min_periods = window, so the first w-1 months of 2002 are NaN
+- name: wbal_roll6
+  dtype: float32
+  units: mm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 6
+    unit: month
+    align: backward
+    text: 6 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  near_sentinel_note: -2147450880 = -2^31 - (-32768) escapes both codes if a parent is unmasked
+  product: trailing SUMS of wbal_mm across year files
+  product_family: derived
+  derived_from: wbal_mm
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.01919
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -2072.199951171875
+    max: 9215.599609375
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:51
+  notes: min_periods = window, so the first w-1 months of 2002 are NaN
+- name: wbal_roll12
+  dtype: float32
+  units: mm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 12
+    unit: month
+    align: backward
+    text: 12 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  near_sentinel_note: -2147450880 = -2^31 - (-32768) escapes both codes if a parent is unmasked
+  product: trailing SUMS of wbal_mm across year files
+  product_family: derived
+  derived_from: wbal_mm
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.04191
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -3254.800048828125
+    max: 8706.2001953125
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:51
+  notes: min_periods = window, so the first w-1 months of 2002 are NaN
+- name: wbal_roll24
+  dtype: float32
+  units: mm
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 24
+    unit: month
+    align: backward
+    text: 24 month
+  scope: unit
+  legal_range:
+  - null
+  - null
+  legal_range_source: unknown
+  fill_values: panel default (see top)
+  near_sentinel_note: -2147450880 = -2^31 - (-32768) escapes both codes if a parent is unmasked
+  product: trailing SUMS of wbal_mm across year files
+  product_family: derived
+  derived_from: wbal_mm
+  observed_sample: varies within a year (monthly) in 5/5 sampled regions (max 100.00% of cells)
+  footer_stats:
+    null_share_all_files: 0.08736
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -6376.60009765625
+    max: 16028.2001953125
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:51
+  notes: min_periods = window, so the first w-1 months of 2002 are NaN
+- name: eddi_observed
+  dtype: float32
+  units: '1'
+  units_source: hand seed from the ingest code / product (see provenance)
+  cadence: 1 month
+  stamp: period_end
+  window:
+    length: 1
+    unit: month
+    align: backward
+    text: 1 month
+  scope: unit
+  legal_range:
+  - 0
+  - 1
+  legal_range_source: hand seed (physical bound of the stored quantity)
+  fill_values: panel default (see top)
+  product: isfinite(eddi) indicator (Part 342)
+  product_family: EDDI
+  derived_from: eddi
+  observed_sample: varies within a year (monthly) in 1/5 sampled regions (max 99.52% of cells)
+  footer_stats:
+    null_share_all_files: 0.0
+    groups_all_null: 0
+    groups: 133
+    group_years_with_fill_code_as_min_or_max: 0
+    min: -0.0
+    max: 1.0
+  fact_status: unverified
+  provenance: presplit_cc/add_drought_wbal_all_regions.py:53

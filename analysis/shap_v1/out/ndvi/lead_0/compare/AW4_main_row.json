@@ -1,0 +1,70 @@
+{
+ "ci_format": "[low, high, finite replicates]",
+ "consensus_top3": [
+  "soil_moisture_pct",
+  "spi",
+  "hist_last"
+ ],
+ "cross_link_models": [],
+ "declined_models": [],
+ "kendall_w": {
+  "ci": [
+   0.6051897942976326,
+   0.6238685872407167,
+   2000
+  ],
+  "value": 0.6173103673528939
+ },
+ "lead": 0,
+ "level": "variable",
+ "models_in_main_set": [
+  "rival_bardl_h1",
+  "rival_lgbm",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "own_history_share_median_rival": {
+  "ci": [
+   0.2356921029006882,
+   0.2756640239832616,
+   2000
+  ],
+  "value": 0.25596368495020017
+ },
+ "own_history_share_treeroute": {
+  "ci": [
+   0.21683039942196186,
+   0.2718862955442099,
+   2000
+  ],
+  "value": 0.24453521523334967
+ },
+ "problem": "ndvi",
+ "rbo_vs_consensus_p0.9": {
+  "ci": [
+   0.37560424657083225,
+   0.4258749349649679,
+   2000
+  ],
+  "value": 0.4028741299371444
+ },
+ "reference_link": "identity|c=-|ub=1",
+ "treeroute_top3": [
+  "hist_mean",
+  "hist_last",
+  "era5l_slhf"
+ ],
+ "treeroute_vs_same_link_rivals_median_spearman_top20_union": {
+  "ci": [
+   -0.01025514460511679,
+   0.12307511818687426,
+   2000
+  ],
+  "range": [
+   -0.4050802139037433,
+   0.38409037216474107
+  ],
+  "value": 0.06990406006674083
+ }
+}

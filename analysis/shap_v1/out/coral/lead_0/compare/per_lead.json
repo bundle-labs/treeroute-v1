@@ -1,0 +1,328 @@
+{
+ "declined_by_guard": [],
+ "draws": 2000,
+ "draws_sha256": "4b08b1c9b89b2aee5136d8fae317c238222a4ac29c72e34c8bfa7e1f24d1e1fa",
+ "families": {
+  "calendar": "context and calendar",
+  "cool": "local drivers",
+  "ctx:abslat": "context and calendar",
+  "ctx:mmm": "context and calendar",
+  "cyc_days_since_close": "local drivers",
+  "cyc_maxw": "local drivers",
+  "cyc_mindist": "local drivers",
+  "cyc_n": "local drivers",
+  "days_since_dhw4": "local drivers",
+  "days_since_max_hs": "local drivers",
+  "dhw": "local drivers",
+  "hs": "local drivers",
+  "mhw_cat": "local drivers",
+  "mhw_days": "local drivers",
+  "mhw_durmax": "local drivers",
+  "mhw_icum": "local drivers",
+  "mhw_imax": "local drivers",
+  "mhw_nev": "local drivers",
+  "mhw_since_end": "local drivers",
+  "mhw_thr_gap": "local drivers",
+  "n_above_mmm": "local drivers",
+  "n_above_mmm1": "local drivers",
+  "n_dhw_ge8_before": "local drivers",
+  "nino34a": "global indices",
+  "normal": "seasonal normal",
+  "slope": "local drivers"
+ },
+ "feature": {
+  "active": 68,
+  "kendall_w_main_set": {
+   "ci": [
+    0.6262310569912586,
+    0.6851033753864946
+   ],
+   "finite_replicates": 2000,
+   "value": 0.6547553154941406
+  },
+  "mean_pairwise_spearman_main_set": {
+   "ci": [
+    0.501641409321678,
+    0.5801378338486595
+   ],
+   "finite_replicates": 2000,
+   "value": 0.5396737539921874
+  },
+  "nonzero_players": {
+   "rival_hgb_l1": 68,
+   "rival_lgbm": 67,
+   "rival_lgbm_tweedie": 68,
+   "rival_rf": 68,
+   "rival_ridge": 68,
+   "treeroute": 68
+  },
+  "players": 69,
+  "stability_under_region_resampling": {
+   "rival_hgb_l1": 0.9799512921326871,
+   "rival_lgbm": 0.9860887315341451,
+   "rival_lgbm_tweedie": 0.9892869603389701,
+   "rival_rf": 0.9886930182845364,
+   "rival_ridge": 0.9922622437683704,
+   "treeroute": 0.9729318433408406
+  },
+  "structural_zero": [
+   "normal"
+  ]
+ },
+ "global_columns": [
+  "x__nino34a_lag3",
+  "x__nino34a_lag6",
+  "x__nino34a_lag9"
+ ],
+ "j_rule": "player active when some model gives it > 1e-12 of its total",
+ "lead": 0,
+ "links": {
+  "rival_hgb_l1": "arcsine|c=0.1084375|ub=100",
+  "rival_lgbm": "arcsine|c=0.1084375|ub=100",
+  "rival_lgbm_tweedie": "log_mu|c=0.1084375|ub=100",
+  "rival_rf": "arcsine|c=0.1084375|ub=100",
+  "rival_ridge": "log_c|c=0.1084375|ub=100",
+  "treeroute": "arcsine|c=0.1084375|ub=100"
+ },
+ "main_set": [
+  "rival_hgb_l1",
+  "rival_lgbm",
+  "rival_rf",
+  "treeroute"
+ ],
+ "models": [
+  "rival_hgb_l1",
+  "rival_lgbm",
+  "rival_lgbm_tweedie",
+  "rival_rf",
+  "rival_ridge",
+  "treeroute"
+ ],
+ "nonzero_forecast_rows": {
+  "rival_hgb_l1": {
+   "rows": 983,
+   "top10": [
+    [
+     "hs",
+     0.14169933950641164
+    ],
+    [
+     "nino34a",
+     0.13391890913916782
+    ],
+    [
+     "dhw",
+     0.09155458521339886
+    ],
+    [
+     "days_since_max_hs",
+     0.06388223802068667
+    ],
+    [
+     "mhw_icum",
+     0.06385861460183649
+    ],
+    [
+     "mhw_days",
+     0.06362213099311631
+    ],
+    [
+     "cool",
+     0.04933658801068755
+    ],
+    [
+     "calendar",
+     0.04732300739780786
+    ],
+    [
+     "ctx:mmm",
+     0.03979325631927142
+    ],
+    [
+     "ctx:abslat",
+     0.03700852769526316
+    ]
+   ]
+  },
+  "rival_lgbm": {
+   "rows": 995,
+   "top10": [
+    [
+     "n_above_mmm1",
+     0.2104209510355904
+    ],
+    [
+     "dhw",
+     0.11196969130970041
+    ],
+    [
+     "nino34a",
+     0.08956707966801637
+    ],
+    [
+     "mhw_days",
+     0.08954035682249296
+    ],
+    [
+     "calendar",
+     0.08354741721185202
+    ],
+    [
+     "n_above_mmm",
+     0.04642056699703236
+    ],
+    [
+     "hs",
+     0.03926632203787944
+    ],
+    [
+     "days_since_max_hs",
+     0.03502552277083511
+    ],
+    [
+     "cyc_mindist",
+     0.03123431680117494
+    ],
+    [
+     "mhw_nev",
+     0.031029503907779303
+    ]
+   ]
+  },
+  "rival_rf": {
+   "rows": 1000,
+   "top10": [
+    [
+     "n_above_mmm1",
+     0.21737437565455364
+    ],
+    [
+     "dhw",
+     0.14872563075465586
+    ],
+    [
+     "mhw_days",
+     0.11230621508894596
+    ],
+    [
+     "nino34a",
+     0.10142119013522279
+    ],
+    [
+     "hs",
+     0.08953442391567082
+    ],
+    [
+     "n_above_mmm",
+     0.04361635814076689
+    ],
+    [
+     "cool",
+     0.035868168959010974
+    ],
+    [
+     "calendar",
+     0.03141082983154042
+    ],
+    [
+     "cyc_maxw",
+     0.027048663772388626
+    ],
+    [
+     "ctx:mmm",
+     0.022378499379683836
+    ]
+   ]
+  },
+  "treeroute": {
+   "rows": 973,
+   "top10": [
+    [
+     "nino34a",
+     0.1526805512219557
+    ],
+    [
+     "hs",
+     0.12905411891601376
+    ],
+    [
+     "dhw",
+     0.11541795727568314
+    ],
+    [
+     "n_above_mmm1",
+     0.10075757621801827
+    ],
+    [
+     "mhw_days",
+     0.0670303060021687
+    ],
+    [
+     "n_above_mmm",
+     0.060327442862204005
+    ],
+    [
+     "cool",
+     0.05915842943407875
+    ],
+    [
+     "mhw_icum",
+     0.04424479356020074
+    ],
+    [
+     "mhw_durmax",
+     0.02983068417646227
+    ],
+    [
+     "cyc_mindist",
+     0.027910058350168913
+    ]
+   ]
+  }
+ },
+ "problem": "coral",
+ "reference_link": "arcsine|c=0.1084375|ub=100",
+ "regions": 37,
+ "rows": 1000,
+ "salt": "shap_v1|AW4|coral|0",
+ "sample_sha256": "6159277a46da38f1789db5be184777508b66092b0541d2b2c7645c8d17f3b023",
+ "variable": {
+  "active": 25,
+  "kendall_w_main_set": {
+   "ci": [
+    0.6943269230769231,
+    0.7636538461538461
+   ],
+   "finite_replicates": 2000,
+   "value": 0.7346153846153847
+  },
+  "mean_pairwise_spearman_main_set": {
+   "ci": [
+    0.5924358974358974,
+    0.6848717948717948
+   ],
+   "finite_replicates": 2000,
+   "value": 0.6461538461538461
+  },
+  "nonzero_players": {
+   "rival_hgb_l1": 25,
+   "rival_lgbm": 25,
+   "rival_lgbm_tweedie": 25,
+   "rival_rf": 25,
+   "rival_ridge": 25,
+   "treeroute": 25
+  },
+  "players": 26,
+  "stability_under_region_resampling": {
+   "rival_hgb_l1": 0.9786096153846153,
+   "rival_lgbm": 0.9745261538461538,
+   "rival_lgbm_tweedie": 0.9823426923076922,
+   "rival_rf": 0.9786830769230769,
+   "rival_ridge": 0.9717953846153846,
+   "treeroute": 0.9826076923076923
+  },
+  "structural_zero": [
+   "normal"
+  ]
+ }
+}

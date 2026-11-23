@@ -1,0 +1,53 @@
+# Python 3.9.13 (py -3.9): the exact libraries of the old machine that the remaining work needs.
+# Installed by 2_setup_python.ps1 into Python39\Lib\site-packages (never with --user: the -I commands ignore the user site).
+# Sources: run manifest D:\treeroute\analysis\coral_sens_2017_2020\run\coral_sens_2017_2020\headline\20261029_75f66839\manifest.json
+# ("versions" block) and the old 'py -3.9 -m pip list' / __version__ records in the session transcripts (audit 2026-11-09).
+
+# The 15 fingerprinted libraries. They enter every run fingerprint and checkpoint key, and check_after_run compares
+# them with the headline runs, so they must be exactly these versions.
+numpy==2.0.2
+scipy==1.13.1
+scikit-learn==1.6.1
+scikit-learn-intelex==2025.10.0
+daal==2025.10.0
+tbb==2022.3.1
+pandas==2.3.3
+pyarrow==21.0.0
+threadpoolctl==3.6.0
+pydantic==2.13.3
+pydantic-core==2.46.3
+typer==0.23.2
+click==8.1.8
+PyYAML==6.0.3
+psutil==7.2.2
+
+# Their dependencies, at the versions recorded on the old machine.
+joblib==1.5.3
+python-dateutil==2.9.0.post0
+pytz==2026.1.post1
+tzdata==2026.1
+six==1.17.0
+typing-extensions==4.15.0
+colorama==0.4.6
+rich==15.0.0
+
+# Fire published rivals (Part B) board and its tests, and the post-hoc tools.
+xarray==2024.7.0
+netCDF4==1.7.2
+certifi==2026.4.22
+packaging==26.1
+lightgbm==4.6.0
+pytest==8.4.2
+exceptiongroup==1.3.1
+iniconfig==2.1.0
+pluggy==1.6.0
+tomli==2.4.1
+h5py==3.14.0
+
+# oneTBB's thread manager, required by tbb 2022.3.1 (tcmlib==1.*). The old machine's version is not recorded (it was
+# older than 1.6.0, released 2026-10-16); pinned so that re-runs are repeatable. It is not fingerprinted and stays
+# inactive unless a TCM_ variable is set, which 2_setup_python.ps1 and check_env.py refuse.
+tcmlib==1.6.0
+
+# Not pinned because the record has no version (pip picks the newest that supports Python 3.9; none enters a fingerprint):
+# annotated-types, typing-inspection, shellingham, annotated-doc, pygments, markdown-it-py, mdurl, cftime.

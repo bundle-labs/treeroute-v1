@@ -1,0 +1,104 @@
+﻿
+== lead 0 | S1 pre-test slope 2013-19
+            stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi  d_rf  d_lgbm  units_ours_better_than_ridge
+     falling >3%/yr    298       48       4.487      3.476   4.786     4.205       5.596   -0.500      -0.963      -0.036 0.199  -0.190                            69
+    falling 1-3%/yr    574       92       3.084      2.996   3.147     3.029       3.538   -0.192      -0.387       0.002 0.080  -0.066                           235
+flat (within 1%/yr)    604      101       3.624      3.648   3.695     3.665       3.892    0.008      -0.091       0.108 0.062   0.004                           344
+     rising 1-3%/yr    341       63       3.859      3.903   3.947     3.933       4.058    0.057      -0.077       0.192 0.071   0.044                           213
+      rising >3%/yr     88       26       2.535      2.691   2.541     2.508       2.810    0.222       0.093       0.350 0.049   0.011                            74
+
+== lead 0 | S2 pre-test drift 2017-19
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi  d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    269       44       3.359      2.949   3.639     3.210       4.519   -0.462      -0.918      -0.006 0.354  -0.063                            78
+     below normal 5-15%    654       89       3.143      2.806   3.241     3.038       3.656   -0.337      -0.593      -0.081 0.088  -0.090                           242
+near normal (within 5%)    665      102       3.941      3.954   4.013     3.980       4.168   -0.098      -0.276       0.081 0.058   0.011                           383
+     above normal 5-15%    241       49       3.794      3.797   3.821     3.877       3.861    0.053      -0.075       0.181 0.057   0.058                           170
+      above normal >15%     76       16       4.489      4.669   4.548     4.424       4.889    0.165      -0.081       0.410 0.022  -0.121                            62
+
+== lead 0 | S3 OUTCOME-CONDITIONAL test drift 2020-23
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi  d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    427       57       4.062      3.192   4.310     3.796       5.401   -0.723      -1.111      -0.335 0.184  -0.171                            90
+     below normal 5-15%    535       86       3.201      2.981   3.262     3.193       3.418   -0.207      -0.313      -0.101 0.052  -0.012                           162
+near normal (within 5%)    566       91       3.317      3.459   3.369     3.389       3.454    0.127       0.063       0.191 0.037   0.056                           377
+     above normal 5-15%    257       55       3.679      3.971   3.769     3.757       3.852    0.257       0.172       0.343 0.076   0.061                           210
+      above normal >15%    120       29       4.711      4.924   4.778     4.614       5.000    0.247       0.141       0.352 0.129  -0.048                            96
+
+== lead 0 | all
+ stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi  d_rf  d_lgbm  units_ours_better_than_ridge
+all rows   1905      127       3.588      3.426   3.692     3.552       4.032   -0.162      -0.342       0.019 0.104  -0.036                           935
+
+== lead 6 | S1 pre-test slope 2013-19
+            stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+     falling >3%/yr    298       48       4.903      3.907   5.032     5.664       5.664   -0.554      -1.022      -0.087  0.058   0.626                            56
+    falling 1-3%/yr    574       92       3.296      3.128   3.276     3.559       3.559   -0.268      -0.450      -0.085 -0.040   0.247                           176
+flat (within 1%/yr)    604      101       3.820      3.752   3.783     3.907       3.907   -0.102      -0.165      -0.040 -0.055   0.115                           262
+     rising 1-3%/yr    341       63       4.172      4.069   4.036     4.068       4.068   -0.058      -0.135       0.018 -0.080   0.054                           152
+      rising >3%/yr     88       26       2.777      2.768   2.723     2.782       2.782   -0.004      -0.137       0.128 -0.060   0.012                            51
+
+== lead 6 | S2 pre-test drift 2017-19
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    269       44       3.756      3.293   3.908     4.582       4.582   -0.478      -0.945      -0.011  0.193   0.744                            60
+     below normal 5-15%    654       89       3.395      2.989   3.371     3.678       3.678   -0.389      -0.649      -0.129 -0.024   0.270                           173
+near normal (within 5%)    665      102       4.173      4.072   4.102     4.181       4.181   -0.201      -0.358      -0.044 -0.078   0.037                           285
+     above normal 5-15%    241       49       3.907      3.873   3.872     3.873       3.873   -0.004      -0.092       0.085 -0.024   0.020                           129
+      above normal >15%     76       16       4.991      4.939   4.785     4.882       4.882    0.084      -0.073       0.241 -0.062   0.003                            50
+
+== lead 6 | S3 OUTCOME-CONDITIONAL test drift 2020-23
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    441       59       4.472      3.601   4.564     5.371       5.371   -0.616      -0.978      -0.254  0.098   0.689                            60
+     below normal 5-15%    529       88       3.333      3.137   3.307     3.473       3.473   -0.231      -0.315      -0.147 -0.061   0.123                           131
+near normal (within 5%)    562       91       3.485      3.515   3.409     3.444       3.444    0.008      -0.044       0.059 -0.091  -0.032                           283
+     above normal 5-15%    250       56       3.986      4.031   3.904     3.851       3.851    0.092       0.010       0.174 -0.031  -0.049                           152
+      above normal >15%    123       29       5.177      5.096   5.099     5.030       5.030   -0.173      -0.310      -0.035 -0.051  -0.114                            71
+
+== lead 6 | all
+ stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+all rows   1905      127       3.846        3.6   3.822     4.054       4.054   -0.247      -0.422      -0.071 -0.024   0.208                           697
+
+== lead 12 | S1 pre-test slope 2013-19
+            stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+     falling >3%/yr    298       48       5.748      4.137   5.239     4.793       5.748   -1.115      -1.636      -0.594 -0.479  -0.745                            16
+    falling 1-3%/yr    574       92       3.585      3.148   3.323     3.293       3.585   -0.495      -0.683      -0.308 -0.252  -0.303                           113
+flat (within 1%/yr)    604      101       3.922      3.746   3.810     3.874       3.922   -0.222      -0.333      -0.112 -0.150  -0.090                           228
+     rising 1-3%/yr    341       63       4.089      4.154   4.096     4.150       4.089   -0.099      -0.251       0.054 -0.109  -0.055                           215
+      rising >3%/yr     88       26       2.790      2.793   2.772     2.843       2.790   -0.005      -0.162       0.151 -0.044  -0.053                            41
+
+== lead 12 | S2 pre-test drift 2017-19
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    269       44       4.655      3.420   4.092     3.717       4.655   -1.164      -1.718      -0.611 -0.463  -0.791                             6
+     below normal 5-15%    654       89       3.715      3.070   3.441     3.353       3.715   -0.620      -0.911      -0.330 -0.261  -0.351                           106
+near normal (within 5%)    665      102       4.193      4.078   4.125     4.172       4.193   -0.220      -0.360      -0.079 -0.103  -0.073                           323
+     above normal 5-15%    241       49       3.889      3.917   3.911     4.014       3.889   -0.012      -0.108       0.084 -0.026   0.047                           131
+      above normal >15%     76       16       4.898      5.016   4.919     5.110       4.898    0.159      -0.223       0.541 -0.001   0.111                            47
+
+== lead 12 | S3 OUTCOME-CONDITIONAL test drift 2020-23
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    446       60       5.407      3.775   4.706     4.341       5.407   -1.204      -1.590      -0.818 -0.497  -0.746                             0
+     below normal 5-15%    529       87       3.477      3.168   3.353     3.392       3.477   -0.332      -0.407      -0.257 -0.139  -0.122                            16
+near normal (within 5%)    553       91       3.476      3.528   3.456     3.561       3.476    0.021      -0.040       0.082 -0.041   0.050                           299
+     above normal 5-15%    254       56       3.879      4.045   3.934     3.939       3.879    0.129       0.048       0.210  0.032   0.058                           204
+      above normal >15%    123       30       5.045      5.097   5.103     5.069       5.045   -0.032      -0.213       0.150  0.034  -0.015                            94
+
+== lead 12 | all
+ stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+all rows   1905      127       4.084      3.656    3.89     3.844       4.084   -0.427      -0.637      -0.218 -0.193  -0.239                           613
+
+== lead 12 | S1 pre-test slope 2013-19 [our REJECTED model, secondary]
+            stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+     falling >3%/yr    298       48       4.931      4.137   5.239     4.793       5.748   -0.470      -0.856      -0.084  0.167  -0.100                            55
+    falling 1-3%/yr    574       92       3.284      3.148   3.323     3.293       3.585   -0.199      -0.329      -0.070  0.044  -0.007                           198
+flat (within 1%/yr)    604      101       3.816      3.746   3.810     3.874       3.922   -0.075      -0.135      -0.015 -0.003   0.057                           264
+     rising 1-3%/yr    341       63       4.138      4.154   4.096     4.150       4.089    0.004      -0.058       0.066 -0.006   0.048                           166
+      rising >3%/yr     88       26       2.793      2.793   2.772     2.843       2.790    0.043      -0.028       0.114  0.004  -0.004                            38
+
+== lead 12 | S2 pre-test drift 2017-19 [our REJECTED model, secondary]
+                stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi   d_rf  d_lgbm  units_ours_better_than_ridge
+      below normal >15%    269       44       3.762      3.420   4.092     3.717       4.655   -0.401      -0.788      -0.013  0.301  -0.027                            68
+     below normal 5-15%    654       89       3.365      3.070   3.441     3.353       3.715   -0.293      -0.504      -0.083  0.066  -0.024                           208
+near normal (within 5%)    665      102       4.173      4.078   4.125     4.172       4.193   -0.140      -0.248      -0.031 -0.023   0.007                           292
+     above normal 5-15%    241       49       3.938      3.917   3.911     4.014       3.889    0.016      -0.052       0.084  0.002   0.074                           117
+      above normal >15%     76       16       4.993      5.016   4.919     5.110       4.898    0.161       0.000       0.323  0.001   0.113                            36
+
+== lead 12 | all [our REJECTED model, secondary]
+ stratum  units  regions  mae_answer  mae_ridge  mae_rf  mae_lgbm  mae_normal  d_ridge  d_ridge_lo  d_ridge_hi  d_rf  d_lgbm  units_ours_better_than_ridge
+all rows   1905      127        3.84      3.656    3.89     3.844       4.084   -0.184      -0.326      -0.043  0.05   0.004                           721

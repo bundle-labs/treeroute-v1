@@ -1,0 +1,144 @@
+# Product registry (SPEC_HUMAN.txt 1.8), owned by builder A. Every product an adapter or runner may open
+# (ctx.open_product(id, name)), read-only. A download (D1-D6) names its own product_manifest.json under `manifest`; a
+# product that was on disk before the plan is hashed by `py -3.9 -B -m rivals_human.cli manifest --product <id>`
+# (owner command O4-O6, O15) into <out_root>/_products/<id>/product_manifest.json, never into its folder.
+# `path` is a folder, or one file (then the file's folder is the product root and the manifest names the file).
+# Ids follow the adapter builders' registries (B: coral, defo; C: PM2.5, NDVI). Request new ids in
+# BUILD_NOTES_shared.txt.
+products:
+  # ---------------------------------------------------------------------------------------------- coral (builder B ids)
+  coral_sst_npz:
+    path: 'D:/coral/drivers/sst_compact_all.npz'
+    label: 'CoralTemp v3.1 daily SST per site pixel (compact npz, members stored uncompressed)'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested'
+    source: 'built from NOAA CRW CoralTemp v3.1 (coral_fetch_sst.py, PIFSC OceanWatch ERDDAP)'
+  crw_climatology:
+    path: 'D:/coral/drivers/static/ct5km_climatology_v3.1.nc'
+    label: 'CRW 5 km climatology v3.1 (official MMM, sst_clim_mmm)'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested'
+    source: 'NOAA CRW ct5km_climatology_v3.1.nc'
+  crw_outlook:
+    path: 'D:/coral/crw/nc'
+    patterns: ['*.nc']
+    label: 'CRW 4-Month Outlook v5 (CFSv2) weekly composites, 4 percentile products, 1,984 files'
+    licence: 'NOAA Coral Reef Watch: public, no restriction; credit requested (experimental product)'
+    source: 'NOAA CRW 4-Month Outlook v5 archive (files are a v5 reissue; disclose)'
+  coral_store_20261020:
+    path: 'D:/treeroute/coral_build/coral_store/20261020_014201'
+    patterns: ['lead_*.parquet', 'build_manifest.json']
+    label: 'coral package store row facts (unit_id, lat, lon, target_date, issue_date, feature_end, mark only; the label column is never read)'
+    licence: 'project data'
+    source: 'coral package build (protected root, read-only)'
+  noaa_crw_dhw_sitedays:
+    manifest: 'D:/treeroute/human_products/noaa_crw_dhw_sitedays/v3.1_sitedays_v2_train200_test100_pifsc/product_manifest.json'
+    label: 'D6 NOAA CRW DHW / BAA / HotSpot / SST at 300 site-days (200 train, 100 test)'
+    licence: 'NOAA CRW: public, no restriction; credit requested'
+    source: 'ERDDAP griddap CRW 5 km v3.1, PIFSC OceanWatch (fetch_products.py, owner ruling AB1)'
+  # ---------------------------------------------------------------------------------------------- defo (builder B ids)
+  hansen_gfc_v1_13:
+    path: 'D:/hansen'
+    patterns: ['*.tif']
+    label: 'Hansen GFC-2025-v1.13 tiles (lossyear, treecover2000, datamask; 231 files, 32 GB)'
+    licence: 'CC BY 4.0 (Hansen et al., University of Maryland)'
+    source: 'Global Forest Change v1.13 (same version as the target, defo_fetch.py)'
+  defo_target:
+    path: 'D:/defo_target'
+    patterns: ['*.parquet']
+    label: 'defo target cell grid (loss_px, forest2000_px per cell and year): parity check and denominator'
+    licence: 'project data'
+    source: 'defo package ingest'
+  defo_static:
+    path: 'D:/defo_features/static'
+    patterns: ['part-0.parquet']
+    label: 'defo static features (forest2000_px)'
+    licence: 'project data'
+    source: 'defo package ingest'
+  gadm36_defo42:
+    manifest: 'D:/treeroute/human_products/gadm/3.6_gpkg_defo42/product_manifest.json'
+    label: 'D4 GADM 3.6 level 2 (52 country GeoPackages for the 42 defo regions)'
+    licence: 'GADM: free for academic / non-commercial use, no redistribution'
+    source: 'https://gadm.org (fetch_products.py, owner ruling AB1)'
+  defo_vt0007_prep:
+    path: '{index_root}/defo/20261017_d71c61f4/_work/vt0007_shipped'   # {index_root} = the config's root (config.load_products)
+    patterns: ['prep_manifest_*.json', '*/map_T*__*.npz', '*/map_T*__*.json', '*/divisions.parquet', '*/divisions.json']
+    staged: true
+    label: 'VT0007 prep outputs (distance-class count tables, divisions) of adapters/defo_prep.py; path under the config index_root'
+    licence: 'project data'
+    source: 'prep --rival vt0007_shipped (owner commands O10 stage train, O11 stage test); production path <index_root>/defo/<run>/_work/vt0007_shipped'
+  # ---------------------------------------------------------------------------------------------- PM2.5 (builder C ids)
+  cams_eac4_monthly_pm2p5:
+    manifest: 'D:/treeroute/human_products/cams_eac4_monthly_pm2p5/eac4_monthly_mean_2003-2023/product_manifest.json'
+    waiting_line: 'D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2 first'
+    label: 'D1 CAMS EAC4 monthly mean pm2p5 (0.75 deg)'
+    licence: 'CC BY 4.0 (Copernicus Atmosphere Monitoring Service); ADS licence accepted by the owner'
+    source: 'ADS cams-global-reanalysis-eac4-monthly (owner download, rulings AB1/AB2; folder of fetch_products.py)'
+  merra2_aer_monthly:
+    path: 'D:/pm25_products/merra2'
+    patterns: ['aer_*.nc']
+    label: 'MERRA-2 tavgM_2d_aer_Nx monthly aerosol (252 files, 0.84 GB)'
+    licence: 'NASA GES DISC: public'
+    source: 'NASA MERRA-2 (MERRA2_401 stream months disclosed)'
+  pm25_static_cells:
+    path: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/pm25/data/static'
+    patterns: ['part-0.parquet']
+    label: 'PM2.5 unit centres (cell_id, region, lat, lon)'
+    licence: 'project data'
+    source: 'engine package static table (read-only)'
+  # ---------------------------------------------------------------------------------------------- NDVI (builder C ids)
+  ndvi_static_cells:
+    path: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/ndvi/data/static'
+    patterns: ['part-0.parquet']
+    label: 'NDVI unit centres and statics (cell_id, region, lat, lon, ...)'
+    licence: 'project data'
+    source: 'engine package static table (read-only)'
+  monthly_panel:
+    path: 'D:/monthly_panel'
+    patterns: ['*.parquet']
+    label: 'monthly 4 km panel (Kraft LSTM inputs only, optional)'
+    licence: 'project data'
+    source: 'monthly panel build (40.9 GB; manifest O15, optional)'
+  ndvi_kraft_store:
+    path: '{index_root}/ndvi/20261016_d1de3158/_work/kraft_lstm/store'   # {index_root} = the config's root (config.load_products)
+    patterns: ['*.parquet', '*.json']
+    label: 'Kraft LSTM input store written by its prep (adapters/ndvi_kraft_prep.py); path under the config index_root'
+    licence: 'project data'
+    source: 'prep --rival kraft_lstm (owner command O15); production path <index_root>/ndvi/<run>/_work/kraft_lstm/store'
+  # ---------------------------------------------------------------------------------------------- fire (Part B, builder B1)
+  # SPEC_HUMAN_PARTB.txt 2.7. Appended 2026-10-25; every Part A entry above is byte-identical to the baseline copy
+  # _moved/20261025T194657Z_partB_baseline/registry/_products.yaml (sha256 4e479759...). The two download folders end
+  # in the placeholder UNSET_OD6 on purpose (owner decision OD-6, the box choice): a folder that does not exist makes
+  # adapters/fire_geff.py availability() wait and adapt refuse with the waiting_line, instead of a default that could
+  # point at the wrong download. Set each to the folder the fetcher actually wrote BEFORE its adapt (owner command F4b),
+  # never after the first init (the product registry sha is pinned).
+  cems_geff_era5_fwi:
+    manifest: 'D:/treeroute/human_products/cems_fire_historical_fwi/geff_era5_v4_1_consolidated_fwi_2003-2022_UNSET_OD6/product_manifest.json'
+    waiting_line: 'D2 (CEMS GEFF-ERA5 FWI) is not on disk, not complete (manifest "complete" must be true), or its folder in registry/_products.yaml is still the UNSET_OD6 placeholder: run DOWNLOAD_COMMANDS.md 2.3 (owner EWDS key + licence), then set the folder suffix (_merged or _region) BEFORE adapt (F5), never after the first init'
+    label: 'D2 CEMS GEFF-ERA5 fire danger reanalysis: FWI (fwinx), consolidated, system 4_1, 0.25 deg, daily 2003-2022'
+    licence: 'CC BY 4.0 (Copernicus Emergency Management Service); EWDS licence accepted by the owner'
+    source: 'EWDS cems-fire-historical-v1 (fetch_products.py spec_D2; owner ruling AB1)'
+    notes: 'PLACEHOLDER folder ..._UNSET_OD6: replace UNSET_OD6 by the folder DLC 2.3 actually wrote (merged = the DLC default, or region = --boxes region; OD-6), a one-line data edit BEFORE F5 adapt and never after the first init (the product registry sha is pinned, board.py:439-440)'
+  cems_geff_seas5_fwi:
+    manifest: 'D:/treeroute/human_products/cems_fire_seasonal_fwi/geff_seas5_r5_fwi_starts200208-202207_L150-184_UNSET_OD6/product_manifest.json'
+    waiting_line: 'D3 (CEMS GEFF-SEAS5 FWI) is not on disk, not complete (manifest "complete" must be true), or its folder in registry/_products.yaml is still the UNSET_OD6 placeholder: run DOWNLOAD_COMMANDS.md 2.4 (after D0'' and the box decision), then set the folder suffix BEFORE adapt (F6), never after the first init'
+    label: 'D3 CEMS GEFF-SEAS5 seasonal fire danger: FWI, release 5, 240 starts 2002-08..2022-07, daily leads 150-184, 1 deg'
+    licence: 'CC BY 4.0 (Copernicus Emergency Management Service); EWDS licence accepted by the owner'
+    source: 'EWDS cems-fire-seasonal (fetch_products.py spec_D3; owner ruling AB1)'
+    notes: 'PLACEHOLDER folder ..._UNSET_OD6: replace UNSET_OD6 by the folder DLC 2.4 actually wrote (region_y1 = approved 1.94 GB; merged_y1 = 8.22 GB, re-approval; _y4 if --seas-years-per-request 4 was used) = OD-6, BEFORE F6 adapt and never after the first init'
+  fire_static_cells:
+    path: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/fire/data/static'
+    patterns: ['part-0.parquet']
+    label: 'fire unit centres (cell_id, region, lat, lon float64; 925,737 units)'
+    licence: 'project data'
+    source: 'engine package static table (read-only; ingest/build_static.py, ruling L5)'
+  fire_target_2018:
+    path: 'D:/fire/target'
+    patterns: ['*_2018.parquet']
+    label: 'fire target store, year 2018 only (40 files, lat/lon keyed): source of the refs label store (training labels)'
+    licence: 'project data (MODIS MCD64A1.061)'
+    source: 'fire package target store (read-only)'
+  fire_refs_label_store:
+    path: '{index_root}/fire/20261017_869d1f38/_work/geff_era5/refs_store'   # {index_root} = the config's root (config.load_products)
+    patterns: ['*_labels_2018.parquet']
+    label: 'cell_id-keyed 2018 labels written by adapters/fire_refs_prep.py through the package reader (refs only)'
+    licence: 'project data'
+    source: 'prep --rival geff_era5 (owner command F3); production path <index_root>/fire/<run>/_work/geff_era5/refs_store'

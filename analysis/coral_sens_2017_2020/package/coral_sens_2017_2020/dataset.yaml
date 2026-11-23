@@ -1,0 +1,43 @@
+# dataset.yaml -- coral_sens_2017_2020: declared sensitivity row (V3); never the headline.
+# Package copy made 2026-10-28 under owner ruling AN3 ("run it now, as declared ... from a copy of the settings; no
+# LIVE engine file is edited") from the signed package engine/datasets/coral (fingerprint 5b9383f0...), as declared
+# in engine/PREREGISTRATION_DRAFT_coral.md 4.2 step 5 and datasets/coral/ingest/README.md (section "The 2017-2020
+# sensitivity row"). What differs from `coral`, and nothing else:
+#   - name: coral_sens_2017_2020 (its own name);
+#   - stores.target: the sensitivity build D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full (its own store
+#     line; stage 1 run with --test-years 2017-2020, so the 2020 visits are written as test rows and the 2016 visits
+#     are train rows; R3 gives 2020, R5 2017-2020, every cut moves one year later);
+#   - split.yaml: regenerated for that window by the sensitivity copy of the (b) make_split.py (V5 recomputed; V6 b);
+#   - this header, and the DRAFT stamp at the start of `description` (the not-headline mark, section 4.2 option
+#     "a DRAFT stamp with a lock written outside the freeze tool"; to be confirmed by the owner in Part 627).
+# catalog.yaml, ban.yaml, exceptions.yaml, AUDIT_CHECKLIST.md and ingest/README.md are byte copies of `coral`; their
+# texts still describe the 2016-2019 headline window and its counts.
+#
+# Original header of the signed package `coral`, kept verbatim:
+# dataset.yaml -- coral: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95).
+# SIGNED by the owner 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md). Made by
+# D:/treeroute/coral_build/tools/make_signed_coral.py from the development copy the agent wrote on 2026-10-19 in
+# the build copy (D:/treeroute/coral_build). The headline package. Design: D:/treeroute/coral_build/SPEC_CORAL_TABLES.md. Contract:
+# D:/treeroute/coral_build/SPEC_TABLE_MODE.md section 1.
+#
+# Store: one parquet file per lead, written by the package-side builder
+#   D:/treeroute/coral_build/coral_tables/build_tables.py   (stage 2; stage 1 is build_visits.py)
+# The files are READ IN PLACE. {lead} is the lead in days: 0 (nowcast), 183 and 365 (ruling I1; R10 events).
+# Each row is one survey VISIT (site + date) with its keys, label, mark, programme and features that end strictly
+# before the row's issue date (target date minus the lead). The owner vouches for the feature timing (ruling U2;
+# AUDIT_CHECKLIST.md section B). The store root D:/treeroute/coral_build/coral_store is listed in
+# D:/treeroute/registry/protected_roots.txt (added 2026-10-20 by the session, confirmed by the owner 2026-10-20;
+# SPEC_TABLE_MODE.md 1.2).
+# Test window 2016-2019 (owner ruling V3, OWNER_RULINGS_2026-10-06.md:105): the 38 visits of 2020 are not written.
+# 2017-2020 is the declared sensitivity row, never the headline (ingest/README.md, section Signed answers, ruling V).
+# The tiny smoke build (4 groups) is a GENERATED copy of this package at
+# D:/treeroute/coral_build/coral_data/tiny/package/, whose dataset.yaml points at coral_data/tiny/ (SPEC_CORAL_TABLES.md 5).
+name: coral_sens_2017_2020
+version: '0.1.0'
+owner: 'the project owner -- signed 2026-10-20 (ruling X, OWNER_RULINGS_2026-10-06.md)'
+description: 'DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline. | percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by ecoregion; hand-built SST, marine-heatwave, cyclone and ENSO/IOD features that end before each issue date (leads 0, 183, 365 days); neighbour router; feature timing vouched by the owner (U2); signed 2026-10-20 (ruling X)'
+input: table
+stores:
+  # sensitivity full build (stage 2 of the builder copy, --visits-dir D:/treeroute/analysis/coral_sens_2017_2020/coral_data)
+  target: 'D:/treeroute/analysis/coral_sens_2017_2020/coral_data/full/lead_{lead}.parquet'
+includes: []

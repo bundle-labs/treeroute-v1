@@ -1,0 +1,12 @@
+package coral_sens_2017_2020 version 0.1.0
+fingerprint 96f81747b491b36b28aa5cb143a2f4cb3c838a973433ae0a0cda9a37df42f8b5
+files hashed: 7; store catalogs included: 0
+catalog columns: 85; ban verdicts: 76
+split (leave one region out): excluded groups: 11; seen_during_design: 83. Every other group in the data is trained and tested; the groups, their bank and scored units and the overlap blocks are derived from the data by plan.
+G-CLOSED               pass   [G-CLOSED] every non-key column has a verdict; the nine key roles are declared once each; 63 tree features, 5 context columns, 1 strata
+G-SPLIT                pass   [G-SPLIT] 94 groups in the data, 11 excluded, 83 after exclusions (every one trained; tested when it has a test-marked row; 57 donor-only (no test-marked row)); seen_during_design: 83
+U1 (table contract)    pass   [U1] the lead files [0, 183, 365] pass T-FILES to T-FINITE and T-LEADSET (13679 rows); the largest feature-end minus issue day per lead: {'0': -1, '183': -1, '365': -1} (always below 0); feature timing is vouched by the package owner (U2)
+R18 donor-only groups  pass   [R18] 57 of 83 kept groups have no test-marked row: donor-only (V6 b: their trees and train rows are used, nothing is scored for them): Andaman Islands, Austral Islands, French Polynesia, Bay of Campeche, Yucatan, Gulf of Mexico, Bermuda, Bismarck Sea, New Guinea, Brazil, Caroline Islands, Micronesia, Cenderawasih Bay, Papua, Chagos Archipelago, Christmas Island, Indian Ocean, Cocos Keeling Atolls, Indian Ocean, Cook Islands, south-west Pacific, Coral Sea, Costa Rica and Panama, Pacific coast, Cuba and Cayman Islands, Eastern coast South Africa, Flower Garden Banks, Gulf of Mexico, Gilbert Islands, west Kiribati, Gulf of Aden, Gulf of Thailand ...
+G-FACTS                pass   [G-FACTS] the target's facts are verified; a table's feature timing is vouched by the package owner (U2), not a store fact (owner item O21) Columns: pct_bleached.
+check report: D:\treeroute\analysis\coral_sens_2017_2020\validate\plan_root\coral_sens_2017_2020\check\check_quick_96f81747b491.json
+check quick: green

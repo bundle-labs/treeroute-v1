@@ -1,0 +1,15 @@
+# split.yaml -- defo (APP_PLAN.md 1.2).
+# Leave-one-region-out (owner ruling D, 2026-09-28 night; owner rulings E, L7 b): this file holds ONLY the
+# exclusions {group: reason} and the optional seen_during_design groups (APP_PLAN.md 1.2). There is no donor or
+# test list: every group in the target data that is not excluded trains its own specialist trees and is tested,
+# and a unit's router never uses the trees of its own overlap block (R14, R18-R20). The groups, their bank and
+# scored units and the overlap blocks are derived from the data by plan (treeroute/split.py). A donor_groups or
+# test_groups key is refused (G-NOKNOB: "derived: every group is tested").
+# The shipped hard split (25 donor / 17 test groups: the forested groups of the NDVI split, roles kept,
+# adaptation.py:1215-1219, read, never run; sha256 forest_census.csv
+# ca79ffe48f9438828ef3aae54013bc54d297ca3c7f573af7f9f5432d32a0eeb1, ndvi_split.txt
+# 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b) moved to legacy_harness/shipped_splits.yaml, with
+# this file's former provenance comments verbatim; its 17 test groups are the continuity row
+# (treeroute_report/continuity_groups.yaml).
+# excluded: none. D:/defo_target and D:/defo_matrix hold exactly 42 groups: all 42 are trained and tested.
+excluded: {}

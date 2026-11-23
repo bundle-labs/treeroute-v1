@@ -1,0 +1,329 @@
+# Fire human-rival registry (SPEC_HUMAN_PARTB.txt section 2; builder B1, Part B). DATA, not code: the tool reads it,
+# validates it against registry/_schema.yaml (unchanged) at `init`, and never names the problem in its code.
+# Sources: RIVALS_PLAN_HUMAN.md :69-71 (fire rows), :99-131 (protocol), Q16-Q24 :278-285, R10 :300; rulings AB
+# (all 24 plan recommendations accepted, incl. Q16-Q20), AG, AH, AI; research_fire.md sections 1-4; PENDING_PARTS.md
+# Part 620; run D:/treeroute/runs/fire/headline/20261017_869d1f38.
+# Checked on that run (2026-10-25, SPEC_HUMAN_PARTB facts): R22 links [identity, log_c, arcsine]; R28 legal [0, 1];
+# R2 month_of_year, 12 steps per year; R17 start_offset_steps 1; R11 cuts lead 0 fit 24228 / guard 24192, lead 6
+# 24223 / 24187, lead 12 24217 / 24181; R8 steps 0 for V01_mean_temp_C, V02_total_precip_mm, V09_mean_wind_ms,
+# rmin_pct, era5l_d2m, spi_01m..spi_24m; oni 3 (the export's x__oni IS ONI of issue - 3: the catalogue's lagged ONI).
+# `decides` is derived by the tool from the tier (P, L decide; A, X never).
+# Lead 0: F-ERA5 (geff_era5). Lead 6: F-SEAS5 (geff_seas5, a SEPARATE rival picked on lead-6 guard rows) and the two
+# optional runners (enso_lag, turco_spi). Lead 12: no human fire forecast; the runners are labelled extensions (OD-3).
+# OWNER DECISIONS (SPEC_HUMAN_PARTB section 9; the build writes the RECOMMENDED value; a different ruling is a data
+# edit made BEFORE the F7 DRY pass, B9): OD-1 turco form T1, OD-2 enso form E1, OD-3 lead 12 tier X, OD-4 (D3 late:
+# see the comments at leads_without_rival and at the runners), OD-5 R10 text below, OD-7 geff_era5 none at 6/12,
+# OD-9 constants in the options, OD-10 refs_label_store, OD-12 zero-normal disclosure, OD-13 runners optional P at 6.
+package: fire
+run: "D:/treeroute/runs/fire/headline/20261017_869d1f38"
+# printed at the lead even when it has X rows (the runners at lead 12); wording for OD-3 = X (RECOMMENDED); if OD-3 = P:
+# "...; the ENSO-lag and SPI-lag rows are our implementations of published methods"
+leads_without_rival:
+  12: "no human fire forecast reaches 12 months: GEFF-SEAS5 stops at 216 days; the ENSO-lag and SPI-lag rows are
+       printed only as labelled statistical extensions"
+  # 6: ONLY if D3 misses the 18 Nov cut-off AND OD-4.2 = (a) (literal Q24; RECOMMENDED); written at the cut-off, BEFORE
+  #    F7 (B9). The tool prints it as "no published forecast at this lead: <text>" (board.py:1397-1403,
+  #    join.py:217-227), so the text names the published product that is missing:
+  # 6: "the published lead-6 fire forecast, F-SEAS5 (CEMS GEFF-SEAS5 FWI), is pending: D3 was not complete by the
+  #     18 Nov cut-off (Q24); the ENSO-lag and SPI-lag rows at lead 6 are printed as labelled extensions, never decide"
+  #    Under OD-4.2 = (b) NO lead-6 line is added (that prefix would be false while the runners decide); see OD-4.
+# ATTENTION B4 (Part 618 precedent): with R17 start offset 1 no slim set holds the Dec-2018 label (step 24228) that the
+# nowcast persistence reads. refs reads it from a cell_id-keyed copy of the 2018 TRAINING labels written by the
+# package's own target reader (adapters/fire_refs_prep.py, owner command F3), byte-checked against the held labels.
+refs_label_store:
+  product: fire_refs_label_store
+  file_pattern: "{group}_labels_{year}.parquet"
+  unit_column: cell_id
+  year_column: year
+  month_column: month
+  label_column: burned_frac
+  dtype: float64
+# no nowcast_baseline_note: ruling Q4 names "the human baseline to beat" for PM2.5 only
+notes:
+  # PLAN R10 :300, PEND Part 620 :986-991; the last sentence ("Also known when ...") is OWNER DECISION OD-5 (RECOMMENDED)
+  r10: "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS GEFF-SEAS5
+        FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on 2019+ rows inside
+        today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254 vs 0.0192, and the
+        box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group isotonic form were chosen after
+        them, and the normal-anchored C-A / F6 form and the per-unit percentile x__fwi_pct were designed on 2026-10-21
+        with them in view - no score of F6 or x__fwi_pct itself exists); Part 501 (XGB-Tweedie ML rival, old split);
+        fire_danger and fire_danger_local (rivals.py, 15-24 Sep 2026, D:/adaptation/_rivals/fire_L*.npz: our own
+        Fosberg/FFDI-style index, L0 MAE 0.006715, R2 +0.0408, old split). Also known when Part B was planned
+        (2026-10-21) and specified (2026-10-25): our fire headline test scores (Part 590) and the fire common board
+        (Part 606: timid Tweedie and predict-zero win on MAE)."
+  reference: "own history = persistence and damped persistence at the nowcast (Q4; label at t-2, offset 1),
+              guess-normal, last-5 normal; reference = predict-zero"
+  # SPEC_HUMAN_PARTB 2.5 "Reference rows" (copied into Part B section 10)
+  reference_rows: "nowcast persistence reads the label at t-2 (R17 offset 1); the Dec-2018 labels it needs come from
+                   the fire target store through the package's own reader, byte-checked against the held labels (Part
+                   618 precedent)"
+
+rivals:
+  - id: geff_era5
+    label: "F-ERA5: CEMS GEFF-ERA5 Fire Weather Index of the target month (Copernicus EMS fire danger reanalysis)"
+    kind: I
+    adapter: "adapters.fire_geff:build"
+    availability: "adapters.fire_geff:availability"
+    # hosts the refs label store prep (SPEC_HUMAN_PARTB 3.9, owner command F3); the adapter never opens
+    # fire_target_2018 or fire_refs_label_store (tested, T-F17)
+    prep: "adapters.fire_refs_prep:run_prep"
+    products: [cems_geff_era5_fwi, fire_static_cells, fire_target_2018, fire_refs_label_store]
+    stats: [x__fwi_mean, x__fwi_pct]
+    families: [F2, F3, F4, F5, F6]
+    links: all
+    # the FWI inputs (noon temperature, 24 h precipitation, wind, humidity); R8 steps 0 for all -> T1 boundary = issue;
+    # target-month FWI is parity (PLAN ATTENTION 1, Q3)
+    t1_kind_columns: [V01_mean_temp_C, V02_total_precip_mm, V09_mean_wind_ms, rmin_pct, era5l_d2m]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: P}
+      6: {tier: none, reason: "the target month's reanalysis FWI is future weather at a 6-month issue; the forecast
+          form is F-SEAS5 (geff_seas5)"}                                       # OWNER DECISION OD-7 (none RECOMMENDED)
+      12: {tier: none, reason: "no fire-danger product reaches 12 months (GEFF-SEAS5 stops at 216 days)"}
+    score_without_net: []
+    pick: nowcast_inner
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose unit maps to a valid 0.25-deg land point and whose target month has >= 80% finite daily
+                    FWI (x_finite of the picked stat; x__fwi_pct also needs >= 10 reference values, 3.6)"
+    disclosures:
+      - "GEFF-ERA5 v4.1 consolidated FWI (0.25 deg) is a reanalysis made after the fact; in real time only the
+         intermediate (ERA5T-based) stream existed: generous to the rival, as our own target-month ERA5 inputs are"
+      - "the run reads target-month weather (R8 steps 0 for temperature, precipitation, wind, humidity), so target-month
+         FWI is parity (Q3); ERA5 does not assimilate burned area"
+      - "0.25 deg FWI on 4 km units: a unit takes its nearest 0.25-deg land point (haversine); a unit whose nearest
+         point is sea takes the nearest land point within 2 grid steps (counted); a resolution-matched table is printed"
+      - "monthly mean of daily FWI; a unit-month with < 80% finite days is not covered (counted)"
+      - "x__fwi_pct = the unit's mid-rank percentile among its own same-calendar-month FWI of target months up to the
+         lead's guard cut (lead 0: 2003-2015; lead 6: 2003-01..2015-07; training years), the row's own month left out,
+         so every row (pick, refit and test rows alike) is ranked out of sample against FWI known before the guard cut"
+      - "F6 = normal x per-group isotonic ratio on the stat (identity link only), fitted as research C-A states: on fit
+         rows the normal is the same per unit-month mean with the row's own year left out, and the isotonic ratio is
+         fitted with weights N^2 (= squared error on the burned fraction, PLAN rule 5); predictions use the run's own
+         normal of the scored rows"
+      - "the L1 line of an F6 pick is the L1 isotonic anomaly map of the same stat (maps.fit_l1 has no F6 form,
+         maps.py:433-443); printed only"
+      # OD-12. Spec 2.5 wrote "86% of test rows"; the measured count (spec facts list) is 86,304 of 96,000 = 90%
+      - "normal-anchored F6 predicts 0 where the unit's training normal is 0 (90% of lead-0 test rows: 86,304 of 96,000)"
+    r10_note: "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS
+               GEFF-SEAS5 FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on
+               2019+ rows inside today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254
+               vs 0.0192, and the box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group
+               isotonic form were chosen after them, and the normal-anchored C-A / F6 form and the per-unit percentile
+               x__fwi_pct were designed on 2026-10-21 with them in view - no score of F6 or x__fwi_pct itself exists);
+               Part 501 (XGB-Tweedie ML rival, old split); fire_danger and fire_danger_local (rivals.py, 15-24 Sep
+               2026, D:/adaptation/_rivals/fire_L*.npz: our own Fosberg/FFDI-style index, L0 MAE 0.006715, R2
+               +0.0408, old split). Also known when Part B was planned (2026-10-21) and specified (2026-10-25): our
+               fire headline test scores (Part 590) and the fire common board (Part 606: timid Tweedie and
+               predict-zero win on MAE). x__fwi_mean was chosen after Parts 496-498; the normal-anchored C-A / F6 form
+               and x__fwi_pct (RF section 2, written 2026-10-21) were chosen with knowledge of Parts 496-498, whose
+               FWI-only maps lost to predict-zero (MAE 0.0254 vs 0.0192) and gave a negative box-matched anomaly R2
+               (-0.089) on 2021-22 rows inside today's 2019-22 test window (RF section 3, directly below C-A); no
+               score of F6 or of x__fwi_pct itself exists"
+    options:
+      kind: era5_daily
+      product: cems_geff_era5_fwi
+      dataset: cems-fire-historical-v1
+      request_check: {product_type: [reanalysis], dataset_type: consolidated_dataset, system_version: ["4_1"],
+                      grid: "0.25/0.25", variable: [fire_weather_index]}
+      variable: fwinx
+      target_months_offset: 0            # the month read = the row's target month t (info_end = t)
+      unit_centres: {product: fire_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+      min_day_share: 0.8                 # MINDAYS rule (3.5; OD-9)
+      sea_window_steps: 2                # 3.3 / 3.4 (OD-9)
+      max_uncovered_unit_share: 0.01     # 3.4, RF:26 "fail loud above 1%" (OD-9)
+      pct_reference_end: lead_guard_cut  # 3.6: target months <= run.cuts[L]["guard_cut"] (lead 0: 24192, 2003-2015),
+                                         # the row's own month left out
+      pct_min_reference: 10
+      refs_store: {target_product: fire_target_2018, static_product: fire_static_cells, years: [2018],
+                   out_dir: refs_store, file_pattern: "{group}_labels_{year}.parquet",
+                   target_file_pattern: "{group}_{year}.parquet",
+                   target_reader: "C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/datasets/fire/ingest/target_reader.py"}
+
+  - id: geff_seas5
+    label: "F-SEAS5: CEMS GEFF-SEAS5 seasonal FWI, start 1st of month M-5, daily leads 150-184, mean of members 0-24"
+    kind: I
+    adapter: "adapters.fire_geff:build"
+    availability: "adapters.fire_geff:availability"
+    products: [cems_geff_seas5_fwi, fire_static_cells]
+    stats: [x__fwi_mean, x__fwi_pct]
+    families: [F2, F3, F4, F5, F6]
+    links: all
+    t1_kind_columns: [V01_mean_temp_C, V02_total_precip_mm, V09_mean_wind_ms, rmin_pct, era5l_d2m]
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a forecast-only product: at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: none, reason: "GEFF-SEAS5 runs 216 days: no start legal at a 12-month issue reaches the target month"}
+    score_without_net: []
+    pick: lowest_covered_lead_guard      # picked on lead-6 guard rows; nothing carries over from geff_era5 (PLAN :70, :121-123)
+    slim_extra_columns: []
+    optional: false
+    resolution_matched: true
+    coverage: x_finite
+    coverage_note: "rows whose unit maps to a valid 1-deg land point of its box and whose target month has >= 80%
+                    finite member-days (25 members x days of the month)"
+    disclosures:
+      - "re-forecasts (25 members) for starts to 2016-12, real-time forecasts (51 members, members 0-24 kept) from
+         2017-01: part of train, all of test (HQ11); re-forecasts start from a different analysis"
+      - "start = 00 UTC on the 1st of month t-5 = the end of the issue month (Q16); released about the 5th, as our ERA5
+         inputs appear about 5 days after the month: data-time parity"
+      - "daily leads 150-184 always contain the whole target month (its first day is lead 150-153, its last 180-183;
+         computed for every start month 2015-2020, leap Feb included); days of the window outside the target month are
+         dropped"
+      - "1-deg grid; every request's grid starts at its box's south-west corner, so values depend on the box choice
+         (region or merged; recorded in section 1 of the Part); a 1-deg value cannot rank units inside its box
+         (FIRE_CEMS_REPORT.md:86-101); a resolution-matched table is printed"
+      - "no lead 12: GEFF-SEAS5 runs 216 days"
+      - "x__fwi_pct = the unit's mid-rank percentile among its own same-calendar-month FWI of target months up to the
+         lead's guard cut (lead 0: 2003-2015; lead 6: 2003-01..2015-07; training years), the row's own month left out,
+         so every row (pick, refit and test rows alike) is ranked out of sample against FWI known before the guard cut"
+      - "F6 = normal x per-group isotonic ratio on the stat (identity link only), fitted as research C-A states: on fit
+         rows the normal is the same per unit-month mean with the row's own year left out, and the isotonic ratio is
+         fitted with weights N^2 (= squared error on the burned fraction, PLAN rule 5); predictions use the run's own
+         normal of the scored rows"
+      - "the L1 line of an F6 pick is the L1 isotonic anomaly map of the same stat (maps.fit_l1 has no F6 form,
+         maps.py:433-443); printed only"
+      # OD-12. Spec 2.5 wrote "86% of test rows"; the measured count (spec facts list) is 86,388 of 96,000 = 90%
+      - "normal-anchored F6 predicts 0 where the unit's training normal is 0 (90% of lead-6 test rows: 86,388 of 96,000)"
+    r10_note: "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS
+               GEFF-SEAS5 FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on
+               2019+ rows inside today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254
+               vs 0.0192, and the box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group
+               isotonic form were chosen after them, and the normal-anchored C-A / F6 form and the per-unit percentile
+               x__fwi_pct were designed on 2026-10-21 with them in view - no score of F6 or x__fwi_pct itself exists);
+               Part 501 (XGB-Tweedie ML rival, old split); fire_danger and fire_danger_local (rivals.py, 15-24 Sep
+               2026, D:/adaptation/_rivals/fire_L*.npz: our own Fosberg/FFDI-style index, L0 MAE 0.006715, R2
+               +0.0408, old split). Also known when Part B was planned (2026-10-21) and specified (2026-10-25): our
+               fire headline test scores (Part 590) and the fire common board (Part 606: timid Tweedie and
+               predict-zero win on MAE). Parts 496-498 scored GEFF-SEAS5 itself at lead 0-1 month in one region
+               (2021-22); the C-A / F6 / x__fwi_pct sentence of geff_era5 applies here too"
+    options:
+      kind: seas5_daily_leads
+      product: cems_geff_seas5_fwi
+      dataset: cems-fire-seasonal
+      request_check: {variable: [fire_weather_index], release_version: ["5"], day: ["01"]}
+      variable: fwinx
+      start_months_before_target: 5      # start = 00 UTC on the 1st of month t-5 = the end of the issue month (Q16)
+      lead_days: [150, 184]              # leadtime_hour 12 + 24 k, k = 150..184 (FP:81, :218-222)
+      members: [0, 24]                   # members 0-24 in every year (RF:39; FP:225-228)
+      unit_centres: {product: fire_static_cells, file: part-0.parquet, id: cell_id, lat: lat, lon: lon}
+      min_day_share: 0.8
+      sea_window_steps: 2
+      max_uncovered_unit_share: 0.01
+      pct_reference_end: lead_guard_cut  # lead 6: target months <= 24187 (2003-01..2015-07), own month left out
+      pct_min_reference: 10
+
+# Runner rivals (SPEC_HUMAN_PARTB 2.4; code by builder B2: adapters/fire_enso.py, adapters/fire_turco.py). M kind, no
+# adapter / stats / families; one configuration each (the form is an OWNER DECISION, ruled before F7; never a pick).
+#
+# Cut-off rule (OD-4.2): the runners' lead-6 rows are {tier: P} as below. Only if D3 misses 18 Nov AND OD-4.2 = (a),
+# both runners' lead-6 rows become
+#     6: {tier: X, label: "labelled extension: the primary lead-6 rival F-SEAS5 is pending (D3 not complete by 18 Nov, Q24)"}
+# together with the leads_without_rival[6] line above, written before F7 (B9). Under OD-4.2 = (b) the tiers stay P and
+# each runner's disclosures gain "lead 6: optional rivals only; the primary F-SEAS5 is pending (D3 not complete by
+# 18 Nov, Q24)". Whether the runners stay P is otherwise OD-13.
+  - id: enso_lag
+    label: "ENSO-lag regression (Chen et al. 2011, 2016; our implementation): the region's fire anomaly on the lagged ONI"
+    kind: M
+    runner: adapters.fire_enso
+    products: []
+    t1_kind_columns: [oni]               # R8 steps 3 -> T1 boundary issue - 3; x__oni IS ONI(issue - 3) (facts above)
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a seasonal method; at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: X, label: "labelled statistical extension: beyond the published lead of ENSO fire-season forecasts"}
+                                                                               # OWNER DECISION OD-3 (X recommended)
+    score_without_net: []
+    pick: lowest_covered_lead_guard      # one configuration; "pick" only names the guard lead (6)
+    slim_extra_columns: [x__oni]
+    optional: true                       # Q17 (PLAN :279)
+    resolution_matched: false
+    coverage: all_rows                   # label-free: every test row is predicted (a missing ONI -> the normal, counted)
+    coverage_note: "label-free: every row (a missing or out-of-range ONI predicts the normal, counted)"
+    disclosures:
+      - "our implementation of a published method class (Chen et al. 2011 Science 334:787; 2016 Nat. Clim. Change
+         6:906); not an operational product"
+      - "ONI is the engine's own lagged column x__oni = ONI of issue - 3 (catalogue rule; owner 2026-09-27: lagged, not
+         dropped); a subset of our model's inputs"
+      - "one slope per region, fitted on the region's training rows to the lead's cut; a missing ONI predicts the normal"
+      - "lead 12 is beyond the published lead (labelled extension, never decides)"        # OD-3 = X
+    r10_note: "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS
+               GEFF-SEAS5 FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on
+               2019+ rows inside today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254
+               vs 0.0192, and the box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group
+               isotonic form were chosen after them, and the normal-anchored C-A / F6 form and the per-unit percentile
+               x__fwi_pct were designed on 2026-10-21 with them in view - no score of F6 or x__fwi_pct itself exists);
+               Part 501 (XGB-Tweedie ML rival, old split); fire_danger and fire_danger_local (rivals.py, 15-24 Sep
+               2026, D:/adaptation/_rivals/fire_L*.npz: our own Fosberg/FFDI-style index, L0 MAE 0.006715, R2
+               +0.0408, old split). Also known when Part B was planned (2026-10-21) and specified (2026-10-25): our
+               fire headline test scores (Part 590) and the fire common board (Part 606: timid Tweedie and
+               predict-zero win on MAE). The form (RF:49) was written before any score of it, normal-anchored like
+               C-A in the same note (see geff_era5); ONI was a feature of every old fire model"
+    options:
+      form: E1                           # E1 | E2 | E3 (OWNER DECISION OD-2; section 4.1; E1 RECOMMENDED)
+      index_column: x__oni
+      index_abs_max: 5.0                 # |ONI| > 5 -> missing (counted)
+      min_fit_rows: 100                  # per group (Q2.HQ9 row floor)
+      fire_season_months: 3              # E2 only
+      min_month_rows: 100                # E3 only
+
+  - id: turco_spi
+    label: "SPI-lag climate-fire model (Turco et al. 2018; our implementation): fire anomaly on observed SPI at the issue month"
+    kind: M
+    runner: adapters.fire_turco
+    products: []
+    t1_kind_columns: [spi_01m, spi_03m, spi_06m, spi_12m, spi_24m]           # R8 steps 0 -> boundary = issue
+    reads_target_in_test_window: false
+    leads:
+      0: {tier: none, reason: "a seasonal method; at the nowcast the observed-weather FWI (geff_era5) is the rival"}
+      6: {tier: P}
+      12: {tier: X, label: "labelled statistical extension: beyond the published lead of the SPI fire forecasts"}
+                                                                               # OWNER DECISION OD-3 (X recommended)
+    score_without_net: []
+    pick: lowest_covered_lead_guard
+    slim_extra_columns: [x__spi_01m, x__spi_03m, x__spi_06m, x__spi_12m, x__spi_24m]
+    optional: true                       # Q20 (a) "a second optional beside ENSO-lag" (PLAN :281)
+    resolution_matched: false
+    coverage: all_rows
+    coverage_note: "label-free: every row (a missing or out-of-range SPI predicts the normal, counted)"
+    disclosures:
+      - "our implementation of Turco et al. 2018 (Nat. Commun. 9:2718): only OBSERVED SPI at the issue month; the
+         paper's seasonal-forecast SPI of the fire season is not used (no SEAS5 precipitation: D5 not approved, Q10)"
+      - "SPI scale and slope chosen per region on its training rows only (form OWNER DECISION OD-1)"
+      - "a missing or out-of-range SPI predicts the normal (counted; rule of Part A AG3 for H1)"
+      - "lead 12 is beyond the published lead (labelled extension, never decides)"        # OD-3 = X
+    r10_note: "non-blind: Part 491 (our own danger indices MDC, KBDI, Fosberg; old 30/10 split); Parts 496-498 (CEMS
+               GEFF-SEAS5 FWI against the OLD model, northern_australia_monsoon 2021-22, leads 0-1 month, link fitted on
+               2019+ rows inside today's test window 2019-22, where the FWI-only map lost to predict-zero, MAE 0.0254
+               vs 0.0192, and the box-matched anomaly R2 was -0.089; the statistic fwi_mean and the C-B per-group
+               isotonic form were chosen after them, and the normal-anchored C-A / F6 form and the per-unit percentile
+               x__fwi_pct were designed on 2026-10-21 with them in view - no score of F6 or x__fwi_pct itself exists);
+               Part 501 (XGB-Tweedie ML rival, old split); fire_danger and fire_danger_local (rivals.py, 15-24 Sep
+               2026, D:/adaptation/_rivals/fire_L*.npz: our own Fosberg/FFDI-style index, L0 MAE 0.006715, R2
+               +0.0408, old split). Also known when Part B was planned (2026-10-21) and specified (2026-10-25): our
+               fire headline test scores (Part 590) and the fire common board (Part 606: timid Tweedie and
+               predict-zero win on MAE). Never run before; normal-anchored like C-A (see geff_era5); the SPI columns
+               were features of the old fire models"
+    options:
+      form: T1                           # T1 | T2 | T3 (OWNER DECISION OD-1; section 4.2; T1 RECOMMENDED; check the
+                                         # paper text before signing: not verified offline)
+      scales: [x__spi_01m, x__spi_03m, x__spi_06m, x__spi_12m, x__spi_24m]   # T1 candidates; order = tie-break
+      fixed_scale: x__spi_03m            # T2
+      two_scales: [x__spi_03m, x__spi_12m]                                   # T3
+      fire_season_months: 3              # T1, T3
+      spi_abs_max: 3.5                   # SPI is capped at +-3.09 in the panel; beyond 3.5 = corrupt (precip sentinel, Part 620) -> missing
+      min_fit_rows: 100
+
+# Product ids used above (registry/_products.yaml, fire block appended by builder B1, SPEC_HUMAN_PARTB 2.7):
+#   cems_geff_era5_fwi     D2, D:/treeroute/human_products/cems_fire_historical_fwi/geff_era5_v4_1_consolidated_fwi_2003-2022_
+#                          <merged|region>/ (fetch_products.py spec_D2; the folder suffix is the placeholder UNSET_OD6 until
+#                          OD-6 is ruled and the owner sets it, F4b)
+#   cems_geff_seas5_fwi    D3, D:/treeroute/human_products/cems_fire_seasonal_fwi/geff_seas5_r5_fwi_starts200208-202207_
+#                          L150-184_<region|merged>_y<n>/ (spec_D3; UNSET_OD6 placeholder likewise)
+#   fire_static_cells      engine/datasets/fire/data/static/part-0.parquet (unit centres; manifest via `manifest`, F2)
+#   fire_target_2018       D:/fire/target/*_2018.parquet (read only by the prep, through the package reader; F2)
+#   fire_refs_label_store  <index_root>/fire/20261017_869d1f38/_work/geff_era5/refs_store (the prep's output; F3)

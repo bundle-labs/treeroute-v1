@@ -1,0 +1,1329 @@
+﻿====================================================================================================
+paper/draft/S3_posthoc.md new visible characters: 129924
+-- 'Model' (paper term: final answer): 92
+     L35: left out of treeroute v1's results; we asked what each model uses and how far treeroute v1 and its rivals agree (ru
+     L668: ertainty from a bootstrap over regions; and that every model explain the same fixed sample of 1,000 test rows per p
+     L670: **Method.** Each model is explained in its own link space by SHAP values (Lun
+     L670: mean, over the explained row's background rows, of the model's output with those players at the explained row's val
+     L670: ckground, chosen for this analysis and shared by every model. Under B2, the primary background, it is the same loca
+     L672: orests were rebuilt from the rival boards' records. No model got a SHAP value before it had reproduced its saved pr
+     L674: yer, and so is , the seasonal normal however a model takes it; a router-context column that is an exact cop
+     L676: normal. A player's importance to a model, $I_m(j)$, is its mean absolute SHAP value over the sa
+     L676: the sample rows, with each region weighted equally; a model's ranking orders the players by importance, ties broke
+     L676: are used. A player's share is its importance over the model's total importance over J, the base of every top-10 an
+     L676: res. J, at each level, holds the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L676: a structural zero, is exactly 0 on every row of every model, so a plain mean would give the same J.
+     L678: , and the mean pairwise Spearman correlation; for each model, its stability under region resampling, the mean Spear
+     L680: of regions with replacement: the same draws for every model, made by a fixed hash generator (no seed is varied), w
+     L680: y. All values are in link space; for each arcsine-link model the variable-level importances on its rows with a fore
+     L688: **a. Explained models.** | Problem | Model (data name) | Model and SHAP method | Link | Skill gua
+     L688: . Explained models.** | Problem | Model (data name) | Model and SHAP method | Link | Skill guard at the nowcast |
+     L698: ) | published rain-lag Bayesian distributed-lag model, per location; exact linear SHAP over its nine input c
+     L730: on, which explains the nowcast only. ᵃ Failed: the raw model is explained, labelled, and kept out of Kendall's W, t
+     L731: ne, the arcsine square root. Within each problem every model has the same c and upper bound, so two models are same
+     L733: drawn from the labelled test rows that every compared model covers, stratified by region and test year with a fixe
+     L735: the active sets, nowcast. J: the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L745: | ᵃ Frame: the labelled test rows that every compared model covers; the sample is drawn from it, stratified by reg
+     L748: with the median. Structural zeros (exactly 0 in every model at that level, so outside J): PM2.5: variable level (2
+     L755: l (1) . **Exactness checks.** Every explained model reproduced its saved predictions before any SHAP value
+     L755: the base value and the unattributed part add up to the model's link-space output within 10⁻⁹ at both levels (S-ADD)
+     L755: 10⁻⁹ at both levels (S-ADD); the evaluator equals the model (S-EVAL); the unattributed part stays small (S-RESID);
+     L755: row gets exactly 0 (S-ZERO): all four passed for every model. treeroute v1's rebuild ran its gate
+     L757: **Table S3.20 (post hoc).** Checks of every explained model, nowcast: the rebuild or reload reproduces the saved p
+     L757: predictions (S-EXACT), the attributions add up to the model's output (S-ADD), its evaluator equals the model (S-EV
+     L757: o the model's output (S-ADD), its evaluator equals the model (S-EVAL), the unattributed part stays small (S-RESID),
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clipp
+     L790: y-link twin (gate E5a, Table S3.21). ᵈ Failed: the raw model is explained, labelled, and kept out of Kendall's W, t
+     L807: sed | | E7 | error-weighted arm only: the error-weight model equals its record | not applicable | not applicable |
+     L815: et, this correlation only over the variables in either model's top 20. The RB
+     L836: route v1 and a rival cannot separate the link from the model there. ᵇ PM2.5: the interval of the RBO with the conse
+     L842: air at both levels, the main set's agreement with each model's stability, each model's top 10 at both levels and it
+     L842: main set's agreement with each model's stability, each model's top 10 at both levels and its family shares. On burn
+     L842: 0.2% (treeroute v1) to 12.8% (LightGBM) of a main-set model's family attribution (Table S3.27 f). **
+     L844: e feature level (b); the main set's agreement and each model's stability (c); each model's top 10 at both levels (d
+     L844: n set's agreement and each model's stability (c); each model's top 10 at both levels (d, e) and its family shares (
+     L844: arable in scale or rank. Top-10 shares (d, e) are of a model's total mean absolute SHAP value over J; family shares
+     L868: signs) | **c. Agreement within the main set, and each model's stability.** | Statistic | Variable level | Feature
+     L879: g: LightGBM | 1.00 | 1.00 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L895: iables | 88 | 89 | 87 | 87 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L924: ling BB2). Stability (panel c): the mean Spearman of a model's full-sample importances with its own bootstrap repli
+     L924: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.24 (post hoc).** ND
+     L958: sign) | **c. Agreement within the main set, and each model's stability.** | Statistic | Variable level | Feature
+     L970: ling: BARDL | 1.00 | 1.00 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L986: es | 94 | 96 | 94 | 94 | 3 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1016: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.25 (post hoc).** Bu
+     L1018: ble in scale or rank. Top-10 shares (d, e, g) are of a model's total mean absolute SHAP value over J (g: on its row
+     L1024: ge | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.47 [0.41, 0.52
+     L1028: ] (1 sign) | | Ridge vs random forest | same-link; raw model, declined by its skill guard: Ridge | 0.70 [0.66, 0.72
+     L1029: 1.00] (3 signs) | | Ridge vs LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.59 [0.53, 0.64
+     L1030: er | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.68 [0.65, 0.71
+     L1039: ge | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.27 [0.20, 0.37
+     L1043: (0 signs) | | Ridge vs random forest | same-link; raw model, declined by its skill guard: Ridge | 0.67 [0.63, 0.69
+     L1044: 1.00] (2 signs) | | Ridge vs LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.55 [0.50, 0.61
+     L1045: er | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.64 [0.62, 0.67
+     L1062: die booster | 0.99 | 0.99 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1078: s | 94 | 94 | 94 | 87 | 94 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1120: route v1 and a rival cannot separate the link from the model. Sign agreement: of the players in the union of the tw
+     L1124: onzero (panels d and e): the players of J to which the model gives a nonzero share. Panel g: each arcsine-link mode
+     L1125: odel gives a nonzero share. Panel g: each arcsine-link model's variable-level shares on its rows with a forecast ab
+     L1187: s | 99 | 99 | 99 | 99 | 99 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1216: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.27 (post hoc).** Co
+     L1273: ror booster | 0.98 | 0.98 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1289: 5 | 25 | 25 | 25 | 25 | 25 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1463: **Not claimed.** SHAP values show what a model uses to move its forecast away from its background, no
+     L1463: ces this), and the interventional values evaluate each model on rows that mix the explained row's values with a bac
+-- 'model' (paper term: final answer): 92
+     L35: left out of treeroute v1's results; we asked what each model uses and how far treeroute v1 and its rivals agree (ru
+     L668: ertainty from a bootstrap over regions; and that every model explain the same fixed sample of 1,000 test rows per p
+     L670: **Method.** Each model is explained in its own link space by SHAP values (Lun
+     L670: mean, over the explained row's background rows, of the model's output with those players at the explained row's val
+     L670: ckground, chosen for this analysis and shared by every model. Under B2, the primary background, it is the same loca
+     L672: orests were rebuilt from the rival boards' records. No model got a SHAP value before it had reproduced its saved pr
+     L674: yer, and so is , the seasonal normal however a model takes it; a router-context column that is an exact cop
+     L676: normal. A player's importance to a model, $I_m(j)$, is its mean absolute SHAP value over the sa
+     L676: the sample rows, with each region weighted equally; a model's ranking orders the players by importance, ties broke
+     L676: are used. A player's share is its importance over the model's total importance over J, the base of every top-10 an
+     L676: res. J, at each level, holds the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L676: a structural zero, is exactly 0 on every row of every model, so a plain mean would give the same J.
+     L678: , and the mean pairwise Spearman correlation; for each model, its stability under region resampling, the mean Spear
+     L680: of regions with replacement: the same draws for every model, made by a fixed hash generator (no seed is varied), w
+     L680: y. All values are in link space; for each arcsine-link model the variable-level importances on its rows with a fore
+     L688: **a. Explained models.** | Problem | Model (data name) | Model and SHAP method | Link | Skill gua
+     L688: . Explained models.** | Problem | Model (data name) | Model and SHAP method | Link | Skill guard at the nowcast |
+     L698: ) | published rain-lag Bayesian distributed-lag model, per location; exact linear SHAP over its nine input c
+     L730: on, which explains the nowcast only. ᵃ Failed: the raw model is explained, labelled, and kept out of Kendall's W, t
+     L731: ne, the arcsine square root. Within each problem every model has the same c and upper bound, so two models are same
+     L733: drawn from the labelled test rows that every compared model covers, stratified by region and test year with a fixe
+     L735: the active sets, nowcast. J: the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L745: | ᵃ Frame: the labelled test rows that every compared model covers; the sample is drawn from it, stratified by reg
+     L748: with the median. Structural zeros (exactly 0 in every model at that level, so outside J): PM2.5: variable level (2
+     L755: l (1) . **Exactness checks.** Every explained model reproduced its saved predictions before any SHAP value
+     L755: the base value and the unattributed part add up to the model's link-space output within 10⁻⁹ at both levels (S-ADD)
+     L755: 10⁻⁹ at both levels (S-ADD); the evaluator equals the model (S-EVAL); the unattributed part stays small (S-RESID);
+     L755: row gets exactly 0 (S-ZERO): all four passed for every model. treeroute v1's rebuild ran its gate
+     L757: **Table S3.20 (post hoc).** Checks of every explained model, nowcast: the rebuild or reload reproduces the saved p
+     L757: predictions (S-EXACT), the attributions add up to the model's output (S-ADD), its evaluator equals the model (S-EV
+     L757: o the model's output (S-ADD), its evaluator equals the model (S-EVAL), the unattributed part stays small (S-RESID),
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clipp
+     L790: y-link twin (gate E5a, Table S3.21). ᵈ Failed: the raw model is explained, labelled, and kept out of Kendall's W, t
+     L807: sed | | E7 | error-weighted arm only: the error-weight model equals its record | not applicable | not applicable |
+     L815: et, this correlation only over the variables in either model's top 20. The RB
+     L836: route v1 and a rival cannot separate the link from the model there. ᵇ PM2.5: the interval of the RBO with the conse
+     L842: air at both levels, the main set's agreement with each model's stability, each model's top 10 at both levels and it
+     L842: main set's agreement with each model's stability, each model's top 10 at both levels and its family shares. On burn
+     L842: 0.2% (treeroute v1) to 12.8% (LightGBM) of a main-set model's family attribution (Table S3.27 f). **
+     L844: e feature level (b); the main set's agreement and each model's stability (c); each model's top 10 at both levels (d
+     L844: n set's agreement and each model's stability (c); each model's top 10 at both levels (d, e) and its family shares (
+     L844: arable in scale or rank. Top-10 shares (d, e) are of a model's total mean absolute SHAP value over J; family shares
+     L868: signs) | **c. Agreement within the main set, and each model's stability.** | Statistic | Variable level | Feature
+     L879: g: LightGBM | 1.00 | 1.00 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L895: iables | 88 | 89 | 87 | 87 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L924: ling BB2). Stability (panel c): the mean Spearman of a model's full-sample importances with its own bootstrap repli
+     L924: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.24 (post hoc).** ND
+     L958: sign) | **c. Agreement within the main set, and each model's stability.** | Statistic | Variable level | Feature
+     L970: ling: BARDL | 1.00 | 1.00 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L986: es | 94 | 96 | 94 | 94 | 3 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1016: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.25 (post hoc).** Bu
+     L1018: ble in scale or rank. Top-10 shares (d, e, g) are of a model's total mean absolute SHAP value over J (g: on its row
+     L1024: ge | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.47 [0.41, 0.52
+     L1028: ] (1 sign) | | Ridge vs random forest | same-link; raw model, declined by its skill guard: Ridge | 0.70 [0.66, 0.72
+     L1029: 1.00] (3 signs) | | Ridge vs LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.59 [0.53, 0.64
+     L1030: er | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.68 [0.65, 0.71
+     L1039: ge | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.27 [0.20, 0.37
+     L1043: (0 signs) | | Ridge vs random forest | same-link; raw model, declined by its skill guard: Ridge | 0.67 [0.63, 0.69
+     L1044: 1.00] (2 signs) | | Ridge vs LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.55 [0.50, 0.61
+     L1045: er | cross-link (not comparable in scale or rank); raw model, declined by its skill guard: Ridge | 0.64 [0.62, 0.67
+     L1062: die booster | 0.99 | 0.99 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1078: s | 94 | 94 | 94 | 87 | 94 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1120: route v1 and a rival cannot separate the link from the model. Sign agreement: of the players in the union of the tw
+     L1124: onzero (panels d and e): the players of J to which the model gives a nonzero share. Panel g: each arcsine-link mode
+     L1125: odel gives a nonzero share. Panel g: each arcsine-link model's variable-level shares on its rows with a forecast ab
+     L1187: s | 99 | 99 | 99 | 99 | 99 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1216: onzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.27 (post hoc).** Co
+     L1273: ror booster | 0.98 | 0.98 | **d. Variable level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1289: 5 | 25 | 25 | 25 | 25 | 25 | **e. Feature level: each model's top 10 (share).** | Rank | treeroute v1 | Ridge | R
+     L1463: **Not claimed.** SHAP values show what a model uses to move its forecast away from its background, no
+     L1463: ces this), and the interventional values evaluate each model on rows that mix the explained row's values with a bac
+-- 'row(s)' (paper term: survey visit (coral only)): 75
+     L668: very model explain the same fixed sample of 1,000 test rows per problem (ruling AW).
+     L668: n 2026-11-12; smoke tests computed SHAP values on real rows only as plumbing (at most 250 coral bleaching survey v
+     L668: y visits before those sections were frozen and, later, rows of the comparison's samples in the checks of two loade
+     L670: is worth the mean, over the explained row's background rows, of the model's output with those players at the expla
+     L670: imary background, it is the same location's router fit rows at or before the cut with the explained row's season k
+     L670: al bleaching it is the survey visit's saved router fit rows, the neighbour router's pool of earlier nearby survey
+     L672: : each coefficient times the mean, over the background rows, of the explained row's difference from the background
+     L676: m(j)$, is its mean absolute SHAP value over the sample rows, with each region weighted equally; a model's ranking
+     L680: csine-link model the variable-level importances on its rows with a forecast above 0 are also given.
+     L682: as shipped and frozen, which are not functions of the rows' input columns; CAMS EAC4 and the burned-fraction publ
+     L725: hipped; VT0007, frozen at 2019 | Not a function of the rows' input columns: the index value as the product gives i
+     L733: ined (ruling AY1). Each problem's sample of 1,000 test rows was drawn from the labelled test rows that every compa
+     L733: le of 1,000 test rows was drawn from the labelled test rows that every compared model covers, stratified by region
+     L733: xed hash generator, and registered with its background rows; every SHAP script refuses a sample or background file
+     L733: test year, and the sample is trimmed to exactly 1,000 rows, so that the routers are rebuilt for few locations; on
+     L733: ns (on coral bleaching, survey visits), its background rows per sample row and, per level, the players, J and the
+     L737: | Problem | Frame rowsᵃ | Sample rows | Regions | Locationsᵇ | Background rows per sample ro
+     L737: owsᵃ | Sample rows | Regions | Locationsᵇ | Background rows per sample rowᶜ | Background pairs | Feature level: pl
+     L745: 9 / 68 / 1 | 26 / 25 / 1 | ᵃ Frame: the labelled test rows that every compared model covers; the sample is drawn
+     L747: ite. ᶜ Background (B2): the same location's router fit rows of the sample row's calendar month at or before the cu
+     L747: ; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits. Shown as the
+     L755: rned fraction and coral bleaching, bit for bit on most rows and within the D8 tolerance (ruling AY3) on the rest,
+     L755: ne's tree answers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on on
+     L755: ers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on one survey visit
+     L755: and burned fraction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled lo
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clippedᵃ | L
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clippedᵃ | Largest absolute difference, re
+     L787: 2 × 10⁻¹⁵ / 2.0 × 10⁻¹⁵ | 0 | all passed | passed | ᵃ Rows checked: every test row of the rival's saved predictio
+     L788: the design, kept as a record, matched 70,795 of 91,440 rows on PM2.5, 17,451 of 95,184 on NDVI, 95,711 of 96,000 o
+     L803: | passed | passed | passed | passed | | E4 | training rows: count and row-key hash | passed (2,590,280 rows) | pa
+     L803: ining rows: count and row-key hash | passed (2,590,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | p
+     L803: key hash | passed (2,590,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | p
+     L803: ,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | |
+     L803: ,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | | E5ᵃ | fingerprint of the t
+     L803: 1,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | | E5ᵃ | fingerprint of the tree bank, the corrector
+     L805: applicable | not applicable | passed (13,440 of 13,440 rows) | not applicable | passed (2,312 of 2,312 rows) | | E
+     L805: 13,440 rows) | not applicable | passed (2,312 of 2,312 rows) | | E6 | c and the identity tolerances (one per link)
+     L808: assed (all 42 region fits; region proof on 1,008 score rows and 4,032 background rows) | passed (all 2,312 fits) |
+     L808: region proof on 1,008 score rows and 4,032 background rows) | passed (all 2,312 fits) | | E8 | the adopted arm's
+     L809: y test survey visit) | bit-identical (12,192 of 12,192 rows) | bit-identical (12,768 of 12,768 rows) | 13,056 of 1
+     L809: ,192 of 12,192 rows) | bit-identical (12,768 of 12,768 rows) | 13,056 of 13,440 rows bit-identical; the rest withi
+     L809: t-identical (12,768 of 12,768 rows) | 13,056 of 13,440 rows bit-identical; the rest within the D8 tolerance (large
+     L809: ifference 2.4 × 10⁻¹³) | bit-identical (1,008 of 1,008 rows) | 2,228 of 2,312 rows bit-identical; the rest within
+     L809: | bit-identical (1,008 of 1,008 rows) | 2,228 of 2,312 rows bit-identical; the rest within the D8 tolerance (large
+     L810: wers bit for bit, on one sampled location's router fit rows and test rows (forest loss: every sampled location; co
+     L810: it, on one sampled location's router fit rows and test rows (forest loss: every sampled location; coral bleaching:
+     L810: cation; coral bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | pass
+     L810: ey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | passed (251 rows, 13,200 trees) | pas
+     L810: t row) | passed (252 rows, 12,600 trees) | passed (251 rows, 13,200 trees) | passed (215 rows, 3,900 trees) | pass
+     L810: trees) | passed (251 rows, 13,200 trees) | passed (215 rows, 3,900 trees) | passed (every sampled location of the
+     L810: every sampled location of the 42 regions) | passed (51 rows, 7,700 trees) | ᵃ E5 is informational: the rebuilt fi
+     L842: 's forecast is above 0 on only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25
+     L842: only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25 g). On NDVI,
+     L1018: ares (f); and the arcsine-link models' top 10 on their rows with a forecast above 0 (g). Link space. Percentile 95
+     L1018: del's total mean absolute SHAP value over J (g: on its rows with a forecast above 0); family shares (f) are of the
+     L1104: 0.0% | 0.0% | 0.0% | 0.0% | **g. Arcsine-link models, rows with a forecast above 0: top 10 (share).** | Rank | t
+     L1118: 2.2% | | 9 | 2.2% | | 10 | 1.7% | | Rows with a forecast above 0 | 226 | ᵃ The main set is tre
+     L1125: each arcsine-link model's variable-level shares on its rows with a forecast above 0, over every variable of the pr
+     L1329: 2.2% | 3.1% | 3.7% | | Rows with a forecast above 0 | 973 | 1,000 | 995 | 983 | S
+     L1337: t.** B1 explains treeroute v1 on the same 1,000 sample rows against all of each location's router fit rows at or b
+     L1337: sample rows against all of each location's router fit rows at or before the cut, not only those of the explained
+     L1337: largest difference is 0 at both levels, with the same rows, players and variables, so the B1 numbers of PM2.5, ND
+     L1339: e feature level (b). B1 explains the same 1,000 sample rows against all of each location's router fit rows at or b
+     L1339: sample rows against all of each location's router fit rows at or before the cut, not only those of the same calen
+     L1449: alues, variable level (every row and variable) | 0 | | Rows, main run / B1 run | 1,000 / 1,000 | | Players, main r
+     L1452: | | Variables, main run / B1 run | 121 / 121 | | Same rows / players / variables | yes / yes / yes | Coral bleac
+     L1455: fined, so it has no B1 run. The identity check matches rows by their sample row and players and variables by name;
+     L1457: protocol, gave the same values for the five main-text rows (burned fraction's defined part), for samples of the p
+     L1459: the tie rule of the top 10 on the arcsine-link models' rows with a forecast above 0 and a cap on the structural ze
+     L1463: , and the interventional values evaluate each model on rows that mix the explained row's values with a background
+     L1463: ion. Everything here is post hoc, on a sample of 1,000 rows per problem at the nowcast.
+-- 'row(s)' (paper term: entry (of a published rival)): 75
+     L668: very model explain the same fixed sample of 1,000 test rows per problem (ruling AW).
+     L668: n 2026-11-12; smoke tests computed SHAP values on real rows only as plumbing (at most 250 coral bleaching survey v
+     L668: y visits before those sections were frozen and, later, rows of the comparison's samples in the checks of two loade
+     L670: is worth the mean, over the explained row's background rows, of the model's output with those players at the expla
+     L670: imary background, it is the same location's router fit rows at or before the cut with the explained row's season k
+     L670: al bleaching it is the survey visit's saved router fit rows, the neighbour router's pool of earlier nearby survey
+     L672: : each coefficient times the mean, over the background rows, of the explained row's difference from the background
+     L676: m(j)$, is its mean absolute SHAP value over the sample rows, with each region weighted equally; a model's ranking
+     L680: csine-link model the variable-level importances on its rows with a forecast above 0 are also given.
+     L682: as shipped and frozen, which are not functions of the rows' input columns; CAMS EAC4 and the burned-fraction publ
+     L725: hipped; VT0007, frozen at 2019 | Not a function of the rows' input columns: the index value as the product gives i
+     L733: ined (ruling AY1). Each problem's sample of 1,000 test rows was drawn from the labelled test rows that every compa
+     L733: le of 1,000 test rows was drawn from the labelled test rows that every compared model covers, stratified by region
+     L733: xed hash generator, and registered with its background rows; every SHAP script refuses a sample or background file
+     L733: test year, and the sample is trimmed to exactly 1,000 rows, so that the routers are rebuilt for few locations; on
+     L733: ns (on coral bleaching, survey visits), its background rows per sample row and, per level, the players, J and the
+     L737: | Problem | Frame rowsᵃ | Sample rows | Regions | Locationsᵇ | Background rows per sample ro
+     L737: owsᵃ | Sample rows | Regions | Locationsᵇ | Background rows per sample rowᶜ | Background pairs | Feature level: pl
+     L745: 9 / 68 / 1 | 26 / 25 / 1 | ᵃ Frame: the labelled test rows that every compared model covers; the sample is drawn
+     L747: ite. ᶜ Background (B2): the same location's router fit rows of the sample row's calendar month at or before the cu
+     L747: ; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits. Shown as the
+     L755: rned fraction and coral bleaching, bit for bit on most rows and within the D8 tolerance (ruling AY3) on the rest,
+     L755: ne's tree answers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on on
+     L755: ers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on one survey visit
+     L755: and burned fraction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled lo
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clippedᵃ | L
+     L759: | Problem | Model | Rows checkedᵃ | Bit-identical rows, pre-clip / clippedᵃ | Largest absolute difference, re
+     L787: 2 × 10⁻¹⁵ / 2.0 × 10⁻¹⁵ | 0 | all passed | passed | ᵃ Rows checked: every test row of the rival's saved predictio
+     L788: the design, kept as a record, matched 70,795 of 91,440 rows on PM2.5, 17,451 of 95,184 on NDVI, 95,711 of 96,000 o
+     L803: | passed | passed | passed | passed | | E4 | training rows: count and row-key hash | passed (2,590,280 rows) | pa
+     L803: ining rows: count and row-key hash | passed (2,590,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | p
+     L803: key hash | passed (2,590,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | p
+     L803: ,280 rows) | passed (2,680,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | |
+     L803: ,841 rows) | passed (751,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | | E5ᵃ | fingerprint of the t
+     L803: 1,508 rows) | passed (3,011,184 rows) | passed (11,338 rows) | | E5ᵃ | fingerprint of the tree bank, the corrector
+     L805: applicable | not applicable | passed (13,440 of 13,440 rows) | not applicable | passed (2,312 of 2,312 rows) | | E
+     L805: 13,440 rows) | not applicable | passed (2,312 of 2,312 rows) | | E6 | c and the identity tolerances (one per link)
+     L808: assed (all 42 region fits; region proof on 1,008 score rows and 4,032 background rows) | passed (all 2,312 fits) |
+     L808: region proof on 1,008 score rows and 4,032 background rows) | passed (all 2,312 fits) | | E8 | the adopted arm's
+     L809: y test survey visit) | bit-identical (12,192 of 12,192 rows) | bit-identical (12,768 of 12,768 rows) | 13,056 of 1
+     L809: ,192 of 12,192 rows) | bit-identical (12,768 of 12,768 rows) | 13,056 of 13,440 rows bit-identical; the rest withi
+     L809: t-identical (12,768 of 12,768 rows) | 13,056 of 13,440 rows bit-identical; the rest within the D8 tolerance (large
+     L809: ifference 2.4 × 10⁻¹³) | bit-identical (1,008 of 1,008 rows) | 2,228 of 2,312 rows bit-identical; the rest within
+     L809: | bit-identical (1,008 of 1,008 rows) | 2,228 of 2,312 rows bit-identical; the rest within the D8 tolerance (large
+     L810: wers bit for bit, on one sampled location's router fit rows and test rows (forest loss: every sampled location; co
+     L810: it, on one sampled location's router fit rows and test rows (forest loss: every sampled location; coral bleaching:
+     L810: cation; coral bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | pass
+     L810: ey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | passed (251 rows, 13,200 trees) | pas
+     L810: t row) | passed (252 rows, 12,600 trees) | passed (251 rows, 13,200 trees) | passed (215 rows, 3,900 trees) | pass
+     L810: trees) | passed (251 rows, 13,200 trees) | passed (215 rows, 3,900 trees) | passed (every sampled location of the
+     L810: every sampled location of the 42 regions) | passed (51 rows, 7,700 trees) | ᵃ E5 is informational: the rebuilt fi
+     L842: 's forecast is above 0 on only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25
+     L842: only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25 g). On NDVI,
+     L1018: ares (f); and the arcsine-link models' top 10 on their rows with a forecast above 0 (g). Link space. Percentile 95
+     L1018: del's total mean absolute SHAP value over J (g: on its rows with a forecast above 0); family shares (f) are of the
+     L1104: 0.0% | 0.0% | 0.0% | 0.0% | **g. Arcsine-link models, rows with a forecast above 0: top 10 (share).** | Rank | t
+     L1118: 2.2% | | 9 | 2.2% | | 10 | 1.7% | | Rows with a forecast above 0 | 226 | ᵃ The main set is tre
+     L1125: each arcsine-link model's variable-level shares on its rows with a forecast above 0, over every variable of the pr
+     L1329: 2.2% | 3.1% | 3.7% | | Rows with a forecast above 0 | 973 | 1,000 | 995 | 983 | S
+     L1337: t.** B1 explains treeroute v1 on the same 1,000 sample rows against all of each location's router fit rows at or b
+     L1337: sample rows against all of each location's router fit rows at or before the cut, not only those of the explained
+     L1337: largest difference is 0 at both levels, with the same rows, players and variables, so the B1 numbers of PM2.5, ND
+     L1339: e feature level (b). B1 explains the same 1,000 sample rows against all of each location's router fit rows at or b
+     L1339: sample rows against all of each location's router fit rows at or before the cut, not only those of the same calen
+     L1449: alues, variable level (every row and variable) | 0 | | Rows, main run / B1 run | 1,000 / 1,000 | | Players, main r
+     L1452: | | Variables, main run / B1 run | 121 / 121 | | Same rows / players / variables | yes / yes / yes | Coral bleac
+     L1455: fined, so it has no B1 run. The identity check matches rows by their sample row and players and variables by name;
+     L1457: protocol, gave the same values for the five main-text rows (burned fraction's defined part), for samples of the p
+     L1459: the tie rule of the top 10 on the arcsine-link models' rows with a forecast above 0 and a cap on the structural ze
+     L1463: , and the interventional values evaluate each model on rows that mix the explained row's values with a background
+     L1463: ion. Everything here is post hoc, on a sample of 1,000 rows per problem at the nowcast.
+-- 'row' (paper term: survey visit (coral only)): 63
+     L668: before any SHAP value had been computed on a real data row; its sections on the sample and the statistics, revise
+     L670: a set of players is worth the mean, over the explained row's background rows, of the model's output with those pl
+     L670: the model's output with those players at the explained row's values and every other player at the background row'
+     L670: row's values and every other player at the background row's.
+     L670: Each explained row has its own background, chosen for this analysis and s
+     L670: outer fit rows at or before the cut with the explained row's season key (its calendar month; forest loss is annua
+     L670: the training years: a column that takes the explained row's value on every background row, such as a static colu
+     L670: at takes the explained row's value on every background row, such as a static column, latitude, the month or the s
+     L672: ect's own code, which walks every pair of an explained row and a background row exactly and was checked against b
+     L672: walks every pair of an explained row and a background row exactly and was checked against brute-force Shapley va
+     L672: s the mean, over the background rows, of the explained row's difference from the background row (a BARDL mean ove
+     L672: of the explained row's difference from the background row (a BARDL mean over months is split exactly over the mo
+     L676: ean absolute attributions, a family's attribution on a row being the sum of its variables' SHAP values; the own-h
+     L676: other player, a structural zero, is exactly 0 on every row of every model, so a plain mean would give the same J.
+     L678: ceiling on the agreement between models. The main-text row gives, besides W, the median and the range of treerout
+     L680: ces, every statistic and every number of the main-text row recomputed on each draw; a statistic that is defined o
+     L682: pt out of Kendall's W, the consensus and the main-text row (decision D6). BARDL reads three variables (nine colum
+     L730: pt out of Kendall's W, the consensus and the main-text row (decision D6). Links: identity; log(y + c), with c the
+     L733: even on burned fraction, six on forest loss), with one row per location and test year, and the sample is trimmed
+     L733: aching, survey visits), its background rows per sample row and, per level, the players, J and the structural zero
+     L747: B2): the same location's router fit rows of the sample row's calendar month at or before the cut (forest loss, an
+     L747: sits. Shown as the lowest to highest number per sample row, with the median. Structural zeros (exactly 0 in every
+     L755: .5, NDVI and forest loss, bit for bit on every checked row; treeroute v1's arcsine arms, on burned fraction and c
+     L755: licensed by gate E5a. On every explained row, the SHAP values, the base value and the unattributed
+     L755: mall (S-RESID); and a player that equals the explained row on every background row gets exactly 0 (S-ZERO): all f
+     L755: ayer that equals the explained row on every background row gets exactly 0 (S-ZERO): all four passed for every mod
+     L755: ares the adopted arm's saved predictions on every test row of every sampled location, on coral bleaching on all 2
+     L755: ction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled location (fores
+     L757: mall (S-RESID), and a player that equals the explained row on every background row gets exactly 0 (S-ZERO).
+     L757: ayer that equals the explained row on every background row gets exactly 0 (S-ZERO).
+     L787: 0 | all passed | passed | ᵃ Rows checked: every test row of the rival's saved predictions; for treeroute v1, ev
+     L787: ival's saved predictions; for treeroute v1, every test row of every sampled location (coral bleaching: every test
+     L790: pt out of Kendall's W, the consensus and the main-text row (decision D6). **Table S3.21 (post hoc).** treeroute
+     L805: s identity-link twin is bit-identical on every checked row | not applicable | not applicable | passed (13,440 of
+     L809: saved predictions, pre-clip and clipped, on every test row of every sampled location (coral bleaching: every test
+     L810: bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | passed (251 rows,
+     L815: **Results.** Table 9 (Section 5.4) gives the main-text row of each problem; Table S3.22 repeats it with its compo
+     L817: **Table S3.22 (post hoc).** The main-text row (Table 9) with its components, nowcast, variable level
+     L844: ean absolute attributions, a family's attribution on a row being the sum of its variables' SHAP values; both mean
+     L911: ly shares (sums of the variable-level attributions per row).** | Family | treeroute v1 | Ridge | Random forest |
+     L1337: at or before the cut, not only those of the explained row's calendar month, so the month and the seasonal normal
+     L1337: endall's W, consensus, main-set statistic or main-text row, and it is compared with no rival.
+     L1339: set: it enters no Kendall's W, consensus or main-text row and is compared with no rival. J is the pair's own (th
+     L1447: te difference of the SHAP values, feature level (every row and player) | 0 | | Largest absolute difference of the
+     L1448: e difference of the SHAP values, variable level (every row and variable) | 0 | | Rows, main run / B1 run | 1,000
+     L1455: 1 run. The identity check matches rows by their sample row and players and variables by name; it is from the inde
+     L1457: numbers and the B1 sensitivity's from the SHAP values' row files and the runs' records, and a reconciliation comp
+     L1459: share with its interval in burned fraction's main-text row, as it writes them only when treeroute v1 has a same-l
+     L1459: the two missing entries of burned fraction's main-text row and every sign-agreement interval are taken from the r
+     L1461: shares has one label, "median of the rivals", in every row: on PM2.5 and forest loss it is LightGBM's share and o
+     L1463: the training years: a column that equals the explained row on every background row is 0 by construction, not unus
+     L1463: lumn that equals the explained row on every background row is 0 by construction, not unused, and columns with a t
+     L1463: ues evaluate each model on rows that mix the explained row's values with a background row's, combinations that ma
+     L1463: that mix the explained row's values with a background row's, combinations that may never occur. BARDL reads nine
+-- 'row' (paper term: entry (of a published rival)): 63
+     L668: before any SHAP value had been computed on a real data row; its sections on the sample and the statistics, revise
+     L670: a set of players is worth the mean, over the explained row's background rows, of the model's output with those pl
+     L670: the model's output with those players at the explained row's values and every other player at the background row'
+     L670: row's values and every other player at the background row's.
+     L670: Each explained row has its own background, chosen for this analysis and s
+     L670: outer fit rows at or before the cut with the explained row's season key (its calendar month; forest loss is annua
+     L670: the training years: a column that takes the explained row's value on every background row, such as a static colu
+     L670: at takes the explained row's value on every background row, such as a static column, latitude, the month or the s
+     L672: ect's own code, which walks every pair of an explained row and a background row exactly and was checked against b
+     L672: walks every pair of an explained row and a background row exactly and was checked against brute-force Shapley va
+     L672: s the mean, over the background rows, of the explained row's difference from the background row (a BARDL mean ove
+     L672: of the explained row's difference from the background row (a BARDL mean over months is split exactly over the mo
+     L676: ean absolute attributions, a family's attribution on a row being the sum of its variables' SHAP values; the own-h
+     L676: other player, a structural zero, is exactly 0 on every row of every model, so a plain mean would give the same J.
+     L678: ceiling on the agreement between models. The main-text row gives, besides W, the median and the range of treerout
+     L680: ces, every statistic and every number of the main-text row recomputed on each draw; a statistic that is defined o
+     L682: pt out of Kendall's W, the consensus and the main-text row (decision D6). BARDL reads three variables (nine colum
+     L730: pt out of Kendall's W, the consensus and the main-text row (decision D6). Links: identity; log(y + c), with c the
+     L733: even on burned fraction, six on forest loss), with one row per location and test year, and the sample is trimmed
+     L733: aching, survey visits), its background rows per sample row and, per level, the players, J and the structural zero
+     L747: B2): the same location's router fit rows of the sample row's calendar month at or before the cut (forest loss, an
+     L747: sits. Shown as the lowest to highest number per sample row, with the median. Structural zeros (exactly 0 in every
+     L755: .5, NDVI and forest loss, bit for bit on every checked row; treeroute v1's arcsine arms, on burned fraction and c
+     L755: licensed by gate E5a. On every explained row, the SHAP values, the base value and the unattributed
+     L755: mall (S-RESID); and a player that equals the explained row on every background row gets exactly 0 (S-ZERO): all f
+     L755: ayer that equals the explained row on every background row gets exactly 0 (S-ZERO): all four passed for every mod
+     L755: ares the adopted arm's saved predictions on every test row of every sampled location, on coral bleaching on all 2
+     L755: ction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled location (fores
+     L757: mall (S-RESID), and a player that equals the explained row on every background row gets exactly 0 (S-ZERO).
+     L757: ayer that equals the explained row on every background row gets exactly 0 (S-ZERO).
+     L787: 0 | all passed | passed | ᵃ Rows checked: every test row of the rival's saved predictions; for treeroute v1, ev
+     L787: ival's saved predictions; for treeroute v1, every test row of every sampled location (coral bleaching: every test
+     L790: pt out of Kendall's W, the consensus and the main-text row (decision D6). **Table S3.21 (post hoc).** treeroute
+     L805: s identity-link twin is bit-identical on every checked row | not applicable | not applicable | passed (13,440 of
+     L809: saved predictions, pre-clip and clipped, on every test row of every sampled location (coral bleaching: every test
+     L810: bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | passed (251 rows,
+     L815: **Results.** Table 9 (Section 5.4) gives the main-text row of each problem; Table S3.22 repeats it with its compo
+     L817: **Table S3.22 (post hoc).** The main-text row (Table 9) with its components, nowcast, variable level
+     L844: ean absolute attributions, a family's attribution on a row being the sum of its variables' SHAP values; both mean
+     L911: ly shares (sums of the variable-level attributions per row).** | Family | treeroute v1 | Ridge | Random forest |
+     L1337: at or before the cut, not only those of the explained row's calendar month, so the month and the seasonal normal
+     L1337: endall's W, consensus, main-set statistic or main-text row, and it is compared with no rival.
+     L1339: set: it enters no Kendall's W, consensus or main-text row and is compared with no rival. J is the pair's own (th
+     L1447: te difference of the SHAP values, feature level (every row and player) | 0 | | Largest absolute difference of the
+     L1448: e difference of the SHAP values, variable level (every row and variable) | 0 | | Rows, main run / B1 run | 1,000
+     L1455: 1 run. The identity check matches rows by their sample row and players and variables by name; it is from the inde
+     L1457: numbers and the B1 sensitivity's from the SHAP values' row files and the runs' records, and a reconciliation comp
+     L1459: share with its interval in burned fraction's main-text row, as it writes them only when treeroute v1 has a same-l
+     L1459: the two missing entries of burned fraction's main-text row and every sign-agreement interval are taken from the r
+     L1461: shares has one label, "median of the rivals", in every row: on PM2.5 and forest loss it is LightGBM's share and o
+     L1463: the training years: a column that equals the explained row on every background row is 0 by construction, not unus
+     L1463: lumn that equals the explained row on every background row is 0 by construction, not unused, and columns with a t
+     L1463: ues evaluate each model on rows that mix the explained row's values with a background row's, combinations that ma
+     L1463: that mix the explained row's values with a background row's, combinations that may never occur. BARDL reads nine
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 55
+     L668: alues on real rows only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, l
+     L668: d predictions (decision D8; AY3), with which the coral bleaching pilot had already run. On
+     L670: onth; forest loss is annual, so all of them); on coral bleaching it is the survey visit's saved router fit rows, the ne
+     L670: On coral bleaching most background survey visits are at other reef sites
+     L682: Ridge outside coral bleaching and BARDL are explained through loaders of their own,
+     L709: TreeSHAP | log μ | passed | no: another link | | Coral bleaching | treeroute v1 ( ) | the adopted arm: tree b
+     L710: r | arcsine | passed (the adopted arm) | yes | | Coral bleaching | Ridge ( ) | ridge regression; exact line
+     L711: HAP | log(y + c) | passed | no: another link | | Coral bleaching | random forest ( ) | random forest, rebuilt
+     L712: rventional TreeSHAP | arcsine | passed | yes | | Coral bleaching | LightGBM ( ) | LightGBM; exact interventi
+     L713: rventional TreeSHAP | arcsine | passed | yes | | Coral bleaching | Tweedie booster ( ) | LightGBM wi
+     L714: TreeSHAP | log μ | passed | no: another link | | Coral bleaching | absolute-error booster ( ) | gradient b
+     L726: ns: the index value as the product gives it. | | Coral bleaching | NOAA Coral Reef Watch degree heating weeks (nowcast
+     L727: nd is the reference of the arms in that link; on coral bleaching, which has no per-location normal, the training median
+     L733: at the routers are rebuilt for few locations; on coral bleaching the survey visits are shared equally among the regions
+     L733: so gives each sample's regions and locations (on coral bleaching, survey visits), its background rows per sample row an
+     L743: 16 | 16,000 | 309 / 280 / 29 | 121 / 99 / 22 | | Coral bleaching | 2,312 | 1,000 | 37 | 1,000 | 50 | 50,000 | 69 / 68 /
+     L746: n from it, stratified by region and test year. ᵇ Coral bleaching: the column counts survey visits, the engine's unit th
+     L747: fore the cut (forest loss, annual: all of them); coral bleaching: the survey visit's saved router fit rows, a pool of e
+     L753: , , . Coral bleaching: variable level (1) ; feature level (1)
+     L755: eroute v1's arcsine arms, on burned fraction and coral bleaching, bit for bit on most rows and within the D8 tolerance
+     L755: he run manifest's before the labels are read; on coral bleaching it compares no data file, as its static file list is e
+     L755: on every test row of every sampled location, on coral bleaching on all 2,312 test survey visits, not only the 1,000 sa
+     L755: one survey visit's router fit rows and test row (coral bleaching) and on every sampled location (forest loss).
+     L780: 0⁻¹⁴ / 6.0 × 10⁻¹⁴ | 0 | all passed | passed | | Coral bleaching | treeroute v1 | 2,312 | 2,228 / 2,228 | 2.1 × 10⁻¹⁴ |
+     L781: | 0 | all passed | passed (the adopted arm) | | Coral bleaching | Ridge | 2,312 | 2,312 / – | 0 | bit-identical | 1.0
+     L782: 0⁻¹⁴ / 9.0 × 10⁻¹⁵ | 0 | all passed | passed | | Coral bleaching | random forest | 2,312 | 2,312 / – | 0 | bit-identica
+     L783: 0⁻¹⁶ / 3.3 × 10⁻¹⁶ | 0 | all passed | passed | | Coral bleaching | LightGBM | 2,312 | 2,312 / – | 0 | bit-identical | 5
+     L784: 0⁻¹⁶ / 4.4 × 10⁻¹⁶ | 0 | all passed | passed | | Coral bleaching | Tweedie booster | 2,312 | 2,312 / – | 0 | bit-identi
+     L785: 0⁻¹⁵ / 9.8 × 10⁻¹⁵ | 0 | all passed | passed | | Coral bleaching | absolute-error booster | 2,312 | 2,312 / – | 0 | bit
+     L787: te v1, every test row of every sampled location (coral bleaching: every test survey visit). Pre-clip: the prediction be
+     L788: -clip column only (–: not read). ᵇ Ridge outside coral bleaching is explained by a loader that repeats the rival board'
+     L789: ᶜ D8: on the arcsine arms of burned fraction and coral bleaching the owner allowed a relative difference of at most 10⁻
+     L794: | PM2.5 | NDVI | Burned fraction | Forest loss | Coral bleaching | |---|---|---|---|---|---|---| | Adopted arm | link,
+     L800: dataset package, regions, constants, file lists (coral bleaching: the static file list only), tree inputs) | passed | p
+     L809: ed, on every test row of every sampled location (coral bleaching: every test survey visit) | bit-identical (12,192 of 1
+     L810: test rows (forest loss: every sampled location; coral bleaching: one survey visit's router fit rows and test row) | pa
+     L813: established. D8 (gate E8 on burned fraction and coral bleaching): a relative difference of at most 10⁻¹² on arcsine ar
+     L815: 0.78, 0.81] on forest loss, 0.73 [0.69, 0.76] on coral bleaching and 0.62 [0.61, 0.62] on NDVI; on burned fraction, whe
+     L815: 4, 0.29] on forest loss and 0.48 [0.39, 0.55] on coral bleaching; W is taken over every variable of J and the whole mai
+     L815: 1, 0.75] on forest loss and 0.67 [0.61, 0.78] on coral bleaching. treeroute v1's top variable is one of it
+     L815: ss ( or ) and on coral bleaching; the consensus's top variable is on PM2.5,
+     L815: on forest loss and on coral bleaching.
+     L815: ivals, and 0.14 [0.11, 0.16] on burned fraction; coral bleaching has no own-history input. Each interval is for one sha
+     L839: our rivals, the mean of the two middle shares. ᵈ Coral bleaching's table of these statistics (AW4_table.md, written on
+     L842: ion), Table S3.26 (forest loss) and Table S3.27 (coral bleaching) each give every pair at both levels, the main set's a
+     L842: .24, note ‡; ruling BB3, below). On coral bleaching, whose background is a pool of earlier nearby survey v
+     L1218: es a nonzero share. **Table S3.27 (post hoc).** Coral bleaching, nowcast: agreement of the models' SHAP attributions,
+     L1337: , NDVI and burned fraction; it is not defined on coral bleaching; and on forest loss, which is annual, B1's background
+     L1339: 00 saved region draws; counts without intervals. Coral bleaching: B1 is not defined; forest loss: the identity check of
+     L1454: rows / players / variables | yes / yes / yes | Coral bleaching: B1 is not defined, so it has no B1 run. The identity
+     L1457: samples of the pairs and of the B1 numbers, for coral bleaching's treeroute v1 importances and for forest loss's ident
+     L1461: th no variable keeps its defined 0 with a label: coral bleaching's own-history shares "(no own-history input)" and fore
+     L1461: les, while B1's family shares keep theirs (BB5). Coral bleaching's table of the main-text statistics, from the comparis
+     L1463: ns with a trend take credit for level shifts; on coral bleaching, whose background is a pool of earlier nearby survey v
+     L1463: nd burn columns mean contagion or co-occurrence; coral bleaching's columns may identify the survey programme. A router
+-- 'Tweedie' (paper term: Tweedie booster): 52
+     L703: + c) | passed | no: another link | | Burned fraction | Tweedie booster ( ) | LightGBM with a Tweed
+     L703: eedie booster ( ) | LightGBM with a Tweedie loss; exact interventional TreeSHAP | log μ | passed |
+     L708: TreeSHAP | log(y + c) | passed | yes | | Forest loss | Tweedie booster ( ) | LightGBM with a Tweed
+     L713: reeSHAP | arcsine | passed | yes | | Coral bleaching | Tweedie booster ( ) | LightGBM with a Tweed
+     L731: , with c the problem's constant; log μ, the log of the Tweedie booster's mean; arcsine, the arcsine square root. With
+     L774: 10⁻¹⁵ | 0 | all passed | passed | | Burned fraction | Tweedie booster | 96,000 | 96,000 / – | 0 | bit-identical | 9.
+     L779: .6 × 10⁻¹⁵ | 0 | all passed | passed | | Forest loss | Tweedie booster | 369,096 | 369,096 / – | 0 | bit-identical |
+     L784: 10⁻¹⁶ | 0 | all passed | passed | | Coral bleaching | Tweedie booster | 2,312 | 2,312 / – | 0 | bit-identical | 8.9
+     L823: r skill guard | none | none | random forest, LightGBM, Tweedie booster | Tweedie booster | Ridge, Tweedie booster | |
+     L823: ne | none | random forest, LightGBM, Tweedie booster | Tweedie booster | Ridge, Tweedie booster | | Rivals declined b
+     L823: , LightGBM, Tweedie booster | Tweedie booster | Ridge, Tweedie booster | | Rivals declined by their skill guard | non
+     L836: ghtGBM, the random forest and Ridge in log(y + c), the Tweedie booster in log μ), and Ridge also failed its skill gua
+     L1027: 1.00] (1 sign; 1,140 finite draws) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1030: 0.01, 0.09] | 0.60 [0.60, 0.75] (5 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1032: 14] | 1.00 [1.00, 1.00] (4 signs) | | random forest vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1033: 5, 0.23] | 1.00 [0.80, 1.00] (4 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1042: [0.01, 0.12] | undefined (0 signs) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1045: 0.01, 0.09] | 0.75 [0.50, 1.00] (4 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1048: 5, 0.23] | 0.75 [0.67, 0.80] (4 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1060: M | 0.98 | 0.97 | | Stability under region resampling: Tweedie booster | 0.99 | 0.99 | **d. Variable level: each mod
+     L1064: nk | treeroute v1 | Ridge | Random forest | LightGBM | Tweedie booster | |---|---|---|---|---|---| | 1 |
+     L1096: ly | treeroute v1 | Ridge | Random forest | LightGBM | Tweedie booster | |---|---|---|---|---|---| | Own history | 13
+     L1136: .21] | 1.00 [0.75, 1.00] (4 signs) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1139: 0.20, 0.27] | 1.00 [0.83, 1.00] (5 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1141: 04] | 1.00 [1.00, 1.00] (6 signs) | | random forest vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1142: 8, 0.17] | 0.60 [0.40, 0.67] (5 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1151: 0.21] | 1.00 [1.00, 1.00] (1 sign) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1154: 0.20, 0.27] | 0.86 [0.83, 0.88] (7 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1157: 8, 0.17] | 0.50 [0.50, 0.67] (6 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1169: M | 0.99 | 0.99 | | Stability under region resampling: Tweedie booster | 0.99 | 0.99 | **d. Variable level: each mod
+     L1205: ly | treeroute v1 | Ridge | Random forest | LightGBM | Tweedie booster | |---|---|---|---|---|---| | Own history | 29
+     L1227: .18] | 0.89 [0.78, 0.89] (9 signs) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1231: 0.01, 0.11] | 0.78 [0.71, 0.80] (9 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1234: 10] | 1.00 [1.00, 1.00] (9 signs) | | random forest vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1236: , 0.16] | 1.00 [0.90, 1.00] (10 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1238: | 0.07 [0.04, 0.10] | 1.00 [0.90, 1.00] (10 signs) | | Tweedie booster vs absolute-error booster | cross-link (not co
+     L1247: 18] | 0.90 [0.78, 0.92] (10 signs) | | treeroute v1 vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1251: .01, 0.11] | 0.70 [0.50, 0.82] (10 signs) | | Ridge vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1254: 0] | 1.00 [1.00, 1.00] (11 signs) | | random forest vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1256: , 0.16] | 1.00 [1.00, 1.00] (11 signs) | | LightGBM vs Tweedie booster | cross-link (not comparable in scale or rank)
+     L1258: | 0.07 [0.04, 0.10] | 1.00 [0.88, 1.00] (7 signs) | | Tweedie booster vs absolute-error booster | cross-link (not co
+     L1270: M | 0.97 | 0.99 | | Stability under region resampling: Tweedie booster | 0.98 | 0.99 | | Stability under region resam
+     L1275: nk | treeroute v1 | Ridge | Random forest | LightGBM | Tweedie booster | Absolute-error booster | |---|---|---|---|--
+     L1307: ly | treeroute v1 | Ridge | Random forest | LightGBM | Tweedie booster | Absolute-error booster | |---|---|---|---|--
+-- 'Model(s)' (paper term: final answer): 31
+     L668: ry rival it can be run on; that the paper show how the models disagree, problem by problem, with several agreement s
+     L668: had not opened the burned-fraction comparison of four models written on 2026-11-13, before Ridge was added (ruling
+     L672: ved predictions (stop rule S-EXACT). Tree models get exact interventional TreeSHAP values (Lundberg et
+     L678: would give the same J. For every pair of models, at both levels and over J, we give Spearman's rank co
+     L678: istance, the total-variation distances between the two models' shares and between their family shares; and the sign
+     L678: f the two top-10 sets whose sign is determined in both models (the bootstrap 95% interval of the player's signed mea
+     L678: xcludes 0). A pair is same-link when both models explain in the same link space, and cross-link otherwi
+     L678: is descriptive and no ceiling on the agreement between models. The main-text row gives, besides W, the median and th
+     L682: forecast above 0 are also given. **Models explained and rivals left out.** Every common rival of
+     L684: **Table S3.18 (post hoc).** The models explained at the nowcast (a), and the rivals and naive
+     L686: **a. Explained models.** | Problem | Model (data name) | Model and SHAP met
+     L731: lem every model has the same c and upper bound, so two models are same-link exactly when their links are the same. T
+     L836: rd, so the main set is treeroute v1 alone. W needs two models and is undefined, and the cells that need a rival are
+     L844: e S3.23 (post hoc).** PM2.5, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L921: f the two top-10 sets whose sign is determined in both models (the bootstrap 95% interval of the signed mean exclude
+     L926: le S3.24 (post hoc).** NDVI, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1018: ost hoc).** Burned fraction, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1018: (d, e) and its family shares (f); and the arcsine-link models' top 10 on their rows with a forecast above 0 (g). Lin
+     L1104: 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | **g. Arcsine-link models, rows with a forecast above 0: top 10 (share).** | Ra
+     L1120: d. Kendall's W and the mean pairwise Spearman need two models and are undefined; agreement between treeroute v1 and
+     L1127: 6 (post hoc).** Forest loss, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1218: ost hoc).** Coral bleaching, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1459: rtures, the tie rule of the top 10 on the arcsine-link models' rows with a forecast above 0 and a cap on the structu
+     L1461: s across the region draws (BB4). The main models' top-10 shares and family shares are given without int
+     L1463: bution. Agreement between rankings is not correctness: models that agree may lean on the same proxies. Cross-link pa
+-- 'model(s)' (paper term: final answer): 31
+     L668: ry rival it can be run on; that the paper show how the models disagree, problem by problem, with several agreement s
+     L668: had not opened the burned-fraction comparison of four models written on 2026-11-13, before Ridge was added (ruling
+     L672: ved predictions (stop rule S-EXACT). Tree models get exact interventional TreeSHAP values (Lundberg et
+     L678: would give the same J. For every pair of models, at both levels and over J, we give Spearman's rank co
+     L678: istance, the total-variation distances between the two models' shares and between their family shares; and the sign
+     L678: f the two top-10 sets whose sign is determined in both models (the bootstrap 95% interval of the player's signed mea
+     L678: xcludes 0). A pair is same-link when both models explain in the same link space, and cross-link otherwi
+     L678: is descriptive and no ceiling on the agreement between models. The main-text row gives, besides W, the median and th
+     L682: forecast above 0 are also given. **Models explained and rivals left out.** Every common rival of
+     L684: **Table S3.18 (post hoc).** The models explained at the nowcast (a), and the rivals and naive
+     L686: **a. Explained models.** | Problem | Model (data name) | Model and SHAP met
+     L731: lem every model has the same c and upper bound, so two models are same-link exactly when their links are the same. T
+     L836: rd, so the main set is treeroute v1 alone. W needs two models and is undefined, and the cells that need a rival are
+     L844: e S3.23 (post hoc).** PM2.5, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L921: f the two top-10 sets whose sign is determined in both models (the bootstrap 95% interval of the signed mean exclude
+     L926: le S3.24 (post hoc).** NDVI, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1018: ost hoc).** Burned fraction, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1018: (d, e) and its family shares (f); and the arcsine-link models' top 10 on their rows with a forecast above 0 (g). Lin
+     L1104: 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | **g. Arcsine-link models, rows with a forecast above 0: top 10 (share).** | Ra
+     L1120: d. Kendall's W and the mean pairwise Spearman need two models and are undefined; agreement between treeroute v1 and
+     L1127: 6 (post hoc).** Forest loss, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1218: ost hoc).** Coral bleaching, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1459: rtures, the tie rule of the top 10 on the arcsine-link models' rows with a forecast above 0 and a cap on the structu
+     L1461: s across the region draws (BB4). The main models' top-10 shares and family shares are given without int
+     L1463: bution. Agreement between rankings is not correctness: models that agree may lean on the same proxies. Cross-link pa
+-- 'guard' (paper term: skill guard): 22
+     L678: e v1 with its same-link rivals that passed their skill guard; a rival that failed its skill guard is explained raw,
+     L678: assed their skill guard; a rival that failed its skill guard is explained raw, labelled and kept out of the main se
+     L682: nge to them. On burned fraction Ridge failed its skill guard at the nowcast: it is explained raw, labelled and kept
+     L682: gn; it shares treeroute v1's link and passed its skill guard, so it is in the NDVI main set, as the frozen plan has
+     L682: ry and stays out until decision D7 is ruled (its skill guard failed at the nowcast); and the naive baselines, which
+     L688: del (data name) | Model and SHAP method | Link | Skill guard at the nowcast | In the main set | |---|---|---|---|--
+     L700: SHAP | log(y + c) | failedᵃ | no: another link; skill guard failed | | Burned fraction | random forest (
+     L722: eft out until the owner rules (decision D7); its skill guard failed at the nowcast. | | Burned fraction | The publi
+     L731: e v1 with its same-link rivals that passed their skill guard. **Samples and active sets.** Only the nowcast of eac
+     L759: RO violations | S-ADD, S-EVAL, S-RESID, S-ZERO | Skill guard | |---|---|---|---|---|---|---|---|---|---| | PM2.5 |
+     L823: ls that explain in another link and passed their skill guard | none | none | random forest, LightGBM, Tweedie boost
+     L824: ge, Tweedie booster | | Rivals declined by their skill guard | none | none | Ridge | none | none | | Kendall's W of
+     L836: die booster in log μ), and Ridge also failed its skill guard, so the main set is treeroute v1 alone. W needs two mo
+     L1024: le in scale or rank); raw model, declined by its skill guard: Ridge | 0.47 [0.41, 0.52] | −0.15 [−0.31, −0.15] | 0.
+     L1028: m forest | same-link; raw model, declined by its skill guard: Ridge | 0.70 [0.66, 0.72] | 0.22 [−0.04, 0.26] | 0.53
+     L1029: LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.59 [0.53, 0.64] | 0.18 [0.04, 0.24] | 0.44
+     L1030: le in scale or rank); raw model, declined by its skill guard: Ridge | 0.68 [0.65, 0.71] | 0.16 [0.06, 0.25] | 0.50
+     L1039: le in scale or rank); raw model, declined by its skill guard: Ridge | 0.27 [0.20, 0.37] | −0.73 [−0.76, −0.60] | 0.
+     L1043: m forest | same-link; raw model, declined by its skill guard: Ridge | 0.67 [0.63, 0.69] | 0.34 [0.12, 0.38] | 0.50
+     L1044: LightGBM | same-link; raw model, declined by its skill guard: Ridge | 0.55 [0.50, 0.61] | 0.16 [0.04, 0.25] | 0.40
+     L1045: le in scale or rank); raw model, declined by its skill guard: Ridge | 0.64 [0.62, 0.67] | 0.31 [0.18, 0.41] | 0.48
+     L1120: lains in another link, and Ridge also failed its skill guard. Kendall's W and the mean pairwise Spearman need two m
+-- 'survey' (paper term: survey visit (coral only)): 21
+     L668: eal rows only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, later, r
+     L670: annual, so all of them); on coral bleaching it is the survey visit's saved router fit rows, the neighbour router's
+     L670: it rows, the neighbour router's pool of earlier nearby survey visits (Section 2.4). On the gridded
+     L670: On coral bleaching most background survey visits are at other reef sites (of the 50,000 backgrou
+     L670: (of the 50,000 background pairs, 980 pair an explained survey visit with an earlier survey visit at its own reef sit
+     L670: rs, 980 pair an explained survey visit with an earlier survey visit at its own reef site, for 415 of the 1,000 expla
+     L670: t at its own reef site, for 415 of the 1,000 explained survey visits, and in none is the background survey visit dat
+     L670: explained survey visits, and in none is the background survey visit dated on or after the explained one), so static
+     L733: are rebuilt for few locations; on coral bleaching the survey visits are shared equally among the regions, capped by
+     L733: ch sample's regions and locations (on coral bleaching, survey visits), its background rows per sample row and, per l
+     L746: on and test year. ᵇ Coral bleaching: the column counts survey visits, the engine's unit there; a location is a reef
+     L747: orest loss, annual: all of them); coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearb
+     L747: isit's saved router fit rows, a pool of earlier nearby survey visits. Shown as the lowest to highest number per samp
+     L755: sampled location, on coral bleaching on all 2,312 test survey visits, not only the 1,000 sampled; gate E10 compares
+     L755: nd test rows (PM2.5, NDVI and burned fraction), on one survey visit's router fit rows and test row (coral bleaching)
+     L787: of every sampled location (coral bleaching: every test survey visit). Pre-clip: the prediction before the declared b
+     L809: of every sampled location (coral bleaching: every test survey visit) | bit-identical (12,192 of 12,192 rows) | bit-i
+     L810: est loss: every sampled location; coral bleaching: one survey visit's router fit rows and test row) | passed (252 ro
+     L842: leaching, whose background is a pool of earlier nearby survey visits, the context-and-calendar family carries from 0
+     L1463: leaching, whose background is a pool of earlier nearby survey visits, static and calendar columns can carry attribut
+     L1463: occurrence; coral bleaching's columns may identify the survey programme. A router coefficient of one tree or of one
+-- 'y' (paper term: label): 20
+     L690: eeSHAP of the trees, router terms exactly linear | log(y + c) | passed (the adopted arm) | yes | | PM2.5 | Ridg
+     L691: ) | ridge regression; exact linear SHAP | log(y + c) | passed | yes | | PM2.5 | random forest (
+     L692: l board's records; exact interventional TreeSHAP | log(y + c) | passed | yes | | PM2.5 | LightGBM (
+     L693: ) | LightGBM; exact interventional TreeSHAP | log(y + c) | passed | yes | | NDVI | treeroute v1 (
+     L700: ) | ridge regression; exact linear SHAP | log(y + c) | failedᵃ | no: another link; skill guard failed
+     L701: l board's records; exact interventional TreeSHAP | log(y + c) | passed | no: another link | | Burned fraction |
+     L702: ) | LightGBM; exact interventional TreeSHAP | log(y + c) | passed | no: another link | | Burned fraction |
+     L704: eeSHAP of the trees, router terms exactly linear | log(y + c) | passed (the adopted arm) | yes | | Forest loss
+     L705: ) | ridge regression; exact linear SHAP | log(y + c) | passed | yes | | Forest loss | random forest (
+     L706: l board's records; exact interventional TreeSHAP | log(y + c) | passed | yes | | Forest loss | LightGBM (
+     L707: ) | LightGBM; exact interventional TreeSHAP | log(y + c) | passed | yes | | Forest loss | Tweedie booster
+     L710: ) | ridge regression; exact linear SHAP | log(y + c) | passed | no: another link | | Coral bleaching |
+     L731: the main-text row (decision D6). Links: identity; log(y + c), with c the problem's constant; log μ, the log of
+     L759: argest absolute difference, rebuilt − saved (pre-clip, y units) | S-EXACT | Largest additivity error, feature /
+     L796: m | link, answer type and weighting; router type | log(y + c), corrected answers, uniformly weighted; per-locat
+     L796: ted answers, error-weighted; per-location router | log(y + c), corrected answers, uniformly weighted; region ro
+     L812: bit for bit (E5a, E10, and E8 on the identity and log(y + c) arms), and within the D8 tolerance on the arcsine
+     L821: |---|---|---|---|---|---| | Link of the main set | log(y + c) | identity | arcsine | log(y + c) | arcsine | | M
+     L821: f the main set | log(y + c) | identity | arcsine | log(y + c) | arcsine | | Main set | treeroute v1, Ridge, ran
+     L836: her link (LightGBM, the random forest and Ridge in log(y + c), the Tweedie booster in log μ), and Ridge also fa
+-- 'month' (paper term: step): 14
+     L670: cut with the explained row's season key (its calendar month; forest loss is annual, so all of them); on coral blea
+     L670: om the same location's forecasts for the same calendar month (forest loss: every year) in the training years: a col
+     L670: background row, such as a static column, latitude, the month or the seasonal normal, gets exactly 0, and columns wi
+     L674: columns keep their stem, such as , and the month and its harmonics make up ), and its SHAP va
+     L682: n maps of a product or index (MERRA-2 PM2.5 lagged one month, in the same month and as the placebo entry; VT0007, c
+     L682: or index (MERRA-2 PM2.5 lagged one month, in the same month and as the placebo entry; VT0007, calibrated; NOAA Cor
+     L720: ue | |---|---|---| | PM2.5 | MERRA-2 PM2.5: lagged one month, same month, and the placebo entry | One-input calibra
+     L720: -|---| | PM2.5 | MERRA-2 PM2.5: lagged one month, same month, and the placebo entry | One-input calibration maps of
+     L747: ocation's router fit rows of the sample row's calendar month at or before the cut (forest loss, annual: all of them
+     L1337: he cut, not only those of the explained row's calendar month, so the month and the seasonal normal can take credit.
+     L1337: ly those of the explained row's calendar month, so the month and the seasonal normal can take credit.
+     L1339: or before the cut, not only those of the same calendar month (B2), so the month and the seasonal normal can take cr
+     L1339: not only those of the same calendar month (B2), so the month and the seasonal normal can take credit. treeroute v1
+     L1430: 1% | 0.9% | Under B1 the month and the seasonal normal can take credit; under B2 they
+-- 'context' (paper term: router context (z)): 13
+     L674: et), local drivers (the variables in no other family), context and calendar (the router-context columns that copy no
+     L918: | | Local drivers | 49.2% | 20.5% | 34.0% | 31.3% | | Context and calendar | 0.0% | 0.0% | 0.0% | 0.0% | | Seasonal
+     L1009: al drivers | 67.5% | 62.9% | 84.4% | 59.0% | 64.8% | | Context and calendar | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | | Se
+     L1101: al drivers | 60.4% | 52.4% | 57.5% | 54.6% | 59.3% | | Context and calendar | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | | Se
+     L1210: al drivers | 48.2% | 34.0% | 29.0% | 30.9% | 32.2% | | Context and calendar | 0.0% (no context or calendar input) | 0
+     L1210: 0% | 30.9% | 32.2% | | Context and calendar | 0.0% (no context or calendar input) | 0.0% (no context or calendar inpu
+     L1210: endar | 0.0% (no context or calendar input) | 0.0% (no context or calendar input) | 0.0% (no context or calendar inpu
+     L1210: nput) | 0.0% (no context or calendar input) | 0.0% (no context or calendar input) | 0.0% (no context or calendar inpu
+     L1210: nput) | 0.0% (no context or calendar input) | 0.0% (no context or calendar input) | | Seasonal normal | 0.0% | 0.0% |
+     L1312: rs | 77.6% | 70.6% | 81.5% | 74.6% | 59.6% | 68.2% | | Context and calendar | 0.2% | 16.2% | 6.4% | 12.8% | 18.9% | 1
+     L1390: 7.5%] | 42.0% [38.8%, 45.6%] | 12.6% [8.2%, 19.0%] | | Context and calendar | 0.1% [0.1%, 0.1%] | 4.8% [4.2%, 5.4%] |
+     L1461: t)" and forest loss's context-and-calendar shares "(no context or calendar input)". The median of the rivals' own-his
+-- 'the model' (paper term: treeroute v1 (the engine)): 13
+     L670: the mean, over the explained row's background rows, of the model's output with those players at the explained row's val
+     L676: hare are used. A player's share is its importance over the model's total importance over J, the base of every top-10 an
+     L755: es, the base value and the unattributed part add up to the model's link-space output within 10⁻⁹ at both levels (S-ADD)
+     L755: thin 10⁻⁹ at both levels (S-ADD); the evaluator equals the model (S-EVAL); the unattributed part stays small (S-RESID);
+     L757: aved predictions (S-EXACT), the attributions add up to the model's output (S-ADD), its evaluator equals the model (S-EV
+     L757: up to the model's output (S-ADD), its evaluator equals the model (S-EVAL), the unattributed part stays small (S-RESID),
+     L836: treeroute v1 and a rival cannot separate the link from the model there. ᵇ PM2.5: the interval of the RBO with the conse
+     L924: t. Nonzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.24 (post hoc).** ND
+     L1016: t. Nonzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.25 (post hoc).** Bu
+     L1120: treeroute v1 and a rival cannot separate the link from the model. Sign agreement: of the players in the union of the tw
+     L1124: t. Nonzero (panels d and e): the players of J to which the model gives a nonzero share. Panel g: each arcsine-link mode
+     L1216: t. Nonzero (panels d and e): the players of J to which the model gives a nonzero share. **Table S3.27 (post hoc).** Co
+-- 'visit(s)' (paper term: survey visit (coral only)): 11
+     L668: s only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, later, rows of
+     L670: , the neighbour router's pool of earlier nearby survey visits (Section 2.4). On the gridded proble
+     L670: On coral bleaching most background survey visits are at other reef sites (of the 50,000 background pair
+     L670: s own reef site, for 415 of the 1,000 explained survey visits, and in none is the background survey visit dated on o
+     L733: built for few locations; on coral bleaching the survey visits are shared equally among the regions, capped by what e
+     L733: le's regions and locations (on coral bleaching, survey visits), its background rows per sample row and, per level, t
+     L746: test year. ᵇ Coral bleaching: the column counts survey visits, the engine's unit there; a location is a reef site. ᶜ
+     L747: saved router fit rows, a pool of earlier nearby survey visits. Shown as the lowest to highest number per sample row,
+     L755: location, on coral bleaching on all 2,312 test survey visits, not only the 1,000 sampled; gate E10 compares the exp
+     L842: g, whose background is a pool of earlier nearby survey visits, the context-and-calendar family carries from 0.2% (tr
+     L1463: g, whose background is a pool of earlier nearby survey visits, static and calendar columns can carry attribution. Ag
+-- 'Bank' (paper term: tree bank): 10
+     L672: heckpoints when a run finishes, so each problem's tree bank, with its correctors and placebos, and the sampled loc
+     L690: 5 | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L694: I | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L699: n | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L704: s | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L709: g | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L755: is informational: the rebuilt fingerprint of the tree bank, correctors and placebos differs from the run's on all
+     L792: The fitted trees were not kept, so each problem's tree bank with its correctors and placebos, and the sampled loca
+     L804: passed (11,338 rows) | | E5ᵃ | fingerprint of the tree bank, the correctors and the placebos, over every node arra
+-- 'bank' (paper term: tree bank): 10
+     L672: heckpoints when a run finishes, so each problem's tree bank, with its correctors and placebos, and the sampled loc
+     L690: 5 | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L694: I | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L699: n | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L704: s | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L709: g | treeroute v1 ( ) | the adopted arm: tree bank and router; exact interventional TreeSHAP of the trees
+     L755: is informational: the rebuilt fingerprint of the tree bank, correctors and placebos differs from the run's on all
+     L792: The fitted trees were not kept, so each problem's tree bank with its correctors and placebos, and the sampled loca
+     L804: passed (11,338 rows) | | E5ᵃ | fingerprint of the tree bank, the correctors and the placebos, over every node arra
+-- 'fit rows' (paper term: router fit rows): 10
+     L670: e primary background, it is the same location's router fit rows at or before the cut with the explained row's season k
+     L670: coral bleaching it is the survey visit's saved router fit rows, the neighbour router's pool of earlier nearby survey
+     L747: ef site. ᶜ Background (B2): the same location's router fit rows of the sample row's calendar month at or before the cu
+     L747: hem); coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits. Shown as the
+     L755: engine's tree answers on one sampled location's router fit rows and test rows (PM2.5, NDVI and burned fraction), on on
+     L755: DVI and burned fraction), on one survey visit's router fit rows and test row (coral bleaching) and on every sampled lo
+     L810: answers bit for bit, on one sampled location's router fit rows and test rows (forest loss: every sampled location; co
+     L810: d location; coral bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12,600 trees) | pass
+     L1337: ,000 sample rows against all of each location's router fit rows at or before the cut, not only those of the explained
+     L1339: ,000 sample rows against all of each location's router fit rows at or before the cut, not only those of the same calen
+-- 'visit' (paper term: survey visit (coral only)): 9
+     L670: , so all of them); on coral bleaching it is the survey visit's saved router fit rows, the neighbour router's pool o
+     L670: 50,000 background pairs, 980 pair an explained survey visit with an earlier survey visit at its own reef site, for
+     L670: pair an explained survey visit with an earlier survey visit at its own reef site, for 415 of the 1,000 explained s
+     L670: ed survey visits, and in none is the background survey visit dated on or after the explained one), so static and ca
+     L747: oss, annual: all of them); coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby surv
+     L755: rows (PM2.5, NDVI and burned fraction), on one survey visit's router fit rows and test row (coral bleaching) and o
+     L787: y sampled location (coral bleaching: every test survey visit). Pre-clip: the prediction before the declared bounds
+     L809: y sampled location (coral bleaching: every test survey visit) | bit-identical (12,192 of 12,192 rows) | bit-identic
+     L810: s: every sampled location; coral bleaching: one survey visit's router fit rows and test row) | passed (252 rows, 12
+-- 'decision' (paper term: adoption): 8
+     L668: abelled post hoc analysis if a reviewer asked (outline decision O3; ruling AT17 (e)).
+     L668: ference of at most 10⁻¹² from their saved predictions (decision D8; AY3), with which the coral bleaching pilot had alr
+     L678: explained raw, labelled and kept out of the main set (decision D6). Over the main set we give Kendall's W (Kendall an
+     L682: t of Kendall's W, the consensus and the main-text row (decision D6). BARDL reads three variables (nine columns) by des
+     L682: its original deep-learning library and stays out until decision D7 is ruled (its skill guard failed at the nowcast); a
+     L722: p-learning library, so left out until the owner rules (decision D7); its skill guard failed at the nowcast. | | Burned
+     L730: t of Kendall's W, the consensus and the main-text row (decision D6). Links: identity; log(y + c), with c the problem's
+     L790: t of Kendall's W, the consensus and the main-text row (decision D6). **Table S3.21 (post hoc).** treeroute v1's rebui
+-- 'answer(s)' (paper term: tree answer (T_k)): 7
+     L755: he exported trees and evaluator with the engine's tree answers on one sampled location's router fit rows and test row
+     L796: ype and weighting; router type | log(y + c), corrected answers, uniformly weighted; per-location router | identity, p
+     L796: y weighted; per-location router | identity, plain tree answers, uniformly weighted; per-location router | arcsine, co
+     L796: mly weighted; per-location router | arcsine, corrected answers, error-weighted; per-location router | log(y + c), cor
+     L796: -weighted; per-location router | log(y + c), corrected answers, uniformly weighted; region router | arcsine, correcte
+     L796: uniformly weighted; region router | arcsine, corrected answers, error-weighted; neighbour router | | E1 | engine code
+     L810: ported trees and evaluator reproduce the engine's tree answers bit for bit, on one sampled location's router fit rows
+-- 'drivers' (paper term: tree inputs): 7
+     L674: ns take one value per step across the test set), local drivers (the variables in no other family), context and calend
+     L917: obal indices | 32.2% | 41.3% | 40.8% | 38.9% | | Local drivers | 49.2% | 20.5% | 34.0% | 31.3% | | Context and calend
+     L1008: ndices | 8.0% | 11.4% | 11.3% | 15.6% | 0.0% | | Local drivers | 67.5% | 62.9% | 84.4% | 59.0% | 64.8% | | Context an
+     L1100: ices | 26.0% | 29.6% | 18.7% | 28.1% | 34.6% | | Local drivers | 60.4% | 52.4% | 57.5% | 54.6% | 59.3% | | Context an
+     L1209: ices | 22.5% | 53.8% | 34.1% | 33.6% | 21.8% | | Local drivers | 48.2% | 34.0% | 29.0% | 30.9% | 32.2% | | Context an
+     L1311: 2.2% | 13.2% | 12.2% | 12.6% | 21.5% | 19.4% | | Local drivers | 77.6% | 70.6% | 81.5% | 74.6% | 59.6% | 68.2% | | Co
+     L1389: .1%] | 1.7% [1.6%, 2.0%] | 4.1% [2.8%, 6.6%] | | Local drivers | 15.7% [14.0%, 17.5%] | 42.0% [38.8%, 45.6%] | 12.6%
+-- 'the model(s)' (paper term: treeroute v1 (the engine)): 7
+     L668: every rival it can be run on; that the paper show how the models disagree, problem by problem, with several agreement s
+     L684: **Table S3.18 (post hoc).** The models explained at the nowcast (a), and the rivals and naive
+     L844: Table S3.23 (post hoc).** PM2.5, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L926: *Table S3.24 (post hoc).** NDVI, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1018: 5 (post hoc).** Burned fraction, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1127: S3.26 (post hoc).** Forest loss, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+     L1218: 7 (post hoc).** Coral bleaching, nowcast: agreement of the models' SHAP attributions, every pair at the variable level (
+-- 'board' (paper term: rival board): 6
+     L692: t ( ) | random forest, rebuilt from the rival board's records; exact interventional TreeSHAP | log(y + c)
+     L696: t ( ) | random forest, rebuilt from the rival board's records; exact interventional TreeSHAP | identity |
+     L711: t ( ) | random forest, rebuilt from the rival board's records; exact interventional TreeSHAP | arcsine | p
+     L788: aching is explained by a loader that repeats the rival board's own block-wise scoring, which reproduces every saved
+-- 'calendar month' (paper term: season key): 5
+     L670: efore the cut with the explained row's season key (its calendar month; forest loss is annual, so all of them); on coral blea
+     L670: iffers from the same location's forecasts for the same calendar month (forest loss: every year) in the training years: a col
+     L747: he same location's router fit rows of the sample row's calendar month at or before the cut (forest loss, annual: all of them
+     L1337: before the cut, not only those of the explained row's calendar month, so the month and the seasonal normal can take credit.
+     L1339: rows at or before the cut, not only those of the same calendar month (B2), so the month and the seasonal normal can take cr
+-- 'sample row(s)' (paper term: survey visit (coral only)): 5
+     L676: el, $I_m(j)$, is its mean absolute SHAP value over the sample rows, with each region weighted equally; a model's ranking
+     L737: | Problem | Frame rowsᵃ | Sample rows | Regions | Locationsᵇ | Background rows per sample ro
+     L842: oute v1's forecast is above 0 on only 226 of the 1,000 sample rows; its top 10 on those rows is given apart (Table S3.25
+     L1337: main set.** B1 explains treeroute v1 on the same 1,000 sample rows against all of each location's router fit rows at or b
+     L1339: and the feature level (b). B1 explains the same 1,000 sample rows against all of each location's router fit rows at or b
+-- 'tolerance' (paper term: identity tolerance (epsilon)): 5
+     L755: bleaching, bit for bit on most rows and within the D8 tolerance (ruling AY3) on the rest, as licensed by gate E5a.
+     L755: es, bit for bit or, on the arcsine arms, within the D8 tolerance; the cause is not established. Gate E3a c
+     L809: 6 of 13,440 rows bit-identical; the rest within the D8 tolerance (largest relative difference 2.4 × 10⁻¹³) | bit-identi
+     L809: 28 of 2,312 rows bit-identical; the rest within the D8 tolerance (largest relative difference 1.1 × 10⁻¹⁵) | | E10 | ex
+     L812: n the identity and log(y + c) arms), and within the D8 tolerance on the arcsine arms (E8); the cause is not established
+-- 'year' (paper term: step): 5
+     L670: ecasts for the same calendar month (forest loss: every year) in the training years: a column that takes the explai
+     L733: y compared model covers, stratified by region and test year with a fixed hash generator, and registered with its b
+     L733: ix on forest loss), with one row per location and test year, and the sample is trimmed to exactly 1,000 rows, so t
+     L733: ions, capped by what each region holds, with each test year in turn. Table S3.19 also gives each samp
+     L745: sample is drawn from it, stratified by region and test year. ᵇ Coral bleaching: the column counts survey visits, t
+-- 'cell(s)' (paper term: location (symbol u)): 4
+     L817: level. From the comparison's output files, except the cells marked †.
+     L836: v1 alone. W needs two models and is undefined, and the cells that need a rival are empty (–): agreement between tre
+     L840: that agree): the comparison's output files leave these cells empty, because they are written only when treeroute v1
+     L1014: top-10 and top-20 sets where they reach that far; the cells of its pairs that read that part of its ranking (the J
+-- 'package' (paper term: dataset package): 4
+     L668: uling AY1), accepted a recorded path map for a dataset package file that had moved (gate E3m; AY2), and allowed treer
+     L800: ore the labels are read, equal the manifest's (dataset package, regions, constants, file lists (coral bleaching: the
+     L801: d | passed | passed | passed | | E3m | a moved dataset package file has the content SHA-256, size and modification ti
+     L802: file) | not used (no moved file) | | E3 | the dataset package fingerprint, the settings that the written rules set a
+-- 'pool' (paper term: router fit rows): 4
+     L670: visit's saved router fit rows, the neighbour router's pool of earlier nearby survey visits (Section 2.4).
+     L747: bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits. Shown as the lowest t
+     L842: On coral bleaching, whose background is a pool of earlier nearby survey visits, the context-and-calen
+     L1463: evel shifts; on coral bleaching, whose background is a pool of earlier nearby survey visits, static and calendar c
+-- 'sample row' (paper term: survey visit (coral only)): 4
+     L733: ral bleaching, survey visits), its background rows per sample row and, per level, the players, J and the structural zero
+     L747: round (B2): the same location's router fit rows of the sample row's calendar month at or before the cut (forest loss, an
+     L747: rvey visits. Shown as the lowest to highest number per sample row, with the median. Structural zeros (exactly 0 in every
+     L1455: as no B1 run. The identity check matches rows by their sample row and players and variables by name; it is from the inde
+-- 'answer' (paper term: tree answer (T_k)): 3
+     L755: e run's on all five problems, while every checked tree answer and prediction matches, bit for bit or, on the arcsine
+     L796: | |---|---|---|---|---|---|---| | Adopted arm | link, answer type and weighting; router type | log(y + c), correcte
+     L812: e run's on all five problems, while every checked tree answer and prediction matches: bit for bit (E5a, E10, and E8
+-- 'active' (paper term: active set (J); structural zero): 2
+     L733: k rivals that passed their skill guard. **Samples and active sets.** Only the nowcast of each problem was explained
+     L735: ).** The registered samples, their backgrounds and the active sets, nowcast. J: the players to which some model give
+-- 'board(s)' (paper term: rival board): 2
+     L672: label; the random forests were rebuilt from the rival boards' records. No model got a SHAP value before it had repr
+     L682: ls left out.** Every common rival of the nowcast rival boards was explained on each problem it was run on, and on ND
+-- 'month(s)' (paper term: step): 2
+     L672: difference from the background row (a BARDL mean over months is split exactly over the months it averages).
+     L672: ow (a BARDL mean over months is split exactly over the months it averages).
+-- 'season' (paper term: season key): 2
+     L670: fit rows at or before the cut with the explained row's season key (its calendar month; forest loss is annual, so all
+     L1463: ffers from the same location's forecasts with the same season key in the training years: a column that equals the ex
+-- 'site' (paper term: location (symbol u)): 2
+     L670: vey visit with an earlier survey visit at its own reef site, for 415 of the 1,000 explained survey visits, and in
+     L746: visits, the engine's unit there; a location is a reef site. ᶜ Background (B2): the same location's router fit row
+-- 'verdict' (paper term: ban-list category): 2
+     L668: and report-only: none is a headline and none changes a verdict (ruling AK).
+     L1465: The locked verdict is unchanged: the analysis reads the saved predictions
+-- 'year(s)' (paper term: step): 2
+     L670: lendar month (forest loss: every year) in the training years: a column that takes the explained row's value on ever
+     L1463: n's forecasts with the same season key in the training years: a column that equals the explained row on every backg
+-- 'fire' (paper term: burned fraction): 1
+     L723: n | The published rivals, among them the CEMS seasonal fire weather index forecast (SEAS5) | Never run (ruling AS)
+-- 'kind(s)' (paper term: router type): 1
+     L676: rs the players by importance, ties broken by name. Two kinds of share are used. A player's share is its importance
+-- 'site(s)' (paper term: location (symbol u)): 1
+     L670: aching most background survey visits are at other reef sites (of the 50,000 background pairs, 980 pair an explained
+-- 'tolerance(s)' (paper term: identity tolerance (epsilon)): 1
+     L806: ssed (2,312 of 2,312 rows) | | E6 | c and the identity tolerances (one per link) equal the run's records | passed | pass
+-- 'trees-off' (paper term: trees-off fit): 1
+     L727: and last-5-years normals, predict-zero and each link's trees-off fit, which equals that link's normal exactly and is th
+-- 'unit' (paper term: location (symbol u)): 1
+     L746: eaching: the column counts survey visits, the engine's unit there; a location is a reef site. ᶜ Background (B2): t
+-- 'unit(s)' (paper term: location (symbol u)): 1
+     L759: gest absolute difference, rebuilt − saved (pre-clip, y units) | S-EXACT | Largest additivity error, feature / varia
+====================================================================================================
+paper/draft/05_rivals.md new visible characters: 788
+-- 'Model' (paper term: final answer): 2
+     L47: 86] (PM2.5). Over the variables in either model's top 20, treeroute v1's median Spearman correlation w
+     L47: SHAP values show what a model uses, not what causes the outcome, and agreement betwe
+-- 'model' (paper term: final answer): 2
+     L47: 86] (PM2.5). Over the variables in either model's top 20, treeroute v1's median Spearman correlation w
+     L47: SHAP values show what a model uses, not what causes the outcome, and agreement betwe
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 1
+     L47: 4, 0.29] on forest loss and 0.48 [0.39, 0.55] on coral bleaching. SHAP values show
+====================================================================================================
+paper/draft/tables/table_9.md new visible characters: 4522
+-- 'Model' (paper term: final answer): 4
+     L3: t-only, never deciding, and not headline results. Each model is explained in its own link space against a backgroun
+     L3: er nearby survey visits). A variable's importance to a model is its mean absolute SHAP value over the sample, with
+     L3: ly in the sum of the mean absolute attributions of the model's five families (with each region weighted equally), a
+     L13: route v1 and a rival cannot separate the link from the model there. The cross-link pairs are in Table S3.25. ᵇ PM2.
+-- 'model' (paper term: final answer): 4
+     L3: t-only, never deciding, and not headline results. Each model is explained in its own link space against a backgroun
+     L3: er nearby survey visits). A variable's importance to a model is its mean absolute SHAP value over the sample, with
+     L3: ly in the sum of the mean absolute attributions of the model's five families (with each region weighted equally), a
+     L13: route v1 and a rival cannot separate the link from the model there. The cross-link pairs are in Table S3.25. ᵇ PM2.
+-- 'Model(s)' (paper term: final answer): 2
+     L3: ings. Spearman: rank correlation over the union of two models' top-20 variables, here of treeroute v1 with each same
+     L13: rd, so the main set is treeroute v1 alone. W needs two models and is undefined, and the cells that need a rival are
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 2
+     L3: alendar month (forest loss, annual: all of them; coral bleaching: a pool of earlier nearby survey visits). A variable's
+     L11: | 0.29 [0.25, 0.33] | 0.35 [0.32, 0.40] | | Coral bleaching | treeroute v1, random forest, LightGBM, absolute-erro
+-- 'cell(s)' (paper term: location (symbol u)): 2
+     L13: v1 alone. W needs two models and is undefined, and the cells that need a rival are empty (–): agreement between tre
+     L16: agree): the comparison's output files leave these two cells empty, because they are written only when treeroute v1
+-- 'guard' (paper term: skill guard): 2
+     L3: rivals that explain in its link and passed their skill guard. W: Kendall's W of the main set's rankings. Spearman:
+     L13: die booster in log μ), and Ridge also failed its skill guard, so the main set is treeroute v1 alone. W needs two mo
+-- 'model(s)' (paper term: final answer): 2
+     L3: ings. Spearman: rank correlation over the union of two models' top-20 variables, here of treeroute v1 with each same
+     L13: rd, so the main set is treeroute v1 alone. W needs two models and is undefined, and the cells that need a rival are
+-- 'row(s)' (paper term: survey visit (coral only)): 2
+     L3: st labels were opened, on a fixed sample of 1,000 test rows per problem; report-only, never deciding, and not head
+     L3: against a background of the same location's router fit rows of the same calendar month (forest loss, annual: all o
+-- 'row(s)' (paper term: entry (of a published rival)): 2
+     L3: st labels were opened, on a fixed sample of 1,000 test rows per problem; report-only, never deciding, and not head
+     L3: against a background of the same location's router fit rows of the same calendar month (forest loss, annual: all o
+-- 'the model' (paper term: treeroute v1 (the engine)): 2
+     L3: family in the sum of the mean absolute attributions of the model's five families (with each region weighted equally), a
+     L13: treeroute v1 and a rival cannot separate the link from the model there. The cross-link pairs are in Table S3.25. ᵇ PM2.
+-- 'Tweedie' (paper term: Tweedie booster): 1
+     L13: ghtGBM, the random forest and Ridge in log(y + c), the Tweedie booster in log μ), and Ridge also failed its skill gua
+-- 'calendar month' (paper term: season key): 1
+     L3: und of the same location's router fit rows of the same calendar month (forest loss, annual: all of them; coral bleaching: a
+-- 'context' (paper term: router context (z)): 1
+     L3: location's own labels), global indices, local drivers, context and calendar (the router-context columns that copy no
+-- 'drivers' (paper term: tree inputs): 1
+     L3: s of the location's own labels), global indices, local drivers, context and calendar (the router-context columns that
+-- 'fit rows' (paper term: router fit rows): 1
+     L3: ace against a background of the same location's router fit rows of the same calendar month (forest loss, annual: all o
+-- 'month' (paper term: step): 1
+     L3: e same location's router fit rows of the same calendar month (forest loss, annual: all of them; coral bleaching: a
+-- 'pool' (paper term: router fit rows): 1
+     L3: (forest loss, annual: all of them; coral bleaching: a pool of earlier nearby survey visits). A variable's importa
+-- 'row' (paper term: survey visit (coral only)): 1
+     L3: region weighted equally), a family's attribution on a row being the sum of its variables' SHAP values; it is not
+-- 'row' (paper term: entry (of a published rival)): 1
+     L3: region weighted equally), a family's attribution on a row being the sum of its variables' SHAP values; it is not
+-- 'survey' (paper term: survey visit (coral only)): 1
+     L3: all of them; coral bleaching: a pool of earlier nearby survey visits). A variable's importance to a model is its mea
+-- 'visit(s)' (paper term: survey visit (coral only)): 1
+     L3: them; coral bleaching: a pool of earlier nearby survey visits). A variable's importance to a model is its mean absol
+-- 'y' (paper term: label): 1
+     L13: her link (LightGBM, the random forest and Ridge in log(y + c), the Tweedie booster in log μ), and Ridge also fa
+====================================================================================================
+paper/draft/S1_disclosures.md new visible characters: 17097
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 11
+     L245: alues on real rows only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, l
+     L246: t or, on the arcsine arms of burned fraction and coral bleaching, within the D8 tolerance (a relative difference of at
+     L246: is not established, and E5 is informational. The coral bleaching pilot ran with the D8 tolerance before the author rule
+     L246: ance before the author ruled it (ruling AY3). On coral bleaching, gate E3a compares no data file before the labels are
+     L246: e survey visit's router fit rows and test row on coral bleaching, and on every sampled location on forest loss. On PM2.
+     L247: tside a comparison of the nowcast. Ridge outside coral bleaching and BARDL were explained through loaders added after t
+     L248: , NDVI and burned fraction; it is not defined on coral bleaching, and on forest loss, which is annual, its background e
+     L250: A26; Part 628; rulings BA2, BB1, BB2 | | PH27 | Coral bleaching's table of the main-text statistics (AW4_table.md, the
+     L250: | coral bleaching | S3.13 (Table S3.22, note d) | facts A25, A26; Part 6
+     L252: 9 | Record conflict: the SHAP protocol describes coral bleaching's background (B2) as "other sites' visits", but of its
+     L252: | coral bleaching | S3.13 (in part) | fact A11; Part 628 | | PH30 | The
+-- 'row(s)' (paper term: survey visit (coral only)): 9
+     L245: st lead is explained), on a fixed sample of 1,000 test rows per problem, the same rows for every model, with perce
+     L245: fixed sample of 1,000 test rows per problem, the same rows for every model, with percentile intervals over 2,000
+     L245: (2026-11-12); smoke tests computed SHAP values on real rows only as plumbing (at most 250 coral bleaching survey v
+     L245: y visits before those sections were frozen and, later, rows of the registered samples in the checks of the Ridge a
+     L246: he exported trees on one sampled location's router fit rows and test rows on PM2.5, NDVI and burned fraction, on o
+     L246: ees on one sampled location's router fit rows and test rows on PM2.5, NDVI and burned fraction, on one survey visi
+     L246: and burned fraction, on one survey visit's router fit rows and test row on coral bleaching, and on every sampled
+     L247: as shipped and frozen, which are not functions of the rows' input columns; CAMS EAC4 and the burned-fraction publ
+     L248: same sample against all of each location's router fit rows at or before the cut, not only those of the explained
+-- 'row(s)' (paper term: entry (of a published rival)): 9
+     L245: st lead is explained), on a fixed sample of 1,000 test rows per problem, the same rows for every model, with perce
+     L245: fixed sample of 1,000 test rows per problem, the same rows for every model, with percentile intervals over 2,000
+     L245: (2026-11-12); smoke tests computed SHAP values on real rows only as plumbing (at most 250 coral bleaching survey v
+     L245: y visits before those sections were frozen and, later, rows of the registered samples in the checks of the Ridge a
+     L246: he exported trees on one sampled location's router fit rows and test rows on PM2.5, NDVI and burned fraction, on o
+     L246: ees on one sampled location's router fit rows and test rows on PM2.5, NDVI and burned fraction, on one survey visi
+     L246: and burned fraction, on one survey visit's router fit rows and test row on coral bleaching, and on every sampled
+     L247: as shipped and frozen, which are not functions of the rows' input columns; CAMS EAC4 and the burned-fraction publ
+     L248: same sample against all of each location's router fit rows at or before the cut, not only those of the explained
+-- 'survey' (paper term: survey visit (coral only)): 9
+     L245: eal rows only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, later, r
+     L246: d test rows on PM2.5, NDVI and burned fraction, on one survey visit's router fit rows and test row on coral bleachin
+     L252: ts", but of its 50,000 background pairs (50 background survey visits for each explained survey visit), 980 pair an e
+     L252: pairs (50 background survey visits for each explained survey visit), 980 pair an explained survey visit with an ear
+     L252: or each explained survey visit), 980 pair an explained survey visit with an earlier survey visit at its own reef sit
+     L252: t), 980 pair an explained survey visit with an earlier survey visit at its own reef site (for 415 of the 1,000 expla
+     L252: t at its own reef site (for 415 of the 1,000 explained survey visits), and in none is the background survey visit da
+     L252: xplained survey visits), and in none is the background survey visit dated on or after the explained one. The paper c
+     L252: he paper calls the background a pool of earlier nearby survey visits.
+-- 'Model' (paper term: final answer): 5
+     L245: f 1,000 test rows per problem, the same rows for every model, with percentile intervals over 2,000 paired bootstrap
+     L245: values show what causes the outcome (they show what a model uses to move its forecast away from its background), t
+     L246: d the run's saved adoption and skill-guard outcome; no model got a SHAP value before it had reproduced its saved pr
+     L251: reference link, a note on the cross-link pairs and the model lists, and of its comparison record only the models, t
+     L278: wrote and checked this write-up of the comparison. The model list above ends with fact M14b's scan of 2026-11-10, b
+-- 'model' (paper term: final answer): 5
+     L245: f 1,000 test rows per problem, the same rows for every model, with percentile intervals over 2,000 paired bootstrap
+     L245: values show what causes the outcome (they show what a model uses to move its forecast away from its background), t
+     L246: d the run's saved adoption and skill-guard outcome; no model got a SHAP value before it had reproduced its saved pr
+     L251: reference link, a note on the cross-link pairs and the model lists, and of its comparison record only the models, t
+     L278: wrote and checked this write-up of the comparison. The model list above ends with fact M14b's scan of 2026-11-10, b
+-- 'row' (paper term: survey visit (coral only)): 5
+     L245: before any SHAP value had been computed on a real data row; its sections on the sample and the statistics were re
+     L246: action, on one survey visit's router fit rows and test row on coral bleaching, and on every sampled location on f
+     L248: at or before the cut, not only those of the explained row's calendar month, on PM2.5, NDVI and burned fraction;
+     L248: endall's W, consensus, main-set statistic or main-text row, and it is compared with no rival. The protocol lists
+     L249: share with its interval in burned fraction's main-text row, it gives the sign agreement no interval, and it gives
+-- 'row' (paper term: entry (of a published rival)): 5
+     L245: before any SHAP value had been computed on a real data row; its sections on the sample and the statistics were re
+     L246: action, on one survey visit's router fit rows and test row on coral bleaching, and on every sampled location on f
+     L248: at or before the cut, not only those of the explained row's calendar month, on PM2.5, NDVI and burned fraction;
+     L248: endall's W, consensus, main-set statistic or main-text row, and it is compared with no rival. The protocol lists
+     L249: share with its interval in burned fraction's main-text row, it gives the sign agreement no interval, and it gives
+-- 'visit' (paper term: survey visit (coral only)): 5
+     L246: rows on PM2.5, NDVI and burned fraction, on one survey visit's router fit rows and test row on coral bleaching, and
+     L252: (50 background survey visits for each explained survey visit), 980 pair an explained survey visit with an earlier s
+     L252: explained survey visit), 980 pair an explained survey visit with an earlier survey visit at its own reef site (for
+     L252: pair an explained survey visit with an earlier survey visit at its own reef site (for 415 of the 1,000 explained s
+     L252: d survey visits), and in none is the background survey visit dated on or after the explained one. The paper calls t
+-- 'visit(s)' (paper term: survey visit (coral only)): 5
+     L245: s only as plumbing (at most 250 coral bleaching survey visits before those sections were frozen and, later, rows of
+     L252: bes coral bleaching's background (B2) as "other sites' visits", but of its 50,000 background pairs (50 background su
+     L252: t of its 50,000 background pairs (50 background survey visits for each explained survey visit), 980 pair an explaine
+     L252: s own reef site (for 415 of the 1,000 explained survey visits), and in none is the background survey visit dated on
+     L252: r calls the background a pool of earlier nearby survey visits.
+-- 'Model(s)' (paper term: final answer): 3
+     L245: , that agreement between rankings is correctness, that models in different links can be compared, or that a zero mea
+     L251: on written on 2026-11-13, before Ridge was added (four models), was opened once by an agent the same day, before the
+     L251: the model lists, and of its comparison record only the models, the main set and the declined list were read; its pai
+-- 'fit rows' (paper term: router fit rows): 3
+     L246: ks the exported trees on one sampled location's router fit rows and test rows on PM2.5, NDVI and burned fraction, on o
+     L246: NDVI and burned fraction, on one survey visit's router fit rows and test row on coral bleaching, and on every sampled
+     L248: the same sample against all of each location's router fit rows at or before the cut, not only those of the explained
+-- 'model(s)' (paper term: final answer): 3
+     L245: , that agreement between rankings is correctness, that models in different links can be compared, or that a zero mea
+     L251: on written on 2026-11-13, before Ridge was added (four models), was opened once by an agent the same day, before the
+     L251: the model lists, and of its comparison record only the models, the main set and the declined list were read; its pai
+-- 'month' (paper term: step): 3
+     L247: n maps of a product or index (MERRA-2 PM2.5 lagged one month, in the same month and as the placebo entry; VT0007, c
+     L247: or index (MERRA-2 PM2.5 lagged one month, in the same month and as the placebo entry; VT0007, calibrated; NOAA Cor
+     L248: he cut, not only those of the explained row's calendar month, on PM2.5, NDVI and burned fraction; it is not defined
+-- 'Bank' (paper term: tree bank): 2
+     L246: 1's fitted trees were not kept, so each problem's tree bank, with its correctors and placebos, and the sampled loc
+     L246: dictions. Gate E5, the fingerprint of the rebuilt tree bank, correctors and placebos, differs from the run's on al
+-- 'bank' (paper term: tree bank): 2
+     L246: 1's fitted trees were not kept, so each problem's tree bank, with its correctors and placebos, and the sampled loc
+     L246: dictions. Gate E5, the fingerprint of the rebuilt tree bank, correctors and placebos, differs from the run's on al
+-- 'the model' (paper term: treeroute v1 (the engine)): 2
+     L251: the reference link, a note on the cross-link pairs and the model lists, and of its comparison record only the models, t
+     L278: nts wrote and checked this write-up of the comparison. The model list above ends with fact M14b's scan of 2026-11-10, b
+-- 'tolerance' (paper term: identity tolerance (epsilon)): 2
+     L246: of burned fraction and coral bleaching, within the D8 tolerance (a relative difference of at most 10⁻¹²); its cause is
+     L246: formational. The coral bleaching pilot ran with the D8 tolerance before the author ruled it (ruling AY3). On coral blea
+-- 'answer' (paper term: tree answer (T_k)): 1
+     L246: e run's on all five problems, while every checked tree answer and prediction matches, bit for bit or, on the arcsine
+-- 'board' (paper term: rival board): 1
+     L251: added (ruling AZ1). The Ridge loader repeats the rival board's own scoring bit for bit, so it had no free choice.
+-- 'calendar month' (paper term: season key): 1
+     L248: before the cut, not only those of the explained row's calendar month, on PM2.5, NDVI and burned fraction; it is not defined
+-- 'cell(s)' (paper term: location (symbol u)): 1
+     L253: ; versions 2 to 5 reworded captions, notes, labels and cells after four checks, and no number changed. The two buil
+-- 'day' (paper term: step): 1
+     L251: ed (four models), was opened once by an agent the same day, before the Ridge loader was built, for its layout onl
+-- 'decision' (paper term: adoption): 1
+     L247: rary and stays out under the default of the protocol's decision D7, which the author has not ruled (its skill guard fa
+-- 'guard' (paper term: skill guard): 1
+     L247: decision D7, which the author has not ruled (its skill guard failed at the nowcast). Rivals that run only at foreca
+-- 'package' (paper term: dataset package): 1
+     L246: st loss. On PM2.5, NDVI and burned fraction, a dataset package file that had moved with the machine's reinstall (RP2)
+-- 'pool' (paper term: router fit rows): 1
+     L252: er the explained one. The paper calls the background a pool of earlier nearby survey visits.
+-- 'site' (paper term: location (symbol u)): 1
+     L252: vey visit with an earlier survey visit at its own reef site (for 415 of the 1,000 explained survey visits), and in
+-- 'site(s)' (paper term: location (symbol u)): 1
+     L252: describes coral bleaching's background (B2) as "other sites' visits", but of its 50,000 background pairs (50 backg
+-- 'the model(s)' (paper term: treeroute v1 (the engine)): 1
+     L251: and the model lists, and of its comparison record only the models, the main set and the declined list were read; its pai
+-- 'verdict' (paper term: ban-list category): 1
+     L245: es, re-decides nothing and changes no locked number or verdict. It does not claim that SHAP values show what causes t
+====================================================================================================
+paper/draft/S4_provenance.md new visible characters: 13187
+-- 'Model(s)' (paper term: final answer): 5
+     L83: e burned-fraction comparison of 2026-11-13 20:18 (four models, without Ridge) opened by an agent for its layout only
+     L83: (Supplement S1, PH28); the last comparison (NDVI, five models) written at the end | SAMPLE_REGISTER.txt; PROTOCOL.md
+     L412: ich were left out and why (AW2); a table shows how the models disagree, problem by problem (AW3); several agreement
+     L415: ison written on 2026-11-13 at 20:18 (21:18 local; four models, without Ridge) before Ridge was added; recorded in th
+     L417: plains PM2.5's asymmetric RBO interval (BB4); the main models' top-10 shares and family shares have no intervals (BB
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 5
+     L80: ocal, the end on 2026-11-13) | SHAP pilot on the coral bleaching nowcast, the author's command: the coral sample regist
+     L82: , AY | | 2026-11-13, about 14:31 (15:31 local) | Coral bleaching's comparison table AW4_table.md read by an agent, befo
+     L83: 2026-11-14 03:37:20 and 13:37:52; Ridge outside coral bleaching and BARDL explained through loaders added after the pr
+     L414: scope (i), the nowcast of each problem only, the coral bleaching pilot already run included, where the agent had recomm
+     L417: es have no intervals (BB5); S3.13 discloses that coral bleaching's comparison table was read before the re-computation,
+-- 'model(s)' (paper term: final answer): 5
+     L83: e burned-fraction comparison of 2026-11-13 20:18 (four models, without Ridge) opened by an agent for its layout only
+     L83: (Supplement S1, PH28); the last comparison (NDVI, five models) written at the end | SAMPLE_REGISTER.txt; PROTOCOL.md
+     L412: ich were left out and why (AW2); a table shows how the models disagree, problem by problem (AW3); several agreement
+     L415: ison written on 2026-11-13 at 20:18 (21:18 local; four models, without Ridge) before Ridge was added; recorded in th
+     L417: plains PM2.5's asymmetric RBO interval (BB4); the main models' top-10 shares and family shares have no intervals (BB
+-- 'row(s)' (paper term: survey visit (coral only)): 5
+     L31: ed by the author after its run (S4.9). The rows from 2026-11-12 on, except ruling AX (the GPCC downloa
+     L412: strap over regions (AW4); a fixed sample of 1,000 test rows per problem and lead in scope, the same rows for every
+     L412: ,000 test rows per problem and lead in scope, the same rows for every model, the scope still the author's choice (
+     L412: (the author's message, not quoted); for AW5: (the author's answer, not quoted)
+     L414: among them D7 (the Kraft LSTM left out) and D10 (1,000 rows, all regions). | the author's answer, not quoted (ruling AY)
+-- 'row(s)' (paper term: entry (of a published rival)): 5
+     L31: ed by the author after its run (S4.9). The rows from 2026-11-12 on, except ruling AX (the GPCC downloa
+     L412: strap over regions (AW4); a fixed sample of 1,000 test rows per problem and lead in scope, the same rows for every
+     L412: ,000 test rows per problem and lead in scope, the same rows for every model, the scope still the author's choice (
+     L412: (the author's message, not quoted); for AW5: (the author's answer, not quoted)
+     L414: among them D7 (the Kraft LSTM left out) and D10 (1,000 rows, all regions). | the author's answer, not quoted (ruling AY)
+-- 'decision' (paper term: adoption): 3
+     L412: t reproduce the saved predictions; this amends outline decision O3 as confirmed by AT17 (e), which had left SHAP out o
+     L413: -13 | Fourth batch, the author's answer to item 1 of a decision list of 13 items: NOAA's own October 2026 copy of one
+     L416: in set, as the frozen plan has it (BA1, the protocol's decision D16), answered after the NDVI comparison had been comp
+-- 'row' (paper term: survey visit (coral only)): 3
+     L31: -11-12 on, except ruling AX (the GPCC download, in the row of 2026-11-13), are the post hoc SHAP comparison of Su
+     L79: on 1 before any SHAP value was computed on a real data row and version 3 after the smoke tests and two design rev
+     L312: , except those of Part 628, whose folders its row names; full values in Table S4.14). | Part | What | F
+-- 'row' (paper term: entry (of a published rival)): 3
+     L31: -11-12 on, except ruling AX (the GPCC download, in the row of 2026-11-13), are the post hoc SHAP comparison of Su
+     L79: on 1 before any SHAP value was computed on a real data row and version 3 after the smoke tests and two design rev
+     L312: , except those of Part 628, whose folders its row names; full values in Table S4.14). | Part | What | F
+-- 'answer' (paper term: tree answer (T_k)): 2
+     L413: | | AX | 2026-11-13 | Fourth batch, the author's answer to item 1 of a decision list of 13 items: NOAA's own O
+     L417: ion after the independent re-computation, the author's answer to six points, each the agent's proposed option: the n
+-- 'day' (paper term: step): 2
+     L79: five problems (AW1-AW5); its protocol written the same day, version 1 before any SHAP value was computed on a rea
+     L413: hich replaces the premise of AV22 (AX1); read the same day, the whole file names no GPCC product, version or DOI,
+-- 'decision(s)' (paper term: adoption): 2
+     L414: | | AY | 2026-11-13 | SHAP decisions: scope (i), the nowcast of each problem only, the cora
+     L414: lready run the coral pilot (AY3); the protocol's other decisions keep their defaults, among them D7 (the Kraft LSTM lef
+-- 'shapv1_treeshap.py' (paper term: interventional TreeSHAP): 2
+     L320: py; shapv1_common.py; shapv1_rows.py; shapv1_stats.py; shapv1_treeshap.py; tr_rebuild.py; tr_shap.py; scripts/tests/diag_coral_e
+     L723: | | scripts/shapv1_treeshap.py | file |
+-- 'tolerance' (paper term: identity tolerance (epsilon)): 2
+     L81: roblem only (AY1); the recorded path map (AY2); the D8 tolerance, with which the coral pilot had already run (AY3) | OW
+     L414: and time stamp equal the locks' records (AY2); the D8 tolerance, a relative difference of at most 10⁻¹² (a true relati
+-- 'Model' (paper term: final answer): 1
+     L412: per problem and lead in scope, the same rows for every model, the scope still the author's choice (AW5). | answers
+-- 'answer(s)' (paper term: tree answer (T_k)): 1
+     L412: ry model, the scope still the author's choice (AW5). | answers to the question "Add SHAP to the paper now?": the author's answer, not quoted
+-- 'board(s)' (paper term: rival board): 1
+     L20: the run machine, in the records of the runs and rival boards, and UTC+1 in those of the SHAP analysis of 2026-11-12
+-- 'model' (paper term: final answer): 1
+     L412: per problem and lead in scope, the same rows for every model, the scope still the author's choice (AW5). | answers
+-- 'package' (paper term: dataset package): 1
+     L414: burned fraction, the moved static table of the dataset package is hashed under the run's recorded engine path and acc
+-- 'the model(s)' (paper term: treeroute v1 (the engine)): 1
+     L412: s which were left out and why (AW2); a table shows how the models disagree, problem by problem (AW3); several agreement
+====================================================================================================
+paper/draft/GLOSSARY.md new visible characters: 10903
+-- 'row' (paper term: survey visit (coral only)): 15
+     L117: | S5.2 | | **SHAP value** (phi_ij, of player j on row i) | baseline Shapley value, feature attribution, phi_
+     L117: player's interventional Shapley value on one explained row, in the model's own link space: a set of players is wo
+     L117: players is worth the model's output averaged over the row's background rows, with those players at the explained
+     L117: s background rows, with those players at the explained row's values and the others at each background row's; a ro
+     L117: plained row's values and the others at each background row's; a row's SHAP values add up to the model's output th
+     L117: ow's values and the others at each background row's; a row's SHAP values add up to the model's output there minus
+     L118: values, tree by tree, over every pair of an explained row and one of its background rows (not the path-dependent
+     L119: ter pool (coral) | The rows against which an explained row's SHAP values are taken: under B2, shared by every mod
+     L119: , the same location's router fit rows of the explained row's calendar month at or before the cut (forest loss, an
+     L119: nth and the seasonal normal, which equal the explained row's values on every background row, are exactly 0; under
+     L119: h equal the explained row's values on every background row, are exactly 0; under B1, treeroute v1's sensitivity o
+     L121: r players are the structural zeros, exactly 0 on every row of every model at that level.
+     L122: d top-3 shares, while family shares have another base (row family).
+     L123: ) and the seasonal normal; a family's attribution on a row is the sum of its variables' SHAP values, and its fami
+     L124: guard: the models of Kendall's W and of the main-text row (Table 9), whose rivals make the consensus; a rival th
+-- 'row' (paper term: entry (of a published rival)): 15
+     L117: | S5.2 | | **SHAP value** (phi_ij, of player j on row i) | baseline Shapley value, feature attribution, phi_
+     L117: player's interventional Shapley value on one explained row, in the model's own link space: a set of players is wo
+     L117: players is worth the model's output averaged over the row's background rows, with those players at the explained
+     L117: s background rows, with those players at the explained row's values and the others at each background row's; a ro
+     L117: plained row's values and the others at each background row's; a row's SHAP values add up to the model's output th
+     L117: ow's values and the others at each background row's; a row's SHAP values add up to the model's output there minus
+     L118: values, tree by tree, over every pair of an explained row and one of its background rows (not the path-dependent
+     L119: ter pool (coral) | The rows against which an explained row's SHAP values are taken: under B2, shared by every mod
+     L119: , the same location's router fit rows of the explained row's calendar month at or before the cut (forest loss, an
+     L119: nth and the seasonal normal, which equal the explained row's values on every background row, are exactly 0; under
+     L119: h equal the explained row's values on every background row, are exactly 0; under B1, treeroute v1's sensitivity o
+     L121: r players are the structural zeros, exactly 0 on every row of every model at that level.
+     L122: d top-3 shares, while family shares have another base (row family).
+     L123: ) and the seasonal normal; a family's attribution on a row is the sum of its variables' SHAP values, and its fami
+     L124: guard: the models of Kendall's W and of the main-text row (Table 9), whose rivals make the consensus; a rival th
+-- 'Model' (paper term: final answer): 12
+     L117: erventional Shapley value on one explained row, in the model's own link space: a set of players is worth the model'
+     L117: model's own link space: a set of players is worth the model's output averaged over the row's background rows, with
+     L117: ch background row's; a row's SHAP values add up to the model's output there minus its mean over the background rows
+     L118: , shapv1_treeshap.py | The exact computation of a tree model's SHAP values, tree by tree, over every pair of an exp
+     L119: row's SHAP values are taken: under B2, shared by every model, the same location's router fit rows of the explained
+     L120: mn, or normal (the seasonal normal, in whatever form a model takes it), a router-context column that exactly copies
+     L121: ead.json) | J, at one level: the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L121: the structural zeros, exactly 0 on every row of every model at that level.
+     L122: eighted mean absolute phi | A player's importance to a model is its mean absolute SHAP value over the sample rows,
+     L122: he players by it; its share is its importance over the model's total importance over J, the base of S3.13's top-10
+     L129: region_resampling | The mean Spearman correlation of a model's full-sample importances with those of its own bootst
+     L132: value is 0, licensed by gate E5a; every other arm and model must reproduce its saved predictions bit for bit (ruli
+-- 'model' (paper term: final answer): 12
+     L117: erventional Shapley value on one explained row, in the model's own link space: a set of players is worth the model'
+     L117: model's own link space: a set of players is worth the model's output averaged over the row's background rows, with
+     L117: ch background row's; a row's SHAP values add up to the model's output there minus its mean over the background rows
+     L118: , shapv1_treeshap.py | The exact computation of a tree model's SHAP values, tree by tree, over every pair of an exp
+     L119: row's SHAP values are taken: under B2, shared by every model, the same location's router fit rows of the explained
+     L120: mn, or normal (the seasonal normal, in whatever form a model takes it), a router-context column that exactly copies
+     L121: ead.json) | J, at one level: the players to which some model gives more than 10⁻¹² of its total mean absolute SHAP
+     L121: the structural zeros, exactly 0 on every row of every model at that level.
+     L122: eighted mean absolute phi | A player's importance to a model is its mean absolute SHAP value over the sample rows,
+     L122: he players by it; its share is its importance over the model's total importance over J, the base of S3.13's top-10
+     L129: region_resampling | The mean Spearman correlation of a model's full-sample importances with those of its own bootst
+     L132: value is 0, licensed by gate E5a; every other arm and model must reproduce its saved predictions bit for bit (ruli
+-- 'row(s)' (paper term: survey visit (coral only)): 8
+     L117: the model's output averaged over the row's background rows, with those players at the explained row's values and
+     L117: odel's output there minus its mean over the background rows, up to a small unattributed part that S-RESID checks (
+     L118: ery pair of an explained row and one of its background rows (not the path-dependent TreeSHAP built into LightGBM);
+     L119: x), background_keys.parquet, router pool (coral) | The rows against which an explained row's SHAP values are taken
+     L119: shared by every model, the same location's router fit rows of the explained row's calendar month at or before the
+     L119: ; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits), so that on t
+     L119: ed with the main set, all of the location's router fit rows at or before the cut, so that the month and the season
+     L122: model is its mean absolute SHAP value over the sample rows, with each region weighted equally, and rankings order
+-- 'row(s)' (paper term: entry (of a published rival)): 8
+     L117: the model's output averaged over the row's background rows, with those players at the explained row's values and
+     L117: odel's output there minus its mean over the background rows, up to a small unattributed part that S-RESID checks (
+     L118: ery pair of an explained row and one of its background rows (not the path-dependent TreeSHAP built into LightGBM);
+     L119: x), background_keys.parquet, router pool (coral) | The rows against which an explained row's SHAP values are taken
+     L119: shared by every model, the same location's router fit rows of the explained row's calendar month at or before the
+     L119: ; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits), so that on t
+     L119: ed with the main set, all of the location's router fit rows at or before the cut, so that the month and the season
+     L122: model is its mean absolute SHAP value over the sample rows, with each region weighted equally, and rankings order
+-- 'Model(s)' (paper term: final answer): 6
+     L124: explain in its link and passed their skill guard: the models of Kendall's W and of the main-text row (Table 9), who
+     L125: med 5.4) | | **same-link** / **cross-link** (a pair of models) | same_link (code) | A pair is same-link when both mo
+     L125: ls) | same_link (code) | A pair is same-link when both models explain in the same link space (the same link, constan
+     L126: set's rankings, with the tie correction; it needs two models, so it is undefined on burned fraction, and the mean p
+     L130: sign_n_determined | Of the players in the union of two models' top-10 sets whose sign is determined in both (the boo
+     L131: re distance** | tvd, tvd_family (code) | For a pair of models, the total-variation distance between their shares ove
+-- 'model(s)' (paper term: final answer): 6
+     L124: explain in its link and passed their skill guard: the models of Kendall's W and of the main-text row (Table 9), who
+     L125: med 5.4) | | **same-link** / **cross-link** (a pair of models) | same_link (code) | A pair is same-link when both mo
+     L125: ls) | same_link (code) | A pair is same-link when both models explain in the same link space (the same link, constan
+     L126: set's rankings, with the tie correction; it needs two models, so it is undefined on burned fraction, and the mean p
+     L130: sign_n_determined | Of the players in the union of two models' top-10 sets whose sign is determined in both (the boo
+     L131: re distance** | tvd, tvd_family (code) | For a pair of models, the total-variation distance between their shares ove
+-- 'month' (paper term: step): 4
+     L119: tion's router fit rows of the explained row's calendar month at or before the cut (forest loss, annual: all of them
+     L119: o that on the gridded problems the static columns, the month and the seasonal normal, which equal the explained row
+     L119: on's router fit rows at or before the cut, so that the month and the seasonal normal can take credit (not defined o
+     L120: istory columns keep their stem, such as hist_last; the month and its harmonics form the variable calendar, and anot
+-- 'the model' (paper term: treeroute v1 (the engine)): 4
+     L117: interventional Shapley value on one explained row, in the model's own link space: a set of players is worth the model'
+     L117: the model's own link space: a set of players is worth the model's output averaged over the row's background rows, with
+     L117: t each background row's; a row's SHAP values add up to the model's output there minus its mean over the background rows
+     L122: er the players by it; its share is its importance over the model's total importance over J, the base of S3.13's top-10
+-- 'tolerance' (paper term: identity tolerance (epsilon)): 4
+     L132: | S3.13 | | **D8 tolerance** | arcsine tolerance, relative tolerance | The allowa
+     L132: | S3.13 | | **D8 tolerance** | arcsine tolerance, relative tolerance | The allowance for treeroute v1's
+     L132: .13 | | **D8 tolerance** | arcsine tolerance, relative tolerance | The allowance for treeroute v1's rebuilt arcsine arm
+     L132: predictions bit for bit (ruling AY3). Not the identity tolerance.
+-- 'bleaching' (paper term: coral bleaching (short: coral, after its first use in each section)): 3
+     L119: efore the cut (forest loss, annual: all of them; coral bleaching: the survey visit's saved router fit rows, a pool of e
+     L119: seasonal normal can take credit (not defined on coral bleaching).
+     L132: e v1's rebuilt arcsine arms (burned fraction and coral bleaching) in the SHAP comparison's exactness checks: a relative
+-- 'context' (paper term: router context (z)): 3
+     L120: ped game (the variable level), merged player (a copied context column) | What a SHAP value is given to: at the featur
+     L120: its harmonics form the variable calendar, and another context column is ctx: followed by its name, as in ctx:lat).
+     L123: et), local drivers (the variables in no other family), context and calendar (the router-context columns that copy no
+-- 'fit rows' (paper term: router fit rows): 3
+     L119: B2, shared by every model, the same location's router fit rows of the explained row's calendar month at or before the
+     L119: them; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits), so that on t
+     L119: pooled with the main set, all of the location's router fit rows at or before the cut, so that the month and the season
+-- 'form' (paper term: entry (of a published rival)): 3
+     L120: ut column, or normal (the seasonal normal, in whatever form a model takes it), a router-context column that exactl
+     L120: r stem, such as hist_last; the month and its harmonics form the variable calendar, and another context column is c
+     L127: r J (equal length, ties broken by name), in its finite form, at p = 0.9 and 0.95; Table 9 gives treeroute v1's ran
+-- 'active' (paper term: active set (J); structural zero): 2
+     L121: | S3.13 (variable level named Table 9) | | **active set** (J); **structural zero** | active (per_lead.json
+     L121: Table 9) | | **active set** (J); **structural zero** | active (per_lead.json), n_J (results.json), structural_zero (
+-- 'ctx' (paper term: router context (z)): 2
+     L120: m the variable calendar, and another context column is ctx: followed by its name, as in ctx:lat).
+     L120: her context column is ctx: followed by its name, as in ctx:lat).
+-- 'guard' (paper term: skill guard): 2
+     L124: rivals that explain in its link and passed their skill guard: the models of Kendall's W and of the main-text row (T
+     L124: vals make the consensus; a rival that failed its skill guard is explained, labelled and kept out (decision D6), and
+-- 'pool' (paper term: router fit rows): 2
+     L119: s sensitivity) | B(x), background_keys.parquet, router pool (coral) | The rows against which an explained row's SH
+     L119: bleaching: the survey visit's saved router fit rows, a pool of earlier nearby survey visits), so that on the gridd
+-- 'survey' (paper term: survey visit (coral only)): 2
+     L119: forest loss, annual: all of them; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearb
+     L119: isit's saved router fit rows, a pool of earlier nearby survey visits), so that on the gridded problems the static co
+-- 'B(x)' (paper term: background (B2; B1 only as treeroute v1's sensitivity)): 1
+     L119: (**B2**; **B1** only as treeroute v1's sensitivity) | B(x), background_keys.parquet, router pool (coral) | The ro
+-- 'SHAP walk' (paper term: interventional TreeSHAP): 1
+     L118: | S3.13 (named 5.4) | | **interventional TreeSHAP** | SHAP walk, shapv1_treeshap.py | The exact computation of a tree
+-- 'X' (paper term: tree inputs): 1
+     L119: **B2**; **B1** only as treeroute v1's sensitivity) | B(x), background_keys.parquet, router pool (coral) | The r
+-- 'arcsine tolerance' (paper term: D8 tolerance): 1
+     L132: | S3.13 | | **D8 tolerance** | arcsine tolerance, relative tolerance | The allowance for treeroute v1's
+-- 'background_keys.parquet' (paper term: background (B2; B1 only as treeroute v1's sensitivity)): 1
+     L119: **; **B1** only as treeroute v1's sensitivity) | B(x), background_keys.parquet, router pool (coral) | The rows against which an expla
+-- 'baseline Shapley value' (paper term: SHAP value (phi_ij, of player j on row i)): 1
+     L117: .2 | | **SHAP value** (phi_ij, of player j on row i) | baseline Shapley value, feature attribution, phi__ and phiv__ columns | A pla
+-- 'calendar month' (paper term: season key): 1
+     L119: same location's router fit rows of the explained row's calendar month at or before the cut (forest loss, annual: all of them
+-- 'decision' (paper term: adoption): 1
+     L124: d its skill guard is explained, labelled and kept out (decision D6), and on burned fraction the main set is treeroute
+-- 'drivers' (paper term: tree inputs): 1
+     L123: ns take one value per step across the test set), local drivers (the variables in no other family), context and calend
+-- 'families.parquet' (paper term: family (of variables; five); family share, as in the own-history share): 1
+     L123: ); **family share**, as in the **own-history share** | families.parquet, own_history_share (code) | One of five groups of vari
+-- 'feature attribution' (paper term: SHAP value (phi_ij, of player j on row i)): 1
+     L117: hi_ij, of player j on row i) | baseline Shapley value, feature attribution, phi__ and phiv__ columns | A player's interventional
+-- 'group(s)' (paper term: region (symbol g; G regions)): 1
+     L123: milies.parquet, own_history_share (code) | One of five groups of variables: own history (the lags and trailing means
+-- 'grouped game' (paper term: player, at the feature level or the variable level): 1
+     L120: , at the **feature level** or the **variable level** | grouped game (the variable level), merged player (a copied context
+-- 'importance vector' (paper term: importance (I_m(j)); share (s_m(j))): 1
+     L122: 3.13 | | **importance** (I_m(j)); **share** (s_m(j)) | importance vector, region-weighted mean absolute phi | A player's import
+-- 'kendall_w' (paper term: Kendall's W (of the main set)): 1
+     L126: 13 (named 5.4) | | **Kendall's W** (of the main set) | kendall_w, kendall_w_main_set | Kendall's coefficient of concord
+-- 'kendall_w_main_set' (paper term: Kendall's W (of the main set)): 1
+     L126: .4) | | **Kendall's W** (of the main set) | kendall_w, kendall_w_main_set | Kendall's coefficient of concordance of the main set
+-- 'main_set' (paper term: main set): 1
+     L124: | Table 9 (Section 5.4) | | **main set** | main_set (per_lead.json) | treeroute v1 and its rivals that exp
+-- 'merged player' (paper term: player, at the feature level or the variable level): 1
+     L120: *variable level** | grouped game (the variable level), merged player (a copied context column) | What a SHAP value is given
+-- 'n_J' (paper term: active set (J); structural zero): 1
+     L121: t** (J); **structural zero** | active (per_lead.json), n_J (results.json), structural_zero (per_lead.json) | J, a
+-- 'own_history_share' (paper term: family (of variables; five); family share, as in the own-history share): 1
+     L123: *, as in the **own-history share** | families.parquet, own_history_share (code) | One of five groups of variables: own history
+-- 'phi__ and phiv__ columns' (paper term: SHAP value (phi_ij, of player j on row i)): 1
+     L117: row i) | baseline Shapley value, feature attribution, phi__ and phiv__ columns | A player's interventional Shapley value on one expla
+-- 'rbo_p0.9' (paper term: rank-biased overlap (RBO)): 1
+     L127: able 9 (named 5.4) | | **rank-biased overlap** (RBO) | rbo_p0.9, rbo_p0.95, rbo_vs_consensus_p0.9 | A top-weighted ove
+-- 'rbo_p0.95' (paper term: rank-biased overlap (RBO)): 1
+     L127: med 5.4) | | **rank-biased overlap** (RBO) | rbo_p0.9, rbo_p0.95, rbo_vs_consensus_p0.9 | A top-weighted overlap of two
+-- 'rbo_vs_consensus_p0.9' (paper term: rank-biased overlap (RBO)): 1
+     L127: | **rank-biased overlap** (RBO) | rbo_p0.9, rbo_p0.95, rbo_vs_consensus_p0.9 | A top-weighted overlap of two full rankings over J (
+-- 'region-weighted mean absolute phi' (paper term: importance (I_m(j)); share (s_m(j))): 1
+     L122: ce** (I_m(j)); **share** (s_m(j)) | importance vector, region-weighted mean absolute phi | A player's importance to a model is its mean absolut
+-- 'relative tolerance' (paper term: D8 tolerance): 1
+     L132: | S3.13 | | **D8 tolerance** | arcsine tolerance, relative tolerance | The allowance for treeroute v1's rebuilt arcsine arm
+-- 'router pool' (paper term: background (B2; B1 only as treeroute v1's sensitivity)): 1
+     L119: ute v1's sensitivity) | B(x), background_keys.parquet, router pool (coral) | The rows against which an explained row's SH
+-- 'same_link' (paper term: same-link / cross-link (a pair of models)): 1
+     L125: | **same-link** / **cross-link** (a pair of models) | same_link (code) | A pair is same-link when both models explain
+-- 'sample row(s)' (paper term: survey visit (coral only)): 1
+     L122: ce to a model is its mean absolute SHAP value over the sample rows, with each region weighted equally, and rankings order
+-- 'shapv1_treeshap.py' (paper term: interventional TreeSHAP): 1
+     L118: amed 5.4) | | **interventional TreeSHAP** | SHAP walk, shapv1_treeshap.py | The exact computation of a tree model's SHAP values,
+-- 'sign_agreement_top10' (paper term: sign agreement (on the top-10 union)): 1
+     L130: | S3.13 | | **sign agreement** (on the top-10 union) | sign_agreement_top10, signs_compared, sign_n_determined | Of the players in
+-- 'sign_n_determined' (paper term: sign agreement (on the top-10 union)): 1
+     L130: top-10 union) | sign_agreement_top10, signs_compared, sign_n_determined | Of the players in the union of two models' top-10 se
+-- 'signs_compared' (paper term: sign agreement (on the top-10 union)): 1
+     L130: eement** (on the top-10 union) | sign_agreement_top10, signs_compared, sign_n_determined | Of the players in the union of tw
+-- 'stability_under_region_resampling' (paper term: stability (under region resampling)): 1
+     L129: ion 5.4) | | **stability** (under region resampling) | stability_under_region_resampling | The mean Spearman correlation of a model's full-samp
+-- 'structural_zero' (paper term: active set (J); structural zero): 1
+     L121: l zero** | active (per_lead.json), n_J (results.json), structural_zero (per_lead.json) | J, at one level: the players to whic
+-- 'the model(s)' (paper term: treeroute v1 (the engine)): 1
+     L124: that explain in its link and passed their skill guard: the models of Kendall's W and of the main-text row (Table 9), who
+-- 'tvd' (paper term: share distance (TV); family-share distance): 1
+     L131: | **share distance** (TV); **family-share distance** | tvd, tvd_family (code) | For a pair of models, the total-v
+-- 'tvd_family' (paper term: share distance (TV); family-share distance): 1
+     L131: hare distance** (TV); **family-share distance** | tvd, tvd_family (code) | For a pair of models, the total-variation dis
+-- 'visit' (paper term: survey visit (coral only)): 1
+     L119: loss, annual: all of them; coral bleaching: the survey visit's saved router fit rows, a pool of earlier nearby surv
+-- 'visit(s)' (paper term: survey visit (coral only)): 1
+     L119: saved router fit rows, a pool of earlier nearby survey visits), so that on the gridded problems the static columns,
+====================================================================================================
+paper/draft/TABLE_NUMBERS.md new visible characters: 514

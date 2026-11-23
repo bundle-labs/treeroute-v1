@@ -1,0 +1,48 @@
+# dataset.yaml -- ndvi_draft: GENERATED from datasets/ndvi/dataset.yaml by datasets/_tools/refresh_drafts.py;
+# do not edit by hand (tests/test_pipeline_draft.py checks it against the generator).
+# DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run.
+# Only name, version, owner and description differ from the real package; every store, include and
+# sha256 is the real package's. The real file's comments follow.
+#
+# dataset.yaml -- the NDVI dataset package (APP_PLAN.md 1.1-1.2; ruling Q1 a: NDVI on the engine). Drafted
+# 2026-09-28; unsigned. Name, version, owner, description, store path templates, includes. Nothing else.
+#
+# Stores are READ IN PLACE (plan 1.2). Paths: engine/datasets/_tools/export_review_csv.py:59-76 (PANEL_DIR, GFED_DIR)
+# and :1844-1890 (file patterns). The target V11_mean_ndvi is a column of the monthly panel, so the target
+# template and the first driver template name the same store.
+# GFED burn enters at lag 1 only (Q38 b); its 6 absent groups (alaska_north_slope, canadian_arctic_nunavut,
+# finnish_lapland, taimyr_peninsula, tierra_del_fuego, yamal_peninsula) are a store fact (absent_groups) and are
+# NDVI groups, so those groups get NaN and R30 reports it (plan 3.2).
+#
+# Package code (2026-09-29, unsigned; the owner reviews it as science, plan 10):
+#   ingest/target_reader.py  reads V11_mean_ndvi from the panel files (keys cell_id, region, year, month);
+#                            masks the panel fill codes again at read and prints what it masked (D30).
+#   ingest/build_static.py   writes the static table (cell_id, region, lat, lon, grid_ix, grid_iy) from the
+#                            panel: py -3.9 ingest/build_static.py <package>. RUN 2026-10-05 23:13 under owner
+#                            ruling L5 (OWNER_RULINGS_2026-10-05.md section L): data/static/part-0.parquet,
+#                            2,289,236 cells in 133 groups; ../ndvi_draft/data/static holds the same table,
+#                            written by the byte-identical copy of this script.
+#   features/build.py        the 435 driver lags, the 28 water-memory columns and the 9 router-context
+#                            columns (4 harmonics + the frozen top-5), rebuilt DATE-SAFE (Q33): each output's
+#                            facts are composed from its source's store facts, so R8 lags it. The outputs are
+#                            built in memory by the engine's reader (treeroute/pipeline/data.py); no features
+#                            store is declared (none is read or written), as for PM2.5.
+# OPEN (for the owner; listed in the NDVI package build report): catalog.yaml lists the review sheet's rows only, so the
+# 435 lag columns the feature script declares have no catalog row here yet and the engine refuses them
+# (G-CLOSED, 'feature outputs ... have no row in catalog.yaml') until the rows are added with the Q34 review;
+# ../ndvi_draft/catalog.yaml carries them (this catalog + the generated lag rows).
+name: ndvi_draft
+version: '0.1.0-draft'
+owner: 'UNSIGNED -- DRAFT development package; not the owner''s'
+description: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run. Monthly MODIS MOD13C2 NDVI (panel column V11_mean_ndvi) on the 4 km panel cells of 133 regions; declarative package, every fact unverified'
+stores:
+  target: 'D:/monthly_panel/{group}_monthly_{year}.parquet'
+  static: 'data/static/part-0.parquet'
+  drivers:
+    - 'D:/monthly_panel/{group}_monthly_{year}.parquet'
+    - 'D:/gfed_burn/{group}_burn_{year}.parquet'
+includes:
+  # 2026-10-06: re-pinned after ruling L (L1 signatures and the 13 index windows in the panel catalog; burn_frac signed
+  # in the GFED catalog).
+  - {path: ../_stores/monthly_panel_v170_schema_catalog.yaml, sha256: 6bb3f9eca049d965143d25a3125de0e1e06465d945209659a85aad503de23e9b}
+  - {path: ../_stores/gfed_burn_schema_catalog.yaml, sha256: baf76c72d7a84378864f641282925924874759f602b11f4b7f24936698b3d424}

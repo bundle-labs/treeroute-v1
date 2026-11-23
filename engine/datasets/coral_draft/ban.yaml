@@ -1,0 +1,317 @@
+# ban.yaml -- coral_draft verdicts (SPEC_TABLE_MODE.md 1.4; schema treeroute/package/schema.py:446-474). GENERATED
+# 2026-10-19 by D:/treeroute/coral_build/coral_tables/make_draft.py from columns.py. UNSIGNED: the verdicts follow
+# CORAL_ENGINE_PLAN.md:153-176 (section C3), whose open questions are Q9, Q10 and Q22 (:254-255, :267). The owner
+# signs them before the coral freeze (ruling U6). A 'freeze' verdict is refused for tables (R9; SPEC 1.4).
+# Closed world: one verdict per non-key column of catalog.yaml (76 entries). Counts: ban:label 1, ban:structural 1, ban:trend_proxy 3, conditional 3, keep 65, watch 3.
+# Columns of the legacy 77 frame that are NOT written to the lead files (so they need no verdict here):
+#   - month, doy_sin, doy_cos (as tree columns): moved to router context (G-KEYS; ruling H3); CORAL_ENGINE_PLAN.md:168
+#   - nino34_lag0, nino34_lag3, nino34_lag6: absolute temperature (ban structural) and lag 0 reads the cut month (coral_forecast.py:186-194; L8); replaced by nino34a_lag3/6/9
+#   - dmi_lag0, dmi_lag3, dmi_lag6: lag 0 reads the cut month (look-ahead); replaced by dmi_lag2/5/8
+#   - mask_is_water, mask_land_frac_7x7: static geography as a main effect from a data-product mask (CRW ct5km climatology v3.1), not a physical map under N2; ban (CORAL_ENGINE_PLAN.md:167)
+#   - pop_ratio_5_50, pop_grad_5_25, pop_growth_20y: GHS-POP R2023A: every epoch is rescaled to UN WPP 2022 and WUP 2018 and disaggregated with GHS-BUILT-V R2023A (Sentinel-2 2018); content dated after every cut (GHSL_Data_Package_2023.pdf pp. 46-47; ruling N2; precedent S29)
+#   - mean_<w>, std_<w>, mmm_n_years, pop levels, lat, lon (as features): outside the 77 frame: absolute temperature, year clock, location (Part 415; CORAL_ENGINE_PLAN.md:170-173)
+verdicts:
+  pct_bleached:
+    verdict: ban
+    reason: label
+    evidence: 'the target: forced ban as a feature | APP_PLAN.md 1.4 (the target and its twins are forced to ban); coral_smoke_regress.py:56-77'
+  programme:
+    verdict: ban
+    reason: structural
+    evidence: 'report only: the survey programme fixes the protocol and the label scale (CORAL_STATE.md:30-34: programme mix drives pooled scores); pipeline/data.py strata read the role whatever the verdict'
+  ctx_month:
+    verdict: keep
+    reason: router context only (a calendar column is allowed only here, G-KEYS); legacy context
+    evidence: coral_forecast.py:228 (ctxc = month, doy_sin, doy_cos, abslat); ruling H3 (OWNER_RULINGS_2026-09-28.md:96)
+  ctx_doy_sin:
+    verdict: keep
+    reason: router context only (G-KEYS); legacy context
+    evidence: coral_forecast.py:122, 228; ruling H3
+  ctx_doy_cos:
+    verdict: keep
+    reason: router context only (G-KEYS); legacy context
+    evidence: coral_forecast.py:123, 228; ruling H3
+  ctx_abslat:
+    verdict: keep
+    reason: router context only; banned as a tree column (location fingerprint, Part 415)
+    evidence: 'CORAL_ENGINE_PLAN.md:172 (C3: abslat, mmm ban as tree columns, keep as penalised router context); coral_forecast.py:120, 228'
+  ctx_mmm:
+    verdict: keep
+    reason: router context only; an absolute temperature, banned from the trees; in context it is a DISCLOSED departure from the absolute-temperature ban (owner item)
+    evidence: CORAL_ENGINE_PLAN.md:172 (C3) and :267 (Q22 a); legacy used MMM_i - mean(MMM_pool) unpenalised (coral_glorys2_ab.py:100-102)
+  dhw_30:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_30:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_30:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_30:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_30:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  dhw_56:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_56:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_56:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_56:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_56:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  dhw_84:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_84:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_84:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_84:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_84:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  dhw_90:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_90:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_90:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_90:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_90:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  dhw_180:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_180:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_180:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_180:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_180:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  dhw_365:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  hs_max_365:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm_365:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  n_above_mmm1_365:
+    verdict: keep
+    reason: heat stress relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  cool_365:
+    verdict: keep
+    reason: cool relief relative to the leak-free MMM
+    evidence: 'CORAL_ENGINE_PLAN.md:157 (C3: relative to the leak-free MMM; windows end before the cut); unsigned (Q22)'
+  days_since_max_hs:
+    verdict: keep
+    reason: short window, not a level
+    evidence: CORAL_ENGINE_PLAN.md:158 (C3)
+  slope_90:
+    verdict: keep
+    reason: short window; a slope is not a level
+    evidence: CORAL_ENGINE_PLAN.md:158 (C3)
+  lifetime_dhw:
+    verdict: ban
+    reason: trend_proxy
+    evidence: a running total since 1985 grows with the year (pooled r with year 0.83-0.93); CORAL_ENGINE_PLAN.md:161 (C3), :255 (Q10 b)
+  n_dhw_ge4_before:
+    verdict: ban
+    reason: trend_proxy
+    evidence: running count since 1985; CORAL_ENGINE_PLAN.md:161 (C3), :255 (Q10 b)
+  max_dhw_before:
+    verdict: ban
+    reason: trend_proxy
+    evidence: running max since 1985; CORAL_ENGINE_PLAN.md:161 (C3), :255 (Q10 b)
+  n_dhw_ge8_before:
+    verdict: watch
+    reason: same family as the banned running totals, weaker; listed in reports
+    evidence: CORAL_ENGINE_PLAN.md:162 (C3), :255 (Q10 b)
+  days_since_dhw4:
+    verdict: watch
+    reason: fixed declared cap 3,650 instead of the 99999 code (CORAL_DATA_AUDIT.md:243); its observable maximum grows with the record length (a partial clock)
+    evidence: CORAL_ENGINE_PLAN.md:163 (C3), :267 (Q22 a)
+  mhw_days_365:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_days_90:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_days_30:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_icum_90:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_imax_90:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_nev_365:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_durmax_365:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_since_end:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate; declared cap 365
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_cat_max_90:
+    verdict: keep
+    reason: the one confirmed driver win; relative to the site's own prior climate
+    evidence: CORAL_ENGINE_PLAN.md:159 (C3)
+  mhw_thr_gap:
+    verdict: watch
+    reason: quasi-static site climate; listed in reports
+    evidence: CORAL_ENGINE_PLAN.md:160 (C3, Q22)
+  cyc_mindist_30:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_200_30:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_200_30:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_500_30:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_500_30:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_mindist_90:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_200_90:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_200_90:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_500_90:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_500_90:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_mindist_365:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_200_365:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_200_365:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_maxw_500_365:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_n_500_365:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  cyc_days_since_close:
+    verdict: keep
+    reason: dated tracks; windows end before the cut; fixed caps, no fill codes; declared cap 3650
+    evidence: CORAL_ENGINE_PLAN.md:166 (C3)
+  nino34a_lag3:
+    verdict: keep
+    reason: 'replaces the absolute Nino-3.4 (banned structural: an absolute temperature carrying the season, CORAL_ENGINE_PLAN.md:164); reach +2 months per ruling R-A, assumed to hold for ERSST V6'
+    evidence: OWNER_RULINGS_2026-09-28.md:24 (R-A a); CORAL_ENGINE_PLAN.md:164, :267 (Q22 a)
+  nino34a_lag6:
+    verdict: keep
+    reason: 'replaces the absolute Nino-3.4 (banned structural: an absolute temperature carrying the season, CORAL_ENGINE_PLAN.md:164); reach +2 months per ruling R-A, assumed to hold for ERSST V6'
+    evidence: OWNER_RULINGS_2026-09-28.md:24 (R-A a); CORAL_ENGINE_PLAN.md:164, :267 (Q22 a)
+  nino34a_lag9:
+    verdict: keep
+    reason: 'replaces the absolute Nino-3.4 (banned structural: an absolute temperature carrying the season, CORAL_ENGINE_PLAN.md:164); reach +2 months per ruling R-A, assumed to hold for ERSST V6'
+    evidence: OWNER_RULINGS_2026-09-28.md:24 (R-A a); CORAL_ENGINE_PLAN.md:164, :267 (Q22 a)
+  dmi_lag2:
+    verdict: conditional
+    reason: out of every run until the owner signs the window bound {3, month, centred} (R8 refuses an unknown window; precedent R-B signed tni's bound)
+    evidence: CORAL_ENGINE_PLAN.md:165 (C3), :267 (Q22 a); OWNER_RULINGS_2026-09-28.md:25 (R-B)
+  dmi_lag5:
+    verdict: conditional
+    reason: out of every run until the owner signs the window bound {3, month, centred} (R8 refuses an unknown window; precedent R-B signed tni's bound)
+    evidence: CORAL_ENGINE_PLAN.md:165 (C3), :267 (Q22 a); OWNER_RULINGS_2026-09-28.md:25 (R-B)
+  dmi_lag8:
+    verdict: conditional
+    reason: out of every run until the owner signs the window bound {3, month, centred} (R8 refuses an unknown window; precedent R-B signed tni's bound)
+    evidence: CORAL_ENGINE_PLAN.md:165 (C3), :267 (Q22 a); OWNER_RULINGS_2026-09-28.md:25 (R-B)

@@ -1,0 +1,193 @@
+[2026-11-12 21:39:11 +    3.8s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-12 21:39:11 +    3.9s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 21:39:11 +    3.9s] decision at lead 0 (read from the run): log_c_corrector_unweighted at level 0.1 ratio None; kept value is this arm
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] package defo version 0.2.0, fingerprint d607314e8d571703
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: V06_spei_12m_max_lag1 is derived from V06_spei_12m_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: V06_spei_12m_mean_lag1 is derived from V06_spei_12m_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: V06_spei_12m_min_lag1 is derived from V06_spei_12m_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: amo_max_lag1 is derived from amo_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: amo_mean_lag1 is derived from amo_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: amo_min_lag1 is derived from amo_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: phenology_sos_doy_lag2 is derived from phenology_sos_doy: conditional (out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task))
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_01m_max_lag1 is derived from spei_01m_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_01m_mean_lag1 is derived from spei_01m_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_01m_min_lag1 is derived from spei_01m_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_03m_max_lag1 is derived from spei_03m_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_03m_mean_lag1 is derived from spei_03m_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_03m_min_lag1 is derived from spei_03m_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_06m_max_lag1 is derived from spei_06m_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_06m_mean_lag1 is derived from spei_06m_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_06m_min_lag1 is derived from spei_06m_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_24m_max_lag1 is derived from spei_24m_max: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_24m_mean_lag1 is derived from spei_24m_mean: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] feature lineage: spei_24m_min_lag1 is derived from spei_24m_min: ban (incomplete)
+[2026-11-12 21:39:14 +    6.4s] engine| [21:39:14] listed in every report (keep_unreviewed / watch): clay_pct, sand_pct, silt_pct, soil_organic_carbon_gkg, nitrogen_gkg, soil_ph, awc_cm3cm3, bulk_density_gcm3, cec_cmolkg, coarse_fragments_pct, hand_m, upstream_area_km2, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 21:39:14 +    6.5s] engine| [21:39:14] groups: 42 in the data, 42 after exclusions; this run: 42 (headline)
+[2026-11-12 21:39:25 +   17.3s] engine| [21:39:25] preflight: 14795225 target rows in 42 files, streamed (one file of at most 1984975 rows at once, ~591809 units x 25 steps of counters); census RAM estimate 2.72 GiB: go
+[2026-11-12 21:39:26 +   18.6s] engine| [21:39:26] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4200 units x 25 steps: 0.01 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 25 steps, 332 frame columns, beside the biggest driver file of the biggest group in flight: 0.19 GiB) beside the census (2.72 GiB): 2.93 GiB in all, 6.28 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 21:39:26 +   18.6s] engine steps load..preflight in 14.5 s
+[2026-11-12 21:39:26 +   18.6s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['b7aa9016a63437a1', 'b7aa9016a63437a1'], 'target_files_sha256': ['e4c7cb6809ca743f', 'e4c7cb6809ca743f'], 'p
+[2026-11-12 21:39:26 +   18.6s] precheck only: E3a passed in 14.5 s; stopping before the read
+[2026-11-12 21:39:26 +   18.7s] rebuild defo leads [0] finished in 16.4 s (peak 0.87 GB)
+[2026-11-14 04:37:25 +    5.4s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-14 04:37:25 +    5.4s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-14 04:37:26 +    5.5s] decision at lead 0 (read from the run): log_c_corrector_unweighted at level 0.1 ratio None; kept value is this arm
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] package defo version 0.2.0, fingerprint d607314e8d571703
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: V06_spei_12m_max_lag1 is derived from V06_spei_12m_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: V06_spei_12m_mean_lag1 is derived from V06_spei_12m_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: V06_spei_12m_min_lag1 is derived from V06_spei_12m_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: amo_max_lag1 is derived from amo_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: amo_mean_lag1 is derived from amo_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: amo_min_lag1 is derived from amo_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: phenology_sos_doy_lag2 is derived from phenology_sos_doy: conditional (out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task))
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_01m_max_lag1 is derived from spei_01m_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_01m_mean_lag1 is derived from spei_01m_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_01m_min_lag1 is derived from spei_01m_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_03m_max_lag1 is derived from spei_03m_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_03m_mean_lag1 is derived from spei_03m_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_03m_min_lag1 is derived from spei_03m_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_06m_max_lag1 is derived from spei_06m_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_06m_mean_lag1 is derived from spei_06m_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_06m_min_lag1 is derived from spei_06m_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_24m_max_lag1 is derived from spei_24m_max: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_24m_mean_lag1 is derived from spei_24m_mean: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] feature lineage: spei_24m_min_lag1 is derived from spei_24m_min: ban (incomplete)
+[2026-11-14 04:37:34 +   14.4s] engine| [04:37:34] listed in every report (keep_unreviewed / watch): clay_pct, sand_pct, silt_pct, soil_organic_carbon_gkg, nitrogen_gkg, soil_ph, awc_cm3cm3, bulk_density_gcm3, cec_cmolkg, coarse_fragments_pct, hand_m, upstream_area_km2, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-14 04:37:35 +   14.4s] engine| [04:37:35] groups: 42 in the data, 42 after exclusions; this run: 42 (headline)
+[2026-11-14 04:37:45 +   25.3s] engine| [04:37:45] preflight: 14795225 target rows in 42 files, streamed (one file of at most 1984975 rows at once, ~591809 units x 25 steps of counters); census RAM estimate 2.72 GiB: go
+[2026-11-14 04:37:47 +   26.6s] engine| [04:37:47] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4200 units x 25 steps: 0.01 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 25 steps, 332 frame columns, beside the biggest driver file of the biggest group in flight: 0.19 GiB) beside the census (2.72 GiB): 2.93 GiB in all, 6.21 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-14 04:37:47 +   26.6s] engine steps load..preflight in 14.5 s
+[2026-11-14 04:37:47 +   26.6s] gate E0_ram_preflight: PASS {'engine_warning': [], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning'}
+[2026-11-14 04:37:47 +   26.6s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['b7aa9016a63437a1', 'b7aa9016a63437a1'], 'target_files_sha256': ['e4c7cb6809ca743f', 'e4c7cb6809ca743f'], 'p
+[2026-11-14 04:37:47 +   26.6s] precheck only: E3a passed in 14.5 s; stopping before the read
+[2026-11-14 04:37:47 +   26.6s] rebuild defo leads [0] finished in 23.8 s (peak 0.87 GB)
+[2026-11-14 05:17:24 +    3.3s] gate E1_engine_code: PASS {'engine': '13838e41843cf1ec', 'manifest': '13838e41843cf1ec', 'engine_root': 'D:\\treeroute\\analysis\\ablation_perlocation\\ckproof\\engine_65a177bc'}
+[2026-11-14 05:17:24 +    3.3s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-14 05:17:24 +    3.3s] decision at lead 0 (read from the run): log_c_corrector_unweighted at level 0.1 ratio None; kept value is this arm
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] package defo version 0.2.0, fingerprint d607314e8d571703
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: V06_spei_12m_max_lag1 is derived from V06_spei_12m_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: V06_spei_12m_mean_lag1 is derived from V06_spei_12m_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: V06_spei_12m_min_lag1 is derived from V06_spei_12m_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: amo_max_lag1 is derived from amo_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: amo_mean_lag1 is derived from amo_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: amo_min_lag1 is derived from amo_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: phenology_sos_doy_lag2 is derived from phenology_sos_doy: conditional (out at lag 1 (owner S28 a): its signed reach runs 1 year past its year, so last year's value can hold data from the predicted year (the K5 reason); it enters through the engineered phenology_sos_doy_lag2 (defo task))
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_01m_max_lag1 is derived from spei_01m_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_01m_mean_lag1 is derived from spei_01m_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_01m_min_lag1 is derived from spei_01m_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_03m_max_lag1 is derived from spei_03m_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_03m_mean_lag1 is derived from spei_03m_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_03m_min_lag1 is derived from spei_03m_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_06m_max_lag1 is derived from spei_06m_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_06m_mean_lag1 is derived from spei_06m_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_06m_min_lag1 is derived from spei_06m_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_24m_max_lag1 is derived from spei_24m_max: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_24m_mean_lag1 is derived from spei_24m_mean: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] feature lineage: spei_24m_min_lag1 is derived from spei_24m_min: ban (incomplete)
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] listed in every report (keep_unreviewed / watch): clay_pct, sand_pct, silt_pct, soil_organic_carbon_gkg, nitrogen_gkg, soil_ph, awc_cm3cm3, bulk_density_gcm3, cec_cmolkg, coarse_fragments_pct, hand_m, upstream_area_km2, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-14 05:17:26 +    5.9s] engine| [05:17:26] groups: 42 in the data, 42 after exclusions; this run: 42 (headline)
+[2026-11-14 05:17:35 +   14.4s] engine| [05:17:35] preflight: 14795225 target rows in 42 files, streamed (one file of at most 1984975 rows at once, ~591809 units x 25 steps of counters); census RAM estimate 2.72 GiB: go
+[2026-11-14 05:17:35 +   14.5s] engine| [05:17:35] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 4200 units x 25 steps: 0.01 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 100 units x 25 steps, 332 frame columns, beside the biggest driver file of the biggest group in flight: 0.19 GiB) beside the census (2.72 GiB): 2.93 GiB in all, 5.82 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-14 05:17:35 +   14.5s] engine steps load..preflight in 10.9 s
+[2026-11-14 05:17:35 +   14.5s] gate E0_ram_preflight: PASS {'engine_warning': [], 'ignored': False, 'fix': 'close other programs and start again (the engine needs the RAM it names), or --ignore-ram-warning'}
+[2026-11-14 05:17:35 +   14.5s] gate E3a_inputs_before_read: PASS {'checked': ['context_list', 'draft', 'engine_constants_sha256', 'groups', 'kind', 'package', 'package_fingerprint', 'static_files_sha256', 'strata', 'target_files_sha256', 'trees_per_group', 'feature_list (tree-feature prefix)'], 'differ': [], 'not_before_read': [], 'static_files_sha256': ['b7aa9016a63437a1', 'b7aa9016a63437a1'], 'target_files_sha256': ['e4c7cb6809ca743f', 'e4c7cb6809ca743f'], 'p
+[2026-11-14 05:17:36 +   15.2s] engine| [05:17:36] checkpoint: census key 50ab7d5ed24f8eff: no earlier checkpoint of this step; computing
+[2026-11-14 05:17:36 +   15.2s] engine| [05:17:36] preflight: checkpoints of the census (591809 units x 25 steps, estimated) and R30 (42 groups, two derive passes) need about 0.104 GiB under D:\treeroute\analysis\shap_v1\engine_runs\defo\_checkpoints (141.59 GiB free; 0.000 GiB held there now): go
+[2026-11-14 05:19:16 +  115.7s] engine| [05:19:16] checkpoint: census saved through file 42 of 42 (42 chunk(s) saved by this process, 42 in all)
+[2026-11-14 05:19:16 +  115.7s] engine| [05:19:16] census: 14795225 rows, 591809 units, 42 groups, 25 calendar steps (42 files)
+[2026-11-14 05:19:18 +  117.1s] engine| [05:19:18] census: 14795225 rows, 591809 units in 102.7 s (driver key files read 1848)
+[2026-11-14 05:21:26 +  245.9s] engine| [05:21:26] per-group path: the feature script is group-separable on the sample (4 groups, 4000 rows, 25 feature outputs, 1312000 values compared)
+[2026-11-14 05:21:28 +  247.8s] engine| [05:21:28] checkpoint: r30 key aee0610889c9f4bd: no earlier checkpoint of this step; computing
+[2026-11-14 05:21:42 +  261.4s] engine| [05:21:42] R30 test-year shares: group amazon_basin_brazil counted (19600 units with a test-year row, 2 blocks)
+[2026-11-14 05:21:50 +  269.1s] engine| [05:21:50] R30 test-year shares: group andes_puna counted (9944 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:02 +  281.0s] engine| [05:22:02] R30 test-year shares: group angola_zambia_fire_belt counted (16087 units with a test-year row, 2 blocks)
+[2026-11-14 05:22:08 +  287.8s] engine| [05:22:08] R30 test-year shares: group atlantic_forest_brazil counted (7342 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:19 +  298.8s] engine| [05:22:19] R30 test-year shares: group australian_bushfire_belt counted (10323 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:27 +  306.8s] engine| [05:22:27] R30 test-year shares: group bc_inland_rainforest counted (6353 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:36 +  315.5s] engine| [05:22:36] R30 test-year shares: group bolivia_beni_savanna counted (7308 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:43 +  322.7s] engine| [05:22:43] R30 test-year shares: group borneo_peat_fires counted (4845 units with a test-year row, 1 blocks)
+[2026-11-14 05:22:52 +  331.3s] engine| [05:22:52] R30 test-year shares: group borneo_rainforest counted (7841 units with a test-year row, 1 blocks)
+[2026-11-14 05:23:42 +  381.5s] engine| [05:23:42] R30 test-year shares: group canadian_taiga counted (72880 units with a test-year row, 5 blocks)
+[2026-11-14 05:23:52 +  391.3s] engine| [05:23:52] R30 test-year shares: group caucasus_highlands counted (8730 units with a test-year row, 1 blocks)
+[2026-11-14 05:24:05 +  404.5s] engine| [05:24:05] R30 test-year shares: group congo_basin_drc counted (15680 units with a test-year row, 1 blocks)
+[2026-11-14 05:24:10 +  409.4s] engine| [05:24:10] R30 test-year shares: group costa_rica counted (2544 units with a test-year row, 1 blocks)
+[2026-11-14 05:24:29 +  428.5s] engine| [05:24:29] R30 test-year shares: group eastern_us_deciduous counted (24744 units with a test-year row, 2 blocks)
+[2026-11-14 05:24:46 +  445.8s] engine| [05:24:46] R30 test-year shares: group gran_chaco counted (21000 units with a test-year row, 2 blocks)
+[2026-11-14 05:24:54 +  453.7s] engine| [05:24:54] R30 test-year shares: group greece_mainland counted (5997 units with a test-year row, 1 blocks)
+[2026-11-14 05:25:07 +  466.1s] engine| [05:25:07] R30 test-year shares: group idaho_montana_wildfire counted (13487 units with a test-year row, 1 blocks)
+[2026-11-14 05:25:16 +  475.6s] engine| [05:25:16] R30 test-year shares: group ireland counted (9666 units with a test-year row, 1 blocks)
+[2026-11-14 05:25:26 +  485.3s] engine| [05:25:26] R30 test-year shares: group japan_central_honshu counted (8461 units with a test-year row, 1 blocks)
+[2026-11-14 05:25:42 +  501.4s] engine| [05:25:42] R30 test-year shares: group llanos_venezuela counted (18984 units with a test-year row, 2 blocks)
+[2026-11-14 05:25:54 +  513.3s] engine| [05:25:54] R30 test-year shares: group miombo_woodland_zambia counted (12180 units with a test-year row, 1 blocks)
+[2026-11-14 05:26:05 +  524.3s] engine| [05:26:05] R30 test-year shares: group new_guinea_papua counted (11097 units with a test-year row, 1 blocks)
+[2026-11-14 05:26:12 +  531.7s] engine| [05:26:12] R30 test-year shares: group new_zealand_fiordland counted (5812 units with a test-year row, 1 blocks)
+[2026-11-14 05:26:19 +  538.1s] engine| [05:26:19] R30 test-year shares: group new_zealand_north_island counted (4369 units with a test-year row, 1 blocks)
+[2026-11-14 05:26:35 +  554.4s] engine| [05:26:35] R30 test-year shares: group northeast_china_broadleaf counted (21247 units with a test-year row, 2 blocks)
+[2026-11-14 05:26:45 +  564.3s] engine| [05:26:45] R30 test-year shares: group northern_thailand counted (10076 units with a test-year row, 1 blocks)
+[2026-11-14 05:26:54 +  573.4s] engine| [05:26:54] R30 test-year shares: group pacific_nw_coast counted (8854 units with a test-year row, 1 blocks)
+[2026-11-14 05:27:01 +  580.0s] engine| [05:27:01] R30 test-year shares: group pantanal counted (4592 units with a test-year row, 1 blocks)
+[2026-11-14 05:27:06 +  585.1s] engine| [05:27:06] R30 test-year shares: group pearl_river_delta counted (2737 units with a test-year row, 1 blocks)
+[2026-11-14 05:27:23 +  602.9s] engine| [05:27:23] R30 test-year shares: group poland_central counted (25483 units with a test-year row, 2 blocks)
+[2026-11-14 05:27:41 +  620.9s] engine| [05:27:41] R30 test-year shares: group russian_far_east_primorye counted (21999 units with a test-year row, 2 blocks)
+[2026-11-14 05:28:35 +  674.9s] engine| [05:28:35] R30 test-year shares: group siberian_taiga counted (79399 units with a test-year row, 5 blocks)
+[2026-11-14 05:28:46 +  685.4s] engine| [05:28:46] R30 test-year shares: group southern_chile_rainforest counted (10093 units with a test-year row, 1 blocks)
+[2026-11-14 05:28:53 +  692.1s] engine| [05:28:53] R30 test-year shares: group tasmania_western counted (4029 units with a test-year row, 1 blocks)
+[2026-11-14 05:29:00 +  699.9s] engine| [05:29:00] R30 test-year shares: group tierra_del_fuego counted (5589 units with a test-year row, 1 blocks)
+[2026-11-14 05:29:07 +  706.4s] engine| [05:29:07] R30 test-year shares: group tongass_alaska counted (4146 units with a test-year row, 1 blocks)
+[2026-11-14 05:29:24 +  723.6s] engine| [05:29:24] R30 test-year shares: group trans_baikal_steppe counted (22722 units with a test-year row, 2 blocks)
+[2026-11-14 05:29:32 +  731.7s] engine| [05:29:32] R30 test-year shares: group vietnam_central_highlands counted (6753 units with a test-year row, 1 blocks)
+[2026-11-14 05:29:41 +  740.1s] engine| [05:29:41] R30 test-year shares: group west_africa_monsoon_guinea counted (6791 units with a test-year row, 1 blocks)
+[2026-11-14 05:29:57 +  756.0s] engine| [05:29:57] R30 test-year shares: group western_europe_temperate counted (18778 units with a test-year row, 2 blocks)
+[2026-11-14 05:30:05 +  764.5s] engine| [05:30:05] R30 test-year shares: group western_scotland counted (7834 units with a test-year row, 1 blocks)
+[2026-11-14 05:30:14 +  773.1s] engine| [05:30:14] R30 test-year shares: group yucatan_peninsula counted (5413 units with a test-year row, 1 blocks)
+[2026-11-14 05:30:14 +  773.2s] engine| [05:30:14] checkpoint: R30: 0 of 42 groups loaded from checkpoint, 42 counted and saved (r30 key aee0610889c9f4bd)
+[2026-11-14 05:30:14 +  773.3s] engine| [05:30:14] R30 test-year shares: {'first_test_step': 2020, 's_fill': 2019, 'first_step': 2013, 'binding': ['spei_24m_max_lag1', 'spei_24m_mean_lag1', 'spei_24m_min_lag1'], 'first_year': 2013, 'min_coord': 2013, 'seconds': 527.3, 'blocks': 60, 'units': 591809, 'rows_read': 7693517, 'target_files_read': 60, 'driver_files_read': 1320, 'checked_rows': 752796}
+[2026-11-14 05:30:55 +  814.7s] engine| [05:30:55] checkpoint: r30 key bcf57be42b7fedec: no earlier checkpoint of this step; computing
+[2026-11-14 05:35:18 + 1077.2s] engine| [05:35:18] checkpoint: R30: 0 of 42 groups loaded from checkpoint, 42 counted and saved (r30 key bcf57be42b7fedec)
+[2026-11-14 05:35:18 + 1077.8s] engine| [05:35:18] per-group column readers: 42 groups, the largest yucatan_peninsula with 115375 picked rows (1.42 GiB at its reader's peak); feature script: group-separable on the sample
+[2026-11-14 05:35:18 + 1078.0s] engine| [05:35:18] picked units' rows read again: 4704975 rows of 188199 units (of 14795225 census rows); R30 test-year shares: the count already made for this lag map and these test years (same rows) {'first_test_step': 2020, 's_fill': 2019, 'first_step': 2013, 'binding': ['spei_24m_max_lag1', 'spei_24m_mean_lag1', 'spei_24m_min_lag1'], 'first_year': 2013, 'min_coord': 2013, 'seconds': 527.3, 'blocks': 60, 'units': 591809, 'rows_read': 7693517, 'target_files_read': 60, 'driver_files_read': 1320, 'checked_rows': 752796}
+[2026-11-14 05:35:20 + 1079.8s] engine| [05:35:20] last value (J2d, C18.last_value_max_months = 2 months = 0 steps), 4704975 rows, 303 tree features: 0 rows filled in 0 columns; left to R30: 2803494 in gaps longer than the maximum, 88842023 before a unit's first value, 91776552 after its last
+[2026-11-14 05:35:20 + 1079.8s] engine| [05:35:20] derive_all: 33 entries in 962.7 s; router region; overlap blocks 40 for 42 groups; report strata forest2000_px
+[2026-11-14 05:35:23 + 1082.0s] engine| [05:35:23] plan check: no plan folder of this package; this run's derived.json is its own
+[2026-11-14 05:35:23 + 1082.1s] engine| [05:35:23] run folder D:\treeroute\analysis\shap_v1\engine_runs\defo\headline\20261114_d71c61f4 (new)
+[2026-11-14 05:35:27 + 1086.1s] engine| [05:35:27] census released after derive (14795225 rows, 591809 units): the per-group run reads the picked rows only
+[2026-11-14 05:35:27 + 1086.1s] engine| [05:35:27] preflight: temp disk under the per-group schedule 11.60 GiB at its peak (pools 4.39 GiB; one lead's pools 4.39 GiB; the largest group yucatan_peninsula's tables 1.41 GiB a kind: 4.23 GiB in the nowcast, 2.82 GiB at a lead): go
+[2026-11-14 05:35:27 + 1086.1s] engine steps load..temp in 1082.5 s; rebuild run folder D:\treeroute\analysis\shap_v1\engine_runs\defo\headline\20261114_d71c61f4
+[2026-11-14 05:35:27 + 1086.1s] gate E3_inputs: PASS {'package': 'd607314e8d571703', 'derived': '25c0f5b4ae025d0b', 'fingerprint': 'd71c61f4543fa5b2', 'manifest_fingerprint': 'd71c61f4543fa5b2', 'config_keys_differing': []}
+[2026-11-14 07:52:00 + 9279.7s] engine| [07:52:00] pool: 3763980 grid rows (188199 units x 20 steps), 308 tree columns (5 history), 0 context
+[2026-11-14 09:09:57 +13956.4s] engine| [09:09:57] pool: 3763980 rows x 308 tree columns, 0 context columns (filled group by group: 42 groups)
+[2026-11-14 09:09:57 +13956.5s] pool built in 12870.4 s
+[2026-11-14 09:09:58 +13957.6s] engine| [09:09:58] checkpoint: bank key 0cba2213b6c8251e: no earlier checkpoint of this step; computing
+[2026-11-14 10:23:55 +18394.7s] engine| [10:23:55] checkpoint: bank fit-cut (cut 2019, lead 0): 0 of 42 groups loaded, 42 fitted (folder bank-0cba2213b6c8251e)
+[2026-11-14 10:23:55 +18394.7s] engine| [10:23:55] fit-cut bank: 4200 trees, fingerprint ff66252629947b76, rows at or before 2019 (max label step 2019)
+[2026-11-14 10:23:57 +18396.6s] bank and fits of lead 0 in 4440.1 s
+[2026-11-14 10:24:01 +18400.3s] gate E4_donor_rows: PASS {'rows': [3011184, 3011184], 'row_key_hash': ['7b68c5857da16b17', '7b68c5857da16b17']}
+[2026-11-14 10:24:01 +18400.3s] gate E5_bank_fingerprint: FAIL {'rebuilt': 'ff66252629947b76ef50137310d3f1fe6db2cbb60f9f9888a2f3122439997841', 'run': 'ddae37983b4077823c2bc5a06efd70e52ea90746e09d7788513175935984affd', 'trees': 4200, 'role': 'informational, cause not established (answers decide: E5a, E8, E10)'}
+[2026-11-14 10:24:01 +18400.3s] gate E6_c_and_tolerances: PASS {'c': [4.9563837819732726e-05, 4.9563837819732726e-05]}
+[2026-11-14 10:24:01 +18400.6s] bank exported: 4200 trees, 4200 correctors (corrector), 0.2 s
+[2026-11-14 12:11:19 +24838.2s] region pass: 1008 score rows, 0 units / 42 regions solved in 6436.4 s
+[2026-11-14 12:11:56 +24875.1s] region proofs: {'regions': 42, 'score_rows': 1008, 'background_rows': 4032, 'answers_equal': True, 'eta_store_equal': True, 'eta_ours_equal': True, 'errors': []}
+[2026-11-14 12:11:56 +24875.1s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 42, 'fits_whose_X_b_differs_from_the_kernel': 0, 'region_proof': {'regions': 42, 'score_rows': 1008, 'background_rows': 4032, 'answers_equal': True, 'eta_store_equal': True, 'eta_ours_equal': True, 'errors': []}}
+[2026-11-14 12:11:56 +24875.6s] gate E8_predictions: PASS {'arm': 'log_c_corrector_unweighted', 'rows_checked': 1008, 'units': 252, 'pre_bit_equal': 1008, 'arm_bit_equal': 1008, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'max_rel_arm': 0.0, 'max_ulps_pre': 0, 'max_ulps_arm': 0, 'within_relative_tolerance': True, 'rows_outside_tolerance': 0, 'bit_identical': True, 'tolerance_rule': 'bit identity', 'd8_licence': None}
+[2026-11-14 12:11:56 +24875.6s] gate E10_exported_trees: PASS {'regions': 42, 'what': "every sampled unit's score rows and pre-cut rows, every tree of the region's columns"}
+[2026-11-14 12:11:56 +24875.7s] region routers saved: 42 regions, 1008 test rows and 4032 pre-cut rows of sampled units (engine eta of both kept for the evaluator check)
+[2026-11-14 12:11:56 +24875.8s] lead 0 rebuilt in 10919.3 s (peak 10.3 GB)
+[2026-11-14 12:11:58 +24877.5s] rebuild defo leads [0] finished in 24875.8 s (peak 10.3 GB)

@@ -1,0 +1,157 @@
+BUILD_NOTES_fire_B1.txt - builder B1_product, Part B (fire human rivals), 2026-10-25
+=====================================================================================
+Scope: SPEC_HUMAN_PARTB.txt sections 2 (registry/fire.yaml, the fire block of registry/_products.yaml), 3 (the product
+adapter adapters/fire_geff.py) and 3.9 (adapters/fire_refs_prep.py). No real product, slim, label or test_preds was
+read: D2/D3 are not on disk, no slim exists. Real files read (read-only): the fire run's derived.json / plan.json, the
+export's parquet SCHEMAS (column names only) and units.parquet, the package static table (unit coordinates), RAW
+netCDF headers/values (D:/fire/cems/raw, fixtures only) and the package target_reader.py (imported once, by file path,
+no .pyc written). No fire.yaml option of B2's runner rows was changed (B2 reports: no option request).
+
+FILES (sha256 at the end of this build step; final hashes are filled by the integration stage)
+  human/registry/fire.yaml          (new)       bf0b8e55f043b07e85bf85909e7138a34ba1be9da7e517e5cd681475a7336561
+  human/registry/_products.yaml     (appended)  6d97a17bec32fff9c659111b264eb0d2c8f27f3430ab6f35f6028822a617b303
+  human/adapters/fire_geff.py       (new)       33fd951adab3f4f834e405e33a87536d9f2d52c19dc8a0bd15b2d6b3fd253e82
+  human/adapters/fire_refs_prep.py  (new)       98fad2937f5cc07f42373232162b95fe1a0a276965b9b357e7f9fc79b134e457
+  _moved/20261025T194657Z_partB_baseline/registry/_products.yaml  (baseline copy, made BEFORE the append)
+                                                4e4797597c0a7c76815159d7ce5fa3cf723d2b996d1e3b67a05968136bcb5d1f (= spec)
+  The baseline went into the SAME folder as B2's maps.py baseline (one Part B baseline folder; T-F15 a and c read it).
+  _products.yaml: the first 6,681 bytes of the new file are byte-identical to the baseline (prefix sha 4e479759...); the
+  parsed Part A entries are equal (16 of 16); 5 fire entries added (T-F15 c).
+
+-------------------------------------------------------------------------------------------------------------------
+1. registry/fire.yaml (spec 2.1-2.6; all four rivals)
+-------------------------------------------------------------------------------------------------------------------
+Validated: config.load_registry (schema + check_rival) passes; every product id is in _products.yaml; read-only against
+the real run, board.check_registry_against_run(fire.yaml, H.Run(RUN)) passes (leads 0/6/12 named, links "all", t1
+columns are R8 keys: V01/V02/V09/rmin_pct/era5l_d2m steps 0, oni 3, spi_01m..24m 0); slim.extra_columns(fire.yaml)
++ slim.history_columns(run) are present in the EXP lead_0/6/12 train AND test parquet schemas (first group file).
+Values written = the spec's RECOMMENDED values: OD-1 turco form T1, OD-2 enso form E1, OD-3 lead 12 tier X for both
+runners, OD-5 R10 last sentence included, OD-7 geff_era5 none at 6/12, OD-9 constants, OD-10 refs_label_store,
+OD-13 runners optional P at lead 6. Runner rows are spec 2.4 verbatim. The OD-4.2 cut-off rule is a comment above the
+runners; leads_without_rival[6] is a comment (written only at the cut-off, F6b). pct_reference_end: lead_guard_cut on
+both geff rivals. r10_note of every rival = the full R10 text of 2.6 followed by the rival's own sentence (2.2-2.4).
+Decisions / deviations (please check):
+ D1 Disclosure figure CORRECTED: spec 2.5 says F6 "predicts 0 where the unit's training normal is 0 (86% of test rows)".
+    The spec's own facts list gives 86,304 / 86,388 of 96,000 rows (leads 0 / 6) = 89.9% / 90.0%. fire.yaml writes
+    "(90% of lead-0 test rows: 86,304 of 96,000)" for geff_era5 and "(90% of lead-6 test rows: 86,388 of 96,000)" for
+    geff_seas5 (a comment marks the change). B4 / the integration stage: copy these, not "86%", into Part B section 10.
+ D2 The 2.5 "Reference rows" disclosure has no field in 2.1; it is written as notes.reference_rows (notes is `any`).
+ D3 The package-level `run` field holds the run folder (schema field `run`, str).
+
+-------------------------------------------------------------------------------------------------------------------
+2. registry/_products.yaml fire block (spec 2.7)
+-------------------------------------------------------------------------------------------------------------------
+Appended after a 7-line comment: cems_geff_era5_fwi and cems_geff_seas5_fwi with the UNSET_OD6 manifest folders and the
+spec's waiting_line / label / licence / source / notes; fire_static_cells; fire_target_2018 (patterns *_2018.parquet);
+fire_refs_label_store ({index_root}/fire/20261017_869d1f38/_work/geff_era5/refs_store = the prep's ctx.work_dir()
+/ refs_store, C.index_work_dir). OWNER: replace UNSET_OD6 by the folder the fetcher wrote BEFORE F5 / F6 (F4b).
+
+-------------------------------------------------------------------------------------------------------------------
+3. adapters/fire_geff.py (spec 3.1-3.8)
+-------------------------------------------------------------------------------------------------------------------
+Surface (3.1): ADAPTER_FORMAT, KINDS, EARTH_RADIUS_KM, FireGeffRefusal, availability, build, wrap_lon, haversine_km,
+map_units, month_days_in_window, fwi_percentile, product_cell_id; also check_manifest, check_reference_timing,
+reference_info_end, unit_centres, read_box_mask, read_box_points, box_table, steps_per_year, step_of, year_month.
+ctx names used: products, product_root, product_files, open_product, keys, units, run, work_dir, write_bytes, log
+(all exist on index.AdapterCtx; test_h20 passes). No attribute slim / _hctx / read_set / _token (R02 passes).
+Decisions:
+ G1 availability() reads ctx.products[options.product]["manifest"] itself; returns (True, "<n> files, complete") only
+    when the file exists, is JSON, lists files and "complete" is True; every waiting case (missing file, UNSET_OD6
+    folder, no `complete` key, complete false, unreadable JSON) returns (False, <the product's waiting_line>) EXACTLY
+    (no suffix). A registry error (product not listed by the rival, no `manifest` field) refuses.
+ G2 build() checks the product FIRST (before keys), so a waiting product always refuses with the waiting_line.
+ G3 Manifest checks (3.2): complete True; dataset; listing == manifest files; request_id -> request -> same file;
+    request_check values exactly; D3 leadtime_hour; area [N, W, S, E] with W <= E and S <= N; regions a non-empty list;
+    file name <prefix><box>_<tag>.nc with prefix hist_ / seas_ by kind; the year tag must be "y0-y1" of the request
+    years, or "y0" for a one-year request (the fetcher writes hist_*_y0-y1 always, seas_*_y for one year); the files
+    of a box must name the same regions and area; a region named by two boxes refuses; a slim group named by no box
+    refuses; the registry manifest path must be the product_root's product_manifest.json.
+ G4 netCDF check: fwinx dims exactly as 3.2; the named coordinates present with the right dims and kinds (datetime /
+    timedelta / int / float); any non-scalar extra coordinate on fwinx refuses (listing variables and coordinates);
+    extra scalar coordinates (`surface`) and other data variables are never read. ERA5: dates exactly every calendar
+    day of the request years and one time of day for all (00:00 is not required). SEAS5: starts == request year x
+    month at day 1 00:00 (in file order); steps exactly 12 h + k days, k = 150..184; valid_time == time + step on every
+    cell; members 0..24 by `number` value, each exactly once (26 or 51 members are fine: the rest is never read).
+ G5 Two passes per box (3.8): pass 1 = layout + the valid mask from every file (AND over files of ANY over time; SEAS5
+    over members 0..24 x starts x all 35 steps) + the mixed-mask count; then map_units; pass 2 = the selected points
+    only (xarray vectorised isel), each file re-opened through ctx.open_product and re-checked. Each point's cells of a
+    month are summed as ONE contiguous float64 row (days; SEAS5 member-major then day), so x__fwi_mean equals
+    np.nanmean of the same float64 values EXACTLY (smoke: ERA5 max |diff| 0.0). The first draft (one pass, axis-0 sums
+    over the whole grid) differed by 1 ulp; replaced.
+ G6 Sea window (3.3): |di|, |dj| <= sea_window_steps measured in each axis's SPATIAL order (axis sorted by its value,
+    longitudes wrapped). For a monotonic axis this is the file index window of the spec; for the contiguous 0-360
+    prime-meridian layout (358.75..0.5) too; it stays right for a 0-360 file stored 0..360 ascending whose box crosses
+    0 deg (merged box10 / per-region sahel), where a raw file-index window would skip the western neighbours (checked
+    on a toy). Ties: first minimum in latitude-major file order, among ALL points (nearest) and among window points.
+ G7 map_units returns i = j = -1 and dist_km NaN for an uncovered unit (plus nearest_i, nearest_j, nearest_km).
+ G8 Coverage: a row is covered when x__fwi_mean is finite; product_cell and src are "" otherwise (also for MINDAYS
+    failures and uncovered units); info_end = the rule value on every key (ERA5 t + offset; SEAS5 t - 5 - 1 = issue);
+    target_obs_end NaN. Only the registry's stats are written (both here).
+ G9 x__fwi_pct (3.6): fwi_percentile(unit, time, x, t_ref, steps_per_year, min_ref) groups by (unit, calendar month),
+    leaves the row's own month out whenever t <= t_ref (subtracts it from the equal count and |R|), mid-rank, NaN when
+    |R| < 10 or x NaN. Asserts: T_ref < first test time; newest reference info_end (T_ref for ERA5, T_ref - 6 for SEAS5)
+    < first issue of ctx.keys("inner") at lead 0 / ctx.keys("guard") at a lead >= 1 and < first test issue; an EMPTY
+    test or pick set refuses (fail loud); extra internal assert: every table row after T_ref carries newer information
+    than its reference.
+ G10 The audit file map_units_lead_<L>.json is also written BEFORE the uncovered-share refusal (its FIX names it).
+ G11 steps per year from run.derived R2 value (fallback R17 inputs); refuses unless 12.
+
+-------------------------------------------------------------------------------------------------------------------
+4. adapters/fire_refs_prep.py (spec 3.9)
+-------------------------------------------------------------------------------------------------------------------
+run_prep(ctx, rival) -> dict. years from options.refs_store ([2018]); a year > (run.cuts[0]["fit_cut"] - 1) // 12 = 2018
+refuses. The package reader is imported by file path (importlib.util, sys.dont_write_bytecode set and restored; checked:
+engine ingest/__pycache__ untouched, its 2026-09-29 files only); its static_table_path() must be the same file
+(os.path.samefile) as ctx.open_product("fire_static_cells", "part-0.parquet") (sha-checked). Per group of ctx.units()
+and year: ctx.open_product("fire_target_2018", "<group>_<year>.parquet") -> reader.read_target_file(path, {group,
+year}) -> the group's bank units (ALL bank units, scored or not; a bank unit missing from the reader's census refuses)
+-> cell_id (string), year (int64), month (int64), burned_frac (float64, NaN kept), sorted by cell_id then month ->
+deterministic zstd parquet via ctx.write_bytes(ctx.work_dir()/refs_store/<group>_labels_<year>.parquet).
+Decisions:
+ P1 NO label self-check, no slim access (R02: no .slim / .read_set / ._hctx / ._token anywhere in the file).
+ P2 A store file that already exists must hold the same bytes (re-run = no-op, logged "already written, same bytes");
+    other bytes refuse (move it aside, rerun, re-hash) so a re-run can never change a hashed store silently.
+ P3 When the ctx carries the registry (ctx.package, read with getattr), its refs_label_store must read what the prep
+    writes (file_pattern, cell_id / year / month / burned_frac, dtype float64), else refuse.
+ P4 Returned and logged per group: rows, bank units, finite labels, Dec rows / finite Dec rows, file sha256.
+
+-------------------------------------------------------------------------------------------------------------------
+5. CHECKS RUN (relevant tests only; the ONE full suite is the final stage's)
+-------------------------------------------------------------------------------------------------------------------
+ T1 py -3.9 -B -m pytest rivals_human/tests/test_h20_nonames.py ../review_tests/test_r02_runner_label_scope.py -q
+    -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\tests\b1_h20_r02_20261025T2015Z
+    -> 11 passed, 4 skipped (realdata) in 75.8 s (the fire adapters of B1 and B2 present).
+ T2 B3's tests_fire as they stood (test_f01..test_f08, written in parallel), basetemp
+    pt\tests\b1_tf_mine_20261025T2026Z -> 64 passed, 1 failed:
+    test_f02_era5_reader.py::test_f02_sea_points_found_and_the_coastal_unit_substituted. A TEST bug, for B3: the
+    syn_sea unit's (i, j) and dist_km assertions pass; the last assertion builds the expected product_cell from `e`,
+    which the loop over the three real units has re-bound to greece_mainland_595_1135 (expected 37.750|21.500, the
+    adapter's syn_sea cell is 37.500|21.000 = its own e). Fix: keep the syn_sea expectation in its own variable.
+ T3 Smoke checks (scripts in the session scratchpad, outside the build; all data under
+    D:\treeroute\human_rivals_build\pt\b1_smoke_20261025T2005Z): RAW subsets written as fake fetcher folders.
+    ERA5 greece 6 x 6 x 2018-2019: means == hand np.nanmean exactly; nearest == brute force; index.check_frame
+    passes (T1/T2 0 breaks, src shas); western 0-360 copy gives byte-equal stats; no-`complete` / complete-false /
+    UNSET_OD6 -> (False, waiting_line) and build refuses with it. SEAS5 great_plains 2 starts x 26 members x steps
+    relabelled 150..184: 7 distinct columns used (the unwrapped comparison snaps all to column 0), nearest == brute
+    force, means == hand mean to 8.9e-16 (the hand's fancy-indexed array was summed in another memory order),
+    check_frame passes, time - issue = 5 refuses. Edges: 3 sea units substituted within 2 steps; 8 NaN days of 31 ->
+    NaN; surface + extra variable ignored (equal values); uncovered above the share refuses (audit written), at the
+    share passes; missing day, extra dim, other grid, two boxes, group in no box, system_version, dataset, a guard cut
+    on the first inner issue -> each refuses; mixed mask counted; prime-meridian grid correct; month_days_in_window:
+    first lead 150..153, last 180..183 for every start 2014-2020. Prep: synthetic lat/lon store + stand-in reader:
+    dtypes str/int64/int64/float64, NaN kept, sorted; rerun unchanged; 2019 refuses; registry mismatch refuses; the
+    tool's refs.store_labels (monkeypatched products / slim) reads the written store, adds only time 24228 rows of
+    scored units with a finite label, and refuses a 1-ulp difference.
+
+-------------------------------------------------------------------------------------------------------------------
+6. OPEN ITEMS / FOR OTHERS
+-------------------------------------------------------------------------------------------------------------------
+ - B3: the test_f02 variable bug above.
+ - B4 / integration: the 90% disclosure figure (D1); notes.reference_rows (D2); Part B section 1 lists the
+   _products.yaml baseline at _moved\20261025T194657Z_partB_baseline\registry\_products.yaml.
+ - Owner: OD-6 box choice, then F4b (replace UNSET_OD6 before F5 / F6, never after the first init); F3 prep runs
+   with the production config (writes <index_root>/fire/20261017_869d1f38/_work/geff_era5/refs_store), then
+   `manifest --product fire_refs_label_store` and T-F18.
+ - Real D2/D3 netCDF layouts are unknown until downloaded; a layout unlike RAW (e.g. forecast_reference_time /
+   forecast_period names) refuses at adapt with the file's variables and coordinates listed (spec 10).
+ - Adding fire_geff.py / fire_refs_prep.py changes the tool code hash (spec B3); expected.

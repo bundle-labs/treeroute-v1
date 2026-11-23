@@ -1,0 +1,95 @@
+# PRODUCTION config of the common-rival board (owner commands only; RIVALS_OWNER_COMMANDS.md).
+# Every path absolute. Pass it to EVERY command with --config (the CLI refuses without --config).
+# machine_file is the ENGINE's own machine file, so the heavy-job lock (in its temp_dir D:/treeroute/tmp) is the
+# engine's lock: a rival job and an engine run can never run at the same time (robustness review 2).
+engine_root: 'C:/Users/<user>/Desktop/data set for reserch paper/engine'
+machine_file: 'C:/Users/<user>/Desktop/data set for reserch paper/engine/config/machine.yaml'
+export_root: 'D:/treeroute/rival_export'
+export_ckpt_root: 'D:/treeroute/rival_export/_engine_run_root'
+out_root: 'D:/treeroute/rivals'
+moved_root: 'D:/treeroute/rivals/_moved'
+# the fit-set copies (rebuildable caches, several GB on NDVI and defo) go here, outside the board folders, so
+# the owner can delete them after a lead is scored (rivals.log prints 'may delete' lines with their size)
+scratch_root: 'D:/treeroute/rivals_scratch'
+# the no-op proof chain of the older-engine grid runs (ndvi, fire, defo); pm25's run has no full chain: see below
+engine_lineage: 'D:/treeroute/rivals_build/engine_lineage.json'
+
+# ACCEPTED ENGINE DIFFERENCES (owner rulings; DATA, one entry per RUN ID; rivals/export.py acceptance_for).
+# An entry lets I4 use the listed engine hops (no parsable no-op proof; each pinned by the sha256 of its evidence
+# files) and lets I5 pass the listed run-config keys at EXACTLY the listed run and LIVE values. Any other
+# difference still refuses. The export then REQUIRES every parity check P1-P15 to pass (P15: the engine's own bank
+# fit on the exported rows reproduces the run's recorded bank fingerprints); otherwise it refuses and the owner is
+# asked. Recorded in each lead's export_manifest.json (engine.accepted_difference) and on the board.
+accepted_engine_differences:
+  - run_id: '20261007_74e67609'
+    run_fingerprint: '74e676096559d7c9fc8bf7d7f62c4909b4c54a16725f80d5b9157bf279808821'
+    ruling: 'Z1'
+    ruling_source: 'OWNER_RULINGS_2026-10-06.md section Z (Z1, owner 2026-10-21: the pm25 headline is not re-run)'
+    # the acceptance holds for this LIVE engine only (930d961c); a new LIVE needs its own proof or ruling
+    live_engine_file_sha: '930d961cdfdd219c36b113174e6c865096f973068e30696850f13d5ec4a60814'
+    requires_parity: 'P1-P15'
+    note: >-
+      The run was made under engine 7b508557. Its hops to 65a177bc have no proof file with LIVE/BUILD sha lines,
+      so I4 finds no chain; 65a177bc -> dd7c0984 -> 930d961c is proven in engine_lineage.json. The engine
+      constants table gained 11 run-mechanics constants since (P6 checkpoints x6, P7 room/reader x5; none changed
+      or removed), so I5 finds the config key engine_constants_sha256 different. Wording map (Z check, 2026-10-21):
+      ruling Z1's text names I5 as "per_group_schedule reader_builds 24 vs 16"; in the export, I5's refusal is the
+      config key engine_constants_sha256 (d1592748 vs 3ef147e5, below), and reader_builds 24 vs 16 is the one
+      must-match difference of I4 hop 7a0341ef -> 65a177bc (below). Both are accepted here; the owner is asked to
+      confirm this reading of the Z1 wording. Evidence files copied on 2026-10-21 from rivals_build/pt/z1 and
+      ckpt_20261013/scratch2 into rivals_build/evidence/z1 (same sha256), out of test-temp and scratch folders.
+    I4_hops:
+      - from: '7b5085572574d767e7ef13a2248ac03af9e5f103f0ef49f5e85e9994d9344dbb'
+        to: '1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1'
+        must_match_differences: []
+        note: >-
+          Ruling P checkpoints (engine PENDING_PARTS.md Part 586, gate T1): a pm25 smoke under each engine
+          (ckpt_20261013/runs_t1_before vs runs_t1_after_final); its compare output was not saved, so the 15 gate
+          files were re-hashed on 2026-10-21: all byte-identical (evidence/z1/hop_evidence.json, hop 1). The registry's
+          freeze-verify record lists the code drift of this hop.
+        evidence:
+          - path: 'D:/treeroute/rivals_build/evidence/z1/hop_evidence.json'
+            sha256: '6e15be98db737ff0372ca3f30d9915077c2a18ac54835e21a71413d747c5016d'
+          - path: 'D:/treeroute/rivals_build/evidence/z1/compare_runs.py'
+            sha256: '198d15000d3e1da7a70c4ca49dcc78d1cac0fddb8c7b6dfa120ccbba49cfd2fb'
+          - path: 'D:/treeroute/registry/freeze/VERIFY_FREEZE_20261006T203115Z_20261013T103720Z.json'
+            sha256: '179a64aecb356939258829c248a9667aeab6b9c2519631c304b20996716b4f70'
+      - from: '1f2573957b10b4ddea76bfa38598e35edbc3a593cf2b5eb7b33d1d8e9f386ae1'
+        to: '7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8'
+        must_match_differences: []
+        note: >-
+          Rulings Q/R RAM install (Part 587, ruling R1 no-op proof): pm25 smoke old vs new, 24 prediction/score
+          files and derived.json byte-identical, MUST-MATCH 0; the file has no LIVE/BUILD sha lines, so it does not
+          parse as a lineage hop. Engines of its two smokes: evidence/z1/hop_evidence.json hop 2.
+        evidence:
+          - path: 'D:/treeroute/install_20261015/smokes/compare_pm25.txt'
+            sha256: '9d821e0d8d622fa9d6d36e9bc354f170002277f5c454052d302256b3ff3a101d'
+          - path: 'D:/treeroute/install_20261015/CHECKPOINT_PROOF.md'
+            sha256: 'b22b06e9727ab5f261ae9d769679feb0e1bf9ae3891f093f6dfa4f1779248e35'
+      - from: '7a0341eff4e67759bf12542ad5ab0248bf8b2e56d9d2351a30141f67e44f27b8'
+        to: '65a177bc7cdd47bacca806582bd13be52706ba3da385bb468fe1f0f24b81a0ff'
+        must_match_differences:
+          - 'per_group_schedule.json: reader_builds old 24 | new 16 (derive_replaced_readers 4 | 0, final_readers
+            20 | 16; key reader_records_loaded_from_checkpoint only in new): a process record of the resumed
+            smoke (R30 loaded from its checkpoint), not a number of the run'
+        note: >-
+          Ruling S (Part 588, ruling S2 code-diff proof): pm25 smoke killed and resumed vs the 7a0341ef smoke:
+          24 prediction/score files and derived.json byte-identical, 6 bank fingerprints equal; MUST-MATCH 1, the
+          reader_builds entry above. Engines of its two smokes: evidence/z1/hop_evidence.json hop 3.
+        evidence:
+          - path: 'D:/treeroute/s_20261016/smokes/compare_pm25_resume_vs_old_today.txt'
+            sha256: '425420d437861d087963e8d387a795748dec8f2cd0d47cd68fef5acfe2c3b400'
+          - path: 'D:/treeroute/s_20261016/smokes/compare_pm25_resume_vs_install.txt'
+            sha256: '425420d437861d087963e8d387a795748dec8f2cd0d47cd68fef5acfe2c3b400'
+          - path: 'D:/treeroute/s_20261016/CODE_DIFF_PROOF.md'
+            sha256: 'ffe6c7ee4c5ac9bdedd6448c81d6e6402dc557088540e8622fc3acdebd827ec2'
+    I5_config_keys:
+      - key: 'engine_constants_sha256'
+        run: 'd1592748460935ec6c2d430357556690d4c69631eff28f028875477ff034207e'
+        live: '3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b'
+        note: >-
+          LIVE's constants table = the run's 117 entries unchanged + 11 added (P6.census_checkpoint_chunks,
+          P6.census_checkpoint_seconds, P6.checkpoint_census_bit_copies, P6.checkpoint_census_unit_bytes,
+          P6.checkpoint_r30_feature_bytes, P6.checkpoint_r30_group_bytes, P7.reader_batch_rows,
+          P7.room_max_wait_seconds, P7.room_note_seconds, P7.room_poll_seconds, P7.room_top_programs);
+          evidence/z1/constants_diff.py

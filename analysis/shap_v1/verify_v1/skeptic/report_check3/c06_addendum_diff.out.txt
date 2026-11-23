@@ -1,0 +1,224 @@
+﻿== v2 sentences or table rows not in v3 verbatim: 68 of 264
+-- [v2] | facts | 2 (major): four double-rounded B1 cells | A1 item 4; A6 |
+   closest v3 (0.96): | 1 | facts | 2 (major): four double-rounded B1 cells | A1 item 6; A6 |
+-- [v2] | facts | 3: 3,950 against 3,953 table entries | A1 item 5 |
+   closest v3 (0.95): | 1 | facts | 3: 3,950 against 3,953 table entries | A1 item 7 |
+-- [v2] | facts | 4: 14,412 of the 14,424 B1 keys | A1 item 6 |
+   closest v3 (0.95): | 1 | facts | 4: 14,412 of the 14,424 B1 keys | A1 item 8 |
+-- [v2] | facts | 5: exceptions besides C15 | A1 item 8 |
+   closest v3 (0.93): | 1 | facts | 5: exceptions besides C15 | A1 item 10 |
+-- [v2] | facts | 6: `a04_checks.py` and `b_inspect3.py` | A1 item 14 |
+   closest v3 (0.95): | 1 | facts | 6: `a04_checks.py` and `b_inspect3.py` | A1 item 16 |
+-- [v2] | facts | 7: what the open logs hold | A1 item 3 |
+   closest v3 (0.94): | 1 | facts | 7: what the open logs hold | A1 item 5 |
+-- [v2] | facts | 8: "most of the attribution" | A1 item 15 |
+   closest v3 (0.95): | 1 | facts | 8: "most of the attribution" | A1 item 17 |
+-- [v2] | facts | 9: coral's median rival | A1 item 11 |
+   closest v3 (0.94): | 1 | facts | 9: coral's median rival | A1 item 13 |
+-- [v2] | facts | 10: BARDL's other tie-only overlaps | A4, the numbers, item 1 |
+   closest v3 (0.91): | 1 | facts | 10: BARDL's other tie-only members | A4, the numbers, item 1 |
+-- [v2] | completeness | 2 (major): the empty families' 0 | A1 item 10; A5 point 4 |
+   closest v3 (0.96): | 1 | completeness | 2 (major): the empty families' 0 | A1 item 12; A5 point 4 |
+-- [v2] | completeness | 3 (major): double rounding; the quote check | A1 item 4; A4, the numbers, item 2; A6 |
+   closest v3 (0.97): | 1 | completeness | 3 (major): double rounding; the quote check | A1 item 6; A4, the numbers, item 2; A6 |
+-- [v2] | completeness | 4: stale counts | A1 items 5 to 8 |
+   closest v3 (0.92): | 1 | completeness | 4: stale counts | A1 items 7 to 10 |
+-- [v2] | completeness | 5: first openings; the open logs | A1 items 1 to 3 |
+   closest v3 (0.96): | 1 | completeness | 5: first openings; the open logs | A1 items 1 to 5 |
+-- [v2] | completeness | 6: the reconcile skeptic's major finding in full | A1 item 17; A4, the reconciliation |
+   closest v3 (0.97): | 1 | completeness | 6: the reconcile skeptic's major finding in full | A1 item 19; A4, the reconciliation |
+-- [v2] | completeness | 9: the family distance's two readings | A1 item 12; A5 point 2 |
+   closest v3 (0.96): | 1 | completeness | 9: the family distance's two readings | A1 item 14; A5 point 2 |
+-- [v2] | completeness | 10: the median label | A1 item 11; A5 point 4 |
+   closest v3 (0.95): | 1 | completeness | 10: the median label | A1 item 13; A5 point 4 |
+-- [v2] | completeness | 11: the B1 presentation | A1 item 15; A6 |
+   closest v3 (0.90): | 1 | completeness | 11: the B1 presentation | A1 items 4 and 17; A6 |
+-- [v2] **Lead's note (added 2026-11-16; this is the file's second version).** The reconciler wrote this report at 18:48:22 local time, but the subagent harness refused the write ("Subagents should return findings as text, not write report files").
+   closest v3 (0.98): **Lead's note (added 2026-11-16; this is the file's third version).** The reconciler wrote this report at 18:48:22 local time, but the subagent harness refused the write ("Subagents should return findings as text, not write report files").
+-- [v2] A1 in the lead's addendum lists each one that the final run, the three skeptics or the two report checkers found wrong or too wide.
+   closest v3 (0.98): A1 in the lead's addendum lists each one that the final run, the three skeptics or the report checkers found wrong or too wide.
+-- [v2] **Do not copy numbers from the reconciler's tables:** four cells of its section-6 B1 table are rounded wrongly (A1 item 4), and A6 rebuilds every B1 table from `results.json` with one rounding step.
+   closest v3 (0.58): **Do not copy numbers from the reconciler's section-6 pair table:** four of its cells are rounded wrongly (A1 item 6);
+-- [v2] The addendum also holds the lead's tallies (A2, A3), the three skeptics' findings (A4), the points for the owner (A5) and the two report checks (A7). ## Lead's addendum (2026-11-16, second version) Written by the lead after reading the round's return at 19:22 local time: the reconciler's output, the implementers' summaries and the three skeptics' reports.
+   closest v3 (0.93): The addendum also holds the lead's tallies (A2, A3), the three skeptics' findings (A4), the points for the owner (A5) and the report checks of the first two versions (A7). ## Lead's addendum (2026-11-16, third version) Written by the lead after reading the round's return at 19:22 local time: the reconciler's output, the implementers' summaries and the three skeptics' reports.
+-- [v2] The lead's scripts are in `V\_lead\scripts\`:
+   closest v3 (0.66): The lead's scripts are in `V\_lead\scripts\` and their saved outputs in `V\_lead\outputs\`:
+-- [v2] `recover_writes.py` (the recovery of the reconciler's text), `tally.py` (A2), `scan_shap_mtimes.py` (the scan in A4) and `b1_tables.py` (A6).
+   closest v3 (0.64): `recover_writes.py` (the recovery of the reconciler's text), `tally.py` (A2), `scan_shap_mtimes.py` (the scan in A4), `b1_tables.py` (A6), `bardl_ties.py` (the collation summary in A4) and `compare_b1_records.py` (A1 item 19).
+-- [v2] The first version of this addendum (19:31) was read by two report checkers; this version answers their findings (A7). ### A1.
+   closest v3 (0.89): The first version of this addendum (19:31) and the second (20:02) were each read by two report checkers; this version answers their findings (A7). ### A1.
+-- [v2] Section 1, "None of the compare outputs was opened before 2026-11-16 18:24:54 in this round": true of the files that hold statistics (the AW3 and AW4 tables, `AW4_main_row.json`, the importance, families, pairs and bootstrap_stats parquet files, and the pairs done record), not of all ten.
+   closest v3 (0.54): Section 1, "None of the compare outputs was opened before 2026-11-16 18:24:54 in this round": true of every compare file but two.
+-- [v2] `per_lead.json` (its structural keys only) and `bootstrap_draws.npy` had been opened earlier in the round by the spec writer, A and B, as the brief allows (A's `work\opened_items_<p>.json` and `work\opened_b1.json`).
+   closest v3 (0.40): `per_lead.json`, which also holds statistics (Kendall's W, the mean pairwise Spearman, stability, the nonzero counts), and `bootstrap_draws.npy` (region indices) had been opened earlier in the round by the spec writer, A and B, `per_lead.json` for its structural keys only, as the brief allows (A's `work\opened_items_<p>.json` and `work\opened_b1.json`).
+-- [v2] `work\opened_official.jsonl` (436 entries) and `work\opened_other.jsonl` (253 entries) record the SHAP files that the reconciler's scripts read, not every file it opened.
+   closest v3 (0.85): `work\opened_official.jsonl` (436 entries) and `work\opened_other.jsonl` (253 entries) hold the files outside V that the reconciler's scripts read.
+-- [v2] `compare_shap.py`, `shapv1_stats.py`, PROTOCOL.md, the brief, the spec and its schema, and A's and B's files were read directly and are not logged.
+   closest v3 (0.79): Its direct reads (`compare_shap.py`, `shapv1_stats.py`, PROTOCOL.md, the brief, the spec and its schema) and every read inside V (A's and B's files, also those read by `reconcile.py`) are not logged.
+-- [v2] Numbers 4.
+   closest v3 (0.90): Numbers 6.
+-- [v2] The reconciler's returned `b1_summary` carries the same digits.
+   closest v3 (0.71): The reconciler's returned `b1_summary` carries three of these digits (it gives no NDVI variable-level tau-b).
+-- [v2] A6 rebuilds every B1 table from `results.json` with one rounding step; tables for the paper are to be built the same way.
+   closest v3 (0.95): A6 rebuilds the pair table from `results.json` with one rounding step; tables for the paper are to be built the same way.
+-- [v2] Diagnoses 9.
+   closest v3 (0.88): Diagnoses 11.
+-- [v2] The intervals that exist are A's (= B's); three of fire's rest on few finite draws (A5, point 1).
+   closest v3 (0.94): The intervals that exist are A's (= B's); three of fire's rest on fewer than 2,000 finite draws (A5, point 1).
+-- [v2] Section 6, "Only `a20_b1.py` opens `treeroute_B1\`" and "Only `b_b1.py` and `b_crosscheck_b1.py` open `treeroute_B1\`": besides these, the inspection scripts `a04_checks.py` (A) and `b_inspect3.py` (B) open `treeroute_B1` files (key and flag columns, `meta.json`, the rows schema).
+   closest v3 (0.97): Section 6, "Only `a20_b1.py` opens `treeroute_B1\`" and "Only `b_b1.py` and `b_crosscheck_b1.py` open `treeroute_B1\`": besides these, the inspection scripts `a04_checks.py` (A) and `b_inspect3.py` (B) open `treeroute_B1` files (the key, flag and `pre` columns, `meta.json`, the rows schema).
+-- [v2] Latent issues, with no effect here 16.
+   closest v3 (0.97): Latent issues, with no effect here 18.
+-- [v2] And A's and B's B1 records (status, run facts, defo identity) are stored side by side in `work\summary.json` without being compared in code, and the A/B side of the statement that no number of items 1-8 depends on B1 is not tested by `reconcile.py` (it rests on A's open records, B's assert in `b_compare.py` and the reading of their scripts, item 14).
+   closest v3 (1.00): And A's and B's B1 records (status, run facts, defo identity) are stored side by side in `work\summary.json` without being compared in code, and the A/B side of the statement that no number of items 1-8 depends on B1 is not tested by `reconcile.py` (it rests on A's open records, B's assert in `b_compare.py` and the reading of their scripts, item 16).
+-- [v2] The lead compared the records in code:
+   closest v3 (0.53): The 50 logged openings are the reconciler's own first openings.
+-- [v2] A's equal B's in every field for all five problems, and both give the defo identity as 0 and 0, as does the reconciler's own recomputation. ### A4.
+   closest v3 (0.07): Section 3's main-row table and section 6's other tables (status, defo identity, nonzero counts, run facts, top 3 and family shares) were checked against the official files and `results.json` and stand.
+-- [v2] It also found that A never opened `V\B` and B never opened `V\A`; that every Python start by A and B used `-I -B`; that no compare file other than `per_lead.json` (structural keys) and `bootstrap_draws.npy` was opened before the reconciler's first opening at 18:24:54; and, from the transcripts it read (the reconciler's calls up to 18:33), that no SHAP script was run and that no file in SHAP outsid
+   closest v3 (0.71): From the transcripts it read (the spec writer's, A's and B's in full, the reconciler's up to 18:33), it also found that A never opened `V\B` and B never opened `V\A`; that every Python start by A and B used `-I -B`; that no compare file other than `per_lead.json` (structural keys) and `bootstrap_draws.npy` was opened before the reconciler's first opening at 18:24:54; and that no SHAP script was ru
+-- [v2] BARDL gives exactly 0 to 93 of the 96 variables of J, so its top-5, top-10 and top-20 sets are filled by name order: section 8's tie rule, which all three sources applied in Python code-point ascending order (the spec's C10 leaves the direction and collation open).
+   closest v3 (0.91): BARDL gives exactly 0 to 93 of the 96 variables of J (it reads three variables, nine columns), so its top-5, top-10 and top-20 sets are filled by name order: section 8's tie rule, which all three sources applied in Python code-point ascending order (the spec's open choice C10 leaves the direction and collation open).
+-- [v2] The BARDL pairs' Jaccard, RBO and top-20-union Spearman therefore depend on that rule:
+   closest v3 (0.99): The BARDL pairs' Jaccard, RBO and top-20-union Spearman therefore depend on that rule.
+-- [v2] `aet_total_mm` is also a tie-only overlap of the top 10; the top-20-union Spearman is 0.162 or 0.038 and RBO p 0.95 0.241 or 0.322, by collation;
+   closest v3 (0.97): `aet_total_mm` is also a tie-only member of the top 10; the top-20-union Spearman is 0.162 or 0.038 and RBO p 0.95 0.241 or 0.322, by collation;
+-- [v2] - rival_bardl_h1|rival_lgbm, variable level: top-20-union Spearman 0.111 or 0.030;
+   closest v3 (0.79): - rival_bardl_h1|rival_ridge, feature level: top-20-union Spearman -0.471, -0.393 or -0.362.
+-- [v2] `x__V02_total_precip_mm_roll3`, a column BARDL does not read, is a tie-only overlap of the top 20 (Jaccard top 20 0.111, or 0.143 case-insensitive), and the top-20-union Spearman is -0.064, -0.126 or 0.003 under the three collations;
+   closest v3 (0.97): `x__V02_total_precip_mm_roll3`, a column BARDL does not read, is a tie-only member of the top 20 (Jaccard top 20 0.111, or 0.143 case-insensitive), and the top-20-union Spearman is -0.064, -0.126 or 0.003 under the three collations;
+-- [v2] The main-text rows are not affected: under three collations no main-row number moves by more than 3e-5.
+   closest v3 (0.98): The main-text rows are not affected: under the three collations no main-row number moves by more than 3e-5.
+-- [v2] No pair without BARDL, in any problem or at either level, has a top-k overlap that exists only through a tie, or a collation dependence above 1e-12 (the skeptic's script s41).
+   closest v3 (0.40): | 2 | numbers | 2: "no collation dependence above 1e-12" | A4, the numbers, item 1 |
+-- [v2] The skeptic's alternative to a footnote, not showing these cells, is not proposed (A5, point 3).
+   closest v3 (0.52): (The skeptic's return says "no collation dependence above 1e-12" there; its own file shows these small RBO moves.) The skeptic's alternative to a footnote, not showing the BARDL cells, is not proposed (A5, point 3).
+-- [v2] This report was missing (it was written at 19:31; this is its second version).
+   closest v3 (0.94): This report was missing (it was written at 19:31; this is its third version).
+-- [v2] The facts checker compared every cell of the section-3 main-row table and of the section-6 B1 tables with A's `results.json`, whose values equal the skeptic's, and found the four double-rounded cells of A1 item 4; every other cell agrees.
+   closest v3 (0.77): The facts checker of the first version compared every cell of the section-3 main-row table with the official `AW4_main_row.json` files (A = B = official at full precision) and every cell of the section-6 B1 tables with A's `results.json`, whose values equal the skeptic's; it found the four double-rounded cells of A1 item 6, and every other cell agrees.
+-- [v2] The report is written now (with the corrected counts of A1 items 5 and 6, and the second check of 3,953 table cells), and the uncompared records are answered in A1 item 17.
+   closest v3 (0.98): The report is written now (with the corrected counts of A1 items 7 and 8, and the second check of 3,953 table cells), and the uncompared records are answered in A1 item 19.
+-- [v2] `reconcile.py` is left as it ran, and the lead's comparison in code stands in their place.
+   closest v3 (0.65): `reconcile.py` is left as it ran, and the lead's script `compare_b1_records.py` checks the same equalities (A1 item 19).
+-- [v2] Its eight minor findings are A1 items 9 to 13 and 16, and the first two parts of item 17.
+   closest v3 (0.95): Its eight minor findings are A1 items 11 to 15 and 18, and the first two parts of item 19.
+-- [v2] - (a) take them from A (= B), say so in S3.13 and record it in PROTOCOL.md section 14;
+   closest v3 (0.85): - (a) take them from A (= B), say so in S3.13 and under the main-text table, and record it in PROTOCOL.md section 14;
+-- [v2] S3.13 then differs from the `compare\` files in these cells.
+   closest v3 (0.58): S3.13 and the main table's fire row then differ from the `compare\` files (`AW4_main_row.json`, `AW4_table.md`, the AW3 tables) in these cells.
+-- [v2] Either way, three of fire's variable-level sign-agreement intervals rest on few finite draws and are all [0, 1]: rival_ridge|treeroute on 64 of 2,000 (its full-sample value is undefined), rival_lgbm|treeroute on 1,140 and rival_rf|treeroute on 1,380.
+   closest v3 (0.96): Either way, three of fire's variable-level sign-agreement intervals rest on fewer than 2,000 finite draws and are all [0, 1]: rival_ridge|treeroute on 64 (its full-sample value is undefined), rival_lgbm|treeroute on 1,140 and rival_rf|treeroute on 1,380.
+-- [v2] (The spec's C21 leaves open the fewest finite replicates for which an interval is given, and compare_shap made no choice there, as it evaluated no draw.) 2.
+   closest v3 (0.41): The spec's C21 leaves open the fewest finite replicates for which an interval is given; compare_shap's own percentile helper (`shapv1_stats.py` `percentile_ci`, lines 259-266), which gives every other official interval, returns one from a single finite replicate on, so printing them follows its rule.
+-- [v2] **The feature-level family-share distance** (A1 item 12):
+   closest v3 (0.98): **The feature-level family-share distance** (A1 item 14):
+-- [v2] BARDL gives 0 to 93 of its 96 variables, so its top-k sets are filled by name order (section 8's tie rule, applied in code-point ascending order; the spec's C10), at both levels; give the size of the effect (for example Jaccard top 5 with treeroute:
+   closest v3 (0.71): BARDL gives exactly 0 to 93 of the 96 variables of J (it reads three variables, nine columns), so its top-k sets are filled by name order (section 8's tie rule, applied in code-point ascending order; the spec's open choice C10), at both levels; the footnote gives the largest move of each statistic under other collations (A4) and an example (Jaccard top 5 with treeroute:
+-- [v2] S3.13 will show intervals on B1's shares, because section 10 asks for them.
+   closest v3 (0.43): B1's family shares and per-player shares carry intervals (section 10 asks for them), but B1's top 10 does not (section 10:
+-- [v2] - (a) no intervals for the main models' shares, as in the official files.
+   closest v3 (0.63): | 1 | completeness | 12: intervals for the main models' shares | A5 point 5 |
+-- [v2] - (b) add A's (= B's) intervals, which come from outside the official files as in point 1 (a).
+   closest v3 (0.65): - (b) add A's (= B's) intervals, which come from outside the official files as in point 1 (a); the top-10 shares are then asymmetric the other way (the main models' with intervals, B1's without).
+-- [v2] **Two earlier questions** (asked on 2026-11-16 at about 01:50).
+   closest v3 (0.95): **Two earlier owner questions** (asked on 2026-11-16 at about 01:50).
+-- [v2] C10, still open: mention in S3.13 that coral's pilot `AW4_table.md` was read on 2026-11-13 at about 15:31 (section 1 above).
+   closest v3 (0.46): Owner question C10 (not the spec's open choice C10), still open: mention in S3.13 that coral's `AW4_table.md`, the current coral comparison's table (written 2026-11-13 at 00:06), was read by an agent on 2026-11-13 at about 15:31, before this round, and that A and B never opened it.
+-- [v2] These tables replace the reconciler's section-6 B1 tables.
+   closest v3 (0.56): The 50 logged openings are the reconciler's own first openings.
+-- [v2] The two report checks of the first version The first version of this file (2026-11-16 19:31, SHA-256 00aa4d546f8210e2..., 43,582 bytes) is kept as `report.md.before_fix1`.
+   closest v3 (0.77): The report checks of the first two versions The first version of this file (2026-11-16 19:31, SHA-256 00aa4d546f8210e2..., 43,582 bytes) is kept as `report.md.before_fix1`, the second (20:02, SHA-256 488814ed20638e92..., 63,078 bytes) as `report.md.before_fix2`.
+-- [v2] Two read-only checkers read it from 19:33 (their scripts in `V\skeptic\report_check\facts` and `V\skeptic\report_check\completeness`; their returns in `V\_lead\returns\check_facts.json` and `check_completeness.json`).
+   closest v3 (0.72): Each was read by two read-only checkers (their scripts in `V\skeptic\report_check\` and `V\skeptic\report_check2\`; their returns in `V\_lead\returns\`:
+-- [v2] Both said not ready: facts with two major and ten minor findings, completeness with three major and nine minor.
+   closest v3 (0.82): First round, on the first version: facts with two major and ten minor findings, completeness with three major and nine minor.
+-- [v2] Where each is answered:
+   closest v3 (0.66): Where each finding is answered in this version:
+
+== v1 sentences or table rows not in v3 verbatim: 42 of 75
+-- [v1] **Lead's note (added 2026-11-16).** The reconciler wrote this report at 18:48:22 local time, but the subagent harness refused the write ("Subagents should return findings as text, not write report files").
+   closest v3 (0.92): **Lead's note (added 2026-11-16; this is the file's third version).** The reconciler wrote this report at 18:48:22 local time, but the subagent harness refused the write ("Subagents should return findings as text, not write report files").
+-- [v1] The reconciler then ran `reconcile.py` once more (final outputs 18:49:50); the counts and groups in its text equal the final `mismatches.json` and `work\summary.json`.
+   closest v3 (0.61): The reconciler then ran `reconcile.py` once more (final outputs 18:49:50).
+-- [v1] The statements that the final run or the skeptics changed are listed in the lead's addendum at the end (A1), which also holds the lead's tallies (A2, A3), the three skeptics' findings (A4) and the points for the owner (A5). ## Lead's addendum (2026-11-16) Written by the lead after reading the round's return at 19:22 local time: the reconciler's output, the implementers' summaries and the three ske
+   closest v3 (0.54): The addendum also holds the lead's tallies (A2, A3), the three skeptics' findings (A4), the points for the owner (A5) and the report checks of the first two versions (A7). ## Lead's addendum (2026-11-16, third version) Written by the lead after reading the round's return at 19:22 local time: the reconciler's output, the implementers' summaries and the three skeptics' reports.
+-- [v1] The tallies below come from the final `mismatches.json` (18:49:50) and from A's and B's `results.json`; the skeptics' files are in `V\skeptic\blindness`, `V\skeptic\numbers` and `V\skeptic\reconcile`. ### A1.
+   closest v3 (0.83): The tallies below come from the final `mismatches.json` (18:49:50) and from A's and B's `results.json`; the skeptics' files are in `V\skeptic\blindness`, `V\skeptic\numbers` and `V\skeptic\reconcile`, and the agents' returned reports, byte for byte, in `V\_lead\returns\`.
+-- [v1] Corrections to the reconciler's text 1.
+   closest v3 (0.80): Corrections to the reconciler's text Opening and reading 1.
+-- [v1] Section 1: the runs of `reconcile.py` re-read the compare files from 18:34:26 to 18:49:41 (the final run included;
+   closest v3 (0.48): Section 1, "its runs from 18:34:26 to 18:46:03": the runs of `reconcile.py` re-read the compare files from 18:34:26 to 18:49:41, in six runs, the final run included (360 opens, plus 16 reads of `pairs.parquet` as bytes for its SHA-256 from 18:43:43 to 18:49:41).
+-- [v1] 360 opens, plus 16 reads of `pairs.parquet` as bytes for its SHA-256), not to 18:46:03.
+   closest v3 (0.40): Section 1, "its runs from 18:34:26 to 18:46:03": the runs of `reconcile.py` re-read the compare files from 18:34:26 to 18:49:41, in six runs, the final run included (360 opens, plus 16 reads of `pairs.parquet` as bytes for its SHA-256 from 18:43:43 to 18:49:41).
+-- [v1] `work\tables.md` was not written;
+   closest v3 (0.91): `work\tables.md` was never written;
+-- [v1] The tables are in sections 3 and 6 of this file, and every B1 number with its interval is in A's and B's `results.json` under `b1`.
+   closest v3 (0.92): The B1 tables are in section 6 and A6, and every B1 number with its interval is in A's and B's `results.json` under `b1`.
+-- [v1] Their `finite_replicates` = 0 is right only on the 7 pair-levels where no sign is determined in both models on any draw; on the other 95 pair-levels no draw was evaluated, so that 0 must not be printed.
+   closest v3 (0.97): Their `finite_replicates` = 0 is right only on the 7 pair-levels where no sign is determined in both models on any draw; on the other 95 no draw was evaluated, so that 0 must not be printed.
+-- [v1] The intervals that exist are A's (= B's).
+   closest v3 (0.54): The intervals that exist are A's (= B's); three of fire's rest on fewer than 2,000 finite draws (A5, point 1).
+-- [v1] Group 3 (a family with no variable): section 8's rule (a family's attribution is the sum of its variables' phi, and an empty sum is 0) already gives compare_shap's 0.
+   closest v3 (0.85): Group 3 (a family with no variable): section 8's rule (a family's attribution is the sum of its variables' phi, and an empty sum is 0) already gives compare_shap's 0, so the group is the rule's result more than an open choice.
+-- [v1] The main row and S3.13 should say "no own-history input" for coral and "no context or calendar input" for defo, not print 0.00 [0.00, 0.00] or 0.0%.
+   closest v3 (0.36): | context and calendar | 0.000 [0.000, 0.000] | 0.001 [0.001, 0.001] | 0.048 [0.042, 0.054] |
+-- [v1] NDVI has four rivals, so its value 0.2560 [0.2357, 0.2757] is the median of four shares (the mean of the two middle ones), and no rival has it.
+   closest v3 (0.95): NDVI has four rivals, so its value 0.2560 [0.2357, 0.2757] is the median of four shares (the mean of the two middle ones), and no rival has it (A5, point 4).
+-- [v1] Its column should be labelled "median of the rivals", not "median rival".
+   closest v3 (0.40): - The rivals' median: one column label for every row, "median of the rivals" (for defo and pm25 it is rival_lgbm's share; for NDVI the mean of the two middle of four shares).
+-- [v1] Groups 4 and 5 (the feature-level family-share distance): section 8 lists the family-share distance among the statistics of "every pair, both levels", and section 10 asks for the B1 pair's distance between the two runs' family shares at both levels, so the words can also be read as settling the question.
+   closest v3 (0.85): Groups 4 and 5, and section 6 (b) (the feature-level family-share distance): section 8 lists the family-share distance among the statistics of "every pair, both levels", and section 10 asks for the B1 pair's distance between the two runs' family shares at both levels, so the words favour showing it at both levels (B's reading).
+-- [v1] Under section 8's definition the families are sums of variable-level phi, so a feature-level family distance would repeat the variable-level value (B's reading); no separate feature-level family share is defined.
+   closest v3 (0.89): Under section 8's definition the families are sums of variable-level phi, so the feature-level value is the variable-level value repeated; no separate feature-level family share is defined.
+-- [v1] Whether the feature-level tables repeat the value or say "variable level only" is for the owner (A5).
+   closest v3 (0.45): Under A5 point 2 (a) the feature-level family-share distance would be printed as the variable-level value; here it shows what A and B wrote.
+-- [v1] Two latent deviations of `compare_shap.py`, with no effect here: item 8's top 10 is ordered by `np.argsort(-Iz)`, not by section 8's name tie rule (no tie occurred: the 12 largest item-8 shares are distinct for all five arcsine-link models); and the AW3 header lists at most 30 structural zeros (the largest count at any level is 29, defo's feature level).
+   closest v3 (0.97): Two latent deviations of `compare_shap.py`: item 8's top 10 is ordered by `np.argsort(-Iz)`, not by section 8's name tie rule (no tie occurred: the 12 largest item-8 shares are distinct for all five arcsine-link models); and the AW3 header lists at most 30 structural zeros (the largest count at any level is 29, defo's feature level).
+-- [v1] Two latent weaknesses of `reconcile.py`, with no effect here:
+   closest v3 (0.72): Three latent weaknesses of `reconcile.py`.
+-- [v1] `classify()` puts a key into a group by its pattern and by what the official files lack, without looking at the A-against-B status (A2 shows that every key of the groups whose diagnosis says A = B has AB = match); and `verdict()` does not count the official-derived statuses AOd and BOd as mismatches (all 921 derived keys are present in A and B:
+   closest v3 (0.76): `classify()` puts a key into a group by its pattern and by what the official files lack, without looking at the A-against-B status (A2 shows that every key of the groups whose diagnosis says A = B has AB = match).
+-- [v1] 916 match, and the 5 that differ are the item-8 J keys of group 9). ### A4.
+   closest v3 (0.94): 916 match, and the 5 that differ are the item-8 J keys of group 9).
+-- [v1] It also found that A never opened `V\B` and B never opened `V\A`; that no SHAP script was run; that every Python start by A and B used `-I -B`; that no compare file other than `per_lead.json` (structural keys) and `bootstrap_draws.npy` was opened before the reconciler's first opening at 18:24:54; and that, by its scan at 18:33, no file in SHAP outside V had been created or changed from 17:09 on.
+   closest v3 (0.71): From the transcripts it read (the spec writer's, A's and B's in full, the reconciler's up to 18:33), it also found that A never opened `V\B` and B never opened `V\A`; that every Python start by A and B used `-I -B`; that no compare file other than `per_lead.json` (structural keys) and `bootstrap_draws.npy` was opened before the reconciler's first opening at 18:24:54; and that no SHAP script was ru
+-- [v1] The lead's own scan at 19:30, after the round, found the same for the whole round: of 10,801 files (V and `smoke\bardl_fix` not entered), none was created or changed at or after 17:09; the newest is `RUN_COMMANDS.md` (17:05:41).
+   closest v3 (0.81): For files, the lead's own scan at 19:30, after the round, covers the whole round: of 10,801 files (V and `smoke\bardl_fix` not entered), none was created or changed at or after 17:09, and the newest is `RUN_COMMANDS.md` (17:05:41); a report checker repeated the scan with the same result.
+-- [v1] BARDL gives exactly 0 to 93 of the 96 variables of J, so its top-5, top-10 and top-20 sets are filled by name order (section 8's tie rule; code-point order puts `aet_total_mm` first, a variable BARDL does not use).
+   closest v3 (0.56): BARDL gives exactly 0 to 93 of the 96 variables of J (it reads three variables, nine columns), so its top-5, top-10 and top-20 sets are filled by name order: section 8's tie rule, which all three sources applied in Python code-point ascending order (the spec's open choice C10 leaves the direction and collation open).
+-- [v1] For rival_bardl_h1|treeroute at the variable level, Jaccard top 5 is 0.25 with `aet_total_mm` and 0.11 without it (top 10:
+   closest v3 (0.73): Jaccard top 5 is 0.25 with `aet_total_mm` and 0.11 without it (top 10:
+-- [v1] 0.25 against 0.18).
+   closest v3 (0.95): 0.25 against 0.18);
+-- [v1] The main-text rows are not affected: under three collations no main-row number moves by more than 3e-5.
+   closest v3 (0.98): The main-text rows are not affected: under the three collations no main-row number moves by more than 3e-5.
+-- [v1] No other pair, in any problem or at either level, has a top-k overlap that exists only through a tie.
+   closest v3 (0.34): No other key name or value was printed.
+-- [v1] This report was missing (it is written now).
+   closest v3 (0.68): This report was missing (it was written at 19:31; this is its third version).
+-- [v1] With its own code, written from the protocol's words, it recomputed the five main rows, a sample of pairs, coral treeroute's importances, defo's identity and the fire, pm25 and ndvi B1 numbers; every one equals A, B and the official files (largest difference 1.5e-15).
+   closest v3 (0.74): With its own code, written from the protocol's words, the skeptic recomputed the five main rows (fire's defined part), a sample of pairs, coral treeroute's importances, defo's identity, and a sample of the fire, pm25 and ndvi B1 numbers (fire:
+-- [v1] **The reconciliation: not ready, one major and eight minor findings.** The major finding was that this report did not exist; it is written now.
+   closest v3 (0.43): First round, on the first version: facts with two major and ten minor findings, completeness with three major and nine minor.
+-- [v1] The eight minor findings are A1 items 3 to 9.
+   closest v3 (0.61): Its eight minor findings are A1 items 11 to 15 and 18, and the first two parts of item 19.
+-- [v1] Numbers the protocol asks for but `compare_shap.py` did not write: fire's main-row treeroute top 3 and own-history share (group 1), and the sign-agreement intervals (group 2).
+   closest v3 (0.97): **Numbers the protocol asks for but `compare_shap.py` did not write:** fire's main-row treeroute top 3 and own-history share [CI] (group 1), and the sign-agreement intervals (group 2).
+-- [v1] S3.13 and the main row take them from A (= B) and say so.
+   closest v3 (0.46): S3.13 then equals the official files, at the cost of a new script, its checks and a run.
+-- [v1] The feature-level family-share distance (A1 item 6).
+   closest v3 (0.92): **The feature-level family-share distance** (A1 item 14):
+-- [v1] Proposed: report it at the variable level only and say that the feature level would repeat the same value.
+   closest v3 (0.67): - (b) variable level only, with a note that the feature level would repeat it;
+-- [v1] NDVI's BARDL pair cells (A4, the numbers, item 1).
+   closest v3 (0.96): **NDVI's BARDL pair cells** (A4, the numbers, item 1).
+-- [v1] Proposed: keep them, with a footnote on the name-order ties.
+   closest v3 (0.66): Proposed: keep, with the footnote.
+-- [v1] Presentation, proposed unless the owner objects:
+   closest v3 (0.45): Points for the owner 1.
+-- [v1] "no own-history input" (coral) and "no context or calendar input" (defo) instead of 0 (A1 item 4);
+   closest v3 (0.34): | 1 | facts | 1 (major): compare files opened before 18:24:54 | A1 item 1 |
+-- [v1] "median of the rivals" for NDVI's four rivals (A1 item 5); a one-line note on PM2.5's asymmetric RBO interval (A4).
+   closest v3 (0.39): - PM2.5's RBO against the consensus: a one-line note that its interval is asymmetric because the consensus's top variable changes across draws (A4, the numbers, item 3).
+

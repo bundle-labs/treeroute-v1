@@ -1,0 +1,77 @@
+{
+ "background_keys_removed_missing_context": {
+  "0": 0,
+  "12": 491,
+  "6": 0
+ },
+ "background_rows": {
+  "0": {
+   "max": 17,
+   "median": 17.0,
+   "min": 16
+  },
+  "12": {
+   "max": 16,
+   "median": 16.0,
+   "min": 15
+  },
+  "6": {
+   "max": 17,
+   "median": 16.0,
+   "min": 16
+  }
+ },
+ "defo_regions": 0,
+ "excluded_no_background": [],
+ "excluded_sentinel_or_no_background": [],
+ "frame_rows": 94527,
+ "leads": [
+  0,
+  6,
+  12
+ ],
+ "models_in_frame": {
+  "0": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "bardl_h1"
+  ],
+  "12": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "bardl_h1"
+  ],
+  "6": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "bardl_h1"
+  ]
+ },
+ "n": 1000,
+ "n_asked": 1000,
+ "problem": "ndvi",
+ "regions_in_sample": 133,
+ "rows_per_year": {
+  "2020": 251,
+  "2021": 249,
+  "2022": 248,
+  "2023": 252
+ },
+ "rule": "PROTOCOL.md section 3 (v3)",
+ "selection": {
+  "regions": 133,
+  "units_per_region": 2,
+  "years": 4
+ },
+ "sha256": {
+  "background_lead_0.parquet": "7ad31f62e6d26daaa68f2f1b81a2b43dc86e6bb24b65bb666ad09331942680dc",
+  "background_lead_12.parquet": "2bff7db1f562a0b8a9398cb9b600ab70e76fe7cb2f5be6835b0a322ad5e879b8",
+  "background_lead_6.parquet": "e83abc7855d6df33bf0074ba4b69b5ea612ebfc8e9e52f10e88857be366899d1",
+  "sample.parquet": "f2bb2a7912e595ea4eaa99ffed264fbe1c31fe98823f5bd65ed6ff1376f8a7db"
+ },
+ "tag": "v1",
+ "units_in_sample": 266
+}

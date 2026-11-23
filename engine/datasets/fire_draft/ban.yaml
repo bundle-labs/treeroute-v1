@@ -1,0 +1,901 @@
+# ban.yaml -- fire_draft: GENERATED from datasets/fire/ban.yaml by datasets/_tools/refresh_drafts.py;
+# do not edit by hand. DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run.
+# Every verdict and reason is the real package's; every evidence field starts with the DRAFT stamp, so the
+# engine marks every run of this package DRAFT and the headline-table builder refuses it.
+# The real file's header follows.
+#
+# ban.yaml -- fire: the Q34 verdicts, INSTALLED 2026-10-05 (OWNER_RULINGS_2026-10-05.md section J: "yes install it
+# for all 4 problems"). One verdict per non-key column of catalog.yaml (closed world, plan 1.4): 204 verdicts (202 at the J install; ruling L added the six hold rows; ruling N S9 a removed the four lag-1 rings).
+#
+# SOURCE: engine/datasets/review/proposed/fire_ban_proposed.yaml (the agent's merged recommendation, adopted by J1 with
+# the defaults of its 10 questions; per-row reasons, evidence and timing proposals: fire_columns_proposed.csv). Every
+# verdict below is that file's, word for word, EXCEPT these rows, changed by the owner's later rules J2 and J3:
+#   J3  (AMENDED by the owner 2026-10-05) aglw_cattle, aglw_buffalo, aglw_horse, aglw_sheep, aglw_goats,
+#       aglw_total_lsu: ban -> WATCH. The yearly AGLW series kept as a lagged annual driver: R8 lags it 1 year on
+#       this monthly target (no freeze, no R9; the first install's freeze is withdrawn). Post-2021 layers (the 2021
+#       layer times India's FAOSTAT ratio, every region) are never read by fire (y_end 2022); exceptions.yaml.
+#   J2a V06_spei_12m, spei_01m, spei_03m, spei_06m, spei_24m, amo stay banned (incomplete); six NEW rows <base>_lag12
+#       (features/build.py) are keep.
+#   J2b deeprec_twsa: ban -> keep (R8 lag 3 from the assumed store bound). phenology_sos_doy: ban -> keep (R8 lag 2
+#       years from the assumed store bound; ATTENTION: R4 moves fire's Y0 from 2003 to 2004 because of it).
+#   J2c snow_duration_days: ban -> keep (R8 lag 1 year).
+#   J2d epo: ban -> conditional (SWITCH to keep once the pipeline runs fill_last_value before R30 AND its window
+#       is signed: a signed window on a kept epo would let the December mask in with nothing refusing).
+#       snow_cover_fraction: ban -> conditional (switch to keep once the engine runs its
+#       last-value fill before R30; its store window is known, so it would enter now). Each conditional reason names
+#       its switch.
+# The three FireCCI burned-area columns keep the review's ban 'label'; catalog.yaml now gives them the role
+# target_twin (review section 5 C), which forces that ban.
+#
+# THE HISTORY-STORE SWITCH (J1 / Q5: build fire's history store). The 9 fire-history columns below are 'conditional'
+# until the every-unit store rebuilt at label lag 2 exists and dataset.yaml declares it (driver template + the include
+# line printed by `ingest/build_history.py catalog`; dataset.yaml ATTENTION). Then switch each to the verdict its
+# reason names:
+#   tslf_months          -> watch
+#   tslf_censored        -> watch
+#   n_burns_12mo         -> keep
+#   n_burns_60mo         -> watch
+#   burn_rate_120mo      -> keep
+#   nbr25km_12mo_lag3    -> keep
+#   nbr75km_12mo_lag3    -> keep
+#   nbr25km_12mo_lag6    -> keep
+#   nbr75km_12mo_lag6    -> keep
+# Until then a kept history column has no store facts and derive refuses it (R8), so 'conditional' is fail-safe.
+#
+# [SUPERSEDED by ruling L below: L1 signed the 13 index windows; nothing refuses at R8 now. Kept as J-era history.]
+# TIMING FACTS ARE NOT SIGNED HERE (the owner signs them separately). Kept columns whose store window is still unknown
+# with no signed bound make derive refuse at R8 (G-LAG), loudly, until the owner signs them: soi, tna, tsa, iod, noi,
+# ao, nao, pna, wp, sam, pdo (review section 5 B) and grace_lwe (5 D). noi's J1 / Q2 bound ({3, month, centred}) is
+# not written in the shared store catalog yet (its header: it goes in with the other index windows), so noi still
+# refuses. epo's window is unsigned too, but epo is 'conditional', so R8 never sees it. No verdict here types a lag
+# (there is no 'lag' verdict): R8 computes every lag from the facts. The bounds the rulings set (deeprec_twsa,
+# phenology_sos_doy) are 'assumed' in the shared store catalog; aglw_* take the seeded {1, year, backward} window.
+# J4: the 10 static soil rows keep the review's reasons word for word plus one J4 note (nitrogen_gkg is cg/kg).
+# YEAR-CLOCK SCREEN (2026-10-05, the BAN_REVIEW_SUMMARY.md section 8 measure: fire groups with |r with the year|
+# > 0.6, annual group means; a lag-12 column's 2003-2022 rows are its parent's 2002-2021): V06_spei_12m_lag12, spei_24m_lag12 move keep -> watch,
+# as spi_12m and spi_24m (counts in each reason). The other lag-12 columns stay keep.
+#
+# Verdict words (plan 1.4): keep | keep_unreviewed | freeze | ban (reason: label, coproduct, target_derived,
+# replaced_by_engine, post_event_state, lookahead_unfixable, trend_proxy, incomplete, structural,
+# post_window_snapshot) | conditional | watch. keep, watch and freeze enter the trees (watch is also named in every
+# report); ban and conditional leave every engine run.
+# Counts (refreshed after ruling L, 2026-10-06):
+# Counts: keep 113, ban:incomplete 24, watch 14, ban:trend_proxy 13, ban:post_window_snapshot 10, ban:post_event_state 9, conditional 7, ban:structural 5, ban:target_derived 5, ban:label 4
+#   (recounted 2026-10-06 after ruling N, OWNER_RULINGS_2026-10-06.md N: S9 a, S27, S29)
+# REVISED 2026-10-06 under ruling L (OWNER_RULINGS_2026-10-05.md section L, owner: "Yes to all"). SUPERSEDES the lines
+# above where they differ (the J-era notes stay as history):
+#   L1     TIMING FACTS SIGNED by the owner (2026-10-06): the 13 index windows soi, tna, tsa, iod, ao, nao, pna, wp, sam,
+#          noi, pdo, epo, grace_lwe are {3, month, centred} in the shared panel store catalog (R8: lag 1 month); the
+#          facts the install marked 'assumed' (deeprec_twsa reach, phenology_sos_doy window, burn_frac reach,
+#          nitrogen_gkg units/range, V30 minimum, tni) and the aglw_* yearly facts are signed; written fact_status
+#          'assumed' + reviewed_by owner + date 2026-10-06 (the schema has no 'signed' value). Nothing is refused at
+#          R8 any more (G-LAG passes on the catalog facts).
+#   L3     LIVESTOCK 2022-23: aglw_cattle, aglw_buffalo, aglw_horse, aglw_sheep, aglw_goats, aglw_total_lsu: watch -> BAN;
+#          six NEW rows <parent>_hold2021 (features/build.py HOLD_PARENTS: the real 2021 layer held for 2022-2023,
+#          backward only, declared) are WATCH, lagged one year by R8; the hold is disclosed in their reason.
+#          REASON WORD (owner check) closed (ruling N, 2026-10-06, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S13 -- incomplete confirmed the 2022-2023 layers are not observations, the record ends in 2021): L3 says the raw aglw_* are banned 'post_window_snapshot for 2022+'. They are
+#          written ban 'incomplete' (as J2 a's raw parents): the engine's lineage stand-in refuses EVERY feature built
+#          from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS,
+#          check_feature_lineage, G-LINEAGE), so the literal word would refuse the six hold columns L3 asks for. To
+#          use the literal word, the engine must first learn that a hold column never reads the banned rows.
+#   L2     phenology_sos_doy: keep -> CONDITIONAL (out), so Y0 stays 2003 (its 2-year lag set Y0 2004 alone).
+#   L4     epo: conditional -> KEEP (the last-value rule fills December, as on PM2.5 and NDVI; window signed).
+#          wbal_roll24: keep -> BAN incomplete, like PM2.5's (head-of-record gap, 5.7% of donor rows).
+#   The 9 history-store columns stay conditional (the store switch above is unchanged).
+verdicts:
+  burned_frac:
+    verdict: ban
+    reason: label
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | the target (forced ban, plan 1.4; G-LINEAGE) | APP_PLAN.md 1.4 (the target and its twins are forced to ban); fire_architecture.py:267
+  lon:
+    verdict: ban
+    reason: structural
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | coordinate: never a tree feature (G-KEYS); lat stays router context as ctx:lat | shipped ban fire_ban.py:87 (KEYS); fire_evt_arch.py:78 (CTX = [month, lat]); APP_PLAN.md 1.5 G-KEYS'
+  lat:
+    verdict: ban
+    reason: structural
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | coordinate: never a tree feature (G-KEYS); lat stays router context as ctx:lat | shipped ban fire_ban.py:87 (KEYS); fire_evt_arch.py:78 (CTX = [month, lat]); APP_PLAN.md 1.5 G-KEYS'
+  V25_elevation_m:
+    verdict: keep
+    reason: static terrain; no time axis, no lag; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep/watch (PM2.5 watches some as GWR covariates, pm25_ban.py:157 -- a PM2.5-only reason)
+  V26_slope_deg:
+    verdict: keep
+    reason: static terrain; no time axis, no lag; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep/watch (PM2.5 watches some as GWR covariates, pm25_ban.py:157 -- a PM2.5-only reason)
+  V27_southness:
+    verdict: keep
+    reason: static terrain; no time axis, no lag; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep/watch (PM2.5 watches some as GWR covariates, pm25_ban.py:157 -- a PM2.5-only reason)
+  V28_CTI:
+    verdict: keep
+    reason: static terrain; no time axis, no lag; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep/watch (PM2.5 watches some as GWR covariates, pm25_ban.py:157 -- a PM2.5-only reason)
+  clay_pct:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  sand_pct:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  silt_pct:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  soil_organic_carbon_gkg:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  nitrogen_gkg:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  soil_ph:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  awc_cm3cm3:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  bulk_density_gcm3:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  cec_cmolkg:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  coarse_fragments_pct:
+    verdict: keep
+    reason: 'static soil layer; no time axis, no lag. Range note: awc_cm3cm3 max 0.93 and nitrogen_gkg max 267 are physically impossible (AUDIT_REPORT.md item 3); G-RANGE prints or refuses them, not a verdict matter | J4 (OWNER_RULINGS_2026-10-05.md): nitrogen_gkg is stored in cg/kg, so its 267 is 26.7 g/kg, not an impossible value; units and legal range corrected in the store catalog (fact_status assumed)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_dataset_audit (hard-range list); other problems keep
+  V15_bare_ground_pct:
+    verdict: ban
+    reason: post_event_state
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MOD44B VCF cover fractions step down after a burn and recover over years (fire history re-encoded); the product year also runs to day 64 of the next year; sum group V15 + V17 + tree_cover_pct = 100 shares one verdict | shipped ban fire_ban.py:46-49 (BAN_POSTFIRE); OWNER_RULINGS_2026-09-28.md F3 (follow the shipped verdicts, Y0 stays 2003); defo_ban.py:28-34 (sum group); APP_PLAN.md 1.4
+  V17_herb_cover_pct:
+    verdict: ban
+    reason: post_event_state
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MOD44B VCF cover fractions step down after a burn and recover over years (fire history re-encoded); the product year also runs to day 64 of the next year; sum group V15 + V17 + tree_cover_pct = 100 shares one verdict | shipped ban fire_ban.py:46-49 (BAN_POSTFIRE); OWNER_RULINGS_2026-09-28.md F3 (follow the shipped verdicts, Y0 stays 2003); defo_ban.py:28-34 (sum group); APP_PLAN.md 1.4
+  tree_cover_pct:
+    verdict: ban
+    reason: post_event_state
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MOD44B VCF cover fractions step down after a burn and recover over years (fire history re-encoded); the product year also runs to day 64 of the next year; sum group V15 + V17 + tree_cover_pct = 100 shares one verdict | shipped ban fire_ban.py:46-49 (BAN_POSTFIRE); OWNER_RULINGS_2026-09-28.md F3 (follow the shipped verdicts, Y0 stays 2003); defo_ban.py:28-34 (sum group); APP_PLAN.md 1.4
+  modis_landcover_class:
+    verdict: ban
+    reason: post_event_state
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MCD12Q1 land cover: fire scars are a documented misclassification case, and MCD12Q1 is an input to the target product MCD64A1 (lineage) | shipped ban fire_ban.py:44-47 (BAN_POSTFIRE); Parts 306-312 (modis_landcover_class look-ahead confirmed on NDVI); reference_vegtype_leakfree_sources (optical land cover leaks); the 2023-vintage OWNER CHECK is moot while banned (fire''s coverage ends 2022)'
+  shrub_cover_pct_global:
+    verdict: ban
+    reason: post_event_state
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MCD12Q1 land cover: fire scars are a documented misclassification case, and MCD12Q1 is an input to the target product MCD64A1 (lineage) | shipped ban fire_ban.py:44-47 (BAN_POSTFIRE); Parts 306-312 (modis_landcover_class look-ahead confirmed on NDVI); reference_vegtype_leakfree_sources (optical land cover leaks); the 2023-vintage OWNER CHECK is moot while banned (fire''s coverage ends 2022)'
+  phenology_sos_doy:
+    verdict: conditional
+    reason: 'owner ruling L2: out (conditional) on this package, so Y0 stays 2003. Its signed window (L1 a: {1, year, centred} + reach_after_max {1, year}) lags it 2 years on this monthly target, so kept it alone would move Y0 to 2004 (R4, ruling J5)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L2 (''phenology_sos_doy: Out (conditional) on PM2.5 and fire, so Y0 stays 2003. (On NDVI it stays banned as a co-product.)''); was keep/watch under J2 (b); ruling F3 (Y0 2003) | review: a fire resets phenology (post-fire state); the season is known only after it happens and its window past the calendar year is unknown; 19-24% missing in each test year | shipped ban fire_ban.py:50; pm25_ban.py:37; Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111)'
+  population_density:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | a year clock inside each region: smooth annual growth, so within a group''s trees it stands in for the year, and the test years sit above every training value (a tree answers them as its latest training year); also 2021-22 are extrapolated model output (WorldPop ends 2020) | CHANGE (skeptic pass 2026-10-05); shipped lagged (proposal: watch). Measured 2026-10-05 as for gdp_pc: median r 0.99, r > 0.9 in 27 of 40 groups, every test year above the training maximum in 28 of 40; defo_ban.py:106-111 (2021-23 extrapolated). pm25_ban.py:44-52 (trend proxies: accurate in-sample, worse than naive in the test window); co2 is banned on the same test; reference_regime_ood_failure. Kept by owner rulings elsewhere: PM2.5 both (Part 539: annual human columns fed one year late), defo population_density (Part 437, defo_ban.py:99-105). Question Q4 (BAN_REVIEW_SUMMARY.md)'
+  built_surface_fraction:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | GHSL built surface: five observed epochs, interpolated between them, and 2020+ are projections | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:89-91; pm25_ban.py:121-127 (A3)'
+  cropland_fraction:
+    verdict: ban
+    reason: post_event_state
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: lagged). It is the MCD12Q1 IGBP class-12 slice, the same product as modis_landcover_class/annual and shrub_cover_pct_global, which fire bans as post-fire state and as an input of MCD64A1. luh2_cropland (census/HYDE based, kept) carries the cropland signal leak-free | fire_ban.py:44-45 (MCD12Q1 rationale; cropland_fraction was simply not listed); pm25_ban.py:88-89 and defo_ban.py:40-41 (an MCD12Q1 slice); QUESTIONS_ROUND3_HANDOFF.md G A2 (PM2.5 drops all 8 MODIS land-cover columns); reference_vegtype_leakfree_sources'
+  hand_m:
+    verdict: keep
+    reason: static MERIT hydrography; its Hansen-2000 lineage matters for defo only, not for burned area
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 508 (MERIT/Hansen lineage measured admissible, with disclosure)
+  upstream_area_km2:
+    verdict: keep
+    reason: static MERIT hydrography; its Hansen-2000 lineage matters for defo only, not for burned area
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 508 (MERIT/Hansen lineage measured admissible, with disclosure)
+  irrigation_pct_gmia:
+    verdict: keep
+    reason: static layer; no time axis, no lag
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  dist_to_coast_km:
+    verdict: keep
+    reason: static layer; no time axis, no lag
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  V01_mean_temp_C:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  diurnal_temp_range_C:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  V02_total_precip_mm:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  V07_total_ref_ET_mm:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  aet_total_mm:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  climate_water_deficit_mm:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  soil_water_tc_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month state (an instant at the month end); swe carries the -2^31 fill (masked)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_panel_nodata_sentinel
+  V05_mean_vpd_kPa:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  V09_mean_wind_ms:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  solar_radiation_Wm2:
+    verdict: keep
+    reason: TerraClimate monthly radiation (reanalysis/climatology-aided, no observed smoke); PM2.5 holds it out only for aerosol dimming, a PM2.5 mechanism
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); pm25_ban.py:71-73, 82 (PM2.5-only reason)
+  swe_mean_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month state (an instant at the month end); swe carries the -2^31 fill (masked)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); reference_panel_nodata_sentinel
+  aridity_index_p_pet:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). R30 FLAG: 28.2% missing in donor rows against 1.4-1.8% in the test years (an availability shift); impossible values (7323 where PET -> 0); redundant with the kept water columns | review/v2/fire_columns.csv (R30 FLAG); APP_PLAN.md 1.4 and R30; pm25_ban.py:110 (PM2.5 bans it, incomplete); reference_drought_tier_hazards Part 341 (51-54% missing in the boreal zone); reference_dataset_audit (hard range)'
+  tc_vapor_pressure:
+    verdict: keep
+    reason: TerraClimate monthly weather of the named month; not a MODIS or burned-area product; complete. The -32768 / -2^31 fill codes in 47 coastal regions are store fill facts (masked), not a verdict matter
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 248 and reference_panel_nodata_sentinel (fill codes); other problems keep
+  V11_mean_ndvi:
+    verdict: conditional
+    reason: 'MODIS optical/thermal (gpp from MCD43): a burn-scar detector at lag 0 and fuel state at lag >= 1; the shipped build dropped them; held out of every engine run for a later ablation'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_ban.py:57-67 (CONDITIONAL_LAG1); shipped conditional (apply_ban(drop_conditional=True), fire_architecture.py:541); Part 476 (helps only models without climatology, angola) and Part 478 (hurts the best models, australian_bushfire_belt)
+  V13_mean_lst_C:
+    verdict: conditional
+    reason: 'MODIS optical/thermal (gpp from MCD43): a burn-scar detector at lag 0 and fuel state at lag >= 1; the shipped build dropped them; held out of every engine run for a later ablation'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_ban.py:57-67 (CONDITIONAL_LAG1); shipped conditional (apply_ban(drop_conditional=True), fire_architecture.py:541); Part 476 (helps only models without climatology, angola) and Part 478 (hurts the best models, australian_bushfire_belt)
+  nighttime_lst_C:
+    verdict: conditional
+    reason: 'MODIS optical/thermal (gpp from MCD43): a burn-scar detector at lag 0 and fuel state at lag >= 1; the shipped build dropped them; held out of every engine run for a later ablation'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_ban.py:57-67 (CONDITIONAL_LAG1); shipped conditional (apply_ban(drop_conditional=True), fire_architecture.py:541); Part 476 (helps only models without climatology, angola) and Part 478 (hurts the best models, australian_bushfire_belt)
+  snow_cover_fraction:
+    verdict: conditional
+    reason: 'owner rule J2 (d): the engine''s new last-value rule fills its empty October 2022 (September 2022 carries over), and it is co-measured (catalog.yaml: R8 lag 1). WAITING: the engine runs its last-value fill before R30 (treeroute/io/lastvalue.py, constant C18); until then R30 zero-fills the gap and every November 2022 row reads ''no snow''. SWITCH to keep then. For the switch (measured 2026-10-05, read-only, panel years 2005, 2012, 2019, 2021): the polar night empties December in alaska_interior_taiga, finnish_lapland and scandinavian_taiga and January in finnish_lapland (November 34% there), so in part of finnish_lapland the gap runs November-January, 3 months, longer than C18''s 2: R30 zero-fills it, a partial winter mask (J2 d keeps 3-5 month masks banned)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (d) (''Fixes ... snow_cover_fraction''s empty October 2022 (also lag 1 as same-sensor co-measured)'', written for NDVI''s copy of this column); replaces the review''s ban incomplete | review: one test month is empty everywhere: October 2022 is 100% missing in all 40 fire groups (a MOD10 month is absent), so at its lag 1 every November 2022 row reads R30''s zero-fill, which means ''no snow'' | CHANGE (skeptic pass 2026-10-05); shipped keep, fire_architecture.py:541. Measured 2026-10-05 read-only on D:/monthly_panel/{group}_monthly_2022.parquet for all 40 fire groups: month 10 missing share 1.00 in 40 of 40 (December 57% in the last group read: polar night); the NDVI skeptic found the same hole in all 133 regions; defo bans it as incomplete (its 2022 annual aggregate is 100% missing); APP_PLAN.md R30 (zero-fill). Also resolves the albedo-vs-snow inconsistency the fire skeptic raised (V14 is banned as post-fire state). swe_mean_mm and era5l_smlt (reanalysis) still carry snow. Re-ingesting MOD10CM 2022-10 would reopen it (then keep, co_measured=true -> lag 1)'
+  cloud_frequency_pct:
+    verdict: keep
+    reason: same-month MODIS cloud, RULED co-measured -> at least 1 step (R8 floor)
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); catalog.yaml:112 (co_measured_with_target: true already declared)'
+  V14_mean_albedo:
+    verdict: ban
+    reason: post_event_state
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MCD43 albedo is a direct post-fire state variable (a burn darkens it). Its centred 16-day window alone is fixable by R8 (47-day centred fact -> lag 1), so post-fire state is the reason that remains | shipped ban fire_ban.py:32-38 (both grounds named there); reason changed from the draft's lookahead_unfixable, verdict unchanged
+  gpp_kgC_m2:
+    verdict: conditional
+    reason: 'MODIS optical/thermal (gpp from MCD43): a burn-scar detector at lag 0 and fuel state at lag >= 1; the shipped build dropped them; held out of every engine run for a later ablation'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_ban.py:57-67 (CONDITIONAL_LAG1); shipped conditional (apply_ban(drop_conditional=True), fire_architecture.py:541); Part 476 (helps only models without climatology, angola) and Part 478 (hurts the best models, australian_bushfire_belt)
+  snow_onset_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | R30 FLAG: 37-41% missing in donor rows (all-null in 18 of 40 groups); snow_onset_doy is also 92-94% missing in every test year; and the owner''s Q3 a bans the snow-DOY block | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s snow-DOY ban applies to fire); pm25_ban.py:38-41; review/v2/fire_columns.csv (R30 FLAG)'
+  snow_disappearance_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | R30 FLAG: 37-41% missing in donor rows (all-null in 18 of 40 groups); snow_onset_doy is also 92-94% missing in every test year; and the owner''s Q3 a bans the snow-DOY block | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s snow-DOY ban applies to fire); pm25_ban.py:38-41; review/v2/fire_columns.csv (R30 FLAG)'
+  snow_duration_days:
+    verdict: keep
+    reason: 'owner rule J2 (c): an annual end-of-year total, kept; R8 lags it one year (store facts: period_end, 1 year backward -> lag 1 year on this monthly target), which removes the look-ahead behind the review''s ban. ERA5-Land reanalysis; constant zero in 18 of 40 groups (no snow there)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (c) (''Annual end-of-year totals (snow_duration_days): keep; R8 lags them one year''); replaces the review''s ban lookahead_unfixable (question Q6) | review: annual snow timing summary (end-of-year fact on every month), banned with the snow-DOY block by Q3 a; constant zero in 18 of 40 groups | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:38-41 (BAN_LOOKAHEAD); ingest_era5land_snowphen.py:4-8'
+  snow_max_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | R30 FLAG: 37-41% missing in donor rows (all-null in 18 of 40 groups); snow_onset_doy is also 92-94% missing in every test year; and the owner''s Q3 a bans the snow-DOY block | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s snow-DOY ban applies to fire); pm25_ban.py:38-41; review/v2/fire_columns.csv (R30 FLAG)'
+  V06_spei_12m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through V06_spei_12m_lag12 (features/build.py) | review: the shared store''s SPEI block is empty for all of 2023 (all 133 regions); banned by Q3 a''s literal reading. In fire''s 2003-2022 window it is complete (0.0-0.1% missing): see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (''bans ... AMO/SPEI'' for every problem); pm25_ban.py:113 (A5); reference_dataset_audit (2023 collapse); spi_* and wbal_* (kept) carry the drought signal (Part 324)'
+  spei_01m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through spei_01m_lag12 (features/build.py) | review: the shared store''s SPEI block is empty for all of 2023 (all 133 regions); banned by Q3 a''s literal reading. In fire''s 2003-2022 window it is complete (0.0-0.1% missing): see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (''bans ... AMO/SPEI'' for every problem); pm25_ban.py:113 (A5); reference_dataset_audit (2023 collapse); spi_* and wbal_* (kept) carry the drought signal (Part 324)'
+  spei_03m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through spei_03m_lag12 (features/build.py) | review: the shared store''s SPEI block is empty for all of 2023 (all 133 regions); banned by Q3 a''s literal reading. In fire''s 2003-2022 window it is complete (0.0-0.1% missing): see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (''bans ... AMO/SPEI'' for every problem); pm25_ban.py:113 (A5); reference_dataset_audit (2023 collapse); spi_* and wbal_* (kept) carry the drought signal (Part 324)'
+  spei_06m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through spei_06m_lag12 (features/build.py) | review: the shared store''s SPEI block is empty for all of 2023 (all 133 regions); banned by Q3 a''s literal reading. In fire''s 2003-2022 window it is complete (0.0-0.1% missing): see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (''bans ... AMO/SPEI'' for every problem); pm25_ban.py:113 (A5); reference_dataset_audit (2023 collapse); spi_* and wbal_* (kept) carry the drought signal (Part 324)'
+  spei_24m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through spei_24m_lag12 (features/build.py) | review: the shared store''s SPEI block is empty for all of 2023 (all 133 regions); banned by Q3 a''s literal reading. In fire''s 2003-2022 window it is complete (0.0-0.1% missing): see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (''bans ... AMO/SPEI'' for every problem); pm25_ban.py:113 (A5); reference_dataset_audit (2023 collapse); spi_* and wbal_* (kept) carry the drought signal (Part 324)'
+  frost_days:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  heatwave_days_gt35C:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  gdd5_degC_days:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  wet_day_count:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  V03_max_daily_precip_mm:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  precip_intensity_mm:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  vpd_max_daily:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  vpd_days_gt_2kpa:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  vpd_warm_season_mean:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  rmin_pct:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  sph_kgkg:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  V30_soil_moisture_pct:
+    verdict: keep
+    reason: daily-reanalysis counts and means of the named month; complete; not a MODIS or burned-area product
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); other problems keep
+  V20_burned_binary:
+    verdict: ban
+    reason: label
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | FireCCI burned area: the same fire events measured again (a twin of the label); the annual pair are within-year summaries of it; its sensor switches exactly at the 2019/2020 split | shipped ban fire_ban.py:22-27 (BAN_LABEL); catalog.yaml:136-145 (proposed with this list: give the three the role target_twin, which forces the ban, G-LINEAGE); pm25_ban.py:34-36; ingest_firecci_fire.py:28, 37-40'
+  burn_month_count:
+    verdict: ban
+    reason: label
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | FireCCI burned area: the same fire events measured again (a twin of the label); the annual pair are within-year summaries of it; its sensor switches exactly at the 2019/2020 split | shipped ban fire_ban.py:22-27 (BAN_LABEL); catalog.yaml:136-145 (proposed with this list: give the three the role target_twin, which forces the ban, G-LINEAGE); pm25_ban.py:34-36; ingest_firecci_fire.py:28, 37-40'
+  burn_doy_mean:
+    verdict: ban
+    reason: label
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | FireCCI burned area: the same fire events measured again (a twin of the label); the annual pair are within-year summaries of it; its sensor switches exactly at the 2019/2020 split | shipped ban fire_ban.py:22-27 (BAN_LABEL); catalog.yaml:136-145 (proposed with this list: give the three the role target_twin, which forces the ban, G-LINEAGE); pm25_ban.py:34-36; ingest_firecci_fire.py:28, 37-40'
+  sst_anom_atl3:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:471
+  sst_anom_iod_west:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:489
+  sst_anom_iod_east:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:507
+  sst_anom_subpolar_north_atlantic:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:525
+  sst_anom_coral_sea:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:543
+  sst_anom_mediterranean:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:561
+  sst_anom_global_tropical_mean:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:579
+  sst_anom_nino34:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (no rolling step); kept at the ruled lag (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a) and F4; INDEX_WINDOW_AUDIT.md Table 1 rows 20-27; ingest_ersst_boxes.py:25-40, 70-91; index_facts.yaml:597
+  nino12:
+    verdict: keep
+    reason: 'ERSSTv5 Nino-box anomaly; kept at the ruled lag (R-A a: the provider''s filter reaches 2 months ahead)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a); INDEX_WINDOW_AUDIT.md Table 1 row 1; index_facts.yaml:125
+  nino3:
+    verdict: keep
+    reason: 'ERSSTv5 Nino-box anomaly; kept at the ruled lag (R-A a: the provider''s filter reaches 2 months ahead)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a); INDEX_WINDOW_AUDIT.md Table 1 row 2; index_facts.yaml:143
+  nino4:
+    verdict: keep
+    reason: 'ERSSTv5 Nino-box anomaly; kept at the ruled lag (R-A a: the provider''s filter reaches 2 months ahead)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a); INDEX_WINDOW_AUDIT.md Table 1 row 3; index_facts.yaml:161
+  nino34:
+    verdict: keep
+    reason: 'ERSSTv5 Nino-box anomaly; kept at the ruled lag (R-A a: the provider''s filter reaches 2 months ahead)'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); OWNER_RULINGS_2026-09-28.md B R-A (a); INDEX_WINDOW_AUDIT.md Table 1 row 4; index_facts.yaml:179
+  oni:
+    verdict: keep
+    reason: centred 3-month ONI, KEPT and lagged by the computed rule (Q2), with the ERSSTv5 filter reach (R-A a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | HEADLINE_QUESTIONS_AND_FIXES.md:63 (Q2); OWNER_RULINGS_2026-09-28.md B R-A (a); INDEX_WINDOW_AUDIT.md Table 1 row 5 (T3, T5); index_facts.yaml:197
+  soi:
+    verdict: keep
+    reason: plain monthly station SLP index; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 7 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  tni:
+    verdict: keep
+    reason: 5-month running mean, alignment not stated; KEPT and lagged by the signed bound (Q2, R-B)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | HEADLINE_QUESTIONS_AND_FIXES.md:63 (Q2); OWNER_RULINGS_2026-09-28.md B R-B; INDEX_WINDOW_AUDIT.md Table 1 row 6 (T4, T4b); index_facts.yaml:216
+  pdo:
+    verdict: keep
+    reason: monthly EOF value with no running mean; its variant behind pdo.data is unknown and may be ERSSTv5-based, so the conservative fact carries R-A (a)'s 2-month reach
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 8 ('if the variant uses ERSSTv5, ruling 1 applies here too'); OWNER_RULINGS_2026-09-28.md B R-A (a), R-E (footers authorised, not yet read)
+  amo:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a): the raw parent stays banned (incomplete); it is kept through amo_lag12 (features/build.py) | review: source (PSL amon.us.data, Kaplan SST) ends January 2023 and is detrended over its whole record; banned by Q3 a''s literal reading; complete in fire''s 2003-2022 window: see the question | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:114-117 (A5); INDEX_WINDOW_AUDIT.md Table 1 row 9'
+  tna:
+    verdict: keep
+    reason: plain monthly HadISST box anomaly; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 10 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  tsa:
+    verdict: keep
+    reason: plain monthly HadISST box anomaly; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 11 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  iod:
+    verdict: keep
+    reason: plain monthly HadISST DMI; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 12 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  noi:
+    verdict: keep
+    reason: plain monthly NCEP/NCAR SLP index (no running mean shown by the data signature T8 alone; audit open item 11); filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 13 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  ao:
+    verdict: keep
+    reason: plain monthly CPC teleconnection; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 14 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  nao:
+    verdict: keep
+    reason: plain monthly CPC teleconnection; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 15 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  pna:
+    verdict: keep
+    reason: plain monthly CPC teleconnection; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 16 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  wp:
+    verdict: keep
+    reason: plain monthly CPC teleconnection; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 17 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  epo:
+    verdict: keep
+    reason: 'owner ruling L4: kept on fire as on PM2.5 and NDVI; the engine''s last-value rule (J2 d) fills each December, which CPC never issues, from the same unit''s November; window signed {3, month, centred} (L1 b): lag 1 month'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L4 (''epo keep on fire (the last-value rule fills December), as on PM2.5 and NDVI''); J2 (d) (''Fixes epo (December takes November)''); the rule is wired in treeroute/pipeline/data.py (ColumnReader.lagged calls fill_last_value before R30); December 2022, the last test month, is a tail left to R30 (disclosed); was conditional | review: a month key in disguise: CPC never issues a December EPO, and R30 fills a missing tree feature with 0, so epo == 0 marks December exactly (eddi''s mechanism) | CHANGE (skeptic pass 2026-10-05); shipped keep, fire_architecture.py:541. INDEX_WINDOW_AUDIT.md:75 (CPC publishes 8-9 of its 10 patterns a month; EPO is missing every December, 22 of 264 months); measured 2026-10-05: month 12 is 100% missing in all 40 fire groups'' 2022 panel files, and in 22 of 22 Decembers on thar_desert (NDVI skeptic); real two-decimal EPO values are almost never exactly 0; APP_PLAN.md R30 (tree features zero-filled); eddi and eddi_observed are banned structural for the same seasonal-mask mechanism (Parts 340, 342). Same verdict in pm25, fire and ndvi; defo bans it as incomplete (no December, so its strict annual aggregate is empty).'
+  sam:
+    verdict: keep
+    reason: plain monthly CPC AAO; filters inside its input analysis are disclosed, not lagged (ruling B item 7)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; same bases as SMOKES_REPORT.md ATTENTION 5); INDEX_WINDOW_AUDIT.md Table 1 row 19 and T8; OWNER_RULINGS_2026-09-28.md B item 7
+  V04_precip_seasonality:
+    verdict: keep
+    reason: annual summary of the year's own rainfall, lagged 1 year by R8 (Q3 a)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:136-137, 145
+  clf_dry:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | baked regime probabilities: accurate in-sample, worse than naive out-of-sample (2023 catastrophe); trained on V11 NDVI | shipped ban fire_ban.py:76 (SUSPECT_TREND); Parts 144-148 and 308 (reference_regime_ood_failure); save_regime_to_panel.py:1-5'
+  clf_wet:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | baked regime probabilities: accurate in-sample, worse than naive out-of-sample (2023 catastrophe); trained on V11 NDVI | shipped ban fire_ban.py:76 (SUSPECT_TREND); Parts 144-148 and 308 (reference_regime_ood_failure); save_regime_to_panel.py:1-5'
+  road_density:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S29): keep -> ban | was: keep | static access layers; not in the FREEZE family (defo_ban.py:86-98 lists only dist_*, built surface and livestock); G-EPOCH checks their content epoch against the cut | shipped keep (fire_architecture.py:541); other problems keep'
+  travel_time:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S27): keep -> ban | was: keep | static access layers; not in the FREEZE family (defo_ban.py:86-98 lists only dist_*, built surface and livestock); G-EPOCH checks their content epoch against the cut | shipped keep (fire_architecture.py:541); other problems keep'
+  dist_powerplant:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_thermal:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_coal_mine:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_dam:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_reservoir:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_oilgas_well:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  dist_pa:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static snapshots dated after the window (sources as late as 2026; the date fields were never filtered) | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5's FREEZE ban applies to fire); defo_ban.py:80-87; pm25_ban.py:121-127 (A3)
+  gdp_pc:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | a year clock inside each region: smooth annual growth, so within a group''s trees it stands in for the year, and the test years sit above every training value (a tree answers them as its latest training year) | CHANGE (skeptic pass 2026-10-05); shipped lagged. The NDVI skeptic''s year-clock test applied to fire, measured 2026-10-05 read-only (scratchpad yearclock.py; group annual means at the 1-year lag, rows 2003-2022, training <= 2018): median r(value, year) 0.94, r > 0.9 in 30 of 40 groups, every test year above the group''s training maximum in 18 of 40. pm25_ban.py:44-52 (trend proxies: accurate in-sample, worse than naive in the test window); co2 is banned on the same test; reference_regime_ood_failure. Kept by owner rulings elsewhere: PM2.5 both (Part 539: annual human columns fed one year late), defo population_density (Part 437, defo_ban.py:99-105). Question Q4 (BAN_REVIEW_SUMMARY.md)'
+  ntl:
+    verdict: keep
+    reason: annual night lights, lagged 1 year by R8; disclosed sensor switch DMSP -> VIIRS between 2013 and 2014 (assemble_human_drivers.py:100), inside the training years
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:143 (ANNUAL_LAG1)
+  hdi:
+    verdict: keep
+    reason: 'annual series, lagged 1 year by R8 (Q3 a). Disclosed: hdi carries 2015''s value after 2015 (assemble_human_drivers.py:113) and fert_n/fert_p carry 2013''s after 2013 (:146), i.e. held, never projected'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:143 (ANNUAL_LAG1); shipped run fed them at lag 0
+  luh2_cropland:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI)
+  luh2_pasture:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI)
+  luh2_range:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI)
+  luh2_urban:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI); year clock measured 2026-10-05 (median r 1.00, r > 0.9 in 39 of 40 groups, all test years above the training maximum in 39): kept because the six LUH2 states are one sum group (one verdict) and the owner keeps luh2_* (Parts 306-312); disclose (Q4)'
+  luh2_forest:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI)
+  luh2_secondary:
+    verdict: keep
+    reason: LUH2 land-use states (census/HYDE reconstruction, no imagery), lagged 1 year by R8. The Hansen constraint on forest transitions (defo_ban.py:43-47) makes luh2_forest/luh2_secondary a defo leak, not a fire one; at year -1 they hold only past forest loss
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:144 (ANNUAL_LAG1); reference_vegtype_leakfree_sources (LUH2 leak-free); Parts 306-312 (luh2 kept by the owner on NDVI)
+  fert_n:
+    verdict: keep
+    reason: 'annual series, lagged 1 year by R8 (Q3 a). Disclosed: hdi carries 2015''s value after 2015 (assemble_human_drivers.py:113) and fert_n/fert_p carry 2013''s after 2013 (:146), i.e. held, never projected'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:143 (ANNUAL_LAG1); shipped run fed them at lag 0
+  fert_p:
+    verdict: keep
+    reason: 'annual series, lagged 1 year by R8 (Q3 a). Disclosed: hdi carries 2015''s value after 2015 (assemble_human_drivers.py:113) and fert_n/fert_p carry 2013''s after 2013 (:146), i.e. held, never projected'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111); pm25_ban.py:143 (ANNUAL_LAG1); shipped run fed them at lag 0
+  aglw_cattle:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_cattle_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_buffalo:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_buffalo_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_horse:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_horse_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_sheep:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_sheep_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_goats:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_goats_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_total_lsu:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3) | the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_total_lsu_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | review: Gridded Livestock: downscaled on a year-matched optical land-cover mask, and post-2021 values are the 2021 layer rescaled | Q3 a (HEADLINE_QUESTIONS_AND_FIXES.md:64; question text :108-111) (PM2.5''s FREEZE ban applies to fire); defo_ban.py:93-97; pm25_ban.py:121-127 (A3)'
+  aglw_cattle_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_cattle as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_buffalo_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_buffalo as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_horse_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_horse as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_sheep_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_sheep as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_goats_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_goats as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_total_lsu_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_total_lsu as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (fire''s test years end in 2022, whose rows read the 2021 layer through the one-year lag: on fire''s rows the hold changes no value read; built for one rule on every package)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  conflict_events:
+    verdict: keep
+    reason: monthly UCDP counts per cell, zero-filled (zero = no event within 50 km), complete for fire
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); assemble_human_drivers.py:254-276; pm25_ban.py:139-140
+  conflict_deaths:
+    verdict: keep
+    reason: monthly UCDP counts per cell, zero-filled (zero = no event within 50 km), complete for fire
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); assemble_human_drivers.py:254-276; pm25_ban.py:139-140
+  co2:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | one global monotone clock: perfectly predicts the year and nothing else (100% of later values outside the training range on PM2.5) | shipped ban fire_ban.py:77; pm25_ban.py:51-56 (measured); defo_ban.py:58-63; the R-C timing is moot while banned'
+  food_price_index:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  food_meat:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  food_dairy:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  food_cereals:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  food_oils:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  food_sugar:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | global FAO price indices broadcast to every cell: time trends with no spatial information | shipped ban fire_ban.py:78; pm25_ban.py:57; defo_ban.py:58-63 (16.7-18.8% of test months above the training maximum)'
+  grace_lwe:
+    verdict: watch
+    reason: 'GRACE/GRACE-FO mascon: 17.2% missing in donor rows (the 2017-06..2018-05 mission gap) against 0% in the test years: under R30''s 25% line, but an availability shift (zero fill makes the gap a 2017-18 flag); listed in reports'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); G-LAG refused it in the smoke for an unknown window (fire_draft/ban.yaml:10-11 departure 3; SMOKES_REPORT.md ATTENTION 5); reference_feature_hygiene_groups (availability shift); pm25_ban.py:111 (PM2.5 bans it at 14.4%)
+  modis_landcover_annual:
+    verdict: ban
+    reason: post_event_state
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | MCD12Q1 land cover: fire scars are a documented misclassification case, and MCD12Q1 is an input to the target product MCD64A1 (lineage) | shipped ban fire_ban.py:44-47 (BAN_POSTFIRE); Parts 306-312 (modis_landcover_class look-ahead confirmed on NDVI); reference_vegtype_leakfree_sources (optical land cover leaks); the 2023-vintage OWNER CHECK is moot while banned (fire''s coverage ends 2022)'
+  V12_mean_evi:
+    verdict: conditional
+    reason: 'MODIS optical/thermal (gpp from MCD43): a burn-scar detector at lag 0 and fuel state at lag >= 1; the shipped build dropped them; held out of every engine run for a later ablation'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_ban.py:57-67 (CONDITIONAL_LAG1); shipped conditional (apply_ban(drop_conditional=True), fire_architecture.py:541); Part 476 (helps only models without climatology, angola) and Part 478 (hurts the best models, australian_bushfire_belt)
+  deeprec_twsa:
+    verdict: keep
+    reason: 'owner rule J2 (b): kept at a cautious signed bound, ''deeprec_twsa lag 3 months''. The shared store catalog carries it (monthly_panel_v170_schema_catalog.yaml deeprec_twsa: reach_after_max {3, month}, fact_status assumed, merged 2026-10-05), so R8 gives lag 3 on this target (timing.lag_trace). The bound is the owner''s, not the provider''s: the CNN+LSTM input window is undocumented (the review''s reason for its ban). Lag 3 does not move Y0'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (b) (''deeprec_twsa lag 3 months''); replaces the review''s ban lookahead_unfixable (question Q3) | review: a CNN+LSTM water-storage reconstruction whose input time window is not documented: the LSTM may read months after month m, so no forward reach can be signed (the proposed lag-3 bound counted only its ONI input) | CHANGE (skeptic pass 2026-10-05); shipped keep, fire_architecture.py:541. D:/deeprec/DeepRec_mixture_CSR_ERA5-ONI-HI.nc global attributes (read 2026-10-05): model_input = ERA5 single-level monthly means (14 variables), ISIMIP land use and lake fraction, NOAA ERSSTv5 ONI, with no input window; model_target = CSR GRACE/GRACE-FO RL06.3 mascons; coverage 1941-01 to 2023-12 (fitted on GRACE months that include the test years). Gentner et al., JGR Machine Learning and Computation, doi 10.1029/2025JH000889 (CNN encoder + LSTM): the publisher page refused the read (HTTP 403); the Uni Stuttgart news page and the EGU25-17055 abstract do not state the LSTM input sequence. Q34 review rule: no documented bound -> lookahead_unfixable. The 3-month reach covered only the ONI input (OWNER_RULINGS_2026-09-28.md B R-A a). Same verdict in pm25, fire and ndvi (one shared store fact); defo already bans it. grace_lwe (watch, measured 14-day bound) still carries water storage. Question Q3 (BAN_REVIEW_SUMMARY.md).'
+  era5l_pev:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_sro:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_ssro:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_smlt:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_slhf:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_sshf:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_ssr:
+    verdict: keep
+    reason: 'ERA5-Land surface solar radiation: ERA5 uses an aerosol climatology, so no observed fire smoke enters it; PM2.5''s hold-out is an aerosol-dimming reason specific to PM2.5'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); pm25_ban.py:82 (PM2.5-only reason)
+  era5l_str:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_d2m:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  era5l_stl1:
+    verdict: keep
+    reason: ERA5-Land monthly mean of the named month (reanalysis, no retrieval of burned surfaces). era5l_d2m and era5l_stl1 are in kelvin (units fact)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); AUDIT_REPORT.md item 6 (kelvin)
+  esacci_sm:
+    verdict: ban
+    reason: post_event_state
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | microwave soil moisture jointly retrieved with VOD, so it partly reads vegetation that fire removes; also R30 FLAG: 40.4% missing in donor rows | shipped ban fire_ban.py:51-53; pm25_ban.py:108; reference_feature_hygiene_groups (soft leak)'
+  scpdsi:
+    verdict: ban
+    reason: trend_proxy
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | static spatial mask over hyper-arid cells (unfixable) and trend-loaded (r with the month index up to +0.58; shifts > 1 training SD into the test years in 26 regions) | shipped ban fire_ban.py:79; Part 340 (reference_drought_tier_hazards items 1, 3, 4)
+  spi_01m:
+    verdict: keep
+    reason: precipitation-only SPI, trailing window ending at the named month; covers every year
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 324 (the SPEI replacement)
+  spi_03m:
+    verdict: keep
+    reason: precipitation-only SPI, trailing window ending at the named month; covers every year
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 324 (the SPEI replacement)
+  spi_06m:
+    verdict: keep
+    reason: precipitation-only SPI, trailing window ending at the named month; covers every year
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 324 (the SPEI replacement)
+  spi_12m:
+    verdict: watch
+    reason: 'trailing SPI; trend-loaded in some regions (thar r with the month index: spi_12m +0.55, spi_24m +0.72), the regime-failure signature; kept and listed in reports'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Parts 340, 345 (reference_drought_tier_hazards item 3)
+  spi_24m:
+    verdict: watch
+    reason: 'trailing SPI; trend-loaded in some regions (thar r with the month index: spi_12m +0.55, spi_24m +0.72), the regime-failure signature; kept and listed in reports'
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Parts 340, 345 (reference_drought_tier_hazards item 3)
+  eddi:
+    verdict: ban
+    reason: structural
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | a seasonal mask (Oct-Feb missing under snow): the fill, or the observed flag itself, marks the season and smuggles the month key back into the trees (97% purity measured) | shipped ban fire_ban.py:80; Parts 340, 342 (reference_drought_tier_hazards item 2); reason changed from the draft''s trend_proxy (it is a key in disguise, not a trend), verdict unchanged'
+  wbal_mm:
+    verdict: keep
+    reason: precipitation minus reference ET, trailing windows ending at the named month (sentinels masked at the source, Part 340); wbal_roll24 is 5.7% missing in donor rows (PM2.5's ban reason, an empty 2002, is outside fire's 2003+ fit rows)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 340 (--fixwbal); pm25_ban.py:112
+  wbal_roll3:
+    verdict: keep
+    reason: precipitation minus reference ET, trailing windows ending at the named month (sentinels masked at the source, Part 340); wbal_roll24 is 5.7% missing in donor rows (PM2.5's ban reason, an empty 2002, is outside fire's 2003+ fit rows)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 340 (--fixwbal); pm25_ban.py:112
+  wbal_roll6:
+    verdict: keep
+    reason: precipitation minus reference ET, trailing windows ending at the named month (sentinels masked at the source, Part 340); wbal_roll24 is 5.7% missing in donor rows (PM2.5's ban reason, an empty 2002, is outside fire's 2003+ fit rows)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 340 (--fixwbal); pm25_ban.py:112
+  wbal_roll12:
+    verdict: keep
+    reason: precipitation minus reference ET, trailing windows ending at the named month (sentinels masked at the source, Part 340); wbal_roll24 is 5.7% missing in donor rows (PM2.5's ban reason, an empty 2002, is outside fire's 2003+ fit rows)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | shipped keep (fire_architecture.py:541); Part 340 (--fixwbal); pm25_ban.py:112
+  wbal_roll24:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md L4 (''fire''s wbal_roll24 banned like PM2.5''s (head-of-record gap)''); PM2.5''s verdict: head-of-record gap: the 24-month window (min_periods = window) is empty Jan 2002 - Nov 2003, 5.4% of donor rows, zero-filled by R30 where 0 is a real value; wbal_roll3/6/12 are kept; was keep (shipped, fire_architecture.py:541) | head-of-record gap: the 24-month window (min_periods = window) is empty Jan 2002 - Nov 2003, 5.7% of fire''s donor rows, zero-filled by R30 where 0 is a real value; wbal_roll3/6/12 stay kept | review: shipped keep (fire_architecture.py:541); Part 340 (--fixwbal); pm25_ban.py:112'
+  eddi_observed:
+    verdict: ban
+    reason: structural
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | a seasonal mask (Oct-Feb missing under snow): the fill, or the observed flag itself, marks the season and smuggles the month key back into the trees (97% purity measured) | shipped ban fire_ban.py:80; Parts 340, 342 (reference_drought_tier_hazards item 2); reason changed from the draft''s trend_proxy (it is a key in disguise, not a trend), verdict unchanged'
+  tslf_months:
+    verdict: watch
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); months since the last burn, listed in every report
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> watch | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''watch'' the run would refuse (R8 / G-CLOSED). After the store is built and included: watch. months since the last burn (allowed target-derived), rebuilt at label lag 2. Listed in reports: left-censored at the record start, so its cap means ''no burn since 2002'' and that meaning drifts through the training years; with last_burn_month it encodes the calendar month exactly | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); fire_build_history.py:92-110'
+  tslf_censored:
+    verdict: watch
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); right-censoring flag of tslf_months, listed
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> watch | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''watch'' the run would refuse (R8 / G-CLOSED). After the store is built and included: watch. 1 where tslf_months is at its cap (no burn in the record so far): the same record-start censoring, a per-cell step that only ever falls from 1 to 0; listed in reports | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); fire_build_history.py:110'
+  last_burn_month:
+    verdict: ban
+    reason: structural
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | a month key in disguise: month(t) = (last_burn_month - 1 + tslf_months) mod 12 + 1 exactly for every unit that ever burned (also at label lag 2) | CHANGE (skeptic pass 2026-10-05); the proposal had watch plus question Q-MONTHKEY: the conservative verdict wins. Fire bans eddi and eddi_observed as structural for the same mechanism (fire_ban.py:80; Parts 340, 342) | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); review/v2 sheet G-HIST reading (''check it is not a disguised key''); the eddi precedent (fire_ban.py:80)'
+  last_burn_size:
+    verdict: ban
+    reason: target_derived
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). It is y(t - tslf_months), so it equals the unit''s own y(t-L) on every row where that lag is non-zero: a sparse own lag of the target, which plan 1.5 forbids (G-HIST) | features/target_history.py:57-60 (fails the G-HIST check at every L); catalog.yaml:27-29; fire_draft bans it (tests/test_fire_package.py G_HIST_REASON)'
+  n_burns_12mo:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); event count before the row
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. event count / event rate before the row (allowed target-derived), rebuilt at label lag 2; burn_rate_120mo is divided by observed months, so the short record start does not bias it | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); fire_build_history.py:112-127'
+  n_burns_60mo:
+    verdict: watch
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 60-month event count, listed
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> watch | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''watch'' the run would refuse (R8 / G-CLOSED). After the store is built and included: watch. event count over 60 months (allowed), rebuilt at label lag 2; its window is cut short by the record start, so rows in 2003-2006 count fewer months (a ramp inside the training years); listed in reports | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); fire_build_history.py:112-122 (partial sums at the start)'
+  burn_rate_120mo:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 120-month burn rate
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. event count / event rate before the row (allowed target-derived), rebuilt at label lag 2; burn_rate_120mo is divided by observed months, so the short record start does not bias it | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | Part 492 (no window reads month t); RULED R-D (b): rebuilt at newest label lag 2, features/target_history.py:19-29, catalog.yaml:242-254; plan 1.5 (''years since the last event'' and event counts are allowed); fire_build_history.py:112-127'
+  nbr25km_lag3:
+    verdict: ban
+    reason: target_derived
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | single-month neighbour ring: persistence wearing a driver''s name (the signal dies once 6 months separate cause and effect) | shipped ban fire_architecture.py:128-140 (HIST_DROP; greece 3.45x at lag 3, 0.00x at lag 6)'
+  nbr25km_12mo_lag3:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25 km neighbour ring at lag 3
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. 12-month neighbour ring (allowed neighbour aggregate), flat across lags 1/3/6, so a landscape property, not event bleed; ring lag >= 3 > L = 2. Disclosed: at the region grid''s outer edge the shipped ''nearest'' padding repeats the unit''s own cell inside its ring (up to 25-29% weight at corners) | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | fire_architecture.py:135-137 (5.96x / 6.01x / 6.08x at lags 1/3/6); catalog.yaml:255-263 (ring edges); Part 492'
+  nbr75km_lag3:
+    verdict: ban
+    reason: target_derived
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | single-month neighbour ring: persistence wearing a driver''s name (the signal dies once 6 months separate cause and effect) | shipped ban fire_architecture.py:128-140 (HIST_DROP; greece 3.45x at lag 3, 0.00x at lag 6)'
+  nbr75km_12mo_lag3:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75 km neighbour ring at lag 3
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. 12-month neighbour ring (allowed neighbour aggregate), flat across lags 1/3/6, so a landscape property, not event bleed; ring lag >= 3 > L = 2. Disclosed: at the region grid''s outer edge the shipped ''nearest'' padding repeats the unit''s own cell inside its ring (up to 25-29% weight at corners) | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | fire_architecture.py:135-137 (5.96x / 6.01x / 6.08x at lags 1/3/6); catalog.yaml:255-263 (ring edges); Part 492'
+  nbr25km_lag6:
+    verdict: ban
+    reason: target_derived
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | single-month neighbour ring: persistence wearing a driver''s name (the signal dies once 6 months separate cause and effect) | shipped ban fire_architecture.py:128-140 (HIST_DROP; greece 3.45x at lag 3, 0.00x at lag 6)'
+  nbr25km_12mo_lag6:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 25 km neighbour ring at lag 6
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. 12-month neighbour ring (allowed neighbour aggregate), flat across lags 1/3/6, so a landscape property, not event bleed; ring lag >= 3 > L = 2. Disclosed: at the region grid''s outer edge the shipped ''nearest'' padding repeats the unit''s own cell inside its ring (up to 25-29% weight at corners) | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | fire_architecture.py:135-137 (5.96x / 6.01x / 6.08x at lags 1/3/6); catalog.yaml:255-263 (ring edges); Part 492'
+  nbr75km_lag6:
+    verdict: ban
+    reason: target_derived
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | single-month neighbour ring: persistence wearing a driver''s name (the signal dies once 6 months separate cause and effect) | shipped ban fire_architecture.py:128-140 (HIST_DROP; greece 3.45x at lag 3, 0.00x at lag 6)'
+  nbr75km_12mo_lag6:
+    verdict: keep
+    reason: the every-unit label-lag-2 history store is built and declared (ruling J1, Q5); 12-month 75 km neighbour ring at lag 6
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S9): conditional -> keep | was: conditional | waiting for the every-unit label-lag-2 history store: no declared store holds this column today, so as ''keep'' the run would refuse (R8 / G-CLOSED). After the store is built and included: keep. 12-month neighbour ring (allowed neighbour aggregate), flat across lags 1/3/6, so a landscape property, not event bleed; ring lag >= 3 > L = 2. Disclosed: at the region grid''s outer edge the shipped ''nearest'' padding repeats the unit''s own cell inside its ring (up to 25-29% weight at corners) | CHANGE (skeptic pass 2026-10-05): fail-safe until the store exists. dataset.yaml:22-37 (no history store declared); treeroute/pipeline/data.py:482-485 (G-CLOSED: kept columns in no driver store refuse); D: has 49.6 GB free (Get-PSDrive, 2026-10-05), so the ~2 GB store fits now (the ''2.0 GB free'' of SMOKES_REPORT.md ATTENTION 2 is out of date). Question Q5 | fire_architecture.py:135-137 (5.96x / 6.01x / 6.08x at lags 1/3/6); catalog.yaml:255-263 (ring edges); Part 492'
+  lgt_density:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). WGLC lightning exists only from 2013 (2010-12 discarded as network build-out): R30 FLAG, 52.4% missing over donor files | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:12-20; reference_wildfire_driver_coverage (lightning 2013-22 only); APP_PLAN.md R30; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  lgt_missing:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). It is 1 exactly when year < 2013 (WGLC is global), so it is the year key in disguise | review/v2/fire_columns.csv OWNER CHECK (wglc_cols sets it from the year alone); fire_join_drivers.py:69, 96-100 (wglc_cols); APP_PLAN.md G-KEYS'
+  lgt_is_zero:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). WGLC lightning exists only from 2013 (2010-12 discarded as network build-out): R30 FLAG, 52.4% missing over donor files | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:12-20; reference_wildfire_driver_coverage (lightning 2013-22 only); APP_PLAN.md R30; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  vod_lag2:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). R30 FLAG: 26-31% missing over donor files (seasonal freeze/snow mask plus the 10-month 2011-10..2012-07 hole). Also: the monthly VOD composite''s window is undocumented (G-LAG refused them; the provider readme documents the daily product only), and vod_anom''s normal is fitted on years <= 2018, past the inner fit | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:206-210 (''the readme does not state whether the internal smoothing window is trailing''); D:/fire/DRIVER_SPECS.md (lpdr spec: ''the monthly composite is undocumented''); fire_draft/ban.yaml:10-13; reference_wildfire_driver_coverage; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  vod_d1:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). R30 FLAG: 26-31% missing over donor files (seasonal freeze/snow mask plus the 10-month 2011-10..2012-07 hole). Also: the monthly VOD composite''s window is undocumented (G-LAG refused them; the provider readme documents the daily product only), and vod_anom''s normal is fitted on years <= 2018, past the inner fit | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:206-210 (''the readme does not state whether the internal smoothing window is trailing''); D:/fire/DRIVER_SPECS.md (lpdr spec: ''the monthly composite is undocumented''); fire_draft/ban.yaml:10-13; reference_wildfire_driver_coverage; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  vod_anom:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). R30 FLAG: 26-31% missing over donor files (seasonal freeze/snow mask plus the 10-month 2011-10..2012-07 hole). Also: the monthly VOD composite''s window is undocumented (G-LAG refused them; the provider readme documents the daily product only), and vod_anom''s normal is fitted on years <= 2018, past the inner fit | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:206-210 (''the readme does not state whether the internal smoothing window is trailing''); D:/fire/DRIVER_SPECS.md (lpdr spec: ''the monthly composite is undocumented''); fire_draft/ban.yaml:10-13; reference_wildfire_driver_coverage; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  agb_lag1y:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). ESA CCI biomass has no 2002-2004 or 2013-2014 epoch: R30 FLAG, 28.6% missing over donor files; the 2013-14 instrument splice also steps the level (thar -79%, n_australia +65%) | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:26-28; reference_wildfire_driver_coverage; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  agb_contrast:
+    verdict: ban
+    reason: incomplete
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | CHANGE (shipped: keep). ESA CCI biomass has no 2002-2004 or 2013-2014 epoch: R30 FLAG, 28.6% missing over donor files; the 2013-14 instrument splice also steps the level (thar -79%, n_australia +65%) | review/v2/fire_columns.csv (R30 FLAG); fire_join_drivers.py:26-28; reference_wildfire_driver_coverage; dataset.yaml:39-45 (the sidecar holds lat/lon only and only the shipped 1,000-cell pick per group: about 92% of R18''s bank units would have no row)'
+  V06_spei_12m_lag12:
+    verdict: watch
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of V06_spei_12m (the same unit''s value 12 calendar months earlier; derived_from V06_spei_12m, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6). WATCH: it tracks the year in 6 of 40 fire groups (|r with the year| > 0.6, the BAN_REVIEW_SUMMARY.md section 8 measure, as spi_24m 8 and spi_12m 8, both watch); kept and listed in reports'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv V06_spei_12m (question Q6: 0.0-0.1% missing in fire''s window); year-clock screen 2026-10-05 (read-only, D:/monthly_panel, the 40 fire groups): r of the annual group mean with the year, the lag-12 column''s rows 2003-2022 = the parent''s 2002-2021 (scratch yearclock_screen.py). The same run gives spi_12m 8, spi_24m 8, wbal_roll12 9, wbal_roll24 13 against the review''s 8, 12, 8, 14: close to the review''s measure, not its exact computation. The other lag-12 columns: V06_spei_12m 6, spei_24m 9, spei_01m 3, spei_03m 2, spei_06m 2, amo 0 (amo is one global series)'
+  spei_01m_lag12:
+    verdict: keep
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of spei_01m (the same unit''s value 12 calendar months earlier; derived_from spei_01m, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv spei_01m (question Q6: 0.0-0.1% missing in fire''s window)'
+  spei_03m_lag12:
+    verdict: keep
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of spei_03m (the same unit''s value 12 calendar months earlier; derived_from spei_03m, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv spei_03m (question Q6: 0.0-0.1% missing in fire''s window)'
+  spei_06m_lag12:
+    verdict: keep
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of spei_06m (the same unit''s value 12 calendar months earlier; derived_from spei_06m, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv spei_06m (question Q6: 0.0-0.1% missing in fire''s window)'
+  spei_24m_lag12:
+    verdict: watch
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of spei_24m (the same unit''s value 12 calendar months earlier; derived_from spei_24m, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6). WATCH: it tracks the year in 9 of 40 fire groups (|r with the year| > 0.6, the BAN_REVIEW_SUMMARY.md section 8 measure, as spi_24m 8 and spi_12m 8, both watch); kept and listed in reports'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv spei_24m (question Q6: 0.0-0.1% missing in fire''s window); year-clock screen 2026-10-05 (read-only, D:/monthly_panel, the 40 fire groups): r of the annual group mean with the year, the lag-12 column''s rows 2003-2022 = the parent''s 2002-2021 (scratch yearclock_screen.py). The same run gives spi_12m 8, spi_24m 8, wbal_roll12 9, wbal_roll24 13 against the review''s 8, 12, 8, 14: close to the review''s measure, not its exact computation. The other lag-12 columns: V06_spei_12m 6, spei_24m 9, spei_01m 3, spei_03m 2, spei_06m 2, amo 0 (amo is one global series)'
+  amo_lag12:
+    verdict: keep
+    reason: 'owner rule J2 (a): the dataset-owned engineered lag-12 column of amo (the same unit''s value 12 calendar months earlier; derived_from amo, operation lag 12). Its facts are composed from the parent''s store facts, so R8 gives it lag 0 (its newest content ends 12 months before the row); the raw parent stays banned (incomplete). Complete in fire''s 2003-2022 coverage (review Q6)'
+    evidence: 'DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | OWNER_RULINGS_2026-10-05.md J2 (a) (''keep them through a dataset-owned engineered lag-12 column (derived_from the parent, operation lag 12); the raw parent stays banned (incomplete)''); features/build.py LAG12_BASES; catalog.yaml (role engineered); review/proposed/fire_columns_proposed.csv amo (question Q6: 0.0-0.1% missing in fire''s window)'
+  ctx:month:
+    verdict: keep
+    reason: router context as shipped (CTX = [month, lat]); read only by the router, never by the trees (G-KEYS allows a key-derived column only here)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_evt_arch.py:78; APP_PLAN.md 1.5 (router context)
+  ctx:lat:
+    verdict: keep
+    reason: router context as shipped (CTX = [month, lat]); read only by the router, never by the trees (G-KEYS allows a key-derived column only here)
+    evidence: DRAFT -- copy of the installed package with its owner-ruled ban list (rulings J to L, 2026-10-06); smoke, rehearsal and development only, never a headline run | fire_evt_arch.py:78; APP_PLAN.md 1.5 (router context)

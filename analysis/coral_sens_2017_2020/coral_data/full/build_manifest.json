@@ -1,0 +1,294 @@
+{
+ "build": "full",
+ "stamp": "20261029_120922",
+ "run_key": "2a2b85ae07ed4cdb27b4fc776235e4a91b998ae5c08d85347daeeb5bcd03fc35",
+ "written": "2026-10-29T12:35:20",
+ "spec": "D:/treeroute/coral_build/SPEC_CORAL_TABLES.md",
+ "inputs": {
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\coral_data\\visits.parquet": {
+   "size": 1014051,
+   "mtime": "2026-10-28T14:45:30",
+   "sha256": "620affd33111a5a1315f6c25903b796b066aa7a902e145a2dbe89395b089ea93"
+  },
+  "D:\\coral\\drivers\\sst_compact_all.npz": {
+   "size": 931987766,
+   "mtime": "2026-08-25T22:53:43",
+   "sha256": "361cefd0a437a33a2b880ad08a26cc4ce4c3a08f9bf04249e8c3274a827cb7aa"
+  },
+  "D:\\coral\\drivers\\static\\IBTrACS.ALL.v04r01.nc": {
+   "size": 23352567,
+   "mtime": "2026-08-22T19:06:48",
+   "sha256": "aa9349f7c5302cac5fa0cbcc5e73a4e289f09ed7ab4e0a1cb3ee165a41170517"
+  },
+  "D:\\coral\\drivers\\climate\\nina34.txt": {
+   "size": 8205,
+   "mtime": "2026-08-22T19:06:39",
+   "sha256": "8548daba91a636baedefe128fadb78dbd928429e39025a8d7f5e6cf2163657e1"
+  },
+  "D:\\coral\\drivers\\climate\\dmi.txt": {
+   "size": 19861,
+   "mtime": "2026-08-22T19:07:59",
+   "sha256": "42c1000e221addacac4451b8b9ddfbc5ee732b99ee69b0be5105e69ebe881e05"
+  },
+  "D:\\coral\\target\\events_dated.parquet": {
+   "size": 510044,
+   "mtime": "2026-08-22T17:19:57",
+   "sha256": "17f0b641e85c9e3ebc6e36d1ee60a8724f63a894d6f17b271fc9729c80960ed6"
+  },
+  "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\forecast_features_L0.parquet": {
+   "size": 5385108,
+   "mtime": "2026-08-26T10:30:19",
+   "sha256": "4ef950db3d64062a51bedd70136c14590dd20789f25167209eb8a5e151409c52"
+  },
+  "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\forecast_features_L365.parquet": {
+   "size": 5286267,
+   "mtime": "2026-08-26T11:16:15",
+   "sha256": "fa213246fe6df283385814aa01cf2018af54c28de6494463db6d4912b745c0eb"
+  }
+ },
+ "code_sha256": {
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\builder\\columns.py": "0c4e198b840fc97fb5579f2adb76b95a07145560ef1948ccffdd90bba490227f",
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\builder\\build_visits.py": "95a079bc1e33f789f8f3ba3b6769a90669c94ca217dc12f1f41269efc7235f0a",
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\builder\\build_tables.py": "a035122f3a492d1fe0dfdf4b9c9849946f25f101be7121c11682dddb9e276e62",
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\builder\\npz_map.py": "dff13d7ff7ac92b9d500326ad7c3417c1a2bb8a64d8ddc82435c7d63e2e8656d",
+  "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\coral_safe.py": "1247938d1c2b6667322c833e39dd17975aa711a468ef4223e4539496f43792f6",
+  "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\coral_mhw_features.py": "a19826786226a6432a034e384206a9094364ed6b4e316841231cffce8197a438",
+  "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\coral_extra_drivers.py": "484cdba06a524a31b72afac41a941d6c30a69dab7f19b2de92515cc706680e05"
+ },
+ "params": {
+  "build": "full",
+  "groups": null,
+  "sst_gap_days": 1,
+  "leads": [
+   0,
+   183,
+   365
+  ],
+  "canary_stride": 50,
+  "min_sst_values": 1825,
+  "caps": {
+   "days_since_dhw4": 3650,
+   "cyc_days_since_close": 3650,
+   "cyc_mindist": 9999.0,
+   "mhw_since_end": 365
+  },
+  "enso": {
+   "lags": [
+    3,
+    6,
+    9
+   ],
+   "reach_months": 2,
+   "base": [
+    1951,
+    1980
+   ]
+  },
+  "dmi": {
+   "lags": [
+    2,
+    5,
+    8
+   ],
+   "reach_months": 1
+  }
+ },
+ "columns": [
+  "row_id",
+  "unit_id",
+  "group",
+  "lat",
+  "lon",
+  "target_date",
+  "issue_date",
+  "feature_end",
+  "mark",
+  "pct_bleached",
+  "programme",
+  "ctx_month",
+  "ctx_doy_sin",
+  "ctx_doy_cos",
+  "ctx_abslat",
+  "ctx_mmm",
+  "dhw_30",
+  "hs_max_30",
+  "n_above_mmm_30",
+  "n_above_mmm1_30",
+  "cool_30",
+  "dhw_56",
+  "hs_max_56",
+  "n_above_mmm_56",
+  "n_above_mmm1_56",
+  "cool_56",
+  "dhw_84",
+  "hs_max_84",
+  "n_above_mmm_84",
+  "n_above_mmm1_84",
+  "cool_84",
+  "dhw_90",
+  "hs_max_90",
+  "n_above_mmm_90",
+  "n_above_mmm1_90",
+  "cool_90",
+  "dhw_180",
+  "hs_max_180",
+  "n_above_mmm_180",
+  "n_above_mmm1_180",
+  "cool_180",
+  "dhw_365",
+  "hs_max_365",
+  "n_above_mmm_365",
+  "n_above_mmm1_365",
+  "cool_365",
+  "days_since_max_hs",
+  "slope_90",
+  "lifetime_dhw",
+  "n_dhw_ge4_before",
+  "max_dhw_before",
+  "n_dhw_ge8_before",
+  "days_since_dhw4",
+  "mhw_days_365",
+  "mhw_days_90",
+  "mhw_days_30",
+  "mhw_icum_90",
+  "mhw_imax_90",
+  "mhw_nev_365",
+  "mhw_durmax_365",
+  "mhw_since_end",
+  "mhw_cat_max_90",
+  "mhw_thr_gap",
+  "cyc_mindist_30",
+  "cyc_maxw_200_30",
+  "cyc_n_200_30",
+  "cyc_maxw_500_30",
+  "cyc_n_500_30",
+  "cyc_mindist_90",
+  "cyc_maxw_200_90",
+  "cyc_n_200_90",
+  "cyc_maxw_500_90",
+  "cyc_n_500_90",
+  "cyc_mindist_365",
+  "cyc_maxw_200_365",
+  "cyc_n_200_365",
+  "cyc_maxw_500_365",
+  "cyc_n_500_365",
+  "cyc_days_since_close",
+  "nino34a_lag3",
+  "nino34a_lag6",
+  "nino34a_lag9",
+  "dmi_lag2",
+  "dmi_lag5",
+  "dmi_lag8"
+ ],
+ "files": {
+  "lead_0.parquet": "49ae31536a16b13d657b9dadc6658160f4738f252a3a21ec5db3d4ad4a321ee8",
+  "lead_183.parquet": "cec2b019da3d0d9317edb47cd58842276a20e4bb8998bcea4d9f2d52dfd76373",
+  "lead_365.parquet": "7042a0a029202b873c35b90023f5da2481dc51664f21f96cce0fd085a14a0808"
+ },
+ "counts": {
+  "lead_0": {
+   "rows": 13723,
+   "train": 12230,
+   "test": 1493,
+   "groups": 94,
+   "units": 8164
+  },
+  "lead_183": {
+   "rows": 13715,
+   "train": 12222,
+   "test": 1493,
+   "groups": 94,
+   "units": 8159
+  },
+  "lead_365": {
+   "rows": 13715,
+   "train": 12222,
+   "test": 1493,
+   "groups": 94,
+   "units": 8159
+  }
+ },
+ "dropped_by_reason": [
+  {
+   "lead": "183",
+   "reason": "stage1_short_history_L183",
+   "n": 8
+  },
+  {
+   "lead": "365",
+   "reason": "stage1_short_history_L365",
+   "n": 8
+  },
+  {
+   "lead": "all",
+   "reason": "no_sst_series",
+   "n": 1013
+  },
+  {
+   "lead": "all",
+   "reason": "stage1_short_history_L0",
+   "n": 103
+  }
+ ],
+ "indices": {
+  "nino34a_base": [
+   1951,
+   1980
+  ],
+  "nino34a_months": 943,
+  "dmi_months": 1877,
+  "dmi_base_period": "not stated in dmi.txt (its footer names no base period); P14 open"
+ },
+ "proof": {
+  "asserts_passed_row_leads": 41153,
+  "max_source_day_minus_issue_day": {
+   "lead_0": {
+    "sst": -2,
+    "cyclone": -2,
+    "index": -1,
+    "feature_end": -1
+   },
+   "lead_183": {
+    "sst": -2,
+    "cyclone": -2,
+    "index": -1,
+    "feature_end": -1
+   },
+   "lead_365": {
+    "sst": -2,
+    "cyclone": -2,
+    "index": -1,
+    "feature_end": -1
+   }
+  },
+  "canary": {
+   "stride": 50,
+   "row_leads": 825,
+   "mismatches": 0
+  },
+  "replay": {
+   "rows_without_features_in_copy": 0,
+   "per_lead": {
+    "lead_0": {
+     "rows": 8576,
+     "columns": 68,
+     "max_rel_diff": 0.0,
+     "worst_column": "dhw_30"
+    },
+    "lead_365": {
+     "rows": 8576,
+     "columns": 65,
+     "max_rel_diff": 0.0,
+     "worst_column": "dhw_30"
+    }
+   },
+   "mismatches": 0
+  }
+ },
+ "timing": {
+  "features_min": 25.92,
+  "total_min": 25.976,
+  "sites": 8164,
+  "peak_working_set_gb": 1.383
+ }
+}

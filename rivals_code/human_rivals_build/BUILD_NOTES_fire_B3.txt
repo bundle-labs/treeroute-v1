@@ -1,0 +1,94 @@
+BUILD_NOTES_fire_B3.txt - builder B3 (tests) of the fire human rivals, Part B (SPEC_HUMAN_PARTB.txt section 5)
+==================================================================================================================
+Written 2026-10-25 by builder B3. NEW files only; no existing test, hooks file, pytest.ini, tool file, adapter or
+registry was edited. Nothing was downloaded; no key file was opened; no fire test label was read.
+
+FILES (all new, LF line ends)
+  human/tests_fire/__init__.py            package (conftest becomes tests_fire.conftest; INTEGRATE_REPORT.txt I4)
+  human/tests_fire/conftest.py            rules of rivals_human/tests/conftest.py:43-56 (basetemp under the build
+                                          root, parent exists, name fresh), sys.dont_write_bytecode, sys.path (human
+                                          root, rivals_build, engine; engine tests appended), realdata skip without
+                                          HUMAN_REAL=1; session fixtures geff / refs_prep / runners (modules imported
+                                          INSIDE fixtures, so a module not written yet fails its own tests, never the
+                                          collection of the ONE suite), raw_subsets, synth_products
+  human/tests_fire/fixtures_fire.py       builders: RAW subsets (D:/fire/cems/raw, read-only source, copied into the
+                                          basetemp), synthetic long products, fake fetcher folders in the fetcher's
+                                          exact manifest format (complete true / false / absent), toy static table (8
+                                          real bank units read once, exact float64, + synthetic units), slim-like key
+                                          tables with the export's role rules, FakeRun, FakeCtx (product calls through
+                                          the tool's own index.product_manifest / product_root / verify_product_file;
+                                          fit_labels only inside a fit scope), hand oracles (haversine point, monthly
+                                          means, SEAS5 member-day mean, mid-rank percentile), ReadSpy, runner toys
+  human/tests_fire/test_f01_manifest.py .. test_f19_r02_mirror.py   T-F01 .. T-F19 (one file per test id)
+  BUILD_NOTES_fire_B3.txt                 this file
+
+FIXTURES (spec 5)
+  - ERA5: SMOKE_hist_multiyear.nc greece 2018-2019, isel 6 x 6 points (38.25..37.0 x 20.75..22.0; 4 sea points);
+    the main subset keeps the scalar `surface` and an extra data variable `kbdi` (a renamed, CHANGED copy of fwinx,
+    written before fwinx); a plain copy without both; a western copy (longitudes 256.00..257.25); a prime-meridian
+    copy (358.75 .. 0.5, non-monotonic). Files are named and requested as the fetcher does (hist_<box>_<y0>-<y1>.nc).
+  - SEAS5: seas_great_plains_2019.nc and seas_cerrado_2019.nc isel 2 starts x members 0..25 x steps 0..34 x 3 x 3,
+    steps relabelled 150..184 d + 12 h, valid_time = time + step; leap variant (starts 2015-09 / 2015-10 ->
+    Feb 2016 at leads 153..181, Mar 2016). Variants per test: reversed member order, member 7 missing, a shifted
+    valid_time, other steps, a scalar-time single-start file, no `surface`.
+  - Synthetic long products (one fixed random_state 20261025): ERA5 2003-2019 in the fetcher's 5-year blocks
+    (5 x 5 points, one sea point), SEAS5 starts 2002-08..2019-02 (25 members to 2016, 26 from 2017), used with the
+    facts' cuts (lead 0 guard 24192 / fit 24228; lead 6 guard 24187 / fit 24223; test from 24229).
+  - Units: great_plains_-2866_1182, _-2861_1172, _-2834_1212; cerrado_-1529_-427, _-1500_-429;
+    greece_mainland_603_1131, _604_1146, _595_1135 (coastal) + greece_mainland_syn_sea (nearest point sea ->
+    substituted), prime_*, synth_*, west_* (synthetic).
+  - T-F09: a toy package folder with a COPY of the package's own target_reader.py (same signature and code), a toy
+    dataset.yaml / static table and a synthetic float32 lat/lon-keyed target store; refs.store_labels through the
+    preferred monkeypatch fixture (rivals_human.refs.C.load_products, rivals_human.refs.S.open_slim; cfg None).
+
+RUN
+  cd D:\treeroute\human_rivals_build\human ; set PYTHONDONTWRITEBYTECODE=1
+  py -3.9 -B -m pytest tests_fire -q -p no:cacheprovider --basetemp D:\treeroute\human_rivals_build\pt\tests\<FRESH>
+  Light realdata (final stage only, alone; never HUMAN_REAL=1 over the whole suite):
+  $env:HUMAN_REAL = '1'; py -3.9 -B -m pytest tests_fire -m realdata -q -s -p no:cacheprovider --basetemp <FRESH>;
+  Remove-Item Env:HUMAN_REAL
+
+RESULTS (2026-10-25, against the B1 / B2 files on disk at that time)
+  tests_fire (toy, HUMAN_REAL unset): 136 passed, 6 skipped (the realdata tests), 14 s
+    (basetemp pt\tests\b3_tests_fire_03).
+  tests_fire -m realdata (HUMAN_REAL=1, run once to validate the tests): 5 passed, 1 skipped, 3 s
+    (pt\tests\b3_realdata_01): T-F11 registry vs run + extras / history columns in all 240 EXP train/test schemas;
+    T-F15 d re-join `--runs CORAL DEFO PM NDVI --pending FIRE` (part "617 (NDVI board under Part 618)") is
+    BYTE-EQUAL to D:\treeroute\rivals_table\20261025T162302876402Z\RIVALS_TABLE.csv (sha256 1ccac0e7...78ba, the
+    Part 619 csv); T-F18 skipped: "the fire slim of lead 0 is missing" (owner command F1 first).
+  The refusal cases were checked to refuse for the intended reason (messages printed once by hand: file not in the
+  manifest, dataset, two boxes, no box, request file, start != issue + 1, window, uncovered share, static table,
+  the three 3.6 reference asserts).
+
+INTERFACE READINGS (where the spec leaves a detail open; the tests accept the spec's alternatives)
+  - month_days_in_window(start_date, target_year, target_month, lead_days): called with a datetime.date start and
+    lead_days = the registry option value [150, 184] (the [first, last] pair as the options hold it).
+  - map_units(grid_lat 1-D, grid_lon 1-D as stored (0-360 allowed), valid 2-D, unit_lat, unit_lon, window).
+  - fwi_percentile(unit, time, x, t_ref, 12, min_ref) on a per-unit monthly table (one row per unit-time).
+  - The 3.3 audit file: a per-unit block under units / per_unit / unit_map (mapping or list of records), fields box,
+    i, j, lat, lon, substituted, dist_km, uncovered.
+  - Adapter refusals: FireGeffRefusal or the tool's HumanRefusal / ConfigRefusal (through the ctx); runner refusals:
+    any exception that is not an interface error (TypeError, AttributeError, NameError, KeyError, IndexError, ...).
+  - Runner fit_groups result: the per-group block under "groups" (or the block itself); keys used: b, n, fallback,
+    season (E2 / T1 / T3), scale and sse_by_scale (T1), b1 / b2 (T3). E3 slopes are checked through predict_values.
+    Counted invalid predictors: some integer count equals the number of invalid rows (or of those used).
+  - T-F14 "N <= 0 rows predict 0": a zero normal must predict exactly 0; a normal a float residue below 0 must predict
+    <= 0 (0 after the tool's clip_to_legal). B2 predicts N there.
+  - T-F16 calls the existing test_h20 functions and the R02 static-scan function directly (no copy of their code).
+  - T-F15 c also asserts that the products ADDED to _products.yaml are exactly the five ids of spec 2.7.
+  - T-F11 asserts that fire.yaml's adapter options equal the option values the toy tests use (spec 2.2 / 2.3), so the
+    toy tests run with the registry's own constants; a later owner ruling that changes an option changes both.
+
+OBSERVATIONS (for the integration stage; nothing edited)
+  - B1 / B2 files at test time: adapters/fire_geff.py, fire_refs_prep.py, fire_enso.py, fire_turco.py,
+    fire_lag_common.py; registry/fire.yaml; the _products.yaml fire block; maps.py edited; baselines
+    _moved/20261025T194657Z_partB_baseline/{rivals_human/maps.py (f38d7ce7), registry/_products.yaml (4e479759)}.
+    T-F15 a: with the baseline maps.py and without adapters/fire_*.py the tool hash is cd956f1d (no other tool file
+    changed).
+  - fire_geff.py mentions "test_preds" in its docstring only (no code path opens one: T-F17 read spy).
+  - Scratch basetemps of this build (kept, never deleted): pt\tests\b3_smoke_01..03, b3_f01_03_a, b3_f01_05_b,
+    b3_f06_09_a, b3_f11_12_a, b3_f13_a, b3_f13_19_a, b3_f14_b, b3_realdata_01, b3_tests_fire_02, b3_tests_fire_03.
+
+OPEN
+  - T-F18 runs only after owner commands F1 (fire slim) and F3 (prep + manifest of fire_refs_label_store).
+  - The ONE full suite (final stage) has not been run by B3 (only tests_fire, as the task says).

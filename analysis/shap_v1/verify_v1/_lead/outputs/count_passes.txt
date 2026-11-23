@@ -1,0 +1,31 @@
+﻿entries: 436 | keys of the first: ['by', 'file', 'time']
+by script: {'work\\r10_open_official.py': 50, 'reconcile.py': 360, 'work\\r30_tables.py': 10, 'reconcile.py (bytes, for its SHA-256)': 16}
+per second (time, by, how): count
+   ('2026-11-16T18:24:54', 'work\\r10_open_official.py', '') 25
+   ('2026-11-16T18:24:55', 'work\\r10_open_official.py', '') 25
+   ('2026-11-16T18:34:26', 'reconcile.py', '') 10
+   ('2026-11-16T18:34:27', 'reconcile.py', '') 40
+   ('2026-11-16T18:40:21', 'reconcile.py', '') 50
+   ('2026-11-16T18:41:30', 'reconcile.py', '') 50
+   ('2026-11-16T18:41:47', 'reconcile.py', '') 20
+   ('2026-11-16T18:41:48', 'reconcile.py', '') 30
+   ('2026-11-16T18:42:42', 'work\\r30_tables.py', '') 5
+   ('2026-11-16T18:42:55', 'work\\r30_tables.py', '') 5
+   ('2026-11-16T18:43:43', 'reconcile.py', '') 50
+   ('2026-11-16T18:43:43', 'reconcile.py (bytes, for its SHA-256)', '') 5
+   ('2026-11-16T18:45:43', 'reconcile.py', '') 10
+   ('2026-11-16T18:45:43', 'reconcile.py (bytes, for its SHA-256)', '') 1
+   ('2026-11-16T18:46:03', 'reconcile.py', '') 50
+   ('2026-11-16T18:46:03', 'reconcile.py (bytes, for its SHA-256)', '') 5
+   ('2026-11-16T18:49:41', 'reconcile.py', '') 50
+   ('2026-11-16T18:49:41', 'reconcile.py (bytes, for its SHA-256)', '') 5
+passes (a gap of more than 5 s starts a new pass):
+   start 2026-11-16T18:34:26  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:40:21  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:41:30  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:41:47  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:43:43  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:45:43  opens 10  problems ['fire']
+   start 2026-11-16T18:46:03  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+   start 2026-11-16T18:49:41  opens 50  problems ['coral', 'defo', 'fire', 'ndvi', 'pm25']
+plain opens by reconcile.py: 360

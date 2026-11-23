@@ -1,0 +1,1833 @@
+{
+ "gcbd_bleaching_rows": 34846,
+ "gcbd_rows_by_source": {
+  "Reef_Check": 22325,
+  "Donner": 6301,
+  "AGRRA": 2852,
+  "FRRP": 2394,
+  "Kumagai": 667,
+  "McClanahan": 226,
+  "Safaie": 81
+ },
+ "samples_with_label": 20244,
+ "samples_dropped_out_of_range": 0,
+ "samples_with_label_by_source": {
+  "Reef_Check": 11297,
+  "Donner": 3488,
+  "AGRRA": 2847,
+  "FRRP": 2394,
+  "McClanahan": 218
+ },
+ "samples_averaged_over_label_rows": 12,
+ "samples_no_ecoregion": 0,
+ "events_dated_cross_check": {
+  "samples_not_in_events_dated": 2,
+  "mismatch_lat": 0,
+  "mismatch_lon": 0,
+  "mismatch_eco": 0,
+  "mismatch_yr": 0,
+  "mismatch_mo": 0,
+  "mismatch_dy": 0
+ },
+ "test_years": [
+  2016,
+  2019
+ ],
+ "cuts": {
+  "L0_fit": [
+   0,
+   "2015-12-31"
+  ],
+  "L0_inner": [
+   0,
+   "2012-12-31"
+  ],
+  "L183_fit": [
+   183,
+   "2015-07-02"
+  ],
+  "L183_guard": [
+   183,
+   "2012-07-02"
+  ],
+  "L365_fit": [
+   365,
+   "2015-01-01"
+  ],
+  "L365_guard": [
+   365,
+   "2012-01-02"
+  ]
+ },
+ "visits_all": 14839,
+ "visits_merged_from_more_than_one_sample": 3080,
+ "samples_absorbed_by_merges": 5405,
+ "merged_visits_with_disagreeing_labels": 1282,
+ "merged_visits_mixed_programme": 5,
+ "merged_visits_mixed_precision": 5,
+ "visits_unused_after_window": 38,
+ "visits_no_sst_series": 1006,
+ "visits_short_sst_history_L0": 101,
+ "month_precision_visits_in_sample": 2128,
+ "month_precision_by_mark": {
+  "train": 2128
+ },
+ "month_precision_in_inner_score_years": 0,
+ "sample_rows": 13694,
+ "sample_first_year": 1994,
+ "split": {
+  "train": {
+   "rows": 11347,
+   "groups": 91,
+   "units": 7356,
+   "programmes": {
+    "Reef_Check": 6383,
+    "FRRP": 2185,
+    "Donner": 2123,
+    "AGRRA": 651,
+    "mixed": 5
+   }
+  },
+  "test": {
+   "rows": 2347,
+   "groups": 41,
+   "units": 1280,
+   "programmes": {
+    "Reef_Check": 1957,
+    "McClanahan": 199,
+    "FRRP": 190,
+    "AGRRA": 1
+   }
+  }
+ },
+ "rows_present_L0": {
+  "train": 11347,
+  "test": 2347
+ },
+ "rows_present_L183": {
+  "train": 11339,
+  "test": 2347
+ },
+ "rows_present_L365": {
+  "train": 11339,
+  "test": 2347
+ },
+ "groups": {
+  "Andaman Islands": {
+   "rows": 10,
+   "train": 2,
+   "test": 8,
+   "units": 10,
+   "programmes": [
+    "Donner",
+    "McClanahan"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Andaman Sea": {
+   "rows": 199,
+   "train": 136,
+   "test": 63,
+   "units": 86,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 136,
+   "L0_inner": 96,
+   "L183_fit": 133,
+   "L183_guard": 96,
+   "L365_fit": 122,
+   "L365_guard": 83,
+   "inner_score_rows": 40,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Ashmore Reef, north-west Australia": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Austral Islands, French Polynesia": {
+   "rows": 5,
+   "train": 5,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 5,
+   "L0_inner": 5,
+   "L183_fit": 5,
+   "L183_guard": 5,
+   "L365_fit": 5,
+   "L365_guard": 5,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.5
+  },
+  "Bahamas and Florida Keys": {
+   "rows": 3128,
+   "train": 2922,
+   "test": 206,
+   "units": 2848,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "FRRP",
+    "Reef_Check",
+    "mixed"
+   ],
+   "L0_fit": 2922,
+   "L0_inner": 2301,
+   "L183_fit": 2663,
+   "L183_guard": 2057,
+   "L365_fit": 2629,
+   "L365_guard": 2052,
+   "inner_score_rows": 621,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Banda Sea and Molucca Islands": {
+   "rows": 161,
+   "train": 90,
+   "test": 71,
+   "units": 111,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 90,
+   "L0_inner": 84,
+   "L183_fit": 89,
+   "L183_guard": 84,
+   "L365_fit": 84,
+   "L365_guard": 84,
+   "inner_score_rows": 6,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Bay of Campeche, Yucatan, Gulf of Mexico": {
+   "rows": 6,
+   "train": 6,
+   "test": 0,
+   "units": 3,
+   "programmes": [
+    "AGRRA"
+   ],
+   "L0_fit": 6,
+   "L0_inner": 6,
+   "L183_fit": 6,
+   "L183_guard": 6,
+   "L365_fit": 6,
+   "L365_guard": 6,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Belize and west Caribbean": {
+   "rows": 1069,
+   "train": 1047,
+   "test": 22,
+   "units": 598,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 1047,
+   "L0_inner": 1044,
+   "L183_fit": 1047,
+   "L183_guard": 1043,
+   "L365_fit": 1046,
+   "L365_guard": 1033,
+   "inner_score_rows": 3,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Bermuda": {
+   "rows": 32,
+   "train": 32,
+   "test": 0,
+   "units": 32,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 32,
+   "L0_inner": 32,
+   "L183_fit": 32,
+   "L183_guard": 32,
+   "L365_fit": 32,
+   "L365_guard": 32,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Birds Head Peninsula, Papua": {
+   "rows": 7,
+   "train": 1,
+   "test": 6,
+   "units": 5,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 0,
+   "L183_fit": 1,
+   "L183_guard": 0,
+   "L365_fit": 1,
+   "L365_guard": 0,
+   "inner_score_rows": 1,
+   "h_median_rows_per_candidate_unit": 0.0
+  },
+  "Bismarck Sea, New Guinea": {
+   "rows": 34,
+   "train": 34,
+   "test": 0,
+   "units": 25,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 34,
+   "L0_inner": 34,
+   "L183_fit": 34,
+   "L183_guard": 34,
+   "L365_fit": 34,
+   "L365_guard": 34,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Brazil": {
+   "rows": 146,
+   "train": 146,
+   "test": 0,
+   "units": 109,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 146,
+   "L0_inner": 146,
+   "L183_fit": 146,
+   "L183_guard": 146,
+   "L365_fit": 146,
+   "L365_guard": 146,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Caroline Islands, Micronesia": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Celebes Sea": {
+   "rows": 48,
+   "train": 23,
+   "test": 25,
+   "units": 8,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 23,
+   "L0_inner": 7,
+   "L183_fit": 17,
+   "L183_guard": 7,
+   "L365_fit": 17,
+   "L365_guard": 7,
+   "inner_score_rows": 16,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Cenderawasih Bay, Papua": {
+   "rows": 4,
+   "train": 4,
+   "test": 0,
+   "units": 3,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 4,
+   "L0_inner": 4,
+   "L183_fit": 4,
+   "L183_guard": 4,
+   "L365_fit": 4,
+   "L365_guard": 4,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Central and northern Great Barrier Reef": {
+   "rows": 399,
+   "train": 351,
+   "test": 48,
+   "units": 165,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 351,
+   "L0_inner": 310,
+   "L183_fit": 335,
+   "L183_guard": 309,
+   "L365_fit": 335,
+   "L365_guard": 301,
+   "inner_score_rows": 41,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Chagos Archipelago": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Christmas Island, Indian Ocean": {
+   "rows": 13,
+   "train": 13,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 13,
+   "L0_inner": 13,
+   "L183_fit": 13,
+   "L183_guard": 13,
+   "L365_fit": 13,
+   "L365_guard": 13,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 6.5
+  },
+  "Cocos Keeling Atolls, Indian Ocean": {
+   "rows": 32,
+   "train": 32,
+   "test": 0,
+   "units": 17,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 32,
+   "L0_inner": 32,
+   "L183_fit": 32,
+   "L183_guard": 32,
+   "L365_fit": 32,
+   "L365_guard": 32,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Cook Islands, south-west Pacific": {
+   "rows": 12,
+   "train": 12,
+   "test": 0,
+   "units": 12,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 12,
+   "L0_inner": 12,
+   "L183_fit": 12,
+   "L183_guard": 12,
+   "L365_fit": 12,
+   "L365_guard": 12,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Coral Sea": {
+   "rows": 11,
+   "train": 11,
+   "test": 0,
+   "units": 5,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 11,
+   "L0_inner": 11,
+   "L183_fit": 11,
+   "L183_guard": 11,
+   "L365_fit": 11,
+   "L365_guard": 11,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Costa Rica and Panama, Pacific coast": {
+   "rows": 18,
+   "train": 18,
+   "test": 0,
+   "units": 7,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 18,
+   "L0_inner": 18,
+   "L183_fit": 18,
+   "L183_guard": 18,
+   "L365_fit": 18,
+   "L365_guard": 18,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Cuba and Cayman Islands": {
+   "rows": 288,
+   "train": 288,
+   "test": 0,
+   "units": 232,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 288,
+   "L0_inner": 288,
+   "L183_fit": 288,
+   "L183_guard": 288,
+   "L365_fit": 288,
+   "L365_guard": 288,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Eastern Hawaii": {
+   "rows": 49,
+   "train": 48,
+   "test": 1,
+   "units": 41,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 48,
+   "L0_inner": 48,
+   "L183_fit": 48,
+   "L183_guard": 48,
+   "L365_fit": 48,
+   "L365_guard": 48,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Eastern coast South Africa": {
+   "rows": 22,
+   "train": 22,
+   "test": 0,
+   "units": 16,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 22,
+   "L0_inner": 22,
+   "L183_fit": 22,
+   "L183_guard": 22,
+   "L365_fit": 22,
+   "L365_guard": 22,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Fiji": {
+   "rows": 447,
+   "train": 374,
+   "test": 73,
+   "units": 233,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 374,
+   "L0_inner": 345,
+   "L183_fit": 363,
+   "L183_guard": 345,
+   "L365_fit": 363,
+   "L365_guard": 338,
+   "inner_score_rows": 29,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Flower Garden Banks, Gulf of Mexico": {
+   "rows": 11,
+   "train": 11,
+   "test": 0,
+   "units": 7,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 11,
+   "L0_inner": 11,
+   "L183_fit": 11,
+   "L183_guard": 11,
+   "L365_fit": 11,
+   "L365_guard": 11,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Gilbert Islands, west Kiribati": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Gulf of Aden": {
+   "rows": 25,
+   "train": 25,
+   "test": 0,
+   "units": 25,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 25,
+   "L0_inner": 25,
+   "L183_fit": 25,
+   "L183_guard": 25,
+   "L365_fit": 25,
+   "L365_guard": 25,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Gulf of California": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Gulf of Guinea to Sierra Leone": {
+   "rows": 18,
+   "train": 0,
+   "test": 18,
+   "units": 3,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 0,
+   "L0_inner": 0,
+   "L183_fit": 0,
+   "L183_guard": 0,
+   "L365_fit": 0,
+   "L365_guard": 0,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": null
+  },
+  "Gulf of Oman": {
+   "rows": 98,
+   "train": 85,
+   "test": 13,
+   "units": 54,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 85,
+   "L0_inner": 60,
+   "L183_fit": 79,
+   "L183_guard": 54,
+   "L365_fit": 79,
+   "L365_guard": 54,
+   "inner_score_rows": 25,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Gulf of Thailand": {
+   "rows": 152,
+   "train": 152,
+   "test": 0,
+   "units": 139,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 152,
+   "L0_inner": 113,
+   "L183_fit": 152,
+   "L183_guard": 113,
+   "L365_fit": 152,
+   "L365_guard": 113,
+   "inner_score_rows": 39,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Gulf of Tomini, Indonesia": {
+   "rows": 10,
+   "train": 10,
+   "test": 0,
+   "units": 10,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 10,
+   "L0_inner": 10,
+   "L183_fit": 10,
+   "L183_guard": 10,
+   "L365_fit": 10,
+   "L365_guard": 10,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Hispaniola, Puerto Rico and Lesser Antilles": {
+   "rows": 1104,
+   "train": 933,
+   "test": 171,
+   "units": 699,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "Reef_Check",
+    "mixed"
+   ],
+   "L0_fit": 933,
+   "L0_inner": 835,
+   "L183_fit": 929,
+   "L183_guard": 825,
+   "L365_fit": 890,
+   "L365_guard": 802,
+   "inner_score_rows": 98,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Hong Kong": {
+   "rows": 313,
+   "train": 313,
+   "test": 0,
+   "units": 80,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 313,
+   "L0_inner": 313,
+   "L183_fit": 313,
+   "L183_guard": 283,
+   "L365_fit": 313,
+   "L365_guard": 282,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 3.0
+  },
+  "Honshu, Japan": {
+   "rows": 14,
+   "train": 14,
+   "test": 0,
+   "units": 5,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 14,
+   "L0_inner": 12,
+   "L183_fit": 14,
+   "L183_guard": 10,
+   "L365_fit": 14,
+   "L365_guard": 10,
+   "inner_score_rows": 2,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Houtman Abrolhos Islands, west Australia": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Jamaica": {
+   "rows": 365,
+   "train": 316,
+   "test": 49,
+   "units": 175,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "Reef_Check",
+    "mixed"
+   ],
+   "L0_fit": 316,
+   "L0_inner": 239,
+   "L183_fit": 303,
+   "L183_guard": 223,
+   "L365_fit": 290,
+   "L365_guard": 222,
+   "inner_score_rows": 77,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Java Sea": {
+   "rows": 48,
+   "train": 30,
+   "test": 18,
+   "units": 39,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 30,
+   "L0_inner": 30,
+   "L183_fit": 30,
+   "L183_guard": 30,
+   "L365_fit": 30,
+   "L365_guard": 30,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Johnston Atoll, north central Pacific": {
+   "rows": 4,
+   "train": 4,
+   "test": 0,
+   "units": 4,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 4,
+   "L0_inner": 4,
+   "L183_fit": 4,
+   "L183_guard": 4,
+   "L365_fit": 4,
+   "L365_guard": 4,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Kenya and Tanzania coast": {
+   "rows": 117,
+   "train": 82,
+   "test": 35,
+   "units": 80,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 82,
+   "L0_inner": 82,
+   "L183_fit": 82,
+   "L183_guard": 82,
+   "L365_fit": 82,
+   "L365_guard": 82,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Kimberley Coast, north-west Australia": {
+   "rows": 10,
+   "train": 0,
+   "test": 10,
+   "units": 10,
+   "programmes": [
+    "McClanahan"
+   ],
+   "L0_fit": 0,
+   "L0_inner": 0,
+   "L183_fit": 0,
+   "L183_guard": 0,
+   "L365_fit": 0,
+   "L365_guard": 0,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": null
+  },
+  "Lakshadweep Islands": {
+   "rows": 17,
+   "train": 3,
+   "test": 14,
+   "units": 15,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 3,
+   "L0_inner": 3,
+   "L183_fit": 3,
+   "L183_guard": 3,
+   "L365_fit": 3,
+   "L365_guard": 3,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Lesser Sunda Islands and Savu Sea": {
+   "rows": 224,
+   "train": 60,
+   "test": 164,
+   "units": 124,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 60,
+   "L0_inner": 27,
+   "L183_fit": 54,
+   "L183_guard": 27,
+   "L365_fit": 45,
+   "L365_guard": 26,
+   "inner_score_rows": 33,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Line Islands, north-east Kiribati": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Makassar Strait, Indonesia": {
+   "rows": 23,
+   "train": 21,
+   "test": 2,
+   "units": 21,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 21,
+   "L0_inner": 21,
+   "L183_fit": 21,
+   "L183_guard": 21,
+   "L365_fit": 21,
+   "L365_guard": 21,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Maldive Islands": {
+   "rows": 182,
+   "train": 101,
+   "test": 81,
+   "units": 127,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 101,
+   "L0_inner": 84,
+   "L183_fit": 97,
+   "L183_guard": 77,
+   "L365_fit": 97,
+   "L365_guard": 76,
+   "inner_score_rows": 17,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Marianas": {
+   "rows": 10,
+   "train": 10,
+   "test": 0,
+   "units": 9,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 10,
+   "L0_inner": 10,
+   "L183_fit": 10,
+   "L183_guard": 10,
+   "L365_fit": 10,
+   "L365_guard": 9,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Marshall Islands": {
+   "rows": 14,
+   "train": 14,
+   "test": 0,
+   "units": 4,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 14,
+   "L0_inner": 8,
+   "L183_fit": 14,
+   "L183_guard": 2,
+   "L365_fit": 14,
+   "L365_guard": 2,
+   "inner_score_rows": 6,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Mascarene Islands": {
+   "rows": 178,
+   "train": 164,
+   "test": 14,
+   "units": 79,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 164,
+   "L0_inner": 124,
+   "L183_fit": 146,
+   "L183_guard": 112,
+   "L365_fit": 146,
+   "L365_guard": 98,
+   "inner_score_rows": 40,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Mayotte and Comoros": {
+   "rows": 80,
+   "train": 73,
+   "test": 7,
+   "units": 23,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 73,
+   "L0_inner": 56,
+   "L183_fit": 69,
+   "L183_guard": 43,
+   "L365_fit": 65,
+   "L365_guard": 33,
+   "inner_score_rows": 17,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Milne Bay, Papua New Guinea": {
+   "rows": 8,
+   "train": 8,
+   "test": 0,
+   "units": 8,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 8,
+   "L0_inner": 8,
+   "L183_fit": 8,
+   "L183_guard": 8,
+   "L365_fit": 8,
+   "L365_guard": 8,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Moreton Bay, eastern Australia": {
+   "rows": 246,
+   "train": 171,
+   "test": 75,
+   "units": 69,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 171,
+   "L0_inner": 87,
+   "L183_fit": 148,
+   "L183_guard": 72,
+   "L365_fit": 141,
+   "L365_guard": 67,
+   "inner_score_rows": 84,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Netherlands Antilles and south Caribbean": {
+   "rows": 232,
+   "train": 222,
+   "test": 10,
+   "units": 102,
+   "programmes": [
+    "AGRRA",
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 222,
+   "L0_inner": 205,
+   "L183_fit": 222,
+   "L183_guard": 199,
+   "L365_fit": 222,
+   "L365_guard": 191,
+   "inner_score_rows": 17,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "New Caledonia": {
+   "rows": 201,
+   "train": 201,
+   "test": 0,
+   "units": 35,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 201,
+   "L0_inner": 201,
+   "L183_fit": 201,
+   "L183_guard": 201,
+   "L365_fit": 201,
+   "L365_guard": 201,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 6.0
+  },
+  "Ningaloo Reef and coastal north-west Australia": {
+   "rows": 25,
+   "train": 9,
+   "test": 16,
+   "units": 20,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 9,
+   "L0_inner": 4,
+   "L183_fit": 9,
+   "L183_guard": 4,
+   "L365_fit": 9,
+   "L365_guard": 4,
+   "inner_score_rows": 5,
+   "h_median_rows_per_candidate_unit": 0.0
+  },
+  "North Madagascar": {
+   "rows": 43,
+   "train": 15,
+   "test": 28,
+   "units": 39,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 15,
+   "L0_inner": 15,
+   "L183_fit": 15,
+   "L183_guard": 15,
+   "L365_fit": 15,
+   "L365_guard": 15,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Mozambique coast": {
+   "rows": 6,
+   "train": 6,
+   "test": 0,
+   "units": 6,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 6,
+   "L0_inner": 6,
+   "L183_fit": 6,
+   "L183_guard": 6,
+   "L365_fit": 6,
+   "L365_guard": 6,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Myanmar and Bangladesh": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Philippines": {
+   "rows": 74,
+   "train": 55,
+   "test": 19,
+   "units": 59,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 55,
+   "L0_inner": 31,
+   "L183_fit": 55,
+   "L183_guard": 26,
+   "L365_fit": 47,
+   "L365_guard": 25,
+   "inner_score_rows": 24,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Ryukyu Islands, Japan": {
+   "rows": 20,
+   "train": 16,
+   "test": 4,
+   "units": 15,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 16,
+   "L0_inner": 16,
+   "L183_fit": 16,
+   "L183_guard": 16,
+   "L365_fit": 16,
+   "L365_guard": 16,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Sri Lanka and east India": {
+   "rows": 9,
+   "train": 9,
+   "test": 0,
+   "units": 6,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 9,
+   "L0_inner": 9,
+   "L183_fit": 9,
+   "L183_guard": 9,
+   "L365_fit": 9,
+   "L365_guard": 9,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North Vietnam": {
+   "rows": 24,
+   "train": 24,
+   "test": 0,
+   "units": 24,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 24,
+   "L0_inner": 24,
+   "L183_fit": 24,
+   "L183_guard": 24,
+   "L365_fit": 24,
+   "L365_guard": 24,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North and central Red Sea": {
+   "rows": 270,
+   "train": 221,
+   "test": 49,
+   "units": 102,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 221,
+   "L0_inner": 172,
+   "L183_fit": 217,
+   "L183_guard": 166,
+   "L365_fit": 205,
+   "L365_guard": 157,
+   "inner_score_rows": 49,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "North-west Arabian Sea": {
+   "rows": 1,
+   "train": 0,
+   "test": 1,
+   "units": 1,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 0,
+   "L0_inner": 0,
+   "L183_fit": 0,
+   "L183_guard": 0,
+   "L365_fit": 0,
+   "L365_guard": 0,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": null
+  },
+  "Northern Seychelles": {
+   "rows": 5,
+   "train": 5,
+   "test": 0,
+   "units": 5,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 5,
+   "L0_inner": 5,
+   "L183_fit": 5,
+   "L183_guard": 5,
+   "L365_fit": 5,
+   "L365_guard": 5,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Ogasawara Islands, Japan": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 1,
+   "L365_fit": 2,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Palau": {
+   "rows": 9,
+   "train": 9,
+   "test": 0,
+   "units": 6,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 9,
+   "L0_inner": 9,
+   "L183_fit": 9,
+   "L183_guard": 9,
+   "L365_fit": 9,
+   "L365_guard": 9,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Persian Gulf": {
+   "rows": 30,
+   "train": 19,
+   "test": 11,
+   "units": 29,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 19,
+   "L0_inner": 19,
+   "L183_fit": 19,
+   "L183_guard": 18,
+   "L365_fit": 19,
+   "L365_guard": 18,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Phoenix Islands, central Kiribati": {
+   "rows": 2,
+   "train": 2,
+   "test": 0,
+   "units": 2,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 2,
+   "L0_inner": 2,
+   "L183_fit": 2,
+   "L183_guard": 2,
+   "L365_fit": 2,
+   "L365_guard": 2,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Pohnpei and Kosrae, Micronesia": {
+   "rows": 70,
+   "train": 70,
+   "test": 0,
+   "units": 28,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 70,
+   "L0_inner": 70,
+   "L183_fit": 70,
+   "L183_guard": 70,
+   "L365_fit": 70,
+   "L365_guard": 70,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Pompey and Swain Reefs, south-east Great Barrier Reef": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Samoa, Tuvalu and Tonga": {
+   "rows": 41,
+   "train": 41,
+   "test": 0,
+   "units": 30,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 41,
+   "L0_inner": 40,
+   "L183_fit": 39,
+   "L183_guard": 38,
+   "L365_fit": 39,
+   "L365_guard": 38,
+   "inner_score_rows": 1,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Shikoku, Japan": {
+   "rows": 20,
+   "train": 20,
+   "test": 0,
+   "units": 7,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 20,
+   "L0_inner": 16,
+   "L183_fit": 20,
+   "L183_guard": 14,
+   "L365_fit": 20,
+   "L365_guard": 13,
+   "inner_score_rows": 4,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "Society Islands, French Polynesia": {
+   "rows": 397,
+   "train": 284,
+   "test": 113,
+   "units": 73,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 284,
+   "L0_inner": 222,
+   "L183_fit": 270,
+   "L183_guard": 210,
+   "L365_fit": 251,
+   "L365_guard": 198,
+   "inner_score_rows": 62,
+   "h_median_rows_per_candidate_unit": 1.5
+  },
+  "Socotra Archipelago": {
+   "rows": 6,
+   "train": 6,
+   "test": 0,
+   "units": 6,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 6,
+   "L0_inner": 6,
+   "L183_fit": 6,
+   "L183_guard": 6,
+   "L365_fit": 6,
+   "L365_guard": 6,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Solomon Islands and Bougainville": {
+   "rows": 72,
+   "train": 56,
+   "test": 16,
+   "units": 38,
+   "programmes": [
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 56,
+   "L0_inner": 56,
+   "L183_fit": 56,
+   "L183_guard": 56,
+   "L365_fit": 56,
+   "L365_guard": 56,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "South China Sea": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "South Madagascar": {
+   "rows": 39,
+   "train": 27,
+   "test": 12,
+   "units": 33,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 27,
+   "L0_inner": 27,
+   "L183_fit": 27,
+   "L183_guard": 27,
+   "L365_fit": 27,
+   "L365_guard": 27,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "South Mozambique coast": {
+   "rows": 11,
+   "train": 11,
+   "test": 0,
+   "units": 11,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 11,
+   "L0_inner": 11,
+   "L183_fit": 11,
+   "L183_guard": 11,
+   "L365_fit": 11,
+   "L365_guard": 11,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "South Red Sea": {
+   "rows": 5,
+   "train": 5,
+   "test": 0,
+   "units": 5,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 5,
+   "L0_inner": 5,
+   "L183_fit": 5,
+   "L183_guard": 5,
+   "L365_fit": 5,
+   "L365_guard": 5,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "South Ryukyu Islands, Japan": {
+   "rows": 38,
+   "train": 38,
+   "test": 0,
+   "units": 13,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 38,
+   "L0_inner": 33,
+   "L183_fit": 38,
+   "L183_guard": 32,
+   "L365_fit": 37,
+   "L365_guard": 31,
+   "inner_score_rows": 5,
+   "h_median_rows_per_candidate_unit": 2.0
+  },
+  "South Vietnam": {
+   "rows": 73,
+   "train": 73,
+   "test": 0,
+   "units": 39,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 73,
+   "L0_inner": 73,
+   "L183_fit": 73,
+   "L183_guard": 73,
+   "L365_fit": 73,
+   "L365_guard": 73,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "South-east Philippines": {
+   "rows": 421,
+   "train": 405,
+   "test": 16,
+   "units": 296,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 405,
+   "L0_inner": 385,
+   "L183_fit": 402,
+   "L183_guard": 376,
+   "L365_fit": 401,
+   "L365_guard": 376,
+   "inner_score_rows": 20,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Southern Great Barrier Reef": {
+   "rows": 90,
+   "train": 58,
+   "test": 32,
+   "units": 24,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 58,
+   "L0_inner": 16,
+   "L183_fit": 45,
+   "L183_guard": 14,
+   "L365_fit": 45,
+   "L365_guard": 14,
+   "inner_score_rows": 42,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Southern Seychelles": {
+   "rows": 1,
+   "train": 1,
+   "test": 0,
+   "units": 1,
+   "programmes": [
+    "Donner"
+   ],
+   "L0_fit": 1,
+   "L0_inner": 1,
+   "L183_fit": 1,
+   "L183_guard": 1,
+   "L365_fit": 1,
+   "L365_guard": 1,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Strait of Malacca": {
+   "rows": 23,
+   "train": 9,
+   "test": 14,
+   "units": 23,
+   "programmes": [
+    "Donner",
+    "McClanahan",
+    "Reef_Check"
+   ],
+   "L0_fit": 9,
+   "L0_inner": 9,
+   "L183_fit": 9,
+   "L183_guard": 9,
+   "L365_fit": 9,
+   "L365_guard": 9,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Sulu Sea": {
+   "rows": 535,
+   "train": 272,
+   "test": 263,
+   "units": 194,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 272,
+   "L0_inner": 59,
+   "L183_fit": 241,
+   "L183_guard": 58,
+   "L365_fit": 201,
+   "L365_guard": 51,
+   "inner_score_rows": 213,
+   "h_median_rows_per_candidate_unit": 0.0
+  },
+  "Sunda Shelf, south-east Asia": {
+   "rows": 1157,
+   "train": 712,
+   "test": 445,
+   "units": 339,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 712,
+   "L0_inner": 392,
+   "L183_fit": 665,
+   "L183_guard": 351,
+   "L365_fit": 606,
+   "L365_guard": 289,
+   "inner_score_rows": 320,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Taiwan and coastal China": {
+   "rows": 156,
+   "train": 52,
+   "test": 104,
+   "units": 74,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 52,
+   "L0_inner": 16,
+   "L183_fit": 43,
+   "L183_guard": 16,
+   "L365_fit": 35,
+   "L365_guard": 16,
+   "inner_score_rows": 36,
+   "h_median_rows_per_candidate_unit": 0.0
+  },
+  "Vanuatu": {
+   "rows": 115,
+   "train": 115,
+   "test": 0,
+   "units": 48,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 115,
+   "L0_inner": 62,
+   "L183_fit": 115,
+   "L183_guard": 29,
+   "L365_fit": 115,
+   "L365_guard": 29,
+   "inner_score_rows": 53,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "West Sumatra": {
+   "rows": 16,
+   "train": 16,
+   "test": 0,
+   "units": 16,
+   "programmes": [
+    "Reef_Check"
+   ],
+   "L0_fit": 16,
+   "L0_inner": 16,
+   "L183_fit": 16,
+   "L183_guard": 16,
+   "L365_fit": 16,
+   "L365_guard": 16,
+   "inner_score_rows": 0,
+   "h_median_rows_per_candidate_unit": 1.0
+  },
+  "Western Tuamotu Archipelago, central Pacific": {
+   "rows": 29,
+   "train": 29,
+   "test": 0,
+   "units": 13,
+   "programmes": [
+    "Donner",
+    "Reef_Check"
+   ],
+   "L0_fit": 29,
+   "L0_inner": 28,
+   "L183_fit": 26,
+   "L183_guard": 25,
+   "L365_fit": 26,
+   "L365_guard": 25,
+   "inner_score_rows": 1,
+   "h_median_rows_per_candidate_unit": 1.0
+  }
+ },
+ "groups_zero_rows_at_a_cut": {
+  "L0_fit": [
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ],
+  "L0_inner": [
+   "Birds Head Peninsula, Papua",
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ],
+  "L183_fit": [
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ],
+  "L183_guard": [
+   "Birds Head Peninsula, Papua",
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ],
+  "L365_fit": [
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ],
+  "L365_guard": [
+   "Birds Head Peninsula, Papua",
+   "Gulf of Guinea to Sierra Leone",
+   "Kimberley Coast, north-west Australia",
+   "North-west Arabian Sea"
+  ]
+ },
+ "groups_one_unit": [
+  "Ashmore Reef, north-west Australia",
+  "Gulf of California",
+  "Houtman Abrolhos Islands, west Australia",
+  "Line Islands, north-east Kiribati",
+  "North-west Arabian Sea",
+  "Pompey and Swain Reefs, south-east Great Barrier Reef",
+  "South China Sea",
+  "Southern Seychelles"
+ ],
+ "R12_h_all": 1.0,
+ "site_keys_in_two_or_more_groups": 0
+}

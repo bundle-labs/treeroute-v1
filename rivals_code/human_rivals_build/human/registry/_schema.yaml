@@ -1,0 +1,113 @@
+# Registry schema (SPEC_HUMAN.txt 1.7, 1.8). Read by rivals_human/config.py (validate_against): every field below
+# with its type (str | int | bool | list | map | str_or_map | any), `required`, `nullable` and `enum`. A field not
+# listed here refuses. Builder A owns this file; builders B and C write registry/<package>.yaml against it.
+#
+# A problem registry (registry/<package>.yaml):
+#   package: <the run's package name>
+#   rivals: [ <rival>, ... ]
+#   no_rival_leads: {<lead>: "<plain reason printed when a lead has no human rival>"}
+#   joint_claims: [ {name: "ours beats <method>", rivals: [<id>, <id>]} ]   (YES only when ours BEATS every form)
+#   notes: free text
+#
+# A rival:
+#   id                    unique id (index tables, boards, the table)
+#   kind                  I (index) | N (product on the target scale) | M (published method)
+#   label                 plain name printed on the board
+#   adapter               "adapters.<module>:<function>"  build(ctx, rival, lead, stage) -> index DataFrame (I, N, and an
+#                         M rival that ships an index table); null for a runner
+#   runner                "adapters.<module>" with fit(...) and predict(...) (an M method; no adapter, stats, families)
+#   products              product ids of registry/_products.yaml the adapter / runner may open (ctx.open_product)
+#   stats                 at most 3 index columns "x__<stat>", in the fixed (tie-break) order
+#   families              subset of F0..F6 in that order; F0 N/M, F1 N, F2 I/N/M, F3 I/N, F4 I/N/M, F5 I/N, F6 I
+#   links                 "all" (default: every R22 link of the run) or a list of R22 links
+#   t1_kind_columns       R8 column names of the same driver kind (grids); [] = every R8 entry
+#   reads_target_in_test_window  true -> the index is written in stages train (before the lock) and test (after it)
+#   leads                 {<lead>: P | L | A | X | none} or {<lead>: {tier:, reason:, label:}}; every run lead named;
+#                         "none" needs a reason (horizon gap). P and L decide; A and X never.
+#   score_without_net     leads scored without the safety net (guarded = raw, flagged)
+#   pick                  nowcast_inner (default) | lowest_covered_lead_guard (a forecast-only product)
+#   coverage              x_finite (default; I/N/M index tables written in one go) | all_rows |
+#                         {issue_min:, issue_max:, time_min:, time_max:, units_column_positive:, units_column_true:,
+#                         function: "module:function"} (label-free rule, ANDed; function(ctx, rival, lead, keys) -> bool
+#                         array per key, called at the lock with no test feature and no label);
+#                         a runner or a staged index needs all_rows or a rule mapping
+#   resolution_matched    true -> the H15 resolution-matched table is printed (product coarser than the unit)
+#   placebo_of            <rival id>: printed only, takes the parent's pick (never tuned)
+#   slim_extra_columns    export columns `slim` copies for this rival (x__ / c__ names only; never y, a run history
+#                         column or an h__ / ngd__ / nfit__ block: their test values are read without the lock)
+#   optional             true for an optional rival (the Part lists it as optional)
+#   r10_note              the PLAN R10 non-blind note for the Part
+#   disclosures           list of plain disclosure lines for the Part
+#   options               the adapter's / runner's own settings (read by the adapter; the tool passes them through)
+#   availability          "module:function" (ctx, rival) -> (on disk?, plain line): `init` lists the rival as waiting
+#   print_beside          a rival id this row is printed beside (board layout only)
+#   prep                  "module:function" (ctx, rival) run by `prep --rival <id>` (an owner prep command)
+#   coverage_note         plain words for the coverage rule (printed in the Part); the rule itself is `coverage`
+#   equal_value_leads     [<lead>, <lead>, ...] (index rivals only): the value depends on the unit and the target time
+#                         alone, so `check` asserts equal stats per (unit, time) across these leads (integration add)
+#   (package level) format, run, leads_without_rival / no_rival_leads {lead: reason} (printed at that lead even when
+#   it has A / L / X rows), reference_note, wording_rules, nowcast_baseline_note (the flag printed on the lead-0
+#   persistence reference rows, e.g. "the human baseline to beat", only where a ruling says so)
+package_fields:
+  package: {type: str, required: true}
+  rivals: {type: list, required: true}
+  format: {type: str}
+  run: {type: str}
+  no_rival_leads: {type: map}
+  leads_without_rival: {type: map}
+  reference_note: {type: str}
+  wording_rules: {type: list}
+  nowcast_baseline_note: {type: str}
+  refs_label_store: {type: map}   # optional (Part 618): the package's target store, for training-period labels the slims lack
+  joint_claims: {type: list}
+  notes: {type: any}
+rival_fields:
+  id: {type: str, required: true}
+  kind: {type: str, required: true, enum: [I, N, M]}
+  label: {type: str}
+  adapter: {type: str, nullable: true}
+  runner: {type: str, nullable: true}
+  products: {type: list}
+  stats: {type: list}
+  families: {type: list, enum: [F0, F1, F2, F3, F4, F5, F6]}
+  links: {type: any}
+  t1_kind_columns: {type: list}
+  reads_target_in_test_window: {type: bool}
+  leads: {type: map, required: true}
+  score_without_net: {type: list}
+  pick: {type: str, enum: [nowcast_inner, lowest_covered_lead_guard]}
+  coverage: {type: str_or_map}
+  resolution_matched: {type: bool}
+  placebo_of: {type: str, nullable: true}
+  slim_extra_columns: {type: list}
+  optional: {type: bool}
+  r10_note: {type: str, nullable: true}
+  disclosures: {type: list}
+  options: {type: map}
+  availability: {type: str, nullable: true}
+  print_beside: {type: str, nullable: true}
+  prep: {type: str, nullable: true}
+  coverage_note: {type: str}
+  equal_value_leads: {type: list}
+joint_claim_fields:
+  name: {type: str, required: true}
+  rivals: {type: list, required: true}
+  rule: {type: str}
+# A product (registry/_products.yaml: products: {<id>: <product>}):
+#   path          the product's folder (or one file), read-only; for a download the folder of its manifest
+#   patterns      globs under path (default every file) that `manifest` hashes
+#   manifest      a download's own product_manifest.json (D1-D6); absent -> <out_root>/_products/<id>/product_manifest.json
+#   waiting_line  the plain line printed while the product is not on disk (no manifest)
+#   staged        true for a product written in stages (a prep before and after the lock): `manifest` may re-hash it,
+#                 adding files; a file already listed must keep its sha256 (the board checks that, not the manifest sha)
+#   licence, source, label, notes
+product_fields:
+  path: {type: str, nullable: true}
+  patterns: {type: list}
+  manifest: {type: str, nullable: true}
+  waiting_line: {type: str}
+  staged: {type: bool}
+  licence: {type: str}
+  source: {type: str}
+  label: {type: str}
+  notes: {type: any}

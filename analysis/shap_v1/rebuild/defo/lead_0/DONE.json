@@ -1,0 +1,37 @@
+{
+ "arcsine_tolerance": 0.0,
+ "arm": "log_c_corrector_unweighted",
+ "c": 4.9563837819732726e-05,
+ "d8_licence": null,
+ "e8_bit_identical": true,
+ "engine_folder": "D:\\treeroute\\analysis\\shap_v1\\engine_runs\\defo\\headline\\20261114_d71c61f4",
+ "files": {
+  "bank.npz": "26307d485c20f40289222b233ff1f4c65cb094984ad673d30e80cbc61e174396",
+  "preds_check.parquet": "d80572dcf0c924bafe2403b12362854ae303a21502bd6d89556c9b20d15e9d54",
+  "routers.npz": "480266561971cfcba3d05e7d22c06cf119bea1930cbc09ea1b480e77137cf7a0",
+  "rows.parquet": "2e3d738a1bb09e4448e59b39fc6e1c49c9742e9aa0bc1d4a99e47e14cae05b79"
+ },
+ "identity": {
+  "engine_root": "d:/treeroute/analysis/ablation_perlocation/ckproof/engine_65a177bc",
+  "package_dir": null,
+  "path_map": false,
+  "sample_sha256": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+  "script_sha256": "b48196273b43ccc877249b00e16e2d4e11d3d09c83bad1eadd3ad200dc782beb",
+  "smoke_arm": null
+ },
+ "kind": "region",
+ "legal": [
+  0.0,
+  1.0
+ ],
+ "link": "log_c",
+ "point": {
+  "level": 0.1,
+  "ratio": null
+ },
+ "rows_checked": 1008,
+ "sample_sha256": "9989bd588993f268a57b996363e938a1df336bfbcfa4608337db14717dca6615",
+ "table_kind": "corrector",
+ "ub": 1.0,
+ "weighted": false
+}

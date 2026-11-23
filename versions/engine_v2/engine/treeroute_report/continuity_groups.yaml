@@ -1,0 +1,138 @@
+# treeroute_report/continuity_groups.yaml -- the continuity row of each headline package's report.
+#
+# Owner ruling D (2026-09-28 night): "the old hard-split test groups are also reported alone, from the same
+# run". Owner rulings E, L7 (b): the list lives here and in legacy_harness/shipped_splits.yaml, not in the
+# package, so split.yaml holds only excluded and seen_during_design and a new problem needs no such list.
+# treeroute_report computes this row from SAVED rows with the signed report/metrics.py (the same functions
+# as the headline, over these groups only), labelled 'continuity, not a replication'; the band is derived
+# on all groups and judges this row too (R35). Reporting only: it never changes a fit, a pick or a
+# decision, and the engine never reads this file.
+#
+# continuity_groups = the old test_groups of legacy_harness/shipped_splits.yaml, exactly (checked by
+# tests/test_packages_declarative.py). old_test_units is the old test-unit total printed beside the LORO
+# total (plan 3.2, 7.2); the LORO scored units per group come from the run (C16, K = 20).
+
+pm25:
+  label: continuity, not a replication
+  source: "legacy_harness/shipped_splits.yaml pm25.test_groups; pm25_split.py v3 (2026-09-24, Part 554): TEST = lines 55-76 (20), DONORS = lines 78-186 (107)"
+  n_groups: 20
+  old_test_units: 2000   # 20 groups x 100 cells by the rule (1,997 logged)
+  continuity_groups:
+    - alaska_interior_taiga
+    - atlantic_forest_brazil
+    - bolivia_beni_savanna
+    - brittany_france
+    - california_central_valley
+    - chihuahuan_desert
+    - costa_rica
+    - hulunbuir_grassland
+    - kazakh_steppe
+    - madagascar_western_dry
+    - miombo_woodland_zambia
+    - namib_desert
+    - nile_valley_delta
+    - ordos_plateau
+    - pacific_nw_coast
+    - taklamakan_desert
+    - western_europe_temperate
+    - western_ghats
+    - western_sahara_coastal
+    - yakutia_larch
+
+fire:
+  label: continuity, not a replication
+  source: "legacy_harness/shipped_splits.yaml fire.test_groups; fire_evt_arch.py:157-161 (= adaptation.py:2192-2196, :2770-2774): complete groups by panel_cells descending; the first 30 donors, the rest tests"
+  n_groups: 10
+  old_test_units: 1000   # 10 groups x 100 by the rule (shipped 1,250: 125 cells from default_rng(7))
+  continuity_groups:
+    - borneo_peat_fires
+    - cape_floristic_region
+    - central_chile
+    - greece_mainland
+    - iberian_wildfire
+    - mediterranean_andalusia
+    - mopane_woodland
+    - north_algeria_tell_atlas
+    - northern_australia_monsoon
+    - thar_desert
+
+defo:
+  label: continuity, not a replication
+  source: "legacy_harness/shipped_splits.yaml defo.test_groups; adaptation.py:1215-1219 (run_defo, read, never run): forested groups (forest_census frac_tc30 >= 0.25) x ndvi_split.txt; NDON = 25, NTEST = 17, FROM = 0"
+  n_groups: 17
+  old_test_units: 70487   # 17 groups x min(4,285, available) by the rule (shipped 4,000 cells per group)
+  continuity_groups:
+    - borneo_peat_fires
+    - costa_rica
+    - gran_chaco
+    - greece_mainland
+    - idaho_montana_wildfire
+    - japan_central_honshu
+    - llanos_venezuela
+    - new_guinea_papua
+    - pantanal
+    - poland_central
+    - tasmania_western
+    - tierra_del_fuego
+    - tongass_alaska
+    - trans_baikal_steppe
+    - vietnam_central_highlands
+    - western_scotland
+    - yucatan_peninsula
+
+ndvi:
+  label: continuity, not a replication
+  source: "legacy_harness/shipped_splits.yaml ndvi.test_groups; D:/run89full/ndvi_split.txt: donors = lines 2-90 (89), tests = lines 92-135 (44) (Q1 a)"
+  n_groups: 44
+  old_test_units: 4400   # 44 groups x 100 cells
+  continuity_groups:
+    - alaska_interior_taiga
+    - anatolian_plateau
+    - argentine_monte
+    - borneo_peat_fires
+    - brigalow_belt
+    - brittany_france
+    - costa_rica
+    - drakensberg_lesotho
+    - eurasian_steppe
+    - ganges_plain
+    - gobi_desert
+    - gran_chaco
+    - greece_mainland
+    - idaho_montana_wildfire
+    - indian_acacia_babool
+    - japan_central_honshu
+    - llanos_venezuela
+    - madagascar_spiny_thicket
+    - madagascar_western_dry
+    - mesopotamia
+    - mexican_altiplano
+    - new_guinea_papua
+    - nile_valley_delta
+    - north_algeria_tell_atlas
+    - okavango_delta
+    - ordos_plateau
+    - pamir_plateau
+    - pampas
+    - pantanal
+    - poland_central
+    - rub_al_khali
+    - southern_african_savanna
+    - taimyr_peninsula
+    - tanezrouft
+    - tasmania_western
+    - thar_desert
+    - tierra_del_fuego
+    - tongass_alaska
+    - trans_baikal_steppe
+    - uk_midlands
+    - vietnam_central_highlands
+    - western_scotland
+    - yakutia_larch
+    - yucatan_peninsula
+
+coral:
+  label: continuity, not a replication
+  source: "none: no legacy coral number is comparable (Part 458 pool leak); owner 2026-10-20 (ruling X2)"
+  n_groups: 0
+  continuity_groups: []

@@ -1,0 +1,10 @@
+# Rival board roots (SPEC_RIVALS.md 1.1): paths only, every one absolute. BUILD and TEST values.
+# Production values (owner commands): machine_file = the engine's config/machine.yaml,
+# export_root D:/treeroute/rival_export, export_ckpt_root D:/treeroute/rival_export/_engine_run_root,
+# out_root D:/treeroute/rivals, moved_root D:/treeroute/rivals/_moved.
+engine_root: 'C:/Users/<user>/Desktop/data set for reserch paper/engine'
+machine_file: 'D:/treeroute/rivals_build/_machine/machine.yaml'
+export_root: 'D:/treeroute/rivals_build/_export'
+export_ckpt_root: 'D:/treeroute/rivals_build/_export/_engine_run_root'
+out_root: 'D:/treeroute/rivals_build/_out'
+moved_root: 'D:/treeroute/rivals_build/_moved'

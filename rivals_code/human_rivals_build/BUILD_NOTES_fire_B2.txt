@@ -1,0 +1,274 @@
+BUILD_NOTES_fire_B2.txt - builder B2_runners, Part B (fire human rivals), 2026-10-25
+=====================================================================================
+Scope: SPEC_HUMAN_PARTB.txt section 4 (runners) and 4.4 (the ONE shared code edit, rivals_human/maps.py F6).
+No real data was read (no slim exists; no label, no product). Toy / synthetic checks only. No fire.yaml edit.
+
+FILES (sha256 at the end of this build step; final hashes are filled by the integration stage)
+  human/adapters/fire_lag_common.py  (new) 718a68e6cc975870f3eab073fb2f391e3b76d473cdc7bccefc172f97d2413283
+  human/adapters/fire_enso.py        (new) 7ba939c86ffd17213e9f09a880586a0bb7cfebbc9bace4eaf3a1374b780bd612
+  human/adapters/fire_turco.py       (new) 7dfe58354d064a4c83108b66dadba018a4d52e77aa644a49921220cc40e84f44
+  human/rivals_human/maps.py         (4.4 edit) 6b4bb0642612c59bb2cbffa34faa808f7b995d7becaa367a35bcf24be28eb406
+  _moved/20261025T194657Z_partB_baseline/rivals_human/maps.py  (baseline copy, made BEFORE the edit)
+                                     f38d7ce78ede1b101b5fba89fb4aa89559171e63e1532e60d58bd030acb91a59 (= spec 4.4)
+  (B1 put its _products.yaml baseline into the same folder: .../registry/_products.yaml 4e479759..., not mine.)
+
+-------------------------------------------------------------------------------------------------------------------
+1. fire.yaml OPTION REQUESTS: NONE
+-------------------------------------------------------------------------------------------------------------------
+B1's runner rows (registry/fire.yaml, read-only here) parse unchanged with both runners' _options():
+  enso_lag  options {form E1, index_column x__oni, index_abs_max 5.0, min_fit_rows 100, fire_season_months 3,
+            min_month_rows 100}; t1_kind_columns [oni]
+  turco_spi options {form T1, scales [x__spi_01m .. x__spi_24m], fixed_scale x__spi_03m, two_scales [x__spi_03m,
+            x__spi_12m], fire_season_months 3, spi_abs_max 3.5, min_fit_rows 100}; t1_kind_columns [spi_01m .. spi_24m]
+Rule for later edits (OD-1 / OD-2 rulings): an UNKNOWN option key refuses (catches typos); a missing constant takes
+the spec 2.4 value (DEFAULTS in each module); `form` and `index_column` (enso) / `form` and the form's scale key
+(turco: scales for T1, fixed_scale for T2, two_scales for T3) are required. A form switch is a one-word data edit
+(form: E2 / T3 ...), made before F7 (B9).
+
+-------------------------------------------------------------------------------------------------------------------
+2. THE RUNNERS (spec 4, 4.1, 4.2, 4.3)
+-------------------------------------------------------------------------------------------------------------------
+Module surface (fixed names for B3; B3 imports only `from adapters import fire_enso, fire_turco`):
+  both: PARAMS_FORMAT, fit, predict, fire_season, fit_ratio, fit_groups, predict_values (fire_season / fit_ratio are
+  re-exported from fire_lag_common; fire_turco also re-exports fit_ratio2; FireLagRefusal re-exported).
+  PARAMS_FORMAT "human-fire-enso-params/1" / "human-fire-turco-params/1".
+  fire_season(groups, months, normal, width) -> {group: [m1, .., m_width]}   months listed FROM THE START MONTH:
+      a Dec-Jan-Feb season is [12, 1, 2] (compare as a set if order is not the point). Sum of the FINITE normal over
+      ALL the group's fit rows; ties -> earliest start month (January first).
+  fit_ratio(N, s, y, min_rows) -> (b, n, fallback)   applies the usable-row mask itself (finite y, finite N > 0,
+      finite s; invalid predictors are NaN before); n < min_rows or sum((N s)^2) == 0 -> (0.0, n, True).
+  fit_groups(...) -> {"form", "groups": {g: {...}}, "counts"}   (the fitted part of the 4.3 params; NOT the bare
+      group block). predict_values(..., params, opt) accepts the full runner params, fit_groups' result, or the bare
+      group block; the form comes from params["form"] when present, else opt["form"]. Both pure functions take the
+      explicit `form` / params form over opt's form, and fall back to the spec 2.4 constants when opt leaves one out.
+  Invalid predictors (NaN or |v| > index_abs_max / spi_abs_max) are masked INSIDE fit_groups / predict_values.
+Params groups: enso {b, n, fallback, season (E2 list, else None)[, E3: b_m {"1".."12"}, n_m, months_on_group_slope]};
+  turco T1 {scale (None when < min_fit_rows rows have every scale valid in the season), b, n, n_select, sse_by_scale,
+  season, fallback}, T2 {scale, b, n, sse_by_scale None, season None, fallback}, T3 {scales, b1, b2, n, sse_by_scale
+  None, season, fallback}. Top level: format, adapter, rival, lead, fit_set, form, index_column | columns, options,
+  t1_steps, start_offset_steps, groups, counts.
+Rules as implemented:
+  - fit sets guardfit / refit only ("tune" and lead 0 refuse); guardfit -> guard, refit -> test; other pairings refuse.
+  - labels: one call, literally `ctx.fit_labels(fit_set)`, in fire_lag_common.labels(ctx, fit_set, keys) (parameter
+    named fit_set), called only from fit(); aligned row for row with ctx.features(fit_set) keys (refuses otherwise).
+    No .slim / ._hctx / .read_set / ._token anywhere (R02 static scan passes).
+  - N = ctx.features(set).normal["identity"] (in sample on fit rows, as spec 4: no leave-year-out in the runners).
+  - every score row gets a finite pre: invalid predictor -> term 0 (pre = N), unseen group -> N, outside the season
+    -> N, N <= 0 -> N (= 0 on a zero normal; a negative toy normal stays negative pre-clip and the tool clips it),
+    NaN normal on a score row refuses. Counts are written to ctx.log at fit and predict (params carry fit counts).
+  - info_end = issue - S, S = max R8 steps of t1_kind_columns READ FROM ctx.run AT FIT and kept in params
+    ("t1_steps"); predict re-reads R8, logs a difference and leaves it to the tool's T1 check (methods.run_predict):
+    fitted under oni steps 3 and predicted on a run saying 4 -> HumanRefusal "tier P rows break the timing rules";
+    a run saying 2 passes (older information is legal). NOTE FOR B3 (T-F12 / T-F13): a test that fits AND predicts
+    on a steps-4 run does NOT refuse (info_end is then issue - 4, as section 4's "read from R8" rule gives); the
+    refusal case is "fit on the steps-3 run, predict on the steps-4 run".
+  - target_obs_end = run.cuts[L]["guard_cut"] - offset (guard rows), ["fit_cut"] - offset (test rows); offset = R17
+    start_offset_steps read as index.Timing reads it; an offset differing from the fit's refuses (FireLagRefusal).
+  - calendar month of the TARGET: ((t - 1) mod 12) + 1; a run whose R2 (or R17 inputs) steps_per_year is not 12
+    refuses.
+  - T3 singular rule: det <= SINGULAR_TOL x a11 x a22 with SINGULAR_TOL = 1e-10 (|corr(N s1, N s2)| ~ 1), or a zero
+    column -> b1 = b2 = 0, fallback. NEW CONSTANT: add to Part B section 8 (B4 / integration).
+  - deterministic: no randomness, sorted groups, fixed scale order; params JSON round trip checked through
+    methods.run_fit.
+Turco form (OD-1): implemented exactly as spec 4.2 T1/T2/T3; NOT verified against the paper (no network). From
+recollection only (unverified; the owner must check the paper before signing): Turco et al. 2018 relate fire-season
+burned area (per grid cell / region, anomalies) to SPI terms - a drought term over the fire season (from seasonal
+forecasts in the paper) and an ANTECEDENT term with an accumulation scale and lag selected on the training data. Our
+forms keep only observed SPI at the issue month (T1: one data-selected scale; T3: two fixed antecedent scales), so
+the fire-season forecast term of the paper is absent by design (no SEAS5 precipitation, Q10).
+
+-------------------------------------------------------------------------------------------------------------------
+3. THE SHARED CODE EDIT: rivals_human/maps.py (spec 4.4; the ONLY shared rivals_human/*.py edit by B2)
+-------------------------------------------------------------------------------------------------------------------
+Why (spec facts, review issues R-1 and R-2): today's F6 fits the ratio y / z0 on the slim normal as given. On fit rows
+that normal is the in-sample unit-month mean, so the fitted level is 1.0 by construction against 0.846 out of sample
+(+18%), and 2,192 of 14,834 burned lead-0 refit rows enter with ratio n (up to 16) although their out-of-sample
+normal is 0. Its unweighted isotonic loss is squared error of the RATIO, not of the target (the unweighted
+leave-year-out mean ratio is 1.58 vs the target-optimal 0.846; max 1,080). Research C-A (research_fire.md:64; PLAN
+:69) says "For train rows, N is the same normal formula computed leaving that year out"; PLAN rule 5 (:114-115) says
+maps use squared error on the target. Without the edit F6 would likely lose the inner / guard pick for an
+implementation reason (the straw-man risk Q19 / PLAN ATTENTION 6 remove).
+What changed (identity link only; F0-F5, fit_l1, candidates, F6 predict / to_json and every other function unchanged):
+  (1) Iso.fit(cls, x, t, increasing, rho, weights=None): weights -> sklearn sample_weight; with None the call is the
+      old one, literally (an if-branch), so every F2 / F4 / F6-old knot is byte-equal (checked: Iso.fit default path
+      vs the baseline module, knots byte-equal).
+  (2) F6PctRatio.fit: after the link check and check_calibratable (unchanged), cells c = (unit, keys[SEASON_KEY]) of
+      the passed rows; n_c by bincount, S_c by pandas groupby sum; complete cell = |S_c / n_c - z0| <= F6_NORMAL_TOL
+      (1e-12) on every row (NaN z0 -> incomplete); rows in incomplete cells > F6_MAX_INCOMPLETE_SHARE (0.05) x passed
+      rows -> rivals_human.common.refuse (HumanRefusal, imported inside the function; NOT NotCalibratable), else
+      dropped and counted; N_loo = (S_c - y) / (n_c - 1) from the cell SUM; n_c < 2 and N_loo <= 0 rows dropped and
+      counted (burned ones too); check_calibratable on the KEPT rows (-> NotCalibratable); ratio r = y / N_loo fitted
+      pooled and per group (>= MIN_FIT_ROWS kept rows) with Iso.fit(..., weights=N_loo^2) = argmin sum (y - N_loo
+      r(x))^2; isotonic direction = Spearman sign of (x, y) on the PASSED rows, as before.
+      info keys: rows_passed, rows_kept, rows_incomplete_cell, rows_single_row_cell, rows_zero_loo_normal,
+      rows_zero_loo_normal_burned, normal_check_max_abs_diff (max over the rows of COMPLETE cells), weighted_level
+      (sum(N_loo y) / sum(N_loo^2) over kept rows), plus rows (= rows_kept; board.py tune records it as rows_fit),
+      normal_tol, max_incomplete_share, weights "N_loo^2", groups_own_map, pooled. The old key
+      rows_with_positive_normal is gone (no consumer: no Part A registry lists F6).
+  (3) predict unchanged (z0 of the scored set x ratio(x)); to_json unchanged apart from the info.
+  (4) Module docstring: the F6 line and the "No weights." sentence; class docstring added. Constants F6_NORMAL_TOL and
+      F6_MAX_INCOMPLETE_SHARE live in maps.py (no config.py edit). No problem name, year, drive or month arithmetic
+      (engine nonames scanner on the edited file: 0 findings; test_h20 passes).
+Part A effect: none. No Part A registry lists F6 (coral / defo / pm25 / ndvi families); the default Iso.fit path is
+byte-identical. Checked here: (a) the T-F15 a recipe (code_files minus adapters/fire_*.py, maps.py bytes replaced by
+the baseline copy) = cd956f1dbd0f9b0f2ada37c1a27f8212768d94fc6242cab0686bf7c71608a273; (e) ast top-level diff vs the
+baseline = module docstring, Iso, F6_NORMAL_TOL, F6_MAX_INCOMPLETE_SHARE, F6PctRatio only; inside Iso only fit; the
+old top-level order is kept.
+OD-14 (owner): if declined, move the edited maps.py to _moved and restore the baseline bytes before F7 (spec 4.4).
+
+-------------------------------------------------------------------------------------------------------------------
+4. TESTS RUN BY B2 (basetemps under D:\treeroute\human_rivals_build\pt\tests\, fresh names)
+-------------------------------------------------------------------------------------------------------------------
+  rivals_human/tests/test_h08_maps.py + test_h20_nonames.py after the maps edit: 18 passed, 4 skipped (realdata)
+      (B2_maps_h08_h20_20261025a)
+  review_tests/test_r05_maps.py + test_r02_runner_label_scope.py after the maps edit: 8 passed (67 s; flow toys)
+      (B2_review_r05_r02_20261025a)
+  review_tests R02 static scan + test_h20 with the three runner files present: 8 passed, 4 skipped (realdata)
+      (B2_r02_h20_runners_20261025b)
+  Synthetic scratch checks (session scratchpad, not deliverables): F6 normal check / refusal / partial cell (15
+  rows counted) / exact N_loo 0 from the cell sum / N_loo^2-weighted tie = hand weighted mean (rel 1e-12) / fit twice
+  byte-equal; runners E1-E3 and T1-T3 at leads 6 (P) and 12 (X) through methods.run_fit / run_predict on a stand-in
+  ctx: E1 recovers b (0.4, -0.3), T1 picks the generating scale, guard/test pairings, tune refusal, wrong pairing
+  refusal, Dec-Jan-Feb season [12, 1, 2], invalid / out-of-range predictor -> N, T1 and T2 timing pass/refuse.
+  tests_fire (B3) did not exist when B2 finished; not run.
+
+-------------------------------------------------------------------------------------------------------------------
+5. THE maps.py DIFF (diff -u baseline new)
+-------------------------------------------------------------------------------------------------------------------
+--- _moved/20261025T194657Z_partB_baseline/rivals_human/maps.py	2026-10-22 02:12:17.403257000 +0300
++++ human/rivals_human/maps.py	2026-10-25 22:51:09.531973200 +0300
+@@ -10,15 +10,21 @@
+   F5 unit_mos  link(y) - z0 = a_u + b_u (x - xbar) per unit, a_u and b_u shrunk toward the pooled F3 (a, b):
+                slope_u* = (n_u b_u + K b_pool) / (n_u + K), the same for the intercept, K = SHRINK_K; a unit with
+                < 3 covered fit rows (or unseen at prediction) takes the pooled map (counted)
+-  F6 pct_ratio pred = normal x iso_g(x) per group of the ratio y / normal on a per-unit percentile stat (identity link
+-               only; a group with < MIN_FIT_ROWS rows takes the pooled ratio map). Built generic, enabled only by a
+-               registry that lists it.
++  F6 pct_ratio pred = normal x iso_g(x) per group of the ratio on a per-unit percentile stat (identity link only; a
++               group with < MIN_FIT_ROWS kept rows takes the pooled ratio map). Fitted as research C-A states (spec
++               Part B 4.4): on fit rows the normal is the row's (unit, season key) cell mean with the row itself left
++               out, N_loo = (S_c - y) / (n_c - 1) from the cell sum (the slim normal z0 must be the in-sample cell mean,
++               F6_NORMAL_TOL; rows of other cells dropped and counted, more than F6_MAX_INCOMPLETE_SHARE of the rows
++               refuses; one-row cells and N_loo <= 0 dropped and counted); the ratio y / N_loo is fitted with weights
++               N_loo^2 = squared error on the target. Prediction uses the scored rows' own normal z0. Built generic,
++               enabled only by a registry that lists it.
+ Isotonic maps: direction = the sign of Spearman of the pair the map fits, on the fit rows (F2, F6: x vs y; F4:
+ x - xbar vs link(y) - z0) (recorded; undefined -> increasing), sklearn
+ IsotonicRegression(increasing=..., out_of_bounds="clip"), squared error, knots kept as JSON and applied with np.interp
+-(the same piecewise-linear clip-extrapolated function). No weights. A map needs >= MIN_FIT_ROWS covered labelled rows
+-in >= MIN_FIT_GROUPS groups, else NotCalibratable. The L1 isotonic map (weighted-median pool-adjacent-violators) is
+-for the printed L1 line only (Q13); it never decides.
++(the same piecewise-linear clip-extrapolated function). No weights, except F6 (weights N_loo^2, Iso.fit's optional
++`weights`; None keeps the unweighted call). A map needs >= MIN_FIT_ROWS covered labelled rows in >= MIN_FIT_GROUPS
++groups, else NotCalibratable. The L1 isotonic map (weighted-median pool-adjacent-violators) is for the printed L1 line
++only (Q13); it never decides.
+ """
+ # Provenance: SPEC_HUMAN.txt 1.6, A4 (SHRINK_K), 6 (map family contract: fit(x, y, z0, link, c, ub, units, keys) ->
+ # MapModel; MapModel.predict(...) -> link-space z; MapModel.to_json()); engine layer/links.py:84 link_forward, :118
+@@ -102,10 +108,17 @@
+         self.increasing, self.rho, self.loss = bool(increasing), rho, loss
+ 
+     @classmethod
+-    def fit(cls, x: np.ndarray, t: np.ndarray, increasing: bool, rho: Optional[float]) -> "Iso":
++    def fit(cls, x: np.ndarray, t: np.ndarray, increasing: bool, rho: Optional[float],
++            weights: Optional[np.ndarray] = None) -> "Iso":
++        """Squared-error isotonic fit; `weights` (F6 only) become sklearn's sample_weight. With weights None the
++        call is the unweighted one every other family makes (byte-equal knots)."""
+         from sklearn.isotonic import IsotonicRegression
+         m = IsotonicRegression(increasing=bool(increasing), out_of_bounds="clip")
+-        m.fit(np.asarray(x, dtype=np.float64), np.asarray(t, dtype=np.float64))
++        if weights is None:
++            m.fit(np.asarray(x, dtype=np.float64), np.asarray(t, dtype=np.float64))
++        else:
++            m.fit(np.asarray(x, dtype=np.float64), np.asarray(t, dtype=np.float64),
++                  sample_weight=np.asarray(weights, dtype=np.float64))
+         return cls(m.X_thresholds_, m.y_thresholds_, increasing, rho)
+ 
+     @classmethod
+@@ -379,7 +392,18 @@
+         return d
+ 
+ 
++F6_NORMAL_TOL = 1e-12               # spec Part B 4.4: |cell mean of y - z0| on every row of a "complete" cell
++F6_MAX_INCOMPLETE_SHARE = 0.05      # spec Part B 4.4: more passed rows than this share in incomplete cells -> refuse
++
++
+ class F6PctRatio(MapModel):
++    """F6 (research C-A; PLAN rule 5; spec Part B 4.4). Fit rows: cells = (unit, season key) of the PASSED rows (the
++    covered labelled fit rows); the slim normal z0 must be the cell's in-sample mean (F6_NORMAL_TOL) - rows of cells
++    where it is not are dropped and counted, and more than F6_MAX_INCOMPLETE_SHARE of the passed rows refuses. Each
++    row's normal is then its cell mean with the row itself left out, N_loo = (S_c - y) / (n_c - 1) from the cell SUM
++    (never n_c z0 - y: float residues); cells of one row and rows with N_loo <= 0 are dropped and counted. The ratio
++    r = y / N_loo is fitted isotonic with weights N_loo^2, i.e. argmin sum (y - N_loo r(x))^2 (squared error on the
++    target), pooled and per group (>= MIN_FIT_ROWS kept rows). predict = the scored rows' own normal z0 x ratio(x)."""
+     family = "F6"
+ 
+     @classmethod
+@@ -387,21 +411,57 @@
+         if link != "identity":
+             raise NotCalibratable("F6 is defined on the identity link only (normal x ratio, target units)")
+         check_calibratable(y, keys["group"])
++        from rivals_human.common import refuse
+         m = cls(link, c, ub)
+         normal = np.asarray(z0, dtype=np.float64)
+-        ok = normal > 0
+-        inc, rho = spearman_sign(x, y)
++        inc, rho = spearman_sign(x, y)                   # direction on the passed rows, as before the edit
+         x, y, groups = np.asarray(x, dtype=np.float64), np.asarray(y, dtype=np.float64), keys["group"].astype(str).to_numpy()
+-        r = np.zeros_like(y)
+-        r[ok] = y[ok] / normal[ok]
+-        m.pooled = Iso.fit(x[ok], r[ok], inc, rho)
++        n_pass = int(y.size)
++        # cells (unit, season key) of the passed rows: count and SUM of y per cell
++        f = pd.DataFrame({"u": np.asarray(units).astype(str), "k": np.asarray(keys[C.SEASON_KEY]).astype(np.int64),
++                          "y": y})
++        cell = f.groupby(["u", "k"], sort=True).ngroup().to_numpy(np.int64)
++        n_cells = int(cell.max()) + 1                   # >= MIN_FIT_ROWS passed rows (checked above)
++        n_c = np.bincount(cell, minlength=n_cells).astype(np.int64)[cell]
++        s_c = f.groupby(cell, sort=True)["y"].sum().to_numpy(np.float64)[cell]
++        # normal check: z0 must be the in-sample cell mean on every row of a complete cell (NaN z0 -> incomplete)
++        diff = np.abs(s_c / n_c - normal)
++        row_bad = ~(diff <= F6_NORMAL_TOL)
++        cell_bad = np.bincount(cell, weights=row_bad.astype(np.float64), minlength=n_cells) > 0
++        complete = ~cell_bad[cell]
++        rows_incomplete = int((~complete).sum())
++        if rows_incomplete > F6_MAX_INCOMPLETE_SHARE * n_pass:
++            refuse("F6: %d of %d passed fit rows lie in (unit, season key) cells whose normal is not the in-sample "
++                   "cell mean of y (tolerance %g; max |difference| %r); the leave-one-out normal of the approved "
++                   "form assumes it (allowed share %g)"
++                   % (rows_incomplete, n_pass, F6_NORMAL_TOL, float(np.nanmax(diff)) if np.isfinite(diff).any()
++                      else float("nan"), F6_MAX_INCOMPLETE_SHARE),
++                   fix="hand F6 the fit set's own in-sample normal (the slim's nfit__ / ngd__ of the fit set)")
++        # leave-one-out normal from the cell sum
++        multi = complete & (n_c >= 2)
++        n_loo = np.full(n_pass, np.nan)
++        n_loo[multi] = (s_c[multi] - y[multi]) / (n_c[multi] - 1).astype(np.float64)
++        single = complete & (n_c < 2)
++        zero = multi & ~(n_loo > 0)
++        kept = multi & (n_loo > 0)
++        check_calibratable(y[kept], groups[kept], "F6 kept rows (leave-one-out normal > 0)")
++        nl = n_loo[kept]
++        r = y[kept] / nl
++        w = nl * nl
++        xk, gk = x[kept], groups[kept]
++        m.pooled = Iso.fit(xk, r, inc, rho, weights=w)
+         m.groups: Dict[str, Iso] = {}
+-        for g in sorted(set(groups[ok].tolist())):
+-            sel = ok & (groups == g)
++        for g in sorted(set(gk.tolist())):
++            sel = gk == g
+             if int(sel.sum()) >= C.MIN_FIT_ROWS:
+-                m.groups[g] = Iso.fit(x[sel], r[sel], inc, rho)
+-        m.info = {"rows_with_positive_normal": int(ok.sum()), "groups_own_map": len(m.groups),
+-                  "pooled": m.pooled.to_json()}
++                m.groups[g] = Iso.fit(xk[sel], r[sel], inc, rho, weights=w[sel])
++        m.info = {"rows": int(kept.sum()), "rows_passed": n_pass, "rows_kept": int(kept.sum()),
++                  "rows_incomplete_cell": rows_incomplete, "rows_single_row_cell": int(single.sum()),
++                  "rows_zero_loo_normal": int(zero.sum()), "rows_zero_loo_normal_burned": int((zero & (y > 0)).sum()),
++                  "normal_check_max_abs_diff": float(diff[complete].max()),     # over the complete cells' rows
++                  "weighted_level": float(np.dot(nl, y[kept]) / np.dot(nl, nl)),
++                  "normal_tol": F6_NORMAL_TOL, "max_incomplete_share": F6_MAX_INCOMPLETE_SHARE,
++                  "weights": "N_loo^2", "groups_own_map": len(m.groups), "pooled": m.pooled.to_json()}
+         return m
+ 
+     def predict(self, x, z0, units, keys):

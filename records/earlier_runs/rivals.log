@@ -1,0 +1,101 @@
+[23:04:04] ============================================================================================
+[23:04:04] PM2.5 NOWCAST RIVALS | FULL | rivals ['N', 'R'] | threads 6 | 105 features | test rows 95,856 | code 1c5f8e86e582
+[23:04:12]   N pick: {'k': 5, 'scale': 'log', 'damp': 0.0} (inner MAE 3.9686) (the corr2 pick differs: trial 16, 0.0525 vs 0.0321)
+[23:04:13]   N N  MAE 4.2392 anomR2 -0.0346 hit 0.526 | rival - nowref +0.0834 [-0.1429, +0.3096] CANNOT TELL  W/T/L(arch) 7/5/8
+[23:04:13]   rival N done in 0.1 min | peak RSS 2.08 GB | RSS 1.92 GB | free RAM 1.85 GB
+[23:04:16]   R: fit rows 1,342,397 (<=2016, holdout 27 regions excluded) | holdout scoring rows 96,697 | inner 71,892 | MOS check 1.8e-14 | geometric normal inner MAE 4.0703
+[23:07:05]     trial  0 {'alpha': 0.1, 'link': 'y'} -> A holdout MAE 9.8692 | B inner MAE 4.0642 (ck 0, lam 1, z dropped in 0 cells) | 2.8 min | peak RSS 3.35 GB | RSS 2.53 GB | free RAM 1.39 GB
+[23:11:06]     trial  1 {'alpha': 1, 'link': 'y'} -> A holdout MAE 9.8658 | B inner MAE 4.0642 (ck 0, lam 1, z dropped in 0 cells) | 4.0 min | peak RSS 3.36 GB | RSS 1.26 GB | free RAM 1.85 GB
+[23:14:09]     trial  2 {'alpha': 10, 'link': 'y'} -> A holdout MAE 9.8651 | B inner MAE 4.0642 (ck 0, lam 1, z dropped in 0 cells) | 3.0 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.60 GB
+[23:17:03]     trial  3 {'alpha': 100, 'link': 'y'} -> A holdout MAE 9.8624 | B inner MAE 4.0641 (ck 0, lam 1, z dropped in 0 cells) | 2.9 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.66 GB
+[23:19:47]     trial  4 {'alpha': 1000.0, 'link': 'y'} -> A holdout MAE 9.8463 | B inner MAE 4.0641 (ck 0, lam 1, z dropped in 0 cells) | 2.7 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.82 GB
+[23:22:31]     trial  5 {'alpha': 10000.0, 'link': 'y'} -> A holdout MAE 9.7460 | B inner MAE 4.0643 (ck 0, lam 1, z dropped in 0 cells) | 2.7 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.67 GB
+[23:25:21]     trial  6 {'alpha': 0.1, 'link': 'log1p'} -> A holdout MAE 8.5460 | B inner MAE 4.0456 (ck 0, lam 0.1, z dropped in 0 cells) | 2.8 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.10 GB
+[23:28:06]     trial  7 {'alpha': 1, 'link': 'log1p'} -> A holdout MAE 8.5451 | B inner MAE 4.0454 (ck 0, lam 0.1, z dropped in 0 cells) | 2.8 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.34 GB
+[23:30:52]     trial  8 {'alpha': 10, 'link': 'log1p'} -> A holdout MAE 8.5451 | B inner MAE 4.0446 (ck 0, lam 0.1, z dropped in 0 cells) | 2.8 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.29 GB
+[23:33:56]     trial  9 {'alpha': 100, 'link': 'log1p'} -> A holdout MAE 8.5417 | B inner MAE 4.0432 (ck 0, lam 0.1, z dropped in 0 cells) | 3.1 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 2.02 GB
+[23:37:12]     trial 10 {'alpha': 1000.0, 'link': 'log1p'} -> A holdout MAE 8.5304 | B inner MAE 4.0434 (ck 0, lam 0.1, z dropped in 0 cells) | 3.3 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.38 GB
+[23:40:19]     trial 11 {'alpha': 10000.0, 'link': 'log1p'} -> A holdout MAE 8.4808 | B inner MAE 4.0469 (ck 0, lam 0.1, z dropped in 0 cells) | 3.1 min | peak RSS 3.36 GB | RSS 0.92 GB | free RAM 3.50 GB
+[23:40:19]   PICK A: trial 11 checkpoint 0 (the corr2 pick differs: trial 5 ck 0, 0.3676 vs 0.3336)
+[23:40:19]   PICK B: trial 9 checkpoint 0 (the corr2 pick differs: trial 10 ck 0, 0.0233 vs 0.0232)
+[23:41:25]   BOARD B guard: inner MAE 4.0432 vs geometric normal 4.0703 -> PASSES | z dropped in 0 cells | 0 test rows > 3x their cell's max
+[23:41:26]   A R  MAE 10.1553 anomR2 -2.8501 hit 0.216 | rival - nowref +5.9964 [+2.5553, +9.4374] ARCHITECTURE BETTER  W/T/L(arch) 20/0/0
+[23:41:26]   B R  B-unguarded DIAGNOSTIC (raw MOS vs raw nowref): MAE 4.3437 | +0.1878 [+0.0286, +0.3470] ARCHITECTURE BETTER
+[23:41:26]   B R  MAE 4.3437 anomR2 -0.0283 hit 0.473 | rival - nowref +0.1878 [+0.0286, +0.3470] ARCHITECTURE BETTER  W/T/L(arch) 14/2/4
+[23:41:26]   rival R done in 37.2 min | peak RSS 3.36 GB | RSS 1.37 GB | free RAM 3.20 GB
+[23:41:26] ============================================================================================
+[23:41:26]   nowref (clean nowcast, same rows): MAE 4.1563 / anomR2 +0.060 | guess-normal 4.5334 | geo 4.3668
+[23:41:26]   board A  R  MAE 10.1553 anomR2 -2.8501 | rival - nowref +5.9964 [+2.5553, +9.4374]  ARCHITECTURE BETTER
+[23:41:26]   board B  R  MAE 4.3437 anomR2 -0.0283 | rival - nowref +0.1878 [+0.0286, +0.3470]  ARCHITECTURE BETTER
+[23:41:26]   board N  N  MAE 4.2392 anomR2 -0.0346 | rival - nowref +0.0834 [-0.1429, +0.3096]  CANNOT TELL
+[23:49:13] ============================================================================================
+[23:49:13] PM2.5 NOWCAST RIVALS | FULL | rivals ['G'] | threads 6 | 105 features | test rows 95,856 | code 1c5f8e86e582
+[23:49:17]   G: fit rows 1,342,397 (<=2016, holdout 27 regions excluded) | holdout scoring rows 96,697 | inner 71,892 | MOS check 1.8e-14 | geometric normal inner MAE 4.0703
+[23:59:44]     trial  0 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.3, 'link': 'y'} -> A holdout MAE 7.4792 | B inner MAE 4.0462 (ck 1000, lam 1, z dropped in 0 cells) | 10.5 min | peak RSS 3.15 GB | RSS 0.22 GB | free RAM 3.78 GB
+[00:10:59]     trial  1 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.8, 'link': 'y'} -> A holdout MAE 7.2085 | B inner MAE 4.0571 (ck 100, lam 1, z dropped in 0 cells) | 11.2 min | peak RSS 3.15 GB | RSS 0.96 GB | free RAM 3.81 GB
+[00:25:30]     trial  2 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.3, 'link': 'y'} -> A holdout MAE 7.5806 | B inner MAE 4.0645 (ck 1000, lam 1, z dropped in 0 cells) | 14.5 min | peak RSS 3.15 GB | RSS 0.16 GB | free RAM 4.27 GB
+[00:44:04]     trial  3 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.8, 'link': 'y'} -> A holdout MAE 7.2382 | B inner MAE 4.0545 (ck 100, lam 1, z dropped in 0 cells) | 18.6 min | peak RSS 3.15 GB | RSS 0.96 GB | free RAM 3.81 GB
+[00:55:16] ============================================================================================
+[00:55:16] PM2.5 NOWCAST RIVALS | FULL | rivals ['G'] | threads 6 | 105 features | test rows 95,856 | code e430721ce251
+[00:55:20]   G: fit rows 1,342,397 (<=2016, holdout 27 regions excluded) | holdout scoring rows 96,697 | inner 71,892 | MOS check 1.8e-14 | geometric normal inner MAE 4.0703
+[00:55:20]   RESUME G: 4 of 48 trials already done
+[00:55:20]   !! REDUCED GRID (Part 567): picks from 4 of 48 pre-registered trials: [{'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.3, 'link': 'y'}, {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.8, 'link': 'y'}, {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.3, 'link': 'y'}, {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.8, 'link': 'y'}]
+[00:55:20]   PICK A: trial 1 checkpoint 100 (the corr2 pick differs: trial 3 ck 1000, 0.5927 vs 0.5731)
+[00:55:20]   PICK B: trial 0 checkpoint 1000
+[00:58:57]   BOARD B guard: inner MAE 4.0462 vs geometric normal 4.0703 -> PASSES | z dropped in 0 cells | 0 test rows > 3x their cell's max
+[00:58:57]   G engine: {'lightgbm': '4.6.0', 'threads': 6}
+[00:58:59]   A G  MAE 9.3095 anomR2 -2.2082 hit 0.213 | rival - nowref +5.1491 [+2.1741, +8.1242] ARCHITECTURE BETTER  W/T/L(arch) 20/0/0
+[00:59:00]   B G  B-unguarded DIAGNOSTIC (raw MOS vs raw nowref): MAE 4.3281 | +0.1724 [+0.0082, +0.3366] ARCHITECTURE BETTER
+[00:59:00]   B G  MAE 4.3281 anomR2 -0.0049 hit 0.464 | rival - nowref +0.1724 [+0.0082, +0.3366] ARCHITECTURE BETTER  W/T/L(arch) 14/1/5
+[00:59:00]   rival G done in 3.7 min | peak RSS 2.90 GB | RSS 2.00 GB | free RAM 4.89 GB
+[00:59:01] ============================================================================================
+[00:59:01]   nowref (clean nowcast, same rows): MAE 4.1563 / anomR2 +0.060 | guess-normal 4.5334 | geo 4.3668
+[00:59:01]   board A  G  MAE 9.3095 anomR2 -2.2082 | rival - nowref +5.1491 [+2.1741, +8.1242]  ARCHITECTURE BETTER
+[00:59:01]   board A  R  MAE 10.1553 anomR2 -2.8501 | rival - nowref +5.9964 [+2.5553, +9.4374]  ARCHITECTURE BETTER
+[00:59:01]   board B  G  MAE 4.3281 anomR2 -0.0049 | rival - nowref +0.1724 [+0.0082, +0.3366]  ARCHITECTURE BETTER
+[00:59:01]   board B  R  MAE 4.3437 anomR2 -0.0283 | rival - nowref +0.1878 [+0.0286, +0.3470]  ARCHITECTURE BETTER
+[00:59:01]   board N  N  MAE 4.2392 anomR2 -0.0346 | rival - nowref +0.0834 [-0.1429, +0.3096]  CANNOT TELL
+[01:06:56] ============================================================================================
+[01:06:56] PM2.5 NOWCAST RIVALS | FULL | rivals ['H'] | threads 6 | 105 features | test rows 95,856 | code 745aa6110d0c
+[01:06:59]   H: tuning fit rows 2,127,178 (donors 1,793,679 + test-cell history 333,499, <=2016) | inner 71,892 | grid = the 4 Part-567 settings x (100, 300, 1000) rounds | geometric normal inner MAE 4.0703
+[01:08:37]     trial 0 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.3, 'link': 'y'} -> inner MAE 4.8512 (ck 1000) | 1.6 min | peak RSS 3.23 GB | RSS 1.64 GB | free RAM 3.07 GB
+[01:11:29]     trial 1 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 20, 'colsample_bytree': 0.8, 'link': 'y'} -> inner MAE 4.9115 (ck 1000) | 2.9 min | peak RSS 3.23 GB | RSS 1.64 GB | free RAM 2.07 GB
+[01:13:06]     trial 2 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.3, 'link': 'y'} -> inner MAE 4.8556 (ck 1000) | 1.6 min | peak RSS 3.23 GB | RSS 1.64 GB | free RAM 2.69 GB
+[01:15:42]     trial 3 {'num_leaves': 31, 'learning_rate': 0.1, 'min_child_samples': 100, 'colsample_bytree': 0.8, 'link': 'y'} -> inner MAE 4.8676 (ck 1000) | 2.6 min | peak RSS 3.23 GB | RSS 1.64 GB | free RAM 2.69 GB
+[01:15:42]   PICK H: trial 0 checkpoint 1000 (inner MAE 4.8512) (the corr2 pick differs: trial 2 ck 1000)
+[01:17:47]   H guard: inner MAE 4.8512 vs geometric normal 4.0703 -> FAILS: falls back to guess-normal
+[01:17:47]   H G  UNGUARDED DIAGNOSTIC (raw model vs raw nowref): MAE 5.3564 | +1.1996 [+0.9036, +1.4956] ARCHITECTURE BETTER
+[01:17:48]   H G  MAE 4.5334 anomR2 +0.0000 hit 0.440 | rival - nowref +0.3775 [+0.1529, +0.6022] ARCHITECTURE BETTER  W/T/L(arch) 16/1/3
+[01:17:48]   rival H done in 10.9 min | peak RSS 3.70 GB | RSS 1.49 GB | free RAM 2.78 GB
+[01:17:48] ============================================================================================
+[01:17:48]   nowref (clean nowcast, same rows): MAE 4.1563 / anomR2 +0.060 | guess-normal 4.5334 | geo 4.3668
+[01:17:48]   board A  G  MAE 9.3095 anomR2 -2.2082 | rival - nowref +5.1491 [+2.1741, +8.1242]  ARCHITECTURE BETTER
+[01:17:48]   board A  R  MAE 10.1553 anomR2 -2.8501 | rival - nowref +5.9964 [+2.5553, +9.4374]  ARCHITECTURE BETTER
+[01:17:48]   board B  G  MAE 4.3281 anomR2 -0.0049 | rival - nowref +0.1724 [+0.0082, +0.3366]  ARCHITECTURE BETTER
+[01:17:48]   board B  R  MAE 4.3437 anomR2 -0.0283 | rival - nowref +0.1878 [+0.0286, +0.3470]  ARCHITECTURE BETTER
+[01:17:48]   board H  G  MAE 4.5334 anomR2 +0.0000 | rival - nowref +0.3775 [+0.1529, +0.6022]  ARCHITECTURE BETTER
+[01:17:48]   board N  N  MAE 4.2392 anomR2 -0.0346 | rival - nowref +0.0834 [-0.1429, +0.3096]  CANNOT TELL
+[02:48:18] ============================================================================================
+[02:48:18] PM2.5 NOWCAST RIVALS | FULL | rivals ['M'] | threads 6 | 105 features | test rows 95,856 | code 8c6e945f6602
+[02:48:18]   merra2: M1 donor mapping log1p(y) = 0.896 + 0.675 log1p(pm) (2,177,990 donor rows)
+[02:49:13]   merra2 M2: inner MAE 3.7199 (shrink 0.1) vs geometric normal 4.0703 -> PASSES | z dropped in 0 cells
+[02:50:09]   merra2 MP: inner MAE 4.0711 (shrink 10, EDGE) vs geometric normal 4.0703 -> FAILS: falls back to guess-normal | z dropped in 0 cells
+[02:50:09]   C M0 MAE 15.1422 anomR2 -12.7805 hit 0.226 | rival - nowref +10.9947 [+2.8906, +19.0989] ARCHITECTURE BETTER  W/T/L(arch) 19/1/0
+[02:50:10]   C M1 MAE 9.8102 anomR2 -1.4515 hit 0.176 | rival - nowref +5.6544 [+2.6354, +8.6734] ARCHITECTURE BETTER  W/T/L(arch) 19/0/1
+[02:50:10]   C M2 UNGUARDED DIAGNOSTIC (raw MOS vs raw nowref): MAE 3.9260 | -0.2306 [-0.5101, +0.0488] CANNOT TELL
+[02:50:10]   C M2 MAE 3.9260 anomR2 +0.2992 hit 0.479 | rival - nowref -0.2306 [-0.5101, +0.0488] CANNOT TELL  W/T/L(arch) 7/3/10
+[02:50:11]   C MP UNGUARDED DIAGNOSTIC (raw MOS vs raw nowref): MAE 4.3662 | +0.2105 [+0.0322, +0.3888] ARCHITECTURE BETTER
+[02:50:11]   C MP MAE 4.5334 anomR2 +0.0000 hit 0.440 | rival - nowref +0.3775 [+0.1529, +0.6022] ARCHITECTURE BETTER  W/T/L(arch) 16/1/3
+[02:50:11]   rival M done in 1.9 min | peak RSS 2.19 GB | RSS 1.92 GB | free RAM 4.10 GB
+[02:50:11] ============================================================================================
+[02:50:11]   nowref (clean nowcast, same rows): MAE 4.1563 / anomR2 +0.060 | guess-normal 4.5334 | geo 4.3668
+[02:50:11]   board A  G  MAE 9.3095 anomR2 -2.2082 | rival - nowref +5.1491 [+2.1741, +8.1242]  ARCHITECTURE BETTER
+[02:50:11]   board A  R  MAE 10.1553 anomR2 -2.8501 | rival - nowref +5.9964 [+2.5553, +9.4374]  ARCHITECTURE BETTER
+[02:50:11]   board B  G  MAE 4.3281 anomR2 -0.0049 | rival - nowref +0.1724 [+0.0082, +0.3366]  ARCHITECTURE BETTER
+[02:50:11]   board B  R  MAE 4.3437 anomR2 -0.0283 | rival - nowref +0.1878 [+0.0286, +0.3470]  ARCHITECTURE BETTER
+[02:50:11]   board C  M2 MAE 3.9260 anomR2 +0.2992 | rival - nowref -0.2306 [-0.5101, +0.0488]  CANNOT TELL
+[02:50:11]   board C  MP MAE 4.5334 anomR2 +0.0000 | rival - nowref +0.3775 [+0.1529, +0.6022]  ARCHITECTURE BETTER
+[02:50:11]   board C  M1 MAE 9.8102 anomR2 -1.4515 | rival - nowref +5.6544 [+2.6354, +8.6734]  ARCHITECTURE BETTER
+[02:50:11]   board C  M0 MAE 15.1422 anomR2 -12.7805 | rival - nowref +10.9947 [+2.8906, +19.0989]  ARCHITECTURE BETTER
+[02:50:11]   board H  G  MAE 4.5334 anomR2 +0.0000 | rival - nowref +0.3775 [+0.1529, +0.6022]  ARCHITECTURE BETTER
+[02:50:11]   board N  N  MAE 4.2392 anomR2 -0.0346 | rival - nowref +0.0834 [-0.1429, +0.3096]  CANNOT TELL

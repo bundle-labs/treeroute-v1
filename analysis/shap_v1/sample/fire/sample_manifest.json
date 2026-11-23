@@ -1,0 +1,77 @@
+{
+ "background_keys_removed_missing_context": {
+  "0": 0,
+  "12": 0,
+  "6": 0
+ },
+ "background_rows": {
+  "0": {
+   "max": 16,
+   "median": 16.0,
+   "min": 2
+  },
+  "12": {
+   "max": 15,
+   "median": 15.0,
+   "min": 2
+  },
+  "6": {
+   "max": 16,
+   "median": 15.0,
+   "min": 2
+  }
+ },
+ "defo_regions": 0,
+ "excluded_no_background": [],
+ "excluded_sentinel_or_no_background": [],
+ "frame_rows": 94702,
+ "leads": [
+  0,
+  6,
+  12
+ ],
+ "models_in_frame": {
+  "0": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie"
+  ],
+  "12": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie"
+  ],
+  "6": [
+   "ridge",
+   "rf",
+   "lgbm",
+   "lgbm_tweedie"
+  ]
+ },
+ "n": 1000,
+ "n_asked": 1000,
+ "problem": "fire",
+ "regions_in_sample": 40,
+ "rows_per_year": {
+  "2019": 261,
+  "2020": 238,
+  "2021": 245,
+  "2022": 256
+ },
+ "rule": "PROTOCOL.md section 3 (v3)",
+ "selection": {
+  "regions": 40,
+  "units_per_region": 7,
+  "years": 4
+ },
+ "sha256": {
+  "background_lead_0.parquet": "8d1ecbddbd0f44bca9fc8eb116f379c78e0dd3954d60d6255a195c4d09e30ed1",
+  "background_lead_12.parquet": "46501a4f99a2dbb3ac1028bd2c5b3ec9f3c4bf318e8d4739eb284896f366960c",
+  "background_lead_6.parquet": "312b8a52bff7103d359a044d61eb8f4a4b2a718cb38b2e4b510e292d78c3360d",
+  "sample.parquet": "1edbc3d1d690c3a716b9c9c5f77884288ed03a20f9a0f2e1123b76a79c8a53d2"
+ },
+ "tag": "v1",
+ "units_in_sample": 280
+}

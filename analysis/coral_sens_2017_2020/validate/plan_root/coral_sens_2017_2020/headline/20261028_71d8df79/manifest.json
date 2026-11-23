@@ -1,0 +1,1729 @@
+{
+ "argv": [
+  "tools/launch_engine.py",
+  "plan",
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\validate\\preview_package\\coral_sens_2017_2020",
+  "--run-root",
+  "D:\\treeroute\\analysis\\coral_sens_2017_2020\\validate\\plan_root"
+ ],
+ "config": {
+  "context_list": [
+   "ctx_month",
+   "ctx_doy_sin",
+   "ctx_doy_cos",
+   "ctx_abslat",
+   "ctx_mmm"
+  ],
+  "data": {
+   "content_sha256": "ee0c7e46e5026b85cfde50f2b98d04369f1ae4b542f33aef0d105e4d816635ed",
+   "files": [
+    {
+     "columns": 85,
+     "lead": 0,
+     "mtime_ns": 1793188113806442400,
+     "path": "D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_0.parquet",
+     "rows": 13723,
+     "sha256": "f7c3a0bcd0ff7bf7ee8ee026f3f59bdb039fa54966ae5ac54761cefdf7169ca8",
+     "size": 3626568
+    },
+    {
+     "columns": 85,
+     "lead": 183,
+     "mtime_ns": 1793188114179332500,
+     "path": "D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_183.parquet",
+     "rows": 13715,
+     "sha256": "59679e3bdbcd0ca5f8967ba55cbb6c849be4287ca7caecc85f1f5dd011864165",
+     "size": 3429938
+    },
+    {
+     "columns": 85,
+     "lead": 365,
+     "mtime_ns": 1793188114558372000,
+     "path": "D:/treeroute/analysis/coral_sens_2017_2020/validate/preview_tables/lead_365.parquet",
+     "rows": 13715,
+     "sha256": "78f36bb387c4572dc98205681c3b8d654e893c121ff368957c9b1bd2be65ab06",
+     "size": 3596087
+    }
+   ],
+   "input": "table",
+   "run_rows": 13679,
+   "run_units": 8138,
+   "target_rows": 13723,
+   "units": 8164
+  },
+  "derived_sha256": "574d080559cee060db11c8d8ad2cdae5202b68d94398cababdb5a5e6b3c4a5f9",
+  "draft": {
+   "is_draft": true,
+   "stamp": "DRAFT -- declared coral 2017-2020 sensitivity row (ruling V3; run under ruling AN3), never the headline",
+   "stamped_verdicts": 0,
+   "where": [
+    "dataset.yaml description"
+   ]
+  },
+  "driver_files_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "engine_constants_sha256": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b",
+  "feature_list": [
+   "dhw_30",
+   "hs_max_30",
+   "n_above_mmm_30",
+   "n_above_mmm1_30",
+   "cool_30",
+   "dhw_56",
+   "hs_max_56",
+   "n_above_mmm_56",
+   "n_above_mmm1_56",
+   "cool_56",
+   "dhw_84",
+   "hs_max_84",
+   "n_above_mmm_84",
+   "n_above_mmm1_84",
+   "cool_84",
+   "dhw_90",
+   "hs_max_90",
+   "n_above_mmm_90",
+   "n_above_mmm1_90",
+   "cool_90",
+   "dhw_180",
+   "hs_max_180",
+   "n_above_mmm_180",
+   "n_above_mmm1_180",
+   "cool_180",
+   "dhw_365",
+   "hs_max_365",
+   "n_above_mmm_365",
+   "n_above_mmm1_365",
+   "cool_365",
+   "days_since_max_hs",
+   "slope_90",
+   "n_dhw_ge8_before",
+   "days_since_dhw4",
+   "mhw_days_365",
+   "mhw_days_90",
+   "mhw_days_30",
+   "mhw_icum_90",
+   "mhw_imax_90",
+   "mhw_nev_365",
+   "mhw_durmax_365",
+   "mhw_since_end",
+   "mhw_cat_max_90",
+   "mhw_thr_gap",
+   "cyc_mindist_30",
+   "cyc_maxw_200_30",
+   "cyc_n_200_30",
+   "cyc_maxw_500_30",
+   "cyc_n_500_30",
+   "cyc_mindist_90",
+   "cyc_maxw_200_90",
+   "cyc_n_200_90",
+   "cyc_maxw_500_90",
+   "cyc_n_500_90",
+   "cyc_mindist_365",
+   "cyc_maxw_200_365",
+   "cyc_n_200_365",
+   "cyc_maxw_500_365",
+   "cyc_n_500_365",
+   "cyc_days_since_close",
+   "nino34a_lag3",
+   "nino34a_lag6",
+   "nino34a_lag9"
+  ],
+  "groups": [
+   "Andaman Islands",
+   "Andaman Sea",
+   "Austral Islands, French Polynesia",
+   "Bahamas and Florida Keys",
+   "Banda Sea and Molucca Islands",
+   "Bay of Campeche, Yucatan, Gulf of Mexico",
+   "Belize and west Caribbean",
+   "Bermuda",
+   "Bismarck Sea, New Guinea",
+   "Brazil",
+   "Caroline Islands, Micronesia",
+   "Celebes Sea",
+   "Cenderawasih Bay, Papua",
+   "Central and northern Great Barrier Reef",
+   "Chagos Archipelago",
+   "Christmas Island, Indian Ocean",
+   "Cocos Keeling Atolls, Indian Ocean",
+   "Cook Islands, south-west Pacific",
+   "Coral Sea",
+   "Costa Rica and Panama, Pacific coast",
+   "Cuba and Cayman Islands",
+   "Eastern Hawaii",
+   "Eastern coast South Africa",
+   "Fiji",
+   "Flower Garden Banks, Gulf of Mexico",
+   "Gilbert Islands, west Kiribati",
+   "Gulf of Aden",
+   "Gulf of Oman",
+   "Gulf of Thailand",
+   "Gulf of Tomini, Indonesia",
+   "Hispaniola, Puerto Rico and Lesser Antilles",
+   "Hong Kong",
+   "Honshu, Japan",
+   "Jamaica",
+   "Java Sea",
+   "Johnston Atoll, north central Pacific",
+   "Kenya and Tanzania coast",
+   "Lakshadweep Islands",
+   "Lesser Sunda Islands and Savu Sea",
+   "Makassar Strait, Indonesia",
+   "Maldive Islands",
+   "Marianas",
+   "Marshall Islands",
+   "Mascarene Islands",
+   "Mayotte and Comoros",
+   "Milne Bay, Papua New Guinea",
+   "Moreton Bay, eastern Australia",
+   "Netherlands Antilles and south Caribbean",
+   "New Caledonia",
+   "Ningaloo Reef and coastal north-west Australia",
+   "North Madagascar",
+   "North Mozambique coast",
+   "North Myanmar and Bangladesh",
+   "North Philippines",
+   "North Ryukyu Islands, Japan",
+   "North Sri Lanka and east India",
+   "North Vietnam",
+   "North and central Red Sea",
+   "Northern Seychelles",
+   "Ogasawara Islands, Japan",
+   "Palau",
+   "Persian Gulf",
+   "Phoenix Islands, central Kiribati",
+   "Pohnpei and Kosrae, Micronesia",
+   "Samoa, Tuvalu and Tonga",
+   "Shikoku, Japan",
+   "Society Islands, French Polynesia",
+   "Socotra Archipelago",
+   "Solomon Islands and Bougainville",
+   "South Madagascar",
+   "South Mozambique coast",
+   "South Red Sea",
+   "South Ryukyu Islands, Japan",
+   "South Vietnam",
+   "South-east Philippines",
+   "Southern Great Barrier Reef",
+   "Strait of Malacca",
+   "Sulu Sea",
+   "Sunda Shelf, south-east Asia",
+   "Taiwan and coastal China",
+   "Vanuatu",
+   "West Sumatra",
+   "Western Tuamotu Archipelago, central Pacific"
+  ],
+  "input": "table",
+  "kind": "headline",
+  "package": "coral_sens_2017_2020",
+  "package_fingerprint": "96f81747b491b36b28aa5cb143a2f4cb3c838a973433ae0a0cda9a37df42f8b5",
+  "static_files_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "strata": [
+   "programme"
+  ],
+  "target_files_sha256": "42b1b940f19fdf32ce55eb2f68866e291e842d8cc6fa22d474de5e3c6bfa4cb8",
+  "trees_per_group": 100
+ },
+ "created_utc": "2026-10-28T11:49:24+00:00",
+ "engine_code_hash": "85c64b55c02e638cfcb7cefb0fe92af4870d4faed5c21e3f46bbdcbcd0e3a678",
+ "engine_constants": [
+  {
+   "id": "C1.test_years",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "C1.test_years_short_record",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 3
+  },
+  {
+   "id": "C2.inner_score_years",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 3
+  },
+  {
+   "id": "C2.inner_score_years_short_record",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "C2.inner_fit_min_years",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1
+  },
+  {
+   "id": "C3.coverage_group_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.5
+  },
+  {
+   "id": "C3.coverage_row_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.9
+  },
+  {
+   "id": "C4.first_year_from_lag_sources_only",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C5.per_unit_min_valid_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 24
+  },
+  {
+   "id": "C5.region_min_valid_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "C6.lead_months",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    6,
+    12
+   ]
+  },
+  {
+   "id": "C6.months_per_year",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 12
+  },
+  {
+   "id": "C6.days_per_year",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 365.25
+  },
+  {
+   "id": "C6.lead_rounding",
+   "status": "cited",
+   "test_exposed": false,
+   "value": "half_up"
+  },
+  {
+   "id": "C6.lead_zero_contract",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C7.bank_units_per_group",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 100
+  },
+  {
+   "id": "C7.submonthly_rows_per_group_year",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1200
+  },
+  {
+   "id": "C7.event_floor_per_group",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C7.event_quantile",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.9
+  },
+  {
+   "id": "C7.region_router_row_budget",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 60000
+  },
+  {
+   "id": "C8.neighbour_folds_leave_one_group_out",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C9.guard_tolerance_k",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 5.230771281733543e-08
+  },
+  {
+   "id": "C9.identity_gate",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1e-06
+  },
+  {
+   "id": "C9.k_min_multiple_of_arith_error",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C9.measured_arith_error",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 9e-08
+  },
+  {
+   "id": "C10.fallback_flag_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.05
+  },
+  {
+   "id": "C10.borderline_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.2
+  },
+  {
+   "id": "C10.thin_group_rows_per_router_column",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 20
+  },
+  {
+   "id": "C10.context_missing_flag_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.05
+  },
+  {
+   "id": "C11.neighbour_pool_distance",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 150
+  },
+  {
+   "id": "C11.neighbour_pool_feature",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 50
+  },
+  {
+   "id": "C11.neighbour_pool_min_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 12
+  },
+  {
+   "id": "C12.per_unit_trees_centre",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 0.5
+  },
+  {
+   "id": "C12.per_unit_context_centre",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 0.25
+  },
+  {
+   "id": "C12.neighbour_trees_centre",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 0.5
+  },
+  {
+   "id": "C12.neighbour_context_centre",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 0.25
+  },
+  {
+   "id": "C12.region_lambda_centre",
+   "status": "cited",
+   "test_exposed": true,
+   "value": 100.0
+  },
+  {
+   "id": "C12.penalty_levels",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    0.1,
+    0.3,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0
+   ]
+  },
+  {
+   "id": "C12.penalty_ratios",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0
+   ]
+  },
+  {
+   "id": "C12.region_penalty_levels",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    0.1,
+    0.3,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0
+   ]
+  },
+  {
+   "id": "C13.trees_per_group",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 100
+  },
+  {
+   "id": "C13.bag_min_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 30
+  },
+  {
+   "id": "C13.bag_fraction",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.5
+  },
+  {
+   "id": "C13.bag_with_replacement",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C13.tree_max_depth",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "C13.tree_min_leaf",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 5
+  },
+  {
+   "id": "C13.tree_max_features",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.1
+  },
+  {
+   "id": "C13.tree_criterion",
+   "status": "cited",
+   "test_exposed": false,
+   "value": "squared_error"
+  },
+  {
+   "id": "C13.tree_dtype",
+   "status": "cited",
+   "test_exposed": false,
+   "value": "float32"
+  },
+  {
+   "id": "C13.oob_share_tolerance_sigmas",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 5.0
+  },
+  {
+   "id": "C13.corrector_max_depth",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 6
+  },
+  {
+   "id": "C13.corrector_min_leaf",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C13.corrector_min_oob_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 50
+  },
+  {
+   "id": "C13.gls_trees",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 120
+  },
+  {
+   "id": "C13.gls_max_depth",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "C13.gls_min_leaf",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 20
+  },
+  {
+   "id": "C13.gls_max_features",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1.0
+  },
+  {
+   "id": "C13.gls_bootstrap",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C13.gls_random_state",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0
+  },
+  {
+   "id": "C13.gls_threads",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "C13.gls_sigma_floor_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.01
+  },
+  {
+   "id": "C13.gls_clip_quantiles",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    0.05,
+    0.95
+   ]
+  },
+  {
+   "id": "C13.gls_weight_ratio_cap",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 100.0
+  },
+  {
+   "id": "C13.smoke_units_per_group",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 40
+  },
+  {
+   "id": "C13.smoke_trees_per_group",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 12
+  },
+  {
+   "id": "C13.smoke_groups",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "C14.forest_threads",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "C14.blas_threads",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "C14.tree_predict_workers",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "C14.router_workers",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "C14.router_worker_blas_threads",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1
+  },
+  {
+   "id": "C14.sklearnex_required",
+   "status": "cited",
+   "test_exposed": false,
+   "value": true
+  },
+  {
+   "id": "C14.table_row_block_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 12288
+  },
+  {
+   "id": "C15.missing_flag_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.25
+  },
+  {
+   "id": "C15.min_groups",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 3
+  },
+  {
+   "id": "C15.flag_groups_below",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 14
+  },
+  {
+   "id": "C15.fallback_min_units_for_search",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C16.k_group_equivalents",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 20
+  },
+  {
+   "id": "C16.scored_units_min",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C17.rival_folds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "C18.last_value_max_months",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "A7.inner_cut_bank_refit",
+   "status": "cited",
+   "test_exposed": true,
+   "value": true
+  },
+  {
+   "id": "S2.history_last_values",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 3
+  },
+  {
+   "id": "S2.history_trailing_years",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    1,
+    5
+   ]
+  },
+  {
+   "id": "S2.log_c_quantile",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.01
+  },
+  {
+   "id": "S2.link_distinct_values_above",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "S2.recent_normal_years",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 5
+  },
+  {
+   "id": "S2.hit_tolerance_deviation_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.5
+  },
+  {
+   "id": "S2.detection_top_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.1
+  },
+  {
+   "id": "S2.detection_min_events",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 10
+  },
+  {
+   "id": "S2.detection_max_event_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.5
+  },
+  {
+   "id": "S2.jackknife_z",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1.96
+  },
+  {
+   "id": "S5.sentinel_mask_abs",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1e+30
+  },
+  {
+   "id": "S5.sentinel_flag_abs",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1073741824.0
+  },
+  {
+   "id": "S5.cadence_constancy_tolerance",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.001
+  },
+  {
+   "id": "S5.support_min_distinct_values",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "S1.unit_id_latlon_decimals",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4
+  },
+  {
+   "id": "V1.check_sample_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1000
+  },
+  {
+   "id": "V1.check_sample_rel_tolerance",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1e-09
+  },
+  {
+   "id": "V2.range_refuse_share",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 0.001
+  },
+  {
+   "id": "V3.known_fill_codes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    -9999.0,
+    -999.0,
+    -32768.0,
+    -32767.0,
+    32767.0,
+    65535.0,
+    -2147483648.0,
+    -2147483647.0,
+    2147483647.0,
+    -2147450880.0,
+    1e+20,
+    9.969209968386869e+36,
+    -3.4028234663852886e+38,
+    3.4028234663852886e+38
+   ]
+  },
+  {
+   "id": "V4.hist_sample_lags",
+   "status": "cited",
+   "test_exposed": false,
+   "value": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "V5.check_deep_workers",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "P1.reader_file_value_bytes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "P1.reader_file_row_bytes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 160
+  },
+  {
+   "id": "P2.gls_matrix_build_bytes_per_value",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 9
+  },
+  {
+   "id": "P2.gls_answer_read_bytes_per_cell",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 8
+  },
+  {
+   "id": "P2.gls_answer_read_bytes_per_row",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 64
+  },
+  {
+   "id": "P2.gls_answer_block_bytes_per_cell",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 12
+  },
+  {
+   "id": "P2.gls_forest_bytes_per_value",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1
+  },
+  {
+   "id": "P2.gls_forest_bytes_per_row",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 64
+  },
+  {
+   "id": "P3.nowcast_table_kinds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 3
+  },
+  {
+   "id": "P3.lead_table_kinds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "P4.pool_fill_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 50000
+  },
+  {
+   "id": "P5.donor_block_values",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 4194304
+  },
+  {
+   "id": "V6.cadence_compare_rel_tolerance",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1e-09
+  },
+  {
+   "id": "V7.large_fill_code_rel_tolerance",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 1e-06
+  },
+  {
+   "id": "P6.census_checkpoint_chunks",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 100
+  },
+  {
+   "id": "P6.census_checkpoint_seconds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 60
+  },
+  {
+   "id": "P6.checkpoint_census_unit_bytes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 128
+  },
+  {
+   "id": "P6.checkpoint_census_bit_copies",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 2
+  },
+  {
+   "id": "P6.checkpoint_r30_group_bytes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 262144
+  },
+  {
+   "id": "P6.checkpoint_r30_feature_bytes",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 256
+  },
+  {
+   "id": "P7.room_poll_seconds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 30
+  },
+  {
+   "id": "P7.room_note_seconds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 600
+  },
+  {
+   "id": "P7.room_max_wait_seconds",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 43200
+  },
+  {
+   "id": "P7.room_top_programs",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 5
+  },
+  {
+   "id": "P7.reader_batch_rows",
+   "status": "cited",
+   "test_exposed": false,
+   "value": 65536
+  }
+ ],
+ "engine_constants_hash": "3ef147e5959c04166e3dbcd603723259d9c8ed0adab2d34dd4755662fc1e3a5b",
+ "engine_modules": {
+  "__init__.py": "dcc731f53a453509253aec6db55ce4f50395073cee001241b53cad215e6b4a15",
+  "__main__.py": "78f8427c01a14433f58dd1af6f327791b5f3a3d63d0016bc383fc0a108e405a5",
+  "check/__init__.py": "349344e0fef4113a04bd81c89a3fb45aca1ba154858c2c534658cdc4ed91f541",
+  "check/deep.py": "4c6b07b495be06379d5c631d30c355cd206a5c03c27ebb233048f4c785feb574",
+  "check/facts.py": "80170d8c4b56cb3ee52b912e334c7f50ae5cfb195362b172de2e2728612b2e09",
+  "check/guards.py": "601685deee604805247c5f1f8d87b6089e08ed68d6be21b2b6fa4e5e72c80f88",
+  "check/quick.py": "3d9343b10766ba785fa4104fbb1d6c665ee6fcf78af05b93a7a85a1a90bad8ca",
+  "check/recompute.py": "61eb451e2938e547d78b389b20ce4db40839bbc763285859886de52a95d1991b",
+  "check/report.py": "64ba6e88f4e85584f5d32ed3f2233f67fc62163fdc3520b17f4f680654b4d78a",
+  "check/table.py": "b71fbc0372d247aaff15ddd37ecad5f39ea40e9c2d69d5ae5a3e72346bc0ccc8",
+  "cli.py": "07a93beaca44f3aad9ba509101d278e4d725b1d82a57e2444044564747cf72b5",
+  "derive/__init__.py": "f4b7ccd02313fe6f11af702ba4ec5194bdecda55e9351d7a960b4b8ad35c90b1",
+  "derive/census.py": "6c9464cdb6f1e829d02a8ad0d51608bd336a541952bd26ebeb43ae117f5b9c7b",
+  "derive/derived.py": "663e810e71ca777117ce180f2efb764238c03a1c99481c2f633dfbd439012b22",
+  "derive/orchestrate.py": "a2ddef1baacf9bd4dae99f2f23db97f0d607d10a5c73a1c02c058e9cc8ae0409",
+  "derive/router_rules.py": "4cbcb9c9fa4653688819f422ed5f2050a30b09912e64f3a092a8ceb076fc3726",
+  "derive/rules.py": "b4deaf0aaf712a48826e59d02d8971b9fcd619dd90cb80f02633a2b9b01c3f03",
+  "derive/shapes.py": "eb934d61ed7782092dc4015f3c5db1611d8bd553d6242cbe35852bc2cfb86a5a",
+  "derive/table.py": "5c6c5948b93a31f86ffdb18e4fdf6dd1adee69762a3cc6d77a7a69aad673c763",
+  "derive/unit_rules.py": "6c4e0c162f122bf22e0bee63971733c34aa31e9af83786e781b2d405803719b6",
+  "engine_constants.py": "6201edd25543b4a96c915b9c8b72af84cdcf279b68608d717472cc04d6a8f46e",
+  "errors.py": "17d9cdcee2c43c1ffe9024fc8e393afe69c7eb72c6666593052aac733df87141",
+  "fit/__init__.py": "2ceb0b8ce2bc80bf0901c1e7f80db36f325ab2a94c6073c6de46aa1072c24c75",
+  "fit/bank.py": "0861f2e77c2b6b0a94cd1265972b6e6946fd1470fb7bf147bcfa5c49fd39f017",
+  "fit/context.py": "b0864b3d56c3a7f5dd54750c8c4c444a850441159870596d2cc104cf2c8df160",
+  "fit/correctors.py": "d85d9e59e8dfe01927645707d95a8ed62b0667778db16f062dc5dedd6a4e9816",
+  "fit/pool.py": "a797059db5e1acb906e8d5f418d841b268e4c07e7600ad302f75be7efd00d89a",
+  "fit/tables.py": "a69087dfac55628f86716a966c40be8f2c3e76121c63bf1e707fc603b1ecb08b",
+  "fit/weights.py": "aa7694c1c2b2989aa322296ff455c99ea237506dfbc9831a390615bdc2eea156",
+  "io/__init__.py": "51665dfb58d3cde8bb4331007c3304a294cd35f76c053053d7927d845a71a9e1",
+  "io/aggregate.py": "7ade8217ca9521c9b7ffd5ae5a02b5f4c1fb8d37b3bde0e7f19e31d8b80f9b6a",
+  "io/apply.py": "59282ed3659d65a74af9f500a4d37bb3a07d22a8f93cad0472a76767414ce974",
+  "io/checks.py": "dd67eecd88ee51bb9ae52ab5a58bf654d929846255ed5b35841b5c34020fb5ca",
+  "io/joins.py": "465535483f77be9dea68bb51851d9b15d9320c09cccc2a8816f8b161dfd044a1",
+  "io/lastvalue.py": "efb8f0b8412868fc3da2906646ccb3c5ba2ecb15a717581b43e5cfc4ef99a75f",
+  "io/listing.py": "db009ac594b9b2063e00a8527d6535e029354b8bad00da64a18b956b89b47ba7",
+  "io/readers.py": "e80f67f2789d55fb45e07e8b80911812c81981289fc6de5d03a346bae610e12b",
+  "io/sentinel.py": "24719ac4f4e368a27f4023b0e29af23642ef3800cbdd3ed93693200365f65566",
+  "io/steps.py": "b628f798c9cd7a2d5453a265f92c58dfd549c458d16669fc2c08c7c001162118",
+  "labels/__init__.py": "c9cb94fa9771e51c1b4445a659096b348261cc1ac9fabe41440385b2b2e5d24e",
+  "labels/rows.py": "11f1b2586ce6a292da28b8c53fd77d968a586227b7b6fb5362f31f387fe06c21",
+  "labels/vault.py": "d62c44316d260a6be93b0348dec57b1ba9c383e1b3e52529a7731a6ce224687c",
+  "launch.py": "4fa4de7424342948e8741b5702c077ff38ad57f94b3527d3b788d3bbfc5b8c00",
+  "layer/__init__.py": "361755acffb70f03c8f22a58506cae6d57942de02ff7bd429c3880f78639b290",
+  "layer/arms.py": "a91fe4184222d46483cb9b34858df402664545ef8d0ced3414cf4cbc5f4d7178",
+  "layer/decide.py": "748a9051f9dd495f4b7292c287e9eebcf05d1cdac1cf7852be415159600c3fd2",
+  "layer/links.py": "7b29ccfca2f8debb1db8d2047b4f5f1396dc4516e0a09bca910445b7f83923c5",
+  "package/__init__.py": "5d6d325e5acfefda68e65ea072e89dd2b02f2a2709e4f5d63701d06b90b8c234",
+  "package/load.py": "76e1aa7f1ad2c8542f85d1b13d47f99a7bfef242016b2fae0ba441a040d54758",
+  "package/schema.py": "8cb696cd1f89bc4bbd9b654333862a98a85d24c0cb0227d457fd298bb37ebb58",
+  "package/table.py": "459fb78222ac6d5542f169e1f59406f2143832bd1fa804600f44172896d9a692",
+  "pipeline/__init__.py": "3bd1c3f18727b6a3c03d417c0cab6df6d591d25249b10b86ac5296a19ea58aca",
+  "pipeline/data.py": "b1a7255be0e0b69bed7c73380d4daa04556cd5172fdc783cb1d82ed7dab359e2",
+  "pipeline/draft.py": "bf6e844f28abebc9a183f1c4af752726c00bb7066c4b16910d30f31e4b5465e1",
+  "pipeline/ladder.py": "dfd7da046f188d58f7e6709cd72b3bb4ab69536c30cbcf920ad0605cf93a23e0",
+  "pipeline/passes.py": "91de3f2d691e5dbe7b85c364a8d71682f7f32e0123c96202b15b58c1932122f7",
+  "pipeline/record.py": "e081952dad5dd5e23a2ed946b653660fb8af4997e87a83e0a080beba179def2c",
+  "pipeline/router.py": "a1681a1e27b6ffb21b7f48600c6ffe19fa2a50410db05621201da6cd0ea63eb0",
+  "pipeline/run.py": "58e074ceeac5376e806ef1e1457324685a1e4d62a6e980375c08240c522fc91e",
+  "pipeline/stages.py": "716533f42740ad4705669d2a44c1848d67dfa63bf04465ec1d71be8145fa4004",
+  "pipeline/stream.py": "6bf308869629e30e9066edd641da1c73e353e6291fc2e6c1cdefd6714a668e45",
+  "pipeline/table_ladder.py": "97d267273758265a0691a86d51db8400a23d5d18fd727b70522fce4dae6ab038",
+  "pipeline/table_passes.py": "921d964fdddf8211e6a9074ec0a93ffd7425e4c9502045ef3f21a6470722b7b7",
+  "pipeline/table_router.py": "4741f8a9946f35d4d0aa39081f3966f057845fb002aaa8800188e458fee773d7",
+  "pipeline/table_run.py": "fba3bd05426a2668d91cf54669ad6bb45313e6011d5320f78a2251903822e8d5",
+  "report/__init__.py": "111d8e93f5196732a7dfa11401f84c81b8b2238760bcc5d416a13c3db9023693",
+  "report/metrics.py": "6c9234a6a3d785913a288498278dd9072bb6e2241bfef3171a9988ef4a38dbcd",
+  "route/__init__.py": "1f8c18f79df5ca7c5bac01b606bf9610dee2ae7f5080beab794ab3f7a2796d12",
+  "route/kinds.py": "3741a0a246f716161b59a80a0af5fa15579dde0239829a2bc7c2d064ae31fb29",
+  "route/neighbour.py": "3e2745b66bc27ffbe42c76b0739e08dd9023402647c632f30afda0242f2a8111",
+  "route/region.py": "f4fd675108e1694d259d39bf81a04fb0defa849a4d4c163e6e8751142cc10c3d",
+  "route/solve.py": "8d2fef82c17356144d7863e179cd182e20523b435a61da8046c02d9ef2c02640",
+  "runs/__init__.py": "796289adede8ed47bb81921a03ae7afeda5375acf392f86d4a7ecf8b239eb8bf",
+  "runs/atomic.py": "cb26600e4e0f1160736e0060bf493bec3ebea5691eaa20fcc2c43ce0c065d345",
+  "runs/checkpoint.py": "d88cedc63c8c063f55f4cae3bf5a49cb62f68bf98597737182c640514521192a",
+  "runs/fingerprint.py": "d49f0359fff48c3e9140950b1b4325b6102547a2d14e23654a98998177ea5070",
+  "runs/machine.py": "63744e72602dbd4e70a71b08bcfb6aa69a02f8f31a9e391704757e96b1adb2b6",
+  "runs/manifest.py": "3d435b4b3c4c2764f4be9f436f20a71e5079018ffe122cd6900cb463c773fe44",
+  "runs/preflight.py": "f93f95543f65c0f75b4ccb09f0fa2db6db86da686da89b6f69296ca646353574",
+  "runs/proc.py": "63cc58791acd607a5541ce70f04bc0ef4566f14237e05503e3f07943a2b61c3c",
+  "runs/registry.py": "26e0a0477ae8a10a5b2382b5c954c13b84f034bb9ed77d654d4dae741e0ce82b",
+  "runs/resume.py": "96d8f0a73455f2fe1b24540b5491e3d229bf0dfda4efd9311c67ee27fb23c50b",
+  "runs/room.py": "d9874eb06b96d4199a1f068d3d842def07fc800c40d6082c91e80cadedbd76bd",
+  "runs/status.py": "a6bc5519eed6751fac874294242f797186d66418014c9e22294f10ef8959f2b6",
+  "runs/tempmem.py": "a3ec474091cf0c3213bbb92a08661f4f31e7f16e364d446e82973b8eca91a8e6",
+  "split.py": "bbbcd323fac8f80d7d4c7bc66de4e4b92cc86e6ab7dd79247842aeae726560d3",
+  "timing/__init__.py": "111d949a0f1bf88255344834ccbeb73e09f0b29345d702b55278ffc04243e882",
+  "timing/aggregate.py": "26cc73292144c0bbabe433812195bad4ac8e01faf13005c2ae3d9422b0a38328",
+  "timing/calendar.py": "98c7d65ddbccb1fb6fb385f59d4a26c404b99edd5fd724494ff7448072f6d575",
+  "timing/content.py": "302ff7740b749fd2e8c945d230d5a0b45f38018807cde980de99d03ab8671f46",
+  "timing/cuts.py": "ff11251fc19c4e7867f7d5829f4e3ae291a17aec6be78ede03e8fa3fd2a70353",
+  "timing/freeze.py": "45ac1c2360a6748f71c8a6cb1371b51f2ed7da8da810668575deac79b63262fc",
+  "timing/lags.py": "03f9b7320933fdabb9ecb2bbd07a9ed3e0eb70f93fc71372a0c4974fc4463d6b",
+  "timing/shapes.py": "6bae01a126d674e92b7e13ae975bec51bfe7ee89bb2174a4192fc5c915877873"
+ },
+ "engine_version": "0.0.1-skeleton",
+ "feature_list": [
+  "dhw_30",
+  "hs_max_30",
+  "n_above_mmm_30",
+  "n_above_mmm1_30",
+  "cool_30",
+  "dhw_56",
+  "hs_max_56",
+  "n_above_mmm_56",
+  "n_above_mmm1_56",
+  "cool_56",
+  "dhw_84",
+  "hs_max_84",
+  "n_above_mmm_84",
+  "n_above_mmm1_84",
+  "cool_84",
+  "dhw_90",
+  "hs_max_90",
+  "n_above_mmm_90",
+  "n_above_mmm1_90",
+  "cool_90",
+  "dhw_180",
+  "hs_max_180",
+  "n_above_mmm_180",
+  "n_above_mmm1_180",
+  "cool_180",
+  "dhw_365",
+  "hs_max_365",
+  "n_above_mmm_365",
+  "n_above_mmm1_365",
+  "cool_365",
+  "days_since_max_hs",
+  "slope_90",
+  "n_dhw_ge8_before",
+  "days_since_dhw4",
+  "mhw_days_365",
+  "mhw_days_90",
+  "mhw_days_30",
+  "mhw_icum_90",
+  "mhw_imax_90",
+  "mhw_nev_365",
+  "mhw_durmax_365",
+  "mhw_since_end",
+  "mhw_cat_max_90",
+  "mhw_thr_gap",
+  "cyc_mindist_30",
+  "cyc_maxw_200_30",
+  "cyc_n_200_30",
+  "cyc_maxw_500_30",
+  "cyc_n_500_30",
+  "cyc_mindist_90",
+  "cyc_maxw_200_90",
+  "cyc_n_200_90",
+  "cyc_maxw_500_90",
+  "cyc_n_500_90",
+  "cyc_mindist_365",
+  "cyc_maxw_200_365",
+  "cyc_n_200_365",
+  "cyc_maxw_500_365",
+  "cyc_n_500_365",
+  "cyc_days_since_close",
+  "nino34a_lag3",
+  "nino34a_lag6",
+  "nino34a_lag9"
+ ],
+ "feature_list_hash": "90950e1c40e69fe4b3800f90d141eaaaab476fbcc77a2488a9fe2fec878001ad",
+ "fingerprint": "71d8df79bd5b8ebc4e71b6091efeeb15d352c68ebe0edc21b9f5e8746736237b",
+ "gls_random_state": 0,
+ "launch": {
+  "backend": {
+   "onedal_threads": 4,
+   "sklearn_patched": true,
+   "sklearnex_version": "2025.10.0"
+  },
+  "env_before_pins": {
+   "BLIS_NUM_THREADS": null,
+   "MKL_NUM_THREADS": null,
+   "NUMEXPR_NUM_THREADS": null,
+   "OMP_NUM_THREADS": null,
+   "OPENBLAS_NUM_THREADS": null,
+   "VECLIB_MAXIMUM_THREADS": null
+  },
+  "env_pins": {
+   "BLIS_NUM_THREADS": "4",
+   "MKL_NUM_THREADS": "4",
+   "NUMEXPR_NUM_THREADS": "4",
+   "OMP_NUM_THREADS": "4",
+   "OPENBLAS_NUM_THREADS": "4",
+   "VECLIB_MAXIMUM_THREADS": "4"
+  },
+  "python": "3.9.13",
+  "threadpools": [
+   {
+    "internal_api": "openblas",
+    "num_threads": 4,
+    "prefix": "libscipy_openblas",
+    "user_api": "blas",
+    "version": "0.3.27"
+   },
+   {
+    "internal_api": "openblas",
+    "num_threads": 4,
+    "prefix": "libopenblas",
+    "user_api": "blas",
+    "version": "0.3.27"
+   },
+   {
+    "internal_api": "openmp",
+    "num_threads": 4,
+    "prefix": "vcomp",
+    "user_api": "openmp",
+    "version": null
+   }
+  ],
+  "workers": {
+   "blas_threads": 4,
+   "forest_threads": 4,
+   "router_worker_blas_threads": 1,
+   "router_workers": 8,
+   "tree_predict_workers": 8
+  }
+ },
+ "loaded_engine_modules": [
+  "treeroute",
+  "treeroute.cli",
+  "treeroute.derive",
+  "treeroute.derive.derived",
+  "treeroute.derive.orchestrate",
+  "treeroute.derive.router_rules",
+  "treeroute.derive.rules",
+  "treeroute.derive.shapes",
+  "treeroute.derive.table",
+  "treeroute.derive.unit_rules",
+  "treeroute.engine_constants",
+  "treeroute.errors",
+  "treeroute.fit",
+  "treeroute.fit.bank",
+  "treeroute.fit.context",
+  "treeroute.fit.pool",
+  "treeroute.fit.tables",
+  "treeroute.fit.weights",
+  "treeroute.io",
+  "treeroute.io.apply",
+  "treeroute.io.joins",
+  "treeroute.io.lastvalue",
+  "treeroute.io.listing",
+  "treeroute.io.readers",
+  "treeroute.io.sentinel",
+  "treeroute.io.steps",
+  "treeroute.labels",
+  "treeroute.labels.rows",
+  "treeroute.labels.vault",
+  "treeroute.launch",
+  "treeroute.layer",
+  "treeroute.layer.arms",
+  "treeroute.layer.decide",
+  "treeroute.layer.links",
+  "treeroute.package",
+  "treeroute.package.load",
+  "treeroute.package.schema",
+  "treeroute.package.table",
+  "treeroute.pipeline",
+  "treeroute.pipeline.data",
+  "treeroute.pipeline.draft",
+  "treeroute.pipeline.ladder",
+  "treeroute.pipeline.passes",
+  "treeroute.pipeline.record",
+  "treeroute.pipeline.router",
+  "treeroute.pipeline.run",
+  "treeroute.pipeline.stages",
+  "treeroute.pipeline.table_ladder",
+  "treeroute.pipeline.table_passes",
+  "treeroute.pipeline.table_router",
+  "treeroute.pipeline.table_run",
+  "treeroute.report",
+  "treeroute.report.metrics",
+  "treeroute.route",
+  "treeroute.route.kinds",
+  "treeroute.route.region",
+  "treeroute.route.solve",
+  "treeroute.runs",
+  "treeroute.runs.atomic",
+  "treeroute.runs.fingerprint",
+  "treeroute.runs.machine",
+  "treeroute.runs.manifest",
+  "treeroute.runs.preflight",
+  "treeroute.runs.proc",
+  "treeroute.runs.registry",
+  "treeroute.runs.resume",
+  "treeroute.runs.room",
+  "treeroute.runs.status",
+  "treeroute.runs.tempmem",
+  "treeroute.split",
+  "treeroute.timing",
+  "treeroute.timing.aggregate",
+  "treeroute.timing.calendar",
+  "treeroute.timing.content",
+  "treeroute.timing.cuts",
+  "treeroute.timing.freeze",
+  "treeroute.timing.lags",
+  "treeroute.timing.shapes"
+ ],
+ "lock_file_hash": null,
+ "machine": {
+  "file": "C:\\Users\\<user>\\Desktop\\data set for reserch paper\\engine\\config\\machine.yaml",
+  "registry_dir": "D:/treeroute/registry",
+  "run_root": "D:/treeroute/runs",
+  "temp_dir": "D:/treeroute/tmp"
+ },
+ "not_built_yet": [
+  "lock_file_hash"
+ ],
+ "package_fingerprint": "96f81747b491b36b28aa5cb143a2f4cb3c838a973433ae0a0cda9a37df42f8b5",
+ "python": "3.9.13",
+ "table_schedule": {
+  "built": "per neighbour pass: every candidate and scored row of the pass, one table kind's dense answer matrix at a time (owner item O20)",
+  "kinds": [
+   "plain",
+   "corrector",
+   "placebo_corrector"
+  ]
+ },
+ "unit_list_hashes": {
+  "bank": {
+   "Andaman Islands": "710c2cbf9785e005a5b2c1834607f66ce70b981e171ea5d9e4f5a59494565b43",
+   "Andaman Sea": "b9cbccee807c538b4df6ff7983ed1a44d00a3aecf35fc9863ce1a88e49388038",
+   "Austral Islands, French Polynesia": "cfbaddc41f01656f50d5b64e055f41cffeefe63c6d1bacbc279038462c9e6680",
+   "Bahamas and Florida Keys": "2e487d53aac749e2d303913270365e4b90d2b4f34406b26ea9ed51542f435afd",
+   "Banda Sea and Molucca Islands": "cae20fcf4fd8bd57ef00cd0adf1c67e9ee28a435bf92dd2d5909242a030e50ab",
+   "Bay of Campeche, Yucatan, Gulf of Mexico": "b13a1eadb469dce57979617f6851061ed3167f64bf7d36593c35f5ce8b267118",
+   "Belize and west Caribbean": "321a83358db1fad264e4bacbd07cf5bd9bed36b802de061d54ac42ce52fdf791",
+   "Bermuda": "67202449ace9bf3a1ae294f7f263f5b4110ce4d1e3656aa5637379d86dc07294",
+   "Bismarck Sea, New Guinea": "a3104b80289ac2a1b422f1f8d89140cfa02efe808600da5a37b8118de4d01a35",
+   "Brazil": "1a4f709dbce58a70e42ac33030912fd859fcbd634d7fba9009792a9d388be728",
+   "Caroline Islands, Micronesia": "3cebe433dc40c74cf8c6c49e152f9b2c32aec7b9986c62b09cc90d84af1e5c3c",
+   "Celebes Sea": "4a3b0f6e9f8457dd35831fe3655b0a9336146eae4ab50314fff00e55243fe7f8",
+   "Cenderawasih Bay, Papua": "a59a3e1d11ab15bb8ed4460ba69440af8c4608f683e0d13cef1fa3e9f356bfe0",
+   "Central and northern Great Barrier Reef": "eb8d3762fbf54161f159018c6f892cd796c20bc172f791d84d7d563780a96233",
+   "Chagos Archipelago": "9a2bf54afb820722e638acc6e8e8bf69d6e6c61c0f4ce3b971d7904166321a7b",
+   "Christmas Island, Indian Ocean": "48493946832547c028b36e58c417a18f9654823c94f480cddfa88bcfa28dc06c",
+   "Cocos Keeling Atolls, Indian Ocean": "df2fe5bbe80bf39153c6a0beb86d5def9e3b74d19d70e46ca64e6fd53fbf3d3c",
+   "Cook Islands, south-west Pacific": "1bff21f649d5563569af5e061f7c26a18fb4bc3f31993a74dbc1141647e3aae7",
+   "Coral Sea": "d69217909af113f1d09f62dc57c4583275476586b41ca92811490005f1052251",
+   "Costa Rica and Panama, Pacific coast": "7ef2574410be1e7103e14c8fe924392004ee2ed4c063b6b2b71bc192e948eef9",
+   "Cuba and Cayman Islands": "fed86d10e624338132081abc9b27eae244ccc00c6ab063d58bb6e6a661112a79",
+   "Eastern Hawaii": "e7d3fe24f0651273613836d6b0cbb5d0d2fac9be609a20923bc6ace321266fc7",
+   "Eastern coast South Africa": "64a7df8e09851a7ca83961a850a4636e7d8634ab48942d0a38fd212e7f0fe589",
+   "Fiji": "415e7dc953f0c403d5b7b5f3119d6cdeb15b8cf13d48e297918ce4eb1aabe456",
+   "Flower Garden Banks, Gulf of Mexico": "a0100e441c3772f650eaa150a1c6378d163ea9035427c3f5af43b78f971a1b63",
+   "Gilbert Islands, west Kiribati": "41df4f095ae62d541f2f506f46eeef5f877481d91b2ca3bbc378f8ac5522df47",
+   "Gulf of Aden": "f49f063c7129243613788ade5fc53e27e85c857148b2c819e1e041ad8b8fed71",
+   "Gulf of Oman": "967580d93cb594f25833c81ebd4fb1e3b0bf89528e543338d78ad2f6eb574451",
+   "Gulf of Thailand": "783de537626f2ab8463588bbb548de0085880d80ba4cf9f4d6e66f2735d93b48",
+   "Gulf of Tomini, Indonesia": "771114746272a429635207f348086503a23dc3880bb2947af02917ba36515abf",
+   "Hispaniola, Puerto Rico and Lesser Antilles": "0326a8dd62ac81dde77d55fdc0e2364fad92852f4938d1d1f284284a067eb38a",
+   "Hong Kong": "73fbbef38546a730ae878c79bf1ef34360ccf6a258b74d75ff9a79b9b7c3eced",
+   "Honshu, Japan": "9605b8a6637af2f08a65ff5fe892bb126432d73442959401b4b23d2aa4bf4be8",
+   "Jamaica": "e4b185dd6d6b2e5c22eb6b592d392141f609e215890f89e50268bd79041bdf44",
+   "Java Sea": "7a5ae775beeb46f7c1ea959c881970e5813e135f41aa07c7df7706f125e64fe4",
+   "Johnston Atoll, north central Pacific": "791e7c93efda680aa1db9e47e81412652f121ba99224dbb9ee84b517feff45e2",
+   "Kenya and Tanzania coast": "336d51ee0644cd62e1ea8f90e22d1a187d2efb21b5dee92b8bd867a89f710c1f",
+   "Lakshadweep Islands": "feaeeb380dd869470b1c5f1b28285ac0e7b941973c413bdd3d0d2c1c180a42fe",
+   "Lesser Sunda Islands and Savu Sea": "391ca85ca967eda187a8588a4859a881b1bc293b522bce545669c530d021984d",
+   "Makassar Strait, Indonesia": "17e8bb1781f03801d5f60ec2d4727e1a058d286cd5da8b895c3cfc7209af3d8d",
+   "Maldive Islands": "42b20a734d381550dd481aa50d9806c40227a38f1d1cacf152e61f8d99c4070c",
+   "Marianas": "c67498104a6ee0bf2fe69c2a53ac437853a23e4cdd17306ffbec747cd5323a2f",
+   "Marshall Islands": "705027ad56b80dc8e99d362c9302919ce626945d37babda3da6329e2eed4cd40",
+   "Mascarene Islands": "8815ddb73c1a31c473954c10ca45d42ceee3bc60d3cfe911f9a20cab7fead28f",
+   "Mayotte and Comoros": "5244d07f197c5c6b8e4ac86dd749f3b133e5161678ad2ae09f06944638a53323",
+   "Milne Bay, Papua New Guinea": "69f61ab2f54c5a3d175c89971b304c29481986c3a12cf62b59cf84d69fb37a69",
+   "Moreton Bay, eastern Australia": "3d00ce3123e36405265c469214b5b1ff360422b8e3a6a58726b9220be0502e61",
+   "Netherlands Antilles and south Caribbean": "8977d811e89af2696eb86bc998b24744a5d9a1982aa3ff5c40a76818b50550ce",
+   "New Caledonia": "55610cc962e558b2785b56d9146cd94083fa56891b9a5588bc9d4cf241d02531",
+   "Ningaloo Reef and coastal north-west Australia": "1645c0007fbaffd4fdea065da8fe6367a9e7ea0a582b506a3487ab7a860b1e19",
+   "North Madagascar": "f03772d4b6a2399201aec1ce9c3692ab3638c6187dfbfe8e3a3a8fde9c7b8ff0",
+   "North Mozambique coast": "9f9023d533fa8993bfb70adf334191b3ba15180ffcedb3ac583661233e7dbb00",
+   "North Myanmar and Bangladesh": "f73932d092acad804ddc4c5a65b0424f15c9aaff68dadf3e541257f3db125c7f",
+   "North Philippines": "9890f94c0cba4808cad8791fc7612076368dd0ea243df5fcc11edf379555e72e",
+   "North Ryukyu Islands, Japan": "2233bc25197fef3b424d42492df6fd3ace50b43803ab7690a96afd071ee14902",
+   "North Sri Lanka and east India": "05fb0e3fe84fc73d34b8d3fecc48e21e14e72ccc72e7b0b4fef6fc571790b5a8",
+   "North Vietnam": "6b3288d0bea400b25b8173b6509e65e6d8a295e681f7a3e42fc9d8f75f478d07",
+   "North and central Red Sea": "b810799b3aea4dc6a2be29ea7bbcbaf35a405195d3f4837490688f7a652d8db5",
+   "Northern Seychelles": "41a078ad0a0c90ec63427168838f5ef699abd73fc10104216516b68e80693acd",
+   "Ogasawara Islands, Japan": "3d4bbcd7b673d46859fe71abdb27f66250cbcdf5a0547f1c150d93e45c0647dc",
+   "Palau": "08cfbff7d8dee45550d94300627807618b80b5774bc20fc55854d1c90c7a6428",
+   "Persian Gulf": "127e6f4b726b8d80b2d133e8bc896d8bcc9e4d4a522d1424f9e8440ca5da0a23",
+   "Phoenix Islands, central Kiribati": "131309ee2e02ddc261d8880d11bd73af26281923903dcb430eaa4e211a3807f8",
+   "Pohnpei and Kosrae, Micronesia": "ee7590bd0efe6cdfa8f8cac982bd960ff4940543d2fd6c39c917fa6439b8930b",
+   "Samoa, Tuvalu and Tonga": "61b2c88b0fcfeac5035ea4764c4277e438f053252133355ca785840a83185095",
+   "Shikoku, Japan": "80852703d8628add175a9567210d883ee0ab6d4e2a2bce1d226f5fc1e4592748",
+   "Society Islands, French Polynesia": "82ec2155f9c4574e0be578522348a3d95716e1b861c5e90cf05558629c3ee8d3",
+   "Socotra Archipelago": "7aefab7c3102bb93a5afb699c52d0c1fb01043148cb9f6f369a1abbb8066ec60",
+   "Solomon Islands and Bougainville": "6617da8f5350ac15db1b3a274676ef2d9e955432c9132560ac24b2890d84f2f9",
+   "South Madagascar": "1d499b9d674b120a7aead380908ca14bcc5ed8ded79c549994ed9eea15b3f4d5",
+   "South Mozambique coast": "772a563e320b2d40c7ab6f7124a92a54b7a9b127eeb6b47c675075412068e8a6",
+   "South Red Sea": "e938350515f304cbb325775851cefa81be8fc286ae7fec2d7baed7f6d5d23dc0",
+   "South Ryukyu Islands, Japan": "f2c599b522424269239790bf0121904992b693b4b17cdef9fe1a56e81ca88425",
+   "South Vietnam": "e330a289673ed12008b4817528de77feadfeee52f0911516d232fcf1fbe0e65a",
+   "South-east Philippines": "e36399c93b13eb88841965c1680339f7dafdfa2a0851c29bc9e0ef2a03cddf3b",
+   "Southern Great Barrier Reef": "7a4c63fa11f78f0974a3577b648c65297322cda64952fbb50473e892130e2e95",
+   "Strait of Malacca": "62beb01d0e72b13c812c77400d5eb9002d8c68ee014ac3d8dd631630d3a3d599",
+   "Sulu Sea": "79057ed5d48a1943738e29d999c01cc4eb5fe9958957e851d1f68a486349a528",
+   "Sunda Shelf, south-east Asia": "e8d95ca9cc614f6f16ef95e8ee125303eedb8d880a7717af93107cad9a875104",
+   "Taiwan and coastal China": "c146fc090a871351250dd06d366275114ed6f7f15aa977e8d51b0f28b8c8697a",
+   "Vanuatu": "4aa011b1c9918bb333b412c8dccaee9cba91ebbdda840e3ff79936805275c872",
+   "West Sumatra": "204dd0555621b9417d00d233ae7c74c48d252fee001370d22f1c8805329cee5d",
+   "Western Tuamotu Archipelago, central Pacific": "96751d438624bcc8431ad0501f2064adda64d740cbf2859f4273a4e97977aaaa"
+  },
+  "bank_all": {
+   "Andaman Islands": "b747bdcfa7444365d3b775605b45abcc00d23190544bd699664ef95026c3e01d",
+   "Andaman Sea": "199d5d0019b9fc2c5f8525e79e75664eeb460d14ff117fb5cc312cc8a041a98d",
+   "Austral Islands, French Polynesia": "da54d578d05ee9df6ddc50a6ea246828842ad734850b164aae8938f849ed8a98",
+   "Bahamas and Florida Keys": "f2c5b0b67c4fd191083e089b2db9a7226a78328ddf5f3b4bb5f1a7067e85b3fd",
+   "Banda Sea and Molucca Islands": "8515d9693e0fbd4ceaf55793da1d380eaf4291eecaf7a82cd04c6969c4711ebb",
+   "Bay of Campeche, Yucatan, Gulf of Mexico": "dbe79808a4a6e2b6a3562b2ea1159b019ca657779f5dcf8baf7a8ed752573ba7",
+   "Belize and west Caribbean": "49ce120adbf43522a4a5091b08c4fbde9f59cda29d11def238056bf48da791a3",
+   "Bermuda": "135c72f91306a57ecc6c5e0bad7ca8d68313ea3d8b3450fd46a096302c94610d",
+   "Bismarck Sea, New Guinea": "fe69d6ae568c77f1ccd9992253c687d5f6c37332eb0d55c780790a90ef5848ed",
+   "Brazil": "7a034ca55c6ffe3f00e48b0bff557b06ed3511703625d46f92b877d28bdc6a21",
+   "Caroline Islands, Micronesia": "23ee7044440534c4f9d0d7aa716ba36e5e61da9a57593ea5e7686e3a28526af9",
+   "Celebes Sea": "fe98c01f42fc45fe32e57e5c49cd04ea52cc2f156dcfd806c9a4b831dcf61723",
+   "Cenderawasih Bay, Papua": "43c83465f485af91da6c10e6f1ac5777c59c8991fa8d053119272ced9bdb8179",
+   "Central and northern Great Barrier Reef": "99d42453b533e74764e026b82a5973c596b2b3a5ae1b6a98b91532890b2b5eea",
+   "Chagos Archipelago": "05dc38240f536003ba77a16fb1a00bcc9e98776b4709433712c4b6af33760e67",
+   "Christmas Island, Indian Ocean": "08f8211f2b414bb0544a0703a461cc80d3440fde173763377309c40c89af475e",
+   "Cocos Keeling Atolls, Indian Ocean": "45b872ed21b3558ce1fecb1eb6ff619077fa91ca70dd6fde4004ad747e8614ed",
+   "Cook Islands, south-west Pacific": "9bb426c106830670b13ef225f6e5b6561001f734336be7c9b4504bfd27cc7532",
+   "Coral Sea": "df5f1d2195bfe56ecca62e2db420546df698970080528f334c6b142767f91a6c",
+   "Costa Rica and Panama, Pacific coast": "ed3e103448b5aafdad7f5babccc34b55a882e93aca00bb625f786b2927d63646",
+   "Cuba and Cayman Islands": "c1c72eb346fbeff23324aefed1adf68ced2272bccb517b5e71ad4e052a1afcec",
+   "Eastern Hawaii": "3dd1ef7115d378b73fe269e056dc1ec7d62709549db4cb2e5b0efd12f6b07d47",
+   "Eastern coast South Africa": "0dd2bff690a8f224e64fd3108f7b4b29f8791f35b8c2cfb704697cbd5639cdca",
+   "Fiji": "a39fe54fb3e879893b1ab09d4dcd5933ad3c00c16990e97ea03e4b939e9a61dd",
+   "Flower Garden Banks, Gulf of Mexico": "65995d0734eefa1fac94ea1063807b31d6dd98e25100ac09b2d5af08a5cf2b21",
+   "Gilbert Islands, west Kiribati": "b2fdb9b04d8c2aa9379cf7042979ac167b1a89c6a535738035908487217fd02f",
+   "Gulf of Aden": "b1ab06a3ade8f8fef9d7d581138ea361a394e78348749d8d0de3114ba2a9e395",
+   "Gulf of Oman": "292e6f439566f75673204493bd807cd47e2fbb6e0c31788149752ca55ee9a663",
+   "Gulf of Thailand": "f9a3146854ac294110b3dd4328fdc5ce14159d35648bb175c56e2facb1d51019",
+   "Gulf of Tomini, Indonesia": "d5a8a82cb8c3c8441f74eabae1a852b285126985bb38417b65c79260dd3cc413",
+   "Hispaniola, Puerto Rico and Lesser Antilles": "75dcb8ea3fa3f89127bcbfa25688d1c1cba9b96342d1dd87d591699e388e8460",
+   "Hong Kong": "6b325f01925a5945ae0d391da33538c1073dc3145ccef3ebd17edf350b6288af",
+   "Honshu, Japan": "22b2560fb44a2a7b4f4d274ac739c6938c28486046dadbc9345d1513e10d1fbc",
+   "Jamaica": "b4e64212f76daee4583c15274713e3975dc8b23065d75a3190c95863245118f7",
+   "Java Sea": "d3a8eeee98a6f7a9908d83648ac3c90f66b468a775e5bc6c8149678f83c2a4b2",
+   "Johnston Atoll, north central Pacific": "30eb0f2adb2e78718ebd0edccbe2c26ff8f322a3cbca5755efbaf3f5ca39b596",
+   "Kenya and Tanzania coast": "e83e821fde3d2938e197c1a8e4e04eb7c2909d870663a455bab59170c1fe7a2c",
+   "Lakshadweep Islands": "8f9abbaea76b2dcddcd81de35548770cb677db77be16b45c589e7becaf906399",
+   "Lesser Sunda Islands and Savu Sea": "2d12d7e0b7adce78602394afc5938d2effc356074e79713d64f9c3263988854b",
+   "Makassar Strait, Indonesia": "dc4a60fb4be4c019d2cf7247a99c28d45d66daf41ed96c7505136f3dfeed3607",
+   "Maldive Islands": "8bcf209ac2fd0c897961035c777c7a4bf74cecf16980067533744f09e8601feb",
+   "Marianas": "bdf3e804c0a0c4928e808d2e18a5989aa2efb7aca797f5f77aceaf24d7e20620",
+   "Marshall Islands": "20d2a6603457abacb91ecda2395a52f994f11fb7ab15280968d733fe45339e85",
+   "Mascarene Islands": "a97db7379db4897e5c401d638ff36062882d207e5ba0a7effe70f655c79795c8",
+   "Mayotte and Comoros": "0e64840347cad2a8212749f7f1b841140232acccbdc85330a460fcc8e1f760e2",
+   "Milne Bay, Papua New Guinea": "a53c1caaafa70ce811b98c731b4c555a3f391ef2ac444e9d71ae7d7cf548c7cc",
+   "Moreton Bay, eastern Australia": "b6902c4fd035c0e68f7e8dff8bb7800fe09dd9adefe6a011d763619081bd363a",
+   "Netherlands Antilles and south Caribbean": "1fb071daeba59bda678205888ae991e750b1f22c787570315e19b38c4223db46",
+   "New Caledonia": "b5bc13295dd8e2720dcffa19335be138e2b026675cca50eccf31592bb172aaf7",
+   "Ningaloo Reef and coastal north-west Australia": "12b39eb6ec19635e16e594af3f5373abe6c0d5ef295a6cbf579b857bee33e1ff",
+   "North Madagascar": "8b12427d547e93b8d8c131000838d74f1916f4f192b25e1ecd2e84bcd74d1c53",
+   "North Mozambique coast": "38fc5fce8ad3451d4241a47469f630f51a55ea0577dd3cfa649dccd38955bd38",
+   "North Myanmar and Bangladesh": "c9004b14cd0a09398f9cf09acf4e6e484b94c73de5eb0282b3a4d7b5294df1ec",
+   "North Philippines": "09d357fc08fb93a3eb2273d13c6385265e91eac7cc03202c14902a4b5101b87f",
+   "North Ryukyu Islands, Japan": "7e545d8ba20cb8e02ed3547d8d9834028d0b4dc10089801dd65e517acf3e049e",
+   "North Sri Lanka and east India": "ff090fa57e5f02b930b16ed812c54a15bf7b7dc1911e0e3def3756fc3f465da3",
+   "North Vietnam": "43d6cab59f543a83c4039d084009929ddd8fefb1be7fc23e2cc48ca047745495",
+   "North and central Red Sea": "65aad3da4c9568d983cd5e4338c4f70b642eae76fc65a2d5188af645a4565e84",
+   "Northern Seychelles": "b73f468f71ec2ebc56ad9c31b0ea7b774bcc4e0ba63981b67b8b481b0b0835e0",
+   "Ogasawara Islands, Japan": "af7a6d4cd346fe26261831a64e7b99f637fca1b6a8853652b0664e50e76e53be",
+   "Palau": "bb86edd5bb92b87e0afacc868f7ee9fa5a47690a8f9d33cc553ade0ebfa1da25",
+   "Persian Gulf": "080bf32bb444d9cc67c88781ee99c1da9984d2df2bf27bd09586798dd2acf0a5",
+   "Phoenix Islands, central Kiribati": "d482f69f85881073c768855c4e78d806df90a7a62857d118c2e8121001b39ddf",
+   "Pohnpei and Kosrae, Micronesia": "d61ac2cccca812fed22ffcfc09c631af3be6e2383c4deaefc997c62c77e7af33",
+   "Samoa, Tuvalu and Tonga": "5fb89fb010c652375d0728f376acb9df50e3ef58bb54a7b40b66d2d7ab5b13e3",
+   "Shikoku, Japan": "697d955e01d6b4330d35df7419343ffdd304d1feed801c8fb04cb3e58481c8e5",
+   "Society Islands, French Polynesia": "c0488961f834b114ae567f500591cc8674b1ab42dea57794efdc0323df2a7393",
+   "Socotra Archipelago": "18c1c0d7b6d87a6a748bd49b90d714964b35a28be7eefb4b40788ba3b74e3e0b",
+   "Solomon Islands and Bougainville": "12a53a88136d80ff092475d577049e3358bd623ade3b232fe684c94aa494f926",
+   "South Madagascar": "f3082fc970cfb4188014114afee4044663e047d0cef368f2c2b12af5abed5e75",
+   "South Mozambique coast": "deed26918a6f5b7d326e16b237ffe2cf8054eee9c3231d846e32e8c6b4f4afc8",
+   "South Red Sea": "687e4f3fa4d18f997554dc45aa2a38f423a90679c42b1922d54781dc64e200b8",
+   "South Ryukyu Islands, Japan": "6932b937fe4106447097d46200859977936d86458c11ae47636b0ee84d5db0ad",
+   "South Vietnam": "2db5665613de5852159f39a2a9705eff4a41eaec584e26bd2b81485de61df859",
+   "South-east Philippines": "2a7151fbe23278821a2064bb7ded4d7613b9e918a52b1e1103507c0578eecddc",
+   "Southern Great Barrier Reef": "45b79bebbd9f545488c1c460a78f24ec1e4dcd5b6953ff5c0fce3718d93483fc",
+   "Strait of Malacca": "853957abe029f0ed2fe5156cc2671cfcd3dc1e1dce99c6526459c0b62929f073",
+   "Sulu Sea": "9461736d5c4b0e29d451fabb916b61d48815a46c077cb022af8a2d58ab696816",
+   "Sunda Shelf, south-east Asia": "63b1edc6396f0d50fb838ee80177ec9e5f2b1e75e3d0ab50413d00b5138501f0",
+   "Taiwan and coastal China": "0e605eb84c28db9b50caaf0f6e152d9ff89dccd2c4c9cb038a7f13cb97371a81",
+   "Vanuatu": "cc2d46e45f82f00723203f5858493f32d00486d66ed966ea9897b9ee5922d9f2",
+   "West Sumatra": "f9ef64ff37759c2b78cb88a89bd8f805cdd9961c1b2222f103180ad76ad37564",
+   "Western Tuamotu Archipelago, central Pacific": "62f831b8ff7db58dce38c9f0fd2917d53b2386f899aee5cc2e0fe15a64578cc8"
+  },
+  "overlap_blocks": "7833cea37d5ba3636408c80d254855f4291560c098557ca53e4ba47c14e410b0",
+  "scored": {
+   "Andaman Islands": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Andaman Sea": "62d20d5697ca0ab5f12b3a28f3576db9b5f74dd7553c616f580f3d470468ad25",
+   "Austral Islands, French Polynesia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Bahamas and Florida Keys": "db72b8a2c287683632d4149de8e75593ce8d6c3c1f329187e0e9b239395d695b",
+   "Banda Sea and Molucca Islands": "e4c8742112beb5f0cdbef6fcddc487a6f22154e8302380b48e83d839622dcb25",
+   "Bay of Campeche, Yucatan, Gulf of Mexico": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Belize and west Caribbean": "5914a79c0101eb85771e181073608bab3a3d3f20e9571470ac6769bfff77566b",
+   "Bermuda": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Bismarck Sea, New Guinea": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Brazil": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Caroline Islands, Micronesia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Celebes Sea": "3c0b765fcb57f4fa7c2f00292dd4165435b9c62a1b4493f74773b9c4c58df65c",
+   "Cenderawasih Bay, Papua": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Central and northern Great Barrier Reef": "11e5bede8332c79e8b86ab639c452b29007b59129c2a9fa9ffc07a48cc3ed4be",
+   "Chagos Archipelago": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Christmas Island, Indian Ocean": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Cocos Keeling Atolls, Indian Ocean": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Cook Islands, south-west Pacific": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Coral Sea": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Costa Rica and Panama, Pacific coast": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Cuba and Cayman Islands": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Eastern Hawaii": "f41d9e4ce9b3d8b29d18ebc8a2f29e39808de3640877d978d8f32d24c8053ad9",
+   "Eastern coast South Africa": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Fiji": "38a1ab72de4118155e8e94f3fbb0a882821dea91010f9a07bf85b931ef56a812",
+   "Flower Garden Banks, Gulf of Mexico": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Gilbert Islands, west Kiribati": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Gulf of Aden": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Gulf of Oman": "c254ca45b3eb3d4624d5255e190cce06f5005ca5e555dfd7673e4d7445c1fce4",
+   "Gulf of Thailand": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Gulf of Tomini, Indonesia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Hispaniola, Puerto Rico and Lesser Antilles": "1f33f92e7b5b243dcd9b0bbf5c72d6f85a899f8bad79e31d120e1c129f1c9a68",
+   "Hong Kong": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Honshu, Japan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Jamaica": "3bb096ce8285d1a4de20c43bec04ba2b176d7c3c416115ba551278d8488feec8",
+   "Java Sea": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Johnston Atoll, north central Pacific": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Kenya and Tanzania coast": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Lakshadweep Islands": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Lesser Sunda Islands and Savu Sea": "43f8842c595b2b232dbcae369a33157ad364fc827885e95bd8499c74d1374e3b",
+   "Makassar Strait, Indonesia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Maldive Islands": "04c8ee80c745fa164717ab1a4262bea49dc045c22b3016dd8a42ac9de964181f",
+   "Marianas": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Marshall Islands": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Mascarene Islands": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Mayotte and Comoros": "bae06ea18ae639daead4761747c3385ea09101fdf8fc9312279df77d65b5c630",
+   "Milne Bay, Papua New Guinea": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Moreton Bay, eastern Australia": "19101819d678ed935c6dd5b4dd13f5846fca6d158e5ac4f61dbaec2a746a301e",
+   "Netherlands Antilles and south Caribbean": "19d655e44464f60203370f8ebb974b42b30d15c87a4d82ca0f856c456712e93e",
+   "New Caledonia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Ningaloo Reef and coastal north-west Australia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North Madagascar": "7e01c339795095007ea85d5935d045361034e084bf567a5f26d35884333af630",
+   "North Mozambique coast": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North Myanmar and Bangladesh": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North Philippines": "864b2051df68eda1445723dfd9d4d32d04039ec54f9139ae364a7e78bc8f9dc6",
+   "North Ryukyu Islands, Japan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North Sri Lanka and east India": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North Vietnam": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "North and central Red Sea": "b16b5df3c67d51d3c5b6d651952d3d26905158cca703a77997e802df68156f98",
+   "Northern Seychelles": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Ogasawara Islands, Japan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Palau": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Persian Gulf": "ee8473e6c6b7d569b767671ab2a09a6c5094bd3a5f4da81ad55c7b4a6dc26532",
+   "Phoenix Islands, central Kiribati": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Pohnpei and Kosrae, Micronesia": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Samoa, Tuvalu and Tonga": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Shikoku, Japan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Society Islands, French Polynesia": "5143b16e35240331e380024b063985969d721eefd75ad0d3367833f23a6887d1",
+   "Socotra Archipelago": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Solomon Islands and Bougainville": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South Madagascar": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South Mozambique coast": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South Red Sea": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South Ryukyu Islands, Japan": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South Vietnam": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "South-east Philippines": "3b6fb3620b9efcc6590644606b5846d3274d446ed936021915578e3bf9432062",
+   "Southern Great Barrier Reef": "5af498715d0831af1b5d759a775f01b7b3e942fec48a59fe1c2faecde86d3bbf",
+   "Strait of Malacca": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Sulu Sea": "38684936e56e0c5ee40d64db7fc592055eb8cf49b7f58c7e7f8dcf379e46dd48",
+   "Sunda Shelf, south-east Asia": "c378d394dcf947aac306b42bfaa74e9ae5929da431f7eda25e08386ecec0e777",
+   "Taiwan and coastal China": "a8a8242520ab4472f588b536f5ddd41e09d6e0be5703f443b4ed51894003eb93",
+   "Vanuatu": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "West Sumatra": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "Western Tuamotu Archipelago, central Pacific": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "scored_all": {
+   "Andaman Islands": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Andaman Sea": "bef3595a4853c5dc45f7e36b5b80a3f70f954cec3024bc1a49dcc656c4ba09e5",
+   "Austral Islands, French Polynesia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Bahamas and Florida Keys": "1697238379c91588614c32f836c2762fa4cb64c6736acac320f108eaa365667b",
+   "Banda Sea and Molucca Islands": "e723431bf6eb040efcd17f399481fd4572d1892ec47cf3457406ec967447685b",
+   "Bay of Campeche, Yucatan, Gulf of Mexico": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Belize and west Caribbean": "0892c7aef38b2767e94b58e025edc7b8ec2a8a05fd3192e336a49c2c7a5d2809",
+   "Bermuda": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Bismarck Sea, New Guinea": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Brazil": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Caroline Islands, Micronesia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Celebes Sea": "5a7dedb72d1349faee1900f10bd1f2fc3f4606eb20feb0a8dd0b1d2ae715442c",
+   "Cenderawasih Bay, Papua": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Central and northern Great Barrier Reef": "f15b96767d9852d5fa4f6717e8084438d8fb09b0186498dcadc60abd64883298",
+   "Chagos Archipelago": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Christmas Island, Indian Ocean": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Cocos Keeling Atolls, Indian Ocean": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Cook Islands, south-west Pacific": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Coral Sea": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Costa Rica and Panama, Pacific coast": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Cuba and Cayman Islands": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Eastern Hawaii": "763f18d76e8802cadfc66ebb9a1d0770d67be0f1377188b06bbdc172abfc4e27",
+   "Eastern coast South Africa": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Fiji": "bb7a4641da046089e236a420053591713f91994f0b566b2de399cb69015f1a03",
+   "Flower Garden Banks, Gulf of Mexico": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Gilbert Islands, west Kiribati": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Gulf of Aden": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Gulf of Oman": "e6e7aa99b0155303e8366cda05693f5ec70a986faee48b53c85392bceb5bb756",
+   "Gulf of Thailand": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Gulf of Tomini, Indonesia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Hispaniola, Puerto Rico and Lesser Antilles": "e96a99038456a76caf26aed3d50a36d2987b3079871850062764d51243f556d2",
+   "Hong Kong": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Honshu, Japan": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Jamaica": "85c4e0aa578ec9c64dab728548a0b734fe402e922b91391f0e3e9706b7b8f5ea",
+   "Java Sea": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Johnston Atoll, north central Pacific": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Kenya and Tanzania coast": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Lakshadweep Islands": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Lesser Sunda Islands and Savu Sea": "dfdc1066dcfa1081b6fcd252fda568ab67b16b10b7c3dca2165ad2db576ebc24",
+   "Makassar Strait, Indonesia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Maldive Islands": "eb69c2a0c02ae344f04fc887c0e422ac74ae1d54c8fbf8ab40554a86be791722",
+   "Marianas": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Marshall Islands": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Mascarene Islands": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Mayotte and Comoros": "c3a2372d733174834831ecbd3aff351c8b1351b11bdc8e9f7afb0c9c8dadd952",
+   "Milne Bay, Papua New Guinea": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Moreton Bay, eastern Australia": "48e628859a4c960791ec78daf034c6570e0236d6a591b28418dfd53fe3718ed0",
+   "Netherlands Antilles and south Caribbean": "241a373b5b34a03befb8eb67deea0eb31b3dc0823345c240dd8d8f22ca7d3ef4",
+   "New Caledonia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Ningaloo Reef and coastal north-west Australia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North Madagascar": "81ddb22a4e321f509042581626adee8527842cdb0f3aa6d2e7b3ffd673b189cf",
+   "North Mozambique coast": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North Myanmar and Bangladesh": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North Philippines": "9e16acb57be00b8b2e124bbf277bd07d44e82ae2dd42a232694a68768c169f56",
+   "North Ryukyu Islands, Japan": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North Sri Lanka and east India": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North Vietnam": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "North and central Red Sea": "db4042806e3b8c5b8a4568baf3c1c8a60451c403a53aba2186aeebee3fa50274",
+   "Northern Seychelles": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Ogasawara Islands, Japan": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Palau": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Persian Gulf": "b46b2a4270b6621f728052cccad781bd568bb1005ed1e4b26e28e85a83e9b865",
+   "Phoenix Islands, central Kiribati": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Pohnpei and Kosrae, Micronesia": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Samoa, Tuvalu and Tonga": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Shikoku, Japan": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Society Islands, French Polynesia": "2bc1d9ba37c83fd53831b8672bb3b51c44874b136ff12bf48d73749e054b4427",
+   "Socotra Archipelago": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Solomon Islands and Bougainville": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South Madagascar": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South Mozambique coast": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South Red Sea": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South Ryukyu Islands, Japan": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South Vietnam": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "South-east Philippines": "c912bcf43aba23e3f298acc40a3c22e94f377886f106e80d1d59928b5825039d",
+   "Southern Great Barrier Reef": "cd9e9cafb61b1dd620ce64f3fdd860b19b76a6bce96f8d99ab3872432486ef3e",
+   "Strait of Malacca": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Sulu Sea": "4cea6ea0ed13018dd5d423c34aad8c0078818cd2f8ec6d103c975b401c83dfa2",
+   "Sunda Shelf, south-east Asia": "8c9859df5fa81632a284a324240e29955e87b6e08b7c612a630c9c4b9e70b726",
+   "Taiwan and coastal China": "d8c79d0bf24d57367a4e6264a1c7124c6343196c3778b34669ba03b7a31973b8",
+   "Vanuatu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "West Sumatra": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "Western Tuamotu Archipelago, central Pacific": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "versions": {
+  "PyYAML": "6.0.3",
+  "click": "8.1.8",
+  "daal": "2025.10.0",
+  "numpy": "2.0.2",
+  "pandas": "2.3.3",
+  "psutil": "7.2.2",
+  "pyarrow": "21.0.0",
+  "pydantic": "2.13.3",
+  "pydantic-core": "2.46.3",
+  "scikit-learn": "1.6.1",
+  "scikit-learn-intelex": "2025.10.0",
+  "scipy": "1.13.1",
+  "tbb": "2022.3.1",
+  "threadpoolctl": "3.6.0",
+  "typer": "0.23.2"
+ }
+}

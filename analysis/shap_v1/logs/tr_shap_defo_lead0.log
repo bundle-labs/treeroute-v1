@@ -1,0 +1,30 @@
+[2026-11-12 19:35:16 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm False
+[2026-11-12 19:35:56 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm False
+[2026-11-12 19:35:56 +    0.2s] treeroute: 12 rows, 309 players (157 nonzero); additivity max 3.47e-18, evaluator vs model max 0.00e+00, resid max 1.17e-10
+[2026-11-12 19:35:56 +    0.2s] treeroute SHAP defo lead 0 done in 0.2 s (tree SHAP 0.1 s)
+[2026-11-12 21:40:54 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm False; 309 players, 121 variables; duplicates merged {}
+[2026-11-12 21:40:55 +    0.3s] treeroute: 12 rows, 309 players (156 nonzero), 121 variables (74 nonzero); additivity max 3.47e-18 / 3.47e-18; evaluator gap max 1.17e-10 (0.02 of the float32 bound); resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-12 21:40:55 +    0.3s] treeroute SHAP defo lead 0 done in 0.3 s (tree SHAP 0.1 s)
+[2026-11-12 21:41:26 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm True; 309 players, 121 variables; duplicates merged {}
+[2026-11-12 21:41:26 +    0.3s] treeroute: 12 rows, 309 players (191 nonzero), 121 variables (81 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator gap max 3.81e-09 (0.02 of the float32 bound); resid max 1.50e-09; flagged 0; structural-zero violations 0
+[2026-11-12 21:41:26 +    0.3s] treeroute SHAP defo lead 0 done in 0.3 s (tree SHAP 0.1 s)
+[2026-11-12 22:12:11 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm False; 309 players, 121 variables; duplicates merged {}
+[2026-11-12 22:12:12 +    0.2s] treeroute: 12 rows, 309 players (156 nonzero), 121 variables (74 nonzero); additivity max 3.47e-18 / 3.47e-18; evaluator gap max 1.17e-10 (0.02 of the float32 bound); resid max 0.00e+00; flagged 0; structural-zero violations 0
+[2026-11-12 22:12:12 +    0.2s] treeroute SHAP defo lead 0 done in 0.2 s (tree SHAP 0.1 s)
+[2026-11-12 22:12:36 +    0.1s] defo lead 0: 12 rows, 192 background pairs, 48 of 48 bank trees used, corrector arm True; 309 players, 121 variables; duplicates merged {}
+[2026-11-12 22:12:36 +    0.2s] treeroute: 12 rows, 309 players (191 nonzero), 121 variables (81 nonzero); additivity max 1.78e-15 / 1.78e-15; evaluator gap max 3.81e-09 (0.02 of the float32 bound); resid max 1.50e-09; flagged 0; structural-zero violations 0
+[2026-11-12 22:12:36 +    0.2s] treeroute SHAP defo lead 0 done in 0.2 s (tree SHAP 0.1 s)
+[2026-11-14 12:12:00 +    0.5s] defo lead 0: 1000 rows, 16000 background pairs, 4200 of 4200 bank trees used, corrector arm True; 309 players, 121 variables; duplicates merged {}
+[2026-11-14 12:13:40 +  100.3s]   1000 of 4200 trees (100 s)
+[2026-11-14 12:15:19 +  199.4s]   2000 of 4200 trees (199 s)
+[2026-11-14 12:16:56 +  296.3s]   3000 of 4200 trees (296 s)
+[2026-11-14 12:18:33 +  393.1s]   4000 of 4200 trees (393 s)
+[2026-11-14 12:18:55 +  414.9s] treeroute: 1000 rows, 309 players (279 nonzero), 121 variables (99 nonzero); additivity max 8.88e-15 / 8.88e-15; evaluator gap max 1.02e-06 (0.00 of the float32 bound); resid max 2.77e-08; flagged 0; structural-zero violations 0
+[2026-11-14 12:18:55 +  414.9s] treeroute SHAP defo lead 0 done in 414.9 s (tree SHAP 413.9 s)
+[2026-11-15 23:06:18 +    1.2s] defo lead 0: 1000 rows, 16000 background pairs, 4200 of 4200 bank trees used, corrector arm True; 309 players, 121 variables; duplicates merged {}
+[2026-11-15 23:08:13 +  116.5s]   1000 of 4200 trees (115 s)
+[2026-11-15 23:10:03 +  226.8s]   2000 of 4200 trees (226 s)
+[2026-11-15 23:11:50 +  333.3s]   3000 of 4200 trees (332 s)
+[2026-11-15 23:13:38 +  441.5s]   4000 of 4200 trees (440 s)
+[2026-11-15 23:14:02 +  465.9s] treeroute: 1000 rows, 309 players (279 nonzero), 121 variables (99 nonzero); additivity max 8.88e-15 / 8.88e-15; evaluator gap max 1.02e-06 (0.00 of the float32 bound); resid max 2.77e-08; flagged 0; structural-zero violations 0
+[2026-11-15 23:14:02 +  465.9s] treeroute SHAP defo lead 0 done in 465.9 s (tree SHAP 464.3 s)

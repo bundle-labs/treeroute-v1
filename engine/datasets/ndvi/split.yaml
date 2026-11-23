@@ -1,0 +1,19 @@
+# split.yaml -- NDVI (APP_PLAN.md 1.2).
+# Leave-one-region-out (owner ruling D, 2026-09-28 night; owner rulings E, L7 b): this file holds ONLY the
+# exclusions {group: reason} and the optional seen_during_design groups (APP_PLAN.md 1.2). There is no donor or
+# test list: every group in the target data that is not excluded trains its own specialist trees and is tested,
+# and a unit's router never uses the trees of its own overlap block (R14, R18-R20). The groups, their bank and
+# scored units and the overlap blocks are derived from the data by plan (treeroute/split.py). A donor_groups or
+# test_groups key is refused (G-NOKNOB: "derived: every group is tested").
+# The shipped hard split (89 donor / 44 test groups, transcribed EXACTLY from D:/run89full/ndvi_split.txt, sha256
+# 7c1495b29e08acc6e4a5ffa66ccdbe88edcb17e1f237ef10a49be47af165637b; HEADLINE_RUN_PLAN.md:107-108 option a; ruling Q1 a)
+# moved to legacy_harness/shipped_splits.yaml, with this file's former provenance comments verbatim; its 44 test
+# groups are the continuity row (treeroute_report/continuity_groups.yaml).
+# seen_during_design: thar_desert and greece_mainland were used to pick the NDVI design (both were test groups of
+#   the old split). The report adds a row without them (Q49 yes, owner 2026-09-27; HEADLINE_QUESTIONS_AND_FIXES.md:51,
+#   341-344). Under LORO both are trained and tested like every other group.
+# excluded: none. The panel holds exactly 133 groups: all 133 are trained and tested.
+excluded: {}
+seen_during_design:
+  - greece_mainland
+  - thar_desert

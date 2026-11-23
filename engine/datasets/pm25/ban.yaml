@@ -1,0 +1,814 @@
+# ban.yaml -- pm25: the owner's verdicts, INSTALLED 2026-10-05 under ruling J (OWNER_RULINGS_2026-10-05.md: "yes install
+# it for all 4 problems"), REVISED the same day for the AMENDED J3 and the review of the first install.
+# Source: engine/datasets/review/proposed/pm25_ban_proposed.yaml (the Q34 review with the defaults of its 10 questions,
+# ruling J1), with the owner's rules applied:
+#   J2 (a) spei_01m, spei_03m, spei_06m, V06_spei_12m, spei_24m, amo: the raw parents stay banned 'incomplete'; each is
+#          kept through an engineered <parent>_lag12 column (features/build.py; catalog.yaml role engineered).
+#   J2 (b) deeprec_twsa kept (watch) at an assumed lag-3 store bound. phenology_sos_doy kept (watch) at the assumed
+#          one-extra-year bound: lag 2 years, so R4 moves Y0 from 2003 to 2004 (this column alone sets it). OWNER
+#          decision settled (ruling N, 2026-10-06, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S14 -- ruled by L2 phenology_sos_doy is conditional and Y0 stays 2003): keep (Y0 2004), conditional or ban (Y0 2003, ruling F3); expected_derived.json provisional.
+#   J2 (c) snow_duration_days kept (R8 lags it one year).
+#   J2 (d) epo KEPT: the engine's last-value rule is wired (treeroute/pipeline/data.py:53 and :724-728 call
+#          io/lastvalue.fill_last_value), so each December takes the same unit's November value. Its store window is
+#          still unknown, so G-LAG refuses it with the 11 other kept index columns until the owner signs one
+#          (proposed {1, month, centred}, like nao/pna/wp). December 2023 is a tail, left to R30 (disclosed).
+#          [SUPERSEDED by L1 b below: window signed {3, month, centred}, lag 1 month; no row reads December 2023.]
+#   J3     AMENDED: aglw_* (6) are 'watch', a lagged annual driver (R8: year-1; no freeze, no R9). Listed because the
+#          2022-23 layers are the 2021 layer times INDIA's FAOSTAT ratios, applied to every region, and the 2023 test
+#          rows read the 2022 layer (exceptions.yaml disclosed_defect; the data fix is an owner decision).
+#   J4     nitrogen_gkg units/range and V30_soil_moisture_pct legal minimum: store facts, marked assumed.
+#   J1     burn_frac lag 1 (GFED store reach, assumed). noi's J1 bound is NOT written to the store yet: G-LAG refuses
+#          it LOUDLY with the 11 other kept index columns whose windows were settled by the owner (ruling N, 2026-10-06, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S14 -- signed by L1 (b) the 13 index windows are 3, month, centred), while an unwritten
+#          burn_frac reach would let it in at lag 0, silently (the panel store header says why both are as they are).
+# The verdicts are the owner's by ruling J, except three agent choices that were settled by the owner (ruling N, 2026-10-06, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S14 -- watch confirmed for deeprec_twsa and spei_24m_lag12; phenology_sos_doy is conditional by L2): phenology_sos_doy,
+# deeprec_twsa and spei_24m_lag12 'watch' rather than 'keep'. The TIMING FACTS behind the lags are NOT signed: every
+# store fact this change wrote is fact_status 'assumed'; the owner signs them separately. The aglw_* store facts are
+# the seed's again (unverified, no content_epoch): the amended J3 needs none of its own.
+#
+# Closed world (plan 1.4, G-CLOSED): one verdict per non-key column of catalog.yaml (184: the 166 panel columns, GFED
+# burn_frac / burn_npix, the engineered burn_lag1 and the 6 lag-12 columns, 6 EDGAR columns, ctx:month, ctx:lat and the
+# target). Schema: treeroute/package/schema.py BanFile / Verdict. For a ban, 'reason' is the ban-reason word and
+# 'evidence' starts with the plain reason; for every other verdict 'reason' is the plain reason. There is no 'lag'
+# verdict: a 'lagged' column is 'keep' and R8 computes its lag from the timing facts.
+# REVISED 2026-10-06 under ruling L (OWNER_RULINGS_2026-10-05.md section L, owner: "Yes to all"). SUPERSEDES the lines
+# above where they differ (the J-era notes stay as history):
+#   L1     TIMING FACTS SIGNED by the owner (2026-10-06): the 13 index windows soi, tna, tsa, iod, ao, nao, pna, wp, sam,
+#          noi, pdo, epo, grace_lwe are {3, month, centred} in the shared panel store catalog (R8: lag 1 month;
+#          ruling N1, OWNER_RULINGS_2026-10-06.md N, then gave pdo nino34's form + the ERSSTv5 reach: lag 2); the
+#          facts the install marked 'assumed' (deeprec_twsa reach, phenology_sos_doy window, burn_frac reach,
+#          nitrogen_gkg units/range, V30 minimum, tni) and the aglw_* yearly facts are signed; written fact_status
+#          'assumed' + reviewed_by owner + date 2026-10-06 (the schema has no 'signed' value). Nothing is refused at
+#          R8 any more (G-LAG passes on the catalog facts).
+#   L3     LIVESTOCK 2022-23: aglw_cattle, aglw_buffalo, aglw_horse, aglw_sheep, aglw_goats, aglw_total_lsu: watch -> BAN;
+#          six NEW rows <parent>_hold2021 (features/build.py HOLD_PARENTS: the real 2021 layer held for 2022-2023,
+#          backward only, declared) are WATCH, lagged one year by R8; the hold is disclosed in their reason.
+#          REASON WORD (owner check) closed (ruling N, 2026-10-06, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S13 -- incomplete confirmed the 2022-2023 layers are not observations, the record ends in 2021): L3 says the raw aglw_* are banned 'post_window_snapshot for 2022+'. They are
+#          written ban 'incomplete' (as J2 a's raw parents): the engine's lineage stand-in refuses EVERY feature built
+#          from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS,
+#          check_feature_lineage, G-LINEAGE), so the literal word would refuse the six hold columns L3 asks for. To
+#          use the literal word, the engine must first learn that a hold column never reads the banned rows.
+#   L2     phenology_sos_doy: watch -> CONDITIONAL (out), so Y0 stays 2003 (its 2-year lag set Y0 2004 alone).
+#   L4     epo stays keep (now with its signed window: lag 1 month, so the 2023-12 row reads November 2023 and no
+#          row reads the December 2023 tail); wbal_roll24 stays banned (head-of-record gap).
+# Verdict counts after ruling L (all 190 entries): keep 102, conditional 23, ban:incomplete 19, watch 18, ban:trend_proxy 10, ban:structural 9, ban:post_window_snapshot 8, ban:label 1
+verdicts:
+  pm25_ugm3:
+    verdict: ban
+    reason: label
+    evidence: 'the target: forced ban as a feature | APP_PLAN.md 1.4 line 171 (the target and its twins are forced to ban; G-LINEAGE); pm25_architecture.py:134; same as shipped'
+  lon:
+    verdict: ban
+    reason: structural
+    evidence: 'coordinate: never a tree feature | pm25_ban.py:164 (KEYS); APP_PLAN.md 1.5 (G-KEYS); same as shipped'
+  lat:
+    verdict: ban
+    reason: structural
+    evidence: 'coordinate: never a tree feature; latitude reaches the router only as ctx:lat | pm25_ban.py:164 (KEYS); pm25_adaptation.py:195 (CTX = month, lat); APP_PLAN.md 1.5 (G-KEYS); same as shipped'
+  V25_elevation_m:
+    verdict: watch
+    reason: 'kept, listed: a covariate of ACAG V5''s own GWR calibration (subgrid relief, coastal contrast), so a gain here may rebuild the target''s calibration; score it region-blocked'
+    evidence: pm25_ban.py:148-158 (WATCH_GWR); AUDIT_CHECKLIST.md item 1; Parts 539-540; same as shipped
+  V26_slope_deg:
+    verdict: watch
+    reason: 'kept, listed: a covariate of ACAG V5''s own GWR calibration (subgrid relief, coastal contrast), so a gain here may rebuild the target''s calibration; score it region-blocked'
+    evidence: pm25_ban.py:148-158 (WATCH_GWR); AUDIT_CHECKLIST.md item 1; Parts 539-540; same as shipped
+  V27_southness:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  V28_CTI:
+    verdict: watch
+    reason: 'kept, listed: a covariate of ACAG V5''s own GWR calibration (subgrid relief, coastal contrast), so a gain here may rebuild the target''s calibration; score it region-blocked'
+    evidence: pm25_ban.py:148-158 (WATCH_GWR); AUDIT_CHECKLIST.md item 1; Parts 539-540; same as shipped
+  clay_pct:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  sand_pct:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  silt_pct:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  soil_organic_carbon_gkg:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  nitrogen_gkg:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag); store facts corrected by ruling J4 (OWNER_RULINGS_2026-10-05.md): units cg kg-1, legal_range [0, 5000], fact_status assumed'
+  soil_ph:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  awc_cm3cm3:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  bulk_density_gcm3:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  cec_cmolkg:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  coarse_fragments_pct:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  V15_bare_ground_pct:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; ruling F3 (OWNER_RULINGS_2026-09-28.md:76: MOD44B trio follows the shipped verdict, Y0 stays 2003); sum group V15 + V17 + tree_cover_pct = 100 shares one verdict (defo_ban.py:28-34; APP_PLAN.md 1.4)'
+  V17_herb_cover_pct:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; ruling F3 (OWNER_RULINGS_2026-09-28.md:76: MOD44B trio follows the shipped verdict, Y0 stays 2003); sum group V15 + V17 + tree_cover_pct = 100 shares one verdict (defo_ban.py:28-34; APP_PLAN.md 1.4)'
+  tree_cover_pct:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; ruling F3 (OWNER_RULINGS_2026-09-28.md:76: MOD44B trio follows the shipped verdict, Y0 stays 2003); sum group V15 + V17 + tree_cover_pct = 100 shares one verdict (defo_ban.py:28-34; APP_PLAN.md 1.4)'
+  modis_landcover_class:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78'
+  shrub_cover_pct_global:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; MCD12Q1 slices (defo_ban.py:36-38)'
+  phenology_sos_doy:
+    verdict: conditional
+    reason: 'owner ruling L2: out (conditional) on this package, so Y0 stays 2003. Its signed window (L1 a: {1, year, centred} + reach_after_max {1, year}) lags it 2 years on this monthly target, so kept it alone would move Y0 to 2004 (R4, ruling J5)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md L2 (''phenology_sos_doy: Out (conditional) on PM2.5 and fire, so Y0 stays 2003. (On NDVI it stays banned as a co-product.)''); was keep/watch under J2 (b); ruling F3 (Y0 2003)'
+  population_density:
+    verdict: watch
+    reason: annual WorldPop (R8 lags it to year-1); kept but listed because 2021-2023 are EXTRAPOLATED model output, not observations
+    evidence: 'pm25_ban.py:143 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); defo_ban.py:99-111 (ruled not a leak; WorldPop Global1 ends 2020); review sheet facts probe (values rise every year 2020-23, e.g. thar 87.70 -> 94.61); AUDIT_REPORT.md item 3 (max 368,684 is impossible as a density); ruling J1 (OWNER_RULINGS_2026-10-05.md: the Q4 a default keeps it on PM2.5, Part 539)'
+  built_surface_fraction:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'GHSL: 2020+ are PROJECTIONS, between-epoch years interpolated | defo_ban.py:89-91 (FREEZE_BUILT); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); same as shipped'
+  cropland_fraction:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; MCD12Q1 slices (defo_ban.py:36-38)'
+  hand_m:
+    verdict: watch
+    reason: 'kept, listed: a covariate of ACAG V5''s own GWR calibration (subgrid relief, coastal contrast), so a gain here may rebuild the target''s calibration; score it region-blocked'
+    evidence: pm25_ban.py:148-158 (WATCH_GWR); AUDIT_CHECKLIST.md item 1; Parts 539-540; same as shipped; MERIT uses Hansen 2000 tree density (Part 508), irrelevant to PM2.5
+  upstream_area_km2:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag); MERIT routing uses Hansen 2000 tree density (Part 508): a defo-family link, irrelevant to PM2.5'
+  irrigation_pct_gmia:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  dist_to_coast_km:
+    verdict: watch
+    reason: 'kept, listed: a covariate of ACAG V5''s own GWR calibration (subgrid relief, coastal contrast), so a gain here may rebuild the target''s calibration; score it region-blocked'
+    evidence: pm25_ban.py:148-158 (WATCH_GWR); AUDIT_CHECKLIST.md item 1; Parts 539-540; same as shipped
+  V01_mean_temp_C:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  diurnal_temp_range_C:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  V02_total_precip_mm:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  V07_total_ref_ET_mm:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  aet_total_mm:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  climate_water_deficit_mm:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  soil_water_tc_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month water store
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  V05_mean_vpd_kPa:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  V09_mean_wind_ms:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  solar_radiation_Wm2:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  swe_mean_mm:
+    verdict: keep
+    reason: TerraClimate end-of-month water store
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  aridity_index_p_pet:
+    verdict: ban
+    reason: incomplete
+    evidence: 12.9% missing in donor rows but 27-28% in every test year (missingness doubles across the split); impossible values up to 7323 (PET -> 0) | pm25_ban.py:110; AUDIT_REPORT.md item 3; review sheet missing shares; same as shipped
+  tc_vapor_pressure:
+    verdict: keep
+    reason: 'monthly meteorology or water balance of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinel masking Part 248 (reference_panel_nodata_sentinel)
+  V11_mean_ndvi:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional); MOD13C2 reaches 15 days past the month (ruling B item 8 a): lag 1 if an ablation ever keeps it'
+  V13_mean_lst_C:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  nighttime_lst_C:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  snow_cover_fraction:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78'
+  cloud_frequency_pct:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  V14_mean_albedo:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  gpp_kgC_m2:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  snow_onset_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 57-64% missing in donor rows (all-null in 56-57 of 127 groups); the look-ahead is fixed by R8''s year-1 lag, so incompleteness is the reason that stands | review sheet missing_share_note (R30 FLAG); APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); ingest_era5land_snowphen.py:3-8 (calendar-year window); pm25_ban.py:38-41 (shipped ban); verdict unchanged, reason changed (was look-ahead)'
+  snow_disappearance_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 57-64% missing in donor rows (all-null in 56-57 of 127 groups); the look-ahead is fixed by R8''s year-1 lag, so incompleteness is the reason that stands | review sheet missing_share_note (R30 FLAG); APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); ingest_era5land_snowphen.py:3-8 (calendar-year window); pm25_ban.py:38-41 (shipped ban); verdict unchanged, reason changed (was look-ahead)'
+  snow_duration_days:
+    verdict: keep
+    reason: 'CHANGE from shipped ban: ERA5-Land calendar-year count of snow days; the only shipped reason (annual look-ahead) is removed by R8''s year-1 lag; complete (0.0% missing; zero = no snow); reanalysis, not optical'
+    evidence: 'ingest_era5land_snowphen.py:3-8 (calendar-year window, split at DOY 200); shipped ban pm25_ban.py:38-41 (look-ahead only); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); review sheet missing share 0.0% donor and every test year; ruling J2 (c) (OWNER_RULINGS_2026-10-05.md: annual end-of-year totals are kept, R8 lags them one year)'
+  snow_max_doy:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 57-64% missing in donor rows (all-null in 56-57 of 127 groups); the look-ahead is fixed by R8''s year-1 lag, so incompleteness is the reason that stands | review sheet missing_share_note (R30 FLAG); APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); ingest_era5land_snowphen.py:3-8 (calendar-year window); pm25_ban.py:38-41 (shipped ban); verdict unchanged, reason changed (was look-ahead)'
+  V06_spei_12m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 100% missing in 2023 in all regions (a quarter of the test window); the SPI block replaces it | pm25_ban.py:100-113 (DROP_INCOMPLETE); AUDIT_REPORT.md item 1; reference_dataset_audit; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); Part 324; same as shipped; kept through the engineered V06_spei_12m_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  spei_01m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 100% missing in 2023 in all regions (a quarter of the test window); the SPI block replaces it | pm25_ban.py:100-113 (DROP_INCOMPLETE); AUDIT_REPORT.md item 1; reference_dataset_audit; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); Part 324; same as shipped; kept through the engineered spei_01m_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  spei_03m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 100% missing in 2023 in all regions (a quarter of the test window); the SPI block replaces it | pm25_ban.py:100-113 (DROP_INCOMPLETE); AUDIT_REPORT.md item 1; reference_dataset_audit; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); Part 324; same as shipped; kept through the engineered spei_03m_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  spei_06m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 100% missing in 2023 in all regions (a quarter of the test window); the SPI block replaces it | pm25_ban.py:100-113 (DROP_INCOMPLETE); AUDIT_REPORT.md item 1; reference_dataset_audit; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); Part 324; same as shipped; kept through the engineered spei_06m_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  spei_24m:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 100% missing in 2023 in all regions (a quarter of the test window); the SPI block replaces it | pm25_ban.py:100-113 (DROP_INCOMPLETE); AUDIT_REPORT.md item 1; reference_dataset_audit; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); Part 324; same as shipped; kept through the engineered spei_24m_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  frost_days:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  heatwave_days_gt35C:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  gdd5_degC_days:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  wet_day_count:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  V03_max_daily_precip_mm:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  precip_intensity_mm:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  vpd_max_daily:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  vpd_days_gt_2kpa:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  vpd_warm_season_mean:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); vpd_warm_season_mean is the plain monthly mean VPD despite its name (ingest_agera5_daycounts.py:169)
+  rmin_pct:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  sph_kgkg:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  V30_soil_moisture_pct:
+    verdict: keep
+    reason: 'monthly meteorology of the named month: not optical, no link to the ACAG target'
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); store legal minimum -1e-12 by ruling J4 (OWNER_RULINGS_2026-10-05.md: float rounding of 0), fact_status assumed'
+  V20_burned_binary:
+    verdict: ban
+    reason: structural
+    evidence: 'FireCCI SENSOR SWITCH exactly at the split (MODIS <= 2019, OLCI >= 2020): trained on one sensor, scored on another; redundant with GFED burn_frac, its measured replacement. Shipped reason (annual look-ahead) is wrong: the column is MONTHLY | ingest_firecci_fire.py:6 (V20 MONTHLY), :28 (MODIS_LAST = 2019), :37-40 (_origin); pm25_ban.py:34 (shipped ban, wrong reason); pm25_ban.py:28-29 + Parts 539-540 (GFED replacement); resolves the sheet''s OWNER CHECK; verdict unchanged, reason changed'
+  burn_month_count:
+    verdict: ban
+    reason: structural
+    evidence: 'annual FireCCI summaries: R8''s year-1 lag would fix the look-ahead, but the same sensor switch puts OLCI values into 3 of 4 test years; measured |r| with PM2.5 only 0.053 / 0.042; replaced by GFED | ingest_firecci_fire.py:7-8, 28, 37-40; pm25_ban.py:23-29, 35-36; Parts 539-540; verdict unchanged, reason changed (was look-ahead)'
+  burn_doy_mean:
+    verdict: ban
+    reason: structural
+    evidence: 'annual FireCCI summaries: R8''s year-1 lag would fix the look-ahead, but the same sensor switch puts OLCI values into 3 of 4 test years; measured |r| with PM2.5 only 0.053 / 0.042; replaced by GFED | ingest_firecci_fire.py:7-8, 28, 37-40; pm25_ban.py:23-29, 35-36; Parts 539-540; verdict unchanged, reason changed (was look-ahead)'
+  sst_anom_atl3:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_iod_west:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_iod_east:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_subpolar_north_atlantic:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_coral_sea:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_mediterranean:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_global_tropical_mean:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  sst_anom_nino34:
+    verdict: keep
+    reason: repo box mean of monthly ERSSTv5 fields (1971-2000 base); the ERSSTv5 filter reach is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); ruling F4 (OWNER_RULINGS_2026-09-28.md:77); INDEX_WINDOW_AUDIT.md Table 1 rows 20-27 (ingest_ersst_boxes.py:25-40, 70-91)
+  nino12:
+    verdict: keep
+    reason: monthly ERSSTv5 Nino-box anomaly; the ERSSTv5 filter reach (+2 months) is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); INDEX_WINDOW_AUDIT.md Table 1 rows 1-4 [S3, S7, S39]; 'no running mean' rests on the provider pages + nino34's sibling evidence (audit open item 11)
+  nino3:
+    verdict: keep
+    reason: monthly ERSSTv5 Nino-box anomaly; the ERSSTv5 filter reach (+2 months) is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); INDEX_WINDOW_AUDIT.md Table 1 rows 1-4 [S3, S7, S39]; 'no running mean' rests on the provider pages + nino34's sibling evidence (audit open item 11)
+  nino4:
+    verdict: keep
+    reason: monthly ERSSTv5 Nino-box anomaly; the ERSSTv5 filter reach (+2 months) is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); INDEX_WINDOW_AUDIT.md Table 1 rows 1-4 [S3, S7, S39]; 'no running mean' rests on the provider pages + nino34's sibling evidence (audit open item 11)
+  nino34:
+    verdict: keep
+    reason: monthly ERSSTv5 Nino-box anomaly; the ERSSTv5 filter reach (+2 months) is content, so R8 lags it 2
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); INDEX_WINDOW_AUDIT.md Table 1 rows 1-4 [S3, S7, S39]; equals an unrolled ERSSTv5 box mean (T6)
+  oni:
+    verdict: keep
+    reason: 'centred 3-month ONI: kept and LAGGED by rule (not banned); with the ERSSTv5 reach R8 gives lag 3'
+    evidence: 'ruling Q2 (HEADLINE_QUESTIONS_AND_FIXES.md:63: centred indices kept, LAGGED by rule); ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24); INDEX_WINDOW_AUDIT.md Table 1 row 5 [S6, T3, T5]; the shipped nowcast fed it at lag 0, now corrected by rule (Part 558)'
+  soi:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 7 [S3, S8]; data signature T8 decisive (stored -0.50); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  tni:
+    verdict: keep
+    reason: '5-month running mean of unknown alignment: kept and LAGGED by rule; the signed bound gives lag 3'
+    evidence: 'ruling Q2 (HEADLINE_QUESTIONS_AND_FIXES.md:63: centred indices kept, LAGGED by rule); ruling R-B (OWNER_RULINGS_2026-09-28.md:25); INDEX_WINDOW_AUDIT.md Table 1 row 6 [S4, T4, T4b]'
+  pdo:
+    verdict: keep
+    reason: 'monthly PDO index; its source is ERSSTv5-based, so the ruled ERSSTv5 filter reach applies: R8 lag 2'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 8 (variant was 'unknown'); PSL pdo.data footer (read-only, 2026-10-05, under ruling R-E) points to the CCIEA ERDDAP series cciea_OC_PDO, whose page defines it as 'the projections of the ERSST V5 monthly SSTA onto the 1st EOF pattern of North Pacific 20N-60N' (Wen, Kumar and Xue 2014); hence ruling R-A (a) (OWNER_RULINGS_2026-09-28.md:24) applies; datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  amo:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 91.7% missing in 2023; the source amon.us.data ends January 2023 | pm25_ban.py:114-117; ruling A5 (QUESTIONS_ROUND3_HANDOFF.md:450: AMO 2023 re-fetch else drop; source ends Jan 2023); INDEX_WINDOW_AUDIT.md Table 1 row 9 [S10]; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); same as shipped; kept through the engineered amo_lag12 (ruling J2 a, OWNER_RULINGS_2026-10-05.md: the raw parent stays banned incomplete)'
+  tna:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 10 [S3, S11]; HadISST1.1 input filters disclosed, not lagged (ruling B item 7 (OWNER_RULINGS_2026-09-28.md:30: filters inside input analyses -> disclose, do not lag)); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is ''unknown'')'
+  tsa:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 11 [S3, S12]; HadISST1.1 input filters disclosed, not lagged (ruling B item 7 (OWNER_RULINGS_2026-09-28.md:30: filters inside input analyses -> disclose, do not lag)); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is ''unknown'')'
+  iod:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 12 [S14] (DMI from HadISST1.1); input filters disclosed, not lagged (ruling B item 7 (OWNER_RULINGS_2026-09-28.md:30: filters inside input analyses -> disclose, do not lag)); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is ''unknown'')'
+  noi:
+    verdict: keep
+    reason: monthly SLP-difference index (NCEP/NCAR reanalysis) with no running mean in the data; shipped keep
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 13 [S13]; data signature T8 decisive for the atmospheric indices (stored -0.44; a 3-month mean would give +0.19..+0.31); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is ''unknown''); ruling J1 (OWNER_RULINGS_2026-10-05.md: the Q2 default, an assumed {3, month, centred} window, lag 1); that bound is NOT yet in the store catalog (it is not a J4 or J2 b fact, and noi alone unblocks no package''s R8: it goes in with the other unsigned index windows in one merge), so G-LAG refuses noi LOUDLY at lag 0 until it is written and signed (monthly_panel_v170_schema_catalog.yaml header)'
+  ao:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 14 [S15]; T8 decisive (stored -0.30); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  nao:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 15 [S16]; T8 decisive (stored -0.36); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  pna:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 16 [S16]; T8 decisive (stored -0.41); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  wp:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 17 [S16]; T8 decisive (stored -0.39); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  epo:
+    verdict: keep
+    reason: 'owner ruling J2 (d): kept through the engine''s last-value rule (each December, which CPC never issues, takes the same unit''s November value; every fill is counted per column). Window signed by the owner 2026-10-06 (ruling L1 b, {3, month, centred}): R8 lag 1 month, so the row of month t reads month t-1, each January row takes November through the fill, and the 2023-12 row reads November 2023 (no tail is read); ruling L4 keeps it'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (d) (''Fixes epo (December takes November)''); the rule is wired: treeroute/pipeline/data.py:53 (import) and :724-728 (ColumnReader.lagged calls fill_last_value on the kept tree features, before R30''s shares and the pool); treeroute/io/lastvalue.py (an EARLIER value of the same unit, at most 2 steps back on a monthly target, engine constant C18 in engine_constants.py:293); INDEX_WINDOW_AUDIT.md:75 (EPO missing every December, 22 of 264 panel months); measured 2026-10-05 on 10 regions x 2019: month 12 100% missing, months 1-11 0%; December 2023 comes after the record''s last value (a tail): BEFORE ruling L1 (b) the column was read at lag 0, so the 2023-12 test rows would have read R30''s 0-fill there; AFTER L1 (b) (lag 1 month) the 2023-12 row reads November 2023 and no row reads the tail (the exceptions.yaml provenance_flag still describes the lag-0 tail); whether an interior gap is filled depends on a later value being PRESENT, never on its size (lastvalue.py:32-34): the owner confirms that reading; store window: unknown until 2026-10-06 (no earlier ruling set it; the review wrote none for epo because it proposed a ban), then signed {3, month, centred} by the owner (ruling L1 b, OWNER_RULINGS_2026-10-05.md section L), written in the shared panel store catalog; the review''s ban structural is superseded by J2 d; held conditional in the first install while the rule had no caller; shipped keep (D:/pm25_adapt/u2/run.log:9)'
+  sam:
+    verdict: keep
+    reason: monthly climate index with no running mean (provider page); shipped keep
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9); INDEX_WINDOW_AUDIT.md Table 1 row 19 [S15]; T8 decisive (stored -0.41); datasets/pm25_draft/ban.yaml:358-409 + SMOKES_REPORT.md:134-147 (G-LAG refused it at lag 0 only because its store window is 'unknown')
+  V04_precip_seasonality:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); an annual summary of the year''s own rainfall (pm25_ban.py:136-137), so year-1 is required'
+  clf_dry:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'baked regime classes: accurate in-sample, worse than naive 2020+; trained on in-window MODIS NDVI (the A2 optical channel) | pm25_ban.py:58; Parts 144-148 and 308 (reference_regime_ood_failure); save_regime_to_panel.py:1-5 (trained_on V11); same as shipped'
+  clf_wet:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'baked regime classes: accurate in-sample, worse than naive 2020+; trained on in-window MODIS NDVI (the A2 optical channel) | pm25_ban.py:58; Parts 144-148 and 308 (reference_regime_ood_failure); save_regime_to_panel.py:1-5 (trained_on V11); same as shipped'
+  road_density:
+    verdict: ban
+    reason: 'post_window_snapshot'
+    evidence: 'owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S29): keep -> ban | was: keep | static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target | shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)'
+  travel_time:
+    verdict: keep
+    reason: 'static physical or infrastructure layer: no time axis, not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); pm25_ban.py:138-139 (static columns need no lag)
+  dist_powerplant:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_thermal:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_coal_mine:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_dam:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_reservoir:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_oilgas_well:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  dist_pa:
+    verdict: ban
+    reason: post_window_snapshot
+    evidence: 'static snapshot dated after the window (sources to May/June 2026); plants, mines and wells are direct PM2.5 sources, so a 2019 row ''knows'' a later plant; the stored column has no pre-window epoch to freeze | defo_ban.py:80-87 (FREEZE_INFRA); pm25_ban.py:120-127; ruling A3 (QUESTIONS_ROUND3_HANDOFF.md:448: defo''s 14 FREEZE columns banned from PM2.5); the ''freeze'' verdict is not built in the pipeline (treeroute/pipeline/data.py:649); same as shipped'
+  gdp_pc:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); stored as log1p (assemble_human_drivers.py:93); ruling J1 (OWNER_RULINGS_2026-10-05.md: the Q4 a default keeps gdp_pc and population_density on PM2.5, Part 539)'
+  ntl:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); DMSP -> VIIRS switch 2013/2014 (assemble_human_drivers.py:100), outside the 2019/2020 split'
+  hdi:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); held at its 2015 value for 2016+ (assemble_human_drivers.py:113): stale, not look-ahead'
+  luh2_cropland:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); LUH2 is census/HYDE-driven (reference_vegtype_leakfree_sources); its Hansen constraint matters only for defo (defo_ban.py:43-49)'
+  luh2_pasture:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); LUH2 is census/HYDE-driven; its Hansen constraint matters only for defo (defo_ban.py:43-49)'
+  luh2_range:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); LUH2 is census/HYDE-driven; its Hansen constraint matters only for defo (defo_ban.py:43-49)'
+  luh2_urban:
+    verdict: watch
+    reason: 'annual LUH2 urban fraction (R8 lags it to year-1) and a GWR-type covariate (V4 used urban distance): kept, listed'
+    evidence: 'pm25_ban.py:144 (ANNUAL_LAG1) + :157 (WATCH_GWR); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a)'
+  luh2_forest:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); a hard leak for DEFO only (Hansen-constrained transitions, defo_ban.py:43-49); ban lists are per problem (Q34)'
+  luh2_secondary:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); a hard leak for DEFO only (Hansen-constrained transitions, defo_ban.py:43-49); ban lists are per problem (Q34)'
+  fert_n:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); held at its 2013 value for 2014+ (assemble_human_drivers.py:145): stale, not look-ahead; units unconfirmed'
+  fert_p:
+    verdict: keep
+    reason: annual value broadcast to 12 months; R8 lags it to year-1, exactly as the shipped ANNUAL_LAG1
+    evidence: 'pm25_ban.py:142-146 (ANNUAL_LAG1); ruling A1 (QUESTIONS_ROUND3_HANDOFF.md:446: lag the annual columns); APP_PLAN.md:228 (R8: annual columns come out at year -1 on a monthly target, Q3 a); held at its 2013 value for 2014+ (assemble_human_drivers.py:145): stale, not look-ahead; units unconfirmed'
+  aglw_cattle:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_cattle_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_buffalo:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_buffalo_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_horse:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_horse_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_sheep:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_sheep_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_goats:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_goats_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_total_lsu:
+    verdict: ban
+    reason: incomplete
+    evidence: 'the 2022 and 2023 layers are not observations: the 2021 layer times INDIA''s FAOSTAT ratios, applied to every region (store observed_through 2021), so the raw column is not used and is kept through aglw_total_lsu_hold2021 (features/build.py: the real 2021 layer held for 2022-2023) | ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''The 2022 and 2023 aglw_* layers ... are not used ... The raw aglw_* are banned (post_window_snapshot for 2022+)''). REASON WORD: the ruling names post_window_snapshot; it is written ''incomplete'' (the J2 a pattern: raw parent banned, engineered child kept) because the engine''s lineage stand-in refuses every feature built from a column banned for post_window_snapshot (treeroute/pipeline/data.py LINEAGE_LEAK_REASONS, check_feature_lineage: G-LINEAGE), which would refuse the very column L3 asks for. OWNER: confirm the word, or rule an engine change; was watch (amended J3)'
+  aglw_cattle_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_cattle as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_buffalo_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_buffalo as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_horse_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_horse as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_sheep_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_sheep as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_goats_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_goats as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  aglw_total_lsu_hold2021:
+    verdict: watch
+    reason: 'yearly livestock density (AGLW) from the real layers only: aglw_total_lsu as stored for 2002-2021, the real 2021 layer held for 2022-2023 (ruling L3); R8 lags it one year on this monthly target. Listed: the hold is disclosed (test rows of 2023 read the held 2021 layer, two years old, through the one-year lag; 2022 rows read 2021 as before)'
+    evidence: 'ruling L3 (OWNER_RULINGS_2026-10-05.md section L (owner, 2026-10-06): ''Each package builds an engineered column that holds the real 2021 layer for 2022-2023 (backward-only, declared) ... The fixed columns are watch, lagged one year by R8, and the hold is disclosed''); amended J3 (a lagged annual driver on all four packages); features/build.py HOLD_PARENTS (operation hold_last_observed through_year=2021 unit=year; facts the parent''s, signed under L1 c)'
+  conflict_events:
+    verdict: keep
+    reason: UCDP GED events counted per cell and month; zero means no event within 50 km, never 'not measured'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); assemble_human_drivers.py:254-276; pm25_ban.py:139-140; INDEX_WINDOW_AUDIT.md lines 7, 82 (per cell, not global); 0.0% missing on PM2.5, so R30 does not flag it here
+  conflict_deaths:
+    verdict: keep
+    reason: UCDP GED events counted per cell and month; zero means no event within 50 km, never 'not measured'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); assemble_human_drivers.py:254-276; pm25_ban.py:139-140; INDEX_WINDOW_AUDIT.md lines 7, 82 (per cell, not global); 0.0% missing on PM2.5, so R30 does not flag it here
+  co2:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar identical in every cell: it IS the year; 100% of 2020-23 values lie outside the <=2019 range | pm25_ban.py:44-56 (BAN_TREND); defo_ban.py:59-62; the R-C (a) bound is moot while banned; same as shipped'
+  food_price_index:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  food_meat:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  food_dairy:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  food_cereals:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  food_oils:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  food_sugar:
+    verdict: ban
+    reason: trend_proxy
+    evidence: 'global scalar price index: a time trend with no spatial information; test months out of the training range | pm25_ban.py:57 (BAN_TREND); defo_ban.py:59-62 (food_oils 18.8%, food_meat 16.7% of test months above the training max); same as shipped'
+  grace_lwe:
+    verdict: ban
+    reason: incomplete
+    evidence: 'GRACE -> GRACE-FO gap (58% NaN 2017-18): 16.2% missing in donor rows vs 0% in test, an availability shift that acts as a time index; its window is also unknown with no bound (G-LAG) | pm25_ban.py:111; AUDIT_REPORT.md item 4; reference_feature_hygiene_groups (Parts 306-312); monthly_panel_v170_schema_catalog.yaml window align unknown; same as shipped'
+  modis_landcover_annual:
+    verdict: conditional
+    reason: 'out of every engine run: MODIS land product, same atmospheric-correction channel (MOD44B trio also reaches into the next year); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:85-95 (CONDITIONAL_MODIS_LC); pm25_architecture.py:78; the sheet''s OWNER CHECK on its 2023 vintage is moot while conditional (re-open it before any ablation arm)'
+  V12_mean_evi:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional); MOD13C2 reaches 15 days past the month (ruling B item 8 a): lag 1 if an ablation ever keeps it'
+  deeprec_twsa:
+    verdict: watch
+    reason: kept by owner ruling J2 (b) at an ASSUMED lag-3 bound (store fact reach_after_max {3, month}); listed because the CNN+LSTM input window is undocumented (the bound is the owner's, not the provider's) and the reconstruction was fitted on GRACE months that include the test years
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (b) (deeprec_twsa lag 3 months); monthly_panel_v170_schema_catalog.yaml deeprec_twsa (fact_status assumed); timing.lag_trace 2026-10-05: lag 3 on this target; D:/deeprec/DeepRec_mixture_CSR_ERA5-ONI-HI.nc global attributes (model_input ERA5 monthly means, ISIMIP land use, ERSSTv5 ONI, no input window; model_target CSR GRACE/GRACE-FO RL06.3; coverage 1941-01 to 2023-12); Gentner et al. doi 10.1029/2025JH000889 unread (HTTP 403); the review''s ban lookahead_unfixable (Q3) is superseded by J2 b; shipped keep (D:/pm25_adapt/u2/run.log:9); exceptions.yaml disclosure'
+  era5l_pev:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_sro:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_ssro:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_smlt:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_slhf:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_sshf:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_ssr:
+    verdict: conditional
+    reason: 'out of every engine run: headline = settled leak status; atmospheric-correction, retrieval-failure or downstream-consequence channel to aerosol (not convicted); later ablation arm outside the product'
+    evidence: 'ruling A2 (QUESTIONS_ROUND3_HANDOFF.md:447: 9 optical + 8 MODIS land-cover columns leave the headline); pm25_ban.py:63-83 (CONDITIONAL_OPTICAL); pm25_architecture.py:78 (DROP_CONDITIONAL = True); APP_PLAN.md 1.4 (conditional)'
+  era5l_str:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_d2m:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  era5l_stl1:
+    verdict: keep
+    reason: 'ERA5-Land monthly field of the named month (reanalysis, no retrieval): not optical, no link to the ACAG target'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558)
+  esacci_sm:
+    verdict: ban
+    reason: incomplete
+    evidence: 'R30 FLAG: 25.3% missing in donor rows and 30-32% in every test year; also jointly retrieved with VOD | pm25_ban.py:108 (DROP_INCOMPLETE) + :82 (also conditional optical); fire_ban.py:51-53; APP_PLAN.md:265 (R30) and 1.4 line 170 (an R30-flagged column needs keep-with-evidence or ban); same as shipped'
+  scpdsi:
+    verdict: ban
+    reason: trend_proxy
+    evidence: static spatial mask over hyper-arid cells plus trend loading (|r(annual, year)| > 0.6 in 22 of 133 regions) | pm25_ban.py:59; Part 340 hazards 1 and 3 (reference_drought_tier_hazards); same as shipped
+  spi_01m:
+    verdict: keep
+    reason: standardised precipitation index on a trailing window; covers 2023 (the SPEI replacement)
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); Part 324 (SPI replaces the SPEI block, which vanishes in 2023)
+  spi_03m:
+    verdict: keep
+    reason: standardised precipitation index on a trailing window; covers 2023 (the SPEI replacement)
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); Part 324 (SPI replaces the SPEI block, which vanishes in 2023)
+  spi_06m:
+    verdict: keep
+    reason: standardised precipitation index on a trailing window; covers 2023 (the SPEI replacement)
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); Part 324 (SPI replaces the SPEI block, which vanishes in 2023)
+  spi_12m:
+    verdict: keep
+    reason: standardised precipitation index on a trailing window; covers 2023 (the SPEI replacement)
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); Part 324 (SPI replaces the SPEI block, which vanishes in 2023)
+  spi_24m:
+    verdict: watch
+    reason: 'kept but listed: the 24-month SPI is TREND-LOADED (annual mean r with year 0.874 on thar), the regime-OOD signature'
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); Part 340 hazard 3 (reference_drought_tier_hazards); Part 324; review sheet note 'spi_24m trend-loaded'
+  eddi:
+    verdict: ban
+    reason: structural
+    evidence: 'seasonal missingness mask (Oct-Feb at high latitude): R30''s 0-fill makes it a month-key marker; missingness 5.6% donor -> 12-14% test | pm25_ban.py:60 (shipped reason text: a mask that smuggles the month key); Part 340 hazard 2 (reference_drought_tier_hazards); verdict unchanged, reason label changed (trend_proxy -> structural: a key leak, not a trend)'
+  wbal_mm:
+    verdict: keep
+    reason: monthly water balance P - ET0 of the named month
+    evidence: shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); sentinels masked at source (Part 340)
+  wbal_roll3:
+    verdict: keep
+    reason: trailing sum of the monthly water balance
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); min_periods = window: only 2002 heads are empty (a lag-source year)'
+  wbal_roll6:
+    verdict: keep
+    reason: trailing sum of the monthly water balance
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); min_periods = window: only 2002 heads are empty (a lag-source year)'
+  wbal_roll12:
+    verdict: keep
+    reason: trailing sum of the monthly water balance
+    evidence: 'shipped keep (D:/pm25_adapt/u2/run.log:9; Parts 539-540, 558); min_periods = window: only 2002 heads are empty (a lag-source year)'
+  wbal_roll24:
+    verdict: ban
+    reason: incomplete
+    evidence: 'head-of-record gap: the 24-month window (min_periods = window) is empty Jan 2002 - Nov 2003, 5.4% of donor rows, zero-filled by R30 where 0 is a real value; wbal_roll3/6/12 are kept | pm25_ban.py:112; review sheet (5.4% donor, 0% test); conservative: kept as shipped although below the 25% line'
+  eddi_observed:
+    verdict: ban
+    reason: structural
+    evidence: 'isfinite(eddi): a per-cell seasonal indicator, i.e. the month key the trees may not see | pm25_ban.py:60; Part 342 (added as isfinite(eddi)); APP_PLAN.md 1.5 (G-KEYS); verdict unchanged, reason label changed (trend_proxy -> structural)'
+  burn_frac:
+    verdict: watch
+    reason: 'GFED500m monthly burned fraction: PM2.5''s one measured smoke driver; kept but listed because it is physics-upstream of the target (ACAG''s GEOS-Chem runs on GFED4 emissions whose burned area is MCD64A1, as is GFED500m''s)'
+    evidence: 'pm25_architecture.py:76-81 (USE_BURN, BURN_COLS); gfed_burn_ingest.py:22-28 (LEAK STATUS: physics-upstream, ''the paper must say so''); pm25_ban.py:28-29 (beats its time-shifted placebo, +0.0304; Parts 539-540); ruling Q25 b (HEADLINE_QUESTIONS_AND_FIXES.md:46; exceptions.yaml test-exposure entry); leak-safety first: at lag 0 the column holds MODIS observations from after the target month (R-D b); lag 1 by the GFED store fact reach_after_max {1, month}, assumed (ruling J1: the Q1 default, burn_frac lag 1 on PM2.5; gfed_burn_schema_catalog.yaml); co_measured_with_target still unanswered (no ruling)'
+  burn_npix:
+    verdict: ban
+    reason: structural
+    evidence: support column (count of 500 m pixels averaged into the cell), not burn content | pm25_ban.py:165 (KEYS); gfed_burn_schema_catalog.yaml burn_npix; same as shipped (a later catalog edit could give it role 'support')
+  burn_lag1:
+    verdict: conditional
+    reason: 'out: a duplicate of the lagged burn_frac (both hold month t-1 since ruling J1)'
+    evidence: 'owner ruling 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S24): watch -> conditional | was: watch | engineered lag 1 of burn_frac (smoke is transported); same upstream lineage, listed | pm25_architecture.py:81, 178-181; catalog.yaml burn_lag1 provenance; ruling Q25 b (HEADLINE_QUESTIONS_AND_FIXES.md:46; exceptions.yaml test-exposure entry); with burn_frac at lag 1 it holds the SAME month t-1 value as the lagged burn_frac: a duplicate column (OWNER QUESTION, Q1: keep, move to t-2, or drop; unchanged until ruled)'
+  spei_01m_lag12:
+    verdict: keep
+    reason: 'lag 12 of spei_01m (owner ruling J2 a): the raw parent vanishes in 2023, its value 12 months earlier is complete through the test window; R8 lags the composed facts (lag 0: the column already holds month t-12)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml spei_01m_lag12 (role engineered); parent spei_01m banned incomplete (store observed_through 2022-12)'
+  spei_03m_lag12:
+    verdict: keep
+    reason: 'lag 12 of spei_03m (owner ruling J2 a): the raw parent vanishes in 2023, its value 12 months earlier is complete through the test window; R8 lags the composed facts (lag 0: the column already holds month t-12)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml spei_03m_lag12 (role engineered); parent spei_03m banned incomplete (store observed_through 2022-12)'
+  spei_06m_lag12:
+    verdict: keep
+    reason: 'lag 12 of spei_06m (owner ruling J2 a): the raw parent vanishes in 2023, its value 12 months earlier is complete through the test window; R8 lags the composed facts (lag 0: the column already holds month t-12)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml spei_06m_lag12 (role engineered); parent spei_06m banned incomplete (store observed_through 2022-12)'
+  V06_spei_12m_lag12:
+    verdict: keep
+    reason: 'lag 12 of V06_spei_12m (owner ruling J2 a): the raw parent vanishes in 2023, its value 12 months earlier is complete through the test window; R8 lags the composed facts (lag 0: the column already holds month t-12)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml V06_spei_12m_lag12 (role engineered); parent V06_spei_12m banned incomplete (store observed_through 2022-12)'
+  spei_24m_lag12:
+    verdict: watch
+    reason: 'lag 12 of spei_24m (owner ruling J2 a); kept but listed: a 24-month water-balance window is trend-loaded like spi_24m (Part 340 hazard 3: spi_24m annual mean r 0.874 with the year on thar; not measured on SPEI)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml spei_24m_lag12 (role engineered); parent spei_24m banned incomplete (store observed_through 2022-12)'
+  amo_lag12:
+    verdict: keep
+    reason: 'lag 12 of amo (owner ruling J2 a): the raw parent vanishes in 2023, its value 12 months earlier is complete through the test window; R8 lags the composed facts (lag 0: the column already holds month t-12)'
+    evidence: 'OWNER_RULINGS_2026-10-05.md J2 (a) (columns missing in a test year: spei_01m/03m/06m/12m/24m, amo -> a dataset-owned lag-12 column derived_from the parent, operation lag 12); features/build.py LAG12_PARENTS (facts composed from the parent''s store facts); catalog.yaml amo_lag12 (role engineered); parent amo banned incomplete (store observed_through 2023-01)'
+  edgar_carried:
+    verdict: ban
+    reason: structural
+    evidence: 0/1 carry-forward flag of the EDGAR add-on (2022 values reused for 2023), not a driver | pm25_ban.py:165 (KEYS); edgar_emis_ingest.py:35, 193; same as shipped
+  edgar_so2:
+    verdict: conditional
+    reason: EDGAR is an add-on arm, never headline (OC misses a sector; possible GEOS-Chem emission lineage, unverified)
+    evidence: 'ruling A4 (QUESTIONS_ROUND3_HANDOFF.md:449: EDGAR is an add-on arm, not headline); pm25_architecture.py:42-43, 52-53, 77 (USE_EDGAR = 0); dataset.yaml note'
+  edgar_nox:
+    verdict: conditional
+    reason: EDGAR is an add-on arm, never headline (OC misses a sector; possible GEOS-Chem emission lineage, unverified)
+    evidence: 'ruling A4 (QUESTIONS_ROUND3_HANDOFF.md:449: EDGAR is an add-on arm, not headline); pm25_architecture.py:42-43, 52-53, 77 (USE_EDGAR = 0); dataset.yaml note'
+  edgar_nh3:
+    verdict: conditional
+    reason: EDGAR is an add-on arm, never headline (OC misses a sector; possible GEOS-Chem emission lineage, unverified)
+    evidence: 'ruling A4 (QUESTIONS_ROUND3_HANDOFF.md:449: EDGAR is an add-on arm, not headline); pm25_architecture.py:42-43, 52-53, 77 (USE_EDGAR = 0); dataset.yaml note'
+  edgar_bc:
+    verdict: conditional
+    reason: EDGAR is an add-on arm, never headline (OC misses a sector; possible GEOS-Chem emission lineage, unverified)
+    evidence: 'ruling A4 (QUESTIONS_ROUND3_HANDOFF.md:449: EDGAR is an add-on arm, not headline); pm25_architecture.py:42-43, 52-53, 77 (USE_EDGAR = 0); dataset.yaml note'
+  edgar_oc:
+    verdict: conditional
+    reason: EDGAR is an add-on arm, never headline (OC misses a sector; possible GEOS-Chem emission lineage, unverified)
+    evidence: 'ruling A4 (QUESTIONS_ROUND3_HANDOFF.md:449: EDGAR is an add-on arm, not headline); pm25_architecture.py:42-43, 52-53, 77 (USE_EDGAR = 0); dataset.yaml note'
+  ctx:month:
+    verdict: keep
+    reason: router context only (a key-derived column is allowed only here, G-KEYS); shipped CTX
+    evidence: pm25_adaptation.py:195 (CTX = month, lat); APP_PLAN.md 1.5 (router context); same as shipped
+  ctx:lat:
+    verdict: keep
+    reason: 'router context only: static latitude; shipped CTX'
+    evidence: pm25_adaptation.py:195; APP_PLAN.md 1.5; same as shipped

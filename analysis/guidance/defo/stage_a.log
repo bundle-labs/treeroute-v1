@@ -1,0 +1,39 @@
+[   0.0s] protocol hash OK
+[   0.1s] G1 PASS: chosen surface MAE 0.005787517240 vs csv 0.005787517240 (rel 3.0e-15); own-pick max rel 1.7e-14; eligible True
+[   0.8s] test rows 369096; finite C&T 369096; finite all eligible 369096
+[   0.9s] alarm: gap surface 1.371943e-04, test 1.440196e-04, ratio 1.0497 -> silent; per year {2020: 1.062, 2021: 0.939, 2022: 1.032, 2023: 1.166}
+[   0.9s] M4 surface MAE (beside) 0.006370290 vs chosen 0.005787517
+[   3.1s] folds by group: {0: 59319, 1: 52728, 2: 46137, 3: 39546, 4: 79092}
+[   3.1s] M5 (LAD LP, HiGHS)
+[  11.6s]   M5 fold 0: train 50000 rows, w [0.0, 0.0, 0.0, 0.8069, 0.0, 0.1931]
+[  19.4s]   M5 fold 1: train 50000 rows, w [0.0, 0.0, 0.0, 0.8207, 0.0, 0.1793]
+[  25.1s]   M5 fold 2: train 50000 rows, w [0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+[  33.2s]   M5 fold 3: train 50000 rows, w [0.0, 0.0, 0.0, 0.9248, 0.0, 0.0752]
+[  42.3s]   M5 fold 4: train 50000 rows, w [0.0, 0.0, 0.0, 0.6155, 0.0, 0.3845]
+[  50.8s]   M5 full: train 50000 rows, w [0.0, 0.0, 0.0, 0.86, 0.0, 0.14], CF-MAE 0.005832267
+[  50.8s] M5 gate: CF-MAE 0.005832267 >= chosen surface MAE 0.005787517 -> FALLBACK:CF
+[  50.8s] M5 placebo (labels shuffled)
+[  52.2s]   M5plc fold 0: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+[  53.5s]   M5plc fold 1: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+[  54.8s]   M5plc fold 2: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+[  56.1s]   M5plc fold 3: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+[  57.4s]   M5plc fold 4: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+[  58.7s]   M5plc full: train 50000 rows, w [0.0, 0.0, 1.0, 0.0, 0.0, 0.0], CF-MAE 0.007462470
+[  58.7s] M5 placebo gate: CF-MAE 0.007462470 vs chosen on y_placebo 0.007495581 -> APPLY
+[  58.8s] M6 target: non-tie 258484 of 276822 (ties 18338), twin wins 136116
+[  58.8s] M6 (logistic chooser)
+[  74.2s]   M6 fold 0: train 50000, oof 54741, iter 587, kept 294
+[  87.3s]   M6 fold 1: train 50000, oof 48384, iter 577, kept 294
+[ 100.8s]   M6 fold 2: train 50000, oof 45186, iter 604, kept 294
+[ 113.2s]   M6 fold 3: train 50000, oof 37433, iter 529, kept 294
+[ 127.6s]   M6 fold 4: train 50000, oof 72740, iter 615, kept 294
+[ 139.5s]   M6: ACC 0.5288 base 0.5266 AUC 0.5377 non-tie 258484 (z1 136116, z0 122368) -> FALLBACK:ACC; full fit 50000 rows, iter 582
+[ 148.9s] M6 placebo (features shuffled)
+[ 156.7s]   M6plc fold 0: train 50000, oof 54741, iter 256, kept 294
+[ 163.5s]   M6plc fold 1: train 50000, oof 48384, iter 250, kept 294
+[ 169.6s]   M6plc fold 2: train 50000, oof 45186, iter 230, kept 294
+[ 177.2s]   M6plc fold 3: train 50000, oof 37433, iter 311, kept 294
+[ 184.8s]   M6plc fold 4: train 50000, oof 72740, iter 294, kept 294
+[ 191.2s]   M6plc: ACC 0.5111 base 0.5266 AUC 0.4925 non-tie 258484 (z1 136116, z0 122368) -> FALLBACK:ACC; full fit 50000 rows, iter 264
+[ 194.4s] M6 test: switched 0.5699, mean p 0.5331; placebo switched 0.7378, mean p 0.5238
+[ 200.5s] stage A written; peak RAM 1.92 GB

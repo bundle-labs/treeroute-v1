@@ -1,0 +1,894 @@
+{
+ "ndvi": {
+  "base": {
+   "n_J": 96,
+   "W": {
+    "value": 0.6173103673528939,
+    "ci_low": 0.6051897942976326,
+    "ci_high": 0.6238685872407167,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_bardl_h1": 0.38409037216474107,
+    "rival_lgbm": 0.16440489432703004,
+    "rival_rf": -0.024596774193548387,
+    "rival_ridge": -0.4050802139037433
+   },
+   "rho20_median": {
+    "value": 0.06990406006674083,
+    "ci_low": -0.01025514460511679,
+    "ci_high": 0.12307511818687426,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.4050802139037433,
+    0.38409037216474107
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.40287412993714444,
+    "ci_low": 0.37560424657083225,
+    "ci_high": 0.4258749349649679,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_mean",
+    "hist_last",
+    "era5l_slhf"
+   ],
+   "consensus_top3": [
+    "soil_moisture_pct",
+    "spi",
+    "hist_last"
+   ]
+  },
+  "tie_ci": {
+   "n_J": 96,
+   "W": {
+    "value": 0.6173103673528939,
+    "ci_low": 0.6051897942976326,
+    "ci_high": 0.6238685872407167,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_bardl_h1": 0.38409037216474107,
+    "rival_lgbm": 0.16440489432703004,
+    "rival_rf": -0.024596774193548387,
+    "rival_ridge": -0.4050802139037433
+   },
+   "rho20_median": {
+    "value": 0.06990406006674083,
+    "ci_low": -0.01025514460511679,
+    "ci_high": 0.12307511818687426,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.4050802139037433,
+    0.38409037216474107
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.40287412993714444,
+    "ci_low": 0.37560424657083225,
+    "ci_high": 0.4258749349649679,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_mean",
+    "hist_last",
+    "era5l_slhf"
+   ],
+   "consensus_top3": [
+    "soil_moisture_pct",
+    "spi",
+    "hist_last"
+   ]
+  },
+  "tie_desc": {
+   "n_J": 96,
+   "W": {
+    "value": 0.6173103673528939,
+    "ci_low": 0.6051897942976326,
+    "ci_high": 0.6238685872407167,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_bardl_h1": 0.3840610287694452,
+    "rival_lgbm": 0.16440489432703004,
+    "rival_rf": -0.024596774193548387,
+    "rival_ridge": -0.4050802139037433
+   },
+   "rho20_median": {
+    "value": 0.06990406006674083,
+    "ci_low": -0.01025514460511679,
+    "ci_high": 0.12307511818687426,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.4050802139037433,
+    0.3840610287694452
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.40287418254762664,
+    "ci_low": 0.3756042478860943,
+    "ci_high": 0.42587498626018805,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_mean",
+    "hist_last",
+    "era5l_slhf"
+   ],
+   "consensus_top3": [
+    "soil_moisture_pct",
+    "spi",
+    "hist_last"
+   ]
+  },
+  "rowweight": {
+   "n_J": 96,
+   "W": {
+    "value": 0.6169628601698076,
+    "ci_low": 0.6051907974620199,
+    "ci_high": 0.6242743217724193,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_bardl_h1": 0.38409037216474107,
+    "rival_lgbm": 0.1599555061179088,
+    "rival_rf": -0.03225806451612903,
+    "rival_ridge": -0.3870320855614973
+   },
+   "rho20_median": {
+    "value": 0.06384872080088988,
+    "ci_low": -0.007357356388050214,
+    "ci_high": 0.12480533926585094,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.3870320855614973,
+    0.38409037216474107
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.4040975526913505,
+    "ci_low": 0.376196871240655,
+    "ci_high": 0.42638852719214143,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_mean",
+    "hist_last",
+    "era5l_slhf"
+   ],
+   "consensus_top3": [
+    "soil_moisture_pct",
+    "spi",
+    "hist_last"
+   ],
+   "own_history_treeroute": 0.24478144940387533,
+   "own_history_median_rival": 0.2555180159712616
+  },
+  "j_main": {
+   "n_J": 96,
+   "W": {
+    "value": 0.6173103673528939,
+    "ci_low": 0.6051897942976326,
+    "ci_high": 0.6238685872407167,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_bardl_h1": 0.38409037216474107,
+    "rival_lgbm": 0.16440489432703004,
+    "rival_rf": -0.024596774193548387,
+    "rival_ridge": -0.4050802139037433
+   },
+   "rho20_median": {
+    "value": 0.06990406006674083,
+    "ci_low": -0.01025514460511679,
+    "ci_high": 0.12307511818687426,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.4050802139037433,
+    0.38409037216474107
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.40287412993714444,
+    "ci_low": 0.37560424657083225,
+    "ci_high": 0.4258749349649679,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_mean",
+    "hist_last",
+    "era5l_slhf"
+   ],
+   "consensus_top3": [
+    "soil_moisture_pct",
+    "spi",
+    "hist_last"
+   ]
+  }
+ },
+ "pm25": {
+  "base": {
+   "n_J": 89,
+   "W": {
+    "value": 0.8538894019807711,
+    "ci_low": 0.8462979021782617,
+    "ci_high": 0.8624363572439137,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.07931034482758621,
+    "rival_rf": -0.018909899888765295,
+    "rival_ridge": -0.12137096774193548
+   },
+   "rho20_median": {
+    "value": -0.018909899888765295,
+    "ci_low": -0.07853170189098999,
+    "ci_high": 0.07226327312534202,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.12137096774193548,
+    0.07931034482758621
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.3719869569645025,
+    "ci_low": 0.36454028257000826,
+    "ci_high": 0.5707124089278031,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "spei",
+    "wbal"
+   ],
+   "consensus_top3": [
+    "spi",
+    "sst_anom_global_tropical",
+    "hist_last"
+   ]
+  },
+  "tie_ci": {
+   "n_J": 89,
+   "W": {
+    "value": 0.8538894019807711,
+    "ci_low": 0.8462979021782617,
+    "ci_high": 0.8624363572439137,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.07931034482758621,
+    "rival_rf": -0.018909899888765295,
+    "rival_ridge": -0.12137096774193548
+   },
+   "rho20_median": {
+    "value": -0.018909899888765295,
+    "ci_low": -0.07853170189098999,
+    "ci_high": 0.07226327312534202,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.12137096774193548,
+    0.07931034482758621
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.3719869569645025,
+    "ci_low": 0.36454028257000826,
+    "ci_high": 0.5707124089278031,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "spei",
+    "wbal"
+   ],
+   "consensus_top3": [
+    "spi",
+    "sst_anom_global_tropical",
+    "hist_last"
+   ]
+  },
+  "tie_desc": {
+   "n_J": 89,
+   "W": {
+    "value": 0.8538894019807711,
+    "ci_low": 0.8462979021782617,
+    "ci_high": 0.8624363572439137,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.07931034482758621,
+    "rival_rf": -0.018909899888765295,
+    "rival_ridge": -0.12137096774193548
+   },
+   "rho20_median": {
+    "value": -0.018909899888765295,
+    "ci_low": -0.07853170189098999,
+    "ci_high": 0.07226327312534202,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.12137096774193548,
+    0.07931034482758621
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.3719869569645025,
+    "ci_low": 0.36454028257000826,
+    "ci_high": 0.5707124089278031,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "spei",
+    "wbal"
+   ],
+   "consensus_top3": [
+    "spi",
+    "sst_anom_global_tropical",
+    "hist_last"
+   ]
+  },
+  "rowweight": {
+   "n_J": 89,
+   "W": {
+    "value": 0.8538574815180521,
+    "ci_low": 0.8461618140263366,
+    "ci_high": 0.8623043275635324,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.07241379310344828,
+    "rival_rf": -0.027363737486095663,
+    "rival_ridge": -0.12137096774193548
+   },
+   "rho20_median": {
+    "value": -0.027363737486095663,
+    "ci_low": -0.07854421579532814,
+    "ci_high": 0.06953811112876727,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.12137096774193548,
+    0.07241379310344828
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.3715471395261767,
+    "ci_low": 0.36484411838063674,
+    "ci_high": 0.569902895270406,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "spei",
+    "wbal"
+   ],
+   "consensus_top3": [
+    "spi",
+    "sst_anom_global_tropical",
+    "hist_last"
+   ],
+   "own_history_treeroute": 0.18546748562366366,
+   "own_history_median_rival": 0.2984234832734498
+  },
+  "j_main": {
+   "n_J": 89,
+   "W": {
+    "value": 0.8538894019807711,
+    "ci_low": 0.8462979021782617,
+    "ci_high": 0.8624363572439137,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.07931034482758621,
+    "rival_rf": -0.018909899888765295,
+    "rival_ridge": -0.12137096774193548
+   },
+   "rho20_median": {
+    "value": -0.018909899888765295,
+    "ci_low": -0.07853170189098999,
+    "ci_high": 0.07226327312534202,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    -0.12137096774193548,
+    0.07931034482758621
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.3719869569645025,
+    "ci_low": 0.36454028257000826,
+    "ci_high": 0.5707124089278031,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "spei",
+    "wbal"
+   ],
+   "consensus_top3": [
+    "spi",
+    "sst_anom_global_tropical",
+    "hist_last"
+   ]
+  }
+ },
+ "defo": {
+  "base": {
+   "n_J": 99,
+   "W": {
+    "value": 0.7958070500927644,
+    "ci_low": 0.7789346397649969,
+    "ci_high": 0.8080225726654298,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.46852764094143406,
+    "rival_rf": 0.19516129032258064,
+    "rival_ridge": 0.0064516129032258064
+   },
+   "rho20_median": {
+    "value": 0.19516129032258064,
+    "ci_low": 0.14474981671554252,
+    "ci_high": 0.2926231527093595,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.0064516129032258064,
+    0.46852764094143406
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6341042636670127,
+    "ci_low": 0.6127462104526353,
+    "ci_high": 0.7502021375553192,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "h_nbr1",
+    "spei"
+   ],
+   "consensus_top3": [
+    "hist_last",
+    "hist_mean",
+    "spi"
+   ]
+  },
+  "tie_ci": {
+   "n_J": 99,
+   "W": {
+    "value": 0.7958070500927644,
+    "ci_low": 0.7789346397649969,
+    "ci_high": 0.8080225726654298,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.46852764094143406,
+    "rival_rf": 0.19516129032258064,
+    "rival_ridge": 0.0064516129032258064
+   },
+   "rho20_median": {
+    "value": 0.19516129032258064,
+    "ci_low": 0.14474981671554252,
+    "ci_high": 0.2926231527093595,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.0064516129032258064,
+    0.46852764094143406
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6341042636670127,
+    "ci_low": 0.6127462104526353,
+    "ci_high": 0.7502021375553192,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "h_nbr1",
+    "spei"
+   ],
+   "consensus_top3": [
+    "hist_last",
+    "hist_mean",
+    "spi"
+   ]
+  },
+  "tie_desc": {
+   "n_J": 99,
+   "W": {
+    "value": 0.7958070500927644,
+    "ci_low": 0.7789346397649969,
+    "ci_high": 0.8080225726654298,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.46852764094143406,
+    "rival_rf": 0.19516129032258064,
+    "rival_ridge": 0.0064516129032258064
+   },
+   "rho20_median": {
+    "value": 0.19516129032258064,
+    "ci_low": 0.14474981671554252,
+    "ci_high": 0.2926231527093595,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.0064516129032258064,
+    0.46852764094143406
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6341042636670127,
+    "ci_low": 0.6127462104526353,
+    "ci_high": 0.7502021375553192,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "h_nbr1",
+    "spei"
+   ],
+   "consensus_top3": [
+    "hist_last",
+    "hist_mean",
+    "spi"
+   ]
+  },
+  "rowweight": {
+   "n_J": 99,
+   "W": {
+    "value": 0.795851886209029,
+    "ci_low": 0.7789562847866419,
+    "ci_high": 0.8081083024118738,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.47619047619047616,
+    "rival_rf": 0.1975806451612903,
+    "rival_ridge": 0.0064516129032258064
+   },
+   "rho20_median": {
+    "value": 0.1975806451612903,
+    "ci_low": 0.14437462079077762,
+    "ci_high": 0.2952256475448911,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.0064516129032258064,
+    0.47619047619047616
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6342973188909244,
+    "ci_low": 0.612812647299022,
+    "ci_high": 0.7512438039601873,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "h_nbr1",
+    "spei"
+   ],
+   "consensus_top3": [
+    "hist_last",
+    "hist_mean",
+    "spi"
+   ],
+   "own_history_treeroute": 0.292703449335592,
+   "own_history_median_rival": 0.3550494692682732
+  },
+  "j_main": {
+   "n_J": 99,
+   "W": {
+    "value": 0.7958070500927644,
+    "ci_low": 0.7789346397649969,
+    "ci_high": 0.8080225726654298,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_lgbm": 0.46852764094143406,
+    "rival_rf": 0.19516129032258064,
+    "rival_ridge": 0.0064516129032258064
+   },
+   "rho20_median": {
+    "value": 0.19516129032258064,
+    "ci_low": 0.14474981671554252,
+    "ci_high": 0.2926231527093595,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.0064516129032258064,
+    0.46852764094143406
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6341042636670127,
+    "ci_low": 0.6127462104526353,
+    "ci_high": 0.7502021375553192,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hist_last",
+    "h_nbr1",
+    "spei"
+   ],
+   "consensus_top3": [
+    "hist_last",
+    "hist_mean",
+    "spi"
+   ]
+  }
+ },
+ "coral": {
+  "base": {
+   "n_J": 25,
+   "W": {
+    "value": 0.7346153846153847,
+    "ci_low": 0.6943269230769231,
+    "ci_high": 0.7636538461538461,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_hgb_l1": 0.48434782608695653,
+    "rival_lgbm": 0.4147826086956522,
+    "rival_rf": 0.4930434782608696
+   },
+   "rho20_median": {
+    "value": 0.48434782608695653,
+    "ci_low": 0.38520234113712376,
+    "ci_high": 0.551304347826087,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.4147826086956522,
+    0.4930434782608696
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6674485606374702,
+    "ci_low": 0.6090914505538131,
+    "ci_high": 0.7754054214478014,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "nino34a",
+    "hs",
+    "dhw"
+   ],
+   "consensus_top3": [
+    "n_above_mmm1",
+    "dhw",
+    "nino34a"
+   ]
+  },
+  "tie_ci": {
+   "n_J": 25,
+   "W": {
+    "value": 0.7346153846153847,
+    "ci_low": 0.6943269230769231,
+    "ci_high": 0.7636538461538461,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_hgb_l1": 0.48434782608695653,
+    "rival_lgbm": 0.4147826086956522,
+    "rival_rf": 0.4930434782608696
+   },
+   "rho20_median": {
+    "value": 0.48434782608695653,
+    "ci_low": 0.38520234113712376,
+    "ci_high": 0.551304347826087,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.4147826086956522,
+    0.4930434782608696
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6674485606374702,
+    "ci_low": 0.6090914505538131,
+    "ci_high": 0.7754054214478014,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "nino34a",
+    "hs",
+    "dhw"
+   ],
+   "consensus_top3": [
+    "n_above_mmm1",
+    "dhw",
+    "nino34a"
+   ]
+  },
+  "tie_desc": {
+   "n_J": 25,
+   "W": {
+    "value": 0.7346153846153847,
+    "ci_low": 0.6943269230769231,
+    "ci_high": 0.7636538461538461,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_hgb_l1": 0.48434782608695653,
+    "rival_lgbm": 0.4147826086956522,
+    "rival_rf": 0.4930434782608696
+   },
+   "rho20_median": {
+    "value": 0.48434782608695653,
+    "ci_low": 0.38520234113712376,
+    "ci_high": 0.551304347826087,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.4147826086956522,
+    0.4930434782608696
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6674485606374702,
+    "ci_low": 0.6090914505538131,
+    "ci_high": 0.7754054214478014,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "nino34a",
+    "hs",
+    "dhw"
+   ],
+   "consensus_top3": [
+    "n_above_mmm1",
+    "dhw",
+    "nino34a"
+   ]
+  },
+  "rowweight": {
+   "n_J": 25,
+   "W": {
+    "value": 0.7441346153846153,
+    "ci_low": 0.7071105769230769,
+    "ci_high": 0.7710600961538461,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_hgb_l1": 0.4721739130434783,
+    "rival_lgbm": 0.4260869565217391,
+    "rival_rf": 0.49391304347826087
+   },
+   "rho20_median": {
+    "value": 0.4721739130434783,
+    "ci_low": 0.37565217391304345,
+    "ci_high": 0.5444851778656126,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.4260869565217391,
+    0.49391304347826087
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6509366736476201,
+    "ci_low": 0.6235361012497516,
+    "ci_high": 0.7980214883607694,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "hs",
+    "nino34a",
+    "dhw"
+   ],
+   "consensus_top3": [
+    "n_above_mmm1",
+    "dhw",
+    "nino34a"
+   ],
+   "own_history_treeroute": 0.0,
+   "own_history_median_rival": 0.0
+  },
+  "j_main": {
+   "n_J": 25,
+   "W": {
+    "value": 0.7346153846153847,
+    "ci_low": 0.6943269230769231,
+    "ci_high": 0.7636538461538461,
+    "n_finite": 2000
+   },
+   "rho20_per_rival": {
+    "rival_hgb_l1": 0.48434782608695653,
+    "rival_lgbm": 0.4147826086956522,
+    "rival_rf": 0.4930434782608696
+   },
+   "rho20_median": {
+    "value": 0.48434782608695653,
+    "ci_low": 0.38520234113712376,
+    "ci_high": 0.551304347826087,
+    "n_finite": 2000
+   },
+   "rho20_min_max": [
+    0.4147826086956522,
+    0.4930434782608696
+   ],
+   "rbo_vs_consensus": {
+    "value": 0.6674485606374702,
+    "ci_low": 0.6090914505538131,
+    "ci_high": 0.7754054214478014,
+    "n_finite": 2000
+   },
+   "treeroute_top3": [
+    "nino34a",
+    "hs",
+    "dhw"
+   ],
+   "consensus_top3": [
+    "n_above_mmm1",
+    "dhw",
+    "nino34a"
+   ]
+  }
+ },
+ "fire": {
+  "base": {
+   "n_J": 94,
+   "treeroute_top3": [
+    "hist_mean",
+    "spei",
+    "tslf_months"
+   ]
+  },
+  "tie_ci": {
+   "n_J": 94,
+   "treeroute_top3": [
+    "hist_mean",
+    "spei",
+    "tslf_months"
+   ]
+  },
+  "tie_desc": {
+   "n_J": 94,
+   "treeroute_top3": [
+    "hist_mean",
+    "spei",
+    "tslf_months"
+   ]
+  },
+  "rowweight": {
+   "n_J": 94,
+   "treeroute_top3": [
+    "hist_mean",
+    "spei",
+    "tslf_months"
+   ]
+  },
+  "j_main": {
+   "n_J": 94,
+   "treeroute_top3": [
+    "hist_mean",
+    "spei",
+    "tslf_months"
+   ]
+  }
+ },
+ "fire_b1_variable": {
+  "base": {
+   "rho20": 0.39133089133089133,
+   "rbo090": 0.4586152340878628,
+   "b1_top3": [
+    "normal",
+    "era5l_str",
+    "wbal"
+   ]
+  },
+  "tie_ci": {
+   "rho20": 0.39133089133089133,
+   "rbo090": 0.4586152340878628,
+   "b1_top3": [
+    "normal",
+    "era5l_str",
+    "wbal"
+   ]
+  },
+  "tie_desc": {
+   "rho20": 0.39133089133089133,
+   "rbo090": 0.4586152340878628,
+   "b1_top3": [
+    "normal",
+    "era5l_str",
+    "wbal"
+   ]
+  }
+ }
+}

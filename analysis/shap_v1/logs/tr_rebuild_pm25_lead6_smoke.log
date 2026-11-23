@@ -1,0 +1,51 @@
+[2026-11-12 19:30:06 +    3.5s] gate E1_engine_code: PASS {'engine': '6d19c3e20e8111b8', 'manifest': '6d19c3e20e8111b8', 'engine_root': 'D:\\treeroute\\ckpt_20261013\\engine_before'}
+[2026-11-12 19:30:06 +    3.5s] gate E2_versions: PASS {'differ': {}, 'python': '3.9.13'}
+[2026-11-12 19:30:06 +    3.5s] decision at lead 6 (read from the run): log_c_plain_unweighted at level 0.3 ratio 1.0; kept value is this arm
+[2026-11-12 19:30:07 +    4.5s] engine| [19:30:07] package pm25 version 0.1.0, fingerprint 625f495161572b8b
+[2026-11-12 19:30:07 +    4.5s] engine| [19:30:07] feature lineage: V06_spei_12m_lag12 is derived from V06_spei_12m: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_buffalo_hold2021 is derived from aglw_buffalo: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_cattle_hold2021 is derived from aglw_cattle: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_goats_hold2021 is derived from aglw_goats: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_horse_hold2021 is derived from aglw_horse: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_sheep_hold2021 is derived from aglw_sheep: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: aglw_total_lsu_hold2021 is derived from aglw_total_lsu: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: amo_lag12 is derived from amo: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: ctx:lat is derived from lat: ban (structural)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: spei_01m_lag12 is derived from spei_01m: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: spei_03m_lag12 is derived from spei_03m: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: spei_06m_lag12 is derived from spei_06m: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] feature lineage: spei_24m_lag12 is derived from spei_24m: ban (incomplete)
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] listed in every report (keep_unreviewed / watch): V25_elevation_m, V26_slope_deg, V28_CTI, population_density, hand_m, dist_to_coast_km, luh2_urban, deeprec_twsa, spi_24m, burn_frac, spei_24m_lag12, aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021
+[2026-11-12 19:30:07 +    4.6s] engine| [19:30:07] groups: 127 in the data, 127 after exclusions; this run: 4 (smoke)
+[2026-11-12 19:30:15 +   12.5s] engine| [19:30:15] preflight: 18846960 target rows in 88 files, streamed (one file of at most 321540 rows at once, ~160 units x 264 steps of counters); census RAM estimate 0.94 GiB: go
+[2026-11-12 19:30:15 +   12.6s] engine| [19:30:15] preflight (report only): after the census, at the per-unit kind (C7: 100 bank units per group), the picked units' label rows (about 160 units x 264 steps: 0.00 GiB) and ONE group's column reader at its peak (plan R20: the largest group, about 40 units x 264 steps, 137 frame columns, beside the biggest driver file of the biggest group in flight: 0.39 GiB) beside the census (0.94 GiB): 1.33 GiB in all, 9.73 GiB available now (R12 decides the kind after the census; each group's reader is refused before it is built when it does not fit)
+[2026-11-12 19:30:28 +   25.9s] engine| [19:30:28] census: 42240 rows, 160 units, 4 groups, 264 calendar steps (88 files)
+[2026-11-12 19:30:28 +   25.9s] engine| [19:30:28] census: 42240 rows, 160 units in 13.3 s (driver key files read 176)
+[2026-11-12 19:30:52 +   49.3s] engine| [19:30:52] per-group path: the feature script is group-separable on the sample (4 groups, 42240 rows, 15 feature outputs, 5617920 values compared)
+[2026-11-12 19:31:09 +   66.8s] engine| [19:31:09] per-group column readers: 4 groups, the largest andes_puna with 10560 picked rows (0.39 GiB at its reader's peak); feature script: group-separable on the sample
+[2026-11-12 19:31:09 +   66.8s] engine| [19:31:09] picked units' rows read again: 42240 rows of 160 units (of 42240 census rows); R30 test-year shares: the picked reader (every census row is a picked row)
+[2026-11-12 19:31:10 +   68.0s] engine| [19:31:10] last value (J2d, C18.last_value_max_months = 2 months = 2 steps), 42240 rows, 116 tree features: 3374 rows filled in 4 columns (most: epo 3360, spi_01m 9, spi_03m 4, spei_01m_lag12 1); left to R30: 0 in gaps longer than the maximum, 60320 before a unit's first value, 0 after its last
+[2026-11-12 19:31:10 +   68.0s] engine| [19:31:10] derive_all: 34 entries in 42.1 s; router per_unit; overlap blocks 4 for 4 groups
+[2026-11-12 19:31:12 +   69.4s] engine| [19:31:12] run folder D:\treeroute\analysis\shap_v1\smoke\world_pm25\rebuild_engine_runs\pm25\smoke\20261112_b72c46a7 (resume)
+[2026-11-12 19:31:12 +   69.5s] engine| [19:31:12] census released after derive (42240 rows, 160 units): the per-group run reads the picked rows only
+[2026-11-12 19:31:12 +   69.5s] engine| [19:31:12] preflight: temp disk under the per-group schedule 0.04 GiB at its peak (pools 0.02 GiB; one lead's pools 0.02 GiB; the largest group andes_puna's tables 0.00 GiB a kind: 0.00 GiB in the nowcast, 0.00 GiB at a lead): go
+[2026-11-12 19:31:12 +   69.5s] engine steps load..temp in 65.8 s; rebuild run folder D:\treeroute\analysis\shap_v1\smoke\world_pm25\rebuild_engine_runs\pm25\smoke\20261112_b72c46a7
+[2026-11-12 19:31:12 +   69.5s] gate E3_inputs: PASS {'package': '625f495161572b8b', 'derived': 'c9c99cdf2c01ca12', 'fingerprint': 'b72c46a791ae50f5', 'manifest_fingerprint': 'b72c46a791ae50f5', 'config_keys_differing': []}
+[2026-11-12 19:31:12 +   69.7s] engine| [19:31:12] pool: 40320 grid rows (160 units x 252 steps), 122 tree columns (6 history), 2 context
+[2026-11-12 19:31:18 +   76.2s] engine| [19:31:18] pool: 40320 rows x 122 tree columns, 2 context columns (filled group by group: 4 groups)
+[2026-11-12 19:31:18 +   76.2s] pool built in 6.7 s
+[2026-11-12 19:31:25 +   82.6s] engine| [19:31:25] pool: 40320 rows x 122 tree columns, 2 context columns (filled group by group: 4 groups)
+[2026-11-12 19:31:25 +   82.6s] engine| [19:31:25] ladder: lead 6: lagtrain bank at the lead's fit cut 24235 (4 groups x 12 trees)
+[2026-11-12 19:31:27 +   85.0s] engine| [19:31:27] lead-6 bank: 48 trees, fingerprint ea8dfeb90698c850, rows at or before 24235 (max label step 24235)
+[2026-11-12 19:31:27 +   85.0s] bank and fits of lead 6 in 8.8 s
+[2026-11-12 19:31:27 +   85.0s] gate E4_donor_rows: PASS {'rows': [31839, 31839], 'row_key_hash': ['2c0d43392704d67a', '2c0d43392704d67a']}
+[2026-11-12 19:31:27 +   85.0s] gate E5_bank_fingerprint: PASS {'rebuilt': 'ea8dfeb90698c8508817ea818b9ded350653b27238cc281b1df6b3db17fae399', 'run': 'ea8dfeb90698c8508817ea818b9ded350653b27238cc281b1df6b3db17fae399', 'trees': 48, 'role': 'informational (answers decide: E5a, E8)'}
+[2026-11-12 19:31:27 +   85.0s] gate E6_c_and_tolerances: PASS {'c': [3.366666793823242, 3.366666793823242]}
+[2026-11-12 19:31:27 +   85.0s] bank exported: 48 trees, 0 correctors (plain), 0.0 s
+[2026-11-12 19:31:27 +   85.1s] engine| [19:31:27] lead 6 test pass: G1: all 31839 router fit rows of 160 units have their context; none left out
+[2026-11-12 19:31:28 +   85.9s] per_unit pass: 7680 score rows, 160 units / 0 regions solved in 0.9 s
+[2026-11-12 19:31:28 +   85.9s] gate E9_coefficients_reproduce_the_kernel: PASS {'fits_captured': 160, 'fits_whose_X_b_differs_from_the_kernel': 0}
+[2026-11-12 19:31:28 +   85.9s] gate E8_predictions: PASS {'arm': 'log_c_plain_unweighted', 'rows_checked': 7680, 'units': 160, 'pre_bit_equal': 7680, 'arm_bit_equal': 7680, 'same_nan': True, 'max_abs_pre': 0.0, 'max_rel_pre': 0.0, 'bit_identical': True, 'tolerance_rule': 'bit identity'}
+[2026-11-12 19:31:28 +   86.0s] tree answers of unit alaska_interior_taiga_-4036_2275 (247 rows x 36 trees): our export equals the engine's store bit for bit: True
+[2026-11-12 19:31:28 +   86.1s] routers saved: 160 units, 39519 rows (fit and test), 4 linear columns
+[2026-11-12 19:31:29 +   86.3s] rebuild pm25 lead 6 finished in 84.3 s (peak 1.2 GB)

@@ -1,0 +1,246 @@
+{
+ "lens": "FINDINGS ANSWERED AND FAIRNESS: whether the 24 first-round findings are answered where A7 says, whether A5's points are faithful to PROTOCOL.md sections 5, 8, 9 and 10 and show the owner real alternatives and consequences, whether anything new in the second version is wrong, overstated, softened or misattributed (including the lead's note), plus privacy and format.",
+ "report_sha256_checked": "488814ed20638e92077b53d324d7ffe4aa97eb676e8e5c4702889eaf27b94151",
+ "verdict": "not_ready",
+ "findings": [
+  {
+   "severity": "major",
+   "where": "Lead's note, lines 6-7 (\"A1 in the lead's addendum lists each one that the final run, the three skeptics or the two report checkers found wrong or too wide\"). Reconciler's text, line 59 (\"its runs from 18:34:26 to 18:46:03\"), line 355 (\"The full B1 tables, with every interval, are in V\\reconcile\\work\\tables.md\") and line 389 (\"tables.md (the main row and B1 tables)\"). A1, lines 403-488.",
+   "what": "The second version's A1 dropped two corrections that the first version's A1 made (its items 1 and 2), and both had been verified. So two wrong statements in the reconciler's text are uncorrected again, and the note's claim that A1 lists every such statement is false. (i) Section 1 says reconcile.py re-read the compare files up to 18:46:03; the reads went on to 18:49:41. (ii) Sections 6 and 7 point the reader to work\\tables.md for \"the full B1 tables, with every interval\", and that file was never written. A7 cannot show these two, because neither checker raised them as findings: both confirmed the first version's corrections.",
+   "evidence": "report.md.before_fix1 lines 399-403 hold the dropped items: \"the runs of reconcile.py re-read the compare files from 18:34:26 to 18:49:41 ..., not to 18:46:03\" and \"work\\tables.md was not written; work\\r30_tables.py prints its tables and keeps no file\". work\\opened_official.jsonl: the 360 'reconcile.py' entries run from 18:34:26 to 18:49:41, and the 16 'bytes' entries from 18:43:43 to 18:49:41 (my k06). V\\reconcile\\work holds no tables.md. check_facts.json 'checked': \"reconcile.py: 360 opens, 18:34:26 to 18:49:41 ... A1 item 1 is right\" and \"work\\tables.md is absent\". A search of the second version finds no '18:49:41' and no tables.md correction (k02).",
+   "fix": "Restore both as A1 items. (1) \"Section 1: reconcile.py's runs re-read the compare files from 18:34:26 to 18:49:41 (360 opens, plus 16 byte reads of pairs.parquet), not to 18:46:03.\" (2) \"Sections 6 and 7: work\\tables.md was not written (r30_tables.py only prints). The B1 tables are in A6, and every B1 number with its interval is in A's and B's results.json under b1.\" The note's \"lists each one\" then holds."
+  },
+  {
+   "severity": "minor",
+   "where": "A1 item 17, last sentence (lines 487-488); A4, the reconciliation (lines 605-606: \"the lead's comparison in code stands in their place\")",
+   "what": "The report puts the lead's comparison \"in code\" in place of the asserts the reconcile skeptic asked for, but no saved code does it. The addendum lists four lead scripts (lines 399-400), and none of them compares A's and B's B1 status, run or identity records. The equality itself is true, but nothing on record shows the check that is said to replace the asserts.",
+   "evidence": "V\\_lead\\scripts holds only recover_writes.py, tally.py (group status tallies and test_set entries), scan_shap_mtimes.py and b1_tables.py (A against B on pair statistics, families, own-history share, top 3 and top 10 only). My k04 on work\\summary.json b1, all five problems: A_status = B_status, A_registered = B_registered, A_meta_equal = B_meta_equal, A_run = B_run and A_identity = B_identity. identity_reconciler: max diff 0.0 over 309,000 and 121,000 values. The completeness checker's fix asked to \"say how the equality was checked\".",
+   "fix": "Save the comparison script and its output in V\\_lead\\scripts and name it in the addendum. Otherwise, say that the equality was confirmed by the reconcile skeptic (by hand) and by both report checkers, and drop \"stands in their place\"."
+  },
+  {
+   "severity": "minor",
+   "where": "A4, the numbers, item 1 (lines 563-580), text new in the second version",
+   "what": "Two statements go beyond the s41 output they cite. (i) \"No pair without BARDL ... has ... a collation dependence above 1e-12\": in s41, every pair without BARDL has an RBO spread above 1e-12, up to 2.3e-5. (ii) The list of BARDL cells that \"depend on that rule\" reads as complete but is a selection. All eight BARDL pair-levels move, and some unlisted cells move as much as listed ones.",
+   "evidence": "s41_tie_artifacts.json (my k07, k08). All 22 pairs without BARDL have an RBO p 0.95 spread above 1e-12, and 18 also at p 0.9. The largest is fire, variable level, rival_lgbm|rival_lgbm_tweedie: RBO p 0.95 0.60137 against 0.60140, a spread of 2.25e-5. pm25 variable rival_lgbm|treeroute: 6.6e-6. Jaccard and top-20-union Spearman spreads are 0 there, and no pair without BARDL has a tie-only member. Unlisted BARDL moves: variable-level bardl|ridge (RBO p 0.9 0.055 vs 0.101; p 0.95 0.152 vs 0.234; Jaccard top 10 0 vs 0.053; top-20-union Spearman 0.033 vs -0.037); variable bardl|lgbm RBO p 0.95 0.253 vs 0.328; variable bardl|rf RBO p 0.9 0.153 vs 0.197; feature bardl|treeroute RBO p 0.95 0.242 to 0.277. skeptic_numbers.json finding 1 has the same 1e-12 sentence, so the report copied an error that its cited source contradicts.",
+   "fix": "Write: \"no pair without BARDL has a tie-only top-k member; there the collation moves only RBO, by at most 2.3e-5, below the printed precision\". Mark the BARDL list as examples, and let A5 point 3's footnote cover every BARDL pair at both levels."
+  },
+  {
+   "severity": "minor",
+   "where": "A5 point 3, line 636 (the proposed footnote text)",
+   "what": "\"BARDL gives 0 to 93 of its 96 variables\" is wrong. BARDL has three variables (nine columns); 96 is the size of NDVI's variable-level J. If this footnote text were adopted, it would contradict section 10.",
+   "evidence": "PROTOCOL.md section 10 lines 618-623 (\"beyond its three variables at the variable level, and beyond its nine columns\") and section 5 lines 403-405. A4 item 1, line 563, says it correctly: \"93 of the 96 variables of J\".",
+   "fix": "\"BARDL gives exactly 0 to 93 of the 96 variables of J (it reads three variables, nine columns)\"."
+  },
+  {
+   "severity": "minor",
+   "where": "A5 point 1 (lines 613-629)",
+   "what": "Three gaps. (1) Route (a) names its disclosure and consequence for S3.13 only. Under (a), the main-text table's fire row would also print treeroute's top 3 and own-history share [CI], which AW4_main_row.json and AW4_table.md lack. The first version said \"S3.13 and the main row ... say so\". (2) \"rest on few finite draws\" fits 64 of 2,000, not 1,140 or 1,380. (3) The C21 parenthetical says compare_shap \"made no choice there\". Its percentile helper, which gives every other official interval, returns an interval from one finite replicate on. That is the rule the proposal follows, and it supports the proposal.",
+   "evidence": "PROTOCOL.md section 10 line 552 (the main-text table) and section 9 lines 540-542. report.md.before_fix1 line 529. My k03: n_finite 64, 1,140 and 1,380, all [0, 1]; no other problem has an interval between 1 and 1,999. shapv1_stats.py percentile_ci (lines 259-266) gives NaN only when no value is finite, and is used at compare_shap.py lines 235, 243-244, 291 and 376. In the official pairs.parquet, every statistic has 2,000 finite except the sign agreement, which has 0 (k05).",
+   "fix": "In (a), add the note under the main-text table, and say that its fire row then differs from AW4_main_row.json. Write \"on fewer than 2,000 finite draws (64, 1,140 and 1,380)\". State that compare_shap's percentile helper gives an interval for any number of finite replicates."
+  },
+  {
+   "severity": "minor",
+   "where": "Lead's note, lines 7-9 (\"Do not copy numbers from the reconciler's tables ... A6 rebuilds every B1 table\"); A1 item 4, lines 429-430; A6, line 663 (\"These tables replace the reconciler's section-6 B1 tables\")",
+   "what": "\"every B1 table\" overstates A6. A6 has no status lines, no defo identity table, no nonzero-count table and no run facts (pairs and seconds), and section 10 asks S3.13 for all of these. With the blanket \"do not copy\" instruction, the report gives no endorsed source for them, or for section 3's main-row table, although both checkers found all of them correct.",
+   "evidence": "A6 (lines 660-749) holds the two pair tables, the family/top-3/own-history table and the two top-10 tables. Section 6: identity at lines 306-316, nonzero counts at 320-326, pairs and seconds at 331-333. PROTOCOL.md section 10 lines 568-570, 578-580 and 603-604. check_facts.json 'checked' found the nonzero counts, run facts, identity and main-row table correct.",
+   "fix": "Say that A6 replaces section 6's pair tables and its top-3/family table, and that the status, identity, nonzero-count and run-fact tables, and section 3's main-row table, were checked and stand. Or add them to A6 from results.json."
+  },
+  {
+   "severity": "minor",
+   "where": "A5 point 6 (lines 656-658)",
+   "what": "\"C10, still open\" labels an owner question with the same name as the spec's open choice C10 (ties and collation). The spec's C10 is cited in point 3 just above and in A4, so the owner can read the tie collation as the open question. C10 also gets one option, with no alternative and no consequence, so the owner is not shown a choice.",
+   "evidence": "Line 565: \"the spec's C10 leaves the direction and collation open\". Line 638: \"the spec's C10\". Line 656: \"C10, still open: mention in S3.13 ...\". PROTOCOL.md section 14 lines 938-939 record the read. Coral's AW4_table.md was written 2026-11-13 00:06:12 (section 1), and A and B never opened it (A4).",
+   "fix": "Write \"owner question C10\". Name its alternative: leave the read to the section 14 record only. Say what the S3.13 note would state: the coral table, written before the read, was seen by an agent before this round and never by A or B."
+  },
+  {
+   "severity": "minor",
+   "where": "A5 point 5 (lines 652-655)",
+   "what": "\"S3.13 will show intervals on B1's shares\" is true for B1's per-player shares and family shares, not for its top-10 shares. Section 10 gives B1 \"none for the top-k lists\", and A6 prints B1's top 10 without intervals. So the consequences are: under (a), only the family shares are treated differently from B1; under (b), the main models' top-10 shares would carry intervals that B1's do not.",
+   "evidence": "PROTOCOL.md section 10 lines 597-599. A6 lines 718 and 733 (\"no interval for a top-k list\"). The A6 family-share table has intervals (lines 708-715).",
+   "fix": "State both consequences: (a) leaves the family shares asymmetric; (b) makes the top-10 shares asymmetric the other way."
+  },
+  {
+   "severity": "minor",
+   "where": "A4, the blindness paragraph (lines 552-555); A4, the numbers, item 2 (lines 582-584)",
+   "what": "Two checks are credited to the wrong source. (a) The finding that no SHAP file outside V changed from 17:09 is credited to \"the transcripts it read (the reconciler's calls up to 18:33)\". It came from the skeptic's own folder listing at 18:33. The 18:33 limit applies only to the reconciler's transcript; the spec writer's, A's and B's were read in full. The first version had \"by its scan at 18:33\". (b) The facts checker compared the section-3 main-row table with the official AW4_main_row.json files, not with A's results.json.",
+   "evidence": "skeptic_blindness.json 'checked': \"SHAP outside V was listed ... with os.scandir ... At 18:33 that covered 10,801 files\"; \"not the reconciler in its 46 calls up to 18:33\"; the spec writer's, A's and B's calls were all extracted. report.md.before_fix1 line 494. check_facts.json 'checked': main-row table \"checked by script (f22) against the five official AW4_main_row.json files\", and A and B equal the official values at full precision (f04).",
+   "fix": "(a) \"by its listing at 18:33, no file ... changed from 17:09; from the transcripts (spec writer, A and B in full, the reconciler up to 18:33), no SHAP script was run\". (b) \"compared the main-row table with the official AW4_main_row.json (A = B = official) and the B1 tables with A's results.json\"."
+  },
+  {
+   "severity": "minor",
+   "where": "A1 item 1 (lines 407-412) and A1 item 3 (lines 418-421)",
+   "what": "Item 1 lists \"the files that hold statistics\" without per_lead.json, which implies it holds none. It holds Kendall's W, the mean pairwise Spearman, stability and the nonzero counts; only its structural keys were read before 18:24:54. This is wording that a supplement blindness statement could copy. Item 3 says A's and B's files \"were read directly and are not logged\", but reconcile.py itself read A's and B's results.json and draws; the two logs hold only files outside V.",
+   "evidence": "Section 3, lines 120-121: \"the main row's W equals per_lead.json's\". skeptic_reconcile 'checked' maps \"per_lead W, mean rho, stability, nonzero players\". My k06: opened_official.jsonl has 436 compare-file entries and opened_other.jsonl 253 run-record entries, none inside V.",
+   "fix": "Item 1: \"true of every compare file except per_lead.json, of which only structural keys were read, and bootstrap_draws.npy (region indices)\". Item 3: \"the logs hold the files outside V that the reconciler's scripts read; its direct reads, and every read inside V (A's and B's files, also by reconcile.py), are not logged\"."
+  }
+ ],
+ "first_round_findings": [
+  {
+   "checker": "facts",
+   "number": 1,
+   "status": "answered",
+   "note": "A1 item 1: the sentence holds only for the statistic files. per_lead.json (structural keys) and bootstrap_draws.npy were opened earlier by the spec writer, A and B; the spec writer's inspect_structure.py opens both, which I confirmed. The per_lead.json wording point is in my minor finding."
+  },
+  {
+   "checker": "facts",
+   "number": 2,
+   "status": "answered",
+   "note": "The lead's note warns, A1 item 4 gives the four corrected cells, and A6 rebuilds the tables with one rounding step. I rebuilt all 159 A6 cells from A's results.json: all equal, and nothing sits near a rounding edge."
+  },
+  {
+   "checker": "facts",
+   "number": 3,
+   "status": "answered",
+   "note": "A1 item 5 gives 3,953 (1,114+790+754+505+790) and A 3,936. The note no longer claims the text's counts are all right. Its new claim about A1 fails for two other statements (major finding)."
+  },
+  {
+   "checker": "facts",
+   "number": 4,
+   "status": "answered",
+   "note": "A1 item 6: 14,412 of the 14,424 B1 keys."
+  },
+  {
+   "checker": "facts",
+   "number": 5,
+   "status": "answered",
+   "note": "A1 item 8 names group 2 (compare_bug, NaN with 0) and group 12 besides C15."
+  },
+  {
+   "checker": "facts",
+   "number": 6,
+   "status": "answered",
+   "note": "A1 item 14 names a04_checks.py and b_inspect3.py and keeps the conclusion."
+  },
+  {
+   "checker": "facts",
+   "number": 7,
+   "status": "answered",
+   "note": "A1 item 3: 436 and 253 entries (verified), with the direct reads named. 'Read directly' is slightly off for A's and B's files (minor finding)."
+  },
+  {
+   "checker": "facts",
+   "number": 8,
+   "status": "answered",
+   "note": "A1 item 15: largest family (0.811, 0.703, 0.443; NDVI's local drivers 0.420); section 5 gives no size."
+  },
+  {
+   "checker": "facts",
+   "number": 9,
+   "status": "answered",
+   "note": "A1 item 11: the shares must be defined and not tied, so coral gets no name."
+  },
+  {
+   "checker": "facts",
+   "number": 10,
+   "status": "answered",
+   "note": "A4 item 1 now says 'No pair without BARDL' and names bardl|rf (variable, top 10) and bardl|treeroute (feature, top 20), as s41 shows. Its added 'collation dependence above 1e-12' clause is wrong (minor finding)."
+  },
+  {
+   "checker": "facts",
+   "number": 11,
+   "status": "answered",
+   "note": "A4's closing paragraph says 'a sample' of the B1 numbers, lists them per problem, and says 'the official files where those exist'."
+  },
+  {
+   "checker": "facts",
+   "number": 12,
+   "status": "answered",
+   "note": "A1 item 2 cites PROTOCOL.md lines 829-831, 936-938 and 941-946; I checked them against the protocol text."
+  },
+  {
+   "checker": "completeness",
+   "number": 1,
+   "status": "answered",
+   "note": "A5 point 1 gives (a) and (b) with consequences, faithful to sections 9 and 10. It adds the three thin fire intervals (the only ones; verified) with a print rule faithful to section 8. Gaps: (a)'s disclosure is narrowed to S3.13, 'few', and the C21 aside (minor finding)."
+  },
+  {
+   "checker": "completeness",
+   "number": 2,
+   "status": "answered",
+   "note": "A1 item 10 withdraws the lead's words-only addition and credits the skeptic. A5 point 4 proposes the labelled 0, which keeps section 8's row content, and leaves words-only to the owner as a change of that content."
+  },
+  {
+   "checker": "completeness",
+   "number": 3,
+   "status": "answered",
+   "note": "A1 item 4 and A6 (verified) fix the double rounding. A4 item 2 reports the quote check as the facts checker's table comparison; its reference for the main-row table is misdescribed (minor finding)."
+  },
+  {
+   "checker": "completeness",
+   "number": 4,
+   "status": "answered",
+   "note": "A1 items 5-8 cover 3,953, 14,412 of 14,424, the 2,000-replicate sentence and the In-short exceptions."
+  },
+  {
+   "checker": "completeness",
+   "number": 5,
+   "status": "answered",
+   "note": "A1 items 1-3: earlier openings in this round, section 14's earlier reads, and what the logs hold."
+  },
+  {
+   "checker": "completeness",
+   "number": 6,
+   "status": "partly",
+   "note": "A1 item 17 and A4 now state the uncompared B1 records and the untested A/B side of independence. But the requested 'how' is a lead comparison 'in code' that none of the four listed lead scripts performs. The equality holds (my k04), but the stand-in for the asserts is not on record."
+  },
+  {
+   "checker": "completeness",
+   "number": 7,
+   "status": "answered",
+   "note": "The skeptic's label, both fixes for later rounds and the 18:33 limit are added. The new wording credits the 18:33 file scan to transcripts (minor finding)."
+  },
+  {
+   "checker": "completeness",
+   "number": 8,
+   "status": "answered",
+   "note": "Code-point order (spec C10), both levels, section 10 lines 618-623 with BA1, the effect size and why the alternative conflicts with section 8 are all given. New errors: 'its 96 variables' and the 1e-12 clause and selective list (minor findings)."
+  },
+  {
+   "checker": "completeness",
+   "number": 9,
+   "status": "answered",
+   "note": "A1 item 12 reopens section 6 (b). A5 point 2 gives both readings, says the words of sections 8 and 10 favour both levels, and gives the consequences for section 5's deviation list and for B1."
+  },
+  {
+   "checker": "completeness",
+   "number": 10,
+   "status": "answered",
+   "note": "A1 item 11 and A5 point 4 propose one column label, 'median of the rivals' (consistent with np.median and spec C23), and name the footnote alternative."
+  },
+  {
+   "checker": "completeness",
+   "number": 11,
+   "status": "answered",
+   "note": "A6 shows the Jaccard, RBO and sign-agreement intervals, the family shares with intervals and both top-10 lists, and points to results.json for I, s and S. A1 item 15 fixes 'most'. But the dangling work\\tables.md pointer in sections 6 and 7 is no longer corrected (major finding)."
+  },
+  {
+   "checker": "completeness",
+   "number": 12,
+   "status": "answered",
+   "note": "A5 point 5 gives both options and the B1 asymmetry. The asymmetry statement does not hold for top-10 lists (minor finding)."
+  }
+ ],
+ "checked": [
+  "SHA-256 of V\\reconcile\\report.md = 488814ed20638e92077b53d324d7ffe4aa97eb676e8e5c4702889eaf27b94151, 63,078 bytes, mtime 2026-11-16 20:02:06; report.md.before_fix1 = 00aa4d54...5ef31e, 43,582 bytes.",
+  "What the lead's note says is unchanged: the reconciler's text (second version lines 12-392, first version lines 9-389) is identical line for line between the two versions, and A2 (30 lines) and A3 (17 lines) are identical. The note, the addendum intro, A1, A4 and A5 are rewritten; A6 and A7 are new (my k01). Whether that text equals the reconciler's refused Write cannot be checked from files (no transcript read).",
+  "Format: strict UTF-8 decode OK, no BOM, 0 CR, 784 LF, ends with LF, ASCII only, no tab or NUL.",
+  "Privacy: no account, host or domain name (read from the environment at run time and never printed or written), no e-mail, URL, UUID, wf_ id, session or agent id, C:\\ or user-folder path. The only hex tokens are the four sample hashes, the 16-hex prefix of the first version's SHA-256 and the rival_export run-folder names.",
+  "All 24 first-round findings read with their 'what' and 'fix', and each A7 row followed to its place. Every cross-reference in the second version uses the new A1 numbering.",
+  "The first version's A1 (9 items) against the second's (17): its items 3-9 survive as items 9-13, 16 and 17, and its items 1 (re-reads up to 18:49:41) and 2 (tables.md not written) are dropped. work\\tables.md does not exist. opened_official.jsonl: reconcile.py 360 entries 18:34:26-18:49:41, plus 16 byte entries 18:43:43-18:49:41 (k06).",
+  "A6 rebuilt independently from A's results.json (k03): all 159 cells equal one-step 3-decimal rounding (counts printed as integers), the four A1-item-4 cells are corrected, no value lies within 5e-7 of a rounding edge, and B's pair-statistic cells print the same.",
+  "Main-pair sign-agreement intervals in A and B with n_finite other than 2,000 (k03): fire, variable level, ridge|treeroute 64 (value undefined, [0, 1]), lgbm|treeroute 1,140 and rf|treeroute 1,380 (both [0, 1]); the 7 pair-levels with 0. No other problem has one, so A5 point 1's three are complete.",
+  "compare_shap.py lines 196-295 and shapv1_stats.percentile_ci (lines 259-266) read without running them. The sign agreement gets NaN and 0 without any draw (lines 231-233). Every other interval comes from percentile_ci, which needs only one finite replicate. In the official pairs.parquet, every statistic has 2,000 finite except the sign agreement, which has 0 (k05).",
+  "work\\summary.json B1 records (k04): A's and B's status, registered, meta_equal, run and identity are equal on all five problems, and the reconciler's defo identity diff is 0.0. A1 item 17's equality holds, but none of the four lead scripts performs it (all four read without running them).",
+  "s41_tie_artifacts.json scanned (k07, k08), 30 pairs. Tie-only members appear only in bardl|treeroute (variable top 5 and 10), bardl|rf (variable top 10) and bardl|treeroute (feature top 20). All 8 BARDL pair-levels move with the collation, and all 22 pairs without BARDL move in RBO by 1.2e-10 to 2.25e-5. The values A4 lists match s41.",
+  "PROTOCOL.md (3f929dec, 973 lines, 2026-11-16 02:08:41): sections 5, 8, 9 and 10 read in full; section 12 (D16, BA1-BA3) and section 14 lines 771-973 read for the cited facts. A1 item 2's line citations and A5's (540-542, 553-556, 605-607, 618-623) are right.",
+  "A5 point 1 against the protocol: both routes are faithful. (a) changes section 10's sourcing of S3.13 (not frozen) and is to be recorded in section 14; (b) keeps S3.13 equal to section 9's outputs. Printing the thin intervals with their counts follows section 8.",
+  "A5 point 2: section 8 lines 490 and 496 and section 10 lines 583-587 favour showing the family-share distance at both levels. Families are variable-level (lines 476-478; compare_shap line 281 reads it the same way). The stated consequences for section 5's deviation list and for B1 are right.",
+  "A5 point 3: keeping the cells with a footnote is faithful to section 8 ('every pair') and section 10 lines 618-623 with D16/BA1. The collation (spec C10), both levels and the effect size are named; 'its 96 variables' is wrong.",
+  "A5 point 4: the labelled 0 keeps section 8's row content (lines 510-511), and words-only is left to the owner. One label 'median of the rivals' matches compare_shap's np.median and spec C23, with the footnote alternative. The PM2.5 RBO note matches the numbers skeptic (91.1% of draws above the value).",
+  "A5 point 5: both options and their source are given, and the protocol reasoning is in groups 10-11 (section 8 'recomputed per draw'; section 10's S3.13 list). B1's top-k lists get no intervals (section 10 line 599).",
+  "A5 point 6: B-05 correctly no longer arises; section 10 lines 570-573 hold B1 back only on a nonzero difference or other rows, players or variables. The C10 disclosure matches section 14 lines 938-939.",
+  "A4 against the three skeptic returns: blindness items 1-3 now carry the label and both fixes. Numbers items 1-3 and the closing paragraph match skeptic_numbers 'checked'. The reconciliation paragraph states the whole major finding, and the eight minors map to A1 items 9-13, 16 and the first two parts of 17.",
+  "SPEC.md C10, C15, C21 and C23 (lines 564-569, 589-595, 627-630, 637-639) and the brief's items 7 and 9 and its rules (lines 53-57, 59-94, 101-106) read. The spec writer's inspect_structure.py opens per_lead.json (structural keys) and bootstrap_draws.npy (shape and dtype), so A1 item 1's 'spec writer, A and B' holds.",
+  "Rules kept: read-only on existing files (only my own folder V\\skeptic\\report_check2\\findings was created, holding scripts k01-k08), Python run as py -3.9 -I -B, smoke\\bardl_fix not opened, no script of SHAP\\scripts or V\\_lead\\scripts run, no Grep or Glob over SHAP with a *.md pattern, no report file written."
+ ]
+}

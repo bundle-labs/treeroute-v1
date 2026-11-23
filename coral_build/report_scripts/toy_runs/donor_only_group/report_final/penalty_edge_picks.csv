@@ -1,0 +1,17 @@
+source,lead,arm,point,level,ratio,edge_level,edge_ratio,at_edge,engine_printed_edge,matches_engine_print,note
+adoption.json penalty (the adopted pick),0,identity_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,,,
+adoption.json best_tree_penalty,0,identity_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,,,
+adoption_lead_183.json penalty (the pinned arm at the lead),183,identity_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,,,
+adoption_lead_365.json penalty (the pinned arm at the lead),365,identity_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,,,
+run.log (the engine's printed decision line),0,identity_plain_unweighted,level 10.0 ratio 0.0625,10.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 24.422589 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,identity_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 24.416946 as printed, checked against adoption.json surface_mae; same point as the saved best_tree_penalty (checked)"
+run.log (the engine's printed decision line),0,identity_corrector_unweighted,level 10.0 ratio 0.0625,10.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 24.422589 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,identity_corrector_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 24.416946 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_plain_unweighted,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 27.310325 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 27.302279 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_corrector_unweighted,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 27.310325 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_corrector_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 27.302279 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_plain_unweighted,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 28.410341 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_plain_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 28.40473 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_corrector_unweighted,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 28.410341 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_corrector_gls,level 3.0 ratio 0.0625,3.0,0.0625,,bottom,True,ratio bottom,True,"decision block 1; MAE 28.40473 as printed, checked against adoption.json surface_mae"

@@ -1,0 +1,175 @@
+# fire_history -- side-store catalog SEED (physical facts only, all 'unverified'), 2026-09-28T12:30:28
+store: fire_history
+path_template: D:/fire/history/{group}.parquet
+keys:
+  unit: lat+lon (fire key)
+  time:
+  - year
+  - month
+product: fire-history features derived from the fire TARGET (every window ends at t-1, Part 492)
+provenance: fire_architecture.py:128
+cadence: 1 month
+stamp: period_end
+window:
+  length: null
+  unit: month
+  align: backward
+  text: target-derived, ends at t-1
+reads_target: true
+fill_values: []
+fact_status_default: unverified
+generated_by: engine/datasets/_tools/export_review_csv.py
+generated_at: '2026-09-28T12:30:28'
+columns:
+- name: tslf_months
+  dtype: float
+  units: month
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: 1.0
+    max: 300.0
+- name: tslf_censored
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: last_burn_month
+  dtype: float
+  units: month number
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.0
+    max: 12.0
+- name: last_burn_size
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: n_burns_12mo
+  dtype: float
+  units: count
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 8.0
+- name: n_burns_60mo
+  dtype: float
+  units: count
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 24.0
+- name: burn_rate_120mo
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: nbr25km_lag1
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.773947794214692e-10
+    max: 0.9984973669052124
+- name: nbr25km_12mo_lag1
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: nbr75km_lag1
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -8.869739144545807e-12
+    max: 0.7940008044242859
+- name: nbr75km_12mo_lag1
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.6022754303901543e-11
+    max: 1.0
+- name: nbr25km_lag3
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.773947794214692e-10
+    max: 0.9984973669052124
+- name: nbr25km_12mo_lag3
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: nbr75km_lag3
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -8.869739144545807e-12
+    max: 0.7940008044242859
+- name: nbr75km_12mo_lag3
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.6022754303901543e-11
+    max: 1.0
+- name: nbr25km_lag6
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.773947794214692e-10
+    max: 0.9984973669052124
+- name: nbr25km_12mo_lag6
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -0.0
+    max: 1.0
+- name: nbr75km_lag6
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -8.869739144545807e-12
+    max: 0.7940008044242859
+- name: nbr75km_12mo_lag6
+  dtype: float
+  units: '1'
+  fact_status: unverified
+  footer_stats:
+    null_share_all_files: 0.0
+    min: -1.6022754303901543e-11
+    max: 1.0

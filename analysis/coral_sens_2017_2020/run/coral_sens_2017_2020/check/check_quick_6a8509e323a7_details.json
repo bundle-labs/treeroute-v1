@@ -1,0 +1,109 @@
+{
+ "guards": [
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-CLOSED",
+   "part": null,
+   "rule": "G-CLOSED"
+  },
+  {
+   "details": {
+    "data_groups": 94,
+    "donor_only_groups": 57,
+    "excluded": 11,
+    "groups": 83,
+    "seen_during_design": 83
+   },
+   "fix": "",
+   "id": "G-SPLIT",
+   "part": null,
+   "rule": "G-SPLIT"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "U1 (table contract)",
+   "part": null,
+   "rule": "U1"
+  },
+  {
+   "details": {
+    "donor_only_groups": [
+     "Andaman Islands",
+     "Austral Islands, French Polynesia",
+     "Bay of Campeche, Yucatan, Gulf of Mexico",
+     "Bermuda",
+     "Bismarck Sea, New Guinea",
+     "Brazil",
+     "Caroline Islands, Micronesia",
+     "Cenderawasih Bay, Papua",
+     "Chagos Archipelago",
+     "Christmas Island, Indian Ocean",
+     "Cocos Keeling Atolls, Indian Ocean",
+     "Cook Islands, south-west Pacific",
+     "Coral Sea",
+     "Costa Rica and Panama, Pacific coast",
+     "Cuba and Cayman Islands",
+     "Eastern coast South Africa",
+     "Flower Garden Banks, Gulf of Mexico",
+     "Gilbert Islands, west Kiribati",
+     "Gulf of Aden",
+     "Gulf of Thailand",
+     "Gulf of Tomini, Indonesia",
+     "Hong Kong",
+     "Honshu, Japan",
+     "Java Sea",
+     "Johnston Atoll, north central Pacific",
+     "Kenya and Tanzania coast",
+     "Lakshadweep Islands",
+     "Makassar Strait, Indonesia",
+     "Marianas",
+     "Marshall Islands",
+     "Mascarene Islands",
+     "Milne Bay, Papua New Guinea",
+     "New Caledonia",
+     "Ningaloo Reef and coastal north-west Australia",
+     "North Mozambique coast",
+     "North Myanmar and Bangladesh",
+     "North Ryukyu Islands, Japan",
+     "North Sri Lanka and east India",
+     "North Vietnam",
+     "Northern Seychelles",
+     "Ogasawara Islands, Japan",
+     "Palau",
+     "Phoenix Islands, central Kiribati",
+     "Pohnpei and Kosrae, Micronesia",
+     "Samoa, Tuvalu and Tonga",
+     "Shikoku, Japan",
+     "Socotra Archipelago",
+     "Solomon Islands and Bougainville",
+     "South Madagascar",
+     "South Mozambique coast",
+     "South Red Sea",
+     "South Ryukyu Islands, Japan",
+     "South Vietnam",
+     "Strait of Malacca",
+     "Vanuatu",
+     "West Sumatra",
+     "Western Tuamotu Archipelago, central Pacific"
+    ],
+    "scored_groups": 26
+   },
+   "fix": "",
+   "id": "R18 donor-only groups",
+   "part": null,
+   "rule": "R18"
+  },
+  {
+   "details": {},
+   "fix": "",
+   "id": "G-FACTS",
+   "part": null,
+   "rule": "G-FACTS"
+  }
+ ],
+ "mode": "quick",
+ "package": "coral_sens_2017_2020",
+ "package_fingerprint": "6a8509e323a7349f1f5e1d6e7861f8c96165af4bcd39e2a9caade425989d76c2"
+}

@@ -1,0 +1,8 @@
+# Machine file: PATHS ONLY (APP_PLAN.md 1.7). Outside the engine hash and the G-NONAMES scan.
+# Thread counts, workers and the backend are engine constants (treeroute/engine_constants.py, C14),
+# never set here. The schema (treeroute/package/schema.py, MachineFile) refuses any other key.
+# Every path must be absolute. The paths are recorded in each run manifest.
+
+run_root: D:/treeroute/runs
+temp_dir: D:/treeroute/tmp
+registry_dir: D:/treeroute/registry

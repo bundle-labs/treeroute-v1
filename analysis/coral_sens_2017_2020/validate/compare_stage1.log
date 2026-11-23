@@ -1,0 +1,55 @@
+rows: headline 14839, sensitivity 14839, same row_id set: True
+columns equal: True
+columns other than mark that differ: []
+mark changes by (year, headline mark -> sensitivity mark):
+year  head    sens 
+2016  test    train    942
+2020  unused  test      38
+unchanged marks outside 2016 and 2020: True
+test_years
+  headline:    [2016, 2019]
+  sensitivity: [2017, 2020]
+cuts
+  headline:    {'L0_fit': [0, '2015-12-31'], 'L0_inner': [0, '2012-12-31'], 'L183_fit': [183, '2015-07-02'], 'L183_guard': [183, '2012-07-02'], 'L365_fit': [365, '2015-01-01'], 'L365_guard': [365, '2012-01-02']}
+  sensitivity: {'L0_fit': [0, '2016-12-31'], 'L0_inner': [0, '2013-12-31'], 'L183_fit': [183, '2016-07-02'], 'L183_guard': [183, '2013-07-02'], 'L365_fit': [365, '2016-01-02'], 'L365_guard': [365, '2013-01-01']}
+sample_rows
+  headline:    13694
+  sensitivity: 13723
+sample_first_year
+  headline:    1994
+  sensitivity: 1994
+split
+  headline:    {'train': {'rows': 11347, 'groups': 91, 'units': 7356, 'programmes': {'Reef_Check': 6383, 'FRRP': 2185, 'Donner': 2123, 'AGRRA': 651, 'mixed': 5}}, 'test': {'rows': 2347, 'groups': 41, 'units': 1280, 'programmes': {'Reef_Check': 1957, 'McClanahan': 199, 'FRRP': 190, 'AGRRA': 1}}}
+  sensitivity: {'train': {'rows': 12230, 'groups': 92, 'units': 7818, 'programmes': {'Reef_Check': 6876, 'FRRP': 2375, 'Donner': 2123, 'AGRRA': 652, 'McClanahan': 199, 'mixed': 5}}, 'test': {'rows': 1493, 'groups': 29, 'units': 771, 'programmes': {'Reef_Check': 1493}}}
+visits_unused_after_window
+  headline:    38
+  sensitivity: 0
+rows_present_L0
+  headline:    {'train': 11347, 'test': 2347}
+  sensitivity: {'train': 12230, 'test': 1493}
+rows_present_L183
+  headline:    {'train': 11339, 'test': 2347}
+  sensitivity: {'train': 12222, 'test': 1493}
+rows_present_L365
+  headline:    {'train': 11339, 'test': 2347}
+  sensitivity: {'train': 12222, 'test': 1493}
+groups_zero_rows_at_a_cut
+  headline:    {'L0_fit': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L0_inner': ['Birds Head Peninsula, Papua', 'Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L183_fit': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L183_guard': ['Birds Head Peninsula, Papua', 'Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L365_fit': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L365_guard': ['Birds Head Peninsula, Papua', 'Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea']}
+  sensitivity: {'L0_fit': ['Gulf of Guinea to Sierra Leone', 'North-west Arabian Sea'], 'L0_inner': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L183_fit': ['Gulf of Guinea to Sierra Leone', 'North-west Arabian Sea'], 'L183_guard': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L365_fit': ['Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea'], 'L365_guard': ['Birds Head Peninsula, Papua', 'Gulf of Guinea to Sierra Leone', 'Kimberley Coast, north-west Australia', 'North-west Arabian Sea']}
+groups_one_unit
+  headline:    ['Ashmore Reef, north-west Australia', 'Gulf of California', 'Houtman Abrolhos Islands, west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']
+  sensitivity: ['Ashmore Reef, north-west Australia', 'Gulf of California', 'Houtman Abrolhos Islands, west Australia', 'Line Islands, north-east Kiribati', 'North-west Arabian Sea', 'Pompey and Swain Reefs, south-east Great Barrier Reef', 'South China Sea', 'Southern Seychelles']
+month_precision_in_inner_score_years
+  headline:    0
+  sensitivity: 0
+sensitivity present_L0 rows by year and mark (2012 on):
+target_date  mark 
+2012         train    681
+2013         train    643
+2014         train    641
+2015         train    763
+2016         train    883
+2017         test     575
+2018         test     454
+2019         test     435
+2020         test      29

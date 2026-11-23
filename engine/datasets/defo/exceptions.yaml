@@ -1,0 +1,112 @@
+# exceptions.yaml -- defo (APP_PLAN.md 1.2): provenance flags, disclosed defects and test-exposure disclosures
+# only. A disclosure only discloses: it cannot relax a time rule, hold a timing value or set a derived value.
+# Entries (wording drafted by the agent; the owner confirms it):
+#   - the example the plan itself names for this package (plan 1.2 row 'exceptions.yaml': "defo_matrix's derived
+#     sentinels (HEADLINE_RUN_PLAN.md:144)"). It describes D:/defo_matrix, which the package no longer reads (ruling
+#     C: the features store D:/defo_features masks the panel's sentinels before aggregate_time); kept until the
+#     owner retires it;
+#   - (added 2026-10-05 with the J ban list, OWNER_RULINGS_2026-10-05.md) the disclosures the installed verdicts
+#     carry: population_density, kept as ruled (Part 437), is model output in 3 of the 4 test years and a year
+#     clock (Q4); the FireCCI sensor switch under the burn columns that J4 moves to keep; the Hansen treecover2000
+#     lineage of the two MERIT Hydro columns kept as watch (Part 508: 'admissible with disclosure');
+#   - (added 2026-10-05 with the AMENDED ruling J3) the AGLW livestock extension: aglw_* kept as watch, lagged one
+#     year, whose 2022-23 values are not observations ("post-2021 values are the 2021 layer rescaled by national
+#     FAOSTAT ratios -- disclosed").
+#   - (added 2026-10-05 with owner ruling K) the lineage of deeprec_twsa_k3_mean/_min/_max, kept by K3 lagged one year:
+#     DeepRec assimilates ISIMIP land use (LUH2), the lineage the Q34 review banned it for (target_derived).
+#   - (changed 2026-10-06 with owner ruling L3) the AGLW entry: the raw columns are banned and the hold columns
+#     aglw_*_hold2021 carry the real 2021 layer on the 2022-2023 rows.
+#   - (added 2026-10-06 with owner ruling K2, kept once epo's window reached the panel store catalog) the December fill
+#     of epo_mean/_min/_max: each December is November's value, filled only when January of the next year is PRESENT.
+#   - (added 2026-10-06, K review) the G-LINEAGE stand-in does not run on the K store's engineered columns (store
+#     columns, not feature-script outputs): K3 and K5 keep columns a feature-script output could not be.
+#   - (drafted 2026-10-07, signed by the owner 2026-10-17, ruling T) the five disclosures of owner ruling N's defo changes: S1 (scPDSI ban),
+#     S3 (MODIS land-cover ban), S6 (vegetation overlap; population_density lagged 1 year), S28 (phenology at
+#     lag 2). Their owner fields read UNSIGNED until ruling T signed them (engine/DEFO_NEW_DISCLOSURES.md).
+# Every 'owner' field reads 'UNSIGNED -- basis: ...': the entry is NOT signed; it names the ruling or plan row
+# behind it. 'date' is the date of that basis, not a signature date. The owner signs by replacing 'UNSIGNED'.
+entries:
+  - kind: disclosed_defect
+    check: 'G-SENTINEL (D:/defo_matrix derived sentinels)'
+    decision: 'disclose; matrix rebuild declined (HEADLINE_RUN_PLAN.md:144, listed as already ruled)'
+    reason: 'D:/defo_matrix was built from the monthly panel and inherited its NoData sentinels in 27 columns. Masking removes the exact codes, but the annual _min/_mean/_max aggregates were computed over poisoned rows, so a window value that holds one sentinel looks ordinary and no check can find it (defo_train.py:135-139).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling listed in HEADLINE_RUN_PLAN.md:138-144'
+    date: '2026-09-27'
+  - kind: provenance_flag
+    column: 'population_density'
+    decision: 'disclose; kept as an annual series by the owner''s ruling (Part 437; owner ruling J1, OWNER_RULINGS_2026-10-05.md: population_density "as ruled")'
+    reason: 'Model output in 3 of the 4 test years: the WorldPop series is observed through 2020 (panel store catalog observed_through 2020) and its 2021-2023 values are extrapolated (they rise every year). It is also a year clock inside each region: measured 2026-10-05 on the group annual means at lag 0 (rows 2002-2023, training <= 2019), median r with the year 1.00, r > 0.9 in 35 of 42 groups, every test year above the group''s training maximum in 34 of 42. gdp_pc, measured the same way, is banned as a trend proxy (Q4 a); population_density stays because the owner ruled it kept (within-cell |rho| 0.0076, defo_ban.py:99-111).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md; Q4 default) and Part 437 (defo_ban.py:99-111); review/proposed/defo_ban_proposed.yaml population_density row'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    check: 'FireCCI sensor switch (V20_burned_binary_mean/_min/_max, burn_month_count, burn_doy_mean)'
+    decision: 'disclose; kept at lag 1 year (co-measured, owner ruling J4)'
+    reason: 'FireCCI switches from MODIS to OLCI at 2020, the first test year (ingest_firecci_fire.py:4, 29). Measured 2026-10-05: the pooled V20 annual mean is 0.067 in 2019 and 0.072 in 2020, inside the 2012-2019 range 0.055-0.073, so no splice step is visible; at lag 1 year the 2021 rows are the first to read OLCI values.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J4 (OWNER_RULINGS_2026-10-05.md) and review/proposed/defo_ban_proposed.yaml (V20_burned_binary, burn_month_count, burn_doy_mean rows: ''disclose'')'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'hand_m'
+    decision: 'disclose; kept as watch (owner ruling J1: the proposal''s verdicts)'
+    reason: 'MERIT Hydro height above nearest drainage is static, but MERIT DEM removes the tree-height bias with Hansen 2013 tree density, the target product''s own treecover2000 layer (panel store catalog lineage assimilates ''Hansen GFC treecover2000''): a spatial forest-state input, not a temporal leak. Part 508 ablation (neutralising the 12 SoilGrids/MERIT columns left ours-vs-rival a tie; CLAIMS_LEDGER.md:546-550, DEFO-3) found it admissible with disclosure; pantanal and new_guinea_papua named.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md) and Part 508 (CLAIMS_LEDGER.md:546-550)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    column: 'upstream_area_km2'
+    decision: 'disclose; kept as watch (owner ruling J1: the proposal''s verdicts)'
+    reason: 'MERIT Hydro upstream drainage area is static, but MERIT DEM removes the tree-height bias with Hansen 2013 tree density, the target product''s own treecover2000 layer (panel store catalog lineage assimilates ''Hansen GFC treecover2000''): a spatial forest-state input, not a temporal leak. Part 508 ablation (neutralising the 12 SoilGrids/MERIT columns left ours-vs-rival a tie; CLAIMS_LEDGER.md:546-550, DEFO-3) found it admissible with disclosure; pantanal and new_guinea_papua named.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling J1 (OWNER_RULINGS_2026-10-05.md) and Part 508 (CLAIMS_LEDGER.md:546-550)'
+    date: '2026-10-05'
+  - kind: provenance_flag
+    check: 'AGLW 2022-23 extension (aglw_cattle, aglw_buffalo, aglw_horse, aglw_sheep, aglw_goats, aglw_total_lsu; held as aglw_cattle_hold2021, aglw_buffalo_hold2021, aglw_horse_hold2021, aglw_sheep_hold2021, aglw_goats_hold2021, aglw_total_lsu_hold2021)'
+    decision: 'disclose; the raw columns banned and the hold columns kept as watch, lagged one year through the co-measured fact (owner ruling L3, 2026-10-06, replacing the J3 AMENDED watch of the raw columns)'
+    reason: 'The AGLW livestock rows are real annual layers for 2002-2021 only (presplit_cc/assemble_human_drivers.py:155-172; panel store catalog observed_through 2021). The 2022 and 2023 rows are NOT observations: presplit_cc/fetch_livestock_extend.py:49-50 takes INDIA''s FAOSTAT stock counts and :96-97 multiplies the 2021 layer by India''s 2022/2021 and 2023/2021 head-count ratios, and the result was written for EVERY region, not only India (for example horse x0.7657 for 2022 and x0.6376 for 2023, sheep x1.0596 and x1.1597; panel store catalog provenance). The ruling calls these national FAOSTAT ratios; in the stored data they are one country''s ratios applied everywhere. Ruling L3 (2026-10-06): the 2022 and 2023 layers are not used. features/build.py builds aglw_<x>_hold2021, equal to the raw column through 2021 and holding the same cell''s real 2021 layer on the 2022 and 2023 rows (backward only; tests/test_defo_k_ruling.py plants later values); the raw columns are banned. At the one-year lag R8 gives on this annual target, the 2021 rows read the real 2020 layer, the 2022 test rows read the real 2021 layer, and the 2023 test rows read the held 2021 layer again, two years old (HELD: no 2022 livestock change enters any row).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling L3 (OWNER_RULINGS_2026-10-05.md section L: "The fixed columns are watch, lagged one year by R8, and the hold is disclosed") and ruling J3, AMENDED 2026-10-05'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'DeepRec lineage (deeprec_twsa_k3_mean, deeprec_twsa_k3_min, deeprec_twsa_k3_max)'
+    decision: 'disclose; kept lagged one year (owner ruling K3, OWNER_RULINGS_2026-10-05.md)'
+    reason: 'The DeepRec terrestrial water storage reconstruction assimilates ONI and ISIMIP land use (LUH2) and is trained on GRACE/GRACE-FO (panel store catalog lineage). LUH2 is fitted on Hansen forest loss (K6 keeps the luh2_* columns banned for that), so a DeepRec year can carry a trace of that year''s loss through its land-use input: the reason the Q34 review banned it target_derived. Owner ruling K3 keeps it lagged one year: R8 gives one year from the J2 (b) reach (91 days past the calendar year), so the trees read the previous year''s DeepRec only. The features store''s deeprec_twsa_<stat> (same values, facts without the reach) stay banned.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling K3 (OWNER_RULINGS_2026-10-05.md: "Keep, lagged one year (its signed 3-month reach carried through aggregate_time; R8 then gives one year)") and defo_ban.py:51-53 (BAN_ASSIMILATED)'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'EPO December fill (epo_mean, epo_min, epo_max)'
+    decision: 'disclose; kept, lagged one year by R8 (owner ruling K2, OWNER_RULINGS_2026-10-05.md; window {3, month, centred} of ruling L1 b)'
+    reason: 'CPC issues no December EPO (INDEX_WINDOW_AUDIT.md:75), so each yearly aggregate is built after the engine''s last-value rule (J2 d; treeroute.io.lastvalue.fill_last_value) gives December the same cell''s November value: 1 of the 12 months of every aggregate is a repeated value, not an observation. The rule fills a gap only when a later month closes it within 2 months, so whether a December is filled depends on January of the next year being PRESENT; that January''s VALUE never enters (planted-value test, tests/test_defo_k_ruling.py). December 2023 is the record''s tail and is never filled, so the 2023 aggregate is empty in every cell; at R8''s one-year lag no target year reads it (the 2023 row reads the complete 2022 aggregate). Values: features/build_store_k.py, D:/defo_features_k.'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: ruling K2 (OWNER_RULINGS_2026-10-05.md: "build its yearly aggregates after the last-value rule (J2 d) fills December from November") and ruling J2 (d)'
+    date: '2026-10-06'
+  - kind: disclosed_defect
+    check: 'G-LINEAGE stand-in not run on store-declared engineered columns (deeprec_twsa_k3_mean, deeprec_twsa_k3_min, deeprec_twsa_k3_max, V15_bare_ground_pct_lag2, V17_herb_cover_pct_lag2, tree_cover_pct_lag2)'
+    decision: 'disclose; kept as is (owner ruling N S16: the keeps are rulings K3 and K5, the parents'' reason words stay, deeprec_twsa_* lookahead_unfixable; the stand-in is not extended to store columns)'
+    reason: 'The engine''s G-LINEAGE stand-in (treeroute/pipeline/data.py check_feature_lineage) checks only the feature script''s outputs (features/build.py) and refuses one derived from a column banned for a leak reason. The K store columns are STORE columns (features/build_store_k.py), so it never runs on them. Measured 2026-10-06 by calling it on the K store catalog''s derived_from: the three *_lag2 columns would be refused G-LINEAGE (their parents, the raw MOD44B trio, are banned coproduct); the three deeprec_twsa_k3_* columns would be refused G-CLOSED (their parent, the monthly deeprec_twsa, is not a catalog row since ruling J4; their features-store twins are banned lookahead_unfixable, before K3 target_derived), the same position as every aggregate of the features store and the K2 epo aggregates. Not a leak: every K value is backward only (tests/test_defo_k_ruling.py plants later values; the lag-2 column at t equals year t-2). The L3 hold columns, which ARE feature-script outputs, pass the stand-in because their raw parents are banned ''incomplete'', the reason word the owner confirmed (ruling N S13: the 2022-2023 layers are not observations, the record ends in 2021).'
+    owner: 'owner -- signed by the owner 2026-10-06 (ruling N, OWNER_RULINGS_2026-10-06.md, FREEZE_SIGNOFF_SHEET.md S8); basis: rulings K3, K5 and L3 (OWNER_RULINGS_2026-10-05.md), ruling N S13 and S16; APP_PLAN.md 1.4 (G-LINEAGE); refreshed 2026-10-06 for ruling N S8 (OWNER_RULINGS_2026-10-06.md), read and approved by the owner (ruling O1, OWNER_RULINGS_2026-10-06.md section O)'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'scPDSI look-ahead (scpdsi_mean, scpdsi_min, scpdsi_max)'
+    decision: 'disclose; banned lookahead_unfixable (owner ruling N S1)'
+    reason: 'CRU scPDSI is computed with the self-calibrating PDSI method (Wells et al. 2004). Its backtracking step can change a month''s value once later months are known, so a stored value can hold information from after its own month, and no lag removes that. The three yearly aggregates are banned. The other climate and water columns keep their signed timing facts (S1 yes).'
+    owner: 'owner -- signed by the owner 2026-10-17 (ruling T, OWNER_RULINGS_2026-10-06.md section T); basis: ruling N S1 (OWNER_RULINGS_2026-10-06.md section N: "BAN defo scpdsi_mean/_min/_max (lookahead_unfixable: Wells 2004 backtracking)"); ban.yaml scpdsi_* verdicts'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'MODIS land-cover smoothing (modis_landcover_class, modis_landcover_annual, shrub_cover_pct_global, cropland_fraction)'
+    decision: 'disclose; banned lookahead_unfixable (owner ruling N S3, which re-rules K4: K4 had kept them lagged one year)'
+    reason: 'The MODIS land-cover labels (MCD12Q1 for three columns, MCD12C1 for modis_landcover_annual; Collection 6) are stabilised across years by a hidden Markov model (MCD12 User Guide V6.1), so a year''s label can depend on later years'' imagery. A one-year lag does not remove that overlap, so the four columns are banned. The 15 other satellite columns keep their signed timing facts (S3 yes).'
+    owner: 'owner -- signed by the owner 2026-10-17 (ruling T, OWNER_RULINGS_2026-10-06.md section T); basis: ruling N S3 (OWNER_RULINGS_2026-10-06.md section N: "BAN defo''s 4 MODIS land-cover (MCD12Q1/MCD12C1) columns. This re-rules K4"); ban.yaml verdicts of the four columns'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'vegetation overlap at lag 1 year (V11_mean_ndvi_*, V12_mean_evi_*, V14_mean_albedo_*, gpp_kgC_m2_*)'
+    decision: 'disclose; kept at lag 1 year as co-measured columns, the small overlap accepted (owner ruling N S6)'
+    reason: 'These yearly vegetation aggregates see the clearing of their own year, so they are co-measured with the target and R8 lags them 1 year. Last year''s value still reaches a few days into the predicted year through its late-December data: at most 3 days for NDVI and EVI (the day-353 16-day composite) and at most 8 days for albedo and GPP. That is under 1% of the year, and the owner accepted it. The MOD44B columns'' 2-month overlap was not accepted: they enter at lag 2 (ruling K5).'
+    owner: 'owner -- signed by the owner 2026-10-17 (ruling T, OWNER_RULINGS_2026-10-06.md section T); basis: ruling N S6 (OWNER_RULINGS_2026-10-06.md section N: "overlap at most 3 days NDVI/EVI, 8 days albedo/GPP, from December"); the co_measured_evidence texts in the defo store catalogs'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'population_density lagged 1 year (co-measured, ruling N S6)'
+    decision: 'disclose; co_measured_with_target true, so R8 lags it 1 year (owner ruling N S6, matching J3)'
+    reason: 'WorldPop spreads each year''s population onto the map with covariates that include same-year land cover, the same mechanism ruling J3 used to call the AGLW livestock layers co-measured. The owner answered yes, so the row of year t reads population_density of year t-1. Part 437 had measured no leak (within-cell rho 0.0076), so the lag is a precaution. Its 2021-2023 values are extrapolated (the population_density entry above).'
+    owner: 'owner -- signed by the owner 2026-10-17 (ruling T, OWNER_RULINGS_2026-10-06.md section T); basis: ruling N S6 (OWNER_RULINGS_2026-10-06.md section N: "defo population_density LAGGED 1 year (matches J3)"); catalog co_measured_evidence of population_density'
+    date: '2026-10-06'
+  - kind: provenance_flag
+    check: 'phenology at lag 2 years (phenology_sos_doy, phenology_sos_doy_lag2)'
+    decision: 'disclose; the raw column is out at lag 1 (conditional) and enters as the engineered lag-2-year column (owner ruling N S28 a, like K5)'
+    reason: 'The MCD12Q2 start of season of year y is fitted on years y-1, y and y+1, so its content runs 1 year past its year and one year back still overlaps the predicted year. features/build.py builds phenology_sos_doy_lag2, the same cell''s value of year t-2, whose content ends before the predicted year. Y0 stays 2004 (S17 a).'
+    owner: 'owner -- signed by the owner 2026-10-17 (ruling T, OWNER_RULINGS_2026-10-06.md section T); basis: ruling N S28 a (OWNER_RULINGS_2026-10-06.md section N: "defo phenology as an engineered lag-2 column (like K5)"); ban.yaml phenology_sos_doy and phenology_sos_doy_lag2; catalog.yaml phenology_sos_doy_lag2'
+    date: '2026-10-06'

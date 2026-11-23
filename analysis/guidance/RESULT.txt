@@ -1,0 +1,97 @@
+GUIDANCE CHECK - COMBINED RESULT (5 problems x 7 methods)            written 2026-10-21
+=====================================================================================
+Protocol: D:\treeroute\analysis\guidance\PROTOCOL.txt, SHA-256 c51fc39ad390204de8894fd3b50cd4f9cf0fc70a92eddf99214497fb6201eef4
+(sha256sum -c PROTOCOL.sha256.txt -> OK, re-checked while writing this file). Every problem passed gates G1-G4.
+Test labels were read only in stage B, after the stage-A hashes were written (each <pkg>\stageA.sha256.txt).
+Numbers below are read from <pkg>\results_<pkg>.json ("methods" block) under D:\treeroute\analysis\guidance.
+Nothing here changes any headline; this is research for the next engine version.
+
+Original picks (test MAE, band from verdict.json; PROTOCOL.txt:43-48):
+  pm25  log_c_corrector_unweighted  3.588091     band 0.046212      0.25 band 0.011553
+  ndvi  identity_plain_unweighted   0.0314606    band 0.000597471   0.25 band 0.000149368
+  fire  arcsine_corrector_gls       0.004385065  band 1.35670e-05   0.25 band 3.39174e-06
+  defo  log_c_corrector_unweighted  0.005415798  band 1.10449e-04   0.25 band 2.76124e-05
+  coral arcsine_corrector_gls       6.697989     band 0.917558
+
+Methods (PROTOCOL.txt:89-124): M1 alarm -> twin; M2 alarm -> 50/50 blend; M3 always 50/50 blend with twin;
+M4 equal mean of eligible arms; M5 learned blend (gated on cross-fitted surface MAE); M6 hard per-row chooser,
+M6s soft chooser (both gated on cross-fitted accuracy >= 0.55).
+
+1. TABLE: test MAE, change in bands (change / band; negative = better). Tag: + helps, = same as original, - hurts.
+-----------------------------------------------------------------------------------------------------------
+method | pm25                | ndvi                  | fire                   | defo                   | coral
+M1     | 3.588091  0     =   | 0.0314606  0      =   | 0.004385065  0     =   | 0.005415798  0     =   | 6.14749  -0.600 +
+M2     | 3.588091  0     =   | 0.0314606  0      =   | 0.004385065  0     =   | 0.005415798  0     =   | 6.39395  -0.331 +
+M3     | 3.584001 -0.089 +   | 0.0314608 +0.0003 -   | 0.004408547 +1.731 -!  | 0.005414062 -0.016 +   | 6.39395  -0.331 +
+M4     | 3.650372 +1.348 -!  | 0.0314445 -0.027  +   | 0.004385340 +0.020 -   | 0.006232348 +7.393 -!  | 6.64294  -0.060 +
+M5     | 3.588091  0     =FB | 0.0314606  0      =FB | 0.004385065  0     =FB  | 0.005415798  0     =FB | 6.69799   0     =FB
+M6     | 3.588091  0     =FB | 0.0314606  0      =FB | 0.004396259 +0.825 -!  | 0.005415798  0     =FB | 6.68604  -0.013 +
+M6s    | 3.588091  0     =FB | 0.0314606  0      =FB | 0.004404944 +1.465 -!  | 0.005415798  0     =FB | 6.58238  -0.126 +
+ (FB = fell back to the original pick through its gate; ! = hurts by more than 0.25 band)
+
+Placebos (ungated; used by S3), coral change in bands: M5 placebo +0.366; M6 placebo -0.102; M6s placebo -0.304.
+Coral subsets (original: bleached y>0 n=1,024 MAE 13.370; severe y>50 n=135 MAE 53.529):
+  M1 11.835 / 40.520;  M2 = M3 12.538 / 46.852;  M4 12.814 / 49.483;  M6 13.293 / 52.640;  M6s 13.032 / 50.703.
+Reference: the twin alone scores pm25 -0.013, ndvi +0.037, fire +3.544, defo +0.006, coral -0.600 bands.
+
+2. TALLY (35 method x problem cells)
+------------------------------------
+  helps 9, same 19, hurts 7; 5 of the 7 hurts exceed 0.25 band (M3 fire, M4 pm25, M4 defo, M6 fire, M6s fire).
+  Per method (helps/same/hurts): M1 1/4/0, M2 1/4/0, M3 3/0/2, M4 2/0/3, M5 0/5/0, M6 1/3/1, M6s 1/3/1.
+  Of the 19 "same": 8 are the alarm staying silent (M1, M2 on 4 problems), 11 are gate fallbacks (M5 x5, M6/M6s x3).
+
+3. SUCCESS RULE APPLIED (PROTOCOL.txt:175-188: S1 coral improves; S2 no harm > 0.25 band on the other four;
+   S3 beats its own placebo on coral; S4 actually changes coral predictions)
+-------------------------------------------------------------------------------------------------------------
+  M1   S1 pass  S2 pass  S3 N/A  S4 pass  -> PASSES, labelled CIRCULAR-ON-CORAL
+  M2   S1 pass  S2 pass  S3 N/A  S4 pass  -> PASSES, labelled CIRCULAR-ON-CORAL
+  M3   S1 pass  S2 FAIL (fire +1.731)                 S3 N/A  S4 pass  -> NOT RECOMMENDED
+  M4   S1 pass  S2 FAIL (pm25 +1.348, defo +7.393)    S3 N/A  S4 pass  -> NOT RECOMMENDED
+  M5   S1 FAIL (no change)  S2 pass  S3 pass (placebo +0.366 > 0)  S4 FAIL (fell back) -> NOT RECOMMENDED
+  M6   S1 pass  S2 FAIL (fire +0.825)  S3 FAIL (placebo -0.102 beats -0.013)  S4 pass -> NOT RECOMMENDED
+  M6s  S1 pass  S2 FAIL (fire +1.465)  S3 FAIL (placebo -0.304 beats -0.126)  S4 pass -> NOT RECOMMENDED
+
+4. SANITY AND FLAGS
+-------------------
+  - Part 603 numbers all reproduce: alarm ratios pm25 0.997, ndvi 1.194, fire 0.896, coral 4.291 (defo 1.050 is
+    new; no Part 603 number); M3 pm25 3.5840, ndvi 0.0314608, fire 0.004409, coral 6.394; M1 coral 6.147.
+  - The alarm fires on coral only, and per test year only in 2016 (9.72; 2017 1.31, 2018 0.23, 2019 1.37).
+  - M1's whole coral gain is 2016 (12.406 -> 10.652) and the McClanahan programme (189 rows, 35.06 -> 26.30);
+    it is WORSE in 2017, 2018, 2019 and on Reef_Check (1,932 rows, 3.829 -> 4.023).
+  - On pm25 and ndvi the twin is the weighted (gls) arm, so M1 cannot switch there whatever the ratio (PROTOCOL.txt:91).
+  - Fire's twin is not eligible on its own surface (0.004387 vs trees-off 0.004368, fire run.log:471/475).
+  - Point flags: pm25 2 arms and coral 4 arms were used at the adopted point, not their own pick (no test columns
+    exist at other points; PROTOCOL.txt:38). Fire's twin likewise (own pick ratio 0.0625). ndvi, defo: none.
+  - Gate weakness found on fire: the M6 accuracy gate (0.55) does not check the base rate. Fire's chooser passed at
+    0.5695 although "always keep the pick" scores 0.608; its shuffled placebo passed too (0.6049). A next version
+    should gate on accuracy above the base rate.
+  - Same open choice made on all 5 problems: the gated M5 placebo was compared with the chosen arm's MAE on the same
+    shuffled labels. It affects only the gated-placebo rows, which the rule does not use.
+  - Outputs went to per-problem subfolders (guidance\<pkg>\...) rather than the root paths in PROTOCOL.txt:193-195,
+    so parallel runs could not overwrite each other. Peak RAM 1.92 GB (defo); longest stage A 1,493 s (pm25).
+
+5. ANSWER FOR THE OWNER (plain words)
+-------------------------------------
+Of the seven ways to second-guess the engine's pick, only the two alarm methods (M1 switch to the simpler twin,
+M2 switch to a 50/50 blend) pass the pre-set rule; the other five each break something: always blending (M3) and
+averaging all arms (M4) hurt other problems by 1 to 7 bands, the learned blend (M5) never moved off the pick, and
+the per-row chooser (M6/M6s) hurt fire and did worse than its own shuffled-feature placebo on coral, so its coral
+gain is not coming from the features. The best candidate for the next engine version is M1, the disagreement
+alarm, with M2 as the cautious version that takes about half the coral gain (-0.33 vs -0.60 band) for half the
+risk if the alarm ever fires wrongly. Be honest about what this shows: the alarm was invented after looking at the
+coral failure, so its coral win is circular and does not count as new evidence. It passed "no harm" on the other
+four problems only because it never fired there (and on pm25 and ndvi it could not have switched at all), so we
+still do not know what it does when it fires on a problem where the pick was right. Even on coral the gain is one
+bad year (2016) and one survey programme (McClanahan, 189 rows); in the other three years and on Reef_Check it is
+slightly worse, and the whole thing rests on roughly 33-37 reef survey groups. So the right next step is to build
+M1 (and M2) into the next engine as a pre-registered option and judge it on new problems or new years, not to
+claim it as a result now.
+
+==== SKEPTIC ADDENDUM (2026-10-21) ====
+- All 35 scores reproduce to 1e-10. No method read a test label. Folds are by group, and by reef site on coral.
+- The hash files use CRLF line endings, so sha256sum -c fails on them; the check was done by hand. Provenance is uneven: ndvi, fire and coral did not hash stage_a.py, and fire wrote no stage logs.
+- M2 is NOT "half the risk". In the only measurable wrong-fire case (fire), M1 would cost +3.54 bands and M2 +1.73 bands. Both break the 0.25-band limit.
+- Add a second safeguard: switch only if the twin is itself eligible on the surface (fire's twin is not).
+- The M6 gate should require accuracy >= 0.55 AND above the majority rate. M6 and M6s still fail S3 on coral: the real features pushed toward the original pick, which was wrong on test.
+- M1's coral gain comes from McClanahan 2016 (130% of the net gain). Reef_Check and FRRP got slightly worse.
+- M5's S3 pass is vacuous: it never moved.

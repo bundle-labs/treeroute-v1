@@ -1,0 +1,98 @@
+BUILD_NOTES_shared.txt - builder A (shared tool) -> builders B, C, D. Written 2026-10-21 (first version, early, so the
+parallel builders can code to it; the final version is appended at the end of this file).
+
+LAYOUT (the task puts every assigned file under D:\treeroute\human_rivals_build\human; SPEC_HUMAN.txt 1.1 names the
+build root without "human". Builder A reads the task literally):
+  D:\treeroute\human_rivals_build\human\                 = BUILD_ROOT (cwd for every command: py -3.9 -B -m rivals_human.cli)
+      rivals_human\        the shared tool (builder A)
+      rivals_human\tests\  builder D
+      adapters\            builders B and C (no __init__.py needed: imported as a namespace package from BUILD_ROOT)
+      registry\            <pkg>.yaml (B, C), _schema.yaml and _products.yaml (A)
+      human_rivals.yaml    build/test config (A)
+      _machine\machine.yaml  test machine (D)  -- human_rivals.yaml points at it
+  Data roots (build values) stay at D:\treeroute\human_rivals_build\_out, _slim, _index, _table, _moved (spec 1.1).
+
+ADAPTER CONTRACT (spec 6; rivals_human/index.py):
+  build(ctx, rival, lead, stage) -> pandas.DataFrame with exactly the 1.4 columns:
+     unit, group, time, issue, lead, x__<stat> (float64, NaN = not covered), info_end (int64), target_obs_end (float64,
+     NaN = no target observation read), product_cell (str), src (str; several files joined with ';').
+  stage is "all" (one go), "train" (rows of the train files only) or "test" (test rows only; after the human lock).
+  ctx (index.AdapterCtx):
+     ctx.run (H.Run), ctx.lead, ctx.stage, ctx.rival (the registry dict), ctx.package (dict of the problem registry)
+     ctx.keys(set_name="stage")  -> keys DataFrame (unit, group, time, issue, lead); set names: refit, tune, inner,
+                                    guardfit, guard, test, train (every train-file row), all (train + test), stage
+     ctx.units()                 -> units.parquet of the slim copy
+     ctx.extras(set_name)        -> keys + the registry's slim_extra_columns (never a history column, never y)
+     ctx.open_product(product_id, name) -> Path (sha256 checked against the product manifest; recorded)
+     ctx.product_files(product_id)      -> sorted list of file names in the product manifest
+     ctx.product_root(product_id)       -> Path of the product folder (read-only)
+     ctx.season_keys(times), ctx.steps_per_year, ctx.is_table
+     ctx.step_year(step), ctx.step_position(step), ctx.step_of(year, position)   (grid step index year x P + position)
+     ctx.day_to_date(ordinal), ctx.date_to_day(date)                            (table packages: proleptic ordinals)
+     ctx.t1_boundary(keys) -> int64 array (the rival's T1 boundary per row, 1.5); ctx.t2_step(keys) -> int64 array
+     ctx.work_dir() -> a writable folder <index_root>/<pkg>/<run>/_work/<rival>/ ; ctx.write_bytes(path, data)
+     ctx.fit_labels(set_name) -> (keys, y, {link: normal}) for refit / tune / guardfit ONLY (inner, guard, test refuse)
+     ctx.log(message)
+M RUNNER CONTRACT (rivals_human/methods.py): a module with
+     fit(ctx, rival, lead, fit_set) -> params (JSON-able)
+     predict(ctx, rival, lead, params, score_set) -> DataFrame(unit, group, time, issue, lead, pre, info_end,
+                                                              target_obs_end)   (pre on the target scale, pre-clip)
+  ctx is index.AdapterCtx plus ctx.features(set_name) -> SlimSet (keys, normal {link: array}, history DataFrame with
+  the x__<history> names (guard-side substitution done), extras DataFrame); y never. ctx.fit_labels as above.
+MAP FAMILY CONTRACT (rivals_human/maps.py): FAMILIES["F0".."F6"].fit(x, y, z0, link, c, ub, units, keys) -> MapModel;
+  MapModel.predict(x, z0, units, keys) -> link-space z; MapModel.to_json().  keys holds unit, group, time, season_key.
+
+REGISTRY (registry/<pkg>.yaml; schema registry/_schema.yaml written by A; see that file for every field).
+PRODUCTS (registry/_products.yaml, owned by A): product ids for every on-disk product of spec 2-5. B and C: ask here
+  (append a request below) for any product id you need that is not listed.
+
+REQUESTS TO OTHER BUILDERS: (appended below)
+
+[B -> A, 2026-10-22] (details: BUILD_NOTES_B_coral_defo.txt)
+  B1 product id `defo_vt0007_prep` in registry/_products.yaml: path = the prep owner's work folder
+     <index_root>/defo/20261017_d71c61f4/_work/vt0007_shipped (production D:/treeroute/human_index/...), patterns
+     [prep_manifest_*.json, '*/map_T*__*.npz', '*/map_T*__*.json', '*/divisions.parquet', '*/divisions.json'].
+     The VT0007 adapter reads every prep file through ctx.open_product so check_frame can verify each src name.
+     It is re-hashed after each prep stage (`manifest --product defo_vt0007_prep` after O10 and again after O11):
+     please do not pin this product's manifest sha at init as unchangeable, or pin only the train-stage file shas.
+  B2 `prep` command: add --stage test (verify the human lock like adapt, pass the token, AdapterCtx stage test).
+     defo_prep.prep reads ctx.stage; without the token stage test refuses (fail loud). Optional: a public
+     AdapterCtx.require_human_lock(); defo_prep.require_lock uses it when present, else lockfile.require_token(ctx._token).
+
+[A -> B, C, D, 2026-10-22: FINAL of builder A's first pass]
+DONE for the requests:
+  C1 schema: options, availability, print_beside, prep, coverage_note, placebo_of, r10_note, optional, disclosures,
+     resolution_matched added; package fields format, run, leads_without_rival / no_rival_leads, reference_note,
+     wording_rules; joint claim `rule`.
+  C2 product ids renamed to yours: cams_eac4_monthly_pm2p5 (manifest in the fetcher's folder, waiting_line = the D1
+     line), merra2_aer_monthly, pm25_static_cells, ndvi_static_cells, monthly_panel, ndvi_kraft_store (BUILD path
+     <index_root>/ndvi/20261016_d1de3158/_work/kraft_lstm/store). Coral/defo ids are B's: coral_sst_npz,
+     crw_climatology, crw_outlook, coral_store_20261020, noaa_crw_dhw_sitedays, hansen_gfc_v1_13, defo_target,
+     defo_static, gadm36_defo42, defo_vt0007_prep (B1). A product `path` may be ONE file: its folder is the root and the
+     manifest names the file (ctx.open_product("coral_sst_npz", "sst_compact_all.npz")).
+  C3 AdapterCtx.product_available(pid) -> bool (never refuses); `init` calls the registry `availability`
+     (fn(ctx, rival) -> (ok, line)) and lists the rival as waiting with that line.
+  C4 placebo: lock gives a placebo the parent's pick (stat, family, link); refit fits it on the placebo's own index
+     per lead; scored rows never decide (flag "placebo of ...").
+  C5 / B2 `py -3.9 -B -m rivals_human.cli prep --run <run> --rival <id> [--stage train|test] --config <yaml>` calls the
+     registry `prep` (fn(ctx, rival)) at lead 0 under the heavy-job lock; stage test verifies the human lock and passes
+     the token (AdapterCtx.require_human_lock() is public). Then `manifest --product <id>`.
+  C7 slim copies units.parquet byte for byte (is_scored kept).
+  B1 defo_vt0007_prep is a `staged: true` product: `manifest` may re-hash it when files are only ADDED (the old
+     manifest is moved aside); init pins {file: sha256} of a staged product, later commands refuse only if one of
+     those files changed or vanished.
+REQUESTS (refused today by `init` / check_registry_against_run, board.py):
+  C-R1 registry/pm25.yaml and registry/ndvi.yaml `coverage` hold plain text. Allowed: x_finite (the default; every
+     pm25 index rival, incl. placebos), all_rows (bardl_h1), or a label-free rule mapping {issue_min, issue_max,
+     units_column_positive, units_column_true, function: "module:function"} (kraft_lstm: a function fn(ctx, rival,
+     lead, keys) -> bool per key, ctx at stage train: no label, no test feature). Move the words to `coverage_note`.
+     Runners and staged rivals MUST use all_rows or a mapping (the mask is fixed at the lock, before test features).
+  D-R1 hook changes since BUILD_NOTES_tests.txt: refs.grid_refs(eng, cfg, run, lead, token, saved_keys, scored_units,
+     labels) (float64 labels at the T2 step; the export's hist_last_1 is float32 and is only a step check);
+     refs.table_last_visit(labels, units, issue, unit_of) with unit_of from refs.package_units(run, slim0) (the
+     package catalog's key_unit column, read through the engine loader; label column never read);
+     index.prep(run, rival, config, stage); index.index_shas now re-hashes the files (a changed index refuses in every
+     board command); AdapterCtx.product_available / require_human_lock.
+DEVIATIONS of builder A (the Part draft lists them): see the report of the build (persistence from float64 labels;
+  last visit by the catalog's package unit, not the "|" prefix; pick rows = rows covered by every stat; --config
+  required on every command but status; build root = human\).

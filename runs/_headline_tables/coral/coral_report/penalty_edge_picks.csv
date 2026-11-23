@@ -1,0 +1,17 @@
+source,lead,arm,point,level,ratio,edge_level,edge_ratio,at_edge,engine_printed_edge,matches_engine_print,note
+adoption.json penalty (the adopted pick),0,arcsine_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,,,
+adoption.json best_tree_penalty,0,arcsine_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,,,
+adoption_lead_183.json penalty (the pinned arm at the lead),183,arcsine_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,,,
+adoption_lead_365.json penalty (the pinned arm at the lead),365,arcsine_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,,,
+run.log (the engine's printed decision line),0,identity_plain_unweighted,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 8.068373 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,identity_plain_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.894813 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,identity_corrector_unweighted,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 8.07137 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,identity_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.901014 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_plain_unweighted,level 3.0 ratio 1.0,3.0,1.0,,top,True,ratio top,True,"decision block 1; MAE 7.314079 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_plain_gls,level 3.0 ratio 1.0,3.0,1.0,,top,True,ratio top,True,"decision block 1; MAE 7.325022 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_corrector_unweighted,level 3.0 ratio 1.0,3.0,1.0,,top,True,ratio top,True,"decision block 1; MAE 7.243545 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,log_c_corrector_gls,level 3.0 ratio 1.0,3.0,1.0,,top,True,ratio top,True,"decision block 1; MAE 7.261769 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_plain_unweighted,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.294547 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_plain_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.21281 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_corrector_unweighted,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.287183 as printed, checked against adoption.json surface_mae"
+run.log (the engine's printed decision line),0,arcsine_corrector_gls,level 100.0 ratio 1.0,100.0,1.0,top,top,True,"level top, ratio top",True,"decision block 1; MAE 7.210064 as printed, checked against adoption.json surface_mae; same point as the saved best_tree_penalty (checked)"

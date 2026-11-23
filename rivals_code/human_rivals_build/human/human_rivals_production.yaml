@@ -1,0 +1,21 @@
+# PRODUCTION config of the human-rival tool. Created 2026-10-22 by the agent from the reviewed human_rivals_production.DRAFT.yaml (owner ruling AG3).
+# Passed with --config on every owner command. Pinned to common harness b6ea97b7 (Part 608); common boards made under
+# 71457aa9 (coral, fire; bounded targets) are accepted with the reason below (ruling AG5, Part 613). Do not edit after
+# the Part A signature: the human board records this config and refuses a changed one.
+engine_root: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine'
+machine_file: 'C:/Users/moh the ghost/Desktop/data set for reserch paper/engine/config/machine.yaml'
+export_root: 'D:/treeroute/rival_export'
+export_ckpt_root: 'D:/treeroute/rival_export/_engine_run_root'
+out_root: 'D:/treeroute/rivals_human'
+moved_root: 'D:/treeroute/rivals_human/_moved'
+common_build_root: 'D:/treeroute/rivals_build'
+common_harness_sha256: 'b6ea97b72b5a8f79f7f8257f1e4afd00d7783479fada03eea9101410fa509bf2'   # Part 608 fix (was 71457aa9); ruling AG
+common_harness_accepted_boards:   # ruling AG (owner, 2026-10-22): boards made under the older harness
+  '71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97': 'ruling AG, Part 613: Part 608 changed only how an open (null) legal bound is read; the coral and fire boards (bounded targets) ran under it before the fix and are accepted without re-run'
+common_board_root: 'D:/treeroute/rivals'
+slim_root: 'D:/treeroute/rivals_human'
+index_root: 'D:/treeroute/human_index'
+products_root: 'D:/treeroute/human_products'
+on_disk_products: 'D:/treeroute/human_rivals_build/human/registry/_products.yaml'
+table_root: 'D:/treeroute/rivals_table'
+registry_dir: 'D:/treeroute/human_rivals_build/human/registry'

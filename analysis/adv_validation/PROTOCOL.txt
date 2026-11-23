@@ -1,0 +1,155 @@
+ADVERSARIAL-VALIDATION TOOL CHOICE -- FIXED PROTOCOL (written 2026-10-21, BEFORE any result is computed)
+=======================================================================================================
+Status: post-hoc research for a next engine version. Nothing here changes any headline, verdict, adoption,
+run, package, store or engine file. All writes go under D:\treeroute\analysis\adv_validation only.
+Freeze: the SHA-256 of this file is written to PROTOCOL.sha256.txt beside it. Any later change to the method
+is a NEW protocol file with its own hash and a stated reason; results under this hash are reported as they come.
+
+0. THE QUESTION, IN PLAIN WORDS
+-------------------------------
+The engine picks a tool (arm + penalty point) by the lowest MAE on the decision surface (past rows).
+Idea: give MORE say to the surface rows whose INPUTS look like the period we will forecast, and LESS to rows
+that look unlike it, then pick again with the same rule. Only inputs (features) set the weights. Test labels
+are opened only at the very end, to score which pick turned out better.
+
+1. INPUTS (read-only)
+---------------------
+Runs (lead 0 = the headline decision; the ladder leads are out of scope):
+  pm25  D:/treeroute/runs/pm25/headline/20261007_74e67609   surface 68,559 rows, steps 24205..24240; test 91,440 rows (91,428 labelled), years 2020-2023
+  ndvi  D:/treeroute/runs/ndvi/headline/20261016_d1de3158   surface 68,999 rows, steps 24205..24239; test 95,184 rows, years 2020-2023
+  fire  D:/treeroute/runs/fire/headline/20261017_869d1f38   surface 68,901 rows, steps 24193..24227; test 96,000 rows (94,702 labelled), years 2019-2022
+  defo  D:/treeroute/runs/defo/headline/20261017_d71c61f4   surface 276,822 rows, years 2017..2019; test 369,096 rows, years 2020-2023
+  coral D:/treeroute/runs/coral/headline/20261020_f3b8e3da  surface 2,046 rows, days 734873..735960; test 2,312 rows, years 2016-2019
+Surface = every row of inner_preds.parquet, exactly (it already holds only the scored rows, e.g. ndvi run.log:718-719).
+Predictions = the '<arm>@level=..,ratio=..' columns WITHOUT the 'pre__' prefix (the clipped values the engine scored),
+the '<link>_trees_off_unweighted' columns, and on coral 'base__donor_median'.
+Test scoring columns = test_preds.parquet 'arm__<arm>' (clipped), and the decline target
+('arm__identity_trees_off_unweighted' on grid problems, 'base__donor_median' on coral). Rows with non-finite y are dropped.
+Original picks (verdict.json / run.log):
+  pm25  log_c_corrector_unweighted  level 30.0  ratio 1.0     (run.log:1338)  test MAE 3.58809     band 0.0462119
+  ndvi  identity_plain_unweighted   level 1.0   ratio 0.0625  (run.log:754)   test MAE 0.0314606   band 0.000597471
+  fire  arcsine_corrector_gls       level 100.0 ratio 1.0     (run.log:477)   test MAE 0.00438506  band 1.3567e-05
+  defo  log_c_corrector_unweighted  level 0.1   ratio None    (run.log:496)   test MAE 0.0054158   band 0.000110449
+  coral arcsine_corrector_gls       level 100.0 ratio 1.0     (run.log:141)   test MAE 6.69799     band 0.917558
+Known limit, stated now: test_preds holds EVERY tree arm at the ADOPTED penalty point only (pm25 run.log:1339 "tree
+arms at level 30.0 ratio 1.0 (the adopted penalty)"; same line in every run). So a weighted pick is scored on test
+as its ARM at the saved point. If the weighted pick's own point differs from the saved point, the row is flagged
+POINT-MOVED and its test number is an approximation (the arm at the saved point). This is reported, not hidden.
+
+2. GATES BEFORE ANY WEIGHTING (fail = that problem stops and is reported as 'not run')
+-------------------------------------------------------------------------------------
+G1 Reproduction: with all weights = 1, the selection code of section 5 must return the original arm and point
+   above, and every candidate MAE must equal inner_candidates.csv (same arm, level, ratio) within 1e-9 relative.
+   If it fails with the non-pre columns, clip them once to the run.log legal range and retry; if it still fails, stop.
+G2 Test reproduction: the original pick's pooled test MAE from test_preds must equal verdict.json
+   'pooled_mae_adopted' within 1e-9 relative.
+G3 Feature join: every surface row and every test row must find its feature row (100%); a missing row stops the problem.
+G4 Two stages: stage A (weights and picks) never reads the 'y' column of test_preds; it reads only unit, group,
+   time, year, issue. Stage A writes picks.json and its SHA-256 BEFORE stage B (scoring) opens the test labels.
+
+3. FEATURES (per problem, fixed)
+--------------------------------
+F = the run's tree features + the run's router context columns, each at the row's ISSUE step (lead 0: issue = time,
+checked: test time - issue = 0 in pm25, defo, coral), with each column's lag taken from the run's own lag table
+derived.json R8.value[col].steps (grid problems). Router context = derived.json R14.inputs.context_columns:
+  pm25 ['ctx:month','ctx:lat']; fire ['ctx:month','ctx:lat']; defo [] ;
+  ndvi ['ctx:sin1','ctx:cos1','ctx:sin2','ctx:cos2','ctx:top5:sph_kgkg_lag6','ctx:top5:era5l_slhf_lag1',
+        'ctx:top5:V07_total_ref_ET_mm_lag1','ctx:top5:era5l_d2m','ctx:top5:V01_mean_temp_C'];
+  coral ['ctx_month','ctx_doy_sin','ctx_doy_cos','ctx_abslat','ctx_mmm'].
+Tree features = the package catalog.yaml columns with role driver or engineered whose ban.yaml verdict is not 'ban',
+listed in catalog order; the count must equal plan.json 'tree_features' (pm25 116, ndvi 492, fire 125, defo 303,
+coral 63). Coral reads them from D:/treeroute/coral_build/coral_store/20261020_014201/lead_0.parquet, joined on
+unit_id + target date (run 'unit' = '<unit_id>|<YYYY-MM-DD>').
+FIXED FALLBACK SUBSET (grid problems only), used if the full set cannot be rebuilt or read under ~4 GB RAM in small
+blocks, or its count does not match: router context + the FIRST 20 non-banned tree features in catalog.yaml order,
+same lags. Which set was used is written in the results, per problem. No other subset is allowed.
+EXCLUDED, always: keys (unit, group, time, year, issue, lat/lon keys), the target, the history columns
+(hist_last_*, hist_mean_*; derived.json R17) because on test rows they are built from TEST LABELS of earlier years,
+'programme' and 'mark' (coral evaluation fields). No feature is dropped for looking like a year clock: the classifier
+sees the run's inputs as they are; its AUC and top features are reported so a clock-driven split is visible.
+Cleaning (fixed): treat every column as numeric; drop a column that is >50% missing in either class or constant over
+the pooled rows (list recorded); impute remaining gaps with the training-fold median; standardise with the
+training-fold mean and sd; clip standardised values to [-10, 10].
+
+4. THE ADVERSARIAL CLASSIFIER AND THE WEIGHTS (fixed)
+-----------------------------------------------------
+Model: sklearn LogisticRegression(penalty='l2', C=1.0, solver='lbfgs', max_iter=2000, class_weight='balanced',
+fit_intercept=True). Nothing is tuned.
+Classes: class 1 = TARGET rows (defined per variant, section 6); class 0 = SURFACE rows (all of them).
+Cross-fitting: K = 5 folds by UNIT: fold(u) = int(sha1(unit string).hexdigest(), 16) mod 5, applied to both classes.
+Model k is fit on all rows (both classes) whose unit is NOT in fold k, and gives the probability p for the surface
+rows IN fold k. So a row's weight never comes from a model that saw that row or any row of its unit.
+Size cap (no random seeds): if a training set has more than 50,000 rows of a class, keep the 50,000 with the lowest
+sha1(unit + '|' + str(time)) value. Weights are still predicted for EVERY surface row.
+Weights for surface rows:
+  p clipped to [1e-6, 1 - 1e-6];  r = p / (1 - p);  w = r / mean(r);  w = min(w, 20);  w = w / mean(w)  (one pass).
+  (class_weight='balanced' changes r only by a constant, which the mean-1 step removes.)
+ESS = (sum w)^2 / sum(w^2). MINIMUM ESS = 10% of the surface rows (pm25 6,856; ndvi 6,900; fire 6,890;
+defo 27,682; coral 205). Below it, the weighted choice FALLS BACK to the original (unweighted) pick, marked FALLBACK:ESS.
+Reported per weight set: cross-fitted AUC (held-out folds, both classes), ESS and ESS/n, share of rows hitting the
+cap, max weight, the 10 features with the largest fold-averaged |coefficient|, and weight totals per test-year-like
+slice of the surface (per surface year). Every weight vector is saved row by row (weights_<problem>_<variant>.parquet).
+
+5. THE WEIGHTED SELECTION (same rule as the engine, only the mean is weighted)
+-----------------------------------------------------------------------------
+Weighted MAE of a candidate c: WMAE(c) = sum_i w_i |y_i - P_c,i| / sum_i w_i over all surface rows
+(the engine's unweighted form: decide.py:155 surface_mae; per point decide.py:278).
+Step 1 penalty point per arm: lowest WMAE over that arm's grid; a tie goes to the FIRST grid point in grid order
+  (strict '<', decide.py:280; grid order = inner_candidates.csv row order).
+Step 2 eligibility, weighted: an arm is eligible iff its WMAE < WMAE of its OWN link's trees-off, strictly
+  (decide.py:290-299, :460); on coral iff its WMAE < WMAE of base__donor_median (owner ruling V1, decide.py:468).
+Step 3 pick: lowest WMAE among eligible arms; a tie goes to the FIRST arm in candidate order (decide.py:473-477;
+  candidate order = the arm order printed in run.log: pm25 :1324, ndvi :733, fire :458, defo :483,
+  coral :124-135). If no arm is eligible, DECLINE: grid problems -> identity trees-off; coral -> donor median.
+Placebo control (fixed, no seeds): for every weight set, also run the selection with the SAME weights permuted
+  across surface rows: sort rows by sha1(unit + '|' + str(time)), sort the weights ascending, give the k-th weight
+  to the k-th row. Same weight spread, no link to features. Reported beside every pick.
+
+6. THE THREE VARIANTS
+---------------------
+V1 TRANSDUCTIVE (upper bound, NOT deployable: it uses future inputs). Target = features of ALL test rows.
+   One weight set, one pick per problem.
+V2 ROLLING (honest). For each test year Y (pm25/ndvi/defo 2020-2023; fire 2019-2022; coral 2016-2019):
+   target = features of test rows whose issue date is before Y's first day (grid: issue step < first step of Y;
+   defo: issue year < Y; coral: issue day < date(Y,1,1) ordinal). If that set has fewer than 100 rows (always so in the
+   first test year), the pick for Y = the original pick (FALLBACK:NO-TARGET). The surface itself is NOT extended with
+   earlier test labels (that is a different idea). The pick for year Y is scored on year Y's test rows only.
+V3 RECENCY (honest). Target = the surface's own most recent rows, all known at the fit cut:
+   pm25 steps 24229..24240; ndvi 24228..24239; fire 24216..24227 (last 12 surface steps);
+   defo year 2019 (last annual step); coral rows with time > 735960 - 365 (last 365 days of the surface).
+   Class 1 = those rows (a copy); class 0 = ALL surface rows including them; the weights then tilt the whole surface
+   toward its own latest year. One weight set, one pick per problem.
+
+7. OUTCOME MEASURES (stage B, after picks.json is hashed)
+--------------------------------------------------------
+Per problem x variant (and its placebo):
+  - picked arm and point; POINT-MOVED flag; FALLBACK flags; eligible-arm count; weighted vs unweighted WMAE table.
+  - pooled test MAE of the pick (mean |y - pred| over labelled test rows), and per test year.
+  - rank of the pick on test among all selectable tree arms plus the decline target (1 = lowest test MAE);
+    the test-best arm and its MAE are printed beside.
+  - delta = pick test MAE - original pick test MAE (negative = better), and delta / band (band from verdict.json).
+  - V2: the year-by-year picks, each year's MAE for the V2 pick and for the original pick, and the pooled V2 MAE over
+    all test rows (each row scored with its own year's pick).
+  - coral, secondary only: the same MAEs within each survey programme (evaluation confound, reported not used).
+Tally per variant across the 5 problems: SAME (same arm as the original, or delta exactly 0), HELPS (delta < 0),
+HURTS (delta > 0); and, beside it, how many HURTS exceed the band.
+
+8. WHAT COUNTS AS SUCCESS (fixed; judged separately for V2 and for V3; V1 is never recommended)
+--------------------------------------------------------------------------------------------
+An honest variant is RECOMMENDED for a pre-registered test in the next engine version only if ALL hold:
+  S1 coral improves: delta < 0 on coral (pooled test MAE below 6.69799). 'Fixes' is also reported: the pick is the
+     coral test-best (rank 1).
+  S2 no harm: on pm25, ndvi, fire and defo, delta <= that run's band (pm25 0.0462119, ndvi 0.000597471,
+     fire 1.3567e-05, defo 0.000110449).
+  S3 not a no-op on coral: V3 passes the ESS gate on coral; V2 passes it on coral in at least 2 of its 3 refit years.
+  S4 beats its placebo: on coral, the placebo-permuted weights do NOT reach a coral delta as low as the variant's
+     (placebo delta > variant delta). If the placebo does as well, the gain is reweighting noise, not resemblance.
+If any fails: NOT RECOMMENDED, with the failed item(s) named. V1 reading: if even V1 does not improve coral, the
+idea is closed at its upper bound for this engine's arm set. Even a full pass is a lead, not proof: it rests on one
+problem's flip, ~33 coral groups, and the POINT-MOVED approximation where flagged.
+
+9. COMPUTE AND SAFETY
+---------------------
+Read stores in small blocks (row groups / column subsets), keep RAM under ~4 GB, no engine derive, no run, no
+change to any run/package/store/engine file. Outputs only under D:\treeroute\analysis\adv_validation:
+picks.json (+ sha256), weights_*.parquet, results tables, a plain-words summary.

@@ -1,0 +1,149 @@
+PREREGISTRATION DRAFT - human rivals, Part A (coral, defo, PM2.5, NDVI)       STATUS: DRAFT, NOT SIGNED
+==================================================================================================================
+Written 2026-10-22 by builder A from the registries (registry/<package>.yaml, builders B and C), the product
+registry (registry/_products.yaml), the tool code and SPEC_HUMAN.txt. The owner signs it as the next free Part number
+after the common rival Part. No human test score exists, and none may be read before the signature (PROT H16).
+Every "TO FILL" line is filled by an owner command before signing (`py -3.9 -B -m rivals_human.cli shas --run <run>
+--config <production yaml>` prints the hashes; the lock files give the per-rival T1 boundaries and coverage).
+
+0. WHAT THIS PART FIXES
+  - Who the human rivals are, at which lead, with which tier; which rows decide.
+  - How each index is mapped to the target (families, links, stats), and how the pick is made (inner MAE, pinned).
+  - The constants, the coverage rules, the safety net, the reference rows, the joiner's rules.
+  - Every hash: tool code, the pinned common harness, registries, product manifests.
+  - What is not blind (PLAN R10) and every disclosure.
+  Nothing is added or re-picked after a human test number is seen. A later addition gets its own Part, labelled
+  "added after test scores were seen".
+
+1. HASHES (at writing; re-printed by `cli shas` at signing; any later change refuses the board)
+  common harness (rivals/harness.py et al., signed Part 598): 71457aa902d30dde17a4a88e8d5c7f1de85515c70d2d7ac4745967066f243b97
+  human tool code (rivals_human/*.py + adapters/*.py; recipe of harness.harness_code_sha with folder names):
+      297c86ec9d5bc51e42f374aa0a77bbeb23251a41bde6f0cd9819c4b3ec84fe95  (at writing: TO FILL at signing)
+  registry/_schema.yaml   b99b8e7c2a7ee1934d014af0448e7d353aba7b66b64e75b3e6edebd4a1d60359 (at writing)
+  registry/_products.yaml e1a7f7624fda288a22310cc7a9fab836f0b597fb1c6fe566a47116e0e6eff13a (at writing)
+  registry/coral.yaml     e52f712f86279259ef944c18e9cef3ab6d9d910cfd4852a061482fbac3ef7814 (at writing)
+  registry/defo.yaml      858fcb993a6f7c83150325915f9020bfcf96dcbc98f2b7a829ff71af455d1894 (at writing)
+  registry/pm25.yaml      TO FILL (builder C must change its `coverage` fields first; see section 9)
+  registry/ndvi.yaml      TO FILL (same)
+  product manifests:
+    gadm36_defo42 (D4)          fa1508866de13c418af6cd9386e07643ff3f2a08c1189c1b1da15660e6185ba3
+    noaa_crw_dhw_sitedays (D6)  9aa8ae53b61f733dc2d18d63cad2bbcfcae9e41851ca1f6ac62a271d4664ec6d
+    cams_eac4_monthly_pm2p5 (D1)  NOT ON DISK (waiting: "D1 (CAMS EAC4) is not on disk: run DOWNLOAD_COMMANDS.md 2.2
+                                  first"). Without it the board is locked only with `lock --without eac4_lag1 eac4_same
+                                  eac4_lag1_placebo --decision "<owner decision>"` (PLAN R2: MERRA-2 becomes the P row).
+    coral_sst_npz, crw_climatology, crw_outlook, coral_store_20261020   TO FILL (owner command O4)
+    merra2_aer_monthly, pm25_static_cells                               TO FILL (O5)
+    hansen_gfc_v1_13, defo_target, defo_static                           TO FILL (O6)
+    defo_vt0007_prep (staged: hashed after O10, re-hashed after O11; files already hashed never change)  TO FILL
+    ndvi_static_cells; monthly_panel and ndvi_kraft_store (Kraft only, optional)                         TO FILL
+  slim manifests (one per run x lead), index tables (train stage), coverage masks: recorded in human_board.json and
+  human_picks.json of each board; listed in the Part from those files at signing.
+
+2. RIVALS PER PROBLEM AND LEAD (from the registries; P and L decide, A and X never; "none" = no human rival)
+  CORAL (run 20261020_f3b8e3da; leads 0, 183, 365 days)
+    crw_dhw       I   lead 0 P; 183 L, 365 L labelled "NOAA's nowcast rule fed old heat". Stats x__dhw, x__baa7d.
+                      Families F2, F3, F4, F5 x links identity, log_c, arcsine. Picked on lead-0 inner rows, pinned.
+    crw_outlook   I   lead 0 none (the observed product is strictly better); 183 A, 365 A ("advantaged horizon");
+                      365 scored WITHOUT the safety net (Q12 b). Stats x__baa060_w20, x__baa4p_w20. Families F2, F3,
+                      F4. Picked on the lead-183 guard rows (forecast-only product), pinned.
+    no human forecast at 183 / 365: "no forecast with a public 2016-19 archive covering our sites reaches 183 d or
+    365 d" (BoM ACCESS-S: verify before signing, PLAN R15).
+    reference: last visit of the same package unit (the catalog's key_unit: the site) strictly before the issue day;
+    donor median; predict-zero.
+  DEFO (run 20261017_d71c61f4; leads 0, 1 year)
+    vt0007_shipped     M   P at both leads, as shipped (F0).
+    vt0007_cal         M   P at both leads, isotonic-calibrated (F2, F4 x 3 links), picked on inner MAE, pinned.
+    vt0007_frozen2019  M   optional, P printed with its own verdict, NOT part of the claim below.
+    joint claim (Q14 a): "ours beats VT0007" = YES only if ours BEATS both vt0007_shipped and vt0007_cal (guarded vs
+    headline); otherwise each verdict is printed. Leads 0 and 1 carry identical rival values by construction.
+    reference: persistence and damped persistence at the nowcast (Q4), guess-normal, last-5, predict-zero.
+  PM2.5 (run 20261007_74e67609; leads 0, 6, 12 months)
+    eac4_lag1      N  lead 0 P "the operational product at parity" (EAC4 of month t-1). Waiting for D1.
+    eac4_same      N  lead 0 A "real practice" (month t; reads the target month's AOD), printed beside eac4_lag1.
+    merra2_lag1    N  lead 0 P (optional; the P row if D1 never lands, PLAN R2). merra2_same: A beside it.
+    placebos       eac4_lag1_placebo, merra2_lag1_placebo: tier X, the parent's pinned pick on a time-shifted
+                   product; printed only (the guard should decline them).
+    families F0-F5 x links identity, log_c; stat x__pm25; each P/A pair picked separately on inner rows.
+    leads 6, 12: "no human rival: no operational 6-12 month PM2.5 forecast exists" (Q1, Q21 a).
+    reference: persistence and damped persistence at lead 0 = "the human baseline to beat" (Q4).
+  NDVI (run 20261016_d1de3158; leads 0, 6, 12 months)
+    bardl_h1     M  lead 0 P; leads 6 and 12 X "labelled statistical extension: no published NDVI forecast reaches 6
+                    or 12 months" (Q8 a). Published inputs only (precipitation, soil moisture; Q9). F0.
+    kraft_lstm   M  optional, lead 0 P only, CPU, one fixed torch seed (Q10). F0.
+    reference: persistence and damped persistence at the nowcast.
+
+3. CALIBRATION MAPS AND THE PICK (SPEC_HUMAN 1.6; PROT H6; Q19 a, HQ6 a)
+  F0 native pred = x | F1 link(y) = a + b link(x), x put inside the link domain first (>= 0; <= UB for arcsine) |
+  F2 link(y) = iso(x) | F3 link(y) - z0 = a + b (x - xbar) | F4 link(y) - z0 = iso(x - xbar) |
+  F5 per-unit link(y) - z0 = a_u + b_u (x - xbar), a_u, b_u shrunk toward the pooled F3 with SHRINK_K = 10 rows
+  (A4): s* = (n_u s_u + K s_pool) / (n_u + K); a unit with < 3 covered fit rows (or unseen) takes the pooled map;
+  a unit with no spread in x keeps the pooled slope (counted) | F6 (Part B only) normal x per-group isotonic ratio.
+  z0 = the row's link-space normal (guard-cut ngd__ on tune / inner / guard-fit / guard rows, fit-cut nfit__ on refit
+  and test rows). xbar = the index's mean per unit x season key over the same fit rows; a cell with < 3 rows takes the
+  pooled key mean, an unseen key the pooled mean.
+  Isotonic direction = sign of Spearman(x, y) on the fit rows (undefined -> increasing); sklearn IsotonicRegression
+  (out_of_bounds clip), squared error, knots kept as JSON. No weights. Back-transform with link_inverse, no smearing;
+  clip with clip_to_legal, pre-clip kept.
+  Minimum to fit: >= 100 covered labelled rows in >= 3 groups, else "not calibratable at this lead" (no row,
+  disclosed).
+  Candidates = stats (<= 3) x families x R22 links (F0 has no link), fixed order (stat, family F0..F6, link).
+  The pick = the lowest MAE of the clipped prediction on the pick rows covered by EVERY stat of the rival (so all
+  candidates are compared on the same rows); ties by the fixed order. Nowcast rivals pick on lead-0 inner rows (fit on
+  tune rows); a forecast-only product picks on the guard rows of its lowest covered lead (fit on guard-fit rows).
+  corr2, calibration ratio and predict-zero MAE are logged beside every candidate (trials.csv).
+  One pick per rival, pinned at every lead, refit per lead. M rivals with a runner have one configuration (no pick).
+  L1 print (Q13): when the run's legal minimum is 0 and the lead-0 refit zero share is >= 0.20 (data rule; today
+  coral and defo), the pick's L1 isotonic map (raw form for F0-F2 picks, anomaly form for F3-F5) is refit and printed
+  beside as l1_raw_vs_raw. It never decides. When x has more than 20,000 distinct values the L1 map uses 20,000
+  equal-count rank blocks.
+
+4. TIMING (information parity; read from the run, recorded per rival in the lock)
+  T1 driver inputs: info_end <= issue - S (grids; S = max `steps` over the R8 entries the registry names as the
+  rival's driver kind, all R8 entries when it names none) or <= issue + plan.json max_feature_end_minus_issue_day
+  (tables: issue - 1). T2 target observations: target_obs_end <= latest_label_step(t, L) - R17 offset (grids) or
+  strictly before the issue day (tables). P, L and X rows must pass both on every covered row; an A row must break one
+  on every covered row (else the registry is wrong). M runners are checked the same way on every predicted row.
+
+5. COVERAGE, SAFETY NET, VERDICTS
+  Coverage mask per lead (HQ3 a): test rows where the picked stat is finite in the index (rivals written in one go),
+  or the registry's label-free rule (rivals that read the target in the test window, and runners): all_rows or a
+  mapping (issue_min / issue_max / units column / a label-free function). Written at the lock, hashed. A staged index
+  must later cover every locked row, else refit refuses.
+  Safety net (HQ2 a): lead 0 guard = the pick fitted on tune rows, scored on its covered inner rows; lead L = fitted on
+  covered guard-fit rows, scored on covered guard rows. Comparator on the same rows = the run's own saved
+  <link>_trees_off_unweighted of the pick's link (F0 and methods: identity), or the donor-row median (neighbour kind,
+  V1). Passed iff MAE(rival) < MAE(comparator) strictly (n2_eligible). guarded = raw if passed, else the run's decline
+  target. score_without_net leads: guarded = raw, flagged "no safety net".
+  Deciding contrast: covered rows of groups with >= 10 covered test rows, ours on the same rows; d_g = MAE_rival(g) -
+  MAE_ours(g); contrast_tag with the run's nowcast band at every lead; BEATS / LOSES / EQUIVALENT / CANNOT TELL;
+  blocked jackknife (R14) beside; timid flag. guarded_vs_headline decides (tiers P, L); raw_vs_raw printed. Beside:
+  rows k of n, groups, years, our all-row MAE, the normal's MAE on the same rows, a "filled" line (uncovered rows take
+  the decline target; never decides), per-stratum and unseen-unit tables, and the resolution-matched table for coarse
+  products (printed only).
+  A tier-L BEATS is worded with its label ("beats NOAA's nowcast rule fed old heat"), never "beats NOAA".
+
+6. REFERENCE ROWS (Q4, Q23)
+  Grids: persistence = the float64 label at the T2 step (the export's float32 hist_last_1 must equal it in float32
+  where it exists); damped persistence with phi from unit histories of slim refit labels (MET:461) and the unit's
+  fit-cut identity normal at the issue step's season key. Tables: the last visit of the same package unit strictly
+  before the issue day. PARITY PROOF FIRST: the same code reproduces the run's saved base__persistence (and
+  base__damped_persistence on grids) BYTE FOR BYTE at every lead >= 1, else no nowcast reference row is written
+  (toy runs: proved at 6 and 12 months on the grid toy, at 183 and 365 days on the table toy).
+
+7. CONSTANTS
+  SHRINK_K 10; MIN_FIT_ROWS 100; MIN_FIT_GROUPS 3; MIN_UNIT_ROWS 3; MIN_GROUP_TEST_ROWS 10; MAX_STATS 3;
+  L1_MAX_BLOCKS 20000; threads 8; no seed varied (Kraft: one fixed torch seed, CPU).
+
+8. NOT BLIND (PLAN R10; years to confirm before signing)
+  coral   stats x__baa060_w20, x__baa4p_w20 chosen after CRW Parts 456-457 (same test years).
+  PM2.5   F5 per-unit MOS (old Board C, per-cell log MOS on same-month MERRA-2, MAE 3.926; years TO CONFIRM).
+  NDVI    Kraft LSTM run before (Parts 417-426); BARDL chosen with that history (years TO CONFIRM).
+  defo    the frozen-2019 form follows the old udef_a run (defo_papers.py; years TO CONFIRM).
+
+9. OPEN BEFORE SIGNING
+  - registry/pm25.yaml and registry/ndvi.yaml: `coverage` holds plain text; it must be x_finite (pm25 index rivals),
+    all_rows (bardl_h1) or a label-free rule mapping (kraft_lstm: e.g. {function: "adapters.ndvi_kraft:<fn>"}); the
+    text moves to `coverage_note`. `init` refuses until then (builder C).
+  - Owner commands O1-O17 (SPEC_HUMAN 8), in order; D6 and replay results (O7) recorded here; BoM ACCESS-S check.
+  - EAC4 (D1) on disk, or the owner decision to lock without it (PLAN R2), recorded here.
+  - Disclosures listed in each registry entry (`disclosures`) and SPEC_HUMAN 9 are copied into the signed Part.

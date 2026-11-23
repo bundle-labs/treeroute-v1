@@ -1,0 +1,56 @@
+START_2026-10-25T20:57:10Z
+........................................................................ [ 18%]
+........................................................................ [ 37%]
+.....ssss............................................................... [ 55%]
+........................................................................ [ 74%]
+...............................................ssss..................... [ 93%]
+..............s.......s...                                               [100%]
+============================== warnings summary ===============================
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+  C:\Users\<user>\AppData\Local\Programs\Python\Python39\lib\site-packages\dask\dataframe\__init__.py:42: FutureWarning: 
+  Dask dataframe query planning is disabled because dask-expr is not installed.
+  
+  You can install it with `pip install dask[dataframe]` or `conda install dask`.
+  This will raise in a future version.
+  
+    warnings.warn(msg, FutureWarning)
+
+rivals_human/tests/test_h02_h03_slim.py::test_h02_copied_columns_equal_the_export_byte_for_byte
+  <frozen importlib._bootstrap>:228: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+
+rivals_human/tests/test_h06_h07_timing.py::test_h06_table_boundary_is_issue_minus_1
+  C:\Users\<user>\Desktop\data set for reserch paper\engine\treeroute\pipeline\passes.py:362: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+    _write_parquet_once(pd.concat(parts, ignore_index=True), path)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [4] rivals_human\tests\test_h20_nonames.py:97: real-data test: set HUMAN_REAL=1 (the separate light command of spec section 5)
+SKIPPED [1] tests_fire\test_f11_registry.py:115: real-data test: set HUMAN_REAL=1 (the separate light command of spec section 5)
+SKIPPED [3] tests_fire\test_f11_registry.py:129: real-data test: set HUMAN_REAL=1 (the separate light command of spec section 5)
+SKIPPED [1] tests_fire\test_f15_part_a_nonregression.py:150: real-data test: set HUMAN_REAL=1 (the separate light command of spec section 5)
+SKIPPED [1] tests_fire\test_f18_refs_early_check.py:26: real-data test: set HUMAN_REAL=1 (the separate light command of spec section 5)
+376 passed, 10 skipped, 16 warnings in 439.79s (0:07:19)
+EXIT=0
+END_2026-10-25T21:04:32Z

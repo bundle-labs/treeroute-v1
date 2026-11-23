@@ -1,0 +1,25 @@
+# dataset.yaml -- coral_draft: the coral bleaching TABLE package (owner ruling U, OWNER_RULINGS_2026-10-06.md:84-95).
+# DRAFT, written 2026-10-19 by the agent in the build copy (D:/treeroute/coral_build). UNSIGNED. Development and smoke
+# only, never a headline run. Design: D:/treeroute/coral_build/SPEC_CORAL_TABLES.md. Contract:
+# D:/treeroute/coral_build/SPEC_TABLE_MODE.md section 1.
+#
+# Store: one parquet file per lead, written by the package-side builder
+#   D:/treeroute/coral_build/coral_tables/build_tables.py   (stage 2; stage 1 is build_visits.py)
+# The files are READ IN PLACE. {lead} is the lead in days: 0 (nowcast), 183 and 365 (ruling I1; R10 events).
+# Each row is one survey VISIT (site + date) with its keys, label, mark, programme and features that end strictly
+# before the row's issue date (target date minus the lead). The owner vouches for the feature timing (ruling U2;
+# AUDIT_CHECKLIST.md section B). The owner adds the store root to D:/treeroute/registry/protected_roots.txt before
+# the freeze (SPEC_TABLE_MODE.md 1.2).
+# Test window 2016-2019 (owner ruling V3, OWNER_RULINGS_2026-10-06.md:105): the 38 visits of 2020 are not written.
+# 2017-2020 is the declared sensitivity row, never the headline (ingest/README.md, section Signed answers, ruling V).
+# The tiny smoke build (4 groups) is a GENERATED copy of this package at
+# D:/treeroute/coral_build/coral_data/tiny/package/, whose dataset.yaml points at coral_data/tiny/ (SPEC_CORAL_TABLES.md 5).
+name: coral_draft
+version: '0.1.0-draft'
+owner: 'UNSIGNED -- DRAFT development package; not the owner''s'
+description: 'DRAFT -- percent of coral bleached per survey visit (GCBD; Reef Check, AGRRA, FRRP, McClanahan, Donner), one row per site and date, grouped by ecoregion; hand-built SST, marine-heatwave, cyclone and ENSO/IOD features that end before each issue date (leads 0, 183, 365 days); neighbour router; every fact unverified, nothing signed'
+input: table
+stores:
+  # published full build (write-once store, protected root; build_tables.py --publish full, 2026-10-20 02:15)
+  target: 'D:/treeroute/coral_build/coral_store/20261020_014201/lead_{lead}.parquet'
+includes: []
